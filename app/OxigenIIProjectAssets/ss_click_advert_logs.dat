@@ -1,0 +1,10 @@
+﻿# advertID|advertlevel|clicktime
+# multiple rows with same advertID are expected as log exchanger appends logging information
+
+1000|20090625|10:20:05
+1000|20090624|23:24:12
+1000|20090624|21:20:02
+1001|20090624|23:10:12
+1001|20090623|21:28:02
+1001|20090605|12:20:05
+1002|20090605|13:13:29

@@ -1,0 +1,18 @@
+
+body, h1, h2, h3, h4, label, ul, ol, li, dl, dt, dd, p, div, span, table, td, th, hr, input, label, a {background-repeat:no-repeat;}
+body, h1, h2, h3, h4, label, ul, ol, li, dl, dt, dd, p, div, span, img, label, a {padding:0px; border:0px; margin:0px;}
+body {font-size:62.5%; color:#000; background-color:#fff; font-family:Verdana, Helvetica;}
+
+div.OuterDiv {height:auto; width:800px; margin-left:auto; margin-right:auto;}
+div.OuterDivImageContainer {height:auto; width:990px; margin-left:auto; margin-right:auto;}
+div.MenuHeader {width:auto; background-color:#55648A; padding:0px 0px 0px 30px; margin:0px 0px 3px 0px; font-weight:bold; color:#fff;}
+div.MenuLeft {width:360px; padding:0px 0px 0px 30px; margin:10px 0px 5px 0px; float:left;}
+div.MenuRight {width:360px; padding:0px 0px 0px 30px; margin:10px 0px 5px 0px; float:right;}
+
+div.logo {height:70px; width:auto; text-align:right;}
+p {font-size:1.3em; line-height:1.7em;}
+a {color:#000; text-decoration:none;}
+a:hover {color:#d00; text-decoration:underline;}
+
+div.ReturnToMenu {margin-left:0px; margin-top:5px; margin-bottom:15px; padding:3px; background-color:#fff; width:95px;}
+div.ReturnToMenu a {color:#f00; font-weight:bold;}

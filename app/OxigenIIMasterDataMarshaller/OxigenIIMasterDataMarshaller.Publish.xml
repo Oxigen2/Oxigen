@@ -1,0 +1,28 @@
+<publishData>
+  <publishTarget publishUrl="H:\OxigenIIMasterDataMarshaller\theSite\">
+    <file relUrl="bin/WCFErrorReporting.dll" publishTime="02/10/2010 19:26:16" />
+    <file relUrl="bin/OxigenIIMasterDataMarshaller.dll" publishTime="02/10/2010 20:50:02" />
+    <file relUrl="bin/InterCommunicationStructures.xml" publishTime="02/10/2010 19:26:17" />
+    <file relUrl="MasterDataMarshaller.svc" publishTime="02/10/2010 20:45:51" />
+    <file relUrl="Web.config" publishTime="02/10/2010 20:43:31" />
+    <file relUrl="bin/OxigenServiceFactory.dll" publishTime="02/10/2010 19:26:22" />
+    <file relUrl="bin/LoggerInfo.dll" publishTime="02/10/2010 19:46:34" />
+    <file relUrl="bin/InterCommunicationStructures.pdb" publishTime="02/10/2010 19:26:17" />
+    <file relUrl="bin/WCFErrorReporting.xml" publishTime="02/10/2010 19:26:16" />
+    <file relUrl="bin/LoggerInfo.pdb" publishTime="02/10/2010 19:46:34" />
+    <file relUrl="bin/InterCommunicationStructures.dll" publishTime="02/10/2010 19:26:17" />
+    <file relUrl="bin/LoggerInfo.xml" publishTime="02/10/2010 19:46:34" />
+    <file relUrl="bin/FileChecksumCalculator.dll" publishTime="02/10/2010 18:58:39" />
+    <file relUrl="bin/FileChecksumCalculator.pdb" publishTime="02/10/2010 18:58:38" />
+    <file relUrl="bin/WCFErrorReporting.pdb" publishTime="02/10/2010 19:26:16" />
+    <file relUrl="bin/OxigenIIMasterDataMarContracts.pdb" publishTime="02/10/2010 20:50:01" />
+    <file relUrl="bin/OxigenServiceFactory.pdb" publishTime="02/10/2010 19:26:22" />
+    <file relUrl="bin/Exceptions.dll" publishTime="02/10/2010 19:46:32" />
+    <file relUrl="bin/OxigenIIMasterDataMarContracts.dll" publishTime="02/10/2010 20:50:02" />
+    <file relUrl="bin/OxigenIIMasterDataMarshaller.pdb" publishTime="02/10/2010 20:50:02" />
+    <file relUrl="bin/Exceptions.pdb" publishTime="02/10/2010 19:46:32" />
+    <file relUrl="bin/Exceptions.xml" publishTime="02/10/2010 19:46:32" />
+    <file relUrl="bin/FileChecksumCalculator.xml" publishTime="02/10/2010 18:58:38" />
+    <file relUrl="bin/OxigenIIMasterDataMarshaller.dll.config" publishTime="02/10/2010 20:43:31" />
+  </publishTarget>
+</publishData>

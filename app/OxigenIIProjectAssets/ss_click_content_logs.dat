@@ -1,0 +1,9 @@
+﻿# contentID|contentlevel|click date|click time
+# multiple rows with same contentID are expected as log exchanger appends logging information
+
+1003|premium|20090625|12:20:05
+1002|normal|20090625|10:20:05
+1002|normal|20090625|23:24:12
+1003|premium|20090624|23:10:12
+1003|premium|20090623|21:28:02
+1002|normal|20090604|21:20:02

@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Setup
+{
+  public partial class RegistrationForm2 : SetupForm
+  {
+    public RegistrationForm2()
+    {
+      InitializeComponent();
+
+      SetupHelper.SetupAgeGenderControls(rbMale, rbFemale, ddDay, ddMonth, ddYear);
+    }
+
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
+      SetupHelper.ExitNoChanges();
+    }
+
+    private void btnBack_Click(object sender, EventArgs e)
+    {
+      SetupHelper.OpenForm<RegistrationForm1>(this);
+    }
+
+    private void btnNext_Click(object sender, EventArgs e)
+    {
+      if (string.IsNullOrEmpty(txtFirstName.Text.Trim()))
+      {
+        MessageBox.Show("Please enter your first name");
+        return;
+      }
+
+      if (string.IsNullOrEmpty(txtLastName.Text.Trim()))
+      {
+        MessageBox.Show("Please enter your last name");
+        return;
+      }
+
+      if (!rbMale.Checked && !rbFemale.Checked)
+      {
+        MessageBox.Show("Please select your Gender");
+        return;
+      }
+
+      if (!SetupHelper.IsDateValid(ddDay, ddMonth, ddYear))
+      {
+        MessageBox.Show("Please enter your Date of Birth");
+        return;
+      }
+
+      SetupHelper.SaveAgeGender(rbMale, ddDay, ddMonth, ddYear);
+
+      AppDataSingleton.Instance.FirstName = txtFirstName.Text.Trim();
+      AppDataSingleton.Instance.LastName = txtLastName.Text.Trim();
+      
+      SetupHelper.OpenForm<RegistrationForm3>(this);
+    }
+
+    private void ddYear_Click(object sender, EventArgs e)
+    {
+      if (((ComboBox)sender).SelectedIndex == 0)
+        ((ComboBox)sender).SelectedItem = 1985;
+    }
+  }
+}

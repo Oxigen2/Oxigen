@@ -1,0 +1,983 @@
+﻿/* Oxigen */
+body, h1, h2, h3, h4, label, ul, ol, li, dl, dt, dd, p, div, span, table, td, th, hr, input, label, a {background-repeat:no-repeat;}
+body, h1, h2, h3, h4, label, ul, ol, li, dl, dt, dd, p, div, span, img, label, a {padding:0px; border:0px; margin:0px;}
+table, tr, td, th {border-spacing:0px; padding:0px; border:0px; margin:0px; vertical-align:top;} 
+td, th {empty-cells:hide;}
+input {margin:0px; padding:0px;}
+body {/*cursor:url(/images/default/oxigen.cur),auto !important; */font-size:62.5%; color:#000; font-family:Trebuchet MS, Helvetica, sans-serif; background-color:#a8c6e2; background-image:url(/Images/Default/main-bg.jpg); background-repeat:repeat-x; background-position:center top}
+.CheckBox, .Radio {position:relative; left:-4px; top:1px;}
+.Radio2 {position:relative; left:-4px; top:1px; margin-left:15px}
+
+/* common basic */
+h1 {font-size:1.7em; margin-bottom:10px; margin-top:10px; font-weight:bold; color:#FFFFFF;}
+h1.PageTitle  {position:relative; top:5px; font-size:3em; margin:0px 0px 0px 0px}
+.MainContent h1  {font-size:2.5em; font-weight:normal; margin-bottom:0px}
+.MainContent p  {margin-bottom:0px}
+h2 {font-size:1.4em; color:#FFF;}
+h3 {font-size:1.4em; color:#FFF;}
+a {color:#FFF; text-decoration:underline; outline:none}
+a:hover {text-decoration:underline;}
+p {margin-top:8px; margin-bottom:8px; font-size:1.3em; line-height:1.3em; color:#FFF;}
+p.SmallPara {margin-top:10px; margin-bottom:10px; font-size:1.2em; line-height:1.3em; color:#FFF;}
+p.LargePara {margin-top:10px; margin-bottom:10px; font-size:1.7em; line-height:1.1em; color:#FFF;}
+p.BoldPara {font-weight:bold; color:#FFF;}
+.Red {color:#d00 !important;}
+.Bold   {font-weight:bold !important;}
+.Italic {font-style:italic !important;}
+ul {margin:10px 0px 0px 20px;}
+ol {margin:10px 0px 0px 25px; list-style-type:upper-alpha}
+ul li {margin:1px 0px 0px 0px; font-size:1.3em; line-height:1.5em; color:#FFF}
+ol li {margin:1px 0px 0px 0px; font-size:1.3em; line-height:1.5em; color:#FFF}
+ol ol {list-style-type:lower-roman}
+ol li li {font-size:1em;}
+dl {margin:15px 0px 10px 0px;}
+dl dt {margin:1px 0px 0px 0px; font-size:1.1em; line-height:1.5em; font-weight:bold;}
+dl dd {margin:1px 0px 10px 20px; font-size:1.1em; line-height:1.5em;}
+
+/*.CoverLayer {position:absolute; z-index:100; background-color:#001526}*/
+.CoverLayer {position:fixed; top:0px; left:0px; z-index:100; background-color:#FFF}
+
+.BottomFix {clear:both; width:10px; height:1px; font-size:2px;}
+.OffWhiteLine {height:1px; font-size:2px; width:920px; background-image:url(/Images/Default/border-offwhite.gif); background-repeat:repeat-x}
+
+.HomePage {padding:0px 25px 0px 25px}
+  .HomePage img {position:absolute; bottom:18px; left:40px}
+  .HomePage .RightColumn {position:absolute; top:70px; left:450px; width:420px;}
+  .HomePage p.BoldPara {width:330px; text-align:center; margin:10px auto}
+  .HomePage .ButtonSet {position:relative; z-index:2; width:370px; padding-top:40px; margin:0px auto}
+#FlashContent2 {z-index:1; position:relative; left:20px; bottom:12px}
+#ForJSMonitor {z-index:100}
+
+.MainDiv {position:relative; width:920px; margin:0px auto;}
+.Header {position:relative; width:920px; color:#FFF; padding:28px 0px 22px 0px; margin-bottom:16px;}
+  .Header .OffWhiteLine {position:relative; top:3px; width:730px}
+  .Header a {color:#FFF; text-decoration:none; margin-right:5px; font-size:1.3em}
+  .Header a #LoggedInUserName {font-size:1em; font-weight:bold; margin:0px;}
+  .Header span {color:#FFF; text-decoration:none; margin-right:5px; font-size:1.3em}
+  .Header .Logo {display:block; position:absolute; right:0px; top:2px; font-size:1em; margin:0px; width:182px; height:20px; padding:55px 0px 0px 0px; background-image:url(/Images/Default/logo-beta.gif)}
+    .Header .Logo span {display:block; text-align:center; margin:0px auto; font-size:1.1em}
+.Footer {position:relative; z-index:50; background-color:#598CC1; color:#FFF; padding:8px 0px 8px 0px; margin-top:30px; margin-bottom:20px}
+  .FooterInner {width:920px; margin:0px auto}
+  .FooterInner span {font-size:1.1em}
+    .FooterInner span a {color:#FFF; margin-right:3px; text-decoration:none}
+  .FooterInner div {float:right; margin-right:0px}
+    .FooterInner div a {color:#FFF; margin-right:3px; font-size:1.1em; text-decoration:none}
+    .FooterInner a:hover {text-decoration:underline}
+  .FooterInner .TopLinks {float:none; width:920px; padding-bottom:10px}
+    .FooterInner .TopLinks h3 {font-weight:normal; padding-bottom:6px}
+    .FooterInner .TopLinks div {float:left; width:153px;}
+    .FooterInner .TopLinks div span {display:block;}
+    .FooterInner .TopLinks .BottomFix {float:none;}
+
+.ContentDiv {z-index:1; position:relative; width:893px; min-height:451px; padding:21px 15px 0px 15px; background-image:url(/images/default/public-centre-top.png)}
+  .ContentBottom {width:920px; height:24px; background-image:url(/images/default/public-centre-bottom.png)}
+  .ContentBackground {z-index:-1; position:absolute; top:19px; left:0px; width:923px; height:471px;}
+
+.ButtonSet {}
+  .ButtonSet .BigButtonGreen {float:right}
+.ButtonHolder {padding-top:10px}
+  .ButtonHolder .BigButton {float:right;}
+  .ButtonHolder .BiggerButton {float:right;}
+.SmallButton {position:relative; width:70px; height:28px; text-align:center}
+  .SmallButton img {position:absolute; top:0px; left:0px; z-index:0; width:70px; height:28px}
+  .SmallButton a {display:block; position:relative; top:-9px; left:0px; height:28px; padding:9px 5px 0px 0px; text-decoration:none; font-size:1.5em; text-align:center; font-weight:bold; }
+.BigButton {position:relative; width:215px; height:43px; text-align:center}
+  .BigButton img {position:absolute; top:0px; left:0px; z-index:0; width:215px; height:43px}
+  .BigButton a {display:block; position:relative; top:-9px; left:0px; height:43px; padding:0px 0px 0px 0px; text-decoration:none; font-size:2.2em; text-align:center; font-weight:bold; }
+    .BigButton a span {position:relative; top:3px; font-size:1.6em}
+.BigButtonGreen {position:relative; width:170px; height:37px; text-align:center}
+  .BigButtonGreen img {position:absolute; top:0px; left:0px; z-index:0; width:170px; height:37px}
+  .BigButtonGreen a {display:block; position:relative; top:-9px; left:0px; height:31px; padding:6px 0px 0px 0px; text-decoration:none; font-size:1.7em; text-align:center; font-weight:normal; }
+    .BigButtonGreen a span {position:relative; top:3px; font-size:1.4em}
+.ButtonGreen {position:relative; width:129px; height:37px; text-align:center}
+  .ButtonGreen img {position:absolute; top:0px; left:0px; z-index:0; width:129px; height:37px}
+  .ButtonGreen a {display:block; position:relative; top:-9px; left:0px; height:31px; padding:6px 0px 0px 0px; text-decoration:none; font-size:1.7em; text-align:center; font-weight:normal; }
+    .ButtonGreen a span {position:relative; top:3px; font-size:1.4em}
+.ButtonRed {position:relative; width:129px; height:37px; text-align:center}
+  .ButtonRed img {position:absolute; top:0px; left:0px; z-index:0; width:129px; height:37px}
+  .ButtonRed a {display:block; position:relative; top:-9px; left:0px; height:31px; padding:6px 0px 0px 0px; text-decoration:none; font-size:1.7em; text-align:center; font-weight:normal; }
+    .ButtonRed a span {position:relative; top:3px; font-size:1.4em}
+.ButtonGreenSmall {position:relative; width:76px; height:37px; text-align:center}
+  .ButtonGreenSmall img {position:absolute; top:0px; left:0px; z-index:0; width:76px; height:37px}
+  .ButtonGreenSmall a {display:block; position:relative; top:-9px; left:0px; height:31px; padding:6px 0px 0px 0px; text-decoration:none; font-size:1.7em; text-align:center; font-weight:normal; }
+    .ButtonGreenSmall a span {position:relative; top:3px; font-size:1.4em}
+.ButtonBlue {position:relative; width:128px; height:37px; text-align:center}
+  .ButtonBlue img {position:absolute; top:0px; left:0px; z-index:0; width:128px; height:37px}
+  .ButtonBlue a {display:block; position:relative; top:-9px; left:0px; height:31px; padding:6px 0px 0px 0px; text-decoration:none; font-size:1.7em; text-align:center; font-weight:normal; }
+    .ButtonBlue a span {position:relative; top:3px; font-size:1.4em}
+.BiggerButton {position:relative; width:265px; height:43px; text-align:center}
+  .BiggerButton img {position:absolute; top:0px; left:0px; z-index:0; width:265px; height:43px}
+  .BiggerButton a {display:block; position:relative; top:-9px; left:0px; height:43px; padding:0px 0px 0px 0px; text-decoration:none; font-size:2.2em; text-align:center; font-weight:bold; }
+    .BiggerButton a span {position:relative; top:3px; font-size:1.6em}
+.ButtonSpacerWide {width:30px; float:right; height:10px}
+.ButtonMoreInfo {position:relative; left:-4px !important; font-size:1.2em !important; text-decoration:underline !important}
+.ButtonRight {float:right}
+
+.FooterSlide {display:none; position:relative; width:860px; height:69px; padding:0px 30px 0px 30px; margin:18px 0px 0px 0px; border-bottom:solid 1px #C7D8EA;}
+  .FooterSlide .OffWhiteLine {position:absolute; top:0px; right:0px; width:730px}
+  .FooterSlide h2 {position:absolute; top:-10px; left:0px; font-weight:normal; font-size:1.2em}
+  .FooterSlide .Left {position:absolute; left:0px; top:25px; cursor:pointer; float:left; width:27px; height:21px; background-image:url(/Images/Default/arrow-left-footer.gif)}
+  .FooterSlide .Right {position:absolute; right:0px; top:25px; cursor:pointer; float:right; width:27px; height:21px; background-image:url(/Images/Default/arrow-right-footer.gif)}
+  .FooterSlideOuter {position:absolute; top:-15px; left:35px; width:850px; height:155px; margin:0px auto; overflow:hidden;}
+  .FooterSlideInner {position:absolute; width:9000px; height:50px; padding:25px 0px 9px 0px}
+    .FooterSlideInner div {position:relative; float:left;}
+      .FooterSlideInner a {position:relative; display:block; float:left; width:66px; height:50px; position:relative; }
+        .FooterSlideInner img {position:absolute; top:0px; left:0px; width:50px; height:50px; }
+#ScrollMeasure {width:100%; height:1px; font-size:2px;}
+
+.DownloadCreatePage {}
+  .CreateArrowLeft {cursor:pointer; z-index:100; position:absolute; top:350px; left:-30px; width:39px; height:74px; background-image:url(/images/default/create-arrow-left.gif)}
+  .CreateArrowLeft2 {cursor:default; background-image:url(/images/default/create-arrow-left-grey.gif)}
+  .CreateArrowRight {cursor:pointer; z-index:100; position:absolute; top:350px; right:-28px; width:39px; height:74px; background-image:url(/images/default/create-arrow-right.gif)}
+  .CreateArrowRight2 {cursor:default; background-image:url(/images/default/create-arrow-right-grey.gif)}
+  .DownloadCreatePage .ButtonGreen {float:right;}
+  .DownloadCreatePage .Navigation {height:37px;}
+    .DownloadCreatePage .Navigation div {position:relative; float:left; width:170px; height:37px;}
+    .DownloadCreatePage .Navigation div img {position:absolute; top:0px; left:0px; z-index:1; width:170px; height:37px}
+    .DownloadCreatePage .Navigation div a {position:relative; z-index:2; display:block; width:161px; height:34px; padding:3px 9px 0px 0px; text-align:center; text-decoration:none; font-size:2.2em}
+    .DownloadCreatePage .Navigation div span {position:relative; z-index:2; display:block; width:161px; height:34px; padding:3px 9px 0px 0px; text-align:center; text-decoration:none; font-size:2.2em; color:#FFF}
+  .DownloadCreatePage .NavigationArrows {height:37px;}
+    .DownloadCreatePage .NavigationArrows div {z-index:3; position:relative; float:left; width:170px; height:37px;}
+    .DownloadCreatePage .NavigationArrows div img {display:none; position:absolute; top:0px; left:0px; z-index:1; width:170px; height:37px}
+    .DownloadCreatePage .NavigationArrows div a {outline:none; position:relative; z-index:2; display:block; color:#8EB6D8; width:161px; height:34px; padding:3px 9px 0px 0px; text-align:center; text-decoration:none; font-size:2.2em}
+  .MainDiv .DownloadCreatePage .EmptyMainPanel {position:relative; height:701px; width:889px; background-image:url(/images/default/search-background-empty.jpg) !important}
+    .DownloadCreatePage .EmptyMainPanel h2 {}
+    .DownloadCreatePage .EmptyMainPanel .SlidingPanels {overflow:hidden; position:relative; top:11px; left:6px; height:694px; width:877px; padding:0px 0px 0px 0px}
+      .DownloadCreatePage .EmptyMainPanel .SlidingPanels .SlidingPanelsInner {position:absolute; top:0px; left:0px; height:654px; width:4000px; padding:0px 0px 0px 0px}
+      .DownloadCreatePage .EmptyMainPanel .SlidingPanels .Panel {overflow:hidden; position:relative; z-index:1; float:left; height:647px; width:354px; padding:8px 4px 0px 8px; background-image:url(/images/default/panel-column.png)}
+        .DownloadCreatePage .EmptyMainPanel .SlidingPanels .Panel .PanelLinks {}
+        .DownloadCreatePage .EmptyMainPanel .SlidingPanels .StreamView {display:none; position:absolute; top:140px; left:14px; margin-left:-8px}
+        .DownloadCreatePage .EmptyMainPanel .SlidingPanels .PagerNav {padding-top:440px;}
+      .DownloadCreatePage .EmptyMainPanel .SlidingPanels .PanelCenter {position:Relative; z-index:2; float:left; height:610px; width:141px; padding:44px 4px 0px 4px; background-image:url(/images/default/panel-column-center.jpg)}
+        .DownloadCreatePage .EmptyMainPanel .SlidingPanels .PanelCenterContent {width:137px; height:596px; padding:9px 9px 0px 5px; background-image:url(/images/default/search-background2-centre.gif); background-position:left bottom}
+        .DownloadCreatePage .EmptyMainPanel .SlidingPanels .PanelCenterContent .CentreButtonHolder {padding-left:6px}
+        .DownloadCreatePage .EmptyMainPanel .SlidingPanels .PanelCenterContent .StreamRemove {display:none}
+        .DownloadCreatePage .EmptyMainPanel .SlidingPanels .PanelCenterContent .StreamProperties {display:none}
+        .DownloadCreatePage .EmptyMainPanel .SlidingPanels .PanelCenterContent .StreamPreview {display:none}
+        .DownloadCreatePage .EmptyMainPanel .PanelCenter .ButtonBlue {margin:0px 0px 0px 5px}
+        .DownloadCreatePage .EmptyMainPanel .PanelCenter div.MultipleStream {background-image:url(/images/default/stream-multiple.gif) !important}
+        .DownloadCreatePage .EmptyMainPanel .PanelCenter div.MultipleStream .StreamImages {display:none;}
+        .DownloadCreatePage .EmptyMainPanel .PanelCenter div.MultipleStream span {display:none;}
+        .DownloadCreatePage .EmptyMainPanel .PanelCenter div.StreamHolder {padding-left:13px; cursor:default; float:none; background-image:url(/images/default/stream-on-white2.gif); background-position:5px 0px}
+        .DownloadCreatePage .EmptyMainPanel .PanelCenter div.StreamHolder .StreamImages img {}
+        .DownloadCreatePage .EmptyMainPanel .PanelCenter div.StreamHolder span {color:#000}
+ .DownloadCreatePage .MainPanel {height:698px; width:889px; background-image:url(/images/default/search-background2.jpg)}
+    .DownloadCreatePage .MainPanel .IntroText {font-size:1.5em; padding:10px 0px 0px 8px; margin:0px;}
+    .DownloadCreatePage .MainPanel h2 {font-size:2em; font-weight:normal; color:#000; height:25px; padding-bottom:11px}
+    .DownloadCreatePage .MainPanel .LeftColumn {z-index:1; position:relative; float:left; width:350px; height:645px; padding:20px 0px 0px 14px; overflow:hidden}
+      .DownloadCreatePage .MainPanel .LeftColumn .StreamView {display:none; position:absolute; top:151px; left:14px}
+      .DownloadCreatePage .MainPanel .LeftColumn .StreamHolder {cursor:pointer}
+      .DownloadCreatePage .MainPanel .LeftColumn .PagerNav {padding-top:480px;}
+    .DownloadCreatePage .MainPanel .CentreColumn {z-index:5; position:relative; float:left; width:148px; padding:20px 3px 0px 12px; margin-top:37px}
+      .DownloadCreatePage .MainPanel .CentreColumn .ButtonBlue {float:none; margin:0px 0px 0px 5px}
+        .DownloadCreatePage .MainPanel .CentreContent {width:120px; height:591px; padding:9px 9px 0px 9px; background-image:url(/images/default/search-background2-centre.gif); background-position:left bottom}
+        .DownloadCreatePage .MainPanel .CentreContent .AlreadyAdded {font-size:1.2em}
+        .DownloadCreatePage .MainPanel .CentreContent div.StreamHolder {display:none; padding-left:8px; cursor:default; float:none; background-image:url(/images/default/stream-on-white2.gif)}
+          .DownloadCreatePage .MainPanel .CentreContent div.StreamHolder .StreamImages img {position:absolute; top:0px; left:0px;}
+          .DownloadCreatePage .MainPanel .CentreContent div.StreamHolder span {color:#000}
+        .DownloadCreatePage .CentreMeta {display:block; padding-top:10px;}
+          .DownloadCreatePage .CentreMeta div.StreamPrivateMessage {display:none; color:#c00; font-size:1.2em}
+          .DownloadCreatePage .CentreMeta div.CentreMetaDiv {position:relative; padding:0px 0px 8px 0px; color:#222; font-size:1.2em}
+          .DownloadCreatePage .CentreMeta div.MetaDiv {display:none;}
+          .DownloadCreatePage .CentreMeta div.MetaDivPadded {padding-top:10px; padding-bottom:10px}
+          .DownloadCreatePage .CentreMeta div.MetaDiv {font-size:1.2em}
+          .DownloadCreatePage .CentreMeta div.MetaDiv a {color:#336699 !important}
+            .DownloadCreatePage .CentreMeta div span {color:#777;}
+            .DownloadCreatePage .CentreMeta .CentreButtonHolder {height:72px; width:120px; padding:35px 0px 0px 0px; font-size:1em}
+            .DownloadCreatePage .CentreMeta .AlreadyAdded {display:none; color:#C00; margin-top:-5px}
+            .DownloadCreatePage .CentreMeta .ButtonGreen {display:none; float:none; width:117px; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; font-size:1em}
+              .DownloadCreatePage .CentreMeta .ButtonGreen span {color:#FFF}
+              .DownloadCreatePage .CentreMeta .ButtonGreen img {width:117px}
+            .DownloadCreatePage .CentreMeta .ButtonRed {display:none; float:none; width:117px; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; font-size:1em}
+              .DownloadCreatePage .CentreMeta .ButtonRed span {color:#FFF}
+              .DownloadCreatePage .CentreMeta .ButtonRed a {padding-right:6px; padding-top:11px}
+              .DownloadCreatePage .CentreMeta .ButtonRed img {width:117px}
+        .DownloadCreatePage .MainPanel .CentreContent .StreamRemove {display:none;}
+        .DownloadCreatePage .MainPanel .CentreContent .StreamWeight {display:none;}
+    .DownloadCreatePage .MainPanel .RightColumn {z-index:1; position:relative; float:left; width:350px; height:645px; padding:20px 0px 0px 4px; overflow:hidden}
+      .DownloadCreatePage .MainPanel .RightColumn .StreamView {position:absolute; top:151px; left:2px}
+      .DownloadCreatePage .MainPanel .RightColumn .StreamHolder {cursor:pointer}
+      .DownloadCreatePage .MainPanel .RightColumn .PagerNav {padding-top:440px;}
+    .DownloadCreatePage .MainPanel .MiniNavigation {width:355px; height:27px; margin-left:-4px;}
+      .DownloadCreatePage .MainPanel .MiniNavigation .Active {width:118px; height:27px; border-right:solid 1px #8FB7D8; background-image:url(/images/default/mini-tab-active.gif); float:left;}
+      .DownloadCreatePage .MainPanel .LongVersion .Active {width:177px; height:28px; border-right:solid 1px #8FB7D8; background-image:url(/images/default/mini-tab-active2.gif); float:left;}
+      .DownloadCreatePage .MainPanel .MiniNavigation .Inactive {width:117px; height:27px; border-right:solid 1px #8FB7D8; background-image:url(/images/default/mini-tab-inactive.gif); float:left;}
+      .DownloadCreatePage .MainPanel .LongVersion .Inactive {width:176px; height:28px; border-right:solid 1px #8FB7D8; background-image:url(/images/default/mini-tab-inactive2.gif); float:left;}
+      .DownloadCreatePage .MainPanel .MiniNavigation a {display:block; font-size:1.5em; text-decoration:none; padding:2px 0px 0px 8px}
+      
+.MiniNavDivs {width:346px; height:740px; overflow:hidden}
+  .MiniNavDivs p {padding:15px 12px 15px 12px; margin:0px}
+  .UploadContentHolder {position:relative; height:409px; width:306px; padding:30px 20px 0px 20px}
+    .UploadContentCover {display:none; position:absolute; z-index:2; width:205px; height:55px; top:30px; left:70px; background-image:url(/images/default/upload-pc-loading.gif);}
+    .UploadContentPC {position:relative; z-index:1; display:block; width:205px; height:55px; margin:0px auto 20px auto; background-image:url(/images/default/upload-pc.jpg);}
+    .UploadContentFacebook {display:block; width:205px; height:55px; margin:10px auto 20px auto; background-image:url(/images/default/upload-facebook.jpg);}
+    .UploadContentFlickr {display:block; width:205px; height:55px; margin:10px auto; background-image:url(/images/default/upload-flickr.jpg);}
+    .UploadContentFacebook2 {display:block; width:205px; height:55px; margin:10px auto 20px auto; background-image:url(/images/default/upload-facebook-2.jpg);}
+    .UploadContentFlickr2 {display:block; width:205px; height:55px; margin:10px auto; background-image:url(/images/default/upload-flickr-2.jpg);}
+  #DivPopUpStreamProperties .BrowseNav {position:relative; z-index:5000; padding-left:15px; height:31px; width:380px; margin:0px auto;  padding-top:15px; border-top:none !important}   
+  #DivPopUpStreamProperties .BrowseNav span {color:#FFF !important}   
+  #DivPopUpStreamProperties .BrowseNav a {color:#FFF !important}   
+  .BrowseNav {position:relative; z-index:5000; padding-left:15px; height:31px; width:666px; border-top:solid 15px #00477F}   
+    .BrowseNav .NavHolder {margin-left:-15px; position:relative; float:left; width:111px; height:28px; padding:0px 0px 0px 0px;}   
+    .BrowseNav .BrowseMain {z-index:2; position:relative; overflow:hidden; display:block; height:25px; width:96px; padding:1px 0px 0px 15px; font-size:1.2em; text-decoration:none;}   
+    .BrowseNav img {z-index:-1; position:absolute; width:111px; height:28px; top:0px; right:0px;}   
+      .BrowseNav BrowseMain.BrowseNavClosed {width:0px; padding-left:31px}   
+      .BrowseNav .BrowseNavClosed img {width:31px;}   
+  .SortBy {padding:0px 0px 5px 0px}    
+    .SortBy span {color:#FFF; font-size:1.2em; margin-right:4px;}    
+    .SortBy a {font-size:1.2em; margin-right:4px}    
+      .SortBy a.Active {color:#FFF; text-decoration:none}    
+      .SortBy a.Inactive {color:#A8C6E2; text-decoration:underline}    
+      
+  .BrowseDrop {z-index:1; position:absolute; left:0px; top:16px; display:none; width:101px; padding:20px 0px 0px 0px; background-color:#92B5DB; border-left:solid 1px #00376B; border-right:solid 1px #00376B}    
+    .DropBottom {position:absolute; bottom:-14px; left:-1px; width:103px; height:15px; background-image:url(/images/default/browse-drop-bottom.png); background-position:left bottom; }
+    .BrowseDrop a {display:block; width:85px; height:20px; text-decoration:none; font-size:1.2em; padding:3px 8px 3px 8px; margin:0px}
+      .BrowseDrop a:hover {background-color:#00477F;}
+  .BrowseParent {display:none}
+  
+.StreamImages img {margin:0px auto}  
+  
+.StreamView {float:left; width:350px; height:470px;}
+  .StreamHolder {position:relative; float:left; width:104px; height:111px; background-image:url(/images/default/stream-on-blue.gif); padding:7px 5px 0px 7px; overflow:hidden}    
+    .StreamHolder .StreamImages {position:relative; width:100px; height:75px}    
+    .StreamHolder img {display:none}
+    .StreamHolder span {display:block; font-size:1.1em; width:100px; overflow:hidden;}   
+  .PersonalStream {cursor:pointer; background-image:url(/images/default/stream-yellow.gif); }
+    .PersonalStream .StreamImages img {display:block;}
+    .PersonalStream .StreamRemove {display:none}
+    .PersonalStream .StreamWeight {display:none}
+  .StreamThumbnail {background-image:url(/images/default/stream-green.gif); }
+    .StreamThumbnail span {color:#FFF}
+    .StreamThumbnail .StreamImages img {display:block;}
+    .StreamThumbnail .StreamRemove {display:none}
+    .StreamThumbnail .StreamWeight {display:none}
+  .SelectedStream {background-image:url(/images/default/stream-on-white.gif);}
+.StreamMeta {display:none;}
+.PrivateLock {z-index:400; position:absolute; top:-3px; left:-3px; z-index:10; height:22px; width:22px; background-image:url(/images/default/private-lock-ball.png); background-position:left top}
+.PrivateUnlock {z-index:400;position:absolute; top:-3px; left:-3px; z-index:10; height:22px; width:22px; background-image:url(/images/default/private-unlock-ball.png); background-position:left top}
+.RightColumn .PrivateUnlock {display:block;}
+.StreamRemove {z-index:500; cursor:pointer; position:absolute; top:5px; right:5px; height:21px; width:22px; background-image:url(/images/default/remove-cross.png); background-position:left top}
+.StreamWeight {display:none; position:absolute; top:64px; left:4px; z-index:10; height:20px; width:19px; padding:1px 0px 0px 3px; background-image:url(/images/default/weight-ball.png); background-position:left top; font-size:1.4em; font-weight:bold;}
+.StreamProperties {cursor:pointer; position:absolute; top:5px; left:3px; z-index:12; height:21px; width:16px; padding:0px 0px 0px 6px; background-image:url(/images/default/weight-ball.png); background-position:left top; font-size:1.8em; font-weight:bold;}
+.StreamTimings {cursor:pointer; display:none; position:absolute; top:5px; left:3px; z-index:12; height:21px; width:16px; padding:0px 0px 0px 6px; background-image:url(/images/default/timing-ball.png); background-position:left top; font-size:1.8em; font-weight:bold;}
+.Panel4 .StreamTimings {display:block;}
+.StreamPreview {cursor:pointer; display:block; position:absolute; top:64px; right:5px; z-index:12; height:21px; width:16px; padding:0px 0px 0px 6px; background-image:url(/images/default/preview-ball.png); background-position:left top; font-size:1.8em; font-weight:bold;}
+.ChannelSlideShow .StreamPreview {right:28px; top:68px;}
+.PanelCenter .StreamIcon {display:none !important}
+
+div.LeftColumn .StreamRemove {display:none !important}
+div.LeftColumn .StreamPreview {display:none !important}
+div.RightColumn .StreamPreview {display:none !important}
+div.CentreColumn .StreamPreview {display:none !important}
+
+.StupeflixOverlay {display:block; z-index:490; position:absolute; top:10px; left:10px; width:94px; height:71px; background-image:url(/images/default/stupeflix-overlay.png)}
+
+.SearchPanel {padding:30px 10px 11px 10px}
+  .SearchPanel .TextBox {width:185px; font-size:1.3em; height:1.5em; padding-top:3px; margin-right:0px; border:solid 3px #285791; font-family:Verdana; color:#333;}
+
+.PanelInputFields {padding:12px 0px 0px 0px; height:124px;}
+  .PanelDropDown {width:343px; font-size:1.1em; height:1.9em; padding-top:1px; font-family:Verdana;}
+  .InputAnimHolder {width:341px; height:40px; overflow:hidden;}
+    .PanelInputAnim {display:none; width:341px; font-size:1.1em; height:1.5em; padding-top:1px; margin-right:10px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana; margin-top:5px}
+    .PanelValidation {display:none; color:#FFF; font-size:1.3em; padding:4px 0px 0px 2px}
+
+.ButtonGreenXSmall {display:block; width:49px; float:right; position:relative; top:5px; height:25px; text-align:center}
+  .ButtonGreenXSmall img {position:absolute; top:0px; left:0px; z-index:0; width:49px; height:25px}
+  .ButtonGreenXSmall a {display:block; position:relative; left:0px; height:25px; padding:0px 5px 0px 0px; text-decoration:none; font-size:1.3em; text-align:center; font-weight:normal; }
+    .ButtonGreenXSmall a span {position:relative; top:3px; font-size:1.4em}
+.ButtonGreenXSmallLong {display:block; width:100px; float:right; position:relative; top:5px; height:25px; text-align:center}
+  .ButtonGreenXSmallLong img {position:absolute; top:0px; left:0px; z-index:0; width:100px; height:25px}
+  .ButtonGreenXSmallLong a {display:block; position:relative; left:0px; height:25px; padding:0px 5px 0px 0px; text-decoration:none; font-size:1.3em; text-align:center; font-weight:normal; }
+    .ButtonGreenXSmallLong a span {position:relative; top:3px; font-size:1.4em}
+
+
+.PanelLinks {padding:5px 0px 0px 5px}
+.PanelLinks div {width:30px; height:5px}
+.PanelLinks div.HelpMark {width:20px; height:20px; top:-1px}
+.PanelLinks a {font-size:1.2em; color:#A8C6E2; margin-right:8px;}
+  .PanelLinks a:hover {color:#FFF;}
+.PanelLinks2 {padding:18px 0px 0px 5px}
+.PanelLinks2 div {width:30px; height:5px}
+.PanelLinks2 div.HelpMark {width:20px; height:20px; top:-2px}
+.PanelLinks2 span {font-size:1.2em; color:#A8C6E2; margin-right:8px;}
+.PanelLinks2 a {font-size:1.2em; color:#A8C6E2; margin-right:8px;}
+.PanelLinks2 span.WeightingLink {color:#FFF; margin-right:8px;}
+  .PanelLinks2 span.WeightingLink a {color:#A8C6E2; font-size:1em; margin:0px}
+  .PanelLinks2 span.WeightingLink a.WeightingSpanSelected {color:#FFF; text-decoration:none; cursor:default; }
+  .PanelLinks2 a:hover {color:#FFF;}
+
+.PagerNav {clear:both; height:9px; margin:0px auto; padding-top:10px;}
+.PagerNav span {display:block; float:left; color:#FFF; padding-top:3px; background-position:center bottom}
+  .PagerNav .PagerStart {cursor:pointer; width:13px; height:9px; background-image:url(/images/default/pager-start.gif)}
+  .PagerNav .PagerPrevious {cursor:pointer; width:11px; height:9px; background-image:url(/images/default/pager-previous.gif)}
+  .PagerNav .PagerNext {cursor:pointer; width:13px; height:9px; background-image:url(/images/default/pager-next.gif)}
+  .PagerNav .PagerEnd {cursor:pointer; width:11px; height:9px; background-image:url(/images/default/pager-end.gif)}
+  .PagerNav .PagerPagesOuter {float:left; padding:0px 0px 0px 0px; height:16px; overflow:hidden; position:relative; }
+  .PagerNav .PagerPages {padding:0px 0px 0px 0px; height:16px; position:relative; }
+    .PagerNav .PagerPages span {position:relative; left:0px; cursor:pointer; width:10px; padding:0px 2px 0px 2px; text-align:center; padding-top:0px; font-size:1.1em; }
+    .PagerNav .PagerPages span.PageSelected {background-color:#6D93C0}
+
+.RSelectedFormBox {background-color:#FFCC00 !important;}
+  .RSelectedFormBox span, .RSelectedFormBox label , .RSelectedFormBox a , .RSelectedFormBox h3 {color:#000 !important;}
+  .RSelectedFormBox .ButtonGreenSmall a, .ButtonGreen a, .RSelectedFormBox .ButtonGreen span, .RSelectedFormBox .ButtonGreenSmall span, .RSelectedFormBox .ButtonGreenXSmall a {color:#FFF !important;}
+  .RSelectedFormBox .RSelectedInput {border-color:#FF6600 !important;}
+  .RSelectedFormBox .FakeCheckBox {background-image:url(/images/default/checkbox-box-yellow.gif)}
+  .RSelectedFormBox .FakeCheckBox .FakeTick {background-image:url(/images/default/checkbox-check-yellow.gif)}
+.RFormBox {background-color:#3975B1; width:700px; margin:0px auto; padding:7px 7px 10px 10px}
+  .RFormBox .TextBox 
+  {
+      width:245px; font-size:1.3em; height:1.5em; padding-top:3px; margin-right:0px; border:solid 3px #285791; font-family:Verdana; color:#333;}
+  .RFormBox .TextArea {width:245px; font-size:1.3em; height:5.5em; padding-top:3px; margin-right:0px; border:solid 3px #285791; font-family:Verdana; color:#333;}
+  .RFormBox .ListBox {width:245px; font-size:1.1em; height:15em; padding-top:1px; border:solid 3px #285791; font-family:Verdana; color:#333;}
+  .RFormBox .DropDown {width:263px; font-size:1.3em; height:2.2em; padding-top:1px; font-family:Verdana; border:solid 3px #285791; }
+  .RFormBox .ButtonGreen {position:relative; top:7px;}
+  .RFormBox .LeftLargeLabel {color:#FFF; padding-right:7px;}
+    .RFormBox .LeftLargeLabel .RightContent {position:relative; width:245px; float:right;}
+      .RFormBox .LeftLargeLabel .RightContent .TextBox {width:245px; font-size:1.3em; height:1.5em; padding-top:3px; margin-right:0px; border:solid 3px #285791; font-family:Verdana; color:#333;}
+      .RFormBox .LeftLargeLabel .RightContent .TextArea {width:245px; height:120px; font-size:1.3em; padding-top:3px; margin-right:0px; border:solid 3px #285791; font-family:Verdana; color:#333;}
+      .RFormBox .LeftLargeLabel .RightContent span {font-size:1.4em}
+    .RFormBox .LeftLargeLabel span {font-weight:bold; display:block; font-size:2em; color:#FFF}
+    .RFormBox .LeftLargeLabel span.ExtraInfo {font-size:1.3em; color:#FFF}
+.RFormBox .RbHorizontalList label {display:inline !important}
+.RFormBox .RbHorizontalList input {display:inline !important}
+.InBetweenRForms {font-size:2em; font-weight:bold; font-style:italic; padding:10px 0px 10px 100px; color:#FFF}
+.ExistingUserForm {padding-top:10px;}
+  .ExistingUserForm .RightForm {width:380px; padding:5px 0px 0px 15px;}
+    .ExistingUserForm .RightForm .FormLabel {float:left; color:#FFF; font-size:1.4em; font-weight:bold;}
+    .ExistingUserForm .RightForm .TextBox {float:right; width:205px; font-size:1.3em; height:1.5em; padding-top:3px; margin-right:0px; border:solid 3px #285791; font-family:Verdana; color:#333;}
+    .ExistingUserForm .RightForm .TextArea {float:right; width:203px;}
+    .ExistingUserForm .BeneathInput {padding:15px 0px 10px 0px; color:#FFF}
+      .ExistingUserForm .BeneathInput label {font-size:1.3em; font-weight:bold; margin-left:5px}
+      .ExistingUserForm .BeneathInput .ButtonGreen {top:0px;}
+      .ExistingUserForm .BeneathInput .ButtonGreenSmall {top:-5px;}
+      .ExistingUserForm .BeneathInput .LinkBeneath {font-size:1.4em; font-weight:bold}
+
+    .BeneathInput2 {padding:15px 0px 10px 0px; color:#FFF}
+      .BeneathInput2 .RightForm {padding-top:0px}
+      .BeneathInput2 label {float:left; font-size:1.3em; font-weight:bold; margin-left:5px}
+      .BeneathInput2 input {float:left; position:relative; top:3px; margin-left:5px;}
+      .BeneathInput2 .ButtonGreen {top:0px;}
+      .BeneathInput2 .ButtonGreenSmall {top:-5px;}
+      .BeneathInput2 .LinkBeneath {font-size:1.4em; font-weight:bold}
+
+  .NormCheckBox {}
+  .NormCheckBox input {position:relative; top:6px; float:left}
+  .NormCheckBox label {margin-left:8px}
+
+.WeekDaysList {}
+.WeekDaysList div {float:left; height:40px; width:20px}
+.WeekDaysList .BottomFix {float:none !important; height:2px; }
+.WeekDaysList input {float:none; margin-bottom:0px !important}
+.WeekDaysList label {float:none !important; display:block !important; font-weight:normal !important; width:12px; text-align:center; padding:4px 0px 0px 0px !important; font-size:12px; }
+.WeekDaysList span {display:block; color:#FFF; font-size:14px; padding-bottom:10px;}
+
+.LineList {list-style:none; margin:0px}
+  .LineList li {padding-left:12px; background-image:url(/images/default/line-list-line.gif); background-position:left 9px}
+.FatList {}
+  .FatList li {padding:10px 0px}
+
+.DivPopUp {display:none; position:absolute; z-index:100000; left:400px; top:100px}
+  .DivPopUp h2 {font-size:2.3em; font-weight:normal; padding:0px 0px 20px 40px}
+  .DivPopUpClose {cursor:pointer; position:absolute; top:10px; right:10px; z-index:10; width:20px; height:21px; background-image:url(/images/default/pop-up-x.gif)}
+  .TermsPopUpClose {cursor:pointer; position:absolute; top:10px; right:10px; z-index:10; width:20px; height:21px; background-image:url(/images/default/pop-up-x.gif)}
+  .DivPopUp .DivPopMiddle {padding:0px 20px 0px 20px; width:794px; min-height:100px; background-image:url(/images/default/pop-up-middle.gif); background-repeat:repeat-y}
+    .DivPopUp .DivPopMiddle p {margin:0px; font-size:1.4em; padding:0px 0px 15px 0px}
+    .DivPopUp .DivPopMiddle .NoPaddingParas p {padding:10px 0px 0px 0px}
+  .DivPopUp .DivPopTop {position:relative; top:1px; width:834px; height:25px; background-image:url(/images/default/pop-up-top.gif)}
+  .DivPopUp .DivPopBottom {position:relative; top:-1px; width:834px; height:28px; background-image:url(/images/default/pop-up-bottom.gif)}
+  .DivPopUp .FormSection {margin:10px 0px 0px 0px; }
+  .DivPopUp .ButtonHolder {padding:40px 0px 0px 0px}
+
+.DivPopUpMedium {display:none; position:absolute; z-index:100000; left:400px; top:100px}
+  .DivPopUpMedium .RFormBox {width:540px;}
+  .DivPopUpMedium .DivPopMiddle {padding:0px 20px 0px 20px; width:570px; min-height:100px; background-image:url(/images/default/pop-up-middle-medium.gif); background-repeat:repeat-y}
+    .DivPopUpMedium .DivPopMiddle p {margin:0px; font-size:1.4em; padding:0px 0px 15px 0px}
+  .DivPopUpMedium .DivPopTop {position:relative; top:1px; width:610px; height:25px; background-image:url(/images/default/pop-up-top-medium.gif)}
+  .DivPopUpMedium .DivPopBottom {position:relative; top:-1px; width:610px; height:28px; background-image:url(/images/default/pop-up-bottom-medium.gif)}
+  .DivPopUpMedium .FormSection {margin:10px 0px 0px 0px; }
+  .DivPopUpMedium .ButtonHolder {padding:40px 0px 0px 0px}
+
+.DivPopUpLarge {display:none; position:absolute; z-index:100000; left:400px; top:100px}
+  .DivPopUpLarge .DivPopMiddle {padding:0px 20px 0px 20px; width:930px; min-height:200px; background-image:url(/images/default/pop-up-middle-large.gif); background-repeat:repeat-y}
+    .DivPopUpLarge .DivPopMiddle p {margin:0px; font-size:1.4em; padding:0px 0px 45px 0px}
+  .DivPopUpLarge .DivPopTop {position:relative; top:1px; width:970px; height:25px; background-image:url(/images/default/pop-up-top-large.gif)}
+  .DivPopUpLarge .DivPopBottom {position:relative; top:-1px; width:970px; height:28px; background-image:url(/images/default/pop-up-bottom-large.gif)}
+  .DivPopUpLarge .FormSection {margin:10px 0px 0px 0px; }
+  .DivPopUpLarge .ButtonHolder {padding:40px 0px 0px 0px}
+
+.DivPopUpAlert {display:none; position:absolute; z-index:100001; left:400px; top:200px}
+  .DivPopUpAlert .DivPopMiddle {padding:0px 20px 0px 20px; width:313px; min-height:80px; background-image:url(/images/default/pop-up-middle-smaller.gif); background-repeat:repeat-y}
+    .DivPopUpAlert .DivPopMiddle p {margin:0px; font-size:1.4em; padding:0px 0px 45px 0px}
+  .DivPopUpAlert .DivPopTop {position:relative; top:1px; width:353px; height:25px; background-image:url(/images/default/pop-up-top-smaller.gif)}
+  .DivPopUpAlert .DivPopBottom {position:relative; top:-1px; width:353px; height:28px; background-image:url(/images/default/pop-up-bottom-smaller.gif)}
+  .DivPopUpAlert .FormSection {margin:10px 0px 0px 0px; }
+  .DivPopUpAlert .ButtonHolder {padding:40px 0px 0px 0px}
+  .DivPopUpAlert .ButtonGreenSmall a {top:-4px; padding-right:5px;}
+.DivPopUpAlert2 {display:none; position:absolute; z-index:100001; left:400px; top:200px}
+  .DivPopUpAlert2 .DivPopMiddle {padding:0px 20px 0px 20px; width:313px; min-height:80px; background-image:url(/images/default/pop-up-middle-smaller.gif); background-repeat:repeat-y}
+    .DivPopUpAlert2 .DivPopMiddle p {margin:0px; font-size:1.4em; padding:0px 0px 45px 0px}
+  .DivPopUpAlert2 .DivPopTop {position:relative; top:1px; width:353px; height:25px; background-image:url(/images/default/pop-up-top-smaller.gif)}
+  .DivPopUpAlert2 .DivPopBottom {position:relative; top:-1px; width:353px; height:28px; background-image:url(/images/default/pop-up-bottom-smaller.gif)}
+  .DivPopUpAlert2 .FormSection {margin:10px 0px 0px 0px; }
+  .DivPopUpAlert2 .ButtonHolder {padding:40px 0px 0px 0px}
+  .DivPopUpAlert2 .ButtonGreenSmall a {top:-4px; padding-right:5px;}
+.DivPopUpDeleteAlert {display:none; position:absolute; z-index:100001; left:400px; top:200px}
+  .DivPopUpDeleteAlert .DivPopMiddle {padding:0px 20px 0px 20px; width:313px; min-height:80px; background-image:url(/images/default/pop-up-middle-smaller.gif); background-repeat:repeat-y}
+    .DivPopUpDeleteAlert .DivPopMiddle p {margin:0px; font-size:1.4em; padding:0px 0px 45px 0px}
+  .DivPopUpDeleteAlert .DivPopTop {position:relative; top:1px; width:353px; height:25px; background-image:url(/images/default/pop-up-top-smaller.gif)}
+  .DivPopUpDeleteAlert .DivPopBottom {position:relative; top:-1px; width:353px; height:28px; background-image:url(/images/default/pop-up-bottom-smaller.gif)}
+  .DivPopUpDeleteAlert .FormSection {margin:10px 0px 0px 0px; }
+  .DivPopUpDeleteAlert .ButtonHolder {padding:40px 0px 0px 0px}
+  .DivPopUpDeleteAlert .ButtonGreenSmall a {top:-4px; padding-right:5px;}
+
+.DivPopUpSmall {}
+  .DivPopUpSmall .DivPopTop {width:515px; background-image:url(/images/default/pop-up-top-small.gif)}
+  .DivPopUpSmall .DivPopBottom {width:515px; background-image:url(/images/default/pop-up-bottom-small.gif)}
+  .DivPopUpSmall .DivPopMiddle {width:475px; background-image:url(/images/default/pop-up-middle-small.gif)}
+  .DivPopUpSmall .RFormBox {width:400px; padding-bottom:10px}
+    .DivPopUpSmall .RFormBox .FakeCheckBox {position:relative; top:2px}
+    .DivPopUpSmall .RFormBox label {display:block; float:left; padding-top:4px; font-size:1.4em; color:#FFF; font-weight:bold;}
+    .DivPopUpSmall .RFormBox .DOBText {float:right; width:300px;}
+      .DivPopUpSmall .RFormBox .DOBText select {float:right; width:57px; margin-left:5px}
+      .DivPopUpSmall .RFormBox .DOBText select.DropDownYear {width:60px}
+      .DivPopUpSmall .RFormBox .DOBText select.DropDownMonth {}
+      .DivPopUpSmall .RFormBox .DOBText select.DropDownDay {width:50px}
+      .DivPopUpSmall .RFormBox .DOBText span {display:block; padding-top:5px; float:right; clear:both; width:178px; padding-left:60px; font-size:1.3em; color:#FFF}
+    .DivPopUpSmall .RFormBox .CityText {float:right; width:300px;}
+      .DivPopUpSmall .RFormBox .CityText input {float:right; width:172px; margin-left:5px}
+      .DivPopUpSmall .RFormBox .CityText span {display:block; padding-top:5px; float:right; clear:both; width:178px; font-size:1.3em; color:#FFF}
+    .DivPopUpSmall .RFormBox .StocksText {float:right; width:300px;}
+      .DivPopUpSmall .RFormBox .StocksText select {float:right; width:178px; margin-left:5px; height:62px}
+      .DivPopUpSmall .RFormBox .StocksText span {display:block; padding-top:5px; float:right; clear:both; width:178px; font-size:1.3em; color:#FFF}
+      .DivPopUpSmall .RFormBox .StocksText .AdditionalListInfo {clear:both; display:block; padding-top:2px; font-size:1.1em; color:#FFF; width:250px; text-align:right}
+    .DivPopUp .RFormBox .PropertyBox {position:relative; width:400px;}
+      .DivPopUp .RFormBox .PropertyBox .HelpMark {position:relative; top:4px}
+      .DivPopUp .RFormBox .PropertyBox .TextBox {float:right; width:230px; margin:0px 5px}
+      .DivPopUp .RFormBox #PropertiesKeywords {float:right; width:250px;}
+      .DivPopUp .RFormBox #PropertiesKeywords .TextBox {float:left; width:108px; margin-bottom:5px}
+      .DivPopUp .RFormBox .PropertyBox textarea {float:right; width:230px; margin:0px 5px}
+      .DivPopUp .RFormBox .PropertyBox .DropDown {float:right; width:286px; margin:0px 5px}
+      .DivPopUp .RFormBox .PropertyBox .DropDown2 {width:238px}
+      .DivPopUp .RFormBox .PropertyBox span {display:block; padding-top:5px; float:left; font-size:1.3em; color:#FFF}
+
+.CaptchaBox {display:block; padding:20px 0px 0px 0px;}
+.CaptchaBox .CaptchaInner {margin:0px auto; width:210px; height:128px; position:relative; left:20px;}
+.CaptchaBox .CaptchaInner input {float:none; margin:0px auto; display:block; width:207px; font-size:1.3em; height:1.5em; padding-top:3px; border:solid 3px #285791; font-family:Verdana; color:#333;}
+.CaptchaBox .CaptchaInner a {height:60px; background-color:#FFF; margin:0px auto; text-align:center; display:block;}
+.CaptchaBox .CaptchaInner span {width:207px; margin:0px auto; padding:10px 0px 5px 0px; display:block; color:#FFF; font-size:1.3em; font-weight:bold;}
+
+.PropertyHidden {display:none;}
+.TextBoxSpecialInfo {display:none !important}
+
+.FakeCheckBox {cursor:pointer; float:left; height:23px; width:23px; margin-right:8px; background-image:url(/images/default/checkbox-box.gif)}
+.FakeTick {position:absolute; top:-6px; left:-1px; width:0px; height:31px; background-image:url(/images/default/checkbox-check.gif)}
+
+.PrivateHidden {display:none;}
+.PrivateHiddenExtra {display:block;}
+.RbHorizontalList input {}
+.RbHorizontalList label {margin-left:5px; margin-right:10px}
+.RbVerticalList table td {height:20px; padding:0px 0px 0px 0px;}
+.RbVerticalList input {float:left; margin-right:6px;}
+.RbVerticalList label {float:left; display:block; width:350px; margin-top:-2px; padding-left:6px; text-align:left;}
+
+
+/* Slider
+----------------------------------*/
+.ui-slider {position: relative; text-align: left; }
+.ui-slider .ui-slider-handle {outline:none; position: absolute; z-index: 2; width:7px; height:14px; cursor: default; background-image:url(/images/default/slider-handle2.gif)}
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; }
+
+.ui-slider-horizontal {margin:0px auto; height:8px; background-image:url(/images/default/slider-bar-horizontal.gif); width:106px;}
+.ui-slider-horizontal .ui-slider-handle { top: -2px; margin-left:-3px; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height:100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.WeightingSlider {margin-top:10px;}
+.WeightingSliderLabel {font-size:1.2em}
+.WeightLabel {display:none; position:absolute; top:-14px; left:14px; font-size:10px !important; margin:0px !important; padding:0px 5px !important; border:solid 1px #1d5a9c !important; background-color:#FFF;}
+
+.PersonalSlider .ui-slider-horizontal {}
+
+.ui-slider-vertical { width: .8em; height: 100px; }
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
+.ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
+.ui-slider-vertical .ui-slider-range-min { bottom: 0; }
+.ui-slider-vertical .ui-slider-range-max { top: 0; }
+
+
+
+
+
+/*ADMIN STUFF*/
+.CbHorizontalList {}
+.CbHorizontalList label {display:block; font-size:1.3em; color:#FFF; margin-left:2px}
+.FormBoxHighlighted .CbHorizontalList label {color:#000;}
+.CbHorizontalList input {margin-right:9px}
+
+.MainAdminDiv {width:996px; margin:0px auto}
+  .MainAdminDiv h1 {font-size:2.5em; font-weight:normal; margin-bottom:0px}
+  .MainAdminDiv h2 {font-size:2em; font-weight:normal; margin-bottom:0px; margin-top:20px}
+  .MainAdminDiv .ContentDiv {width:926px; padding:21px 35px 0px 35px; margin-bottom:0px; background-image:url(/images/default/admin-centre-top.png);}
+    .MainAdminDiv .ContentBottom {width:996px; background-image:url(/images/default/admin-centre-bottom.png); }
+    
+.AdminHeader {position:relative; width:996px; color:#FFF; padding:28px 0px 0px 0px; margin-bottom:6px;}
+  .AdminHeader a {text-decoration:none}
+  .AdminHeader .OffWhiteLine {position:absolute; top:49px; left:0px; width:806px}
+  .AdminHeader .GlobalNav {position:relative; top:-7px; height:27px; }  
+    .AdminHeader .GlobalNav div.Active {width:89px; height:27px; margin-right:1px; background-image:url(/images/default/admin-global.png); float:left;}
+    .AdminHeader .GlobalNav div.Inactive {width:89px; height:27px; margin-right:1px; background-image:url(/images/default/admin-global-off.png); float:left;}
+    .AdminHeader .GlobalNav div img {position:absolute; top:0px; left:0px; z-index:1; width:170px; height:37px}
+    .AdminHeader .GlobalNav div a {display:block; font-size:1.5em; text-decoration:none; padding:2px 0px 0px 0px; text-align:center;}
+    
+  .AdminHeader .LocalNav {position:relative; top:-5px; height:24px; padding-left:13px;}  
+    .AdminHeader .LocalNav div.Active {height:10px; margin-right:15px; float:left; }
+    .AdminHeader .LocalNav div.Active a {text-decoration:underline}
+    .AdminHeader .LocalNav div.Inactive {height:10px; margin-right:15px; float:left;}
+    .AdminHeader .LocalNav div img {position:absolute; top:0px; left:0px; z-index:1; width:170px; height:37px}
+    .AdminHeader .LocalNav div a {display:block; font-size:1.3em; text-decoration:none; padding:2px 0px 0px 0px; text-align:center;}
+    
+    .AdminHeader .Logo {display:block; position:absolute; right:0px; top:2px; font-size:1em; margin:0px; width:182px; height:20px; padding:55px 0px 0px 0px; background-image:url(/Images/Default/logo.gif)}
+    .AdminHeader .Logo span {display:block; text-align:center; margin:0px auto; font-size:1.1em}
+
+#ForJSSchedStarts {float:left; width:350px;}
+#ForJSSchedStarts .AdminLeft {display:none; padding-top:10px; padding-bottom:10px; border-top:solid 1px #FFF}
+#ForJSSchedEnds {float:left; width:350px;}
+#ForJSSchedEnds .AdminRight {display:none; padding-top:10px; padding-bottom:10px; border-top:solid 1px #FFF}
+
+.WindowsLoader {width:257px; height:157px; z-index:5002; background-image:url(/images/default/progress.gif); background-position:right bottom}
+
+
+.ProgressInd {width:57px; height:57px; display:none; z-index:5002; position:absolute; top:0px; left:0px; background-image:url(/images/default/progress.gif); background-position:center center}
+.ProgressBack {display:none; z-index:5001; position:absolute; top:0px; left:0px; width:354px; height:646px}
+
+#ProgressBackHolder {width:912px; height:775px; display:block; z-index:5001; position:absolute; top:4px; left:4px; font-size:2px; background-image:url(/images/default/progress-full.gif); background-position:center center}
+
+span.IsChanged {display:none;}
+
+.HelpMark {cursor:pointer; float:right; width:20px; height:20px; overflow:hidden}
+  .HelpMark img {width:20px; height:20px;}
+.MainPanel .HelpMark {position:relative; top:10px; left:-10px}
+.JQColumn .HelpMark {position:relative; top:4px; left:-10px}
+.Panel .HelpMark {position:relative; top:4px; left:-10px}
+#Center1 .HelpMark {position:relative; top:-33px} 
+
+.HiddenSelection {display:none;}
+.TemplateChooser {display:none; width:130px;}
+  .TemplateChooser input {width:120px}
+  .TemplateChooser select {width:125px}
+  .TemplateChooser span {font-size:12px; display:block; }
+.SchedulingDiv {display:none; width:130px;}
+  .SchedulingDiv .TextBox {width:120px}
+  .SchedulingDiv select {width:125px}
+  .SchedulingDiv span {font-size:12px; display:block; }
+  .SchedulingDiv label {font-size:12px; color:#555;}
+  
+  
+  
+ #StupeflixValidation {color:#C00; text-align:center; width:120px}
+  #StupeflixValidation span {display:inline; color:#c00}
+  .StupeFlix {background-image:url(/images/default/stream-pink.gif) !important}
+  .StupeFlix .StreamImages img {display:block !important}
+ 
+.PageTitle {height:37px;}
+  .PageTitle div {position:relative; float:left; height:37px;}
+  .PageTitle div img {position:absolute; top:0px; left:0px; z-index:1; width:170px; height:37px}
+  .PageTitle div a {position:relative; z-index:2; display:block; height:34px; padding:3px 9px 0px 0px; text-align:center; text-decoration:none; font-size:2.2em}
+  .PageTitle div span {float:left; position:relative; z-index:2; display:block; height:37px; text-align:center; text-decoration:none; font-size:2.2em; color:#FFF}
+  .PageTitle div span.NormalTabLeft {width:5px; background-image:url(/images/default/tab-normal-left.gif)}
+  .PageTitle div span.NormalTabMiddle {padding:3px 9px 0px 9px; background-image:url(/images/default/tab-normal-center.gif); background-repeat:repeat-x}
+  .PageTitle div span.NormalTabRight {width:13px; background-image:url(/images/default/tab-normal-right.gif); }
+
+.PanelNormalTop {height:40px; width:889px; background-image:url(/images/default/panel-normal-top.jpg)}
+  .PanelNormalTop p {margin:0px; padding:12px 0px 5px 15px}
+.PanelNormalBottom {height:30px; width:889px; background-image:url(/images/default/panel-normal-bottom.png)}
+.PanelNormal {width:849px; padding:10px 20px 0px 20px; background-image:url(/images/default/panel-normal-middle.jpg); background-repeat:repeat-y}
+ 
+.PanelList {padding:0px 0px 0px 0px; width:849px}
+  .PanelListItem {padding:0px 0px 50px 0px}
+  .PanelListItem h2 {font-size:1.5em; font-weight:bold; padding-bottom:10px}
+  .PanelListItem .StreamHolder {cursor:default}
+  .PanelListItem .StreamImages img {display:block}
+  
+.PanelInfo {float:left; padding:0px 0px 0px 15px; width:715px;}  
+  .PanelInfo .PanelAttr {height:28px;}  
+  .PanelInfo .PanelAttr span {float:left; display:block; padding:0px 20px 0px 0px; color:#FFF; font-size:1.1em}  
+  .PanelInfo p.LargePara {font-size:1.5em}  
+  .PanelInfo p {position:relative; top:-5px; font-size:1.1em; width:620px}  
+  .PanelInfo .BigButtonGreen {position:relative; top:-8px; float:right; }
+ 
+.ChannelDetails {}
+  .ChannelDetails .DetailAttr {width:800px; height:28px;}  
+  .ChannelDetails .DetailAttr span.AttrTitle {color:#8eb7d3}  
+  .ChannelDetails .DetailAttr span {float:left; display:block; padding:0px 20px 0px 0px; color:#FFF; font-size:1.1em}  
+ 
+.ChannelSlideShow {position:relative; height:280px; width:861px; overflow:hidden; }
+  .ChannelSlideShow .ChannelSlide {position:absolute; top:0px; left:0px; display:none; width:846px; padding:0px 0px 0px 15px}
+  .ChannelSlideShow .ChannelSlide .StreamHolder {cursor:default; padding-right:30px; padding-bottom:20px}
+  .ChannelSlideShow .ChannelSlide .StreamHolder img {display:block;}
+
+.SiteMap {}
+  .SiteMap h2 {font-size:2em; color:#000; height:25px; font-weight:normal; padding-bottom:21px;}
+  .SiteMapLeft {float:left; width:287px; height:802px; padding:8px 0px 0px 10px; background-image:url(/images/default/sitemap-left.gif)}
+    .SiteMapLeft table {width:250px; margin:0px auto;}
+    .SiteMapLeft table td{font-size:1.3em; color:#FFF; padding:0px 15px 0px 0px}
+    .SiteMapLeft table td.Col1 {width:20px;}
+    .SiteMapLeft table td a {text-decoration:none}
+  .SiteMapRight {float:left; width:530px; height:802px; padding:8px 10px 0px 10px; background-image:url(/images/default/sitemap-right.gif)}
+    .SiteMapRight .SiteMapLetters {margin:0px auto; width:484px; height:86px; padding:0px 6px 0px 6px; background-image:url(/images/default/sitemap-letter-bg.jpg); background-repeat:repeat-x}
+      .SiteMapRight .SiteMapLetters a {text-decoration:none}
+      .SiteMapRight .SiteMapLetters div {cursor:pointer; float:left; font-size:2.7em; color:#FFF; width:37px; text-align:center; padding:3px 0px 3px 0px}
+      .SiteMapRight .SiteMapLetters div.ActiveLetter {cursor:default; background-image:url(/images/default/sitemap-active.gif); background-position:1px 6px}
+      .SiteMapRight .SiteMapLetters div.SiteMapLetterSplitter {cursor:default; float:none; clear:both; font-size:0.2em; width:480px; height:1px; background-color:#004781; padding:0px }
+    .SiteMapRight .SortBy {clear:both; padding:20px 0px 20px 0px; margin:0px auto; width:460px;}
+    .SiteMapRight .SiteMapList {width:460px; margin:0px auto}
+      .SiteMapRight .SiteMapList .SiteMapListLeft {float:left;}
+        .SiteMapRight .SiteMapList .SiteMapListLeft div {font-size:1.3em; color:#FFF; width:215px; padding:0px 15px 0px 0px}
+        .SiteMapRight .SiteMapList .SiteMapListLeft div a {text-decoration:none}
+      .SiteMapRight .SiteMapList .SiteMapListRight {float:left; }
+        .SiteMapRight .SiteMapList .SiteMapListRight div {font-size:1.3em; color:#FFF; width:215px; padding:0px 15px 0px 0px}
+        .SiteMapRight .SiteMapList .SiteMapListRight div a {text-decoration:none}
+.SiteMapPager {clear:both; width:530px; height:40px; text-align:center; padding-top:20px}
+.SiteMapPager span {font-size:1.3em; margin:0px 2px;}
+.SiteMapPager span.SiteMapPagerCurrent {color:#A8C6E2; text-decoration:underline; margin-right:7px}
+.SiteMapPager span a {text-decoration:none; color:#FFF; font-weight:normal}
+
+.InfoSpacer {clear:both; width:10px; height:10px; font-size:2px;}
+
+#WindowsSelect {position:absolute; background-color:Lime; border:solid 2px #009800; width:100px; height:100px}
+.WindowsView {width:698px; height:380px; padding:10px 0px 10px 0px; background-color:#FFF;}
+  .WindowsView .WindowsTree {position:relative; float:left; height:330px; width:160px; padding:10px 20px 40px 10px; border-right:solid 2px #EEE;}
+    .WindowsView .WindowsTree h2 {background-color:#3a74b3; padding:10px; margin:-10px -10px 10px 0px; font-size:1.6em}
+    .WindowsView .WindowsTree .WindowsFolder {cursor:default; z-index:100000000; width:145px; height:19px; font-size:1.2em; padding-left:25px; margin-bottom:0px; overflow:hidden; background-image:url(/images/default/windows-folder.gif)}
+    .DivPopUpMiddlePCs .WindowsTree .WindowsFolder {background-image:url(/images/default/windows-pc.gif)}
+    .DivPopUpMiddlePCs .WindowsTree .PhantomPC {background-image:url(/images/default/windows-pc-phantom.gif) !important}
+    .WindowsView .WindowsTree .FolderActive {background-color:#DDD; border-color:#FFF !important}
+    .WindowsView .WindowsTree .FolderOpen {background-color:#DDD;}
+    .WindowsView .WindowsTree .ButtonGreenXSmallLong {position:absolute; top:350px; left:10px;}
+    .WindowsView .WindowsTree .ButtonGreenXSmallLong img {width:90px}
+    .WindowsView .WindowsTree .ButtonGreenXSmallLong a {padding-right:18px}
+    .WindowsView .WindowsTree .SecondWindowsButton {position:absolute; top:350px; left:100px}
+  .WindowsView .WindowsFileDepo {position:relative; float:left; width:463px; height:360px; padding:10px 20px 10px 20px; overflow:auto;}
+    .WindowsView .WindowsFileDepo h2 {background-color:#3a74b3; padding:10px; margin:-10px -10px 10px -10px; font-size:1.6em;}
+    .WindowsView .WindowsFileDepo h2 a {position:relative; z-index:1000; float:right; font-size:12px; margin-top:2px;}
+    .WindowsFile {text-align:center; float:left; width:50px; height:74px; padding-top:0px; margin-bottom:20px; overflow:hidden;  border-left:solid 5px #FFF;}
+    .WindowsFile img {display:block; width:50px; height:45px;}
+    .WindowsSelectedFile {background-color:#DDD}
+    .WindowsView .WindowsFileDepo .RFormBox {width:320px; margin:0px 0px 20px 0px}
+.WindowsHolder {display:none;}
+
+.WindowsTreeContent {overflow:auto; height:290px;}
+
+.PropertyBox .LeftDateBox {float:left; width:160px; padding:0px 0px 0px 15px}
+.PropertyBox .LeftDateBox .TextBox {width:160px !important;}
+.PropertyBox .LeftDateBox .TextBox2 {position:relative; left:-16px; float:left !important; width:120px !important;}
+.PropertyBox .LeftDateBox span {position:relative; left:-10px !important; display:block; float:none !important; padding-left:0px !important; margin:0px !important; text-align:left !important; }
+.PropertyBox .RightDateBox {float:left; width:160px; padding:0px 0px 0px 15px}
+.PropertyBox .RightDateBox .TextBox {width:160px !important;}
+.PropertyBox .RightDateBox .TextBox2 {position:relative; left:-16px; float:left !important; width:120px !important;}
+.PropertyBox .RightDateBox span {position:relative; left:-10px !important; display:block; float:none !important; padding-left:0px !important; margin:0px !important; text-align:left !important; }
+.DateButton {position:relative; top:26px}
+#clonedField2 {width:350px;}
+
+#CorrectPassword {display:none}
+.PasswordValid {position:absolute; right:-3px; top:3px; width:0px; height:23px; background-image:url(/images/default/textbox-tick.gif)}
+.PasswordInvalid {position:absolute; right:-3px; top:3px; width:0px; height:23px; background-image:url(/images/default/textbox-cross.gif)}
+
+/*****Installer*****/
+.Ab {position:relative; width: 100%; height:630px; overflow: hidden; background-color:#9DC0DC; background-image:url(/images/default/uploader-bg.jpg); min-width: 900px; background-position:right bottom}
+  .Ab {font-size:13px}
+  .Ab h2 {font-size:1.5em; font-weight:normal; color:#000; padding:10px 0px 18px 12px}
+.Ab .Ab-b { width: 250px; float: right; }
+.Ab .Ab-A {position:relative; z-index:1; margin-right: 250px; min-width: 650px; }
+.Ab .Toolbar {position:relative; z-index:10000; float:right; margin:3px 0px 3px 0px}
+.Ab-b {color:#FFF}
+  .Ab-b .Info {padding:33px 10px 0px 15px}
+  .Ab-b .Info .DropDown {width:220px; font-size:1em; height:1.8em; padding-top:1px; font-family:Verdana;}
+  .Ab-b .Info .DefaultSettings {position:relative; padding:25px 0px 25px 0px; width:220px;}
+  .Ab-b .Info .DefaultSettingsInner {position:relative; display:none; padding:10px 0px 0px 0px; width:220px}
+  .Ab-b .Info .DefaultSettingsDiv {float:left; padding:3px 0px 3px 0px}
+  .Ab-b .Info .BottomFix {height:5px;}
+  .Ab-b .Info .DefaultSettingsInput {float:right; width:140px; font-size:1em; height:1.5em; padding-top:1px; margin-right:10px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana; color:#3a546d;}
+  .Ab-b .Info .DefaultSettings .ajax__calendar_container {top:120px !important; left:30px !important;}
+  .Ab-b .Info .OxiValidation {visibility:hidden; position:absolute; bottom:60px; right:20px; font-size:1.1em;}
+.UploaderDate {width:110px !important; }
+.UploaderDuration {float:left !important; width:50px !important; margin-left:10px}
+.UploaderDateButton {position:absolute; top:100px; left:48px;}
+
+#DefaultSettingsExpandLink a {padding-right:14px; background-image:url(/images/default/drop-arrow.gif); background-position:right 6px;}
+#DefaultSettingsExpandLink a.Dropped {background-image:url(/images/default/drop-arrow2.gif);}
+
+  .Ab-b .Info .ButtonGreen {position:absolute; bottom:20px; right:57px; padding:0px 6px 0px 0px; width:123px; margin:0px auto}
+  .Ab-b .Info .ButtonGreen a {top:-5px; font-size:19px}
+#page { width: 100%; margin: 0 auto; padding: 0 0 40px 0; max-width: 1400px; min-width: 900px; }
+/*Button*/
+a.btn { padding: 2px 4px; text-decoration: none; color: #000; border: solid 1px #f5f5f5; }
+a.btn:hover { background-color: #ddd; border-bottom: solid 1px #ccc; border-right: solid 1px #ccc; }
+/*Toolbar*/
+.Toolbar {}
+.Toolbar li { float: left; margin: 6px; display: block; }
+.Toolbar li a { padding: 2px 10px 2px 10px; display: block; text-decoration: none; color: #000; border: solid 1px #8FB7DA; font-size:13px}
+.Toolbar li a:hover { background-color: #316BA7; border-bottom: solid 1px #014681; border-right: solid 1px #014681; color:#FFF;}
+.Toolbar {width:110px; font-size:13px; height:1.8em; padding-top:1px; font-family:Verdana;}
+.send { background: url(Images/SendSmall.gif) 2px 50% no-repeat; }
+.stop { background: url(Images/CancelSmall.gif) 2px 50% no-repeat; }
+.refresh { background: url(Images/RefreshSmall.gif) 2px 50% no-repeat; }
+.addfile { background: url(Images/addimage.gif) 2px 50% no-repeat; }
+.addfolder { background: url(Images/addfolder.gif) 2px 50% no-repeat; }
+.Toolbar .Left { background-image: url('Images/ToolbarLeft.gif') width: 9px; height: 26px; }
+.Toolbar .Panel { background-image: url('Images/ToolbarBackground.gif'); height: 26px; }
+.Toolbar .Right { background-image: url('Images/ToolbarRight.gif'); width: 7px; height: 26px; }
+.Toolbar .Panel a, .Toolbar .Panel a:hover {display: block; text-decoration: none; color: #000000; }
+.Toolbar .Panel a { padding: 2px; }
+.Toolbar .Panel a:hover { background-color: #FFE7B6; border: #666699 1px solid; padding: 1px; }
+.Toolbar .Panel .Icon { margin-top: -2px; vertical-align: middle; width: 16px; height: 16px; border: 0px; }
+.Toolbar .Separator { margin-top: 2px; margin-left: 5px; margin-right: 5px; height: 15px; width: 2px; }
+.Toolbar .Header { font-weight: bold; }
+.Progress{width:140px; border:none !important;}
+.Progress .Left{width:4px;height:14px}
+.Progress .Panel{background-image:none;width:132px;height:14px;}
+.Progress .Right{width:4px;height:14px;}
+.Progress .Value{width:0px;height:14px;}
+
+.ProgressBarGrey {height:14px; width:216px; background-image:url(/images/default/progress-bar-grey.gif)}
+.ProgressBarGreen {height:14px; background-image:url(/images/default/progress-bar-green.gif)}
+.ProgressBarUsed {height:14px; background-image:url(/images/default/progress-bar-used.gif)}
+
+.EmptyParagraph {padding-top:90px !important; font-style:italic}
+
+.ErrorDiv {position:relative; width:342px;}
+.ErrorDiv .ErrorTop {width:342px; height:16px; background-image:url(/images/default/error-top.gif); }
+.ErrorDiv .ErrorMiddle {width:342px; background-image:url(/images/default/error-middle.gif); background-repeat:repeat-y}
+.ErrorDiv .ErrorMiddle p {font-style:italic; margin:0px; padding-top:0px; padding-bottom:0px;}
+.ErrorDiv .ErrorBottom {width:342px; height:16px; background-image:url(/images/default/error-bottom.gif); }
+
+#DivPopUpProperties {display:none;}
+
+#AJAXTEST {color:#FFF; font-size:1.3em}
+#OTHERTEST {color:#FFF; font-size:1.5em}
+
+.IFrameLogIn {position:relative; z-index:1; border:none; width:475px; height:280px; background-color:#FFF}
+.IFrameTop {width:475px; height:11px; background-image:url(/images/default/iframe-top.gif)}
+.IFrameBottom {width:475px; height:11px; background-image:url(/images/default/iframe-bottom.gif)}
+
+.OxiValidation {display:none; margin:10px 0px 0px 0px; color:#FFF; font-weight:bold; font-size:1.4em; height:24px; border:solid 1px #FFF; padding:6px 15px 0px 15px; background-image:url(/images/default/validation.gif); background-repeat:repeat-x}
+.PanelInputFields .OxiValidation {width:314px; position:relative; top:-7px}
+.DivPopUp .OxiValidation {margin:-10px 0px 10px 0px;}
+.WindowsView .OxiValidation {position:relative; left:-11px; width:437px}
+.ValidateField {background-color:#FFC1C1 !important; border-color:#CC0000 !important}
+#ExistingUserValidation {position:relative; top:20px}
+
+.DateCheckBox {float:left; width:10px; height:23px; padding:0px 3px 0px 5px !important}
+.DateCheckBox label {float:none !important; display:block !important; padding:0px 0px 0px 0px !important}
+.DateCheckBox input {margin:0px !important}
+
+#StreamCatLink {}
+
+/*#ProgressLogin {display:none; z-index:500; position:absolute; top:5px; left:4px; width:826px; height:529px; background-image:url(/images/default/progress-login.gif)}*/
+#DivLoginBox .DivPopMiddle {}
+
+
+/*ajax calendar*/
+.CalendarField {position:relative}
+.CalendarField input {width:95px !important}
+.CalendarButton {width:20px !important; position:relative; top:3px}
+.ajax__calendar {font-size:1em !important; position:relative; left:0px !important; z-index:10000}
+
+.ajax__calendar_dayname {}
+.ajax__calendar_container {z-index:10000; top:0px !important; left:0px !important; background-color:#fff !important; border:solid 1px #306AA7 }
+  .ajax__calendar_title {background-color:#8FB7DA; color:#333; padding:3px 0px 3px 0px}
+    .ajax__calendar_hover .ajax__calendar_day {color:#555 !important; background-color:#8FB7DA !important; border:solid 1px #306AA7 !important}
+    .ajax__calendar_hover .ajax__calendar_month {color:#555 !important; background-color:#8FB7DA !important; border:solid 1px #306AA7 !important}
+    .ajax__calendar_hover .ajax__calendar_year {color:#555 !important; background-color:#8FB7DA !important; border:solid 1px #306AA7 !important}
+    .ajax__calendar_hover .ajax__calendar_title {color:#555 !important}
+    .ajax__calendar_today {color:#333 !important}
+    .ajax__calendar_hover .ajax__calendar_today {color:#555 !important}
+    .ajax__calendar_day {color:#333 !important; background-color:#FFF !important; border:solid 1px #FFF !important}
+    .ajax__calendar_month {color:#333 !important; background-color:#FFF !important; border:solid 1px #FFF !important}
+    .ajax__calendar_year {color:#333 !important; background-color:#FFF !important; border:solid 1px #FFF !important}
+
+.BrowseTree {display:none; padding:5px 0px 5px 0px}
+.BrowseTree span {display:inline; font-size:1.3em; color:#FFF}
+.BrowseTree span span {font-size:1em; color:#FFF}
+.BrowseTree div.BrowseTreeLine {width:2px; font-size:2px; margin:0px auto; height:9px; border-left:solid 1px #FFF}
+
+#PropertiesContent {overflow:hidden; position:relative}
+#PropertiesContent span {position:absolute; display:block; left:95px; top:10px; width:1000px}
+.TemplateChooser {position:absolute; top:288px}
+
+#Panel4 .StreamProperties {display:none}
+#DivPopUpUploaderProgress {z-index:9999; position:absolute; top:20px; left:20px; width:930px; height:645px; background-image:url(/images/default/progress-uploader.gif);}
+#DivPopUpUploader {display:block !important; left:0px; overflow:hidden; width:1px; height:1px;}
+
+.RepeatedField {}
+.RepeatedField .RFormBox {display:none}
+.RepeatedField .InBetweenRForms {display:none}
+
+.RFormCalendar {float:right; position:relative; padding-right:6px; padding-top:3px}
+.RFormBox .ajax__calendar_container {left:375px !important;top:22px !important}
+.LeftDateBox .ajax__calendar_container {left:156px !important;top:26px !important}
+.RightDateBox .ajax__calendar_container {left:331px !important;top:26px !important}
+.CentreMetaDiv .ajax__calendar_container {left:125px !important; top:22px !important}
+.CentreMetaDate {width:95px !important;}
+.RFormCalendarText {width:203px !important}
+.LeftDateCalendar {float:right; position:relative; left:-20px}
+.RightDateCalendar {float:right; position:relative; left:-20px}
+
+.SchedAdvOptionLink {padding-right:12px; color:#999; font-size:1.2em; background-image:url(/images/default/adv-arrow.gif); background-position:right 6px;}
+.SchedAdvOptionLinkOpen {background-image:url(/images/default/adv-arrow2.gif)}
+#SchedAdvOptions {display:none}
+
+#divStreamPreview {display:none; position:absolute; z-index:9000; background-color:#FFF; top:100px}
+#divStreamPreview img {display:block; margin:0px auto;}
+.StreamPreviewClose {position:absolute; top:0px; left:0px; display:none; background-color:#00477F; text-align:right; padding:10px 0px; width:100%}
+.StreamPreviewClose a {font-size:1.4em; color:#FFF; margin-right:10px}
+#divStreamPreviewContent {min-width:400px; min-height:300px; border:solid 20px #FFF;}
+#StreamPreviewTitle {position:absolute; left:20px; bottom:3px; font-size:1.4em; color:#00477F;}
+.PopPreviewImageHolder img {display:none}
+#divPreviewFlash {width:900px; min-height:100px}
+
+#DivPopUpUploader {left:-5000px}
+
+/* Admin Forms */
+/*Forms*/
+.RightFormColumn   {width:560px; float:right; clear:right;} 
+.RightFormColumn2   {width:450px; float:right; clear:right;} 
+  .RightFormColumn h2 {margin-top:0px}
+
+.FormBoxRemember {width:263px; padding:15px 0px 0px 10px}
+  .FormBoxRemember .FormField {float:left}
+  .FormBoxRemember .FormLabel {float:left; font-size:1.2em; font-weight:bold; margin-bottom:3px; color:#7C97A1;}
+  .FormBoxRemember .ButtonStd {float:right}
+
+.FormBox           {position:relative; width:300px; margin-bottom:0px; padding:7px 10px 8px 10px; }
+.FormBoxFullWidth  {width:990px; padding:7px 10px 8px 10px; clear:both;}
+.FormSpacer {width:10px; height:5px}
+
+.InnerFormBox {float:left; width:136px;}
+.InnerFormBoxFix {clear:left; height:1px; font-size:1px;}/* add left and right version probably*/
+
+.FormBox .FormLabel, .FormBoxFullWidth .FormLabel {font-size:1.2em; font-weight:bold; margin-bottom:3px; color:#FFF;}
+.FormBox .FormField, .FormBoxFullWidth .FormField {   }
+.FormBox .FormField2, .FormBoxFullWidth .FormField2 {font-size:1.2em;}
+.FormBox .FormField2, .FormBoxFullWidth .FormField2 label {font-size:1.2em; color:#FFF}
+.FormBox .FieldInfo, .FormBoxFullWidth .FieldInfo {font-size:1.1em; margin-top:2px; color:#FFF}
+.FormBox .FieldInfoLarge, .FormBoxFullWidth .FieldInfoLarge {font-size:1.2em; margin-top:2px;}
+.FormBox .FieldView, .FormBoxFullWidth .FieldView {font-size:1.2em; margin-top:2px;}
+.FormBox .LengthInfo, .FormBoxFullWidth .LengthInfo {font-size:1.0em; margin-top:2px; color:#666;}
+.FormBox .ValidationInfo, .FormBoxFullWidth .ValidationInfo {font-size:1.1em; margin-top:2px; font-weight:bold; color:#d00;}
+
+.FormHR1 {clear:both; font-size:1px; height:2px; margin-bottom:8px; background-image:url(/images/default/dot-border.gif); background-repeat:repeat-x}
+.FormHR2 {clear:both; font-size:1px; height:2px; margin-top:8px; background-image:url(/images/default/dot-border.gif); background-repeat:repeat-x}
+
+.FormField .EditBoxW1 {width:260px; font-size:1.1em; height:1.5em; padding-top:1px; margin-right:10px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .EditBoxW2 {width:123px; font-size:1.1em; height:1.5em; padding-top:1px; margin-right:10px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .EditBoxW3 {width:60px; font-size:1.1em; height:1.5em; padding-top:1px; margin-right:10px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .EditBoxW4 {width:25px; font-size:1.1em; height:1.5em; padding-top:1px; margin-right:6px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .DropDownW1 {width:263px; font-size:1.1em; height:1.9em; padding-top:1px; font-family:Verdana;}
+.FormField .DropDownW2 {width:126px; font-size:1.1em; height:1.9em; padding-top:1px; font-family:Verdana;}
+.FormField .ListBoxW1 {width:262px; font-size:1.1em; height:12em; padding-top:1px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .ListBoxW2 {width:125px; font-size:1.1em; height:12em; padding-top:1px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .TextAreaContact {width:610px; font-size:1.1em; padding-top:1px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .TextAreaW1 {width:260px; font-size:1.1em; padding-top:1px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .TextAreaW2 {width:123px; font-size:1.1em; padding-top:1px; border:solid 1px #999; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; font-family:Verdana;}
+.FormField .FileUploadW1 {width:263px; font-size:1.1em; height:2em; font-family:Verdana;}
+.FormField .CheckBox {}
+
+.WithFocusHighlight {}
+.FormBoxHighlighted {background-color:#FFCC00; }
+.FormBoxHighlighted .FormLabel, .FormBoxHighlighted .FieldInfo {color:#333}
+.FormBoxHighlighted .FormField2, .FormBoxFullWidth .FormField2 label {color:#333}
+.InputFieldHighlighted {/*background-color:#FF8989; */ border:solid 1px #d33 !important;}
+
+.AdminLeft {float:left; padding-top:20px; padding-right:30px;}
+.AdminRight {float:left; padding-top:20px;}
+
+.ArrowAdd {cursor:pointer; position:absolute; left:280px; top:50px; width:70px; height:61px; background-image:url(/images/default/arrow-add.gif)}
+.ArrowRemove {cursor:pointer; position:absolute; top:120px; left:280px; width:70px; height:61px; background-image:url(/images/default/arrow-remove.gif)}
+
+/* buttons */
+.FormButtons {padding-top:20px; width:670px; height:16px; font-weight:normal; padding-bottom:20px; clear:both; }
+  .FormButtons div.Info {float:left; color:#FFF; font-size:1.2em}
+.FormButtons2 {padding-top:20px; height:16px; font-weight:normal; padding-bottom:20px; clear:both; }
+  .FormButtons2 div.Info {float:left; color:#FFF; font-size:1.2em}
+.ButtonStd {float:right;}
+  .ButtonStd .LeftEnd  {float:left; height:28px; width:4px; display:block; background-image:url(/images/default/button-std-left.gif)}
+  .ButtonStd .Centre   {float:left; height:28px; display:block; background-repeat:repeat-x; background-image:url(/images/default/button-std.gif)}
+  .ButtonStd .Centre a {font-weight:bold; font-size:1.5em; color:#fff; padding:2px 12px 2px 12px; display:block; text-decoration:none;}
+  .ButtonStd .Centre a:hover {text-decoration:underline;}
+  .ButtonStd .RightEnd {float:left; height:28px; width:4px; display:block; background-image:url(/images/default/button-std-right.gif)}
+.ButtonStdRed {}
+  .ButtonStdRed .LeftEnd  {background-image:url(/images/default/button-std-red-left.gif)}
+  .ButtonStdRed .Centre   {background-image:url(/images/default/button-std-red.gif)}
+  .ButtonStdRed .RightEnd {background-image:url(/images/default/button-std-red-right.gif)}
+
+.ButtonStdSpacer {float:right; width:10px; height:2px; font-size:2px;}
+
+.DetailControls {display:none; position:relative; top:-7px; float:right; width:93px; height:29px; background-image:url(/images/default/detail-slide-bg.gif)}
+.DetailControls div {position:absolute; top:6px; height:17px; width:17px; cursor:pointer; background-position:center top}
+.DetailControls .DetailPrev {left:11px; background-image:url(/images/default/detail-slide-prev.gif)}
+.DetailControls .DetailPrev2 {display:none; left:11px; background-image:url(/images/default/detail-slide-prev.gif)}
+.DetailControls .DetailPlay {display:none; left:38px; background-image:url(/images/default/detail-slide-play.gif)}
+.DetailControls .DetailPause {left:38px; background-image:url(/images/default/detail-slide-pause.gif)}
+.DetailControls .DetailNext {left:65px; background-image:url(/images/default/detail-slide-next.gif)}
+.DetailControls .DetailNext2 {display:none; left:65px; background-image:url(/images/default/detail-slide-next.gif)}
+
+.TimeField {}
+.TimeField .TextBox {}
+#DivPopUpTimings .TimeField {position:relative;}
+#DivPopUpTimings .TimeField .TextBox {width:120px !important; font-size:1em; margin-right:36px;}
+#DivPopUpTimings .TimeField .timeEntry_control {position:absolute; top:8px; left:128px !important}
+
+/* TimeEntry styles */
+.timeEntry_control {
+  position: relative;
+  top:-2px;
+	vertical-align: middle;
+	margin-left: 4px;
+}
+* html .timeEntry_control { /* IE only */
+	margin-top: -4px;
+}
+
+
+
+/*CSS Corrections*/
+#Center1 .HelpMark {margin-bottom:-20px;} 
+
+.OxigenFAQ {padding-bottom:15px;}
+.OxigenFAQ h2 {height:12px; padding-bottom:10px;}
+.OxigenFAQ h2 a {float:left; display:block; text-decoration:none; padding-left:14px; background-image:url(/Images/Default/faq-plus.gif); background-position:left 4px;}
+.OxigenFAQ h2 a.FAQOpen {background-image:url(/Images/Default/faq-minus.gif)}
+.OxigenFAQ div {display:none; padding:0px 0px 15px 20px;}
+.OxigenFAQ div div {display:block; padding:0px}
+.OxigenFAQ div div a {font-size:1.3em;}
+
+.FAQSection {padding-top:20px;}
+.FAQSection h2 {text-decoration:underline; padding-bottom:5px;}
+.FAQSection h3 {padding-top:10px;}
+.FAQSection h3 a {font-weight:normal; text-decoration:none; color:#A8C6E2;}
+table.FAQCentred td {padding-right:30px; font-size:1.3em; color:#FFF; white-space:nowrap}
+.FAQSpacer {width:844px; margin:30px auto 0px auto; height:2px; font-size:2px; background-image:url(/images/default/faq-spacer.gif); background-position:left top; background-repeat:repeat-x}
+.PrivacyPage .FAQSpacer {margin:15px auto 15px auto}
+
+.PCTable {color:#FFF; font-size:1.3em;}
+.PCTable th {text-align:left; padding:0px 0px 10px 0px}
+.PCTable td {padding:0px 10px 0px 0px}
+.PCTable .TableSpacer {padding:0px 10px 0px 0px}
+
+.TermsWindow {height:300px; overflow:auto; background-color:#FFF; color:#333}
+.TermsWindow h2 {color:#333}
+.TermsWindow p {color:#333}
+
+#PrivateHiddenVar {display:none}
+
+.DateFields {height:25px}
+.DateFields select {float:left; margin-right:6px; width:83px; font-size:1.1em; height:1.9em; padding-top:1px; font-family:Verdana;}
+
+#AddPCLink {visibility:hidden}
+
+.GoogleChrome {margin:0px auto; width:290px; position:relative; z-index:1; clear:both; padding-top:86px;}
+.GoogleChrome span {padding:12px 0px 3px 38px; display:block; font-size:1.1em; color:#FFF; background-image:url(/images/default/GoogleChrome.png); text-decoration:none; line-height:13px;}
+.GoogleChrome a {color:#FFF;text-decoration:none; font-size:1em;}
+.GoogleChrome a:hover {text-decoration:underline; }

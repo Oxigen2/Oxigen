@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OxigenIIAdvertising.SoftwareInstaller.Form1">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareInstaller.Program">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareInstaller.Properties.Resources">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareInstaller.Properties.Settings">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareInstaller.UserManagementServicesReference.UserMain" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAIAAAAAAACABgAAAABAEAAAAAgIIAAA=</HashCode>
+      <FileName>Service References\UserManagementServicesReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareInstaller.UserManagementServicesReference.DemographicData" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAgACAgAAAACAAEAAAAAAgANAAAAEACAAAAIAAAA=</HashCode>
+      <FileName>Service References\UserManagementServicesReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareInstaller.UserManagementServicesReference.UserManagementServicesClient" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAACAAABAAAQAABAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Service References\UserManagementServicesReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="OxigenIIAdvertising.SoftwareInstaller.UserManagementServicesReference.IUserManagementServices">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAACAAABAAAQAABAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Service References\UserManagementServicesReference\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OxigenIIAdvertising.SoftwareInstaller.UserManagementServicesReference.IUserManagementServicesChannel">
+    <Position X="0.5" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\UserManagementServicesReference\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="OxigenIIAdvertising.SoftwareInstaller.UserManagementServicesReference.Gender">
+    <Position X="2.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\UserManagementServicesReference\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <properties>
+    <property name="leprocessinginterval">15</property>
+    <property name="ceprocessinginterval">15</property>
+    <property name="suprocessinginterval">15</property>
+    <property name="displayadvertminduration">8</property>
+  </properties>
+  <norelayservers>
+    <servertype name="config">4</servertype>
+    <servertype name="taxonomy">4</servertype>
+    <servertype name="channel">4</servertype>
+    <servertype name="download">5</servertype>
+  </norelayservers>
+</config>

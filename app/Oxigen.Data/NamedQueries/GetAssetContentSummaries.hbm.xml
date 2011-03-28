@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+    <sql-query name="GetAssetContentSummaries">
+      SET NOCOUNT ON;
+
+      SELECT ASSETCONTENT_ID, Name, Caption, GUID
+      FROM AssetContents
+    </sql-query>
+</hibernate-mapping>

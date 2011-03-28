@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Service="OxigenIIAdvertising.Services.BLService" factory="OxigenIIServiceFactory.CustomHostFactory"%>

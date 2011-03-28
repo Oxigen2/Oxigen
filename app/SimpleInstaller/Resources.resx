@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ServiceDescription" xml:space="preserve">
+    <value>Monitors Oxigen's remote server for new content and software updates</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AdvertList" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AdvertList.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AssetLevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AssetLevel.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Assets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Assets.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AssetScheduling" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AssetScheduling.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AssetType" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AssetType.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AxInterop_QTOControlLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AxInterop.QTOControlLib.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AxInterop_ShockwaveFlashObjects" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AxInterop.ShockwaveFlashObjects.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AxInterop_WMPLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AxInterop.WMPLib.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BoolContainerLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\BoolContainerLib.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ChannelData" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ChannelData.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ChannelSubscriptions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ChannelSubscriptions.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Demographic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Demographic.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DemographicRange" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\DemographicRange.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="EncryptionDecryption" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\EncryptionDecryption.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Exceptions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Exceptions.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FileChecksumCalculator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\FileChecksumCalculator.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FileLocker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\FileLocker.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FileRightsChecker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\FileRightsChecker.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GeneralData" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\GeneralData.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="InclusionExclusionRules" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\InclusionExclusionRules.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="InterCommunicationStructures" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\InterCommunicationStructures.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="InternetConnectionCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\InternetConnectionCheck.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Interop_QTOControlLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Interop.QTOControlLib.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Interop_QTOLibrary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Interop.QTOLibrary.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Interop_SHDocVw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Interop.SHDocVw.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Interop_ShockwaveFlashObjects" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Interop.ShockwaveFlashObjects.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Interop_WMPLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Interop.WMPLib.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LinqToHashSet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LinqToHashSet.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogEntry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LogEntry.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogFileReader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LogFileReader.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogFileWriter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LogFileWriter.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LoggerInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LoggerInfo.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogStats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LogStats.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogWriteOperations" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LogWriteOperations.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NoAssetsAnimator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\NoAssetsAnimator.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Oxigen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Oxigen.scr;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenCE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenCE.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenCE_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenCE.exe.config;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="OxigenCompiledRegexes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenCompiledRegexes.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenLE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenLE.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenLE_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenLE.exe.config;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="OxigenService" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenService.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenServiceFactory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenServiceFactory.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenService_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenService.exe.config;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="OxigenSingletons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenSingletons.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenStopwatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenStopwatch.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenTray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenTray.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenTray_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenTray.exe.config;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="OxigenUserDataMarshallerClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenUserDataMarshallerClient.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenUserDataMarshallrContracts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenUserDataMarshallrContracts.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenUserFileMarDataContracts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenUserFileMarDataContracts.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenUserFileMarshallerClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenUserFileMarshallerClient.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenUserMgmtServicesClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenUserMgmtServicesClient.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OxigenUserMgmtServicesContracts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OxigenUserMgmtServicesContracts.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Oxigen_scr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Oxigen.scr.config;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="PlayerType" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\PlayerType.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Playlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Playlist.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlaylistAssetPicker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\PlaylistAssetPicker.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlaylistLogic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\PlaylistLogic.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ProgressAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ProgressAnimation.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ProxyClientBaseLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ProxyClientBaseLib.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RegistryAccess" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\RegistryAccess.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ScreenSaverConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ScreenSaverConfig.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ScreenSaverConfig_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ScreenSaverConfig.exe.config;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ServerCycleConnectAttempt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ServerCycleConnectAttempt.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ss_general_data" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ss_general_data.dat;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TaxonomySearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TaxonomySearch.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TimeSpanObjectWrapper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TimeSpanObjectWrapper.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="UserSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\UserSettings.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WCFErrorReporting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\WCFErrorReporting.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WindowsVersionDetection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\WindowsVersionDetection.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="XmlSerializableGenericDictionary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\XmlSerializableGenericDictionary.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="XmlSerializableSortableGenericList" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\XmlSerializableSortableGenericList.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="XMLSerializer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\XMLSerializer.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

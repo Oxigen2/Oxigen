@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OxigenIITest" GeneratedClassName="Settings1">
+  <Profiles />
+  <Settings>
+    <Setting Name="PlaylistDataPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Documents and Settings\MichaliKonstantinidi\My Documents\OxigenIIData\SettingsData\ss_play_list.dat</Value>
+    </Setting>
+    <Setting Name="GeneralDataPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Documents and Settings\MichaliKonstantinidi\My Documents\OxigenIIData\SettingsData\ss_general_data.dat</Value>
+    </Setting>
+    <Setting Name="AdvertDataPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Documents and Settings\MichaliKonstantinidi\My Documents\OxigenIIData\SettingsData\ss_adcond_data.dat</Value>
+    </Setting>
+    <Setting Name="DemographicDataPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Documents and Settings\MichaliKonstantinidi\My Documents\OxigenIIData\SettingsData\ss_demo_data.dat</Value>
+    </Setting>
+    <Setting Name="UserChannelSubscriptionsPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Documents and Settings\MichaliKonstantinidi\My Documents\OxigenIIData\SettingsData\ss_channel_subscription_data.dat</Value>
+    </Setting>
+    <Setting Name="ChannelDataPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Documents and Settings\MichaliKonstantinidi\My Documents\OxigenIIData\ChannelData\</Value>
+    </Setting>
+    <Setting Name="DebugPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Documents and Settings\MichaliKonstantinidi\My Documents\OxigenIIData\OxigenDebug.txt</Value>
+    </Setting>
+    <Setting Name="AssetPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Documents and Settings\MichaliKonstantinidi\My Documents\OxigenIIData\Assets\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

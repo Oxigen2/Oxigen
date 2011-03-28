@@ -1,0 +1,5 @@
+﻿# advertID|advertlevel|startdate|starttime|enddate|endtime|duration
+# multiple rows with same advertID are expected as log exchanger appends logging information
+
+1000|20090626|15:45:05|20090626|15:45:23|18
+1001|20090626|15:45:24|20090626|15:15:36|12

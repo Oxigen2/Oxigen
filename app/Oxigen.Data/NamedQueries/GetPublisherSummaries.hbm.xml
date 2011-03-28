@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+    <sql-query name="GetPublisherSummaries">
+        SET NOCOUNT ON;
+
+	    SELECT Id, UserID, FirstName, LastName, DisplayName, EmailAddress, UsedBytes, TotalAvailableBytes
+	    FROM Publishers
+    </sql-query>
+</hibernate-mapping>

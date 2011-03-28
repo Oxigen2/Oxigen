@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Service="OxigenIIAdvertising.RelayServers.UserDataMarshaller" debug="true" factory="OxigenIIServiceFactory.CustomHostFactory"%>

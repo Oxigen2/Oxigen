@@ -1,0 +1,152 @@
+﻿Level 1:
+
+two asset objects: current asset, next asset
+
+Every 50 milliseconds do this:
+
+  if current asset's display time elapsed (asset or "no assets" image)
+      
+       add current asset's display length to cumulative display times
+       write current display log for asset
+        
+       display next asset in memory and load another in a separate thread
+       
+       if no asset found
+             display bouncing graphic
+             when next loop reaches here, don't start displaying the box again but continue moving it
+             
+Repeat above steps every 50 miliseconds
+
+
+
+ScreenSaver constructor:
+  
+  select asset A
+  load asset A (not in a separate thread)
+  
+  if no asset A found
+    display bouncing graphic (in a separate thread)
+  else
+    display asset A (in a separate thread)
+    
+  select asset B, load asset B (in a separate thread)  
+  if no asset B found
+    display bouncing graphic (in a separate thread)
+  else
+    display asset (in a separate thread)
+  
+  Enable the 50 ms timer
+  
+  show this one screensaver    
+  
+On ScreenSaver load:
+     
+  
+----------------------------------------------------------------------------
+Level 2:
+
+two asset objects: current asset, next asset
+
+Every 50 milliseconds do this:
+
+  if current asset's display time elapsed or bouncing box is shown
+  
+       if asset A is being displayed
+        add asset A's to cumulative display times
+        write display log for asset A
+       else
+        add asset B's to cumulative display times
+        write display log for asset B
+        
+       if there is a running thread that selects and loads the next asset from disk
+          halt here until it's finished
+        
+       if (asset designated by toggle is not null)
+        display asset designated by toggle
+       else
+        display bouncing graphic
+        when next loop reaches here, don't start displaying the box again but continue moving it
+        
+       switch the toggle
+       
+       Load asset designated by new toggle
+                    
+Repeat above steps every 50 miliseconds
+
+
+display next asset in memory and load another
+
+  display asset designated by toggle
+  switch the toggle
+  select next asset (in separate thread)
+  load next asset (same thread as select next asset)      
+
+end of display next asset in memory and load another
+
+ScreenSaver constructor:
+  
+  select asset A
+  load asset A (not in a separate thread)
+  
+  if no asset A found
+    nullify asset A
+    display bouncing graphic
+  else
+    display asset A (in a separate thread)
+  
+  select and load asset B (in a separate thread)
+  show this screensaver
+  
+  Enable the 50 millisecond timer
+
+end of ScreenSaver constructor
+    
+    
+SelectAsset
+
+  if time to pick Advert
+    Select Advert
+    if Advert not found
+      Select Content
+  else
+    Select Content
+  
+  if Content not found
+    return null
+    
+return asset found
+
+
+Display
+ 
+  if no asset is found
+    display "no assets" thread
+
+  if asset is found
+    display asset
+    
+
+On ScreenSaver load:
+   
+  set bounds of screensaver and containers/players
+  
+-------------------------------------------------------------------------------------------------
+  Level 3
+  
+  Display
+  
+  if a previous asset is being displayed
+    halt here until it's finished
+
+  if current asset is found
+    if "no asset" thread is alive
+      send terminate signal
+      wait until it's terminated
+
+    start display stopwatch 
+    display asset
+   
+  if there is no asset
+    if "no asset" thread is running
+    run a "no asset" thread
+        

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ChannelSubscriptions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SubscriptionSet" nillable="true" type="tns:ArrayOfChannelSubscription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChannelSubscriptions" nillable="true" type="tns:ChannelSubscriptions" />
+  <xs:complexType name="ArrayOfChannelSubscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChannelSubscription" nillable="true" type="tns:ChannelSubscription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChannelSubscription" nillable="true" type="tns:ArrayOfChannelSubscription" />
+  <xs:complexType name="ChannelSubscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChannelGUID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChannelID" type="xs:long" />
+      <xs:element minOccurs="0" name="ChannelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChannelWeightingNormalised" type="xs:float" />
+      <xs:element minOccurs="0" name="ChannelWeightingUnnormalised" type="xs:int" />
+      <xs:element minOccurs="0" name="Locked" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChannelSubscription" nillable="true" type="tns:ChannelSubscription" />
+</xs:schema>

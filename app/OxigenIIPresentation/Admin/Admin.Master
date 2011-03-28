@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="OxigenIIPresentation.Admin.Admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Oxigen</title>
+    <meta name="author" content="OBS Group enquiries@obs-group.co.uk" />
+    <link href="../Styles/General.css" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Scripts/Jquery.js"></script>
+    <script type="text/javascript" src="/Scripts/General.js"></script>
+    <script type="text/javascript">
+      /*<![CDATA[*/
+      if (!firefox) {
+        document.write('<link rel="icon" href="images/default/oxigen.ico" type="image/x-icon" />');
+        document.write('<link rel="shortcut icon" href="images/default/oxigen.ico" type="image/x-icon" />');
+      } else {
+      document.write('<link rel="icon" href="images/default/oxigen.gif" type="image/x-icon" />');
+      document.write('<link rel="shortcut icon" href="images/default/oxigen.gif" type="image/x-icon" />');
+    }
+
+    /*]]>*/
+	</script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="MainAdminDiv">
+      <div class="AdminHeader">
+        <div class="GlobalNav">
+          <div class="Active"><a href="../../Admin/Administrator/List.aspx">Admin</a></div>
+          <div class="Inactive"><a href="../../Admin/Users/List.aspx">Users</a></div>
+          <div class="Inactive"><a href="../../Admin/Clients/List.aspx">Clients</a></div>
+          <div class="Inactive"><a href="../../Admin/Adverts/List.aspx">Adverts</a></div>
+          <div class="Inactive"><a href="../../Admin/Category/List.aspx">Categories</a></div>
+          <div class="Inactive"><a href="../../Admin/Reports/Download.aspx">Reports</a></div>
+          <div class="Inactive"><a href="../../Admin/Settings/Configure.aspx">Settings</a></div>
+        </div>
+        
+        <div class="LocalNav">
+          <div class="Active"><a href="List.aspx">List</a></div>
+          <div class="Inactive"><a href="Add.aspx">Add</a></div>
+          <div class="Inactive"><a href="Edit.aspx">Edit</a></div>
+          <div class="Inactive"><a href="Remove.aspx">Remove</a></div>
+        </div>
+        
+        <a class="Logo" href="#" onclick="return false;" style="cursor:default">
+          <span>Breathe life into your screensaver</span>
+        </a>
+        <div class="OffWhiteLine"></div>
+      </div>
+        
+      <div class="ContentDiv">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div class="BottomFix"></div>
+
+      </div>
+      
+      <div class="ContentBottom"></div>
+    </div>
+    </form>
+</body>
+</html>

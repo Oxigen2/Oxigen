@@ -1,0 +1,1077 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralData", "OxigenIIGeneralData\GeneralData.csproj", "{FEBA9756-1135-44EA-9F8C-59FD30F64EA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerInfo", "OxigenIILoggerInfo\LoggerInfo.csproj", "{24134EAF-1B5B-4329-9071-15629067E98D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogStats", "OxigenIILogStats\LogStats.csproj", "{02CE096A-08E3-472F-A8B9-0C8DE4C29D6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerType", "OxigenIIPlayerType\PlayerType.csproj", "{DA2DD1C3-9DA5-4A08-AB79-FA2C0B396E75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist", "OxigenIIPlaylist\Playlist.csproj", "{74B94F02-FE73-4AE9-B5C7-935991C4F4B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFErrorReporting", "WCFErrorReporting\WCFErrorReporting.csproj", "{023A7A25-2BAE-4B3F-AC20-6FA65055C852}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSerializableGenericDictionary", "XmlSerializableGenericDictionary\XmlSerializableGenericDictionary.csproj", "{7B5B0116-D15B-45B6-B4B9-84B63D83222F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLSerializer", "OxigenIIXMLSerializer\XMLSerializer.csproj", "{905FC382-9356-4BD1-9F66-0947A6F2FC57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "OxigenIIExceptions\Exceptions.csproj", "{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToHashSet", "LinqToHashSet\LinqToHashSet.csproj", "{4983D647-18D3-40DE-B15C-555D3E411244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogEntry", "OxigenIILogEntry\LogEntry.csproj", "{7E51006D-BB71-41F0-BDB5-480FDDD1C5FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvertList", "OxigenIIAdvertList\AdvertList.csproj", "{F5B3ECDB-7490-4303-8EDA-A0DFE79F0189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentExchanger", "OxigenIIContentExchanger\ContentExchanger.csproj", "{BC84B1F8-B3E8-48B5-93B5-EA1871CBF4C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemographicRange", "DemographicRange\DemographicRange.csproj", "{25FE3B01-651A-4F05-8834-A9AED77AE034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileChecksumCalculator", "FileChecksumCalculator\FileChecksumCalculator\FileChecksumCalculator.csproj", "{9336AE54-20DB-468F-93BA-837CDAB30221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InclusionExclusionRules", "OxigenIIInclusionExclusionRules\InclusionExclusionRules.csproj", "{F8A597E4-9B88-49A0-901A-B6F507037FA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTester", "LibraryTester\LibraryTester.csproj", "{8DAEB202-482A-450C-9B17-A06F336AFEA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFileReader", "OxigenIILogFileReader\LogFileReader.csproj", "{9DE93E99-A928-42A4-B397-20B9F15FF4F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogExchanger", "OxigenIILogExchanger\LogExchanger.csproj", "{7ACC96A8-7971-4BC4-A966-FEF078E91139}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerCycleConnectAttempt", "ServerCycleConnectAttempt\ServerCycleConnectAttempt.csproj", "{CB76EF64-7ACD-4799-95C4-D7B032994EC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserFileMarshallerClient", "OxigenIIUserFileMarshallerClient\OxigenIIUserFileMarshallerClient.csproj", "{7AF712E4-68CC-40C4-BBC7-19B6AA44BF78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserDataMarshallrContracts", "OxigenIIUserDataMarshallrContracts\OxigenIIUserDataMarshallrContracts.csproj", "{5CE5DD0D-7208-4ADD-B851-489CE91925E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserDataMarshallerClient", "OxigenIIUserDataMarshallerClient\OxigenIIUserDataMarshallerClient.csproj", "{F24B8A98-35C3-4E46-B6CB-E7BC9373CD91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserDataMarshaller", "OxigenIIUserDataMarshaller\OxigenIIUserDataMarshaller.csproj", "{D1F4201F-CAAC-48B3-B8DC-D52E04BCDB90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaylistLogic", "OxigenIIPlaylistMaker\PlaylistLogic.csproj", "{E5DD2597-ECC6-41EE-9711-501DC90D0119}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserFileMarshaller", "OxigenIIUserFileMarshaller\OxigenIIUserFileMarshaller.csproj", "{F2B64668-B590-4233-9381-00B191C899C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserFileMarDataContracts", "OxigenIIUserFileMarDataContracts\OxigenIIUserFileMarDataContracts.csproj", "{40B50928-CF1B-49DA-AB9C-ACB6927CA955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserMgmtServices", "OxigenIIUserMgmtServices\OxigenIIUserMgmtServices.csproj", "{DD1D6D63-8E88-4E94-B8FE-44A652ACF3D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserMgmtServicesClient", "OxigenIIUserMgmtServicesClient\OxigenIIUserMgmtServicesClient.csproj", "{F9ADD13C-D7CE-4C42-8C0C-65D617C5DFAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserMgmtServicesContracts", "OxigenIIUserMgmtServicesContracts\OxigenIIUserMgmtServicesContracts.csproj", "{401432CD-4E44-4863-84A9-CCE5F9579A78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxonomySearch", "OxigenIITaxonomySearch\TaxonomySearch.csproj", "{9B313BBB-227B-492F-A1E8-0755C588BA21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assets", "Assets\Assets.csproj", "{3736B130-0A0E-45C5-937A-9328DE0696E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIProjectAssets", "OxigenIIProjectAssets\OxigenIIProjectAssets.csproj", "{73BBA100-B863-4D43-9DB5-373B235A4962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistryAccess", "RegistryAccess\RegistryAccess.csproj", "{7C486BC9-00F6-48F7-BB49-4CFABBE47DF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexCompiler", "RegexCompiler\RegexCompiler.csproj", "{1879A4E6-10AA-4FD2-A11B-5D4FE500D67B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsVersionDetection", "WindowsVersionDetection\WindowsVersionDetection.csproj", "{D072296F-E55A-4F46-8631-A3577C6E955D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52B26D2C-D605-4D83-8B3C-02DAECA389AB}"
+	ProjectSection(SolutionItems) = preProject
+		OxigenIIAdvertising3.vsmdi = OxigenIIAdvertising3.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFileWriter", "LogFileWriter\LogFileWriter.csproj", "{2FDFB1A6-A7C5-4B2E-AD45-B002E9222370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileLocker", "FileLocker\FileLocker.csproj", "{44C9638A-0FF7-4D62-B2E3-8174FA7D7530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionDecryption", "EncryptionDecryption\EncryptionDecryption.csproj", "{940650B2-518E-49B2-B716-22B3737731D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSaverSingletons", "OxigenIILogStructuresRaw\ScreenSaverSingletons.csproj", "{B432D1DF-1D47-4AAB-9AE9-2CC483094E7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogSingletonAccessor", "LogWriteOperations\LogSingletonAccessor.csproj", "{BD4D0664-9B0D-49BE-BED4-E4AC23D2F909}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIITest", "OxigenIITest\OxigenIITest.csproj", "{5F5B732D-C21E-4853-9882-D30AD8C1A1E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileRightsChecker", "FileRightsChecker\FileRightsChecker.csproj", "{698CC733-76C2-4425-921C-A2EE1609F986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaylistAssetPicker", "PlaylistAssetPicker\PlaylistAssetPicker.csproj", "{5E9CF6E7-B071-4B5E-A951-2D997F9ADFD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoAssetsAnimator", "NoAssetsAnimator\NoAssetsAnimator.csproj", "{1545A1E9-4F46-4214-89DA-F796F6DC9955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSerializableSortableGenericList", "XmlSerializableSortableGenericList\XmlSerializableSortableGenericList.csproj", "{63BC3CFC-BE52-4CBB-899E-235D81AFABF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIITray", "OxigenIISSG\OxigenIITray.csproj", "{A085FD2D-8013-4CBE-B901-68A3C204C5D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSGService", "OxigenIISSGService\SSGService.csproj", "{6D95252F-F799-4AA9-A617-790FC4522BAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIScreenSaverConfig", "OxigenIIScreenSaverConfig\OxigenIIScreenSaverConfig.csproj", "{EFF05119-8F47-48C8-9371-83C65B3F9400}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetConnectionCheck", "InternetConnectionCheck\InternetConnectionCheck.csproj", "{E9D6DAD1-9746-4508-A095-7BB7D2173113}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeSpanObjectWrapper", "TimeSpanObjectWrapper\TimeSpanObjectWrapper.csproj", "{7461B0BB-836E-48F1-BA45-6A8F93F7A628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserSettings", "UserSettings\UserSettings.csproj", "{369A56B9-C812-4FB2-B50F-35ADDAC8351E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIServiceFactory", "OxigenIIServiceFactory\OxigenIIServiceFactory.csproj", "{DB429334-2D03-4AE9-9351-A0058F1EFE41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoolContainerLib", "BoolContainerLib\BoolContainerLib.csproj", "{4998F27D-0B97-4DF3-9810-E38BF3B2068B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleInstaller", "SimpleInstaller\SimpleInstaller.csproj", "{B977CC56-E60B-4426-B5A5-167E64C80871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIStopwatch", "OxigenIIStopwatch\OxigenIIStopwatch.csproj", "{872830FD-3BF3-45D1-9C98-3D51A107B1E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIMasterDataMarshallerClient", "OxigenIIMasterDataMarshallerClient\OxigenIIMasterDataMarshallerClient.csproj", "{E2B3DCB0-1DFF-4D70-BE92-4CFAA93986AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIMasterDataMarContracts", "OxigenIIMasterDataMarContracts\OxigenIIMasterDataMarContracts.csproj", "{5BFF8C38-3902-49AE-88B9-C5E53727A019}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterCommunicationStructures", "InterCommunicationStructures\InterCommunicationStructures.csproj", "{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChannelData", "OxigenIIChannelData\ChannelData.csproj", "{5DF6DC54-E02D-47A8-B74D-C89F9E944687}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChannelSubscriptions", "OxigenIIChannelSubscriptions\ChannelSubscriptions.csproj", "{CF9C9E18-82B5-4870-9510-DFD781B7A7F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemographicData", "OxigenIIDemographicData\DemographicData.csproj", "{405D3C86-4D83-4FC9-8842-8D88C0398B99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIMasterDataMarshaller", "OxigenIIMasterDataMarshaller\OxigenIIMasterDataMarshaller.csproj", "{9254A344-1530-4B91-AEC8-3B662CE3E56B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenHeartbeatAggregator", "OxigenHeartbeatAggregator\OxigenHeartbeatAggregator.csproj", "{06212163-8BDA-4BB2-B8DB-7DF1EBB4F251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAggregators", "DataAggregators\DataAggregators.csproj", "{B7A47AB8-1E9A-4D10-9C68-23D7F8E1CF56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenUninstallInfoAggregator", "OxigenUninstallInfoAggregator\OxigenUninstallInfoAggregator.csproj", "{80F2C691-B2F0-4F56-A746-BB43EDEF90A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenScreenSaverProductAggregator", "OxigenScreenSaverProductAggregator\OxigenScreenSaverProductAggregator.csproj", "{91784828-25A0-4DF4-B956-822990AAA8C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQtoDL", "LINQtoDL\LINQtoDL.csproj", "{C049124C-D780-431E-A313-6E3627F6D863}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentInfo", "OxigenIIComponentInfo\ComponentInfo.csproj", "{BE862F44-16EF-4D9E-9AA2-A45FF2092895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlatAggregatedLogStructures", "FlatAggregatedLogStructures\FlatAggregatedLogStructures.csproj", "{65200738-FA6B-4ACE-8671-A93B4495AD08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenLogAggregator", "OxigenLogAggregator\OxigenLogAggregator.csproj", "{823E3A22-AA5B-4843-AEBC-167D91DC0A59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIPresentation", "OxigenIIPresentation\OxigenIIPresentation.csproj", "{EF2E77E6-6434-4467-B199-6038BA279460}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOAStructures", "SOAStructures\SOAStructures.csproj", "{328E0FFB-73DD-4F8B-8DD4-58214B741F2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIISitesBLClient", "OxigenIISitesBLClient\OxigenIISitesBLClient.csproj", "{83BBF96A-3E50-4944-AE2A-C4D4E409D01C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLHostService", "BLHostService\BLHostService.csproj", "{49F4A844-0E88-43D8-87B6-3ABA86A4DF16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLHost", "BLHost\BLHost.csproj", "{77ED4C6A-C4C1-447A-A9FA-D0EDEFD2AF27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIISitesBLContracts", "OxigenIISitesBLContracts\OxigenIISitesBLContracts.csproj", "{BDA097A4-C673-444A-A4ED-3202357C65D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIDAContracts", "OxigenIIDAContracts\OxigenIIDAContracts.csproj", "{DB4F6039-D5CB-456D-836E-B6307EFD7D4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIDAClient", "OxigenIIDAClient\OxigenIIDAClient.csproj", "{F3C5651C-ABA0-4582-BE0D-4F99930FC9C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAHost", "DAHost\DAHost.csproj", "{4BFB76CE-EE70-4A7D-B70F-9A13E05AF1BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAHostService", "DAHostService\DAHostService.csproj", "{29657AD1-63BF-48D6-90FA-EE20A3F2FA2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyClientBaseLib", "ProxyClientBaseLib\ProxyClientBaseLib.csproj", "{17265B81-FA8E-4016-BE6A-CEAB89CAE76E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIScreenSaver", "OxigenIIScreenSaver\OxigenIIScreenSaver\OxigenIIScreenSaver.csproj", "{144D6CA7-61A5-437F-880C-6D3591A5EBD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetScheduling", "OxigenIIAssetScheduling\AssetScheduling.csproj", "{8D0E8EB0-A926-47C1-8F45-5FBEF3E5C845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F50C29A8-6B88-436F-A938-61166E695483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserDataMarshallrService", "OxigenIIUserDataMarshallrService\OxigenIIUserDataMarshallrService.csproj", "{F49B55D4-1F4D-4F24-A978-4FA55A39EFDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserMgmtServicesService", "OxigenIIUserMgmtServicesService\OxigenIIUserMgmtServicesService.csproj", "{13C82DBF-07F0-422C-B999-A94FF5C55DF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIUserFileMarServices", "OxigenIIUserFileMarServices\OxigenIIUserFileMarServices.csproj", "{0E4EEE69-69DD-4C7B-9BC0-43B420E2DA9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIMasterDataMarServices", "OxigenIIMasterDataMarServices\OxigenIIMasterDataMarServices.csproj", "{3B175112-1459-4518-87DB-7720518C8126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIISitesBLServices", "OxigenIISitesBLServices\OxigenIISitesBLServices.csproj", "{BF3093AF-33DD-4A64-A87E-73FAF2CADD81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OxigenIIDAServices", "OxigenIIDAServices\OxigenIIDAServices.csproj", "{4D6199B0-9088-48EA-9C0A-6F5655216D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilenameMakerLib", "FilenameMakerLib\FilenameMakerLib.csproj", "{17060F4B-F9EE-4C1E-A787-F1F1F7F7A5F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChannelDatabaseToRelayUploaderLib", "ChannelDatabaseToRelayUploaderLib\ChannelDatabaseToRelayUploaderLib.csproj", "{35E4B18E-770E-4756-B824-B47BD4C56EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChannelDatabaseToRelayUploaderSvc", "ChannelDatabaseToRelayUploaderSvc\ChannelDatabaseToRelayUploaderSvc.csproj", "{DB5BD0D0-8542-4C91-9929-D58A1159D2C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterDataMarshallerService", "MasterDataMarshallerService\MasterDataMarshallerService.csproj", "{0DD423AA-9010-44A7-9288-4DD922B33B2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFMethodTester", "WCFMethodTester\WCFMethodTester.csproj", "{A7F0068A-32A5-4107-A736-0338E9C3C415}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 95
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs-server.obs-group.co.uk:8080/
+		SccProjectUniqueName0 = OxigenIIGeneralData\\GeneralData.csproj
+		SccProjectName0 = OxigenIIGeneralData
+		SccAuxPath0 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath0 = OxigenIIGeneralData
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = OxigenIILoggerInfo\\LoggerInfo.csproj
+		SccProjectName1 = OxigenIILoggerInfo
+		SccAuxPath1 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath1 = OxigenIILoggerInfo
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = OxigenIILogStats\\LogStats.csproj
+		SccProjectName2 = OxigenIILogStats
+		SccAuxPath2 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath2 = OxigenIILogStats
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = OxigenIIPlayerType\\PlayerType.csproj
+		SccProjectName3 = OxigenIIPlayerType
+		SccAuxPath3 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath3 = OxigenIIPlayerType
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = OxigenIIPlaylist\\Playlist.csproj
+		SccProjectName4 = OxigenIIPlaylist
+		SccAuxPath4 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath4 = OxigenIIPlaylist
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = WCFErrorReporting\\WCFErrorReporting.csproj
+		SccProjectName5 = WCFErrorReporting
+		SccAuxPath5 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath5 = WCFErrorReporting
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName6 = XmlSerializableGenericDictionary\\XmlSerializableGenericDictionary.csproj
+		SccProjectName6 = XmlSerializableGenericDictionary
+		SccAuxPath6 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath6 = XmlSerializableGenericDictionary
+		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName7 = OxigenIIXMLSerializer\\XMLSerializer.csproj
+		SccProjectName7 = OxigenIIXMLSerializer
+		SccAuxPath7 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath7 = OxigenIIXMLSerializer
+		SccProvider7 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName8 = OxigenIIExceptions\\Exceptions.csproj
+		SccProjectName8 = OxigenIIExceptions
+		SccAuxPath8 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath8 = OxigenIIExceptions
+		SccProvider8 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName9 = LinqToHashSet\\LinqToHashSet.csproj
+		SccProjectName9 = LinqToHashSet
+		SccAuxPath9 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath9 = LinqToHashSet
+		SccProvider9 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName10 = OxigenIILogEntry\\LogEntry.csproj
+		SccProjectName10 = OxigenIILogEntry
+		SccAuxPath10 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath10 = OxigenIILogEntry
+		SccProvider10 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName11 = OxigenIIAdvertList\\AdvertList.csproj
+		SccProjectName11 = OxigenIIAdvertList
+		SccAuxPath11 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath11 = OxigenIIAdvertList
+		SccProvider11 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName12 = OxigenIIContentExchanger\\ContentExchanger.csproj
+		SccProjectName12 = OxigenIIContentExchanger
+		SccAuxPath12 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath12 = OxigenIIContentExchanger
+		SccProvider12 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName13 = DemographicRange\\DemographicRange.csproj
+		SccProjectName13 = DemographicRange
+		SccAuxPath13 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath13 = DemographicRange
+		SccProvider13 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName14 = FileChecksumCalculator\\FileChecksumCalculator\\FileChecksumCalculator.csproj
+		SccProjectName14 = FileChecksumCalculator/FileChecksumCalculator
+		SccAuxPath14 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath14 = FileChecksumCalculator\\FileChecksumCalculator
+		SccProvider14 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName15 = OxigenIIInclusionExclusionRules\\InclusionExclusionRules.csproj
+		SccProjectName15 = OxigenIIInclusionExclusionRules
+		SccAuxPath15 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath15 = OxigenIIInclusionExclusionRules
+		SccProvider15 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName16 = LibraryTester\\LibraryTester.csproj
+		SccProjectName16 = LibraryTester
+		SccAuxPath16 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath16 = LibraryTester
+		SccProvider16 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName17 = OxigenIILogFileReader\\LogFileReader.csproj
+		SccProjectName17 = OxigenIILogFileReader
+		SccAuxPath17 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath17 = OxigenIILogFileReader
+		SccProvider17 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName18 = OxigenIILogExchanger\\LogExchanger.csproj
+		SccProjectName18 = OxigenIILogExchanger
+		SccAuxPath18 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath18 = OxigenIILogExchanger
+		SccProvider18 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName19 = ServerCycleConnectAttempt\\ServerCycleConnectAttempt.csproj
+		SccProjectName19 = ServerCycleConnectAttempt
+		SccAuxPath19 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath19 = ServerCycleConnectAttempt
+		SccProvider19 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName20 = OxigenIIUserFileMarshallerClient\\OxigenIIUserFileMarshallerClient.csproj
+		SccProjectName20 = OxigenIIUserFileMarshallerClient
+		SccAuxPath20 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath20 = OxigenIIUserFileMarshallerClient
+		SccProvider20 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName21 = OxigenIIUserDataMarshallrContracts\\OxigenIIUserDataMarshallrContracts.csproj
+		SccProjectName21 = OxigenIIUserDataMarshallrContracts
+		SccAuxPath21 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath21 = OxigenIIUserDataMarshallrContracts
+		SccProvider21 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName22 = OxigenIIUserDataMarshallerClient\\OxigenIIUserDataMarshallerClient.csproj
+		SccProjectName22 = OxigenIIUserDataMarshallerClient
+		SccAuxPath22 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath22 = OxigenIIUserDataMarshallerClient
+		SccProvider22 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName23 = OxigenIIUserDataMarshaller\\OxigenIIUserDataMarshaller.csproj
+		SccProjectName23 = OxigenIIUserDataMarshaller
+		SccAuxPath23 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath23 = OxigenIIUserDataMarshaller
+		SccProvider23 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName24 = OxigenIIPlaylistMaker\\PlaylistLogic.csproj
+		SccProjectName24 = OxigenIIPlaylistMaker
+		SccAuxPath24 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath24 = OxigenIIPlaylistMaker
+		SccProvider24 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName25 = OxigenIIUserFileMarshaller\\OxigenIIUserFileMarshaller.csproj
+		SccProjectName25 = OxigenIIUserFileMarshaller
+		SccAuxPath25 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath25 = OxigenIIUserFileMarshaller
+		SccProvider25 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName26 = OxigenIIUserFileMarDataContracts\\OxigenIIUserFileMarDataContracts.csproj
+		SccProjectName26 = OxigenIIUserFileMarDataContracts
+		SccAuxPath26 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath26 = OxigenIIUserFileMarDataContracts
+		SccProvider26 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName27 = OxigenIIUserMgmtServices\\OxigenIIUserMgmtServices.csproj
+		SccProjectName27 = OxigenIIUserMgmtServices
+		SccAuxPath27 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath27 = OxigenIIUserMgmtServices
+		SccProvider27 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName28 = OxigenIIUserMgmtServicesClient\\OxigenIIUserMgmtServicesClient.csproj
+		SccProjectName28 = OxigenIIUserMgmtServicesClient
+		SccAuxPath28 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath28 = OxigenIIUserMgmtServicesClient
+		SccProvider28 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName29 = OxigenIIUserMgmtServicesContracts\\OxigenIIUserMgmtServicesContracts.csproj
+		SccProjectName29 = OxigenIIUserMgmtServicesContracts
+		SccAuxPath29 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath29 = OxigenIIUserMgmtServicesContracts
+		SccProvider29 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName30 = OxigenIITaxonomySearch\\TaxonomySearch.csproj
+		SccProjectName30 = OxigenIITaxonomySearch
+		SccAuxPath30 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath30 = OxigenIITaxonomySearch
+		SccProvider30 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName31 = Assets\\Assets.csproj
+		SccProjectName31 = Assets
+		SccAuxPath31 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath31 = Assets
+		SccProvider31 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName32 = OxigenIIProjectAssets\\OxigenIIProjectAssets.csproj
+		SccProjectName32 = OxigenIIProjectAssets
+		SccAuxPath32 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath32 = OxigenIIProjectAssets
+		SccProvider32 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName33 = RegistryAccess\\RegistryAccess.csproj
+		SccProjectName33 = RegistryAccess
+		SccAuxPath33 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath33 = RegistryAccess
+		SccProvider33 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName34 = RegexCompiler\\RegexCompiler.csproj
+		SccProjectName34 = RegexCompiler
+		SccAuxPath34 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath34 = RegexCompiler
+		SccProvider34 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName35 = WindowsVersionDetection\\WindowsVersionDetection.csproj
+		SccProjectName35 = WindowsVersionDetection
+		SccAuxPath35 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath35 = WindowsVersionDetection
+		SccProvider35 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName36 = LogFileWriter\\LogFileWriter.csproj
+		SccProjectName36 = LogFileWriter
+		SccAuxPath36 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath36 = LogFileWriter
+		SccProvider36 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName37 = FileLocker\\FileLocker.csproj
+		SccProjectName37 = FileLocker
+		SccAuxPath37 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath37 = FileLocker
+		SccProvider37 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName38 = EncryptionDecryption\\EncryptionDecryption.csproj
+		SccProjectName38 = EncryptionDecryption
+		SccAuxPath38 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath38 = EncryptionDecryption
+		SccProvider38 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName39 = OxigenIILogStructuresRaw\\ScreenSaverSingletons.csproj
+		SccProjectName39 = OxigenIILogStructuresRaw
+		SccAuxPath39 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath39 = OxigenIILogStructuresRaw
+		SccProvider39 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName40 = LogWriteOperations\\LogSingletonAccessor.csproj
+		SccProjectName40 = LogWriteOperations
+		SccAuxPath40 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath40 = LogWriteOperations
+		SccProvider40 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName41 = OxigenIITest\\OxigenIITest.csproj
+		SccProjectName41 = OxigenIITest
+		SccAuxPath41 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath41 = OxigenIITest
+		SccProvider41 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName42 = FileRightsChecker\\FileRightsChecker.csproj
+		SccProjectName42 = FileRightsChecker
+		SccAuxPath42 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath42 = FileRightsChecker
+		SccProvider42 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName43 = PlaylistAssetPicker\\PlaylistAssetPicker.csproj
+		SccProjectName43 = PlaylistAssetPicker
+		SccAuxPath43 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath43 = PlaylistAssetPicker
+		SccProvider43 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName44 = NoAssetsAnimator\\NoAssetsAnimator.csproj
+		SccProjectName44 = NoAssetsAnimator
+		SccAuxPath44 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath44 = NoAssetsAnimator
+		SccProvider44 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName45 = XmlSerializableSortableGenericList\\XmlSerializableSortableGenericList.csproj
+		SccProjectName45 = XmlSerializableSortableGenericList
+		SccAuxPath45 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath45 = XmlSerializableSortableGenericList
+		SccProvider45 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName46 = OxigenIISSG\\OxigenIITray.csproj
+		SccProjectName46 = OxigenIISSG
+		SccAuxPath46 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath46 = OxigenIISSG
+		SccProvider46 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName47 = OxigenIISSGService\\SSGService.csproj
+		SccProjectName47 = OxigenIISSGService
+		SccAuxPath47 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath47 = OxigenIISSGService
+		SccProvider47 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName48 = OxigenIIScreenSaverConfig\\OxigenIIScreenSaverConfig.csproj
+		SccProjectName48 = OxigenIIScreenSaverConfig
+		SccAuxPath48 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath48 = OxigenIIScreenSaverConfig
+		SccProvider48 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName49 = InternetConnectionCheck\\InternetConnectionCheck.csproj
+		SccProjectName49 = InternetConnectionCheck
+		SccAuxPath49 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath49 = InternetConnectionCheck
+		SccProvider49 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName50 = TimeSpanObjectWrapper\\TimeSpanObjectWrapper.csproj
+		SccProjectName50 = TimeSpanObjectWrapper
+		SccAuxPath50 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath50 = TimeSpanObjectWrapper
+		SccProvider50 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName51 = UserSettings\\UserSettings.csproj
+		SccProjectName51 = UserSettings
+		SccAuxPath51 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath51 = UserSettings
+		SccProvider51 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName52 = OxigenIIServiceFactory\\OxigenIIServiceFactory.csproj
+		SccProjectName52 = OxigenIIServiceFactory
+		SccAuxPath52 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath52 = OxigenIIServiceFactory
+		SccProvider52 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName53 = BoolContainerLib\\BoolContainerLib.csproj
+		SccProjectName53 = BoolContainerLib
+		SccAuxPath53 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath53 = BoolContainerLib
+		SccProvider53 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName54 = SimpleInstaller\\SimpleInstaller.csproj
+		SccProjectName54 = SimpleInstaller
+		SccAuxPath54 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath54 = SimpleInstaller
+		SccProvider54 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName55 = OxigenIIStopwatch\\OxigenIIStopwatch.csproj
+		SccProjectName55 = OxigenIIStopwatch
+		SccAuxPath55 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath55 = OxigenIIStopwatch
+		SccProvider55 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName56 = OxigenIIMasterDataMarshallerClient\\OxigenIIMasterDataMarshallerClient.csproj
+		SccProjectName56 = OxigenIIMasterDataMarshallerClient
+		SccAuxPath56 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath56 = OxigenIIMasterDataMarshallerClient
+		SccProvider56 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName57 = OxigenIIMasterDataMarContracts\\OxigenIIMasterDataMarContracts.csproj
+		SccProjectName57 = OxigenIIMasterDataMarContracts
+		SccAuxPath57 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath57 = OxigenIIMasterDataMarContracts
+		SccProvider57 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName58 = InterCommunicationStructures\\InterCommunicationStructures.csproj
+		SccProjectName58 = InterCommunicationStructures
+		SccAuxPath58 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath58 = InterCommunicationStructures
+		SccProvider58 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName59 = OxigenIIChannelData\\ChannelData.csproj
+		SccProjectName59 = OxigenIIChannelData
+		SccAuxPath59 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath59 = OxigenIIChannelData
+		SccProvider59 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName60 = OxigenIIChannelSubscriptions\\ChannelSubscriptions.csproj
+		SccProjectName60 = OxigenIIChannelSubscriptions
+		SccAuxPath60 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath60 = OxigenIIChannelSubscriptions
+		SccProvider60 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName61 = OxigenIIDemographicData\\DemographicData.csproj
+		SccProjectName61 = OxigenIIDemographicData
+		SccAuxPath61 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath61 = OxigenIIDemographicData
+		SccProvider61 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName62 = OxigenIIMasterDataMarshaller\\OxigenIIMasterDataMarshaller.csproj
+		SccProjectName62 = OxigenIIMasterDataMarshaller
+		SccAuxPath62 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath62 = OxigenIIMasterDataMarshaller
+		SccProvider62 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName63 = OxigenHeartbeatAggregator\\OxigenHeartbeatAggregator.csproj
+		SccProjectName63 = OxigenHeartbeatAggregator
+		SccAuxPath63 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath63 = OxigenHeartbeatAggregator
+		SccProvider63 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName64 = DataAggregators\\DataAggregators.csproj
+		SccProjectName64 = DataAggregators
+		SccAuxPath64 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath64 = DataAggregators
+		SccProvider64 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName65 = OxigenUninstallInfoAggregator\\OxigenUninstallInfoAggregator.csproj
+		SccProjectName65 = OxigenUninstallInfoAggregator
+		SccAuxPath65 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath65 = OxigenUninstallInfoAggregator
+		SccProvider65 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName66 = OxigenScreenSaverProductAggregator\\OxigenScreenSaverProductAggregator.csproj
+		SccProjectName66 = OxigenScreenSaverProductAggregator
+		SccAuxPath66 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath66 = OxigenScreenSaverProductAggregator
+		SccProvider66 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName67 = OxigenIIComponentInfo\\ComponentInfo.csproj
+		SccProjectName67 = OxigenIIComponentInfo
+		SccAuxPath67 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath67 = OxigenIIComponentInfo
+		SccProvider67 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName68 = OxigenIIPresentation\\OxigenIIPresentation.csproj
+		SccProjectName68 = OxigenIIPresentation
+		SccAuxPath68 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath68 = OxigenIIPresentation
+		SccProvider68 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName69 = FlatAggregatedLogStructures\\FlatAggregatedLogStructures.csproj
+		SccProjectName69 = FlatAggregatedLogStructures
+		SccAuxPath69 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath69 = FlatAggregatedLogStructures
+		SccProvider69 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName70 = LINQtoDL\\LINQtoDL.csproj
+		SccProjectName70 = LINQtoDL
+		SccAuxPath70 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath70 = LINQtoDL
+		SccProvider70 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName71 = OxigenLogAggregator\\OxigenLogAggregator.csproj
+		SccProjectName71 = OxigenLogAggregator
+		SccAuxPath71 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath71 = OxigenLogAggregator
+		SccProvider71 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName72 = SOAStructures\\SOAStructures.csproj
+		SccProjectName72 = SOAStructures
+		SccAuxPath72 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath72 = SOAStructures
+		SccProvider72 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName73 = OxigenIISitesBLClient\\OxigenIISitesBLClient.csproj
+		SccProjectName73 = OxigenIISitesBLClient
+		SccAuxPath73 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath73 = OxigenIISitesBLClient
+		SccProvider73 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName74 = BLHostService\\BLHostService.csproj
+		SccProjectName74 = BLHostService
+		SccAuxPath74 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath74 = BLHostService
+		SccProvider74 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName75 = BLHost\\BLHost.csproj
+		SccProjectName75 = BLHost
+		SccAuxPath75 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath75 = BLHost
+		SccProvider75 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName76 = OxigenIISitesBLContracts\\OxigenIISitesBLContracts.csproj
+		SccProjectName76 = OxigenIISitesBLContracts
+		SccAuxPath76 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath76 = OxigenIISitesBLContracts
+		SccProvider76 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName77 = OxigenIIDAContracts\\OxigenIIDAContracts.csproj
+		SccProjectName77 = OxigenIIDAContracts
+		SccAuxPath77 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath77 = OxigenIIDAContracts
+		SccProvider77 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName78 = OxigenIIDAClient\\OxigenIIDAClient.csproj
+		SccProjectName78 = OxigenIIDAClient
+		SccAuxPath78 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath78 = OxigenIIDAClient
+		SccProvider78 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName79 = DAHost\\DAHost.csproj
+		SccProjectName79 = DAHost
+		SccAuxPath79 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath79 = DAHost
+		SccProvider79 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName80 = DAHostService\\DAHostService.csproj
+		SccProjectName80 = DAHostService
+		SccAuxPath80 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath80 = DAHostService
+		SccProvider80 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName81 = ProxyClientBaseLib\\ProxyClientBaseLib.csproj
+		SccProjectName81 = ProxyClientBaseLib
+		SccAuxPath81 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath81 = ProxyClientBaseLib
+		SccProvider81 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName82 = OxigenIIScreenSaver\\OxigenIIScreenSaver\\OxigenIIScreenSaver.csproj
+		SccProjectName82 = OxigenIIScreenSaver/OxigenIIScreenSaver
+		SccAuxPath82 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath82 = OxigenIIScreenSaver\\OxigenIIScreenSaver
+		SccProvider82 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName83 = OxigenIIAssetScheduling\\AssetScheduling.csproj
+		SccProjectName83 = OxigenIIAssetScheduling
+		SccAuxPath83 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath83 = OxigenIIAssetScheduling
+		SccProvider83 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName84 = DataAccess\\DataAccess.csproj
+		SccProjectName84 = DataAccess
+		SccAuxPath84 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath84 = DataAccess
+		SccProvider84 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName85 = OxigenIIUserDataMarshallrService\\OxigenIIUserDataMarshallrService.csproj
+		SccProjectName85 = OxigenIIUserDataMarshallrService
+		SccAuxPath85 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath85 = OxigenIIUserDataMarshallrService
+		SccProvider85 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName86 = OxigenIIUserMgmtServicesService\\OxigenIIUserMgmtServicesService.csproj
+		SccProjectName86 = OxigenIIUserMgmtServicesService
+		SccAuxPath86 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath86 = OxigenIIUserMgmtServicesService
+		SccProvider86 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName87 = OxigenIIUserFileMarServices\\OxigenIIUserFileMarServices.csproj
+		SccProjectName87 = OxigenIIUserFileMarServices
+		SccAuxPath87 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath87 = OxigenIIUserFileMarServices
+		SccProvider87 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName88 = OxigenIIMasterDataMarServices\\OxigenIIMasterDataMarServices.csproj
+		SccProjectName88 = OxigenIIMasterDataMarServices
+		SccAuxPath88 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath88 = OxigenIIMasterDataMarServices
+		SccProvider88 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName89 = OxigenIISitesBLServices\\OxigenIISitesBLServices.csproj
+		SccProjectName89 = OxigenIISitesBLServices
+		SccAuxPath89 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath89 = OxigenIISitesBLServices
+		SccProvider89 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName90 = OxigenIIDAServices\\OxigenIIDAServices.csproj
+		SccProjectName90 = OxigenIIDAServices
+		SccAuxPath90 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath90 = OxigenIIDAServices
+		SccProvider90 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName91 = FilenameMakerLib\\FilenameMakerLib.csproj
+		SccProjectName91 = FilenameMakerLib
+		SccAuxPath91 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath91 = FilenameMakerLib
+		SccProvider91 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName92 = ChannelDatabaseToRelayUploaderLib\\ChannelDatabaseToRelayUploaderLib.csproj
+		SccProjectName92 = ChannelDatabaseToRelayUploaderLib
+		SccAuxPath92 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath92 = ChannelDatabaseToRelayUploaderLib
+		SccProvider92 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName93 = MasterDataMarshallerService\\MasterDataMarshallerService.csproj
+		SccProjectName93 = MasterDataMarshallerService
+		SccAuxPath93 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath93 = MasterDataMarshallerService
+		SccProvider93 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName94 = ChannelDatabaseToRelayUploaderSvc\\ChannelDatabaseToRelayUploaderSvc.csproj
+		SccProjectName94 = ChannelDatabaseToRelayUploaderSvc
+		SccAuxPath94 = http://tfs-server.obs-group.co.uk:8080
+		SccLocalPath94 = ChannelDatabaseToRelayUploaderSvc
+		SccProvider94 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = OxigenIIAdvertising3.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEBA9756-1135-44EA-9F8C-59FD30F64EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEBA9756-1135-44EA-9F8C-59FD30F64EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEBA9756-1135-44EA-9F8C-59FD30F64EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEBA9756-1135-44EA-9F8C-59FD30F64EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24134EAF-1B5B-4329-9071-15629067E98D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24134EAF-1B5B-4329-9071-15629067E98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24134EAF-1B5B-4329-9071-15629067E98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24134EAF-1B5B-4329-9071-15629067E98D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02CE096A-08E3-472F-A8B9-0C8DE4C29D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02CE096A-08E3-472F-A8B9-0C8DE4C29D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02CE096A-08E3-472F-A8B9-0C8DE4C29D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02CE096A-08E3-472F-A8B9-0C8DE4C29D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA2DD1C3-9DA5-4A08-AB79-FA2C0B396E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA2DD1C3-9DA5-4A08-AB79-FA2C0B396E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA2DD1C3-9DA5-4A08-AB79-FA2C0B396E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA2DD1C3-9DA5-4A08-AB79-FA2C0B396E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B94F02-FE73-4AE9-B5C7-935991C4F4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B94F02-FE73-4AE9-B5C7-935991C4F4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B94F02-FE73-4AE9-B5C7-935991C4F4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B94F02-FE73-4AE9-B5C7-935991C4F4B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{023A7A25-2BAE-4B3F-AC20-6FA65055C852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{023A7A25-2BAE-4B3F-AC20-6FA65055C852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{023A7A25-2BAE-4B3F-AC20-6FA65055C852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{023A7A25-2BAE-4B3F-AC20-6FA65055C852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B5B0116-D15B-45B6-B4B9-84B63D83222F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B5B0116-D15B-45B6-B4B9-84B63D83222F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B5B0116-D15B-45B6-B4B9-84B63D83222F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B5B0116-D15B-45B6-B4B9-84B63D83222F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905FC382-9356-4BD1-9F66-0947A6F2FC57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905FC382-9356-4BD1-9F66-0947A6F2FC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905FC382-9356-4BD1-9F66-0947A6F2FC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905FC382-9356-4BD1-9F66-0947A6F2FC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4983D647-18D3-40DE-B15C-555D3E411244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4983D647-18D3-40DE-B15C-555D3E411244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4983D647-18D3-40DE-B15C-555D3E411244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4983D647-18D3-40DE-B15C-555D3E411244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E51006D-BB71-41F0-BDB5-480FDDD1C5FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E51006D-BB71-41F0-BDB5-480FDDD1C5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E51006D-BB71-41F0-BDB5-480FDDD1C5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E51006D-BB71-41F0-BDB5-480FDDD1C5FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B3ECDB-7490-4303-8EDA-A0DFE79F0189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B3ECDB-7490-4303-8EDA-A0DFE79F0189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B3ECDB-7490-4303-8EDA-A0DFE79F0189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B3ECDB-7490-4303-8EDA-A0DFE79F0189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC84B1F8-B3E8-48B5-93B5-EA1871CBF4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC84B1F8-B3E8-48B5-93B5-EA1871CBF4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC84B1F8-B3E8-48B5-93B5-EA1871CBF4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC84B1F8-B3E8-48B5-93B5-EA1871CBF4C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25FE3B01-651A-4F05-8834-A9AED77AE034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25FE3B01-651A-4F05-8834-A9AED77AE034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25FE3B01-651A-4F05-8834-A9AED77AE034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25FE3B01-651A-4F05-8834-A9AED77AE034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9336AE54-20DB-468F-93BA-837CDAB30221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9336AE54-20DB-468F-93BA-837CDAB30221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9336AE54-20DB-468F-93BA-837CDAB30221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9336AE54-20DB-468F-93BA-837CDAB30221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A597E4-9B88-49A0-901A-B6F507037FA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A597E4-9B88-49A0-901A-B6F507037FA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A597E4-9B88-49A0-901A-B6F507037FA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A597E4-9B88-49A0-901A-B6F507037FA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DAEB202-482A-450C-9B17-A06F336AFEA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DAEB202-482A-450C-9B17-A06F336AFEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DAEB202-482A-450C-9B17-A06F336AFEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DAEB202-482A-450C-9B17-A06F336AFEA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE93E99-A928-42A4-B397-20B9F15FF4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE93E99-A928-42A4-B397-20B9F15FF4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE93E99-A928-42A4-B397-20B9F15FF4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE93E99-A928-42A4-B397-20B9F15FF4F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ACC96A8-7971-4BC4-A966-FEF078E91139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ACC96A8-7971-4BC4-A966-FEF078E91139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ACC96A8-7971-4BC4-A966-FEF078E91139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ACC96A8-7971-4BC4-A966-FEF078E91139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB76EF64-7ACD-4799-95C4-D7B032994EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB76EF64-7ACD-4799-95C4-D7B032994EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB76EF64-7ACD-4799-95C4-D7B032994EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB76EF64-7ACD-4799-95C4-D7B032994EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF712E4-68CC-40C4-BBC7-19B6AA44BF78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF712E4-68CC-40C4-BBC7-19B6AA44BF78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF712E4-68CC-40C4-BBC7-19B6AA44BF78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF712E4-68CC-40C4-BBC7-19B6AA44BF78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE5DD0D-7208-4ADD-B851-489CE91925E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE5DD0D-7208-4ADD-B851-489CE91925E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE5DD0D-7208-4ADD-B851-489CE91925E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE5DD0D-7208-4ADD-B851-489CE91925E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24B8A98-35C3-4E46-B6CB-E7BC9373CD91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24B8A98-35C3-4E46-B6CB-E7BC9373CD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24B8A98-35C3-4E46-B6CB-E7BC9373CD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24B8A98-35C3-4E46-B6CB-E7BC9373CD91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1F4201F-CAAC-48B3-B8DC-D52E04BCDB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1F4201F-CAAC-48B3-B8DC-D52E04BCDB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1F4201F-CAAC-48B3-B8DC-D52E04BCDB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1F4201F-CAAC-48B3-B8DC-D52E04BCDB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5DD2597-ECC6-41EE-9711-501DC90D0119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5DD2597-ECC6-41EE-9711-501DC90D0119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5DD2597-ECC6-41EE-9711-501DC90D0119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5DD2597-ECC6-41EE-9711-501DC90D0119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2B64668-B590-4233-9381-00B191C899C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2B64668-B590-4233-9381-00B191C899C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2B64668-B590-4233-9381-00B191C899C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2B64668-B590-4233-9381-00B191C899C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B50928-CF1B-49DA-AB9C-ACB6927CA955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B50928-CF1B-49DA-AB9C-ACB6927CA955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B50928-CF1B-49DA-AB9C-ACB6927CA955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B50928-CF1B-49DA-AB9C-ACB6927CA955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1D6D63-8E88-4E94-B8FE-44A652ACF3D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1D6D63-8E88-4E94-B8FE-44A652ACF3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1D6D63-8E88-4E94-B8FE-44A652ACF3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1D6D63-8E88-4E94-B8FE-44A652ACF3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9ADD13C-D7CE-4C42-8C0C-65D617C5DFAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9ADD13C-D7CE-4C42-8C0C-65D617C5DFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9ADD13C-D7CE-4C42-8C0C-65D617C5DFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9ADD13C-D7CE-4C42-8C0C-65D617C5DFAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401432CD-4E44-4863-84A9-CCE5F9579A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401432CD-4E44-4863-84A9-CCE5F9579A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401432CD-4E44-4863-84A9-CCE5F9579A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401432CD-4E44-4863-84A9-CCE5F9579A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B313BBB-227B-492F-A1E8-0755C588BA21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B313BBB-227B-492F-A1E8-0755C588BA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B313BBB-227B-492F-A1E8-0755C588BA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B313BBB-227B-492F-A1E8-0755C588BA21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3736B130-0A0E-45C5-937A-9328DE0696E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3736B130-0A0E-45C5-937A-9328DE0696E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3736B130-0A0E-45C5-937A-9328DE0696E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3736B130-0A0E-45C5-937A-9328DE0696E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73BBA100-B863-4D43-9DB5-373B235A4962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73BBA100-B863-4D43-9DB5-373B235A4962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73BBA100-B863-4D43-9DB5-373B235A4962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73BBA100-B863-4D43-9DB5-373B235A4962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C486BC9-00F6-48F7-BB49-4CFABBE47DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C486BC9-00F6-48F7-BB49-4CFABBE47DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C486BC9-00F6-48F7-BB49-4CFABBE47DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C486BC9-00F6-48F7-BB49-4CFABBE47DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1879A4E6-10AA-4FD2-A11B-5D4FE500D67B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1879A4E6-10AA-4FD2-A11B-5D4FE500D67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1879A4E6-10AA-4FD2-A11B-5D4FE500D67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1879A4E6-10AA-4FD2-A11B-5D4FE500D67B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D072296F-E55A-4F46-8631-A3577C6E955D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D072296F-E55A-4F46-8631-A3577C6E955D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D072296F-E55A-4F46-8631-A3577C6E955D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D072296F-E55A-4F46-8631-A3577C6E955D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FDFB1A6-A7C5-4B2E-AD45-B002E9222370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FDFB1A6-A7C5-4B2E-AD45-B002E9222370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FDFB1A6-A7C5-4B2E-AD45-B002E9222370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FDFB1A6-A7C5-4B2E-AD45-B002E9222370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C9638A-0FF7-4D62-B2E3-8174FA7D7530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C9638A-0FF7-4D62-B2E3-8174FA7D7530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C9638A-0FF7-4D62-B2E3-8174FA7D7530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C9638A-0FF7-4D62-B2E3-8174FA7D7530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940650B2-518E-49B2-B716-22B3737731D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940650B2-518E-49B2-B716-22B3737731D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940650B2-518E-49B2-B716-22B3737731D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940650B2-518E-49B2-B716-22B3737731D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B432D1DF-1D47-4AAB-9AE9-2CC483094E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B432D1DF-1D47-4AAB-9AE9-2CC483094E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B432D1DF-1D47-4AAB-9AE9-2CC483094E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B432D1DF-1D47-4AAB-9AE9-2CC483094E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD4D0664-9B0D-49BE-BED4-E4AC23D2F909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD4D0664-9B0D-49BE-BED4-E4AC23D2F909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD4D0664-9B0D-49BE-BED4-E4AC23D2F909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD4D0664-9B0D-49BE-BED4-E4AC23D2F909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F5B732D-C21E-4853-9882-D30AD8C1A1E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F5B732D-C21E-4853-9882-D30AD8C1A1E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F5B732D-C21E-4853-9882-D30AD8C1A1E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F5B732D-C21E-4853-9882-D30AD8C1A1E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{698CC733-76C2-4425-921C-A2EE1609F986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{698CC733-76C2-4425-921C-A2EE1609F986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{698CC733-76C2-4425-921C-A2EE1609F986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{698CC733-76C2-4425-921C-A2EE1609F986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9CF6E7-B071-4B5E-A951-2D997F9ADFD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9CF6E7-B071-4B5E-A951-2D997F9ADFD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9CF6E7-B071-4B5E-A951-2D997F9ADFD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9CF6E7-B071-4B5E-A951-2D997F9ADFD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1545A1E9-4F46-4214-89DA-F796F6DC9955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1545A1E9-4F46-4214-89DA-F796F6DC9955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1545A1E9-4F46-4214-89DA-F796F6DC9955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1545A1E9-4F46-4214-89DA-F796F6DC9955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63BC3CFC-BE52-4CBB-899E-235D81AFABF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63BC3CFC-BE52-4CBB-899E-235D81AFABF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63BC3CFC-BE52-4CBB-899E-235D81AFABF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63BC3CFC-BE52-4CBB-899E-235D81AFABF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A085FD2D-8013-4CBE-B901-68A3C204C5D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A085FD2D-8013-4CBE-B901-68A3C204C5D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A085FD2D-8013-4CBE-B901-68A3C204C5D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A085FD2D-8013-4CBE-B901-68A3C204C5D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D95252F-F799-4AA9-A617-790FC4522BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D95252F-F799-4AA9-A617-790FC4522BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D95252F-F799-4AA9-A617-790FC4522BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D95252F-F799-4AA9-A617-790FC4522BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFF05119-8F47-48C8-9371-83C65B3F9400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFF05119-8F47-48C8-9371-83C65B3F9400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFF05119-8F47-48C8-9371-83C65B3F9400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFF05119-8F47-48C8-9371-83C65B3F9400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9D6DAD1-9746-4508-A095-7BB7D2173113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9D6DAD1-9746-4508-A095-7BB7D2173113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9D6DAD1-9746-4508-A095-7BB7D2173113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9D6DAD1-9746-4508-A095-7BB7D2173113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7461B0BB-836E-48F1-BA45-6A8F93F7A628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7461B0BB-836E-48F1-BA45-6A8F93F7A628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7461B0BB-836E-48F1-BA45-6A8F93F7A628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7461B0BB-836E-48F1-BA45-6A8F93F7A628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369A56B9-C812-4FB2-B50F-35ADDAC8351E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369A56B9-C812-4FB2-B50F-35ADDAC8351E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369A56B9-C812-4FB2-B50F-35ADDAC8351E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369A56B9-C812-4FB2-B50F-35ADDAC8351E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB429334-2D03-4AE9-9351-A0058F1EFE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB429334-2D03-4AE9-9351-A0058F1EFE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB429334-2D03-4AE9-9351-A0058F1EFE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB429334-2D03-4AE9-9351-A0058F1EFE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4998F27D-0B97-4DF3-9810-E38BF3B2068B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4998F27D-0B97-4DF3-9810-E38BF3B2068B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4998F27D-0B97-4DF3-9810-E38BF3B2068B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4998F27D-0B97-4DF3-9810-E38BF3B2068B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B977CC56-E60B-4426-B5A5-167E64C80871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B977CC56-E60B-4426-B5A5-167E64C80871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B977CC56-E60B-4426-B5A5-167E64C80871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B977CC56-E60B-4426-B5A5-167E64C80871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872830FD-3BF3-45D1-9C98-3D51A107B1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872830FD-3BF3-45D1-9C98-3D51A107B1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872830FD-3BF3-45D1-9C98-3D51A107B1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872830FD-3BF3-45D1-9C98-3D51A107B1E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2B3DCB0-1DFF-4D70-BE92-4CFAA93986AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2B3DCB0-1DFF-4D70-BE92-4CFAA93986AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2B3DCB0-1DFF-4D70-BE92-4CFAA93986AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2B3DCB0-1DFF-4D70-BE92-4CFAA93986AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BFF8C38-3902-49AE-88B9-C5E53727A019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BFF8C38-3902-49AE-88B9-C5E53727A019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BFF8C38-3902-49AE-88B9-C5E53727A019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BFF8C38-3902-49AE-88B9-C5E53727A019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF6DC54-E02D-47A8-B74D-C89F9E944687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF6DC54-E02D-47A8-B74D-C89F9E944687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF6DC54-E02D-47A8-B74D-C89F9E944687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF6DC54-E02D-47A8-B74D-C89F9E944687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9C9E18-82B5-4870-9510-DFD781B7A7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9C9E18-82B5-4870-9510-DFD781B7A7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9C9E18-82B5-4870-9510-DFD781B7A7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9C9E18-82B5-4870-9510-DFD781B7A7F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{405D3C86-4D83-4FC9-8842-8D88C0398B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405D3C86-4D83-4FC9-8842-8D88C0398B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405D3C86-4D83-4FC9-8842-8D88C0398B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405D3C86-4D83-4FC9-8842-8D88C0398B99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9254A344-1530-4B91-AEC8-3B662CE3E56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9254A344-1530-4B91-AEC8-3B662CE3E56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9254A344-1530-4B91-AEC8-3B662CE3E56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9254A344-1530-4B91-AEC8-3B662CE3E56B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06212163-8BDA-4BB2-B8DB-7DF1EBB4F251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06212163-8BDA-4BB2-B8DB-7DF1EBB4F251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06212163-8BDA-4BB2-B8DB-7DF1EBB4F251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06212163-8BDA-4BB2-B8DB-7DF1EBB4F251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7A47AB8-1E9A-4D10-9C68-23D7F8E1CF56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7A47AB8-1E9A-4D10-9C68-23D7F8E1CF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7A47AB8-1E9A-4D10-9C68-23D7F8E1CF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7A47AB8-1E9A-4D10-9C68-23D7F8E1CF56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80F2C691-B2F0-4F56-A746-BB43EDEF90A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F2C691-B2F0-4F56-A746-BB43EDEF90A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80F2C691-B2F0-4F56-A746-BB43EDEF90A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80F2C691-B2F0-4F56-A746-BB43EDEF90A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91784828-25A0-4DF4-B956-822990AAA8C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91784828-25A0-4DF4-B956-822990AAA8C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91784828-25A0-4DF4-B956-822990AAA8C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91784828-25A0-4DF4-B956-822990AAA8C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C049124C-D780-431E-A313-6E3627F6D863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C049124C-D780-431E-A313-6E3627F6D863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C049124C-D780-431E-A313-6E3627F6D863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C049124C-D780-431E-A313-6E3627F6D863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE862F44-16EF-4D9E-9AA2-A45FF2092895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE862F44-16EF-4D9E-9AA2-A45FF2092895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE862F44-16EF-4D9E-9AA2-A45FF2092895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE862F44-16EF-4D9E-9AA2-A45FF2092895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65200738-FA6B-4ACE-8671-A93B4495AD08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65200738-FA6B-4ACE-8671-A93B4495AD08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65200738-FA6B-4ACE-8671-A93B4495AD08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65200738-FA6B-4ACE-8671-A93B4495AD08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{823E3A22-AA5B-4843-AEBC-167D91DC0A59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{823E3A22-AA5B-4843-AEBC-167D91DC0A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{823E3A22-AA5B-4843-AEBC-167D91DC0A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{823E3A22-AA5B-4843-AEBC-167D91DC0A59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF2E77E6-6434-4467-B199-6038BA279460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF2E77E6-6434-4467-B199-6038BA279460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF2E77E6-6434-4467-B199-6038BA279460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF2E77E6-6434-4467-B199-6038BA279460}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328E0FFB-73DD-4F8B-8DD4-58214B741F2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328E0FFB-73DD-4F8B-8DD4-58214B741F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328E0FFB-73DD-4F8B-8DD4-58214B741F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328E0FFB-73DD-4F8B-8DD4-58214B741F2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83BBF96A-3E50-4944-AE2A-C4D4E409D01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83BBF96A-3E50-4944-AE2A-C4D4E409D01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83BBF96A-3E50-4944-AE2A-C4D4E409D01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83BBF96A-3E50-4944-AE2A-C4D4E409D01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49F4A844-0E88-43D8-87B6-3ABA86A4DF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49F4A844-0E88-43D8-87B6-3ABA86A4DF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49F4A844-0E88-43D8-87B6-3ABA86A4DF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49F4A844-0E88-43D8-87B6-3ABA86A4DF16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77ED4C6A-C4C1-447A-A9FA-D0EDEFD2AF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77ED4C6A-C4C1-447A-A9FA-D0EDEFD2AF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77ED4C6A-C4C1-447A-A9FA-D0EDEFD2AF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77ED4C6A-C4C1-447A-A9FA-D0EDEFD2AF27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA097A4-C673-444A-A4ED-3202357C65D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA097A4-C673-444A-A4ED-3202357C65D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA097A4-C673-444A-A4ED-3202357C65D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA097A4-C673-444A-A4ED-3202357C65D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB4F6039-D5CB-456D-836E-B6307EFD7D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB4F6039-D5CB-456D-836E-B6307EFD7D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB4F6039-D5CB-456D-836E-B6307EFD7D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB4F6039-D5CB-456D-836E-B6307EFD7D4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C5651C-ABA0-4582-BE0D-4F99930FC9C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C5651C-ABA0-4582-BE0D-4F99930FC9C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C5651C-ABA0-4582-BE0D-4F99930FC9C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C5651C-ABA0-4582-BE0D-4F99930FC9C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BFB76CE-EE70-4A7D-B70F-9A13E05AF1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFB76CE-EE70-4A7D-B70F-9A13E05AF1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFB76CE-EE70-4A7D-B70F-9A13E05AF1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFB76CE-EE70-4A7D-B70F-9A13E05AF1BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29657AD1-63BF-48D6-90FA-EE20A3F2FA2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29657AD1-63BF-48D6-90FA-EE20A3F2FA2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29657AD1-63BF-48D6-90FA-EE20A3F2FA2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29657AD1-63BF-48D6-90FA-EE20A3F2FA2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17265B81-FA8E-4016-BE6A-CEAB89CAE76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17265B81-FA8E-4016-BE6A-CEAB89CAE76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17265B81-FA8E-4016-BE6A-CEAB89CAE76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17265B81-FA8E-4016-BE6A-CEAB89CAE76E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{144D6CA7-61A5-437F-880C-6D3591A5EBD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{144D6CA7-61A5-437F-880C-6D3591A5EBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{144D6CA7-61A5-437F-880C-6D3591A5EBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{144D6CA7-61A5-437F-880C-6D3591A5EBD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D0E8EB0-A926-47C1-8F45-5FBEF3E5C845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D0E8EB0-A926-47C1-8F45-5FBEF3E5C845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D0E8EB0-A926-47C1-8F45-5FBEF3E5C845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D0E8EB0-A926-47C1-8F45-5FBEF3E5C845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50C29A8-6B88-436F-A938-61166E695483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50C29A8-6B88-436F-A938-61166E695483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50C29A8-6B88-436F-A938-61166E695483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50C29A8-6B88-436F-A938-61166E695483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F49B55D4-1F4D-4F24-A978-4FA55A39EFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F49B55D4-1F4D-4F24-A978-4FA55A39EFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F49B55D4-1F4D-4F24-A978-4FA55A39EFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F49B55D4-1F4D-4F24-A978-4FA55A39EFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13C82DBF-07F0-422C-B999-A94FF5C55DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C82DBF-07F0-422C-B999-A94FF5C55DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C82DBF-07F0-422C-B999-A94FF5C55DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C82DBF-07F0-422C-B999-A94FF5C55DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E4EEE69-69DD-4C7B-9BC0-43B420E2DA9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E4EEE69-69DD-4C7B-9BC0-43B420E2DA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E4EEE69-69DD-4C7B-9BC0-43B420E2DA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E4EEE69-69DD-4C7B-9BC0-43B420E2DA9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B175112-1459-4518-87DB-7720518C8126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B175112-1459-4518-87DB-7720518C8126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B175112-1459-4518-87DB-7720518C8126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B175112-1459-4518-87DB-7720518C8126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF3093AF-33DD-4A64-A87E-73FAF2CADD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF3093AF-33DD-4A64-A87E-73FAF2CADD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF3093AF-33DD-4A64-A87E-73FAF2CADD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF3093AF-33DD-4A64-A87E-73FAF2CADD81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D6199B0-9088-48EA-9C0A-6F5655216D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D6199B0-9088-48EA-9C0A-6F5655216D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D6199B0-9088-48EA-9C0A-6F5655216D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D6199B0-9088-48EA-9C0A-6F5655216D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17060F4B-F9EE-4C1E-A787-F1F1F7F7A5F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17060F4B-F9EE-4C1E-A787-F1F1F7F7A5F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17060F4B-F9EE-4C1E-A787-F1F1F7F7A5F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17060F4B-F9EE-4C1E-A787-F1F1F7F7A5F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E4B18E-770E-4756-B824-B47BD4C56EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E4B18E-770E-4756-B824-B47BD4C56EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E4B18E-770E-4756-B824-B47BD4C56EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E4B18E-770E-4756-B824-B47BD4C56EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB5BD0D0-8542-4C91-9929-D58A1159D2C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5BD0D0-8542-4C91-9929-D58A1159D2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5BD0D0-8542-4C91-9929-D58A1159D2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5BD0D0-8542-4C91-9929-D58A1159D2C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DD423AA-9010-44A7-9288-4DD922B33B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD423AA-9010-44A7-9288-4DD922B33B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD423AA-9010-44A7-9288-4DD922B33B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD423AA-9010-44A7-9288-4DD922B33B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F0068A-32A5-4107-A736-0338E9C3C415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F0068A-32A5-4107-A736-0338E9C3C415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F0068A-32A5-4107-A736-0338E9C3C415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F0068A-32A5-4107-A736-0338E9C3C415}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

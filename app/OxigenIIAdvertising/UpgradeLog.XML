@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="OxigenIIAdvertising">
+</Property><Property Name="Solution File" Value="C:\Oxigen\OxigenII Advertising System\OxigenIIAdvertising\OxigenIIAdvertising\OxigenIIAdvertising.sln">
+</Property><Property Name="Date" Value="14 March 2011">
+</Property><Property Name="Time" Value="15:23">
+</Property></Properties><Event ErrorLevel="0" Project="WCFErrorReporting" Source="..\WCFErrorReporting\WCFErrorReporting.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="WCFErrorReporting" Source="..\WCFErrorReporting\WCFErrorReporting.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserDataMarshallrContracts" Source="..\OxigenIIUserDataMarshallrContracts\OxigenIIUserDataMarshallrContracts.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIUserDataMarshallrContracts" Source="..\OxigenIIUserDataMarshallrContracts\OxigenIIUserDataMarshallrContracts.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="InterCommunicationStructures" Source="..\InterCommunicationStructures\InterCommunicationStructures.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="InterCommunicationStructures" Source="..\InterCommunicationStructures\InterCommunicationStructures.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LoggerInfo" Source="..\OxigenIILoggerInfo\LoggerInfo.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LoggerInfo" Source="..\OxigenIILoggerInfo\LoggerInfo.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="XMLSerializer" Source="..\OxigenIIXMLSerializer\XMLSerializer.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="XMLSerializer" Source="..\OxigenIIXMLSerializer\XMLSerializer.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="XMLSerializer" Source="..\OxigenIIXMLSerializer\XMLSerializer.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="Exceptions" Source="..\OxigenIIExceptions\Exceptions.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="Exceptions" Source="..\OxigenIIExceptions\Exceptions.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Exceptions" Source="..\OxigenIIExceptions\Exceptions.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Assets" Source="..\Assets\Assets.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Assets" Source="..\Assets\Assets.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PlayerType" Source="..\OxigenIIPlayerType\PlayerType.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PlayerType" Source="..\OxigenIIPlayerType\PlayerType.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="EncryptionDecryption" Source="..\EncryptionDecryption\EncryptionDecryption.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="EncryptionDecryption" Source="..\EncryptionDecryption\EncryptionDecryption.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="EncryptionDecryption" Source="..\EncryptionDecryption\EncryptionDecryption.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FileLocker" Source="..\FileLocker\FileLocker.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FileLocker" Source="..\FileLocker\FileLocker.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BLHost" Source="..\BLHost\BLHost.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="BLHost" Source="..\BLHost\BLHost.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIISitesBLClient" Source="..\OxigenIISitesBLClient\OxigenIISitesBLClient.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIISitesBLClient" Source="..\OxigenIISitesBLClient\OxigenIISitesBLClient.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIISitesBLServices" Source="..\OxigenIISitesBLServices\OxigenIISitesBLServices.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIISitesBLServices" Source="..\OxigenIISitesBLServices\OxigenIISitesBLServices.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FilenameMakerLib" Source="..\FilenameMakerLib\FilenameMakerLib.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FilenameMakerLib" Source="..\FilenameMakerLib\FilenameMakerLib.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIDAClient" Source="..\OxigenIIDAClient\OxigenIIDAClient.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIDAClient" Source="..\OxigenIIDAClient\OxigenIIDAClient.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIDAContracts" Source="..\OxigenIIDAContracts\OxigenIIDAContracts.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIDAContracts" Source="..\OxigenIIDAContracts\OxigenIIDAContracts.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ProxyClientBaseLib" Source="..\ProxyClientBaseLib\ProxyClientBaseLib.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ProxyClientBaseLib" Source="..\ProxyClientBaseLib\ProxyClientBaseLib.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIISitesBLContracts" Source="..\OxigenIISitesBLContracts\OxigenIISitesBLContracts.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIISitesBLContracts" Source="..\OxigenIISitesBLContracts\OxigenIISitesBLContracts.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SOAStructures" Source="..\SOAStructures\SOAStructures.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="SOAStructures" Source="..\SOAStructures\SOAStructures.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DataAccess" Source="..\DataAccess\DataAccess.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DataAccess" Source="..\DataAccess\DataAccess.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BLHostService" Source="..\BLHostService\BLHostService.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="BLHostService" Source="..\BLHostService\BLHostService.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BoolContainerLib" Source="..\BoolContainerLib\BoolContainerLib.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="BoolContainerLib" Source="..\BoolContainerLib\BoolContainerLib.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ChannelDatabaseToRelayUploaderLib" Source="..\ChannelDatabaseToRelayUploaderLib\ChannelDatabaseToRelayUploaderLib.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ChannelDatabaseToRelayUploaderLib" Source="..\ChannelDatabaseToRelayUploaderLib\ChannelDatabaseToRelayUploaderLib.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ChannelDatabaseToRelayUploaderSvc" Source="..\ChannelDatabaseToRelayUploaderSvc\ChannelDatabaseToRelayUploaderSvc.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ChannelDatabaseToRelayUploaderSvc" Source="..\ChannelDatabaseToRelayUploaderSvc\ChannelDatabaseToRelayUploaderSvc.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ChannelData" Source="..\OxigenIIChannelData\ChannelData.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ChannelData" Source="..\OxigenIIChannelData\ChannelData.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FileChecksumCalculator" Source="..\FileChecksumCalculator\FileChecksumCalculator\FileChecksumCalculator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FileChecksumCalculator" Source="..\FileChecksumCalculator\FileChecksumCalculator\FileChecksumCalculator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIMasterDataMarContracts" Source="..\OxigenIIMasterDataMarContracts\OxigenIIMasterDataMarContracts.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIMasterDataMarContracts" Source="..\OxigenIIMasterDataMarContracts\OxigenIIMasterDataMarContracts.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIMasterDataMarshallerClient" Source="..\OxigenIIMasterDataMarshallerClient\OxigenIIMasterDataMarshallerClient.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIMasterDataMarshallerClient" Source="..\OxigenIIMasterDataMarshallerClient\OxigenIIMasterDataMarshallerClient.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ServerCycleConnectAttempt" Source="..\ServerCycleConnectAttempt\ServerCycleConnectAttempt.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ServerCycleConnectAttempt" Source="..\ServerCycleConnectAttempt\ServerCycleConnectAttempt.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DAHost" Source="..\DAHost\DAHost.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DAHost" Source="..\DAHost\DAHost.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIDAServices" Source="..\OxigenIIDAServices\OxigenIIDAServices.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIDAServices" Source="..\OxigenIIDAServices\OxigenIIDAServices.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FileRightsChecker" Source="..\FileRightsChecker\FileRightsChecker.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FileRightsChecker" Source="..\FileRightsChecker\FileRightsChecker.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FlatAggregatedLogStructures" Source="..\FlatAggregatedLogStructures\FlatAggregatedLogStructures.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FlatAggregatedLogStructures" Source="..\FlatAggregatedLogStructures\FlatAggregatedLogStructures.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="InternetConnectionCheck" Source="..\InternetConnectionCheck\InternetConnectionCheck.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="InternetConnectionCheck" Source="..\InternetConnectionCheck\InternetConnectionCheck.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LinqToHashSet" Source="..\LinqToHashSet\LinqToHashSet.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LinqToHashSet" Source="..\LinqToHashSet\LinqToHashSet.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LogFileWriter" Source="..\LogFileWriter\LogFileWriter.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LogFileWriter" Source="..\LogFileWriter\LogFileWriter.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LogStats" Source="..\OxigenIILogStats\LogStats.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LogStats" Source="..\OxigenIILogStats\LogStats.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LogSingletonAccessor" Source="..\LogWriteOperations\LogSingletonAccessor.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LogSingletonAccessor" Source="..\LogWriteOperations\LogSingletonAccessor.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="MasterDataMarshallerService" Source="..\MasterDataMarshallerService\MasterDataMarshallerService.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="MasterDataMarshallerService" Source="..\MasterDataMarshallerService\MasterDataMarshallerService.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="NoAssetsAnimator" Source="..\NoAssetsAnimator\NoAssetsAnimator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="NoAssetsAnimator" Source="..\NoAssetsAnimator\NoAssetsAnimator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenHeartbeatAggregator" Source="..\OxigenHeartbeatAggregator\OxigenHeartbeatAggregator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenHeartbeatAggregator" Source="..\OxigenHeartbeatAggregator\OxigenHeartbeatAggregator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DataAggregators" Source="..\DataAggregators\DataAggregators.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DataAggregators" Source="..\DataAggregators\DataAggregators.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIMasterDataMarServices" Source="..\OxigenIIMasterDataMarServices\OxigenIIMasterDataMarServices.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIMasterDataMarServices" Source="..\OxigenIIMasterDataMarServices\OxigenIIMasterDataMarServices.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DAHostService" Source="..\DAHostService\DAHostService.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DAHostService" Source="..\DAHostService\DAHostService.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DemographicRange" Source="..\DemographicRange\DemographicRange.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DemographicRange" Source="..\DemographicRange\DemographicRange.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DemographicData" Source="..\OxigenIIDemographicData\DemographicData.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DemographicData" Source="..\OxigenIIDemographicData\DemographicData.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="InclusionExclusionRules" Source="..\OxigenIIInclusionExclusionRules\InclusionExclusionRules.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="InclusionExclusionRules" Source="..\OxigenIIInclusionExclusionRules\InclusionExclusionRules.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AdvertList" Source="..\OxigenIIAdvertList\AdvertList.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="AdvertList" Source="..\OxigenIIAdvertList\AdvertList.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AssetScheduling" Source="..\OxigenIIAssetScheduling\AssetScheduling.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="AssetScheduling" Source="..\OxigenIIAssetScheduling\AssetScheduling.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AssetType" Source="..\OxigenIIAssetType\AssetType.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="AssetType" Source="..\OxigenIIAssetType\AssetType.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIBLService" Source="..\OxigenIIBLService\OxigenIIBLService.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIBLService" Source="..\OxigenIIBLService\OxigenIIBLService.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ChannelSubscriptions" Source="..\OxigenIIChannelSubscriptions\ChannelSubscriptions.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ChannelSubscriptions" Source="..\OxigenIIChannelSubscriptions\ChannelSubscriptions.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ContentExchanger" Source="..\OxigenIIContentExchanger\ContentExchanger.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ContentExchanger" Source="..\OxigenIIContentExchanger\ContentExchanger.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GeneralData" Source="..\OxigenIIGeneralData\GeneralData.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GeneralData" Source="..\OxigenIIGeneralData\GeneralData.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LogEntry" Source="..\OxigenIILogEntry\LogEntry.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LogEntry" Source="..\OxigenIILogEntry\LogEntry.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LogExchanger" Source="..\OxigenIILogExchanger\LogExchanger.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LogExchanger" Source="..\OxigenIILogExchanger\LogExchanger.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LogFileReader" Source="..\OxigenIILogFileReader\LogFileReader.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LogFileReader" Source="..\OxigenIILogFileReader\LogFileReader.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LogManipulator" Source="..\OxigenIILogManipulator\LogManipulator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LogManipulator" Source="..\OxigenIILogManipulator\LogManipulator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ScreenSaverSingletons" Source="..\OxigenIILogStructuresRaw\ScreenSaverSingletons.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ScreenSaverSingletons" Source="..\OxigenIILogStructuresRaw\ScreenSaverSingletons.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIMasterDataMarshaller" Source="..\OxigenIIMasterDataMarshaller\OxigenIIMasterDataMarshaller.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIMasterDataMarshaller" Source="..\OxigenIIMasterDataMarshaller\OxigenIIMasterDataMarshaller.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Playlist" Source="..\OxigenIIPlaylist\Playlist.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Playlist" Source="..\OxigenIIPlaylist\Playlist.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PlaylistLogic" Source="..\OxigenIIPlaylistMaker\PlaylistLogic.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PlaylistLogic" Source="..\OxigenIIPlaylistMaker\PlaylistLogic.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIPresentation" Source="..\OxigenIIPresentation\OxigenIIPresentation.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIPresentation" Source="..\OxigenIIPresentation\OxigenIIPresentation.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIScreenSaver" Source="..\OxigenIIScreenSaver\OxigenIIScreenSaver\OxigenIIScreenSaver.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIScreenSaver" Source="..\OxigenIIScreenSaver\OxigenIIScreenSaver\OxigenIIScreenSaver.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIScreenSaverConfig" Source="..\OxigenIIScreenSaverConfig\OxigenIIScreenSaverConfig.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIScreenSaverConfig" Source="..\OxigenIIScreenSaverConfig\OxigenIIScreenSaverConfig.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIServiceFactory" Source="..\OxigenIIServiceFactory\OxigenIIServiceFactory.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIServiceFactory" Source="..\OxigenIIServiceFactory\OxigenIIServiceFactory.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIITray" Source="..\OxigenIISSG\OxigenIITray.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIITray" Source="..\OxigenIISSG\OxigenIITray.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIStopwatch" Source="..\OxigenIIStopwatch\OxigenIIStopwatch.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIStopwatch" Source="..\OxigenIIStopwatch\OxigenIIStopwatch.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TaxonomySearch" Source="..\OxigenIITaxonomySearch\TaxonomySearch.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="TaxonomySearch" Source="..\OxigenIITaxonomySearch\TaxonomySearch.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserDataMarshaller" Source="..\OxigenIIUserDataMarshaller\OxigenIIUserDataMarshaller.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIUserDataMarshaller" Source="..\OxigenIIUserDataMarshaller\OxigenIIUserDataMarshaller.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserDataMarshallerClient" Source="..\OxigenIIUserDataMarshallerClient\OxigenIIUserDataMarshallerClient.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIUserDataMarshallerClient" Source="..\OxigenIIUserDataMarshallerClient\OxigenIIUserDataMarshallerClient.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserDataMarshallrService" Source="..\OxigenIIUserDataMarshallrService\OxigenIIUserDataMarshallrService.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIUserDataMarshallrService" Source="..\OxigenIIUserDataMarshallrService\OxigenIIUserDataMarshallrService.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserMgmtServices" Source="..\OxigenIIUserMgmtServices\OxigenIIUserMgmtServices.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIUserMgmtServices" Source="..\OxigenIIUserMgmtServices\OxigenIIUserMgmtServices.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserMgmtServicesClient" Source="..\OxigenIIUserMgmtServicesClient\OxigenIIUserMgmtServicesClient.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIUserMgmtServicesClient" Source="..\OxigenIIUserMgmtServicesClient\OxigenIIUserMgmtServicesClient.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserMgmtServicesService" Source="..\OxigenIIUserMgmtServicesService\OxigenIIUserMgmtServicesService.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIUserMgmtServicesService" Source="..\OxigenIIUserMgmtServicesService\OxigenIIUserMgmtServicesService.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserMgmtServicesContracts" Source="..\OxigenIIUserMgmtServicesContracts\OxigenIIUserMgmtServicesContracts.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenIIUserMgmtServicesContracts" Source="..\OxigenIIUserMgmtServicesContracts\OxigenIIUserMgmtServicesContracts.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenLogAggregator" Source="..\OxigenLogAggregator\OxigenLogAggregator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenLogAggregator" Source="..\OxigenLogAggregator\OxigenLogAggregator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenScreenSaverProductAggregator" Source="..\OxigenScreenSaverProductAggregator\OxigenScreenSaverProductAggregator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenScreenSaverProductAggregator" Source="..\OxigenScreenSaverProductAggregator\OxigenScreenSaverProductAggregator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenUninstallInfoAggregator" Source="..\OxigenUninstallInfoAggregator\OxigenUninstallInfoAggregator.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenUninstallInfoAggregator" Source="..\OxigenUninstallInfoAggregator\OxigenUninstallInfoAggregator.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PlaylistAssetPicker" Source="..\PlaylistAssetPicker\PlaylistAssetPicker.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PlaylistAssetPicker" Source="..\PlaylistAssetPicker\PlaylistAssetPicker.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TimeSpanObjectWrapper" Source="..\TimeSpanObjectWrapper\TimeSpanObjectWrapper.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="TimeSpanObjectWrapper" Source="..\TimeSpanObjectWrapper\TimeSpanObjectWrapper.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="UserSettings" Source="..\UserSettings\UserSettings.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="UserSettings" Source="..\UserSettings\UserSettings.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="XmlSerializableGenericDictionary" Source="..\XmlSerializableGenericDictionary\XmlSerializableGenericDictionary.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="XmlSerializableGenericDictionary" Source="..\XmlSerializableGenericDictionary\XmlSerializableGenericDictionary.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="XmlSerializableGenericDictionary" Source="..\XmlSerializableGenericDictionary\XmlSerializableGenericDictionary.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="XmlSerializableSortableGenericList" Source="..\XmlSerializableSortableGenericList\XmlSerializableSortableGenericList.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="XmlSerializableSortableGenericList" Source="..\XmlSerializableSortableGenericList\XmlSerializableSortableGenericList.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="XmlSerializableSortableGenericList" Source="..\XmlSerializableSortableGenericList\XmlSerializableSortableGenericList.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="RegexCompiler" Source="..\RegexCompiler\RegexCompiler.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="RegexCompiler" Source="..\RegexCompiler\RegexCompiler.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="RegistryAccess" Source="..\RegistryAccess\RegistryAccess.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="RegistryAccess" Source="..\RegistryAccess\RegistryAccess.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="RegistryAccess" Source="..\RegistryAccess\RegistryAccess.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WindowsVersionDetection" Source="..\WindowsVersionDetection\WindowsVersionDetection.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="WindowsVersionDetection" Source="..\WindowsVersionDetection\WindowsVersionDetection.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ImageExtraction" Source="..\..\ImageExtraction\ImageExtraction.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ImageExtraction" Source="..\..\ImageExtraction\ImageExtraction.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ThirdPartyLibraries" Source="..\ThirdPartyLibraries\ThirdPartyLibraries.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ThirdPartyLibraries" Source="..\ThirdPartyLibraries\ThirdPartyLibraries.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="Setup" Source="..\Setup\Setup.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="Setup" Source="..\Setup\Setup.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Setup" Source="..\Setup\Setup.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenSU" Source="..\OxigenSU\OxigenSU.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenSU" Source="..\OxigenSU\OxigenSU.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="UserFileMarshaller" Source="..\UserFileMarshaller\UserFileMarshaller.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="UserFileMarshaller" Source="..\UserFileMarshaller\UserFileMarshaller.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="UsageCount" Source="..\UsageCount\UsageCount.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="UsageCount" Source="..\UsageCount\UsageCount.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="OxigenService" Source="..\OxigenService\OxigenService.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="OxigenService" Source="..\OxigenService\OxigenService.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="EventLogInstallers" Source="..\EventLogInstallers\EventLogInstallers.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="EventLogInstallers" Source="..\EventLogInstallers\EventLogInstallers.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="UMDBService" Source="..\UMDBService\UMDBService.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="UMDBService" Source="..\UMDBService\UMDBService.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SSGContracts" Source="..\SSGContracts\SSGContracts.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="SSGContracts" Source="..\SSGContracts\SSGContracts.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LibraryTester" Source="..\LibraryTester\LibraryTester.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LibraryTester" Source="..\LibraryTester\LibraryTester.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="libutil" Source="..\libutil\libutil.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="libutil" Source="..\libutil\libutil.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TextDecrypter" Source="..\TextDecrypter\TextDecrypter.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="TextDecrypter" Source="..\TextDecrypter\TextDecrypter.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="InstallCustomSteps" Source="..\InstallCustomSteps\InstallCustomSteps.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="InstallCustomSteps" Source="..\InstallCustomSteps\InstallCustomSteps.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="OxigenIIAdvertising.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="OxigenIIAdvertising.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Setup" Source="..\Setup\app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="Setup" Source="..\Setup\app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="EventLogInstallers" Source="..\EventLogInstallers\EventLogInstallers.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="InstallCustomSteps" Source="..\InstallCustomSteps\InstallCustomSteps.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="BLHost" Source="..\BLHost\BLHost.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="DAHost" Source="..\DAHost\DAHost.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LibraryTester" Source="..\LibraryTester\LibraryTester.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="libutil" Source="..\libutil\libutil.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="TextDecrypter" Source="..\TextDecrypter\TextDecrypter.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ContentExchanger" Source="..\OxigenIIContentExchanger\ContentExchanger.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIDAClient" Source="..\OxigenIIDAClient\OxigenIIDAClient.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIDAContracts" Source="..\OxigenIIDAContracts\OxigenIIDAContracts.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIDAServices" Source="..\OxigenIIDAServices\OxigenIIDAServices.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="DAHostService" Source="..\DAHostService\DAHostService.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIPresentation" Source="..\OxigenIIPresentation\OxigenIIPresentation.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIISitesBLClient" Source="..\OxigenIISitesBLClient\OxigenIISitesBLClient.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIISitesBLServices" Source="..\OxigenIISitesBLServices\OxigenIISitesBLServices.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIISitesBLContracts" Source="..\OxigenIISitesBLContracts\OxigenIISitesBLContracts.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="BLHostService" Source="..\BLHostService\BLHostService.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="WCFErrorReporting" Source="..\WCFErrorReporting\WCFErrorReporting.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserDataMarshallrContracts" Source="..\OxigenIIUserDataMarshallrContracts\OxigenIIUserDataMarshallrContracts.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="InterCommunicationStructures" Source="..\InterCommunicationStructures\InterCommunicationStructures.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LoggerInfo" Source="..\OxigenIILoggerInfo\LoggerInfo.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="XMLSerializer" Source="..\OxigenIIXMLSerializer\XMLSerializer.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Exceptions" Source="..\OxigenIIExceptions\app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="Exceptions" Source="..\OxigenIIExceptions\app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Assets" Source="..\Assets\Assets.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="PlayerType" Source="..\OxigenIIPlayerType\PlayerType.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="EncryptionDecryption" Source="..\EncryptionDecryption\app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="EncryptionDecryption" Source="..\EncryptionDecryption\app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FileLocker" Source="..\FileLocker\FileLocker.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="FilenameMakerLib" Source="..\FilenameMakerLib\FilenameMakerLib.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ProxyClientBaseLib" Source="..\ProxyClientBaseLib\ProxyClientBaseLib.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="SOAStructures" Source="..\SOAStructures\SOAStructures.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="DataAccess" Source="..\DataAccess\DataAccess.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="BoolContainerLib" Source="..\BoolContainerLib\BoolContainerLib.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ChannelDatabaseToRelayUploaderLib" Source="..\ChannelDatabaseToRelayUploaderLib\ChannelDatabaseToRelayUploaderLib.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ChannelDatabaseToRelayUploaderSvc" Source="..\ChannelDatabaseToRelayUploaderSvc\ChannelDatabaseToRelayUploaderSvc.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ChannelData" Source="..\OxigenIIChannelData\ChannelData.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="FileChecksumCalculator" Source="..\FileChecksumCalculator\FileChecksumCalculator\FileChecksumCalculator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIMasterDataMarContracts" Source="..\OxigenIIMasterDataMarContracts\OxigenIIMasterDataMarContracts.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIMasterDataMarshallerClient" Source="..\OxigenIIMasterDataMarshallerClient\OxigenIIMasterDataMarshallerClient.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ServerCycleConnectAttempt" Source="..\ServerCycleConnectAttempt\ServerCycleConnectAttempt.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="FileRightsChecker" Source="..\FileRightsChecker\FileRightsChecker.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="FlatAggregatedLogStructures" Source="..\FlatAggregatedLogStructures\FlatAggregatedLogStructures.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="InternetConnectionCheck" Source="..\InternetConnectionCheck\InternetConnectionCheck.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LinqToHashSet" Source="..\LinqToHashSet\LinqToHashSet.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LogFileWriter" Source="..\LogFileWriter\LogFileWriter.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LogStats" Source="..\OxigenIILogStats\LogStats.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LogSingletonAccessor" Source="..\LogWriteOperations\LogSingletonAccessor.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="MasterDataMarshallerService" Source="..\MasterDataMarshallerService\MasterDataMarshallerService.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="NoAssetsAnimator" Source="..\NoAssetsAnimator\NoAssetsAnimator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenHeartbeatAggregator" Source="..\OxigenHeartbeatAggregator\OxigenHeartbeatAggregator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="DataAggregators" Source="..\DataAggregators\DataAggregators.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIMasterDataMarServices" Source="..\OxigenIIMasterDataMarServices\OxigenIIMasterDataMarServices.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="DemographicRange" Source="..\DemographicRange\DemographicRange.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="DemographicData" Source="..\OxigenIIDemographicData\DemographicData.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="InclusionExclusionRules" Source="..\OxigenIIInclusionExclusionRules\InclusionExclusionRules.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="AdvertList" Source="..\OxigenIIAdvertList\AdvertList.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="AssetScheduling" Source="..\OxigenIIAssetScheduling\AssetScheduling.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="AssetType" Source="..\OxigenIIAssetType\AssetType.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIBLService" Source="..\OxigenIIBLService\OxigenIIBLService.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ChannelSubscriptions" Source="..\OxigenIIChannelSubscriptions\app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="ChannelSubscriptions" Source="..\OxigenIIChannelSubscriptions\app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GeneralData" Source="..\OxigenIIGeneralData\GeneralData.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LogEntry" Source="..\OxigenIILogEntry\LogEntry.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LogExchanger" Source="..\OxigenIILogExchanger\LogExchanger.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LogFileReader" Source="..\OxigenIILogFileReader\LogFileReader.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LogManipulator" Source="..\OxigenIILogManipulator\LogManipulator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ScreenSaverSingletons" Source="..\OxigenIILogStructuresRaw\ScreenSaverSingletons.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIMasterDataMarshaller" Source="..\OxigenIIMasterDataMarshaller\OxigenIIMasterDataMarshaller.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Playlist" Source="..\OxigenIIPlaylist\Playlist.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="PlaylistLogic" Source="..\OxigenIIPlaylistMaker\PlaylistLogic.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIScreenSaver" Source="..\OxigenIIScreenSaver\OxigenIIScreenSaver\OxigenIIScreenSaver.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIScreenSaverConfig" Source="..\OxigenIIScreenSaverConfig\OxigenIIScreenSaverConfig.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIServiceFactory" Source="..\OxigenIIServiceFactory\OxigenIIServiceFactory.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIITray" Source="..\OxigenIISSG\OxigenIITray.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIStopwatch" Source="..\OxigenIIStopwatch\OxigenIIStopwatch.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="TaxonomySearch" Source="..\OxigenIITaxonomySearch\TaxonomySearch.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserDataMarshaller" Source="..\OxigenIIUserDataMarshaller\OxigenIIUserDataMarshaller.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserDataMarshallerClient" Source="..\OxigenIIUserDataMarshallerClient\OxigenIIUserDataMarshallerClient.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserDataMarshallrService" Source="..\OxigenIIUserDataMarshallrService\OxigenIIUserDataMarshallrService.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserMgmtServices" Source="..\OxigenIIUserMgmtServices\OxigenIIUserMgmtServices.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserMgmtServicesClient" Source="..\OxigenIIUserMgmtServicesClient\OxigenIIUserMgmtServicesClient.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserMgmtServicesService" Source="..\OxigenIIUserMgmtServicesService\OxigenIIUserMgmtServicesService.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenIIUserMgmtServicesContracts" Source="..\OxigenIIUserMgmtServicesContracts\OxigenIIUserMgmtServicesContracts.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenLogAggregator" Source="..\OxigenLogAggregator\OxigenLogAggregator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenScreenSaverProductAggregator" Source="..\OxigenScreenSaverProductAggregator\OxigenScreenSaverProductAggregator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenUninstallInfoAggregator" Source="..\OxigenUninstallInfoAggregator\OxigenUninstallInfoAggregator.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="PlaylistAssetPicker" Source="..\PlaylistAssetPicker\PlaylistAssetPicker.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="TimeSpanObjectWrapper" Source="..\TimeSpanObjectWrapper\TimeSpanObjectWrapper.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="UserSettings" Source="..\UserSettings\UserSettings.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="XmlSerializableGenericDictionary" Source="..\XmlSerializableGenericDictionary\app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="XmlSerializableGenericDictionary" Source="..\XmlSerializableGenericDictionary\app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="XmlSerializableSortableGenericList" Source="..\XmlSerializableSortableGenericList\app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="XmlSerializableSortableGenericList" Source="..\XmlSerializableSortableGenericList\app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="RegexCompiler" Source="..\RegexCompiler\RegexCompiler.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="RegistryAccess" Source="..\RegistryAccess\app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="RegistryAccess" Source="..\RegistryAccess\app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WindowsVersionDetection" Source="..\WindowsVersionDetection\WindowsVersionDetection.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ImageExtraction" Source="..\..\ImageExtraction\ImageExtraction.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ThirdPartyLibraries" Source="..\ThirdPartyLibraries\ThirdPartyLibraries.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenSU" Source="..\OxigenSU\OxigenSU.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="UserFileMarshaller" Source="..\UserFileMarshaller\UserFileMarshaller.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="UsageCount" Source="..\UsageCount\UsageCount.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="OxigenService" Source="..\OxigenService\OxigenService.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="UMDBService" Source="..\UMDBService\UMDBService.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="SSGContracts" Source="..\SSGContracts\SSGContracts.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

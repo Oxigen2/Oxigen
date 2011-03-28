@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+  <asset>
+    <id>1000</id>
+    <playertype>image</playertype>
+    <assetlocation>c:\OxigenIIAssets\image_1.jpg</assetlocation>
+    <displaylength>10</displaylength>
+    <clickdestination>http://www.google.co.uk</clickdestination>
+    <scheduleinfo>
+      <cond>day!=Wednesday AND time&gt;=0900 AND time&lt;=1200</cond>
+      <cond>day=Thursday AND time&gt;=0930 AND time&lt;=1230</cond>
+      <cond>day=Thursday AND time&gt;=2030 AND time&lt;=2230</cond>
+    </scheduleinfo>
+    <channel_id>1000</channel_id>
+    <assetlevel>premium</assetlevel>
+    <assettype>content</assettype>
+  </asset>
+  <asset>
+    <id>1001</id>
+    <playertype>video</playertype>
+    <assetlocation>c:\OxigenIIAssets\video_1.avi</assetlocation>
+    <displaylength>10</displaylength>
+    <clickdestination>http://www.ask.co.uk</clickdestination>
+    <scheduleinfo>
+      <cond>day=Monday AND time&gt;=0930</cond>
+      <cond>day&gt;=Thursday AND time&gt;=0900 AND time&lt;=1200</cond>
+      <cond>day!=Wednesday AND time&gt;=1400 AND time&lt;=1630</cond>
+      <cond>day&lt;Friday AND time&gt;=1300 AND time&lt;=1600</cond>
+    </scheduleinfo>
+    <channel_id>1000</channel_id>
+    <assetlevel>premium</assetlevel>
+    <assettype>content</assettype>
+  </asset>
+</playlist>

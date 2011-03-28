@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OxigenIIAdvertising.ScreenSaver7.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">password</Value>
+    </Setting>
+    <Setting Name="UserSettingsPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\OxigenIIAppDataSamples\AppData\UserSettings.dat</Value>
+    </Setting>
+    <Setting Name="TempDecryptPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\temp\</Value>
+    </Setting>
+    <Setting Name="DebugFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\OxigenIIAppDataSamples\AppData\OxigenIIDebug.txt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B977CC56-E60B-4426-B5A5-167E64C80871}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleInstaller</RootNamespace>
+    <AssemblyName>OxigenSetup</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+    <SccProjectName>%24/OxigenII Advertising System/OxigenIIAdvertising/SimpleInstaller</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>http://10.10.1.6:8080</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <ApplicationIcon>System-Install-1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContentExchangerRun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContentExchangerRun.Designer.cs">
+      <DependentUpon>ContentExchangerRun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstallationEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstallationEnd.Designer.cs">
+      <DependentUpon>InstallationEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstallationPathPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstallationPathPrompt.Designer.cs">
+      <DependentUpon>InstallationPathPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Installer.cs" />
+    <Compile Include="InstallerGlobalData.cs" />
+    <Compile Include="Introduction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Introduction.Designer.cs">
+      <DependentUpon>Introduction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ContentExchangerRun.resx">
+      <DependentUpon>ContentExchangerRun.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstallationEnd.resx">
+      <DependentUpon>InstallationEnd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstallationPathPrompt.resx">
+      <DependentUpon>InstallationPathPrompt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Introduction.resx">
+      <DependentUpon>Introduction.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RegistryAccess\RegistryAccess.csproj">
+      <Project>{7C486BC9-00F6-48F7-BB49-4CFABBE47DF1}</Project>
+      <Name>RegistryAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oxigen.scr" />
+    <None Include="Resources\Oxigen.scr.config" />
+    <None Include="Resources\OxigenCE.exe.config" />
+    <None Include="Resources\OxigenLE.exe.config" />
+    <None Include="Resources\OxigenService.exe.config" />
+    <None Include="Resources\OxigenTray.exe.config" />
+    <None Include="Resources\ScreenSaverConfig.exe.config" />
+    <None Include="Resources\ss_general_data.dat" />
+    <None Include="Resources\OxigenStopwatch.dll" />
+    <None Include="Resources\BoolContainerLib.dll" />
+    <None Include="Resources\LogFileWriter.dll" />
+    <None Include="Resources\Interop.QTOControlLib.dll" />
+    <None Include="Resources\Interop.QTOLibrary.dll" />
+    <None Include="Resources\Interop.SHDocVw.dll" />
+    <None Include="Resources\Interop.ShockwaveFlashObjects.dll" />
+    <None Include="Resources\AxInterop.QTOControlLib.dll" />
+    <None Include="Resources\Interop.WMPLib.dll" />
+    <None Include="Resources\AxInterop.ShockwaveFlashObjects.dll" />
+    <None Include="Resources\AxInterop.WMPLib.dll" />
+    <None Include="Resources\NoAssetsAnimator.dll" />
+    <None Include="Resources\InternetConnectionCheck.dll" />
+    <None Include="Resources\ProgressAnimation.gif" />
+    <None Include="Resources\ServerCycleConnectAttempt.dll" />
+    <None Include="Resources\TaxonomySearch.dll" />
+    <None Include="Resources\TimeSpanObjectWrapper.dll" />
+    <None Include="Resources\UserSettings.dll" />
+    <None Include="Resources\WCFErrorReporting.dll" />
+    <None Include="Resources\WindowsVersionDetection.dll" />
+    <None Include="Resources\XmlSerializableGenericDictionary.dll" />
+    <None Include="Resources\XmlSerializableSortableGenericList.dll" />
+    <None Include="Resources\XMLSerializer.dll" />
+    <None Include="Resources\OxigenCE.exe" />
+    <None Include="Resources\OxigenLE.exe" />
+    <None Include="Resources\OxigenService.exe" />
+    <None Include="Resources\OxigenTray.exe" />
+    <None Include="Resources\ScreenSaverConfig.exe" />
+    <None Include="Resources\AdvertList.dll" />
+    <None Include="Resources\AssetLevel.dll" />
+    <None Include="Resources\Assets.dll" />
+    <None Include="Resources\AssetScheduling.dll" />
+    <None Include="Resources\AssetType.dll" />
+    <None Include="Resources\ChannelData.dll" />
+    <None Include="Resources\ChannelSubscriptions.dll" />
+    <None Include="Resources\Demographic.dll" />
+    <None Include="Resources\DemographicRange.dll" />
+    <None Include="Resources\EncryptionDecryption.dll" />
+    <None Include="Resources\Exceptions.dll" />
+    <None Include="Resources\FileChecksumCalculator.dll" />
+    <None Include="Resources\FileLocker.dll" />
+    <None Include="Resources\FileRightsChecker.dll" />
+    <None Include="Resources\GeneralData.dll" />
+    <None Include="Resources\InclusionExclusionRules.dll" />
+    <None Include="Resources\InterCommunicationStructures.dll" />
+    <None Include="Resources\LinqToHashSet.dll" />
+    <None Include="Resources\LogEntry.dll" />
+    <None Include="Resources\LogFileReader.dll" />
+    <None Include="Resources\LoggerInfo.dll" />
+    <None Include="Resources\LogStats.dll" />
+    <None Include="Resources\OxigenCompiledRegexes.dll" />
+    <None Include="Resources\OxigenServiceFactory.dll" />
+    <None Include="Resources\OxigenSingletons.dll" />
+    <None Include="Resources\OxigenUserDataMarshallerClient.dll" />
+    <None Include="Resources\OxigenUserDataMarshallrContracts.dll" />
+    <None Include="Resources\OxigenUserFileMarDataContracts.dll" />
+    <None Include="Resources\OxigenUserFileMarshallerClient.dll" />
+    <None Include="Resources\OxigenUserMgmtServicesClient.dll" />
+    <None Include="Resources\OxigenUserMgmtServicesContracts.dll" />
+    <None Include="Resources\PlayerType.dll" />
+    <None Include="Resources\Playlist.dll" />
+    <None Include="Resources\PlaylistLogic.dll" />
+    <None Include="Resources\ProxyClientBaseLib.dll" />
+    <None Include="Resources\RegistryAccess.dll" />
+    <None Include="Resources\PlaylistAssetPicker.dll" />
+    <None Include="Resources\LogWriteOperations.dll" />
+    <Content Include="System-Install-1.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

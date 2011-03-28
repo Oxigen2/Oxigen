@@ -1,0 +1,63 @@
+﻿Level 1:
+
+Lock Primary Singleton
+  Copy entries to Secondary Singleton
+  Clear Primary Singleton  
+Unlock Primary Singleton
+  
+Using Secondaty Sigleton
+  Append advert impression logs
+  Append content impression logs
+  Append advert click logs
+  Append content click logs
+
+Add values to usage count object
+
+
+Level 2:
+
+Write click/impression logs:
+
+  Lock Primary Singleton
+    Copy entries to Secondary Singleton
+    Clear Primary Singleton  
+  Unlock Primary Singleton
+  
+  Open advert/content click/impression file and lock it
+  
+  If click/impression file is locked
+    try second click/impression file and lock it
+    
+  Decrypt the file into memory as string
+  
+  For each advert/content click/impression log entry
+    Append a new line on the memory string
+    Write the raw entry from the Singleton on the memory string
+    
+  Encrypt memory string
+  Erase contents of advert/content click/impression log file
+  Write memory string to file
+  
+  Release lock on file
+  
+
+Write usage count file:
+
+  Decrypt file and lock it. 
+  
+  if file is locked
+    try second file
+    
+  If file doesn't exist a new one will be created and an new object will be returned.
+    
+  increase number of sessions
+  increase total display time
+  
+  if there are click logs in the log singleton
+    increase total click time by the size of the _advertClickLogEntries and the _contentClickLogEntries
+  
+  Encrypt UsageCount
+  
+  Save UsageCount to disk
+  
+  Release lock on file

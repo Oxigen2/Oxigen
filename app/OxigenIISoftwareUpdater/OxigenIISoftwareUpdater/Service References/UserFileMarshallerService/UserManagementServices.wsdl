@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:tns="http://tempuri.org/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="UserManagementServices" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:12939/UserManagementServices.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:12939/UserManagementServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:12939/UserManagementServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.UserManagementServices" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUserManagementServices_GetUserDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_GetUserDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_RegisterNewMachine_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterNewMachine" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_RegisterNewMachine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterNewMachineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_RegisterNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterNewUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_RegisterNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_GetUserDemographicData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDemographicData" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_GetUserDemographicData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDemographicDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_GetUserChannelSubscriptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserChannelSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_GetUserChannelSubscriptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserChannelSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_SendForgottenPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendForgottenPassword" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServices_SendForgottenPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendForgottenPasswordResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUserManagementServices">
+    <wsdl:operation name="GetUserDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementServices/GetUserDetails" message="tns:IUserManagementServices_GetUserDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementServices/GetUserDetailsResponse" message="tns:IUserManagementServices_GetUserDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewMachine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementServices/RegisterNewMachine" message="tns:IUserManagementServices_RegisterNewMachine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementServices/RegisterNewMachineResponse" message="tns:IUserManagementServices_RegisterNewMachine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementServices/RegisterNewUser" message="tns:IUserManagementServices_RegisterNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementServices/RegisterNewUserResponse" message="tns:IUserManagementServices_RegisterNewUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDemographicData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementServices/GetUserDemographicData" message="tns:IUserManagementServices_GetUserDemographicData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementServices/GetUserDemographicDataResponse" message="tns:IUserManagementServices_GetUserDemographicData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserChannelSubscriptions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementServices/GetUserChannelSubscriptions" message="tns:IUserManagementServices_GetUserChannelSubscriptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementServices/GetUserChannelSubscriptionsResponse" message="tns:IUserManagementServices_GetUserChannelSubscriptions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendForgottenPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementServices/SendForgottenPassword" message="tns:IUserManagementServices_SendForgottenPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementServices/SendForgottenPasswordResponse" message="tns:IUserManagementServices_SendForgottenPassword_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUserManagementServices" type="tns:IUserManagementServices">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserDetails">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementServices/GetUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewMachine">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementServices/RegisterNewMachine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewUser">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementServices/RegisterNewUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDemographicData">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementServices/GetUserDemographicData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserChannelSubscriptions">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementServices/GetUserChannelSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendForgottenPassword">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementServices/SendForgottenPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserManagementServices">
+    <wsdl:port name="BasicHttpBinding_IUserManagementServices" binding="tns:BasicHttpBinding_IUserManagementServices">
+      <soap:address location="http://localhost:12939/UserManagementServices.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{144D6CA7-61A5-437F-880C-6D3591A5EBD4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OxigenIIAdvertising.ScreenSaver</RootNamespace>
+    <AssemblyName>Oxigen</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <StartupObject>OxigenIIAdvertising.ScreenSaver.Program</StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>oxigen-32.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyLibraries\Files\AxInterop.QTOControlLib.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyLibraries\Files\AxInterop.ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyLibraries\Files\AxInterop.WMPLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyLibraries\Files\Interop.QTOControlLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.QTOLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyLibraries\Files\Interop.QTOLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SHDocVw, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyLibraries\Files\Interop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyLibraries\Files\Interop.ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyLibraries\Files\Interop.WMPLib.dll</HintPath>
+    </Reference>
+    <Reference Include="OxigenCompiledRegexes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\RegexCompiler\bin\Debug\OxigenCompiledRegexes.dll</HintPath>
+    </Reference>
+    <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Windows\Microsoft.NET\Framework\v2.0.50727\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DDFormFader.cs">
+    </Compile>
+    <Compile Include="FaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FaderForm.Designer.cs">
+      <DependentUpon>FaderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IScreenSaver.cs" />
+    <Compile Include="PreviewScreenSaver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreviewScreenSaver.Designer.cs">
+      <DependentUpon>PreviewScreenSaver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScreensaverGuardianClient.cs" />
+    <Compile Include="Toggles.cs" />
+    <Compile Include="ScreenSaver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScreenSaver.Designer.cs">
+      <DependentUpon>ScreenSaver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FaderForm.resx">
+      <DependentUpon>FaderForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewScreenSaver.resx">
+      <DependentUpon>PreviewScreenSaver.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScreenSaver.resx">
+      <DependentUpon>ScreenSaver.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <Compile Include="ScreenSaverMessageFilter.cs" />
+    <Compile Include="WinAPI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="oxigen-32.ico" />
+    <None Include="Resources\Preview.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FileRightsChecker\FileRightsChecker.csproj">
+      <Project>{698CC733-76C2-4425-921C-A2EE1609F986}</Project>
+      <Name>FileRightsChecker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LogFileWriter\LogFileWriter.csproj">
+      <Project>{2FDFB1A6-A7C5-4B2E-AD45-B002E9222370}</Project>
+      <Name>LogFileWriter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LogWriteOperations\LogSingletonAccessor.csproj">
+      <Project>{BD4D0664-9B0D-49BE-BED4-E4AC23D2F909}</Project>
+      <Name>LogSingletonAccessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NoAssetsAnimator\NoAssetsAnimator.csproj">
+      <Project>{1545A1E9-4F46-4214-89DA-F796F6DC9955}</Project>
+      <Name>NoAssetsAnimator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenIIAssetScheduling\AssetScheduling.csproj">
+      <Project>{8D0E8EB0-A926-47C1-8F45-5FBEF3E5C845}</Project>
+      <Name>AssetScheduling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenIIGeneralData\GeneralData.csproj">
+      <Project>{FEBA9756-1135-44EA-9F8C-59FD30F64EA3}</Project>
+      <Name>GeneralData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenIILoggerInfo\LoggerInfo.csproj">
+      <Project>{24134EAF-1B5B-4329-9071-15629067E98D}</Project>
+      <Name>LoggerInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenIILogStructuresRaw\ScreenSaverSingletons.csproj">
+      <Project>{B432D1DF-1D47-4AAB-9AE9-2CC483094E7B}</Project>
+      <Name>ScreenSaverSingletons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenIIPlayerType\PlayerType.csproj">
+      <Project>{DA2DD1C3-9DA5-4A08-AB79-FA2C0B396E75}</Project>
+      <Name>PlayerType</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenIIPlaylist\Playlist.csproj">
+      <Project>{74B94F02-FE73-4AE9-B5C7-935991C4F4B8}</Project>
+      <Name>Playlist</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenIIStopwatch\OxigenIIStopwatch.csproj">
+      <Project>{872830FD-3BF3-45D1-9C98-3D51A107B1E5}</Project>
+      <Name>OxigenIIStopwatch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenIIXMLSerializer\XMLSerializer.csproj">
+      <Project>{905FC382-9356-4BD1-9F66-0947A6F2FC57}</Project>
+      <Name>XMLSerializer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlaylistAssetPicker\PlaylistAssetPicker.csproj">
+      <Project>{5E9CF6E7-B071-4B5E-A951-2D997F9ADFD1}</Project>
+      <Name>PlaylistAssetPicker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ProxyClientBaseLib\ProxyClientBaseLib.csproj">
+      <Project>{17265B81-FA8E-4016-BE6A-CEAB89CAE76E}</Project>
+      <Name>ProxyClientBaseLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SSGContracts\SSGContracts.csproj">
+      <Project>{DDBFFC0C-9D5B-4540-AB18-544B68881465}</Project>
+      <Name>SSGContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UserSettings\UserSettings.csproj">
+      <Project>{369A56B9-C812-4FB2-B50F-35ADDAC8351E}</Project>
+      <Name>UserSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WCFErrorReporting\WCFErrorReporting.csproj">
+      <Project>{023A7A25-2BAE-4B3F-AC20-6FA65055C852}</Project>
+      <Name>WCFErrorReporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XmlSerializableGenericDictionary\XmlSerializableGenericDictionary.csproj">
+      <Project>{7B5B0116-D15B-45B6-B4B9-84B63D83222F}</Project>
+      <Name>XmlSerializableGenericDictionary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>  -->
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)$(TargetName).scr" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetPath).config" DestinationFiles="$(TargetDir)$(TargetName).scr.config" SkipUnchangedFiles="true" />
+    <Delete Files="$(TargetPath)" />
+    <Delete Files="$(TargetPath).config" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)TempRepository\System32\" /y
+xcopy "$(TargetDir)*.dll" "$(SolutionDir)TempRepository\System32\" /y
+xcopy "$(TargetDir)*.config" "$(SolutionDir)TempRepository\System32\" /y
+
+xcopy "$(TargetDir)$(TargetName).scr"  "$(SolutionDir)TempRepository\System32\" /y
+
+del "$(SolutionDir)TempRepository\System32\$(TargetName).exe"
+del "$(SolutionDir)TempRepository\System32\$(TargetName).exe.config"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

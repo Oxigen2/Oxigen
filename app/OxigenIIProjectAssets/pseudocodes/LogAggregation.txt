@@ -1,0 +1,14 @@
+﻿Open an X number of 'small' files _of a specific type_ and keep into memory. No need to be locked
+  if one fails, move to the next. Maybe files are less than X. No need for file streams: only aggregator
+  touches those files.
+  
+Inflate each file into many classes so the contents can be used in LINQ.
+
+do aggregation
+
+save 'big' file
+
+If 'big' file successfully saved
+  delete small files
+  if deletion of a small file is not successful
+    leave it and move to the next

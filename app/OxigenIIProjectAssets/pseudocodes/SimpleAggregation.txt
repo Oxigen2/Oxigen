@@ -1,0 +1,23 @@
+﻿for every small file ---> if no small file or if error, exit
+
+  Create a big file by searching from 1 to infinity and
+  find the first vacant number. Then lock big file.
+
+  read small file
+  flatten small file
+
+  append to big file  
+  
+  if appended successfully
+      save big
+      if big saved successfully
+        delete small
+      else don't delete small and carry on with the loop
+  if not appended successfully carry on with the loop
+ 
+  if number of processed files (or sub-rows in the case of user version info) > max allowed rows
+      close big file
+      Create a big file by searching from 1 to infinity and
+      find the first vacant number. Then lock big file.
+      
+end for

@@ -1,0 +1,283 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F5B732D-C21E-4853-9882-D30AD8C1A1E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OxigenIITest</RootNamespace>
+    <AssemblyName>OxigenIITest</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.SHDocVw, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OxigenIIScreenSaver\OxigenIIScreenSaver\obj\Debug\Interop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="OxigenIICompiledRegexes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\OxigenIIAdvertising\bin\OxigenIICompiledRegexes.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssetSchedulingTest.cs" />
+    <Compile Include="DemographicRangeVerifierTest.cs" />
+    <Compile Include="EncryptionDecryptionHelperTest.cs" />
+    <Compile Include="LockerTest.cs" />
+    <Compile Include="LogFileWriterTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegGetTest.cs" />
+    <Compile Include="Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ShufflerTest.cs" />
+    <Compile Include="TreeSearchTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AuthoringTests.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+    <Shadow Include="Test References\LogFileWriter.accessor" />
+    <Shadow Include="Test References\DemographicRange.accessor" />
+    <Shadow Include="Test References\AssetScheduling.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemographicRange\DemographicRange.csproj">
+      <Project>{25FE3B01-651A-4F05-8834-A9AED77AE034}</Project>
+      <Name>DemographicRange</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EncryptionDecryption\EncryptionDecryption.csproj">
+      <Project>{940650B2-518E-49B2-B716-22B3737731D7}</Project>
+      <Name>EncryptionDecryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileChecksumCalculator\FileChecksumCalculator\FileChecksumCalculator.csproj">
+      <Project>{9336AE54-20DB-468F-93BA-837CDAB30221}</Project>
+      <Name>FileChecksumCalculator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileLocker\FileLocker.csproj">
+      <Project>{44C9638A-0FF7-4D62-B2E3-8174FA7D7530}</Project>
+      <Name>FileLocker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileRightsChecker\FileRightsChecker.csproj">
+      <Project>{698CC733-76C2-4425-921C-A2EE1609F986}</Project>
+      <Name>FileRightsChecker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibraryTester\LibraryTester.csproj">
+      <Project>{8DAEB202-482A-450C-9B17-A06F336AFEA5}</Project>
+      <Name>LibraryTester</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinqToHashSet\LinqToHashSet.csproj">
+      <Project>{4983D647-18D3-40DE-B15C-555D3E411244}</Project>
+      <Name>LinqToHashSet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogFileWriter\LogFileWriter.csproj">
+      <Project>{2FDFB1A6-A7C5-4B2E-AD45-B002E9222370}</Project>
+      <Name>LogFileWriter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogWriteOperations\LogSingletonAccessor.csproj">
+      <Project>{BD4D0664-9B0D-49BE-BED4-E4AC23D2F909}</Project>
+      <Name>LogSingletonAccessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIAdvertList\AdvertList.csproj">
+      <Project>{F5B3ECDB-7490-4303-8EDA-A0DFE79F0189}</Project>
+      <Name>AdvertList</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIAssetScheduling\AssetScheduling.csproj">
+      <Project>{8D0E8EB0-A926-47C1-8F45-5FBEF3E5C845}</Project>
+      <Name>AssetScheduling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIContentExchanger\ContentExchanger.csproj">
+      <Project>{BC84B1F8-B3E8-48B5-93B5-EA1871CBF4C3}</Project>
+      <Name>ContentExchanger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIDemographicData\DemographicData.csproj">
+      <Project>{405D3C86-4D83-4FC9-8842-8D88C0398B99}</Project>
+      <Name>DemographicData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIExceptions\Exceptions.csproj">
+      <Project>{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}</Project>
+      <Name>Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIGeneralData\GeneralData.csproj">
+      <Project>{FEBA9756-1135-44EA-9F8C-59FD30F64EA3}</Project>
+      <Name>GeneralData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIInclusionExclusionRules\InclusionExclusionRules.csproj">
+      <Project>{F8A597E4-9B88-49A0-901A-B6F507037FA2}</Project>
+      <Name>InclusionExclusionRules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILogEntry\LogEntry.csproj">
+      <Project>{7E51006D-BB71-41F0-BDB5-480FDDD1C5FC}</Project>
+      <Name>LogEntry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILogExchanger\LogExchanger.csproj">
+      <Project>{7ACC96A8-7971-4BC4-A966-FEF078E91139}</Project>
+      <Name>LogExchanger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILogFileReader\LogFileReader.csproj">
+      <Project>{9DE93E99-A928-42A4-B397-20B9F15FF4F3}</Project>
+      <Name>LogFileReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILoggerInfo\LoggerInfo.csproj">
+      <Project>{24134EAF-1B5B-4329-9071-15629067E98D}</Project>
+      <Name>LoggerInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILogStats\LogStats.csproj">
+      <Project>{02CE096A-08E3-472F-A8B9-0C8DE4C29D6F}</Project>
+      <Name>LogStats</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILogStructuresRaw\ScreenSaverSingletons.csproj">
+      <Project>{B432D1DF-1D47-4AAB-9AE9-2CC483094E7B}</Project>
+      <Name>ScreenSaverSingletons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIPlayerType\PlayerType.csproj">
+      <Project>{DA2DD1C3-9DA5-4A08-AB79-FA2C0B396E75}</Project>
+      <Name>PlayerType</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIPlaylistMaker\PlaylistLogic.csproj">
+      <Project>{E5DD2597-ECC6-41EE-9711-501DC90D0119}</Project>
+      <Name>PlaylistLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIPlaylist\Playlist.csproj">
+      <Project>{74B94F02-FE73-4AE9-B5C7-935991C4F4B8}</Project>
+      <Name>Playlist</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIScreenSaverConfig\OxigenIIScreenSaverConfig.csproj">
+      <Project>{EFF05119-8F47-48C8-9371-83C65B3F9400}</Project>
+      <Name>OxigenIIScreenSaverConfig</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIScreenSaver\OxigenIIScreenSaver\OxigenIIScreenSaver.csproj">
+      <Project>{144D6CA7-61A5-437F-880C-6D3591A5EBD4}</Project>
+      <Name>OxigenIIScreenSaver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIISSGService\SSGService.csproj">
+      <Project>{6D95252F-F799-4AA9-A617-790FC4522BAF}</Project>
+      <Name>SSGService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIISSG\OxigenIITray.csproj">
+      <Project>{A085FD2D-8013-4CBE-B901-68A3C204C5D0}</Project>
+      <Name>OxigenIITray</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIITaxonomySearch\TaxonomySearch.csproj">
+      <Project>{9B313BBB-227B-492F-A1E8-0755C588BA21}</Project>
+      <Name>TaxonomySearch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIUserDataMarshallerClient\OxigenIIUserDataMarshallerClient.csproj">
+      <Project>{F24B8A98-35C3-4E46-B6CB-E7BC9373CD91}</Project>
+      <Name>OxigenIIUserDataMarshallerClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIUserDataMarshallrContracts\OxigenIIUserDataMarshallrContracts.csproj">
+      <Project>{5CE5DD0D-7208-4ADD-B851-489CE91925E3}</Project>
+      <Name>OxigenIIUserDataMarshallrContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIUserFileMarDataContracts\OxigenIIUserFileMarDataContracts.csproj">
+      <Project>{40B50928-CF1B-49DA-AB9C-ACB6927CA955}</Project>
+      <Name>OxigenIIUserFileMarDataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIUserFileMarshallerClient\OxigenIIUserFileMarshallerClient.csproj">
+      <Project>{7AF712E4-68CC-40C4-BBC7-19B6AA44BF78}</Project>
+      <Name>OxigenIIUserFileMarshallerClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIUserMgmtServicesClient\OxigenIIUserMgmtServicesClient.csproj">
+      <Project>{F9ADD13C-D7CE-4C42-8C0C-65D617C5DFAA}</Project>
+      <Name>OxigenIIUserMgmtServicesClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIUserMgmtServicesContracts\OxigenIIUserMgmtServicesContracts.csproj">
+      <Project>{401432CD-4E44-4863-84A9-CCE5F9579A78}</Project>
+      <Name>OxigenIIUserMgmtServicesContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIXMLSerializer\XMLSerializer.csproj">
+      <Project>{905FC382-9356-4BD1-9F66-0947A6F2FC57}</Project>
+      <Name>XMLSerializer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlaylistAssetPicker\PlaylistAssetPicker.csproj">
+      <Project>{5E9CF6E7-B071-4B5E-A951-2D997F9ADFD1}</Project>
+      <Name>PlaylistAssetPicker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegistryAccess\RegistryAccess.csproj">
+      <Project>{7C486BC9-00F6-48F7-BB49-4CFABBE47DF1}</Project>
+      <Name>RegistryAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServerCycleConnectAttempt\ServerCycleConnectAttempt.csproj">
+      <Project>{CB76EF64-7ACD-4799-95C4-D7B032994EC4}</Project>
+      <Name>ServerCycleConnectAttempt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCFErrorReporting\WCFErrorReporting.csproj">
+      <Project>{023A7A25-2BAE-4B3F-AC20-6FA65055C852}</Project>
+      <Name>WCFErrorReporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XmlSerializableGenericDictionary\XmlSerializableGenericDictionary.csproj">
+      <Project>{7B5B0116-D15B-45B6-B4B9-84B63D83222F}</Project>
+      <Name>XmlSerializableGenericDictionary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XmlSerializableSortableGenericList\XmlSerializableSortableGenericList.csproj">
+      <Project>{63BC3CFC-BE52-4CBB-899E-235D81AFABF1}</Project>
+      <Name>XmlSerializableSortableGenericList</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<demographicinfo>
+  <country>UK</country>
+  <town>London</town>
+  <age>age&gt;=20 AND age&lt;=30</age>
+  <gender>male,female</gender>
+  <socioeconomicgroup>b1,b2</socioeconomicgroup>
+</demographicinfo>

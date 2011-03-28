@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://oxigen.net" elementFormDefault="qualified" targetNamespace="http://oxigen.net" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InterCommunicationStructures" />
+  <xs:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
+  <xs:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" />
+  <xs:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" />
+  <xs:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/OxigenIIUserMgmtServicesService" />
+  <xs:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" />
+  <xs:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd8" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="AppDataFileParameterMessage">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChannelID" type="xs:long" />
+  <xs:element name="Checksum" nillable="true" type="xs:string" />
+  <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/InterCommunicationStructures" name="DataFileType" type="q1:DataFileType" />
+  <xs:element name="MachineGUID" nillable="true" type="xs:string" />
+  <xs:element name="SystemPassPhrase" nillable="true" type="xs:string" />
+  <xs:element name="UserGUID" nillable="true" type="xs:string" />
+  <xs:element name="StreamErrorWrapper">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/Message" name="ReturnStream" type="q2:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ErrorCode" nillable="true" type="xs:string" />
+  <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" name="ErrorSeverity" type="q3:ErrorSeverity" />
+  <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" name="ErrorStatus" type="q4:ErrorStatus" />
+  <xs:element name="Message" nillable="true" type="xs:string" />
+  <xs:element name="GetUserExistsByUserCredentials">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="emailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserExistsByUserCredentialsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="GetUserExistsByUserCredentialsResult" nillable="true" type="q5:SimpleErrorWrapper" />
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterNewUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="emailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dob" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="townCity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="occupationSector" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="employmentLevel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="annualHouseholdIncome" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="softwareMajorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="softwareMinorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q6:ChannelSubscriptions" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterNewUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="RegisterNewUserResult" nillable="true" type="q7:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExistingUserDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExistingUserDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="GetExistingUserDetailsResult" nillable="true" type="q8:SimpleErrorWrapper" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/OxigenIIUserMgmtServicesService" minOccurs="0" name="userInfo" nillable="true" type="q9:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="emailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dob" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="townCity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="occupationSector" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="employmentLevel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="annualHouseholdIncome" nillable="true" type="xs:string" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q10:ChannelSubscriptions" />
+        <xs:element minOccurs="0" name="softwareMajorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="softwareMinorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPcName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserAccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="UpdateUserAccountResult" nillable="true" type="q11:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPcListForInstallerEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="emailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPcListForInstallerEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="GetPcListForInstallerEmailResult" nillable="true" type="q12:SimpleErrorWrapper" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" minOccurs="0" name="pcs" nillable="true" type="q13:ArrayOfPcInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPcListForInstallerGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPcListForInstallerGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="GetPcListForInstallerGUIDResult" nillable="true" type="q14:SimpleErrorWrapper" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" minOccurs="0" name="pcs" nillable="true" type="q15:ArrayOfPcInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LinkPCAndSubscriptionsExistingPC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pcID" type="xs:int" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="softwareMajorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="softwareMinorVersionNumber" type="xs:int" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q16:ChannelSubscriptions" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LinkPCAndSubscriptionsExistingPCResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="LinkPCAndSubscriptionsExistingPCResult" nillable="true" type="q17:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckEmailAddressExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="emailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckEmailAddressExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="CheckEmailAddressExistsResult" nillable="true" type="q18:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditSubscriptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q19:ChannelSubscriptions" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditSubscriptionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="EditSubscriptionsResult" nillable="true" type="q20:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPCSubscriptionsByPCID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pcID" type="xs:int" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPCSubscriptionsByPCIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="GetPCSubscriptionsByPCIDResult" nillable="true" type="q21:SimpleErrorWrapper" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q22:ChannelSubscriptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPCSubscriptionsByMachineGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPCSubscriptionsByMachineGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="GetPCSubscriptionsByMachineGUIDResult" nillable="true" type="q23:SimpleErrorWrapper" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q24:ChannelSubscriptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchedUserGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchedUserGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="GetMatchedUserGUIDResult" nillable="true" type="q25:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchedMachineGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchedMachineGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="GetMatchedMachineGUIDResult" nillable="true" type="q26:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompareMACAddresses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="macAddressClient" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="softwareMajorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="softwareMinorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompareMACAddressesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="CompareMACAddressesResult" nillable="true" type="q27:SimpleErrorWrapper" />
+        <xs:element minOccurs="0" name="newMachineGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bMatch" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendEmailReminder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="emailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendEmailReminderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="SendEmailReminderResult" nillable="true" type="q28:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterSoftwareUninstall">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterSoftwareUninstallResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="RegisterSoftwareUninstallResult" nillable="true" type="q29:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendErrorReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="exceptionDetails" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendErrorReportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePCIfNotExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="majorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="minorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePCIfNotExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="CreatePCIfNotExistsResult" nillable="true" type="q30:StringErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddSubscriptionsAndNewPC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="majorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="minorVersionNumber" type="xs:int" />
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="subscriptions" nillable="true" type="q31:ArrayOfArrayOfstring" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddSubscriptionsAndNewPCResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="AddSubscriptionsAndNewPCResult" nillable="true" type="q32:StringErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncWithServerNoPersonalDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q33:ChannelSubscriptions" />
+        <xs:element minOccurs="0" name="softwareMajorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="softwareMinorVersionNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncWithServerNoPersonalDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="SyncWithServerNoPersonalDetailsResult" nillable="true" type="q34:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckIfPCExistsReturnGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckIfPCExistsReturnGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="CheckIfPCExistsReturnGUIDResult" nillable="true" type="q35:StringErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveStreamsFromSilentMerge">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q36:ChannelSubscriptions" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveStreamsFromSilentMergeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="RemoveStreamsFromSilentMergeResult" nillable="true" type="q37:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReplaceStreamsFromSilentMerge">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q38:ChannelSubscriptions" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReplaceStreamsFromSilentMergeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="ReplaceStreamsFromSilentMergeResult" nillable="true" type="q39:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddStreamsFromSilentMerge">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="macAddress" nillable="true" type="xs:string" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" minOccurs="0" name="channelSubscriptions" nillable="true" type="q40:ChannelSubscriptions" />
+        <xs:element minOccurs="0" name="systemPassPhrase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddStreamsFromSilentMergeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" minOccurs="0" name="AddStreamsFromSilentMergeResult" nillable="true" type="q41:SimpleErrorWrapper" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

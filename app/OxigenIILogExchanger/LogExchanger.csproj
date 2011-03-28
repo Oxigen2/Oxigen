@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7ACC96A8-7971-4BC4-A966-FEF078E91139}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OxigenIIAdvertising.LogExchanger</RootNamespace>
+    <AssemblyName>OxigenLE</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exchanger.cs" />
+    <Compile Include="LogFlattener.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileLocker\FileLocker.csproj">
+      <Project>{44C9638A-0FF7-4D62-B2E3-8174FA7D7530}</Project>
+      <Name>FileLocker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileRightsChecker\FileRightsChecker.csproj">
+      <Project>{698CC733-76C2-4425-921C-A2EE1609F986}</Project>
+      <Name>FileRightsChecker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterCommunicationStructures\InterCommunicationStructures.csproj">
+      <Project>{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}</Project>
+      <Name>InterCommunicationStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIChannelSubscriptions\ChannelSubscriptions.csproj">
+      <Project>{CF9C9E18-82B5-4870-9510-DFD781B7A7F0}</Project>
+      <Name>ChannelSubscriptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIExceptions\Exceptions.csproj">
+      <Project>{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}</Project>
+      <Name>Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIGeneralData\GeneralData.csproj">
+      <Project>{FEBA9756-1135-44EA-9F8C-59FD30F64EA3}</Project>
+      <Name>GeneralData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILogEntry\LogEntry.csproj">
+      <Project>{7E51006D-BB71-41F0-BDB5-480FDDD1C5FC}</Project>
+      <Name>LogEntry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILogFileReader\LogFileReader.csproj">
+      <Project>{9DE93E99-A928-42A4-B397-20B9F15FF4F3}</Project>
+      <Name>LogFileReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILoggerInfo\LoggerInfo.csproj">
+      <Project>{24134EAF-1B5B-4329-9071-15629067E98D}</Project>
+      <Name>LoggerInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIILogStats\LogStats.csproj">
+      <Project>{02CE096A-08E3-472F-A8B9-0C8DE4C29D6F}</Project>
+      <Name>LogStats</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIUserDataMarshallerClient\OxigenIIUserDataMarshallerClient.csproj">
+      <Project>{F24B8A98-35C3-4E46-B6CB-E7BC9373CD91}</Project>
+      <Name>OxigenIIUserDataMarshallerClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIUserDataMarshallrContracts\OxigenIIUserDataMarshallrContracts.csproj">
+      <Project>{5CE5DD0D-7208-4ADD-B851-489CE91925E3}</Project>
+      <Name>OxigenIIUserDataMarshallrContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIXMLSerializer\XMLSerializer.csproj">
+      <Project>{905FC382-9356-4BD1-9F66-0947A6F2FC57}</Project>
+      <Name>XMLSerializer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProxyClientBaseLib\ProxyClientBaseLib.csproj">
+      <Project>{17265B81-FA8E-4016-BE6A-CEAB89CAE76E}</Project>
+      <Name>ProxyClientBaseLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServerCycleConnectAttempt\ServerCycleConnectAttempt.csproj">
+      <Project>{CB76EF64-7ACD-4799-95C4-D7B032994EC4}</Project>
+      <Name>ServerCycleConnectAttempt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpanObjectWrapper\TimeSpanObjectWrapper.csproj">
+      <Project>{7461B0BB-836E-48F1-BA45-6A8F93F7A628}</Project>
+      <Name>TimeSpanObjectWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserSettings\UserSettings.csproj">
+      <Project>{369A56B9-C812-4FB2-B50F-35ADDAC8351E}</Project>
+      <Name>UserSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCFErrorReporting\WCFErrorReporting.csproj">
+      <Project>{023A7A25-2BAE-4B3F-AC20-6FA65055C852}</Project>
+      <Name>WCFErrorReporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XmlSerializableGenericDictionary\XmlSerializableGenericDictionary.csproj">
+      <Project>{7B5B0116-D15B-45B6-B4B9-84B63D83222F}</Project>
+      <Name>XmlSerializableGenericDictionary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XmlSerializableSortableGenericList\XmlSerializableSortableGenericList.csproj">
+      <Project>{63BC3CFC-BE52-4CBB-899E-235D81AFABF1}</Project>
+      <Name>XmlSerializableSortableGenericList</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

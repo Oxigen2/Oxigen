@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="5d260c5a-c778-47a8-b5af-8476c3d37b02" Name="Oxigen" Language="1033" Version="1.0.0.0" Manufacturer="Oxigen" UpgradeCode="f3d45c62-cf9d-48f2-b809-63849baf3409">
+		<Package InstallerVersion="200" Compressed="yes" />
+
+		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLLOCATION" Name="OxigenWix">
+					<!-- <Component Id="ProductComponent" Guid="e602f610-f4f3-411b-ab80-d07dd6e26a54"> -->
+						<!-- TODO: Insert files, registry keys, and other resources here. -->
+					<!-- </Component> -->
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="OxigenWix" Level="1">
+			<!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
+			<!-- <ComponentRef Id="ProductComponent" /> -->
+		</Feature>
+	</Product>
+</Wix>

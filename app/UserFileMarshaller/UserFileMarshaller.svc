@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Service="OxigenIIDownloadServers.UserFileMarshaller" debug="true" factory="OxigenIIServiceFactory.CustomHostFactory"%>

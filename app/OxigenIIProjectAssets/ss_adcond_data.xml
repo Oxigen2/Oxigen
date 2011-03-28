@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<conditions>
+  <advert>
+    <id>1000</id>
+    <startdate>20092503</startdate>
+    <starttime>20:00:00</starttime>
+    <frequencycap>7</frequencycap>
+    <scheduleinfo>
+      <cond>day=Monday AND time&gt;=0900 AND time&lt;=1200</cond>
+      <cond>day=Tuesday AND time&gt;=0930 AND time&lt;=1230</cond>
+      <cond>day=Tuesday AND time&gt;=2030 AND time&lt;=2230</cond>
+    </scheduleinfo>
+    <probabilityweighting>0.8</probabilityweighting>
+    <displayduration>10</displayduration>
+    <url>http://www.google.com</url>
+    <demorequirements>
+      <cond>age&gt;=30 AND gender=male AND country=uk AND socioeconomicgroup=socioeconomicgroup1</cond>
+      <cond>town=London AND socioeconomicgroup=socioeconomicgroup2</cond>
+    </demorequirements>
+    <taxonomyinformation>taxonomy information here</taxonomyinformation>
+    <channeltaxonomy>
+      <excludes>
+        <exclude>0</exclude>
+      </excludes>
+      <include>
+        <include>0.1.3</include>
+        <include>0.4.1.1.1</include>
+      </include>
+    </channeltaxonomy>
+  </advert>
+  <advert>
+    <id>1001</id>
+    <startdate>20092603</startdate>
+    <starttime>16:00:00</starttime>
+    <frequencycap>7</frequencycap>
+    <scheduleinfo>
+      <cond>day=Wednesday AND time&gt;=0900 AND time&lt;=1200 AND month=7</cond>
+      <cond>day=Wednesday AND time&gt;=0900 AND time&lt;=1200 AND month=8</cond>
+      <cond>day&gt;=Thursday AND time&gt;=0930 AND time&lt;=1200</cond>
+      <cond>day&gt;=Thursday AND time&gt;=2030 AND time&lt;=2230</cond>
+    </scheduleinfo>
+    <probabilityweighting>0.2</probabilityweighting>
+    <displayduration>8</displayduration>
+    <url>http://www.google.co.uk/ig</url>
+    <demorequirements>
+      <cond>age&gt;=26 AND age&lt;=32 AND gender=female AND country=UK AND socioeconomicgroup=socioeconomicgroup3</cond>
+      <cond>age&gt;=20 AND age&lt;=30 AND socioeconomicgroup=socioeconomicgroup4</cond>
+    </demorequirements>
+    <taxonomyinformation>taxonomy information here</taxonomyinformation>
+    <channeltaxonomy>
+      <excludes>
+        <exclude>0</exclude>
+      </excludes>
+      <includes>
+        <include>0.1.3</include>
+        <include>0.4.1.1.1</include>
+      </includes>
+    </channeltaxonomy>
+  </advert>
+</conditions>

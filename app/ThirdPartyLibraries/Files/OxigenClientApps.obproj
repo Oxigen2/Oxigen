@@ -1,0 +1,49 @@
+<Project Name="New Obfuscator Project" UseRelativePaths="True" PropogateObfuscationSettings="True" PropogateWatermarkSettings="True" PropogateOutputSettings="True" PropogateAuthenticodeSettings="True" CheckVersionsWhileResolvingAssemblies="True" ID="{47feff1a-8788-4eaf-9de1-b54045906065}">
+  <SearchDirectories />
+  <OutputSettings OutputPath="..\Users\MichaliKonstantinidi\Desktop\ObfuscatedAssemblies" EncryptDependancies="False" CompressDependancies="False" MainAssemblyPath="" RunAssemblyPath="" SNPath="" SignToolPath="C:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\signtool.exe" LicensingDLLPath="" LicensingMergeAssemblyName="">
+    <AdditionalAssemblies />
+  </OutputSettings>
+  <ObfuscationSettings RenamingScheme="1" UseOverloadedFieldNames="False" UseOverloadedMethodNames="False" HonorObfuscationAttributes="True" ExcludeSerializedTypes="True" ProcessInlineStrings="True" ForceXAMLProcessingModeExclude="False" />
+  <ObfuscationRules />
+  <Assembly Load="true" Path="..\Users\MichaliKonstantinidi\Documents\Visual Studio 2008\Projects\OxigenIIAdvertising\OxigenIIAdvertising\OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Release\Oxigen.scr" XapEntryName="" KeyFilePath="" CertFilePath=".\oxigen II Ltd Code Signing Cert.pfx" TimeStampURL="http://timestamp.verisign.com/scripts/timstamp.dll" Embed="True" PfxPassword="" PfxPasswordCert="NQA1ADEAMwAwADcAMAA=">
+    <ObfuscationSettings EncryptStrings="True" SuppressReflector="False" ReduceMetaData="False" ObfuscationDisposition="1" FlowObfuscation="0" SuppressILDASM="False" SuppressReflection="False" CombineResources="False" EncryptResources="True" CompressResources="True" MarkAsSealed="False" EnableTamperDetection="False" EnableAntiDebugging="False" SymbolRenaming="False" HideExternalCalls="False" HideInternalCalls="False" GeneratePdbFile="True" ObfuscatePdbFileNames="True">
+      <Watermarks Watermark0="" Watermark1="" Watermark2="" Watermark3="" Watermark4="" Watermark5="" Watermark6="" Watermark7="" Watermark8="" Watermark9="" />
+    </ObfuscationSettings>
+  </Assembly>
+  <Assembly Load="true" Path="..\Users\MichaliKonstantinidi\Documents\Visual Studio 2008\Projects\OxigenIIAdvertising\OxigenIIAdvertising\OxigenSU\bin\Release\OxigenSU.exe" XapEntryName="" KeyFilePath="" CertFilePath=".\oxigen II Ltd Code Signing Cert.pfx" TimeStampURL="http://timestamp.verisign.com/scripts/timstamp.dll" Embed="True" PfxPassword="" PfxPasswordCert="NQA1ADEAMwAwADcAMAA=">
+    <ObfuscationSettings EncryptStrings="True" SuppressReflector="False" ReduceMetaData="False" ObfuscationDisposition="1" FlowObfuscation="0" SuppressILDASM="False" SuppressReflection="False" CombineResources="False" EncryptResources="True" CompressResources="True" MarkAsSealed="False" EnableTamperDetection="False" EnableAntiDebugging="False" SymbolRenaming="False" HideExternalCalls="False" HideInternalCalls="False" GeneratePdbFile="True" ObfuscatePdbFileNames="True">
+      <Watermarks Watermark0="" Watermark1="" Watermark2="" Watermark3="" Watermark4="" Watermark5="" Watermark6="" Watermark7="" Watermark8="" Watermark9="" />
+    </ObfuscationSettings>
+  </Assembly>
+  <Assembly Load="true" Path="..\Users\MichaliKonstantinidi\Documents\Visual Studio 2008\Projects\OxigenIIAdvertising\OxigenIIAdvertising\Setup\bin\Release\Setup.exe" XapEntryName="" KeyFilePath="" CertFilePath=".\oxigen II Ltd Code Signing Cert.pfx" TimeStampURL="http://timestamp.verisign.com/scripts/timstamp.dll" Embed="True" PfxPassword="" PfxPasswordCert="NQA1ADEAMwAwADcAMAA=">
+    <ObfuscationSettings EncryptStrings="True" SuppressReflector="False" ReduceMetaData="False" ObfuscationDisposition="1" FlowObfuscation="0" SuppressILDASM="False" SuppressReflection="False" CombineResources="False" EncryptResources="True" CompressResources="True" MarkAsSealed="False" EnableTamperDetection="False" EnableAntiDebugging="False" SymbolRenaming="False" HideExternalCalls="False" HideInternalCalls="False" GeneratePdbFile="True" ObfuscatePdbFileNames="True">
+      <Watermarks Watermark0="" Watermark1="" Watermark2="" Watermark3="" Watermark4="" Watermark5="" Watermark6="" Watermark7="" Watermark8="" Watermark9="" />
+    </ObfuscationSettings>
+  </Assembly>
+  <Assembly Load="true" Path="..\Users\MichaliKonstantinidi\Documents\Visual Studio 2008\Projects\OxigenIIAdvertising\OxigenIIAdvertising\OxigenIIPlaylistMaker\bin\Release\OxigenPlaylistLogic.dll" XapEntryName="" KeyFilePath="" CertFilePath=".\oxigen II Ltd Code Signing Cert.pfx" TimeStampURL="http://timestamp.verisign.com/scripts/timstamp.dll" Embed="True" PfxPassword="" PfxPasswordCert="NQA1ADEAMwAwADcAMAA=">
+    <ObfuscationSettings EncryptStrings="True" SuppressReflector="False" ReduceMetaData="False" ObfuscationDisposition="1" FlowObfuscation="0" SuppressILDASM="False" SuppressReflection="False" CombineResources="False" EncryptResources="True" CompressResources="True" MarkAsSealed="False" EnableTamperDetection="False" EnableAntiDebugging="False" SymbolRenaming="False" HideExternalCalls="False" HideInternalCalls="False" GeneratePdbFile="True" ObfuscatePdbFileNames="True">
+      <Watermarks Watermark0="" Watermark1="" Watermark2="" Watermark3="" Watermark4="" Watermark5="" Watermark6="" Watermark7="" Watermark8="" Watermark9="" />
+    </ObfuscationSettings>
+  </Assembly>
+  <Assembly Load="true" Path="..\Users\MichaliKonstantinidi\Documents\Visual Studio 2008\Projects\OxigenIIAdvertising\OxigenIIAdvertising\OxigenIIContentExchanger\bin\Release\OxigenCE.exe" XapEntryName="" KeyFilePath="" CertFilePath=".\oxigen II Ltd Code Signing Cert.pfx" TimeStampURL="http://timestamp.verisign.com/scripts/timstamp.dll" Embed="True" PfxPassword="" PfxPasswordCert="NQA1ADEAMwAwADcAMAA=">
+    <ObfuscationSettings EncryptStrings="True" SuppressReflector="False" ReduceMetaData="False" ObfuscationDisposition="1" FlowObfuscation="0" SuppressILDASM="False" SuppressReflection="False" CombineResources="False" EncryptResources="True" CompressResources="True" MarkAsSealed="False" EnableTamperDetection="False" EnableAntiDebugging="False" SymbolRenaming="False" HideExternalCalls="False" HideInternalCalls="False" GeneratePdbFile="True" ObfuscatePdbFileNames="True">
+      <Watermarks Watermark0="" Watermark1="" Watermark2="" Watermark3="" Watermark4="" Watermark5="" Watermark6="" Watermark7="" Watermark8="" Watermark9="" />
+    </ObfuscationSettings>
+  </Assembly>
+  <Assembly Load="true" Path="..\Users\MichaliKonstantinidi\Documents\Visual Studio 2008\Projects\OxigenIIAdvertising\OxigenIIAdvertising\OxigenIIScreenSaverConfig\bin\Release\ScreenSaverConfig.exe" XapEntryName="" KeyFilePath="" CertFilePath=".\oxigen II Ltd Code Signing Cert.pfx" TimeStampURL="http://timestamp.verisign.com/scripts/timstamp.dll" Embed="True" PfxPassword="" PfxPasswordCert="NQA1ADEAMwAwADcAMAA=">
+    <ObfuscationSettings EncryptStrings="True" SuppressReflector="False" ReduceMetaData="False" ObfuscationDisposition="1" FlowObfuscation="0" SuppressILDASM="False" SuppressReflection="False" CombineResources="False" EncryptResources="True" CompressResources="True" MarkAsSealed="False" EnableTamperDetection="False" EnableAntiDebugging="False" SymbolRenaming="False" HideExternalCalls="False" HideInternalCalls="False" GeneratePdbFile="True" ObfuscatePdbFileNames="True">
+      <Watermarks Watermark0="" Watermark1="" Watermark2="" Watermark3="" Watermark4="" Watermark5="" Watermark6="" Watermark7="" Watermark8="" Watermark9="" />
+    </ObfuscationSettings>
+  </Assembly>
+  <Assembly Load="true" Path="..\Users\MichaliKonstantinidi\Documents\Visual Studio 2008\Projects\OxigenIIAdvertising\OxigenIIAdvertising\OxigenIILogExchanger\bin\Release\OxigenLE.exe" XapEntryName="" KeyFilePath="" CertFilePath=".\oxigen II Ltd Code Signing Cert.pfx" TimeStampURL="http://timestamp.verisign.com/scripts/timstamp.dll" Embed="True" PfxPassword="" PfxPasswordCert="NQA1ADEAMwAwADcAMAA=">
+    <ObfuscationSettings EncryptStrings="True" SuppressReflector="False" ReduceMetaData="False" ObfuscationDisposition="1" FlowObfuscation="0" SuppressILDASM="False" SuppressReflection="False" CombineResources="False" EncryptResources="True" CompressResources="True" MarkAsSealed="False" EnableTamperDetection="False" EnableAntiDebugging="False" SymbolRenaming="False" HideExternalCalls="False" HideInternalCalls="False" GeneratePdbFile="True" ObfuscatePdbFileNames="True">
+      <Watermarks Watermark0="" Watermark1="" Watermark2="" Watermark3="" Watermark4="" Watermark5="" Watermark6="" Watermark7="" Watermark8="" Watermark9="" />
+    </ObfuscationSettings>
+  </Assembly>
+  <Assembly Load="true" Path="..\Users\MichaliKonstantinidi\Documents\Visual Studio 2008\Projects\OxigenIIAdvertising\OxigenIIAdvertising\OxigenService\bin\Release\OxigenService.exe" XapEntryName="" KeyFilePath="" CertFilePath=".\oxigen II Ltd Code Signing Cert.pfx" TimeStampURL="http://timestamp.verisign.com/scripts/timstamp.dll" Embed="True" PfxPassword="" PfxPasswordCert="NQA1ADEAMwAwADcAMAA=">
+    <ObfuscationSettings EncryptStrings="True" SuppressReflector="False" ReduceMetaData="False" ObfuscationDisposition="1" FlowObfuscation="0" SuppressILDASM="False" SuppressReflection="False" CombineResources="False" EncryptResources="True" CompressResources="True" MarkAsSealed="False" EnableTamperDetection="False" EnableAntiDebugging="False" SymbolRenaming="False" HideExternalCalls="False" HideInternalCalls="False" GeneratePdbFile="True" ObfuscatePdbFileNames="True">
+      <Watermarks Watermark0="" Watermark1="" Watermark2="" Watermark3="" Watermark4="" Watermark5="" Watermark6="" Watermark7="" Watermark8="" Watermark9="" />
+    </ObfuscationSettings>
+  </Assembly>
+  <WarningSuppressions />
+</Project>

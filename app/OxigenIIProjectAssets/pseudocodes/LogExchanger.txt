@@ -1,0 +1,18 @@
+﻿Work unit 1: Aggregate logs and save.
+
+Lock, decrypt and open 'big' files
+Lock, decrypt and open 'small' files
+Read and aggregate 'big' files
+Truncate 'big' files
+Append data to 'small' files
+Unlock 'big' and 'small' files
+
+
+
+Work unit 2: Upload contents of aggregated logs to Relay Server
+
+Lock 'small' file
+Open it and decrypt it
+Send its contents
+Truncate it
+Unlock it

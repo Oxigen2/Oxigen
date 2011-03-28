@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:12939/UserManagementServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.UserManagementServices" />
+  <xs:element name="GetUserDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.UserManagementServices" minOccurs="0" name="GetUserDetailsResult" nillable="true" type="q1:UserMain" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterNewMachine">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineMACAddress" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterNewMachineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterNewMachineResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterNewUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterNewUserResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserDemographicData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserDemographicDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.UserManagementServices" minOccurs="0" name="GetUserDemographicDataResult" nillable="true" type="q2:DemographicData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserChannelSubscriptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserChannelSubscriptionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserChannelSubscriptionsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendForgottenPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendForgottenPasswordResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

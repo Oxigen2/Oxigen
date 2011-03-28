@@ -1,0 +1,5 @@
+﻿# contentID|contentlevel|startdate|starttime|endtdate|endtime|duration
+# multiple rows with same contentID are expected as log exchanger appends logging information
+
+1002|normal|20090626|15:45:05|20090626|15:45:23|18
+1003|premium|20090626|15:45:24|20090626|15:15:36|12

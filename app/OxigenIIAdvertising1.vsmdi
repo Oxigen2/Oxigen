@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestLists xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestList name="Scheduling" id="03134ec7-3d1e-480b-95b3-6f38aeb1a3df" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <Description>Inputs to check asset playability against a given date/time</Description>
+    <TestLinks>
+      <TestLink id="7d136f3a-29fb-1d1c-05a8-3f461e728c8e" name="ExecuteAssetSchedulingCorrectSyntax" storage="oxigeniitest\bin\debug\oxigeniitest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="4161d89b-0e89-7392-079f-f8835f2fb859" name="ExecuteAssetSchedulingWrongSyntax" storage="oxigeniitest\bin\debug\oxigeniitest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="212ad679-c74c-6047-6b0e-13e2d02423a0" name="ExecuteAssetSchedulingNonHTMLEntitiesForInequalComparison" storage="oxigeniitest\bin\debug\oxigeniitest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+  <TestList name="Lists of Tests" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <RunConfiguration id="19401457-aa9d-45aa-9cd4-2b9a2960d919" name="Local Test Run" storage="localtestrun.testrunconfig" type="Microsoft.VisualStudio.TestTools.Common.TestRunConfiguration, Microsoft.VisualStudio.QualityTools.Common,   PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestList>
+  <TestList name="Demographic Range Verifier" id="fde03deb-c368-4b4d-861a-aae1f6d942b1" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <Description>Inputs to check if asset meets demographic criteria</Description>
+    <TestLinks>
+      <TestLink id="dafb9a22-6364-ced1-1643-862e00b9cd42" name="IsAssetPlayableTestNonSuccessfulConditions" storage="oxigeniitest\bin\debug\oxigeniitest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="efb0597d-e8fc-20f6-f470-93f59e2dc26b" name="IsAssetPlayableIndividualLineTestNonSuccessfulConditions" storage="oxigeniitest\bin\debug\oxigeniitest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="ed565843-cb60-e755-4f33-bc401bff6e33" name="IsAssetPlayableIndividualLineTestLeadingTrailingConjunction" storage="oxigeniitest\bin\debug\oxigeniitest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="cc552dcb-2fee-cd29-d03b-33daba70ad7b" name="IsAssetPlayableIndividualLineTestSuccessfulConditions" storage="oxigeniitest\bin\debug\oxigeniitest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="445c6bb2-d4ca-89cd-ea80-e7e8bcdbf137" name="IsAssetPlayableTestSuccessfulConditions" storage="oxigeniitest\bin\debug\oxigeniitest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+</TestLists>

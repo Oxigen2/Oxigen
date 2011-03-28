@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3d327e55-d7af-4e5e-bba7-2b660583422e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:12939/UserManagementServices.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserManagementServices.disco" MetadataType="Disco" ID="0eb07faa-66e7-4d6e-a009-48c9d8e3b326" SourceId="1" SourceUrl="http://localhost:12939/UserManagementServices.svc?disco" />
+    <MetadataFile FileName="UserManagementServices.xsd" MetadataType="Schema" ID="0d1612e6-b3ed-49fb-858a-bf672f364562" SourceId="1" SourceUrl="http://localhost:12939/UserManagementServices.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserManagementServices.wsdl" MetadataType="Wsdl" ID="4ed97eb6-5bfe-4e80-a44f-8112515a8ada" SourceId="1" SourceUrl="http://localhost:12939/UserManagementServices.svc?wsdl" />
+    <MetadataFile FileName="UserManagementServices1.xsd" MetadataType="Schema" ID="67699fc8-993d-4eba-ae87-74778963b332" SourceId="1" SourceUrl="http://localhost:12939/UserManagementServices.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserManagementServices2.xsd" MetadataType="Schema" ID="3311b95e-d48d-433a-b831-9f9531fc5e3e" SourceId="1" SourceUrl="http://localhost:12939/UserManagementServices.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

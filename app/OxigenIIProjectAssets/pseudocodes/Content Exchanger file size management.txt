@@ -1,0 +1,9 @@
+﻿receive file form web server
+  if error, receive another
+  if folder size is >= allowed size
+    stop and exit
+  else
+    receive another
+  
+Create a new playlist with alternating advert/content, starting with content
+loop through that playlist and download up to allowed size.

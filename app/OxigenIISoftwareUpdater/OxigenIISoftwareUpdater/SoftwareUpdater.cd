@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OxigenIIAdvertising.SoftwareUpdater.Form1">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareUpdater.Program">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareUpdater.Properties.Resources">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareUpdater.Properties.Settings">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareUpdater.UserFileMarshallerService.UserMain" BaseTypeListCollapsed="true">
+    <Position X="8" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAIAAAAAAACABgAAAABAEAAAAAgIIAAA=</HashCode>
+      <FileName>Service References\UserFileMarshallerService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareUpdater.UserFileMarshallerService.DemographicData" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAgACAgAAAACAAEAAAAAAgANAAAAEACAAAAIAAAA=</HashCode>
+      <FileName>Service References\UserFileMarshallerService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OxigenIIAdvertising.SoftwareUpdater.UserFileMarshallerService.UserManagementServicesClient" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAACAAABAAAQAABAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Service References\UserFileMarshallerService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="OxigenIIAdvertising.SoftwareUpdater.UserFileMarshallerService.IUserManagementServices">
+    <Position X="0.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAACAAABAAAQAABAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Service References\UserFileMarshallerService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OxigenIIAdvertising.SoftwareUpdater.UserFileMarshallerService.IUserManagementServicesChannel">
+    <Position X="0.5" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\UserFileMarshallerService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="OxigenIIAdvertising.SoftwareUpdater.UserFileMarshallerService.Gender">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\UserFileMarshallerService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OxigenIIUserMgmtServicesService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OxigenIIUserMgmtServicesService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="UserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnnualHouseholdIncome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DOB" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmploymentLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OccupationSector" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TownCity" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserInfo" nillable="true" type="tns:UserInfo" />
+</xs:schema>
