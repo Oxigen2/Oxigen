@@ -3,7 +3,8 @@
 Thumbs.db
 #Ignore files build by Visual Studio
 *.obj
-*.exe
+# .exe's are requred by the Setup project
+# *.exe
 *.pdb
 *.user
 *.aps
