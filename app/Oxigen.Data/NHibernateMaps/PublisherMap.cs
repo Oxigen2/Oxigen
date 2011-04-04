@@ -8,7 +8,7 @@ namespace Oxigen.Data.NHibernateMaps
     {
         public void Override(AutoMapping<Publisher> mapping)
         {
-            mapping.HasMany(x => x.AssignedTemplates);
+            //mapping.HasMany(x => x.AssignedTemplates);
 
 
         }

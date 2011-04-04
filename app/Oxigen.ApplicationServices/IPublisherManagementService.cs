@@ -17,5 +17,6 @@ namespace Oxigen.ApplicationServices
         ActionConfirmation SaveOrUpdate(Publisher publisher);
         ActionConfirmation UpdateWith(Publisher publisherFromForm, int idOfPublisherToUpdate);
         ActionConfirmation Delete(int id);
+        Publisher GetByUserId(int userId);
     }
 }

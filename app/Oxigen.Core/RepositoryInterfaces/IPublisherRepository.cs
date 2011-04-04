@@ -8,5 +8,7 @@ namespace Oxigen.Core.RepositoryInterfaces
     public interface IPublisherRepository : IRepository<Publisher>
     {
         IList<PublisherDto> GetPublisherSummaries();
+
+        Publisher GetByUserId(int userId);
     }
 }

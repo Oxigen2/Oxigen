@@ -7,5 +7,6 @@ namespace Oxigen.Core.QueryDtos
         public int TEMPLATE_ID { get; set; }
         public int Id { get { return TEMPLATE_ID; } set { TEMPLATE_ID = value; } }
 		public string MetaData { get; set; }
+        public string DisplayName { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 CREATE TABLE [dbo].[Templates](
 	[TEMPLATE_ID] [int] IDENTITY(1,1) NOT NULL,
-	[OwnedByID] [int] NOT NULL,
+	[PublisherID] [int] NOT NULL,
 	[GUID] [nvarchar](50) NOT NULL,
 	[Filename] [nvarchar](255) NOT NULL,
 	[FilenameNoPath] [nvarchar](255) NOT NULL,

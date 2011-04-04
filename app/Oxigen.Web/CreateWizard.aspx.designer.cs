@@ -40,6 +40,15 @@ namespace OxigenIIPresentation {
         protected global::System.Web.UI.WebControls.Literal StorageCapacity2;
         
         /// <summary>
+        /// TemplateChooser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList TemplateChooser;
+        
+        /// <summary>
         /// rawContentDate control.
         /// </summary>
         /// <remarks>

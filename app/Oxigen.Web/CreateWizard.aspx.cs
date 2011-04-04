@@ -7,6 +7,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 using Aurigma.ImageUploader;
+using Microsoft.Practices.ServiceLocation;
+using Oxigen.ApplicationServices;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
 using OxigenIIAdvertising.LoggerInfo;
@@ -66,6 +68,8 @@ namespace OxigenIIPresentation
         if (user == null)
           return;
 
+        var producer = ServiceLocator.Current.GetInstance<IPublisherManagementService>().GetByUserId(user.UserID);
+
         UsedBytes.Value = (user.TotalAvailableBytes - user.UsedBytes).ToString();
         BytesBegin.Value = user.UsedBytes.ToString();
         BytesTotal.Value = user.TotalAvailableBytes.ToString();
@@ -116,6 +120,12 @@ namespace OxigenIIPresentation
         ImageUploader1.MaxTotalFileSize = (int)((user.TotalAvailableBytes - user.UsedBytes) * 1.1F);
         ImageUploader1.Action = "CreateWizard.aspx";
 
+        TemplateChooser.DataSource = producer.AssignedTemplates;
+        TemplateChooser.DataTextField = "Name";
+        TemplateChooser.DataValueField = "Id";
+        TemplateChooser.DataBind();
+        TemplateChooser.Items.Insert(0, new ListItem("Do nothing", "0"));
+
         //  Get total number of uploaded files (all files are uploaded in a single package).
         // (if files have been uploaded)
         if (Request.Form["FileCount"] == null)
@@ -135,7 +145,7 @@ namespace OxigenIIPresentation
       }
     }
 
-    Logger logger = new Logger("Create Page", System.Configuration.ConfigurationSettings.AppSettings["debugPath"], LoggingMode.Debug);
+      Logger logger = new Logger("Create Page", System.Configuration.ConfigurationSettings.AppSettings["debugPath"], LoggingMode.Debug);
 
     private void UploadAndSaveToDB(out long totalUploadSize)
     {

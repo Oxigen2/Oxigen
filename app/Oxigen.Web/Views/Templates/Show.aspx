@@ -13,7 +13,7 @@
 		</li>
 		<li>
 			<label for="Template_OwnedBy">OwnedBy:</label>
-            <span id="Template_OwnedBy"><%= Server.HtmlEncode(ViewData.Model.OwnedBy.ToString()) %></span>
+            <span id="Template_OwnedBy"><%= Server.HtmlEncode(ViewData.Model.Publisher.ToString()) %></span>
 		</li>
 	    <li class="buttons">
             <%= Html.Button("btnBack", "Back", HtmlButtonType.Button, 

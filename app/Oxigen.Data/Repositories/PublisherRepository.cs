@@ -1,3 +1,4 @@
+using NHibernate.Criterion;
 using SharpArch.Data.NHibernate;
 using System.Collections.Generic;
 using NHibernate;
@@ -17,6 +18,15 @@ namespace Oxigen.Data.Repositories
                 .SetResultTransformer(Transformers.AliasToBean<PublisherDto>());
 
             return query.List<PublisherDto>();
+        }
+
+
+        public Publisher GetByUserId(int userId)
+        {
+            ISession session = SharpArch.Data.NHibernate.NHibernateSession.Current;
+
+            return session.CreateCriteria<Publisher>().Add(Expression.Eq("UserID", userId)).UniqueResult<Publisher>();
+
         }
     }
 }

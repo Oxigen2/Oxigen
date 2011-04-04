@@ -118,12 +118,7 @@
               <div class="TemplateChooser">
               <div class="FormHolder">
                 <span>Template:</span>
-                <select id="TemplateChooser">
-                  <option>Do nothing</option>
-                  <option disabled="disabled">Oxigen Photo</option>
-                  <option disabled="disabled">Stupeflix</option>
- <%=(Request.QueryString["Admin"] == "true") ? "<option>Arsenal</option>" : ""%>
-                </select>
+                <asp:dropdownlist id="TemplateChooser" runat="server"/>
               </div>
               <div class="HiddenSelection">
 <%--                <div class="FormHolder">
