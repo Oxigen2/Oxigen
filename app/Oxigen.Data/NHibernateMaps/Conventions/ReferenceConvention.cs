@@ -7,7 +7,7 @@ namespace Oxigen.Data.NHibernateMaps.Conventions
     {
         public void Apply(FluentNHibernate.Conventions.Instances.IManyToOneInstance instance)
         {
-            instance.Column(instance.Property.Name + "Fk");
+            instance.Column(instance.Property.Name + "ID");
         }
     }
 }

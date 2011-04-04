@@ -118,6 +118,7 @@ namespace Oxigen.ApplicationServices
             fs.Close();
             newTemplate.Name = fileName;
             newTemplate.MetaData = template.MetaData;
+            newTemplate.OwnedBy = template.OwnedBy;
             templateRepository.SaveOrUpdate(newTemplate);
             return ActionConfirmation.CreateSuccessConfirmation("The template was successfully uploaded");
 

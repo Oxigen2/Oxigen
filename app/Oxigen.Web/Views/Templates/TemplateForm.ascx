@@ -35,10 +35,10 @@
         <li>
 			<label for="Template_OwnedBy">OwnedBy:</label>
 			<div>
-				<%= Html.TextBox("Template.OwnedBy", 
-					(ViewData.Model.Template != null) ? ViewData.Model.Template.OwnedBy.ToString() : "")%>
+				<%= Html.TextBox("Template.OwnedBy.Id", 
+					(ViewData.Model.Template != null) ? ViewData.Model.Template.OwnedBy.Id.ToString() : "")%>
 			</div>
-			<%= Html.ValidationMessage("Template.OwnedBy")%>
+			<%= Html.ValidationMessage("Template.OwnedBy.Id")%>
 		</li>
 	    <li>
             <%= Html.SubmitButton("btnSave", "Save Template") %>

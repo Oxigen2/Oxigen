@@ -12,9 +12,6 @@ namespace Oxigen.Data.NHibernateMaps
     {
         public void Override(AutoMapping<AssetContent> mapping)
         {
-            mapping.Id(x => x.Id, "ASSETCONTENT_ID")
-                .UnsavedValue(0)
-                .GeneratedBy.Identity();
             mapping.IgnoreProperty(x => x.FileFullPathName);
             mapping.IgnoreProperty(x => x.ThumbnailFullPathName);
         

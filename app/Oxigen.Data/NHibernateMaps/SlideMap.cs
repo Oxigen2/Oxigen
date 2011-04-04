@@ -8,9 +8,6 @@ namespace Oxigen.Data.NHibernateMaps
     {
         public void Override(AutoMapping<Slide> mapping)
         {
-            mapping.Id(x => x.Id, "SLIDE_ID")
-                .UnsavedValue(0)
-                .GeneratedBy.Identity();
             mapping.Map(x => x.Name).Column("SlideName");
             mapping.Map(x => x.ImageName).Column("ImageFilename");
             mapping.IgnoreProperty(x => x.FileFullPathName);

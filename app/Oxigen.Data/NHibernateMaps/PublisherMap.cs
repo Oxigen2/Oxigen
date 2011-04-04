@@ -8,9 +8,6 @@ namespace Oxigen.Data.NHibernateMaps
     {
         public void Override(AutoMapping<Publisher> mapping)
         {
-            mapping.Id(x => x.Id, "PUBLISHER_ID")
-                .UnsavedValue(0)
-                .GeneratedBy.Identity();
             mapping.HasMany(x => x.AssignedTemplates);
 
 

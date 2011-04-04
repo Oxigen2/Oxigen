@@ -15,7 +15,7 @@
     <table>
         <thead>
             <tr>
-			    <th>MetaDate</th>
+			    <th>MetaData</th>
 			    <th>OwnedBy</th>
 			    <th colspan="3">Action</th>
             </tr>
@@ -24,8 +24,8 @@
 		<%
 		foreach (TemplateDto templateDto in ViewData.Model) { %>
 			<tr>
-				<td><%= templateDto.MetaDate %></td>
-				<td><%= templateDto.OwnedBy %></td>
+				<td><%= templateDto.MetaData %></td>
+				<td>TODO</td>
 				<td><%=Html.ActionLink<TemplatesController>( c => c.Show( templateDto.Id ), "Details ") %></td>
 				<td><%=Html.ActionLink<TemplatesController>( c => c.Edit( templateDto.Id ), "Edit") %></td>
 				<td>

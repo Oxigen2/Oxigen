@@ -8,9 +8,9 @@ namespace Oxigen.Data.NHibernateMaps.Conventions
         protected override string GetKeyName(Member property, Type type)
         {
             if (property == null)
-                return type.Name + "Fk";
+                return type.Name + "ID";
 
-            return property.Name + "Fk";
+            return property.Name + "ID";
         }
     }
 }

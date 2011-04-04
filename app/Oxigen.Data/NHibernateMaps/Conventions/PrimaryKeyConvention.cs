@@ -7,9 +7,9 @@ namespace Oxigen.Data.NHibernateMaps.Conventions
     {
         public void Apply(FluentNHibernate.Conventions.Instances.IIdentityInstance instance)
         {
-            instance.Column("Id");
+            instance.Column(instance.EntityType.Name + "_ID");
             instance.UnsavedValue("0");
-            instance.GeneratedBy.HiLo("1000");
+            instance.GeneratedBy.Identity();
         }
     }
 }
