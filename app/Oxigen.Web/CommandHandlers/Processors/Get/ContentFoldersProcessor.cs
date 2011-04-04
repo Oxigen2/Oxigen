@@ -45,7 +45,7 @@ namespace OxigenIIPresentation.CommandHandlers.Processors.Get
       return Flatten(folderList);
     }
 
-    private Logger _logger = new Logger("ContentFoldersProcessor", @"\\Iis6-server\Client Sites\OxigenIIAdvertisingSystem\Debug.txt");
+    private Logger _logger = new Logger("ContentFoldersProcessor", @"\\OXIGEN01\Repository\UAT\Debug.txt");
     
     private string Flatten(List<List<CreateContentGenericFolder>> folderList)
     {

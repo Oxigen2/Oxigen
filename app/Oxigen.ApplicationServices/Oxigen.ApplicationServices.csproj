@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Flash">
-      <HintPath>..\..\..\Program Files (x86)\Aspose\Aspose.Flash for .NET\bin\net4.0\Aspose.Flash.dll</HintPath>
+      <HintPath>..\..\lib\Aspose.Flash.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch">
       <HintPath>..\..\lib\SharpArch.dll</HintPath>

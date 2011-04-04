@@ -14,7 +14,7 @@ namespace OxigenIIPresentation.CommandHandlers.Processors.Post
   {
     public SignupProcessor(HttpSessionState session) : base(session) { }
 
-    private Logger _logger = new Logger("Sign up", @"\\iis6-server\Client Sites\OxigenIIAdvertisingSystem\debug.txt", LoggingMode.Debug);
+    private Logger _logger = new Logger("Sign up", @"\\OXIGEN01\Repository\UAT\debug.txt", LoggingMode.Debug);
     private Regex emailPattern = new Regex(@"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b", RegexOptions.Compiled);
 
     internal override string Execute(string[] parameters)
