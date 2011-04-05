@@ -859,17 +859,11 @@ function chooseClickType(clicked) {
 }
 
 function convertContent() {
-  var select_index = $('#TemplateChooser option').index($('#TemplateChooser option:selected'))
+    var select_index = $('#TemplateChooser option').index($('#TemplateChooser option:selected'))
   if (select_index == 0) {
     var ajaxstuff = 'templateConvert,,' + $('#ForJQSlideDropDown option:selected').val() + ',,' + select_index + ',,' + $('#Template1Input1').val() + ',,' + $('#Template1Input2').val() + ',,'
   }
-  else if (select_index == 1) { //MUST ADD WHEN OTHER TEMPLATES BECOME ACTIVE
-    var ajaxstuff = ''
-  }
-  else if (select_index == 2) { //MUST ADD WHEN OTHER TEMPLATES BECOME ACTIVE
-    var ajaxstuff = ''  
- }
-else if (select_index == 3) { //MUST ADD WHEN OTHER TEMPLATES BECOME ACTIVE
+else  {
 var ajaxstuff = 'templateConvert,,' + $('#ForJQSlideDropDown option:selected').val() + ',,' + select_index + ',,' + $('#TemplateCaption').val() + ',,' + $('#TemplateCredit').val() + ',,'
 }
 

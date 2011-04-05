@@ -116,7 +116,7 @@ namespace Oxigen.ApplicationServices
             FileStream fs = new FileStream(newTemplate.FileFullPathName, FileMode.Create, FileAccess.Write);
             fs.Write(fileByteArray, 0, fileByteArray.Length);
             fs.Close();
-            newTemplate.Name = fileName;
+            newTemplate.Name = Path.GetFileNameWithoutExtension(fileName);
             newTemplate.MetaData = template.MetaData;
             newTemplate.Publisher = template.Publisher;
             templateRepository.SaveOrUpdate(newTemplate);
