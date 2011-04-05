@@ -24,13 +24,19 @@ namespace Tests.Oxigen.ApplicationServices
                 MockRepository.GenerateMock<ISlideRepository>();
             slideRepository.Stub(r => r.DbContext)
                 .Return(MockRepository.GenerateMock<IDbContext>());
+
             assetContentRepository =
                 MockRepository.GenerateMock<IAssetContentRepository>();
             assetContentRepository.Stub(r => r.DbContext)
                 .Return(MockRepository.GenerateMock<IDbContext>());
+
+            templateRepository =
+                MockRepository.GenerateMock<ITemplateRepository>();
+            templateRepository.Stub(r => r.DbContext)
+                .Return(MockRepository.GenerateMock<IDbContext>());
             
             slideManagementService =
-                new SlideManagementService(slideRepository, assetContentRepository);
+                new SlideManagementService(slideRepository, assetContentRepository, templateRepository);
         }
 
         [Test]
@@ -263,5 +269,6 @@ namespace Tests.Oxigen.ApplicationServices
         private ISlideRepository slideRepository;
         private ISlideManagementService slideManagementService;
         private IAssetContentRepository assetContentRepository;
+        private ITemplateRepository templateRepository;
     }
 }

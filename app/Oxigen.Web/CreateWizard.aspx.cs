@@ -9,9 +9,11 @@ using System.Xml;
 using Aurigma.ImageUploader;
 using Microsoft.Practices.ServiceLocation;
 using Oxigen.ApplicationServices;
+using Oxigen.Core;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
 using OxigenIIAdvertising.LoggerInfo;
+using AssetContent = OxigenIIAdvertising.SOAStructures.AssetContent;
 
 namespace OxigenIIPresentation
 {
@@ -31,6 +33,12 @@ namespace OxigenIIPresentation
     private int _minDisplayDuration = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["minDisplayDuration"]);
     private int _maxDisplayDuration = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["maxDisplayDuration"]);
     private int _serverTimeout = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["serverTimeout"]);
+    private IList<Template> _templates;
+
+    protected IList<Template> Templates
+    {
+        get { return _templates; }
+    }
 
     private string _inviteToOverrideValues = Resource.InviteToOverrideValues; 
 
@@ -120,11 +128,10 @@ namespace OxigenIIPresentation
         ImageUploader1.MaxTotalFileSize = (int)((user.TotalAvailableBytes - user.UsedBytes) * 1.1F);
         ImageUploader1.Action = "CreateWizard.aspx";
 
-        TemplateChooser.DataSource = producer.AssignedTemplates;
-        TemplateChooser.DataTextField = "Name";
-        TemplateChooser.DataValueField = "Id";
-        TemplateChooser.DataBind();
-        TemplateChooser.Items.Insert(0, new ListItem("Do nothing", "0"));
+        _templates = producer.AssignedTemplates;
+
+        //foreach (Template template in templates)
+        //    TemplateList.Text += "<option value=\"" + template.Id + "\">" + template.Name + "</option>";
 
         //  Get total number of uploaded files (all files are uploaded in a single package).
         // (if files have been uploaded)
