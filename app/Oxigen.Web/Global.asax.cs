@@ -109,8 +109,7 @@
             NHibernateSession.Init(
                 this.webSessionStorage, 
                 new[] { this.Server.MapPath("~/bin/Oxigen.Data.dll") }, 
-                new AutoPersistenceModelGenerator().Generate(), 
-                this.Server.MapPath("~/NHibernate.config"));
+                new AutoPersistenceModelGenerator().Generate());
         }
 
         #endregion
