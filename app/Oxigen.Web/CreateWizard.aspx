@@ -119,10 +119,15 @@
               <div class="FormHolder">
                 <span>Template:</span>
                 <select id="TemplateChooser">
-                  <option>Do nothing</option>
-                  <option disabled="disabled">Oxigen Photo</option>
-                  <option disabled="disabled">Stupeflix</option>
- <%=(Request.QueryString["Admin"] == "true") ? "<option>Arsenal</option>" : ""%>
+                  <option value="0">Do nothing</option>
+                  <% foreach (Oxigen.Core.Template template in Templates)
+                    {
+                    %>
+                        <option value="<%= template.Id %>"><%= template.Name %></option>
+                    <%
+                    } 
+                  %>
+                  <asp:Literal ID="TemplateList" runat="server" />
                 </select>
               </div>
               <div class="HiddenSelection">
@@ -146,12 +151,13 @@
               <div class="HiddenSelection">
                 <div class="FormHolder">
                   <span>Caption:</span>
-                  <input type="text" />
+                  <input id="ConvertTemplateCaption" type="text" />
                 </div>
                 <div class="FormHolder">
                   <span>Credit:</span>
-                  <input type="text" />
+                  <input id="ConvertTemplateCredit" type="text" />
                 </div>
+                <%--
                 <div class="FormHolder">
                   <span>Date:</span>
                   <asp:textbox id="rawContentDate" runat="server" />
@@ -174,6 +180,7 @@
                     <option>5 minutes</option>
                   </select>
                 </div>
+                --%>
               </div>
               <div class="HiddenSelection">
                 <span id="StupeflixValidation">You must choose 5-15 slides.<br />You have chosen <span>1</span>.</span>

@@ -116,9 +116,9 @@ namespace Oxigen.ApplicationServices
             FileStream fs = new FileStream(newTemplate.FileFullPathName, FileMode.Create, FileAccess.Write);
             fs.Write(fileByteArray, 0, fileByteArray.Length);
             fs.Close();
-            newTemplate.Name = fileName;
+            newTemplate.Name = Path.GetFileNameWithoutExtension(fileName);
             newTemplate.MetaData = template.MetaData;
-            newTemplate.OwnedBy = template.OwnedBy;
+            newTemplate.Publisher = template.Publisher;
             templateRepository.SaveOrUpdate(newTemplate);
             return ActionConfirmation.CreateSuccessConfirmation("The template was successfully uploaded");
 

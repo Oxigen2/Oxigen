@@ -25,7 +25,7 @@
 		foreach (TemplateDto templateDto in ViewData.Model) { %>
 			<tr>
 				<td><%= templateDto.MetaData %></td>
-				<td>TODO</td>
+				<td><%= templateDto.DisplayName %></td>
 				<td><%=Html.ActionLink<TemplatesController>( c => c.Show( templateDto.Id ), "Details ") %></td>
 				<td><%=Html.ActionLink<TemplatesController>( c => c.Edit( templateDto.Id ), "Edit") %></td>
 				<td>

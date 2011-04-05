@@ -15,12 +15,14 @@ namespace Oxigen.ApplicationServices
 {
     public class SlideManagementService : ISlideManagementService
     {
-        public SlideManagementService(ISlideRepository slideRepository, IAssetContentRepository assetContentRepository) {
+        public SlideManagementService(ISlideRepository slideRepository, IAssetContentRepository assetContentRepository, ITemplateRepository templateRepository) {
             Check.Require(slideRepository != null, "slideRepository may not be null");
             Check.Require(assetContentRepository != null, "assetContentRepository may not be null");
+            Check.Require(templateRepository != null, "templateRepository may not be null");
 
             this.slideRepository = slideRepository;
             this.assetContentRepository = assetContentRepository;
+            this.templateRepository = templateRepository;
         }
 
         public Slide Get(int id) {
@@ -128,13 +130,14 @@ namespace Oxigen.ApplicationServices
             foreach (var assetContentId in assetContentIds)
             {
                 var assetContent = this.assetContentRepository.Get(assetContentId);
+                var template = this.templateRepository.Get(templateId);
                 var extension = bUseTemplate ? ".swf" : assetContent.FilenameExtension;
                 var slide = new Slide(extension);
 
                 slide.SlideFolderID = slidefolderId;
-                slide.Caption = assetContent.Caption;
+                slide.Caption = caption;
                 slide.ClickThroughURL = assetContent.URL;
-                slide.Creator = assetContent.Creator;
+                slide.Creator = credit;
                 slide.DisplayDuration = assetContent.DisplayDuration;
                 slide.UserGivenDate = assetContent.UserGivenDate;
                 slide.Name = assetContent.Name;
@@ -145,13 +148,13 @@ namespace Oxigen.ApplicationServices
                     slide.PreviewType = "Flash";
                     slide.PlayerType = "Flash";
 
-                    var template = new SWAFile(templatePath + "Arsenal.swf");
-                    template.UpdateBitmap("MasterImage", Image.FromFile(assetContent.FileFullPathName));
-                    template.UpdateText("MasterText", caption);
-                    template.UpdateText("CreditText", credit);
-                    var image = template.GetThumbnail();
+                    var slideFromTemplate = new SWAFile(templatePath + template.Name + ".swf"); // As the templates are named after their SWF's filenames, template.Name will be a valid file name.
+                    slideFromTemplate.UpdateBitmap("MasterImage", Image.FromFile(assetContent.FileFullPathName));
+                    slideFromTemplate.UpdateText("MasterText", caption);
+                    slideFromTemplate.UpdateText("CreditText", credit);
+                    var image = slideFromTemplate.GetThumbnail();
                     ImageUtilities.Crop(image, 100, 75, AnchorPosition.Center).Save(slide.ThumbnailFullPathName);
-                    template.Save(slide.FileFullPathName);
+                    slideFromTemplate.Save(slide.FileFullPathName);
                 }
                 else
                 {
@@ -206,5 +209,6 @@ namespace Oxigen.ApplicationServices
 
         ISlideRepository slideRepository;
         IAssetContentRepository assetContentRepository;
+        ITemplateRepository templateRepository;
     }
 }

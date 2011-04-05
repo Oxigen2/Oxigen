@@ -24,6 +24,6 @@ namespace Oxigen.Core
             get { return System.Configuration.ConfigurationSettings.AppSettings["thumbnailTemplatePath"]; }
         }
 
-        public virtual Publisher OwnedBy { get; set; }
+        public virtual Publisher Publisher { get; set; }
     }
 }

@@ -25,7 +25,7 @@
         </li>
         <li>
             <label for="Template_MetaDate">
-                MetaDate:</label>
+                MetaData:</label>
             <div>
                 <%= Html.TextBox("Template.MetaData", 
 					(ViewData.Model.Template != null) ? ViewData.Model.Template.MetaData.ToString() : "")%>
@@ -35,10 +35,10 @@
         <li>
 			<label for="Template_OwnedBy">OwnedBy:</label>
 			<div>
-				<%= Html.TextBox("Template.OwnedBy.Id", 
-					(ViewData.Model.Template != null) ? ViewData.Model.Template.OwnedBy.Id.ToString() : "")%>
+				<%= Html.TextBox("Template.Publisher.Id", 
+					(ViewData.Model.Template != null) ? ViewData.Model.Template.Publisher.Id.ToString() : "")%>
 			</div>
-			<%= Html.ValidationMessage("Template.OwnedBy.Id")%>
+			<%= Html.ValidationMessage("Template.Publisher.Id")%>
 		</li>
 	    <li>
             <%= Html.SubmitButton("btnSave", "Save Template") %>

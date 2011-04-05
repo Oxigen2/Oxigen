@@ -7,9 +7,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 using Aurigma.ImageUploader;
+using Microsoft.Practices.ServiceLocation;
+using Oxigen.ApplicationServices;
+using Oxigen.Core;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
 using OxigenIIAdvertising.LoggerInfo;
+using AssetContent = OxigenIIAdvertising.SOAStructures.AssetContent;
 
 namespace OxigenIIPresentation
 {
@@ -29,6 +33,12 @@ namespace OxigenIIPresentation
     private int _minDisplayDuration = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["minDisplayDuration"]);
     private int _maxDisplayDuration = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["maxDisplayDuration"]);
     private int _serverTimeout = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["serverTimeout"]);
+    private IList<Template> _templates;
+
+    protected IList<Template> Templates
+    {
+        get { return _templates; }
+    }
 
     private string _inviteToOverrideValues = Resource.InviteToOverrideValues; 
 
@@ -65,6 +75,8 @@ namespace OxigenIIPresentation
 
         if (user == null)
           return;
+
+        var producer = ServiceLocator.Current.GetInstance<IPublisherManagementService>().GetByUserId(user.UserID);
 
         UsedBytes.Value = (user.TotalAvailableBytes - user.UsedBytes).ToString();
         BytesBegin.Value = user.UsedBytes.ToString();
@@ -116,6 +128,11 @@ namespace OxigenIIPresentation
         ImageUploader1.MaxTotalFileSize = (int)((user.TotalAvailableBytes - user.UsedBytes) * 1.1F);
         ImageUploader1.Action = "CreateWizard.aspx";
 
+        _templates = producer.AssignedTemplates;
+
+        //foreach (Template template in templates)
+        //    TemplateList.Text += "<option value=\"" + template.Id + "\">" + template.Name + "</option>";
+
         //  Get total number of uploaded files (all files are uploaded in a single package).
         // (if files have been uploaded)
         if (Request.Form["FileCount"] == null)
@@ -135,7 +152,7 @@ namespace OxigenIIPresentation
       }
     }
 
-    Logger logger = new Logger("Create Page", System.Configuration.ConfigurationSettings.AppSettings["debugPath"], LoggingMode.Debug);
+      Logger logger = new Logger("Create Page", System.Configuration.ConfigurationSettings.AppSettings["debugPath"], LoggingMode.Debug);
 
     private void UploadAndSaveToDB(out long totalUploadSize)
     {

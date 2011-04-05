@@ -109,6 +109,11 @@ namespace Oxigen.ApplicationServices
             }
         }
 
+        public Publisher GetByUserId(int userId)
+        {
+            return publisherRepository.GetByUserId(userId);
+        }
+
         private void TransferFormValuesTo(Publisher publisherToUpdate, Publisher publisherFromForm) {
 		    publisherToUpdate.UserID = publisherFromForm.UserID;
 			publisherToUpdate.FirstName = publisherFromForm.FirstName;
