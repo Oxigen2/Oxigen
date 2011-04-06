@@ -7,17 +7,16 @@
          $(function () {
              $("#PublisherDisplayName").autocomplete({
                  source: function (request, response) {
-                     $.ajax({
-                         url: '/Publishers/GetPublishersByPartialName', type: 'POST', dataType: 'json',
-                         data: { partialName: request.term },
-                         success: function (data) {
+                     $.get(
+                         '/Publishers/GetPublishersByPartialName',
+                         { q: request.term },
+                         function (data) {
                              response($.map(data, function (publisher) {
                                  var name = publisher.DisplayName + ' (' + publisher.EmailAddress + ')';
                                  return { label: name, value: name, id: publisher.Id }
                              }))
                          }
-
-                     })
+                     );
                  },
                  select: function (event, ui) {
                      $("#PublisherDisplayName").val(ui.item.label);

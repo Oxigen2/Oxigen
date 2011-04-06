@@ -33,10 +33,10 @@ namespace Oxigen.Web.Controllers
         }
 
         [Transaction]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult GetPublishersByPartialName(string partialName) {
-            IList<PublisherLookupDto> publishers = publisherManagementService.GetPublishersByPartialName(partialName);
-            return Json(publishers);
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetPublishersByPartialName(string q) {
+            IList<PublisherLookupDto> publishers = publisherManagementService.GetPublishersByPartialName(q);
+            return Json(publishers, JsonRequestBehavior.AllowGet);
         }
 
         [Transaction]
