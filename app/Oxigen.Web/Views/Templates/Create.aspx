@@ -2,6 +2,7 @@
 	Inherits="System.Web.Mvc.ViewPage<Oxigen.ApplicationServices.ViewModels.TemplateFormViewModel>" %>
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+<script type="text/javascript" src="../../scripts/jquery-1.4.2.js"></script>
 
 	<h1>Create Template</h1>
 
