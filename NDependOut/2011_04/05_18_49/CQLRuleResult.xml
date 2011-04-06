@@ -1,0 +1,2015 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CQLRuleResult NbQueries="111" NbErrors="0" NbWarns="59">
+  <Group Name="Code Quality" FullName="Code Quality" GroupId="GroupOfRules-55193780" NbQueries="12" NbErrors="0" NbWarns="10" Status="Warn">
+    <Query Status="Warn" Name="Methods with too many parameters - critical (NbParameters)" ContentTruncatedThreshold="100" FullName="Code Quality \ Methods with too many parameters - critical (NbParameters)" QueryId="Query1017023229" NbNodeMatched="42" NbNodeTested="4495" KindOfNode=" methods">
+      <QueryHtml>&lt;font color='#008000'&gt;//&amp;#0160;&amp;lt;Name&amp;gt;&lt;/font&gt;&lt;b style="color:#008000;background-color:#E6FFE6"&gt;Methods&amp;#0160;with&amp;#0160;too&amp;#0160;many&amp;#0160;parameters&amp;#0160;-&amp;#0160;critical&amp;#0160;(NbParameters)&lt;/b&gt;&lt;font color='#008000'&gt;&amp;lt;/Name&amp;gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#0000FF'&gt;WARN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IF&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;Count&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;SELECT&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;METHODS&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;WHERE&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbParameters&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;8&lt;/b&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#0000FF'&gt;ORDER&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;BY&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;NbParameters&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;DESC&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;METHODS&amp;#0160;WHERE&amp;#0160;NbParameters&amp;#0160;&amp;gt;&amp;#0160;8&amp;#0160;might&amp;#0160;be&amp;#0160;painful&amp;#0160;to&amp;#0160;call&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;and&amp;#0160;might&amp;#0160;degrade&amp;#0160;performance.&amp;#0160;You&amp;#0160;should&amp;#0160;prefer&amp;#0160;using&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;additional&amp;#0160;properties/fields&amp;#0160;to&amp;#0160;the&amp;#0160;declaring&amp;#0160;type&amp;#0160;to&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;handle&amp;#0160;numerous&amp;#0160;states.&amp;#0160;Another&amp;#0160;alternative&amp;#0160;is&amp;#0160;to&amp;#0160;provide&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;a&amp;#0160;class&amp;#0160;or&amp;#0160;structure&amp;#0160;dedicated&amp;#0160;to&amp;#0160;handle&amp;#0160;arguments&amp;#0160;passing&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;(for&amp;#0160;example&amp;#0160;see&amp;#0160;the&amp;#0160;class&amp;#0160;System.Diagnostics.ProcessStartInfo&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;and&amp;#0160;the&amp;#0160;method&amp;#0160;System.Diagnostics.Process.Start(ProcessStartInfo))&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;See&amp;#0160;the&amp;#0160;definition&amp;#0160;of&amp;#0160;the&amp;#0160;NbParameters&amp;#0160;metric&amp;#0160;here&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#NbParameters" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#NbParameters&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;</QueryHtml>
+      <Columns>
+        <Column>methods</Column>
+        <Column># Parameters</Column>
+      </Columns>
+      <Rows>
+        <Row Name="RegisterNewUserAsync(String,String,String,String,String,DateTime ,Boolean,String,String,String,String,String,String,String,String,Int32 ,Boolean,Int32,Boolean,String,String,ChannelSubscriptions,String ,Object)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .RegisterNewUserAsync(String,String,String,String,String,DateTime ,Boolean,String,String,String,String,String,String,String,String,Int32 ,Boolean,Int32,Boolean,String,String,ChannelSubscriptions,String ,Object)">
+          <Val>24</Val>
+        </Row>
+        <Row Name="UpdateUserAccountAsync(String,String,String,String,String,DateTime ,Boolean,String,String,String,String,String,String ,ChannelSubscriptions,Int32,Boolean,Int32,Boolean,String,String,String ,String,Object)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .UpdateUserAccountAsync(String,String,String,String,String,DateTime ,Boolean,String,String,String,String,String,String ,ChannelSubscriptions,Int32,Boolean,Int32,Boolean,String,String,String ,String,Object)">
+          <Val>23</Val>
+        </Row>
+        <Row Name="RegisterNewUserAsync(String,String,String,String,String,DateTime ,Boolean,String,String,String,String,String,String,String,String,Int32 ,Boolean,Int32,Boolean,String,String,ChannelSubscriptions,String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .RegisterNewUserAsync(String,String,String,String,String,DateTime ,Boolean,String,String,String,String,String,String,String,String,Int32 ,Boolean,Int32,Boolean,String,String,ChannelSubscriptions,String)">
+          <Val>23</Val>
+        </Row>
+        <Row Name="RegisterNewUser(String,String,String,String,String,DateTime,Boolean ,String,String,String,String,String,String,String,String,Int32,Boolean ,Int32,Boolean,String,String,ChannelSubscriptions,String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer.RegisterNewUser (String,String,String,String,String,DateTime,Boolean,String,String ,String,String,String,String,String,String,Int32,Boolean,Int32,Boolean ,String,String,ChannelSubscriptions,String)">
+          <Val>23</Val>
+        </Row>
+        <Row Name="UpdateUserAccountAsync(String,String,String,String,String,DateTime ,Boolean,String,String,String,String,String,String ,ChannelSubscriptions,Int32,Boolean,Int32,Boolean,String,String,String ,String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .UpdateUserAccountAsync(String,String,String,String,String,DateTime ,Boolean,String,String,String,String,String,String ,ChannelSubscriptions,Int32,Boolean,Int32,Boolean,String,String,String ,String)">
+          <Val>22</Val>
+        </Row>
+        <Row Name="UpdateUserAccount(String,String,String,String,String,DateTime,Boolean ,String,String,String,String,String,String,ChannelSubscriptions,Int32 ,Boolean,Int32,Boolean,String,String,String,String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer.UpdateUserAccount (String,String,String,String,String,DateTime,Boolean,String,String ,String,String,String,String,ChannelSubscriptions,Int32,Boolean,Int32 ,Boolean,String,String,String,String)">
+          <Val>22</Val>
+        </Row>
+        <Row Name="RegisterNewUser(String,String,String,String,String,DateTime,String ,String,String,String,String,String,String,String,Int32,Int32,String ,String,ChannelSubscriptions,String&amp;)" FullName="OxigenIIAdvertising.Services.DAService.RegisterNewUser(String,String ,String,String,String,DateTime,String,String,String,String,String ,String,String,String,Int32,Int32,String,String,ChannelSubscriptions ,String&amp;)">
+          <Val>20</Val>
+        </Row>
+        <Row Name="RegisterNewUser(String,String,String,String,String,DateTime,String ,String,String,String,String,String,String,String,Int32,Int32,String ,String,ChannelSubscriptions,String&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .RegisterNewUser(String,String,String,String,String,DateTime,String ,String,String,String,String,String,String,String,Int32,Int32,String ,String,ChannelSubscriptions,String&amp;)">
+          <Val>20</Val>
+        </Row>
+        <Row Name="RegisterNewUser(String,String,String,String,String,DateTime,String ,String,String,String,String,String,String,String,Int32,Int32,String ,String,ChannelSubscriptions,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.RegisterNewUser(String,String ,String,String,String,DateTime,String,String,String,String,String ,String,String,String,Int32,Int32,String,String,ChannelSubscriptions ,String)">
+          <Val>20</Val>
+        </Row>
+        <Row Name="UpdateUserAccount(String,String,String,String,String,DateTime,String ,String,String,String,String,String,ChannelSubscriptions,Int32,Int32 ,String,String,String,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.UpdateUserAccount(String,String ,String,String,String,DateTime,String,String,String,String,String ,String,ChannelSubscriptions,Int32,Int32,String,String,String,String)">
+          <Val>19</Val>
+        </Row>
+        <Row Name="UpdateUserAccount(String,String,String,String,String,DateTime,String ,String,String,String,String,String,ChannelSubscriptions,Int32,Int32 ,String,String,String)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .UpdateUserAccount(String,String,String,String,String,DateTime,String ,String,String,String,String,String,ChannelSubscriptions,Int32,Int32 ,String,String,String)">
+          <Val>18</Val>
+        </Row>
+        <Row Name="UpdateUserAccount(String,String,String,String,String,DateTime,String ,String,String,String,String,String,ChannelSubscriptions,Int32,Int32 ,String,String,String)" FullName="OxigenIIAdvertising.Services.DAService.UpdateUserAccount(String,String ,String,String,String,DateTime,String,String,String,String,String ,String,ChannelSubscriptions,Int32,Int32,String,String,String)">
+          <Val>18</Val>
+        </Row>
+        <Row Name="WriteLogs(String,String,String,String,String,String,String,String ,String,String,String,String,Int32,String,Boolean,Boolean,Logger)" FullName="OxigenIIAdvertising.LogWriter.LogFileWriter.WriteLogs(String,String ,String,String,String,String,String,String,String,String,String,String ,Int32,String,Boolean,Boolean,Logger)">
+          <Val>17</Val>
+        </Row>
+        <Row Name="SetFormControlsToDownloadedDetails(TextBox,TextBox,RadioButton ,RadioButton,ComboBox,ComboBox,ComboBox,ComboBox,ComboBox,ComboBox ,ComboBox,ComboBox,ComboBox)" FullName="Setup.SetupHelper.SetFormControlsToDownloadedDetails(TextBox,TextBox ,RadioButton,RadioButton,ComboBox,ComboBox,ComboBox,ComboBox,ComboBox ,ComboBox,ComboBox,ComboBox,ComboBox)">
+          <Val>13</Val>
+        </Row>
+        <Row Name="EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32,Boolean)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32,Boolean)">
+          <Val>12</Val>
+        </Row>
+        <Row Name="EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32,Boolean)" FullName="OxigenIIAdvertising.Services.DAService.EditUserDetails(Int32,String ,String,String,String,String,DateTime,Int32,Int32,Int32,Int32,Boolean)">
+          <Val>12</Val>
+        </Row>
+        <Row Name="GetExistingUserDetails(String,String,String&amp;,String&amp;,String&amp;,DateTime&amp; ,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .GetExistingUserDetails(String,String,String&amp;,String&amp;,String&amp; ,DateTime&amp;,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;)">
+          <Val>12</Val>
+        </Row>
+        <Row Name="LinkPCAndSubscriptionsExistingPCAsync(String,Int32,Boolean,String ,String,Int32,Boolean,Int32,Boolean,ChannelSubscriptions,String,Object )" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .LinkPCAndSubscriptionsExistingPCAsync(String,Int32,Boolean,String ,String,Int32,Boolean,Int32,Boolean,ChannelSubscriptions,String,Object )">
+          <Val>12</Val>
+        </Row>
+        <Row Name="GetExistingUserDetails(String,String,String&amp;,String&amp;,String&amp;,DateTime&amp; ,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;)" FullName="OxigenIIAdvertising.Services.DAService.GetExistingUserDetails(String ,String,String&amp;,String&amp;,String&amp;,DateTime&amp;,String&amp;,String&amp;,String&amp; ,String&amp;,String&amp;,String&amp;)">
+          <Val>12</Val>
+        </Row>
+        <Row Name="LinkPCAndSubscriptionsExistingPCAsync(String,Int32,Boolean,String ,String,Int32,Boolean,Int32,Boolean,ChannelSubscriptions,String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .LinkPCAndSubscriptionsExistingPCAsync(String,Int32,Boolean,String ,String,Int32,Boolean,Int32,Boolean,ChannelSubscriptions,String)">
+          <Val>11</Val>
+        </Row>
+        <Row Name="LinkPCAndSubscriptionsExistingPC(String,Int32,Boolean,String,String ,Int32,Boolean,Int32,Boolean,ChannelSubscriptions,String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .LinkPCAndSubscriptionsExistingPC(String,Int32,Boolean,String,String ,Int32,Boolean,Int32,Boolean,ChannelSubscriptions,String)">
+          <Val>11</Val>
+        </Row>
+        <Row Name="EditChannel(Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String ,Boolean,String,Boolean,ChannelPrivacyOptions)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService.EditChannel (Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean,ChannelPrivacyOptions)">
+          <Val>11</Val>
+        </Row>
+        <Row Name="EditChannel(Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String ,Boolean,String,Boolean,ChannelPrivacyOptions)" FullName="OxigenIIAdvertising.Services.DAService.EditChannel(Int32,Int32 ,Nullable&lt;Int32&gt;,String,String,String,String,Boolean,String,Boolean ,ChannelPrivacyOptions)">
+          <Val>11</Val>
+        </Row>
+        <Row Name="EditChannel(Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String ,Boolean,String,Boolean,ChannelPrivacyOptions)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService.EditChannel (Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean,ChannelPrivacyOptions)">
+          <Val>11</Val>
+        </Row>
+        <Row Name="EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService .EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32)">
+          <Val>11</Val>
+        </Row>
+        <Row Name="SyncWithServerNoPersonalDetailsAsync(String,String ,ChannelSubscriptions,Int32,Boolean,Int32,Boolean,String,String,String ,Object)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .SyncWithServerNoPersonalDetailsAsync(String,String ,ChannelSubscriptions,Int32,Boolean,Int32,Boolean,String,String,String ,Object)">
+          <Val>11</Val>
+        </Row>
+        <Row Name="AddChannelContent(Int32,Int32,String,Single,String,String,String ,String,String,List&lt;Int32&gt;)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService .AddChannelContent(Int32,Int32,String,Single,String,String,String ,String,String,List&lt;Int32&gt;)">
+          <Val>10</Val>
+        </Row>
+        <Row Name="SyncWithServerNoPersonalDetailsAsync(String,String ,ChannelSubscriptions,Int32,Boolean,Int32,Boolean,String,String,String )" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .SyncWithServerNoPersonalDetailsAsync(String,String ,ChannelSubscriptions,Int32,Boolean,Int32,Boolean,String,String,String )">
+          <Val>10</Val>
+        </Row>
+        <Row Name="CompareMACAddresses(String,String,Int32,Boolean,Int32,Boolean,String ,String&amp;,Boolean&amp;,Boolean&amp;)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .CompareMACAddresses(String,String,Int32,Boolean,Int32,Boolean,String ,String&amp;,Boolean&amp;,Boolean&amp;)">
+          <Val>10</Val>
+        </Row>
+        <Row Name="SyncWithServerNoPersonalDetails(String,String,ChannelSubscriptions ,Int32,Boolean,Int32,Boolean,String,String,String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .SyncWithServerNoPersonalDetails(String,String,ChannelSubscriptions ,Int32,Boolean,Int32,Boolean,String,String,String)">
+          <Val>10</Val>
+        </Row>
+        <Row Name="AddSubscriptionsAndNewPCAsync(String,String,String,Int32,Boolean,Int32 ,Boolean,String[][],String,Object)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .AddSubscriptionsAndNewPCAsync(String,String,String,Int32,Boolean ,Int32,Boolean,String[][],String,Object)">
+          <Val>10</Val>
+        </Row>
+        <Row Name=".ctor(Playlist,AssetScheduler,Single,String,String,Int32,Boolean,Int32 ,Logger,Boolean)" FullName="OxigenIIAdvertising.PlaylistLogic.PlaylistAssetPicker..ctor(Playlist ,AssetScheduler,Single,String,String,Int32,Boolean,Int32,Logger ,Boolean)">
+          <Val>10</Val>
+        </Row>
+        <Row Name="AddChannelContent(Int32,Int32,List&lt;Int32&gt;,String,String,String,Single ,String,String&amp;,String&amp;)" FullName="OxigenIIAdvertising.Services.DAService.AddChannelContent(Int32,Int32 ,List&lt;Int32&gt;,String,String,String,Single,String,String&amp;,String&amp;)">
+          <Val>10</Val>
+        </Row>
+        <Row Name="AddChannelContent(Int32,Int32,List&lt;Int32&gt;,String,String,String,Single ,String,String&amp;,String&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .AddChannelContent(Int32,Int32,List&lt;Int32&gt;,String,String,String,Single ,String,String&amp;,String&amp;)">
+          <Val>10</Val>
+        </Row>
+        <Row Name=".ctor(Int64,PlayerType,String,Single,String,String,String[] ,ChannelDataAssetLevel,DateTime,DateTime)" FullName="OxigenIIAdvertising.AppData.ChannelAsset..ctor(Int64,PlayerType,String ,Single,String,String,String[],ChannelDataAssetLevel,DateTime,DateTime )">
+          <Val>10</Val>
+        </Row>
+        <Row Name="AddChannel(Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService.AddChannel (Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean,String ,Boolean)">
+          <Val>9</Val>
+        </Row>
+        <Row Name="AddChannel(Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean)" FullName="OxigenIIAdvertising.Services.DAService.AddChannel(Int32,Nullable&lt;Int32 &gt;,String,String,String,String,Boolean,String,Boolean)">
+          <Val>9</Val>
+        </Row>
+        <Row Name="AddSubscriptionsAndNewPCAsync(String,String,String,Int32,Boolean,Int32 ,Boolean,String[][],String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .AddSubscriptionsAndNewPCAsync(String,String,String,Int32,Boolean ,Int32,Boolean,String[][],String)">
+          <Val>9</Val>
+        </Row>
+        <Row Name="AddChannel(Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService.AddChannel (Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean,String ,Boolean)">
+          <Val>9</Val>
+        </Row>
+        <Row Name="GetAdvertisingPlaylist(String,String,DemographicRangeVerifier,String ,Playlist,ChannelData,ChannelSubscriptions,DateTime,Logger)" FullName="OxigenIIAdvertising.PlaylistLogic.PlaylistMaker.GetAdvertisingPlaylist (String,String,DemographicRangeVerifier,String,Playlist,ChannelData ,ChannelSubscriptions,DateTime,Logger)">
+          <Val>9</Val>
+        </Row>
+        <Row Name="AddSubscriptionsAndNewPC(String,String,String,Int32,Boolean,Int32 ,Boolean,String[][],String)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .AddSubscriptionsAndNewPC(String,String,String,Int32,Boolean,Int32 ,Boolean,String[][],String)">
+          <Val>9</Val>
+        </Row>
+        <Row Name="CreatePCIfNotExistsAsync(String,String,String,Int32,Boolean,Int32 ,Boolean,String,Object)" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer .CreatePCIfNotExistsAsync(String,String,String,Int32,Boolean,Int32 ,Boolean,String,Object)">
+          <Val>9</Val>
+        </Row>
+        <Row Name="Sum:" FullName="Stat">
+          <Val>572</Val>
+        </Row>
+        <Row Name="Average:" FullName="Stat">
+          <Val>13.619</Val>
+        </Row>
+        <Row Name="Minimum:" FullName="Stat">
+          <Val>9</Val>
+        </Row>
+        <Row Name="Maximum:" FullName="Stat">
+          <Val>24</Val>
+        </Row>
+        <Row Name="Standard deviation:" FullName="Stat">
+          <Val>4.9807</Val>
+        </Row>
+        <Row Name="Variance:" FullName="Stat">
+          <Val>24.807</Val>
+        </Row>
+      </Rows>
+    </Query>
+    <Query Status="Warn" Name="Quick summary of methods to refactor" ContentTruncatedThreshold="100" NbNodeListed="100" FullName="Code Quality \ Quick summary of methods to refactor" QueryId="Query4115833988" NbNodeMatched="226" NbNodeTested="4495" KindOfNode=" methods">
+      <QueryHtml>&lt;font color='#008000'&gt;//&amp;#0160;&amp;lt;Name&amp;gt;&lt;/font&gt;&lt;b style="color:#008000;background-color:#E6FFE6"&gt;Quick&amp;#0160;summary&amp;#0160;of&amp;#0160;methods&amp;#0160;to&amp;#0160;refactor&lt;/b&gt;&lt;font color='#008000'&gt;&amp;lt;/Name&amp;gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#0000FF'&gt;WARN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IF&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;Count&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;SELECT&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#0000FF'&gt;METHODS&lt;/font&gt;&amp;#0160;&lt;font color='#008000'&gt;/*OUT&amp;#0160;OF&amp;#0160;"YourGeneratedCode"&amp;#0160;*/&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;WHERE&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;Metrics'&amp;#0160;definitions&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;(&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;NbLinesOfCode&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;30&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#NbLinesOfCode" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#NbLinesOfCode&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbILInstructions&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;200&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#NbILInstructions" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#NbILInstructions&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;CyclomaticComplexity&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;20&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#CC" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#CC&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;ILCyclomaticComplexity&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;50&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#ILCC" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#ILCC&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;ILNestingDepth&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;4&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#ILNestingDepth" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#ILNestingDepth&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbParameters&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;5&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#NbParameters" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#NbParameters&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbVariables&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;8&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#NbVariables" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#NbVariables&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbOverloads&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;6&lt;/b&gt;&amp;#0160;&lt;font color='#000000'&gt;)&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#NbOverloads" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#NbOverloads&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;Here&amp;#0160;are&amp;#0160;some&amp;#0160;ways&amp;#0160;to&amp;#0160;avoid&amp;#0160;taking&amp;#0160;account&amp;#0160;of&amp;#0160;generated&amp;#0160;methods.&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;!&lt;/font&gt;&lt;font color='#000000'&gt;(&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;NameIs&lt;/font&gt;&amp;#0160;&lt;font color='#A31515'&gt;"InitializeComponent()"&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;NDepend.CQL.GeneratedAttribute&amp;#0160;is&amp;#0160;defined&amp;#0160;in&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;the&amp;#0160;redistributable&amp;#0160;assembly&amp;#0160;$NDependInstallDir$\Lib\NDepend.CQL.dll&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;You&amp;#0160;can&amp;#0160;define&amp;#0160;your&amp;#0160;own&amp;#0160;attribute&amp;#0160;to&amp;#0160;mark&amp;#0160;"Generated".&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;HasAttribute&lt;/font&gt;&amp;#0160;&lt;font color='#A31515'&gt;"OPTIONAL:NDepend.CQL.GeneratedAttribute"&lt;/font&gt;&lt;font color='#000000'&gt;)&lt;/font&gt;&amp;#0160;</QueryHtml>
+      <Columns>
+        <Column>methods</Column>
+        <Column># lines of code (LOC)</Column>
+        <Column># IL instructions</Column>
+        <Column>Cyclomatic Complexity (CC)</Column>
+        <Column>IL Cyclomatic Complexity (ILCC)</Column>
+        <Column>IL Nesting Depth</Column>
+        <Column># Parameters</Column>
+        <Column># Variables</Column>
+        <Column># Overloads</Column>
+      </Columns>
+      <Rows>
+        <Row Name="PutRawContentProperties(Int32,Int32,String,String,String,Nullable &lt;DateTime&gt;,String,Single)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService .PutRawContentProperties(Int32,Int32,String,String,String,Nullable &lt;DateTime&gt;,String,Single)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>8</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddChannelContent(Int32,Int32,String,Single,String,String,String ,String,String,List&lt;Int32&gt;)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService .AddChannelContent(Int32,Int32,String,Single,String,String,String ,String,String,List&lt;Int32&gt;)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>10</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddChannel(Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService.AddChannel (Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean,String ,Boolean)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>9</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditChannel(Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String ,Boolean,String,Boolean,ChannelPrivacyOptions)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService.EditChannel (Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean,ChannelPrivacyOptions)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>11</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditSlideContentProperties(Int32,Int32,String,String,String,Nullable &lt;DateTime&gt;,String,Single)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService .EditSlideContentProperties(Int32,Int32,String,String,String,Nullable &lt;DateTime&gt;,String,Single)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>8</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditChannelSlideProperties(Int32,Int32,String,Single,String,String[])" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService .EditChannelSlideProperties(Int32,Int32,String,Single,String,String[])">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>6</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetPreviewFrames(Int32,String,Int32,String&amp;,String[]&amp;,PreviewType&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService .GetPreviewFrames(Int32,String,Int32,String&amp;,String[]&amp;,PreviewType&amp;)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>6</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32)" FullName="OxigenIIAdvertising.ServiceContracts.BLServices.IBLService .EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>11</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name=".ctor(Int64,PlayerType,String,Single,String,String,String[] ,ChannelDataAssetLevel,DateTime,DateTime)" FullName="OxigenIIAdvertising.AppData.ChannelAsset..ctor(Int64,PlayerType,String ,Single,String,String,String[],ChannelDataAssetLevel,DateTime,DateTime )">
+          <Val>11</Val>
+          <Val>36</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+          <Val>10</Val>
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="AddChannelContent(Int32,Int32,List&lt;Int32&gt;,String,String,String,Single ,String,String&amp;,String&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .AddChannelContent(Int32,Int32,List&lt;Int32&gt;,String,String,String,Single ,String,String&amp;,String&amp;)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>10</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddChannel(Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService.AddChannel (Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean,String ,Boolean)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>9</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditChannel(Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String ,Boolean,String,Boolean,ChannelPrivacyOptions)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService.EditChannel (Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean,ChannelPrivacyOptions)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>11</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditChannelSlideProperties(Int32,Int32,String,Single,String,String)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .EditChannelSlideProperties(Int32,Int32,String,Single,String,String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>6</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetDataForPreviewFrames(Int32,String,Int32,String&amp;,String&amp;,String&amp; ,PreviewType&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .GetDataForPreviewFrames(Int32,String,Int32,String&amp;,String&amp;,String&amp; ,PreviewType&amp;)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>7</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetExistingUserDetails(String,String,String&amp;,String&amp;,String&amp;,DateTime&amp; ,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .GetExistingUserDetails(String,String,String&amp;,String&amp;,String&amp; ,DateTime&amp;,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>12</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UpdateUserAccount(String,String,String,String,String,DateTime,String ,String,String,String,String,String,ChannelSubscriptions,Int32,Int32 ,String,String,String)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .UpdateUserAccount(String,String,String,String,String,DateTime,String ,String,String,String,String,String,ChannelSubscriptions,Int32,Int32 ,String,String,String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>18</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="LinkPCAndSubscriptionsExistingPC(String,Int32,String,String,Int32 ,Int32,ChannelSubscriptions)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .LinkPCAndSubscriptionsExistingPC(String,Int32,String,String,Int32 ,Int32,ChannelSubscriptions)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>7</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="RegisterNewUser(String,String,String,String,String,DateTime,String ,String,String,String,String,String,String,String,Int32,Int32,String ,String,ChannelSubscriptions,String&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .RegisterNewUser(String,String,String,String,String,DateTime,String ,String,String,String,String,String,String,String,Int32,Int32,String ,String,ChannelSubscriptions,String&amp;)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>20</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="CompareMACAddresses(String,String,Int32,Int32,String&amp;,Boolean&amp;)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .CompareMACAddresses(String,String,Int32,Int32,String&amp;,Boolean&amp;)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>6</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32,Boolean)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32,Boolean)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>12</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddSubscriptionsAndNewPC(String,String,String,Int32,Int32,String[][])" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .AddSubscriptionsAndNewPC(String,String,String,Int32,Int32,String[][])">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>6</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="SyncWithServerNoPersonalDetails(String,String,String,String,Int32 ,Int32,ChannelSubscriptions)" FullName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService .SyncWithServerNoPersonalDetails(String,String,String,String,Int32 ,Int32,ChannelSubscriptions)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>7</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetResponsiveURI(ServerType,Int32,Int32,String,String,String)" FullName="OxigenIIAdvertising.ServerConnectAttempt.ResponsiveServerDeterminator .GetResponsiveURI(ServerType,Int32,Int32,String,String,String)">
+          <Val>1</Val>
+          <Val>13</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+          <Val>6</Val>
+          <Val>1</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="GetResponsiveURI(ServerType,Int32,Int32,String,String,String,String)" FullName="OxigenIIAdvertising.ServerConnectAttempt.ResponsiveServerDeterminator .GetResponsiveURI(ServerType,Int32,Int32,String,String,String,String)">
+          <Val>19</Val>
+          <Val>67</Val>
+          <Val>9</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+          <Val>7</Val>
+          <Val>4</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="ConnectionURI(Int32,Int32,String,String,String,String)" FullName="OxigenIIAdvertising.ServerConnectAttempt.ResponsiveServerDeterminator .ConnectionURI(Int32,Int32,String,String,String,String)">
+          <Val>18</Val>
+          <Val>139</Val>
+          <Val>5</Val>
+          <Val>8</Val>
+          <Val>4</Val>
+          <Val>6</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name=".ctor(Int32,String,String,String,Int32,String,String,EventLog)" FullName="ChannelDatabaseToRelayUploaderLib.ChannelDatabaseToRelayUploader..ctor (Int32,String,String,String,Int32,String,String,EventLog)">
+          <Val>16</Val>
+          <Val>51</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+          <Val>8</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UploadChannelData(List&lt;Channel&gt;)" FullName="ChannelDatabaseToRelayUploaderLib.ChannelDatabaseToRelayUploader .UploadChannelData(List&lt;Channel&gt;)">
+          <Val>27</Val>
+          <Val>136</Val>
+          <Val>6</Val>
+          <Val>10</Val>
+          <Val>3</Val>
+          <Val>1</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UploadAssets(List&lt;SimpleFileInfo&gt;)" FullName="ChannelDatabaseToRelayUploaderLib.ChannelDatabaseToRelayUploader .UploadAssets(List&lt;SimpleFileInfo&gt;)">
+          <Val>27</Val>
+          <Val>140</Val>
+          <Val>6</Val>
+          <Val>10</Val>
+          <Val>3</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetChannelListByCategoryID(Int32,Int32,Int32,Int32,SortChannelsBy)" FullName="OxigenIIAdvertising.Services.DAService.GetChannelListByCategoryID (Int32,Int32,Int32,Int32,SortChannelsBy)">
+          <Val>45</Val>
+          <Val>206</Val>
+          <Val>11</Val>
+          <Val>16</Val>
+          <Val>2</Val>
+          <Val>5</Val>
+          <Val>12</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="Search(Int32,String)" FullName="OxigenIIAdvertising.Services.DAService.Search(Int32,String)">
+          <Val>30</Val>
+          <Val>159</Val>
+          <Val>7</Val>
+          <Val>9</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetPcStreamsRegistered(Int32,Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetPcStreamsRegistered(Int32 ,Int32)">
+          <Val>36</Val>
+          <Val>182</Val>
+          <Val>8</Val>
+          <Val>12</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetPcStreamsUnregistered(Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetPcStreamsUnregistered(Int32)">
+          <Val>34</Val>
+          <Val>172</Val>
+          <Val>8</Val>
+          <Val>12</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="Login(String,String)" FullName="OxigenIIAdvertising.Services.DAService.Login(String,String)">
+          <Val>23</Val>
+          <Val>111</Val>
+          <Val>4</Val>
+          <Val>4</Val>
+          <Val>3</Val>
+          <Val>2</Val>
+          <Val>11</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="Signup(String,String,String,String,String&amp;)" FullName="OxigenIIAdvertising.Services.DAService.Signup(String,String,String ,String,String&amp;)">
+          <Val>28</Val>
+          <Val>145</Val>
+          <Val>3</Val>
+          <Val>5</Val>
+          <Val>2</Val>
+          <Val>5</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetRawContent(Int32,Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetRawContent(Int32,Int32)">
+          <Val>30</Val>
+          <Val>146</Val>
+          <Val>8</Val>
+          <Val>12</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetStreamSlides(Int32,Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetStreamSlides(Int32,Int32)">
+          <Val>32</Val>
+          <Val>155</Val>
+          <Val>7</Val>
+          <Val>10</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetUserStreams(Int32,Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetUserStreams(Int32,Int32)">
+          <Val>32</Val>
+          <Val>156</Val>
+          <Val>8</Val>
+          <Val>12</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetFolders(Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetFolders(Int32)">
+          <Val>27</Val>
+          <Val>119</Val>
+          <Val>6</Val>
+          <Val>9</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditChannel(Int32,Int32,Nullable&lt;Int32&gt;,String,String,String,String ,Boolean,String,Boolean,ChannelPrivacyOptions)" FullName="OxigenIIAdvertising.Services.DAService.EditChannel(Int32,Int32 ,Nullable&lt;Int32&gt;,String,String,String,String,Boolean,String,Boolean ,ChannelPrivacyOptions)">
+          <Val>19</Val>
+          <Val>94</Val>
+          <Val>2</Val>
+          <Val>3</Val>
+          <Val>1</Val>
+          <Val>11</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddAssetContent(Int32,Int32,List&lt;AssetContent&gt;)" FullName="OxigenIIAdvertising.Services.DAService.AddAssetContent(Int32,Int32 ,List&lt;AssetContent&gt;)">
+          <Val>43</Val>
+          <Val>223</Val>
+          <Val>2</Val>
+          <Val>5</Val>
+          <Val>1</Val>
+          <Val>3</Val>
+          <Val>4</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddSlideContent(Int32,Int32,List&lt;Int32&gt;)" FullName="OxigenIIAdvertising.Services.DAService.AddSlideContent(Int32,Int32 ,List&lt;Int32&gt;)">
+          <Val>29</Val>
+          <Val>214</Val>
+          <Val>3</Val>
+          <Val>6</Val>
+          <Val>1</Val>
+          <Val>3</Val>
+          <Val>17</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddChannelContent(Int32,Int32,List&lt;Int32&gt;,String,String,String,Single ,String,String&amp;,String&amp;)" FullName="OxigenIIAdvertising.Services.DAService.AddChannelContent(Int32,Int32 ,List&lt;Int32&gt;,String,String,String,Single,String,String&amp;,String&amp;)">
+          <Val>32</Val>
+          <Val>162</Val>
+          <Val>4</Val>
+          <Val>7</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>7</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="RemoveAssetContentFolder(Int32,Int32,Int32&amp;)" FullName="OxigenIIAdvertising.Services.DAService.RemoveAssetContentFolder(Int32 ,Int32,Int32&amp;)">
+          <Val>26</Val>
+          <Val>132</Val>
+          <Val>5</Val>
+          <Val>10</Val>
+          <Val>2</Val>
+          <Val>3</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetChannelDetailsFull(Int32,Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetChannelDetailsFull(Int32 ,Int32)">
+          <Val>41</Val>
+          <Val>229</Val>
+          <Val>6</Val>
+          <Val>9</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetPCStreamsAll(Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetPCStreamsAll(Int32)">
+          <Val>29</Val>
+          <Val>134</Val>
+          <Val>7</Val>
+          <Val>10</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetAssetContentAll(Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetAssetContentAll(Int32)">
+          <Val>29</Val>
+          <Val>135</Val>
+          <Val>7</Val>
+          <Val>10</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetSlideFoldersAll(Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetSlideFoldersAll(Int32)">
+          <Val>29</Val>
+          <Val>135</Val>
+          <Val>7</Val>
+          <Val>10</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="RemoveSlideFolder(Int32,Int32)" FullName="OxigenIIAdvertising.Services.DAService.RemoveSlideFolder(Int32,Int32)">
+          <Val>30</Val>
+          <Val>142</Val>
+          <Val>6</Val>
+          <Val>12</Val>
+          <Val>3</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddChannel(Int32,Nullable&lt;Int32&gt;,String,String,String,String,Boolean ,String,Boolean)" FullName="OxigenIIAdvertising.Services.DAService.AddChannel(Int32,Nullable&lt;Int32 &gt;,String,String,String,String,Boolean,String,Boolean)">
+          <Val>25</Val>
+          <Val>123</Val>
+          <Val>2</Val>
+          <Val>4</Val>
+          <Val>1</Val>
+          <Val>9</Val>
+          <Val>6</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetChannelsDirty()" FullName="OxigenIIAdvertising.Services.DAService.GetChannelsDirty()">
+          <Val>40</Val>
+          <Val>260</Val>
+          <Val>10</Val>
+          <Val>16</Val>
+          <Val>3</Val>
+          <Val>0</Val>
+          <Val>12</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditChannelSlideProperties(Int32,Int32,String,Single,String,String)" FullName="OxigenIIAdvertising.Services.DAService.EditChannelSlideProperties (Int32,Int32,String,Single,String,String)">
+          <Val>16</Val>
+          <Val>84</Val>
+          <Val>2</Val>
+          <Val>5</Val>
+          <Val>2</Val>
+          <Val>6</Val>
+          <Val>4</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetDataForPreviewFrames(Int32,String,Int32,String&amp;,String&amp;,String&amp; ,PreviewType&amp;)" FullName="OxigenIIAdvertising.Services.DAService.GetDataForPreviewFrames(Int32 ,String,Int32,String&amp;,String&amp;,String&amp;,PreviewType&amp;)">
+          <Val>26</Val>
+          <Val>129</Val>
+          <Val>6</Val>
+          <Val>8</Val>
+          <Val>4</Val>
+          <Val>7</Val>
+          <Val>8</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetExistingUserDetails(String,String,String&amp;,String&amp;,String&amp;,DateTime&amp; ,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;,String&amp;)" FullName="OxigenIIAdvertising.Services.DAService.GetExistingUserDetails(String ,String,String&amp;,String&amp;,String&amp;,DateTime&amp;,String&amp;,String&amp;,String&amp; ,String&amp;,String&amp;,String&amp;)">
+          <Val>33</Val>
+          <Val>151</Val>
+          <Val>5</Val>
+          <Val>7</Val>
+          <Val>2</Val>
+          <Val>12</Val>
+          <Val>4</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UpdateUserAccount(String,String,String,String,String,DateTime,String ,String,String,String,String,String,ChannelSubscriptions,Int32,Int32 ,String,String,String)" FullName="OxigenIIAdvertising.Services.DAService.UpdateUserAccount(String,String ,String,String,String,DateTime,String,String,String,String,String ,String,ChannelSubscriptions,Int32,Int32,String,String,String)">
+          <Val>57</Val>
+          <Val>307</Val>
+          <Val>9</Val>
+          <Val>14</Val>
+          <Val>5</Val>
+          <Val>18</Val>
+          <Val>7</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="LinkPCAndSubscriptionsExistingPC(String,Int32,String,String,Int32 ,Int32,ChannelSubscriptions)" FullName="OxigenIIAdvertising.Services.DAService .LinkPCAndSubscriptionsExistingPC(String,Int32,String,String,Int32 ,Int32,ChannelSubscriptions)">
+          <Val>47</Val>
+          <Val>264</Val>
+          <Val>10</Val>
+          <Val>17</Val>
+          <Val>4</Val>
+          <Val>7</Val>
+          <Val>8</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="RegisterNewUser(String,String,String,String,String,DateTime,String ,String,String,String,String,String,String,String,Int32,Int32,String ,String,ChannelSubscriptions,String&amp;)" FullName="OxigenIIAdvertising.Services.DAService.RegisterNewUser(String,String ,String,String,String,DateTime,String,String,String,String,String ,String,String,String,Int32,Int32,String,String,ChannelSubscriptions ,String&amp;)">
+          <Val>58</Val>
+          <Val>303</Val>
+          <Val>9</Val>
+          <Val>14</Val>
+          <Val>5</Val>
+          <Val>20</Val>
+          <Val>8</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditSubscriptionsByGUID(String,String,ChannelSubscriptions)" FullName="OxigenIIAdvertising.Services.DAService.EditSubscriptionsByGUID(String ,String,ChannelSubscriptions)">
+          <Val>32</Val>
+          <Val>195</Val>
+          <Val>7</Val>
+          <Val>13</Val>
+          <Val>3</Val>
+          <Val>3</Val>
+          <Val>7</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="CompareMACAddresses(String,String,Int32,Int32,String&amp;,Boolean&amp;)" FullName="OxigenIIAdvertising.Services.DAService.CompareMACAddresses(String ,String,Int32,Int32,String&amp;,Boolean&amp;)">
+          <Val>16</Val>
+          <Val>89</Val>
+          <Val>2</Val>
+          <Val>3</Val>
+          <Val>1</Val>
+          <Val>6</Val>
+          <Val>4</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetSubscriptionsNotRegistered(String)" FullName="OxigenIIAdvertising.Services.DAService.GetSubscriptionsNotRegistered (String)">
+          <Val>33</Val>
+          <Val>152</Val>
+          <Val>6</Val>
+          <Val>9</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetSubscriptions(Int32)" FullName="OxigenIIAdvertising.Services.DAService.GetSubscriptions(Int32)">
+          <Val>33</Val>
+          <Val>153</Val>
+          <Val>6</Val>
+          <Val>9</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>10</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EditUserDetails(Int32,String,String,String,String,String,DateTime ,Int32,Int32,Int32,Int32,Boolean)" FullName="OxigenIIAdvertising.Services.DAService.EditUserDetails(Int32,String ,String,String,String,String,DateTime,Int32,Int32,Int32,Int32,Boolean)">
+          <Val>28</Val>
+          <Val>145</Val>
+          <Val>3</Val>
+          <Val>7</Val>
+          <Val>2</Val>
+          <Val>12</Val>
+          <Val>7</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetUserAccountAssets(Int32,Boolean&amp;,HashSet&lt;AssetContent&gt;&amp;,HashSet &lt;SlideContent&gt;&amp;,HashSet&lt;String&gt;&amp;)" FullName="OxigenIIAdvertising.Services.DAService.GetUserAccountAssets(Int32 ,Boolean&amp;,HashSet&lt;AssetContent&gt;&amp;,HashSet&lt;SlideContent&gt;&amp;,HashSet&lt;String &gt;&amp;)">
+          <Val>45</Val>
+          <Val>258</Val>
+          <Val>15</Val>
+          <Val>24</Val>
+          <Val>3</Val>
+          <Val>5</Val>
+          <Val>11</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddSubscriptionsAndNewPC(String,String,String,Int32,Int32,String[][])" FullName="OxigenIIAdvertising.Services.DAService.AddSubscriptionsAndNewPC(String ,String,String,Int32,Int32,String[][])">
+          <Val>33</Val>
+          <Val>190</Val>
+          <Val>6</Val>
+          <Val>11</Val>
+          <Val>3</Val>
+          <Val>6</Val>
+          <Val>12</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="SyncWithServerNoPersonalDetails(String,String,String,String,Int32 ,Int32,ChannelSubscriptions)" FullName="OxigenIIAdvertising.Services.DAService.SyncWithServerNoPersonalDetails (String,String,String,String,Int32,Int32,ChannelSubscriptions)">
+          <Val>44</Val>
+          <Val>264</Val>
+          <Val>9</Val>
+          <Val>16</Val>
+          <Val>4</Val>
+          <Val>7</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="CheckIfPCExistsReturnGUID(String,String)" FullName="OxigenIIAdvertising.Services.DAService.CheckIfPCExistsReturnGUID (String,String)">
+          <Val>21</Val>
+          <Val>115</Val>
+          <Val>3</Val>
+          <Val>5</Val>
+          <Val>1</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AreFilesReadableWritable(String)" FullName="OxigenIIAdvertising.FileRights.FileDirectoryRightsChecker .AreFilesReadableWritable(String)">
+          <Val>19</Val>
+          <Val>93</Val>
+          <Val>5</Val>
+          <Val>8</Val>
+          <Val>4</Val>
+          <Val>1</Val>
+          <Val>14</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetFilePermissions(String,String,IdentityReferenceCollection)" FullName="OxigenIIAdvertising.FileRights.FileDirectoryRightsChecker .GetFilePermissions(String,String,IdentityReferenceCollection)">
+          <Val>13</Val>
+          <Val>83</Val>
+          <Val>5</Val>
+          <Val>10</Val>
+          <Val>3</Val>
+          <Val>3</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="WriteLogs(String,String,String,String,String,String,String,String ,String,String,String,String,Int32,String,Boolean,Boolean,Logger)" FullName="OxigenIIAdvertising.LogWriter.LogFileWriter.WriteLogs(String,String ,String,String,String,String,String,String,String,String,String,String ,Int32,String,Boolean,Boolean,Logger)">
+          <Val>21</Val>
+          <Val>162</Val>
+          <Val>3</Val>
+          <Val>3</Val>
+          <Val>1</Val>
+          <Val>17</Val>
+          <Val>7</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UpdateUsageCounts(String,String,String,Int32,Int32,String,String ,Logger)" FullName="OxigenIIAdvertising.LogWriter.LogFileWriter.UpdateUsageCounts(String ,String,String,Int32,Int32,String,String,Logger)">
+          <Val>16</Val>
+          <Val>112</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>8</Val>
+          <Val>4</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="ReadExistingLogs(FileStream&amp;,String,String,String,Logger)" FullName="OxigenIIAdvertising.LogWriter.LogFileWriter.ReadExistingLogs (FileStream&amp;,String,String,String,Logger)">
+          <Val>36</Val>
+          <Val>208</Val>
+          <Val>7</Val>
+          <Val>7</Val>
+          <Val>3</Val>
+          <Val>5</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="StringToDateTime(String,String)" FullName="OxigenIIAdvertising.LoggingStructures.LogEntry.StringToDateTime(String ,String)">
+          <Val>11</Val>
+          <Val>56</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="InflateDateOperationsPerAsset(String,String)" FullName="OxigenIIAdvertising.DataAggregators.LogStatsInflator .InflateDateOperationsPerAsset(String,String)">
+          <Val>9</Val>
+          <Val>81</Val>
+          <Val>3</Val>
+          <Val>5</Val>
+          <Val>2</Val>
+          <Val>2</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="InflateAdvertChannelOperationProportions(String)" FullName="OxigenIIAdvertising.DataAggregators.LogStatsInflator .InflateAdvertChannelOperationProportions(String)">
+          <Val>9</Val>
+          <Val>71</Val>
+          <Val>2</Val>
+          <Val>3</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AggregateSaveDateOperationsPerAsset(String)" FullName="OxigenIIAdvertising.DataAggregators.LogAggregator .AggregateSaveDateOperationsPerAsset(String)">
+          <Val>30</Val>
+          <Val>155</Val>
+          <Val>8</Val>
+          <Val>14</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>16</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AggregateSaveAdvertChannelOperationProportions(String)" FullName="OxigenIIAdvertising.DataAggregators.LogAggregator .AggregateSaveAdvertChannelOperationProportions(String)">
+          <Val>28</Val>
+          <Val>146</Val>
+          <Val>8</Val>
+          <Val>14</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>14</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetContentSpecificLogs(String)" FullName="OxigenIIAdvertising.DataAggregators.LogAggregator .GetContentSpecificLogs(String)">
+          <Val>13</Val>
+          <Val>71</Val>
+          <Val>3</Val>
+          <Val>5</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>11</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetAdvertSpecificLogs(String)" FullName="OxigenIIAdvertising.DataAggregators.LogAggregator .GetAdvertSpecificLogs(String)">
+          <Val>13</Val>
+          <Val>72</Val>
+          <Val>3</Val>
+          <Val>5</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+          <Val>11</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="Execute()" FullName="OxigenIIAdvertising.DataAggregators.Appender.Execute()">
+          <Val>41</Val>
+          <Val>227</Val>
+          <Val>11</Val>
+          <Val>17</Val>
+          <Val>3</Val>
+          <Val>0</Val>
+          <Val>12</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetTreeFiles()" FullName="OxigenIIAdvertising.DataAggregators.Appender.GetTreeFiles()">
+          <Val>13</Val>
+          <Val>69</Val>
+          <Val>3</Val>
+          <Val>5</Val>
+          <Val>2</Val>
+          <Val>0</Val>
+          <Val>11</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="IsAssetDemoSyntaxPlayableIndividualLine(String)" FullName="OxigenIIAdvertising.DemographicRange.DemographicRangeVerifier .IsAssetDemoSyntaxPlayableIndividualLine(String)">
+          <Val>21</Val>
+          <Val>111</Val>
+          <Val>5</Val>
+          <Val>7</Val>
+          <Val>5</Val>
+          <Val>1</Val>
+          <Val>12</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AgePlayable(String,String)" FullName="OxigenIIAdvertising.DemographicRange.DemographicRangeVerifier .AgePlayable(String,String)">
+          <Val>10</Val>
+          <Val>110</Val>
+          <Val>10</Val>
+          <Val>14</Val>
+          <Val>7</Val>
+          <Val>2</Val>
+          <Val>4</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="DemographicVerifyingPassed(String,String,String)" FullName="OxigenIIAdvertising.DemographicRange.DemographicRangeVerifier .DemographicVerifyingPassed(String,String,String)">
+          <Val>6</Val>
+          <Val>51</Val>
+          <Val>5</Val>
+          <Val>7</Val>
+          <Val>5</Val>
+          <Val>3</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="IsAssetPlayableIndividualLine(String)" FullName="OxigenIIAdvertising.AssetScheduling.AssetScheduler .IsAssetPlayableIndividualLine(String)">
+          <Val>20</Val>
+          <Val>108</Val>
+          <Val>5</Val>
+          <Val>7</Val>
+          <Val>5</Val>
+          <Val>1</Val>
+          <Val>11</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="Compare(String,IComparable,IComparable)" FullName="OxigenIIAdvertising.AssetScheduling.AssetScheduler.Compare(String ,IComparable,IComparable)">
+          <Val>8</Val>
+          <Val>93</Val>
+          <Val>9</Val>
+          <Val>13</Val>
+          <Val>7</Val>
+          <Val>3</Val>
+          <Val>2</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name=".ctor()" FullName="OxigenIIAdvertising.LogExchanger.Exchanger..ctor()">
+          <Val>62</Val>
+          <Val>190</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="LoadRawAll()" FullName="OxigenIIAdvertising.LogExchanger.Exchanger.LoadRawAll()">
+          <Val>23</Val>
+          <Val>169</Val>
+          <Val>9</Val>
+          <Val>9</Val>
+          <Val>3</Val>
+          <Val>0</Val>
+          <Val>11</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="SetGlobals()" FullName="OxigenIIAdvertising.LogExchanger.Exchanger.SetGlobals()">
+          <Val>39</Val>
+          <Val>194</Val>
+          <Val>4</Val>
+          <Val>5</Val>
+          <Val>2</Val>
+          <Val>0</Val>
+          <Val>5</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="RegisterNewUser(String,String,String,String,String,DateTime,String ,String,String,String,String,String,String,String,Int32,Int32,String ,String,ChannelSubscriptions,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.RegisterNewUser(String,String ,String,String,String,DateTime,String,String,String,String,String ,String,String,String,Int32,Int32,String,String,ChannelSubscriptions ,String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>20</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UpdateUserAccount(String,String,String,String,String,DateTime,String ,String,String,String,String,String,ChannelSubscriptions,Int32,Int32 ,String,String,String,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.UpdateUserAccount(String,String ,String,String,String,DateTime,String,String,String,String,String ,String,ChannelSubscriptions,Int32,Int32,String,String,String,String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>19</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="LinkPCAndSubscriptionsExistingPC(String,Int32,String,String,Int32 ,Int32,ChannelSubscriptions,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.LinkPCAndSubscriptionsExistingPC (String,Int32,String,String,Int32,Int32,ChannelSubscriptions,String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>8</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="CompareMACAddresses(String,String,Int32,Int32,String&amp;,Boolean&amp;,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.CompareMACAddresses(String,String ,Int32,Int32,String&amp;,Boolean&amp;,String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>7</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="CreatePCIfNotExists(String,String,String,Int32,Int32,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.CreatePCIfNotExists(String,String ,String,Int32,Int32,String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>6</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddSubscriptionsAndNewPC(String,String,String,Int32,Int32,String[][] ,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.AddSubscriptionsAndNewPC(String ,String,String,Int32,Int32,String[][],String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>7</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="SyncWithServerNoPersonalDetails(String,String,ChannelSubscriptions ,Int32,Int32,String,String,String)" FullName="OxigenIIAdvertising.ServiceContracts.UserManagementServices .IUserManagementServicesNonStreamer.SyncWithServerNoPersonalDetails (String,String,ChannelSubscriptions,Int32,Int32,String,String,String)">
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>N/A</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>8</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="CreatePCIfNotExists(String,String,String,Int32,Int32,String)" FullName="OxigenIIAdvertising.UserManagementServicesServiceClient .UserManagementServicesNonStreamerClient.CreatePCIfNotExists(String ,String,String,Int32,Int32,String)">
+          <Val>1</Val>
+          <Val>14</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+          <Val>6</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AddSubscriptionsAndNewPC(String,String,String,Int32,Int32,String[][] ,String)" FullName="OxigenIIAdvertising.UserManagementServicesServiceClient .UserManagementServicesNonStreamerClient.AddSubscriptionsAndNewPC (String,String,String,Int32,Int32,String[][],String)">
+          <Val>1</Val>
+          <Val>15</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+          <Val>7</Val>
+          <Val>1</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="IncludeByAdvertClassifications(HashSet&lt;String&gt;,ChannelData ,ChannelSubscriptions)" FullName="OxigenIIAdvertising.TaxonomySearch.TreeSearch .IncludeByAdvertClassifications(HashSet&lt;String&gt;,ChannelData ,ChannelSubscriptions)">
+          <Val>48</Val>
+          <Val>238</Val>
+          <Val>12</Val>
+          <Val>26</Val>
+          <Val>4</Val>
+          <Val>3</Val>
+          <Val>15</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="CreatePlaylist(String,String,String,String,String,Single ,ChannelSubscriptions,Logger)" FullName="OxigenIIAdvertising.PlaylistLogic.PlaylistMaker.CreatePlaylist(String ,String,String,String,String,Single,ChannelSubscriptions,Logger)">
+          <Val>21</Val>
+          <Val>119</Val>
+          <Val>6</Val>
+          <Val>9</Val>
+          <Val>1</Val>
+          <Val>8</Val>
+          <Val>11</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetNonAdvertisingPlaylist(ChannelData,String,Playlist ,DemographicRangeVerifier,ChannelSubscriptions,DateTime,Single,Logger)" FullName="OxigenIIAdvertising.PlaylistLogic.PlaylistMaker .GetNonAdvertisingPlaylist(ChannelData,String,Playlist ,DemographicRangeVerifier,ChannelSubscriptions,DateTime,Single,Logger)">
+          <Val>12</Val>
+          <Val>190</Val>
+          <Val>3</Val>
+          <Val>19</Val>
+          <Val>2</Val>
+          <Val>8</Val>
+          <Val>6</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="GetAdvertisingPlaylist(String,String,DemographicRangeVerifier,String ,Playlist,ChannelData,ChannelSubscriptions,DateTime,Logger)" FullName="OxigenIIAdvertising.PlaylistLogic.PlaylistMaker.GetAdvertisingPlaylist (String,String,DemographicRangeVerifier,String,Playlist,ChannelData ,ChannelSubscriptions,DateTime,Logger)">
+          <Val>15</Val>
+          <Val>108</Val>
+          <Val>3</Val>
+          <Val>8</Val>
+          <Val>1</Val>
+          <Val>9</Val>
+          <Val>8</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="Sum:" FullName="Stat">
+          <Val>5 017</Val>
+          <Val>28 142</Val>
+          <Val>1 273</Val>
+          <Val>1 725</Val>
+          <Val>470</Val>
+          <Val>1 141</Val>
+          <Val>1 457</Val>
+          <Val>251</Val>
+        </Row>
+        <Row Name="Average:" FullName="Stat">
+          <Val>22.199</Val>
+          <Val>124.52</Val>
+          <Val>5.6327</Val>
+          <Val>7.6327</Val>
+          <Val>2.0796</Val>
+          <Val>5.0487</Val>
+          <Val>6.4469</Val>
+          <Val>1.1106</Val>
+        </Row>
+        <Row Name="Minimum:" FullName="Stat">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="Maximum:" FullName="Stat">
+          <Val>114</Val>
+          <Val>564</Val>
+          <Val>28</Val>
+          <Val>41</Val>
+          <Val>9</Val>
+          <Val>24</Val>
+          <Val>37</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="Standard deviation:" FullName="Stat">
+          <Val>19.321</Val>
+          <Val>102.55</Val>
+          <Val>5.345</Val>
+          <Val>7.0981</Val>
+          <Val>1.9101</Val>
+          <Val>5.1998</Val>
+          <Val>5.5238</Val>
+          <Val>0.31366</Val>
+        </Row>
+        <Row Name="Variance:" FullName="Stat">
+          <Val>373.29</Val>
+          <Val>10 516</Val>
+          <Val>28.569</Val>
+          <Val>50.383</Val>
+          <Val>3.6485</Val>
+          <Val>27.037</Val>
+          <Val>30.513</Val>
+          <Val>0.098383</Val>
+        </Row>
+      </Rows>
+    </Query>
+    <Group Name="Type Metrics" FullName="Code Quality \ Type Metrics" GroupId="GroupOfRules-1034765296" NbQueries="5" NbErrors="0" NbWarns="5" Status="Warn">
+      <Query Status="Warn" Name="Types too big - critical (NbLinesOfCode)" ContentTruncatedThreshold="100" FullName="Code Quality \ Type Metrics \ Types too big - critical (NbLinesOfCode)" QueryId="Query1888313633" NbNodeMatched="4" NbNodeTested="1144" KindOfNode=" types">
+        <QueryHtml>&lt;font color='#008000'&gt;//&amp;#0160;&amp;lt;Name&amp;gt;&lt;/font&gt;&lt;b style="color:#008000;background-color:#E6FFE6"&gt;Types&amp;#0160;too&amp;#0160;big&amp;#0160;-&amp;#0160;critical&amp;#0160;(NbLinesOfCode)&lt;/b&gt;&lt;font color='#008000'&gt;&amp;lt;/Name&amp;gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#0000FF'&gt;WARN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IF&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;Count&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;SELECT&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;TYPES&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;WHERE&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbLinesOfCode&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;500&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbILInstructions&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;3000&lt;/b&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#0000FF'&gt;ORDER&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;BY&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;NbLinesOfCode&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;DESC&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;METHODS&amp;#0160;WHERE&amp;#0160;NbLinesOfCode&amp;#0160;&amp;gt;&amp;#0160;500&amp;#0160;are&amp;#0160;extremely&amp;#0160;complex&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;and&amp;#0160;should&amp;#0160;be&amp;#0160;split&amp;#0160;in&amp;#0160;a&amp;#0160;smaller&amp;#0160;group&amp;#0160;of&amp;#0160;types.&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;(except&amp;#0160;if&amp;#0160;they&amp;#0160;are&amp;#0160;automatically&amp;#0160;generated&amp;#0160;by&amp;#0160;a&amp;#0160;tool).&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;See&amp;#0160;the&amp;#0160;definition&amp;#0160;of&amp;#0160;the&amp;#0160;NbLinesOfCode&amp;#0160;metric&amp;#0160;here&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#NbLinesOfCode" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#NbLinesOfCode&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;In&amp;#0160;average,&amp;#0160;a&amp;#0160;line&amp;#0160;of&amp;#0160;code&amp;#0160;is&amp;#0160;compiled&amp;#0160;to&amp;#0160;around&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;6&amp;#0160;IL&amp;#0160;instructions.&amp;#0160;This&amp;#0160;is&amp;#0160;why&amp;#0160;the&amp;#0160;code&amp;#0160;metric&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;NbILInstructions&amp;#0160;is&amp;#0160;used&amp;#0160;here,&amp;#0160;in&amp;#0160;case&amp;#0160;the&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;code&amp;#0160;metric&amp;#0160;NbLinesOfCode&amp;#0160;is&amp;#0160;un-available&amp;#0160;because&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;of&amp;#0160;missing&amp;#0160;assemblies&amp;#0160;corresponding&amp;#0160;PDB&amp;#0160;files.&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;See&amp;#0160;the&amp;#0160;definition&amp;#0160;of&amp;#0160;the&amp;#0160;NbILInstructions&amp;#0160;metric&amp;#0160;here&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#NbILInstructions" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#NbILInstructions&lt;/a&gt;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&lt;/font&gt;</QueryHtml>
+        <Columns>
+          <Column>types</Column>
+          <Column># lines of code (LOC)</Column>
+          <Column># IL instructions</Column>
+        </Columns>
+        <Rows>
+          <Row Name="DAService" FullName="OxigenIIAdvertising.Services.DAService">
+            <Val>2 345</Val>
+            <Val>12 188</Val>
+          </Row>
+          <Row Name="Exchanger" FullName="OxigenIIAdvertising.ContentExchanger.Exchanger">
+            <Val>661</Val>
+            <Val>3 708</Val>
+          </Row>
+          <Row Name="SetupHelper" FullName="Setup.SetupHelper">
+            <Val>600</Val>
+            <Val>3 636</Val>
+          </Row>
+          <Row Name="BasicHttpBinding_IUserManagementServicesNonStreamer" FullName="Setup.UserManagementServicesLive .BasicHttpBinding_IUserManagementServicesNonStreamer">
+            <Val>244</Val>
+            <Val>4 608</Val>
+          </Row>
+          <Row Name="Sum:" FullName="Stat">
+            <Val>3 850</Val>
+            <Val>24 140</Val>
+          </Row>
+          <Row Name="Average:" FullName="Stat">
+            <Val>962.5</Val>
+            <Val>6 035</Val>
+          </Row>
+          <Row Name="Minimum:" FullName="Stat">
+            <Val>244</Val>
+            <Val>3 636</Val>
+          </Row>
+          <Row Name="Maximum:" FullName="Stat">
+            <Val>2 345</Val>
+            <Val>12 188</Val>
+          </Row>
+          <Row Name="Standard deviation:" FullName="Stat">
+            <Val>813.92</Val>
+            <Val>3 573</Val>
+          </Row>
+          <Row Name="Variance:" FullName="Stat">
+            <Val>662 464</Val>
+            <Val>12 766 467</Val>
+          </Row>
+        </Rows>
+      </Query>
+    </Group>
+  </Group>
+  <Group Name="Design" FullName="Design" GroupId="GroupOfRules-358659326" NbQueries="15" NbErrors="0" NbWarns="11" Status="Warn">
+    <Query Status="Warn" Name="A stateless class or structure might be turned into a static type" ContentTruncatedThreshold="100" FullName="Design \ A stateless class or structure might be turned into a static type" QueryId="Query154626024" NbNodeMatched="30" NbNodeTested="1144" KindOfNode=" types">
+      <QueryHtml>&lt;font color='#008000'&gt;//&amp;#0160;&amp;lt;Name&amp;gt;&lt;/font&gt;&lt;b style="color:#008000;background-color:#E6FFE6"&gt;A&amp;#0160;stateless&amp;#0160;class&amp;#0160;or&amp;#0160;structure&amp;#0160;might&amp;#0160;be&amp;#0160;turned&amp;#0160;into&amp;#0160;a&amp;#0160;static&amp;#0160;type&lt;/b&gt;&lt;font color='#008000'&gt;&amp;lt;/Name&amp;gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#0000FF'&gt;WARN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IF&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;Count&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;SELECT&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;TYPES&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;WHERE&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;SizeOfInst&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;==&lt;/font&gt;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;For&amp;#0160;accuracy,&amp;#0160;this&amp;#0160;rule&amp;#0160;doesn't&amp;#0160;take&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;account&amp;#0160;of&amp;#0160;types&amp;#0160;that&amp;#0160;implement&amp;#0160;some&amp;#0160;interfaces.&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;and&amp;#0160;classes&amp;#0160;that&amp;#0160;have&amp;#0160;a&amp;#0160;base&amp;#0160;class&amp;#0160;and&amp;#0160;don't&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;derive&amp;#0160;directly&amp;#0160;from&amp;#0160;System.Object,&amp;#0160;or&amp;#0160;classes&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;that&amp;#0160;have&amp;#0160;sub-classes&amp;#0160;children.&amp;#0160;&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbInterfacesImplemented&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;==&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;(&lt;/font&gt;&lt;font color='#000000'&gt;(&lt;/font&gt;&lt;font color='#000064'&gt;IsClass&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;DepthOfInheritance&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;==&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;1&lt;/b&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;NbChildren&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;==&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&lt;font color='#000000'&gt;)&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;IsStructure&lt;/font&gt;&lt;font color='#000000'&gt;)&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;!&lt;/font&gt;&lt;font color='#000064'&gt;IsStatic&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;!&lt;/font&gt;&lt;font color='#000064'&gt;IsGeneric&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;this&amp;#0160;rule&amp;#0160;indicates&amp;#0160;stateless&amp;#0160;types&amp;#0160;that&amp;#0160;might&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;eventually&amp;#0160;be&amp;#0160;turned&amp;#0160;into&amp;#0160;static&amp;#0160;classes.&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;See&amp;#0160;the&amp;#0160;definition&amp;#0160;of&amp;#0160;the&amp;#0160;SizeOfInst&amp;#0160;metric&amp;#0160;here&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;&lt;a href="http://www.ndepend.com/Metrics.aspx#SizeOfInst" target="_blank"&gt;http://www.ndepend.com/Metrics.aspx#SizeOfInst&lt;/a&gt;&lt;/font&gt;</QueryHtml>
+      <Columns>
+        <Column>types</Column>
+        <Column>Size of instance</Column>
+        <Column># interfaces implemented</Column>
+        <Column>Depth of inheritance</Column>
+        <Column># Children</Column>
+      </Columns>
+      <Rows>
+        <Row Name="Program" FullName="BLHost.Program">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Program" FullName="DAHost.Program">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="NoAssetsAnimator.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="OxigenIIAdvertising.LogExchanger.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Settings" FullName="OxigenIIAdvertising.ContentExchanger.Properties.Settings">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="OxigenIIAdvertising.ContentExchanger.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="OxigenIIScreenSaverConfig.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="OxigenIIAdvertising.SSG.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Settings" FullName="OxigenIISSG.Properties.Settings">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Program" FullName="RegexCompiler.Program">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="OxigenService.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Program" FullName="libutil.Program">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="TextDecrypter.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="OxigenSU.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="ServiceLocatorInitializer" FullName="Tests.ServiceLocatorInitializer">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="RouteRegistrarTests" FullName="Tests.Oxigen.Controllers.RouteRegistrarTests">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="SlideInstanceFactory" FullName="Tests.Oxigen.Core.SlideInstanceFactory">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="PublisherTests" FullName="Tests.Oxigen.Core.PublisherTests">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="AssetContentInstanceFactory" FullName="Tests.Oxigen.Core.AssetContentInstanceFactory">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="AssetContentTests" FullName="Tests.Oxigen.Core.AssetContentTests">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="PublisherInstanceFactory" FullName="Tests.Oxigen.Core.PublisherInstanceFactory">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="TemplateTests" FullName="Tests.Oxigen.Core.TemplateTests">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="SlideTests" FullName="Tests.Oxigen.Core.SlideTests">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="TemplateInstanceFactory" FullName="Tests.Oxigen.Core.TemplateInstanceFactory">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Program" FullName="InstallCustomSteps.Program">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resource" FullName="OxigenIIPresentation.Resource">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="ErrorWrapper" FullName="OxigenIIPresentation.ErrorWrapper">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="ComponentRegistrar" FullName="Oxigen.Web.CastleWindsor.ComponentRegistrar">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="WindowsController" FullName="Setup.WindowsController">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Resources" FullName="Setup.Properties.Resources">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Sum:" FullName="Stat">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>30</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Average:" FullName="Stat">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Minimum:" FullName="Stat">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Maximum:" FullName="Stat">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>1</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Standard deviation:" FullName="Stat">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Variance:" FullName="Stat">
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+      </Rows>
+    </Query>
+    <Query Status="Warn" Name="Class with no descendant should be sealed if possible" ContentTruncatedThreshold="100" NbNodeListed="100" FullName="Design \ Class with no descendant should be sealed if possible" QueryId="Query654815140" NbNodeMatched="374" NbNodeTested="1144" KindOfNode=" types">
+      <QueryHtml>&lt;font color='#008000'&gt;//&amp;#0160;&amp;lt;Name&amp;gt;&lt;/font&gt;&lt;b style="color:#008000;background-color:#E6FFE6"&gt;Class&amp;#0160;with&amp;#0160;no&amp;#0160;descendant&amp;#0160;should&amp;#0160;be&amp;#0160;sealed&amp;#0160;if&amp;#0160;possible&lt;/b&gt;&lt;font color='#008000'&gt;&amp;lt;/Name&amp;gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#0000FF'&gt;WARN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IF&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;Count&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;SELECT&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;TYPES&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;WHERE&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;IsClass&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;NbChildren&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;==&lt;/font&gt;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;!&lt;/font&gt;&lt;font color='#000064'&gt;IsSealed&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;!&lt;/font&gt;&lt;font color='#000064'&gt;IsStatic&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;AND&amp;#0160;!IsPublic&amp;#0160;&amp;lt;--&amp;#0160;You&amp;#0160;might&amp;#0160;want&amp;#0160;to&amp;#0160;add&amp;#0160;this&amp;#0160;condition&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;if&amp;#0160;you&amp;#0160;are&amp;#0160;developping&amp;#0160;a&amp;#0160;framework&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;with&amp;#0160;classes&amp;#0160;that&amp;#0160;are&amp;#0160;intended&amp;#0160;to&amp;#0160;be&amp;#0160;&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;&amp;#0160;sub-classed&amp;#0160;by&amp;#0160;your&amp;#0160;clients.&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#0000FF'&gt;ORDER&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;BY&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;NbLinesOfCode&lt;/font&gt;</QueryHtml>
+      <Columns>
+        <Column>types</Column>
+        <Column># Children</Column>
+        <Column># lines of code (LOC)</Column>
+      </Columns>
+      <Rows>
+        <Row Name="a" FullName="OxigenIIPresentation.a">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="ContactUsThanks" FullName="OxigenIIPresentation.ContactUsThanks">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Terms" FullName="OxigenIIPresentation.Terms">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Privacy" FullName="OxigenIIPresentation.Privacy">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Configure" FullName="OxigenIIPresentation.Admin.Settings.Configure">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Folders.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Folders.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Users.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Users.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Users.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Default" FullName="OxigenIIPresentation.Admin.Default">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Folders.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="unlockstream" FullName="OxigenIIPresentation.TestDebug.unlockstream">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Admin" FullName="OxigenIIPresentation.Admin.Admin">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Administrator.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="PasswordSent" FullName="OxigenIIPresentation.PasswordSent">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Subscriptions.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="signup" FullName="OxigenIIPresentation.signup">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Subscriptions.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Schedule" FullName="OxigenIIPresentation.Admin.StreamSchedule.Schedule">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Home" FullName="OxigenIIPresentation.Home">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Download" FullName="OxigenIIPresentation.Admin.Reports.Download">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Administrator.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Administrator.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Administrator.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="FAQs" FullName="OxigenIIPresentation.FAQs">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Copyright" FullName="OxigenIIPresentation.Copyright">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Community" FullName="OxigenIIPresentation.Community">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Subscriptions.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Users.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Content.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.ClientUsers.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.ClientUsers.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Content.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Clients.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Content.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Content.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Streams.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Streams.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.StreamSchedule.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Streams.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.ClientUsers.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.ClientUsers.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Streams.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Clients.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Adverts.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Adverts.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Adverts.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Category.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Category.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Category.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Folders.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Slides.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Clients.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Clients.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Slides.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="List" FullName="OxigenIIPresentation.Admin.Adverts.List">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Remove" FullName="OxigenIIPresentation.Admin.Slides.Remove">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Edit" FullName="OxigenIIPresentation.Admin.Slides.Edit">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Add" FullName="OxigenIIPresentation.Admin.Category.Add">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="loginnohttphandler" FullName="OxigenIIPresentation.TestDebug.loginnohttphandler">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UserDataMarshallerSUStreamerClient" FullName="OxigenSU.UserDataMarshallerSUStreamerClient">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UserManagementServicesNonStreamerClient" FullName="OxigenIIAdvertising.UserManagementServicesServiceClient .UserManagementServicesNonStreamerClient">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="logout" FullName="OxigenIIPresentation.TestDebug.logout">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UserFileMarshallerSUClient" FullName="OxigenSU.UserFileMarshallerSUClient">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UserDataMarshallerSUClient" FullName="OxigenSU.UserDataMarshallerSUClient">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="ScreensaverGuardianComm" FullName="OxigenService.ScreensaverGuardianComm">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UserManagementServicesClient" FullName="OxigenIIAdvertising.UserManagementServicesServiceClient .UserManagementServicesClient">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="ErrorWrapper" FullName="OxigenIIPresentation.ErrorWrapper">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="UserManagementServicesNonStreamerClient" FullName="InstallCustomSteps.UserManagementServicesNonStreamerClient">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="EntityDuplicateCheckerStub" FullName="Tests.Oxigen.Data.TestDoubles.EntityDuplicateCheckerStub">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="Default" FullName="OxigenIIPresentation.Default">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="QueryStringParameterValueConfiguration" FullName="OxigenIIPresentation.CommandHandlers .QueryStringParameterValueConfiguration">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="AssetContentInstanceFactory" FullName="Tests.Oxigen.Core.AssetContentInstanceFactory">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="SlideInstanceFactory" FullName="Tests.Oxigen.Core.SlideInstanceFactory">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="TemplateInstanceFactory" FullName="Tests.Oxigen.Core.TemplateInstanceFactory">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="PublisherInstanceFactory" FullName="Tests.Oxigen.Core.PublisherInstanceFactory">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="ChannelCommandConfigurationSection" FullName="OxigenIIPresentation.CommandHandlers .ChannelCommandConfigurationSection">
+          <Val>0</Val>
+          <Val>1</Val>
+        </Row>
+        <Row Name="DataFileType" FullName="Setup.UserManagementServicesLive.DataFileType">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="string" FullName="Setup.UserManagementServicesLive.string">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="string1" FullName="Setup.UserManagementServicesLive.string1">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="ChannelCommandElement" FullName="OxigenIIPresentation.CommandHandlers.ChannelCommandElement">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="string2" FullName="Setup.UserManagementServicesLive.string2">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="CustomHostFactory" FullName="OxigenIIServiceFactory.CustomHostFactory">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="ChannelSubscriptions" FullName="Setup.DuplicateLibrary.ChannelSubscriptions">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="string5" FullName="Setup.UserManagementServicesLive.string5">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="ErrorStatus" FullName="Setup.UserManagementServicesLive.ErrorStatus">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="StringErrorWrapper" FullName="ServiceErrorReporting.StringErrorWrapper">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="string3" FullName="Setup.UserManagementServicesLive.string3">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="UserManagementServicesNonStreamerSUClient" FullName="OxigenSU.UserManagementServicesNonStreamerSUClient">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="ErrorSeverity" FullName="Setup.UserManagementServicesLive.ErrorSeverity">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="UserManagementServicesNonStreamerClient" FullName="OxigenIIAdvertising.UserManagementServicesServiceClient .UserManagementServicesNonStreamerClient">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="ChannelSubscriptions" FullName="InstallCustomSteps.DuplicateLibrary.ChannelSubscriptions">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="PrivilegeException" FullName="Setup.PrivilegeException">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="StringErrorWrapper" FullName="Setup.UserManagementServicesLive.StringErrorWrapper">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="ChannelSubscriptions" FullName="Setup.UserManagementServicesLive.ChannelSubscriptions">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="long" FullName="Setup.UserManagementServicesLive.long">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="PutCommandHandler" FullName="OxigenIIPresentation.CommandHandlers.PutCommandHandler">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="StringErrorWrapper" FullName="ServiceErrorReporting.StringErrorWrapper">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="GetCommandHandler" FullName="OxigenIIPresentation.CommandHandlers.GetCommandHandler">
+          <Val>0</Val>
+          <Val>2</Val>
+        </Row>
+        <Row Name="Sum:" FullName="Stat">
+          <Val>0</Val>
+          <Val>15 192</Val>
+        </Row>
+        <Row Name="Average:" FullName="Stat">
+          <Val>0</Val>
+          <Val>40.62</Val>
+        </Row>
+        <Row Name="Minimum:" FullName="Stat">
+          <Val>0</Val>
+          <Val>0</Val>
+        </Row>
+        <Row Name="Maximum:" FullName="Stat">
+          <Val>0</Val>
+          <Val>2 345</Val>
+        </Row>
+        <Row Name="Standard deviation:" FullName="Stat">
+          <Val>0</Val>
+          <Val>136.54</Val>
+        </Row>
+        <Row Name="Variance:" FullName="Stat">
+          <Val>0</Val>
+          <Val>18 642</Val>
+        </Row>
+      </Rows>
+    </Query>
+    <Group Name="Performance" FullName="Design \ Performance" GroupId="GroupOfRules-1202259592" NbQueries="4" NbErrors="0" NbWarns="3" Status="Warn" />
+  </Group>
+  <Group Name="Code Diff" FullName="Code Diff" GroupId="GroupOfRules-1312349231" NbQueries="10" NbErrors="0" NbWarns="0" Status="Ok">
+    <Group Name="API Breaking Changes" FullName="Code Diff \ API Breaking Changes" GroupId="GroupOfRules-1429212426" NbQueries="3" NbErrors="0" NbWarns="0" Status="Ok" />
+  </Group>
+  <Group Name="Code Coverage" FullName="Code Coverage" GroupId="GroupOfRules1296861689" NbQueries="7" NbErrors="0" NbWarns="0" Status="Ok">
+    <Group Name="Coverage Regression" FullName="Code Coverage \ Coverage Regression" GroupId="GroupOfRules-2093326276" NbQueries="7" NbErrors="0" NbWarns="0" Status="Ok" />
+  </Group>
+  <Group Name="Dead Code" FullName="Dead Code" GroupId="GroupOfRules-935955550" NbQueries="3" NbErrors="0" NbWarns="2" Status="Warn" />
+  <Group Name="Code Quality from Now!" FullName="Code Quality from Now!" GroupId="GroupOfRules494690661" NbQueries="3" NbErrors="0" NbWarns="0" Status="Ok" />
+  <Group Name="Encapsulation" FullName="Encapsulation" GroupId="GroupOfRules-899546502" NbQueries="1" NbErrors="0" NbWarns="1" Status="Warn">
+    <Group Name="Methods Optimal Encapsulation" FullName="Encapsulation \ Methods Optimal Encapsulation" GroupId="GroupOfRules112565523" NbQueries="5" NbErrors="0" NbWarns="2" Status="Warn" />
+    <Group Name="Types Optimal Encapsulation" FullName="Encapsulation \ Types Optimal Encapsulation" GroupId="GroupOfRules-1690661178" NbQueries="5" NbErrors="0" NbWarns="1" Status="Warn" />
+    <Group Name="Fields Optimal Encapsulation" FullName="Encapsulation \ Fields Optimal Encapsulation" GroupId="GroupOfRules-1054548904" NbQueries="5" NbErrors="0" NbWarns="2" Status="Warn" />
+  </Group>
+  <Group Name="Purity - Immutability - Side-Effects" FullName="Purity - Immutability - Side-Effects" GroupId="GroupOfRules213518596" NbQueries="6" NbErrors="0" NbWarns="4" Status="Warn" />
+  <Group Name="Naming Conventions" FullName="Naming Conventions" GroupId="GroupOfRules-1005792771" NbQueries="10" NbErrors="0" NbWarns="5" Status="Warn">
+    <Query Status="Warn" Name="Abstract base class should be suffixed with 'Base'" ContentTruncatedThreshold="100" FullName="Naming Conventions \ Abstract base class should be suffixed with 'Base'" QueryId="Query3583907718" NbNodeMatched="4" NbNodeTested="1144" KindOfNode=" types">
+      <QueryHtml>&lt;font color='#008000'&gt;//&amp;#0160;&amp;lt;Name&amp;gt;&lt;/font&gt;&lt;b style="color:#008000;background-color:#E6FFE6"&gt;Abstract&amp;#0160;base&amp;#0160;class&amp;#0160;should&amp;#0160;be&amp;#0160;suffixed&amp;#0160;with&amp;#0160;'Base'&lt;/b&gt;&lt;font color='#008000'&gt;&amp;lt;/Name&amp;gt;&lt;br/&gt;&lt;/font&gt;&lt;font color='#0000FF'&gt;WARN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IF&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;Count&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;&amp;gt;&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;0&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;IN&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;SELECT&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;TYPES&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;WHERE&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;IsAbstract&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;IsClass&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#008000'&gt;//&amp;#0160;equivalent&amp;#0160;to:&amp;#0160;&amp;#0160;&amp;#0160;DepthOfDeriveFrom&amp;#0160;"System.Object"&amp;#0160;==&amp;#0160;1&lt;br/&gt;&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000064'&gt;DepthOfInheritance&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;==&lt;/font&gt;&amp;#0160;&lt;b style="color:#000000;background-color:#FFFF99"&gt;1&lt;/b&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&lt;font color='#000000'&gt;&amp;#0160;&lt;br/&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;(&lt;/font&gt;&lt;font color='#000000'&gt;(&lt;/font&gt;&lt;font color='#000000'&gt;!&lt;/font&gt;&lt;font color='#000064'&gt;IsGeneric&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;!&lt;/font&gt;&lt;font color='#000064'&gt;NameLike&lt;/font&gt;&amp;#0160;&lt;font color='#A31515'&gt;"Base$"&lt;/font&gt;&lt;font color='#000000'&gt;)&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;OR&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&amp;#0160;&amp;#0160;&amp;#0160;&lt;/font&gt;&lt;font color='#000000'&gt;(&lt;/font&gt;&amp;#0160;&lt;font color='#000064'&gt;IsGeneric&lt;/font&gt;&amp;#0160;&lt;font color='#0000FF'&gt;AND&lt;/font&gt;&amp;#0160;&lt;font color='#000000'&gt;!&lt;/font&gt;&lt;font color='#000064'&gt;NameLike&lt;/font&gt;&amp;#0160;&lt;font color='#A31515'&gt;"Base&amp;lt;"&lt;/font&gt;&lt;font color='#000000'&gt;)&lt;/font&gt;&lt;font color='#000000'&gt;)&lt;/font&gt;&lt;font color='#000000'&gt;&lt;br/&gt;&lt;/font&gt;</QueryHtml>
+      <Columns>
+        <Column>types</Column>
+        <Column>Depth of inheritance</Column>
+      </Columns>
+      <Rows>
+        <Row Name="LogEntry" FullName="OxigenIIAdvertising.LoggingStructures.LogEntry">
+          <Val>1</Val>
+        </Row>
+        <Row Name="PlaylistAsset" FullName="OxigenIIAdvertising.AppData.PlaylistAsset">
+          <Val>1</Val>
+        </Row>
+        <Row Name="CommandHandler" FullName="OxigenIIPresentation.CommandHandlers.CommandHandler">
+          <Val>1</Val>
+        </Row>
+        <Row Name="CommandProcessor" FullName="OxigenIIPresentation.CommandHandlers.Processors.CommandProcessor">
+          <Val>1</Val>
+        </Row>
+        <Row Name="Sum:" FullName="Stat">
+          <Val>4</Val>
+        </Row>
+        <Row Name="Average:" FullName="Stat">
+          <Val>1</Val>
+        </Row>
+        <Row Name="Minimum:" FullName="Stat">
+          <Val>1</Val>
+        </Row>
+        <Row Name="Maximum:" FullName="Stat">
+          <Val>1</Val>
+        </Row>
+        <Row Name="Standard deviation:" FullName="Stat">
+          <Val>0</Val>
+        </Row>
+        <Row Name="Variance:" FullName="Stat">
+          <Val>0</Val>
+        </Row>
+      </Rows>
+    </Query>
+    <Group Name="Name too long" FullName="Naming Conventions \ Name too long" GroupId="GroupOfRules1667286463" NbQueries="3" NbErrors="0" NbWarns="3" Status="Warn" />
+  </Group>
+  <Group Name=".NET Framework Usage" FullName=".NET Framework Usage" GroupId="GroupOfRules776011600" NbQueries="0" NbErrors="0" NbWarns="0" Status="Warn">
+    <Group Name="System" FullName=".NET Framework Usage \ System" GroupId="GroupOfRules994470963" NbQueries="13" NbErrors="0" NbWarns="5" Status="Warn" />
+    <Group Name="System.Collection" FullName=".NET Framework Usage \ System.Collection" GroupId="GroupOfRules-908923421" NbQueries="1" NbErrors="0" NbWarns="0" Status="Ok" />
+    <Group Name="System.Runtime.InteropServices" FullName=".NET Framework Usage \ System.Runtime.InteropServices" GroupId="GroupOfRules125586677" NbQueries="3" NbErrors="0" NbWarns="2" Status="Warn" />
+    <Group Name="System.Threading" FullName=".NET Framework Usage \ System.Threading" GroupId="GroupOfRules-818084121" NbQueries="7" NbErrors="0" NbWarns="2" Status="Warn" />
+    <Group Name="System.Xml" FullName=".NET Framework Usage \ System.Xml" GroupId="GroupOfRules1344796316" NbQueries="2" NbErrors="0" NbWarns="0" Status="Ok" />
+    <Group Name="System.Globalization" FullName=".NET Framework Usage \ System.Globalization" GroupId="GroupOfRules-678451365" NbQueries="1" NbErrors="0" NbWarns="1" Status="Warn" />
+  </Group>
+</CQLRuleResult>

@@ -1,0 +1,914 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<AssemblyDependencies>
+  <Dependencies_For Assembly="OxigenPlayerType v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenAssets v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenChannelData v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIDAServices v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylist v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistAssetPicker v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenUserDataMarshallrContracts v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenUserDataMarshallerClient v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenEncryptionDecryption v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenFileLocker v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylist v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistAssetPicker v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenFileLocker v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenEncryptionDecryption v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLogFileWriter v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLogFileReader v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLogManipulator v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>TextDecrypter v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="BLContracts v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>BLHost v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>BLHostService v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIPresentation v1.9.5.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="BLHost v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>BLContracts v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenAssets v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlayerType v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenChannelData v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIDAServices v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenAdvertList v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenXmlSerializableSortableGenericList v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Xml v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenChannelData v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenAdvertList v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenTaxonomySearch v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenInclusionExclusionRules v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenChannelData v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenAdvertList v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenTaxonomySearch v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenChannelData v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenAssets v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableSortableGenericList v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenInclusionExclusionRules v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlayerType v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenIIDAContracts v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIDAServices v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenTaxonomySearch v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenDemographic v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Runtime.Serialization v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenIIDAContracts v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIDAServices v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenDemographicRange v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIDAContracts v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenChannelData v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenDemographic v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIDAServices v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="FilenameMakerLib v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenIIPresentation v1.9.5.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="BLHostService v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>BLContracts v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="DataAccess v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Data v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenIIDAServices v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenProxyClientBaseLib v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIMasterDataMarshallerClient v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenUserDataMarshallerClient v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenUserMgmtServicesClient v1.2.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIPresentation v1.9.5.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIMasterDataMarContracts v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenIIMasterDataMarshallerClient v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIMasterDataMarshallerClient v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>OxigenProxyClientBaseLib v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenIIMasterDataMarContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenFileChecksumCalculator v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>libutil v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenServerCycleConnectAttempt v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="ChannelDatabaseToRelayUploaderLib v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenChannelData v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenProxyClientBaseLib v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenIIDAContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenIIMasterDataMarshallerClient v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileChecksumCalculator v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenIIMasterDataMarContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenServerCycleConnectAttempt v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenEncryptionDecryption v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>ChannelDatabaseToRelayUploaderSvc v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="ChannelDatabaseToRelayUploaderSvc v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>ChannelDatabaseToRelayUploaderLib v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenBoolContainerLib v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIDAServices v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenIIDAContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenChannelData v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenDemographic v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Data v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>DataAccess v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Transactions v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenAssets v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlayerType v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>DAHost v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>DAHostService v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="DAHost v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenIIDAServices v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenFileRightsChecker v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenFlatAggregatedLogStructures v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>DataAggregators v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenSingletons v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLogFileWriter v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLogWriteOperations v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenUsageCount v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLogFileWriter v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLogFileWriter v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenSingletons v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUsageCount v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileLocker v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLogEntry v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLogStats v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLogFileReader v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLogStats v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenLogEntry v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenInternetConnectionCheck v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenPlaylistAssetPicker v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenPlaylist v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlayerType v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenEncryptionDecryption v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLogWriteOperations v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenPlaylistAssetPicker v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLogWriteOperations v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlaylist v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenSingletons v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="MasterDataMarshallerService v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenNoAssetsAnimator v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Drawing v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="DataAggregators v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFlatAggregatedLogStructures v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenHeartbeatAggregator v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLogAggregator v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenScreenSaverProductAggregator v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenUninstallInfoAggregator v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenHeartbeatAggregator v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>DataAggregators v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLinqToHashSet v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="DAHostService v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenIIDAServices v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenDemographicRange v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenDemographic v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenAdvertList v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>OxigenAssets v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableSortableGenericList v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenInclusionExclusionRules v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenAssetType v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenAssetScheduling v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenPlaylistAssetPicker v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIBLService v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenXmlSerializableGenericDictionary v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Xml v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenGeneralData v1.0.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenService v1.11.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>libutil v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenGeneralData v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableGenericDictionary v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenService v1.11.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>libutil v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLogFileReader v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenLogEntry v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileLocker v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLogManipulator v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileLocker v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenUserDataMarshallerClient v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>OxigenProxyClientBaseLib v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserDataMarshallrContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenTimeSpanObjectWrapper v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenUserSettings v1.1.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenLE v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>ScreenSaverConfig v1.1.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenTray v1.11.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenService v1.11.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLE v1.1.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenLogEntry v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenLogStats v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserDataMarshallerClient v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenTimeSpanObjectWrapper v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenGeneralData v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserSettings v1.1.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenServerCycleConnectAttempt v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenProxyClientBaseLib v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserDataMarshallrContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileRightsChecker v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileLocker v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenLogFileReader v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableGenericDictionary v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIMasterDataMarshaller v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenUserMgmtServicesContracts v1.2.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Runtime.Serialization v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+      <ReferencedBy_Name>OxigenUserMgmtServicesClient v1.2.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenUserMgmtServicesClient v1.2.0.0">
+    <DependsOn>
+      <DependsOn_Name>OxigenProxyClientBaseLib v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserMgmtServicesContracts v1.2.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenTaxonomySearch v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableSortableGenericList v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenInclusionExclusionRules v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenChannelData v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenPlaylistLogic v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenPlaylistLogic v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlaylist v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenChannelData v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenDemographicRange v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenDemographic v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenAssets v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenLinqToHashSet v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlayerType v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenAdvertList v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableSortableGenericList v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenInclusionExclusionRules v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenTaxonomySearch v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenCE v1.22.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenCE v1.22.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenGeneralData v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserSettings v1.1.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserDataMarshallerClient v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserMgmtServicesClient v1.2.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlaylist v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenServerCycleConnectAttempt v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Drawing v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserDataMarshallrContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenProxyClientBaseLib v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserMgmtServicesContracts v1.2.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlaylistLogic v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Management v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileRightsChecker v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileChecksumCalculator v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableGenericDictionary v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenEncryptionDecryption v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenServiceFactory v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="ScreenSaverConfig v1.1.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserSettings v1.1.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Drawing v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenTray v1.11.0.0">
+    <DependsOn>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Drawing v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserSettings v1.1.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIUserDataMarshaller v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIUserMgmtServices v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenLogAggregator v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>DataAggregators v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenScreenSaverProductAggregator v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>DataAggregators v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenUninstallInfoAggregator v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>DataAggregators v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenPlaylistAssetPicker v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlaylist v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenAssetScheduling v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenPlayerType v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenEncryptionDecryption v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenInternetConnectionCheck v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenStopwatch v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenWindowsVersionDetection v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenRegistryAccess v1.0.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenRegistryAccess v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenWindowsVersionDetection v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenRegexCompiler v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenThirdPartyLibraries v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="UserFileMarshaller v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenServiceContracts v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+    <ReferencedBy>
+      <ReferencedBy_Name>OxigenService v1.11.0.0</ReferencedBy_Name>
+    </ReferencedBy>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenService v1.11.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenServiceContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenGeneralData v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenUserSettings v1.1.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableGenericDictionary v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenEventLogInstallers v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="UMDBService v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration.Install v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="libutil v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenGeneralData v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenXmlSerializableGenericDictionary v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileChecksumCalculator v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="TextDecrypter v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Drawing v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenFileLocker v1.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenSU v1.32.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Xml v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Drawing v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceProcess v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Runtime.Serialization v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Management v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="Oxigen.Tests v1.9.5.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>SharpArch v1.9.5.0</DependsOn_Name>
+      <DependsOn_Name>NHibernate v3.0.0.4000</DependsOn_Name>
+      <DependsOn_Name>nunit.framework v2.5.2.9222</DependsOn_Name>
+      <DependsOn_Name>MvcContrib.TestHelper v0.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Web v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Core v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>Rhino.Mocks v3.6.0.0</DependsOn_Name>
+      <DependsOn_Name>Castle.Windsor v2.5.1.0</DependsOn_Name>
+      <DependsOn_Name>Microsoft.Practices.ServiceLocation v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>CommonServiceLocator.WindsorAdapter v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>FluentNHibernate v1.2.0.694</DependsOn_Name>
+      <DependsOn_Name>System.Data v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="InstallCustomSteps v1.0.0.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Xml v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.ServiceModel v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Runtime.Serialization v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Management v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="SharpArch.Scaffolding v1.9.5.0">
+    <DependsOn>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="OxigenIIPresentation v1.9.5.0">
+    <DependsOn>
+      <DependsOn_Name>System.Web v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Configuration v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>AjaxControlToolkit v1.0.11119.20010</DependsOn_Name>
+      <DependsOn_Name>Aurigma.ImageUploader v6.5.1.36734</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>SharpArch v1.9.5.0</DependsOn_Name>
+      <DependsOn_Name>System.Drawing v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Web.Extensions v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>Castle.Windsor v2.5.1.0</DependsOn_Name>
+      <DependsOn_Name>Microsoft.Practices.ServiceLocation v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>FilenameMakerLib v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>OxigenProxyClientBaseLib v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>BLContracts v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>log4net v1.2.10.0</DependsOn_Name>
+      <DependsOn_Name>CommonServiceLocator.WindsorAdapter v1.0.0.0</DependsOn_Name>
+      <DependsOn_Name>FluentNHibernate v1.2.0.694</DependsOn_Name>
+      <DependsOn_Name>NHibernate v3.0.0.4000</DependsOn_Name>
+      <DependsOn_Name>Ionic.Zip v1.9.1.5</DependsOn_Name>
+      <DependsOn_Name>System.Xml v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+  <Dependencies_For Assembly="Setup v1.1.0.0">
+    <DependsOn>
+      <DependsOn_Name>System.Windows.Forms v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>mscorlib v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Xml v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Web.Services v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Drawing v4.0.0.0</DependsOn_Name>
+      <DependsOn_Name>System.Management v4.0.0.0</DependsOn_Name>
+    </DependsOn>
+  </Dependencies_For>
+</AssemblyDependencies>

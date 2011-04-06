@@ -113,12 +113,6 @@
     <Compile Include="UserDetails.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{F50C29A8-6B88-436F-A938-61166E695483}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="StreamSettings\" />
   </ItemGroup>
   <ItemGroup>
