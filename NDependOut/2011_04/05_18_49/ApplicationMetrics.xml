@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ApplicationMetrics NAsm="87" NbSourceFiles="652" NbLinesOfCode="18566" NbLinesOfComment="13100" PercentageComment="41" NType="577" NClass="524" NAbstractClass="6" NInterface="18" NValueType="9" NExceptionType="3" NAttributeType="0" NDelegateType="26" NEnumType="26" NGenericMethodsDefinition="15" NGenericTypesDefinition="16" NILInstruction="107509" NMethods="3477" NFields="2149" NNamespaces="139" NThirdPartyAssemblies="33" NThirdPartyNamespaces="95" NThirdPartyTypes="567" NThirdPartyMethods="1018" NThirdPartyFields="71" PercentCodeCoverage="0" PercentPublicType="84.23" PercentPublicMethod="63.82" PercentClassWithAtLeastOnePublicField="1.21">
+  <PropertyOnInterface Occ="18" Avg="0.44" StdDev="1.26" MaxVal="4" MaxName="ServiceErrorReporting.IErrorReporting" />
+  <MethodOnInterface Occ="18" Avg="13" StdDev="26.56" MaxVal="101" MaxName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService" />
+  <ArgOnMethodOnInterface Occ="234" Avg="2.97" StdDev="3.17" MaxVal="20" MaxName="OxigenIIAdvertising.ServiceContracts.DAServices.IDAService.RegisterNewUser(String,String,String,String,String,DateTime,String,String,String,String,String,String,String,String,Int32,Int32,String,String,ChannelSubscriptions,String&amp;)" />
+  <PublicPropertyOnClass Occ="524" Avg="0.84" StdDev="2.71" MaxVal="42" MaxName="Setup.AppDataSingleton" />
+  <PublicMethodOnClass Occ="524" Avg="3.72" StdDev="8.86" MaxVal="126" MaxName="Setup.UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer" />
+  <ArgOnPublicMethodOnClass Occ="1947" Avg="1.04" StdDev="2.06" MaxVal="24" MaxName="Setup.UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer.RegisterNewUserAsync(String,String,String,String,String,DateTime,Boolean,String,String,String,String,String,String,String,String,Int32,Boolean,Int32,Boolean,String,String,ChannelSubscriptions,String,Object)" />
+  <ILInstructionInNonAbstractMethods Occ="3239" Avg="33.19" StdDev="73.01" MaxVal="1563" MaxName="Setup.UpdateExistingUserDetailsForm.InitializeComponent()" />
+  <TypeWithTheMostILInstruction Occ="524" Avg="204.7" StdDev="667.52" MaxVal="12188" MaxName="OxigenIIAdvertising.Services.DAService" />
+  <MethodCC Occ="3239" Avg="2.3" StdDev="3.03" MaxVal="41" MaxName="OxigenIIPresentation.Create.UploadAndSaveToDB(Int64&amp;)" />
+</ApplicationMetrics>

@@ -1438,7 +1438,6 @@
     <Content Include="Uploader.aspx" />
     <Content Include="Viewmedia.aspx" />
     <Content Include="GeneralSettings\ss_general_data.dat" />
-    <Content Include="NHibernate.config" />
     <None Include="Resources\LiveScreensaverIntro.pdf" />
     <Content Include="Resources\OxigenInstallationRequirements.pdf" />
     <None Include="Resources\Sports_2009.pdf" />
