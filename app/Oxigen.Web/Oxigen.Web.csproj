@@ -42,6 +42,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1082,12 +1083,11 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
@@ -1434,11 +1434,11 @@
     <Content Include="TestDebug\loginnohttphandler.aspx" />
     <Content Include="TestDebug\logout.aspx" />
     <Content Include="TestDebug\put.aspx" />
-    <Content Include="Thumbnails\Slides\locked_stream.jpg" />
     <Content Include="TopPick.aspx" />
     <Content Include="Uploader.aspx" />
     <Content Include="Viewmedia.aspx" />
     <Content Include="GeneralSettings\ss_general_data.dat" />
+    <Content Include="NHibernate.config" />
     <None Include="Resources\LiveScreensaverIntro.pdf" />
     <Content Include="Resources\OxigenInstallationRequirements.pdf" />
     <None Include="Resources\Sports_2009.pdf" />
@@ -1492,15 +1492,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NHibernate.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Gallery\" />
-    <Folder Include="Thumbnails\AssetContents\" />
-    <Folder Include="Thumbnails\Channels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
