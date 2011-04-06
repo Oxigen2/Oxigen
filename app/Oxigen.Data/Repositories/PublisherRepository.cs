@@ -26,7 +26,17 @@ namespace Oxigen.Data.Repositories
             ISession session = SharpArch.Data.NHibernate.NHibernateSession.Current;
 
             return session.CreateCriteria<Publisher>().Add(Expression.Eq("UserID", userId)).UniqueResult<Publisher>();
+        }
 
+        public IList<PublisherLookupDto> GetPublishersByPartialName(string partialName)
+        {
+            ISession session = SharpArch.Data.NHibernate.NHibernateSession.Current;
+
+            IQuery query = session.GetNamedQuery("GetPublisherSimpleList")
+                .SetParameter("partialName", '%' + partialName + '%')
+                .SetResultTransformer(Transformers.AliasToBean<PublisherLookupDto>());
+
+            return query.List<PublisherLookupDto>();
         }
     }
 }

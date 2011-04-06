@@ -33,6 +33,13 @@ namespace Oxigen.Web.Controllers
         }
 
         [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult GetPublishersByPartialName(string partialName) {
+            IList<PublisherLookupDto> publishers = publisherManagementService.GetPublishersByPartialName(partialName);
+            return Json(publishers);
+        }
+
+        [Transaction]
         public ActionResult Show(int id) {
             Publisher publisher = publisherManagementService.Get(id);
             return View(publisher);

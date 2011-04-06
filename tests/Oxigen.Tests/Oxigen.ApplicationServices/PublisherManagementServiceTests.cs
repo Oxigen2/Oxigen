@@ -94,6 +94,29 @@ namespace Tests.Oxigen.ApplicationServices
         }
 
         [Test]
+        public void CanGetPublishersByPartialName() {
+            // Establish Context
+            IList<PublisherLookupDto> publisherListToExpect = new List<PublisherLookupDto>();
+
+            PublisherLookupDto publisherLookupDto = new PublisherLookupDto();
+            publisherListToExpect.Add(publisherLookupDto);
+            
+            const string partialName = "John";
+
+            publisherRepository.Expect(r => r.GetPublishersByPartialName(partialName)).Return(publisherListToExpect);
+
+            // Act
+            IList<PublisherLookupDto> publisherListRetrieved =
+                publisherManagementService.GetPublishersByPartialName(partialName);
+
+            // Assert
+            publisherListRetrieved.ShouldNotBeNull();
+            publisherListRetrieved.Count.ShouldEqual(1);
+            publisherListRetrieved[0].ShouldNotBeNull();
+            publisherListRetrieved[0].ShouldEqual(publisherLookupDto);
+        }
+
+        [Test]
         public void CanCreateFormViewModel() {
             // Establish Context
             PublisherFormViewModel viewModelToExpect = new PublisherFormViewModel();

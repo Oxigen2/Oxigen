@@ -10,5 +10,7 @@ namespace Oxigen.Core.RepositoryInterfaces
         IList<PublisherDto> GetPublisherSummaries();
 
         Publisher GetByUserId(int userId);
+
+        IList<PublisherLookupDto> GetPublishersByPartialName(string partialName);
     }
 }

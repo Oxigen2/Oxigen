@@ -3,6 +3,29 @@
 <%@ Import Namespace="Oxigen.Core" %>
 <%@ Import Namespace="Oxigen.Web.Controllers" %>
  
+     <script type="text/javascript" language="javascript">
+         $(function () {
+             $("#PublisherDisplayName").autocomplete({
+                 source: function (request, response) {
+                     $.ajax({
+                         url: '/Publishers/GetPublishersByPartialName', type: 'POST', dataType: 'json',
+                         data: { partialName: request.term },
+                         success: function (data) {
+                             response($.map(data, function (publisher) {
+                                 var name = publisher.DisplayName + ' (' + publisher.EmailAddress + ')';
+                                 return { label: name, value: name, id: publisher.Id }
+                             }))
+                         }
+
+                     })
+                 },
+                 select: function (event, ui) {
+                     $("#PublisherDisplayName").val(ui.item.label);
+                     $("#Template_Publisher_Id").val(ui.item.id);
+                 }
+             });
+         });
+</script>
 
 <% if (ViewContext.TempData[ControllerEnums.GlobalViewDataProperty.PageMessage.ToString()] != null) { %>
     <p id="pageMessage"><%= ViewContext.TempData[ControllerEnums.GlobalViewDataProperty.PageMessage.ToString()]%></p>
@@ -35,8 +58,14 @@
         <li>
 			<label for="Template_OwnedBy">OwnedBy:</label>
 			<div>
-				<%= Html.TextBox("Template.Publisher.Id", 
-					(ViewData.Model.Template != null) ? ViewData.Model.Template.Publisher.Id.ToString() : "")%>
+				<%=Html.Hidden("Template.Publisher.Id",
+                                  (ViewData.Model.Template != null)
+                                      ? ViewData.Model.Template.Publisher.Id.ToString()
+                                      : "")%>
+
+                    <%=Html.TextBox("PublisherDisplayName", (ViewData.Model.Template != null) ? ViewData.Model.Template.Publisher.DisplayName : "")
+                    %>
+                   
 			</div>
 			<%= Html.ValidationMessage("Template.Publisher.Id")%>
 		</li>

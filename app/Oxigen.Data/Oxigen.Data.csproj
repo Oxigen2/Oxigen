@@ -104,9 +104,10 @@
     <EmbeddedResource Include="NamedQueries\GetTemplateSummaries.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="NamedQueries\GetPublisherSummaries.hbm.xml" />
+    <EmbeddedResource Include="NamedQueries\GetPublisherSummaries.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\002_CreateTemplates.sql" />
   </ItemGroup>

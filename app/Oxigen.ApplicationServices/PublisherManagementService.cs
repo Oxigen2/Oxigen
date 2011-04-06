@@ -29,6 +29,10 @@ namespace Oxigen.ApplicationServices
             return publisherRepository.GetPublisherSummaries();
         }
 
+        public IList<PublisherLookupDto> GetPublishersByPartialName(string partialName) {
+            return publisherRepository.GetPublishersByPartialName(partialName);
+        }
+
         public PublisherFormViewModel CreateFormViewModel() {
             PublisherFormViewModel viewModel = new PublisherFormViewModel();
             return viewModel;

@@ -14,6 +14,7 @@ namespace Oxigen.ApplicationServices
         Publisher Get(int id);
         IList<Publisher> GetAll();
         IList<PublisherDto> GetPublisherSummaries();
+        IList<PublisherLookupDto> GetPublishersByPartialName(string partialName);
         ActionConfirmation SaveOrUpdate(Publisher publisher);
         ActionConfirmation UpdateWith(Publisher publisherFromForm, int idOfPublisherToUpdate);
         ActionConfirmation Delete(int id);
