@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using SharpArch.Testing;
 using SharpArch.Testing.NUnit;
 using Oxigen.Core;
 

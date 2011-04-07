@@ -69,6 +69,7 @@
     <Compile Include="Publisher.cs" />
     <Compile Include="QueryDtos\AssetContentDto.cs" />
     <Compile Include="QueryDtos\PublisherDto.cs" />
+    <Compile Include="QueryDtos\PublisherLookupDto.cs" />
     <Compile Include="QueryDtos\SlideDto.cs" />
     <Compile Include="QueryDtos\TemplateDto.cs" />
     <Compile Include="RepositoryInterfaces\IAssetContentRepository.cs" />

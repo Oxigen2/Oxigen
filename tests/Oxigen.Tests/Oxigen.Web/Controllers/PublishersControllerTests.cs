@@ -48,6 +48,32 @@ namespace Tests.Oxigen.Web.Controllers
         }
 
         [Test]
+        public void CanListPublishersByPartialName() {
+            // Establish Context
+            IList<PublisherLookupDto> publisherListToExpect = new List<PublisherLookupDto>();
+
+            PublisherLookupDto publisherLookupDto = new PublisherLookupDto()
+                                                        {
+                                                            DisplayName = "John Smith",
+                                                            EmailAddress = "john@smith"
+                                                        };
+            publisherListToExpect.Add(publisherLookupDto);
+
+            string partialName = "John";
+
+            publisherManagementService.Expect(r => r.GetPublishersByPartialName(partialName))
+                .Return(publisherListToExpect);
+
+            // Act
+            JsonResult result = publishersController.GetPublishersByPartialName(partialName).AssertResultIs<JsonResult>();
+
+            // Assert
+            result.Data.ShouldNotBeNull();
+            (result.Data as IList<PublisherLookupDto>).ShouldNotBeNull();
+            (result.Data as IList<PublisherLookupDto>).Count.ShouldEqual(1);
+        }
+
+        [Test]
         public void CanShowPublisher() {
             // Establish Context
             Publisher publisher = 

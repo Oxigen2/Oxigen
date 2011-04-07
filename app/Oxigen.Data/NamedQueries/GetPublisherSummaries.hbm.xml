@@ -6,4 +6,14 @@
 	    SELECT Id, UserID, FirstName, LastName, DisplayName, EmailAddress, UsedBytes, TotalAvailableBytes
 	    FROM Publishers
     </sql-query>
+  <sql-query name="GetPublisherSimpleList">
+    <![CDATA[
+    SET NOCOUNT ON;
+    
+    SELECT TOP 10 PUBLISHER_ID as Id, DisplayName, EmailAddress
+    FROM Publishers
+    WHERE Publishers.DisplayName LIKE :partialName
+    ORDER BY DisplayName    
+    ]]>
+  </sql-query>
 </hibernate-mapping>
