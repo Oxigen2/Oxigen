@@ -49,10 +49,9 @@ namespace Oxigen.Web.Controllers
         [ValidateAntiForgeryToken]
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(Template template)
+        public ActionResult Create(Template template, HttpPostedFileBase file)
         {
-            HttpPostedFileBase file = Request.Files[0];
-            if (file.ContentLength > 0)
+            if (file != null)
             {
             //if (ViewData.ModelState.IsValid) {
                 byte[] fileByteArray = new byte[file.InputStream.Length];
@@ -85,16 +84,26 @@ namespace Oxigen.Web.Controllers
         [ValidateAntiForgeryToken]
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(Template template) {
-            if (ViewData.ModelState.IsValid) {
-                ActionConfirmation updateConfirmation = 
-                    templateManagementService.UpdateWith(template, template.Id);
+        public ActionResult Edit(Template template, HttpPostedFileBase file)
+        {
+         //   if (ViewData.ModelState.IsValid) {
+            byte[] fileByteArray = null;
+            string fileName = null;
 
-                if (updateConfirmation.WasSuccessful) {
-                    TempData[ControllerEnums.GlobalViewDataProperty.PageMessage.ToString()] = 
-                        updateConfirmation.Message;
-                    return RedirectToAction("Index");
-                }
+            if (file != null) {
+                fileByteArray = new byte[file.InputStream.Length];
+                file.InputStream.Read(fileByteArray, 0, (int) file.InputStream.Length);
+                fileName = file.FileName;
+            }
+
+            ActionConfirmation updateConfirmation =
+                templateManagementService.UpdateWith(template, template.Id, fileName, fileByteArray);
+
+            if (updateConfirmation.WasSuccessful)
+            {
+                TempData[ControllerEnums.GlobalViewDataProperty.PageMessage.ToString()] =
+                    updateConfirmation.Message;
+                return RedirectToAction("Index");
             }
 
             TemplateFormViewModel viewModel = 

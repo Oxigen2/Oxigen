@@ -3,8 +3,6 @@
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 
-<script type="text/javascript" src="../../scripts/jquery-ui.min.js"></script>
-
 	<h1>Create Template</h1>
 
 	<% Html.RenderPartial("TemplateForm", ViewData); %>

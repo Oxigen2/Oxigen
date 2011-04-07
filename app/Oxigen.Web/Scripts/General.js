@@ -835,11 +835,15 @@ function multiClick3(clicked) {
 
 function templateChooser() {
   var panel = 'Panel2'
-  $('#TemplateChooser').change(function() {
-    var hidden_selection = $('div.TemplateChooser .HiddenSelection')
-    hidden_selection.slideUp(300)
-    var selected_option = $('#TemplateChooser option').index($('#TemplateChooser option:selected'))
-    hidden_selection.eq(selected_option).slideDown(300)
+  $('#TemplateChooser').change(function () {
+      var hidden_selection = $('div.TemplateChooser .HiddenSelection')
+   //   hidden_selection.slideUp(300)
+      var selected_option = $('#TemplateChooser option').index($('#TemplateChooser option:selected'))
+
+      if (selected_option == 0)
+          hidden_selection.slideUp(300);
+      else
+          hidden_selection.slideDown(300);
   });
 }
 

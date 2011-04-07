@@ -15,7 +15,7 @@ namespace Oxigen.ApplicationServices
         IList<Template> GetAll();
         IList<TemplateDto> GetTemplateSummaries();
         ActionConfirmation SaveOrUpdate(Template template);
-        ActionConfirmation UpdateWith(Template templateFromForm, int idOfTemplateToUpdate);
+        ActionConfirmation UpdateWith(Template templateFromForm, int idOfTemplateToUpdate, string fileName, byte[] fileByteArray);
         ActionConfirmation Delete(int id);
         ActionConfirmation Create(Template template, string fileName, byte[] fileByteArray);
     }
