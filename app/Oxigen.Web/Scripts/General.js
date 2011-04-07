@@ -979,23 +979,23 @@ function cloneStream(original, destination) {
     }
     var visible_page = dest_div.find('.StreamView:visible')
 
-    selected_stream.each(function() {
-      if (last_stream_view.find('.StreamHolder').length == 12) {
-        last_stream_view.after('<div class="StreamView"></div>')
-        last_stream_view = dest_div.find('div.StreamView:last')
-        last_stream_view.css('display', 'none')
-        initPager(destination)
-      }
-      $(this).removeClass('SelectedStream')
-      $(this).clone(true, true).appendTo(last_stream_view)
-      if (visible_page.is(':not(div.' + destination + ' div.StreamView:last)')) {
-        visible_page.animate({ left: '-350px' }, 600, function() {
-          $(this).css('display', 'none')
-        })
-        last_stream_view.css({ display: 'block', left: '350px' }).animate({ left: left_position }, 600, function() {
-
-        })
-      }
+    selected_stream.each(function () {
+        if (last_stream_view.find('.StreamHolder').length == 12) {
+            last_stream_view.after('<div class="StreamView"></div>')
+            last_stream_view = dest_div.find('div.StreamView:last')
+            last_stream_view.css('display', 'none')
+            initPager(destination)
+        }
+        $(this).removeClass('SelectedStream')
+        // $(this).clone(true, true).appendTo(last_stream_view) // will give that "instantaneous copy across" visual effect
+        if (visible_page.is(':not(div.' + destination + ' div.StreamView:last)')) {
+            visible_page.animate({ left: '-350px' }, 600, function () {
+                $(this).css('display', 'none')
+            })
+            last_stream_view.css({ display: 'block', left: '350px' }).animate({ left: left_position }, 600, function () {
+                
+            })
+        }
     });
     $('div.RightColumn div.StreamHolder div.PrivateLock').parent().parent().css('opacity', '0.4')
     if (msie_80) { $('div.RightColumn div.StreamHolder div.PrivateLock').css('opacity', '0.4').parent().css('opacity', '0.4') }
