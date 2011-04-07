@@ -3,7 +3,7 @@
     <sql-query name="GetTemplateSummaries">
       SET NOCOUNT ON;
 
-      SELECT TEMPLATE_ID, MetaData, DisplayName
+      SELECT TEMPLATE_ID, Name, DisplayName
       FROM Templates INNER JOIN Publishers ON Templates.PublisherID = Publishers.PUBLISHER_ID
     </sql-query>
 </hibernate-mapping>

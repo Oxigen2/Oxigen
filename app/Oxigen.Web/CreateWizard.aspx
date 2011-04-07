@@ -130,8 +130,8 @@
                   <asp:Literal ID="TemplateList" runat="server" />
                 </select>
               </div>
-              <div class="HiddenSelection">
-<%--                <div class="FormHolder">
+ <%--               <div class="HiddenSelection">
+              <div class="FormHolder">
                   <span>URL</span>
                   <input id="Template1Input1" value="<URL>" type="text" />
                 </div>
@@ -146,8 +146,8 @@
                   <ajaxToolkit:CalendarExtender CssClass="CalendarPopUp" Enabled="true" ID="CalendarExtender1" format="dd/MM/yyyy" runat="server" TargetControlID="txtDate" PopupButtonID="ibtnDate" PopupPosition="BottomLeft" />
                   <asp:Panel ID="pnlDate" CssClass="ValidationInfo" ValidationGroup="vgProceed" EnableViewState="false" Visible="false" runat="server"><asp:Literal ID="litDate" runat="server">Please enter a valid date</asp:Literal></asp:Panel>
                 
-              </div>--%>
               </div>
+              </div>--%>
               <div class="HiddenSelection">
                 <div class="FormHolder">
                   <span>Caption:</span>
@@ -182,7 +182,7 @@
                 </div>
                 --%>
               </div>
-              <div class="HiddenSelection">
+      <%--      <div class="HiddenSelection">
                 <span id="StupeflixValidation">You must choose 5-15 slides.<br />You have chosen <span>1</span>.</span>
                 <div class="FormHolder">
                   <span>Title:</span>
@@ -218,7 +218,7 @@
                   <span>Credit:</span>
                   <input id="TemplateCredit" type="text" />
                 </div>
-              </div>
+              </div> --%>   
 
             </div>
             <script type="text/javascript">

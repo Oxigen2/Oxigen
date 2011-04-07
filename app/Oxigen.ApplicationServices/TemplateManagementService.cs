@@ -64,10 +64,13 @@ namespace Oxigen.ApplicationServices
             }
         }
 
-        public ActionConfirmation UpdateWith(Template templateFromForm, int idOfTemplateToUpdate) {
+        public ActionConfirmation UpdateWith(Template templateFromForm, int idOfTemplateToUpdate, string fileName, byte[] fileByteArray) {
             Template templateToUpdate = 
                 templateRepository.Get(idOfTemplateToUpdate);
             TransferFormValuesTo(templateToUpdate, templateFromForm);
+
+            if (fileByteArray != null) 
+                SaveFile(templateToUpdate, fileName, fileByteArray);
 
             if (templateToUpdate.IsValid()) {
                 ActionConfirmation updateConfirmation = ActionConfirmation.CreateSuccessConfirmation(
@@ -113,10 +116,7 @@ namespace Oxigen.ApplicationServices
         public ActionConfirmation Create(Template template, string fileName, byte[] fileByteArray)
         {
             Template newTemplate = new Template(".swf");
-            FileStream fs = new FileStream(newTemplate.FileFullPathName, FileMode.Create, FileAccess.Write);
-            fs.Write(fileByteArray, 0, fileByteArray.Length);
-            fs.Close();
-            newTemplate.Name = Path.GetFileNameWithoutExtension(fileName);
+            SaveFile(newTemplate, fileName, fileByteArray);
             newTemplate.MetaData = template.MetaData;
             newTemplate.Publisher = template.Publisher;
             templateRepository.SaveOrUpdate(newTemplate);
@@ -124,8 +124,17 @@ namespace Oxigen.ApplicationServices
 
         }
 
+        private void SaveFile(Template template, string fileName, byte[] fileByteArray)
+        {
+            FileStream fs = new FileStream(template.FileFullPathName, FileMode.Create, FileAccess.Write);
+            fs.Write(fileByteArray, 0, fileByteArray.Length);
+            fs.Close();
+            template.Name = Path.GetFileNameWithoutExtension(fileName);
+        }
+
         private void TransferFormValuesTo(Template templateToUpdate, Template templateFromForm) {
 		    templateToUpdate.MetaData = templateFromForm.MetaData;
+            templateToUpdate.Publisher = templateFromForm.Publisher;
         }
 
         ITemplateRepository templateRepository;

@@ -10,7 +10,7 @@
     <link href="/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 
     <script src="/Scripts/jquery-1.4.4.js" type="text/javascript"></script>
-
+    <script type="text/javascript" src="../../scripts/jquery-ui.min.js"></script>
     <% // At bottom to facilitate other JS files to be loaded before page-by-page JS is loaded %>
     <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server">
         <title>Oxigen</title>

@@ -92,7 +92,7 @@ namespace Tests.Oxigen.Web.Controllers
 
             // Act
             RedirectToRouteResult redirectResult =
-                templatesController.Create(templateFromForm)
+                templatesController.Create(templateFromForm, null)
                 .AssertActionRedirect().ToAction("Index");
 
             // Assert
@@ -113,7 +113,7 @@ namespace Tests.Oxigen.Web.Controllers
 
             // Act
             ViewResult result =
-                templatesController.Create(templateFromForm).AssertViewRendered();
+                templatesController.Create(templateFromForm, null).AssertViewRendered();
 
             // Assert
             result.ViewData.Model.ShouldNotBeNull();
@@ -141,12 +141,12 @@ namespace Tests.Oxigen.Web.Controllers
             // Establish Context
             Template templateFromForm = new Template();
 
-            templateManagementService.Expect(r => r.UpdateWith(templateFromForm, 0))
+            templateManagementService.Expect(r => r.UpdateWith(templateFromForm, 0, null, null))
                 .Return(ActionConfirmation.CreateSuccessConfirmation("updated"));
 
             // Act
             RedirectToRouteResult redirectResult =
-                templatesController.Edit(templateFromForm)
+                templatesController.Edit(templateFromForm, null)
                 .AssertActionRedirect().ToAction("Index");
 
             // Assert
@@ -160,14 +160,14 @@ namespace Tests.Oxigen.Web.Controllers
             Template templateFromForm = new Template();
             TemplateFormViewModel viewModelToExpect = new TemplateFormViewModel();
 
-            templateManagementService.Expect(r => r.UpdateWith(templateFromForm, 0))
+            templateManagementService.Expect(r => r.UpdateWith(templateFromForm, 0, null, null))
                 .Return(ActionConfirmation.CreateFailureConfirmation("not updated"));
             templateManagementService.Expect(r => r.CreateFormViewModelFor(templateFromForm))
                 .Return(viewModelToExpect);
 
             // Act
             ViewResult result =
-                templatesController.Edit(templateFromForm).AssertViewRendered();
+                templatesController.Edit(templateFromForm, null).AssertViewRendered();
 
             // Assert
             result.ViewData.Model.ShouldNotBeNull();

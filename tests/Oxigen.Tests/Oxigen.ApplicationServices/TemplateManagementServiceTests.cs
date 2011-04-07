@@ -174,7 +174,7 @@ namespace Tests.Oxigen.ApplicationServices
 
             // Act
             ActionConfirmation confirmation =
-                templateManagementService.UpdateWith(validTemplateFromForm, 1);
+                templateManagementService.UpdateWith(validTemplateFromForm, 1, null, null);
 
             // Assert
             confirmation.ShouldNotBeNull();
@@ -197,7 +197,7 @@ namespace Tests.Oxigen.ApplicationServices
 
             // Act
             ActionConfirmation confirmation =
-                templateManagementService.UpdateWith(invalidTemplateFromForm, 1);
+                templateManagementService.UpdateWith(invalidTemplateFromForm, 1, null, null);
 
             // Assert
             confirmation.ShouldNotBeNull();

@@ -32,7 +32,7 @@
 
 <%= Html.ValidationSummary() %>
 
-<% using (Html.BeginForm("Create", "Templates", FormMethod.Post, new { enctype = "multipart/form-data" })) { %>
+<% using (Html.BeginForm(ViewContext.RouteData.Values["action"] as string, "Templates", FormMethod.Post, new { enctype = "multipart/form-data" })) { %>
     <%= Html.AntiForgeryToken() %>
     <%= Html.Hidden("Template.Id", (ViewData.Model.Template != null) ? ViewData.Model.Template.Id : 0)%>
 
@@ -41,7 +41,7 @@
             <label for="File">
                 MetaDate:</label>
             <div>
-                <input type="file" id="fileUpload" name="fileUpload" size="23" />
+                <input type="file" id="file" name="file" size="23" />
             </div>
             <%= Html.ValidationMessage("File")%>
         </li>
@@ -49,8 +49,8 @@
             <label for="Template_MetaDate">
                 MetaData:</label>
             <div>
-                <%= Html.TextBox("Template.MetaData", 
-					(ViewData.Model.Template != null) ? ViewData.Model.Template.MetaData.ToString() : "")%>
+                <%= Html.TextBox("Template.MetaData",
+                    (ViewData.Model.Template != null && ViewData.Model.Template.MetaData != null) ? ViewData.Model.Template.MetaData.ToString() : "")%>
             </div>
             <%= Html.ValidationMessage("Template.MetaData")%>
         </li>
