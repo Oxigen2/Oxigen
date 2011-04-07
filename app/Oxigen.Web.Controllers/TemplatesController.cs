@@ -29,7 +29,6 @@ namespace Oxigen.Web.Controllers
         [Transaction]
         public ActionResult Index()
         {
-            ViewData["TemplatePath"] = System.Configuration.ConfigurationSettings.AppSettings["templatePath"];
             IList<TemplateDto> templates = 
                 templateManagementService.GetTemplateSummaries();
             return View(templates);
@@ -81,6 +80,15 @@ namespace Oxigen.Web.Controllers
             TemplateFormViewModel viewModel = 
                 templateManagementService.CreateFormViewModelFor(id);
             return View(viewModel);
+        }
+
+        [Transaction]
+        public ActionResult ServeFile(int id)
+        {
+            Template template = templateManagementService.Get(id);
+
+            return File(System.Configuration.ConfigurationSettings.AppSettings["templatePath"] + template.Filename,
+                        "application/x-shockwave-flash", template.Name);
         }
 
         [ValidateAntiForgeryToken]

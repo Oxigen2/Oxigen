@@ -26,7 +26,7 @@
 			<tr>
 				<td><%= templateDto.Name %></td>
 				<td><%= templateDto.DisplayName %></td>
-				<td><a href="<%= ViewData["TemplatePath"] + templateDto.Filename %>">View</a></td>
+				<td><%=Html.ActionLink<TemplatesController>( c => c.ServeFile (templateDto.Id), "View") %></td>
 				<td><%=Html.ActionLink<TemplatesController>( c => c.Edit( templateDto.Id ), "Edit") %></td>
 				<td>
     				<% using (Html.BeginForm<TemplatesController>(c => c.Delete(templateDto.Id))) { %>
