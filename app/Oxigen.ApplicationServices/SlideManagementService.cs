@@ -148,7 +148,7 @@ namespace Oxigen.ApplicationServices
                     slide.PreviewType = "Flash";
                     slide.PlayerType = "Flash";
 
-                    var slideFromTemplate = new SWAFile(templatePath + template.Name + ".swf"); // As the templates are named after their SWF's filenames, template.Name will be a valid file name.
+                    var slideFromTemplate = new SWAFile(template.FileFullPathName); // As the templates are named after their SWF's filenames, template.Name will be a valid file name.
                     slideFromTemplate.UpdateBitmap("MasterImage", Image.FromFile(assetContent.FileFullPathName));
                     slideFromTemplate.UpdateText("MasterText", caption);
                     slideFromTemplate.UpdateText("CreditText", credit);
