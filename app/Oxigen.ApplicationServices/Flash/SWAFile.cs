@@ -15,7 +15,10 @@ namespace Oxigen.ApplicationServices.Flash
     {
         private FlashContainer _flashContainer;
 
-        public SWAFile(string filePath) {
+        public SWAFile(string filePath)
+        {
+            var lic = new Aspose.Flash.License();
+            lic.SetLicense("Aspose.Flash.lic");
             _flashContainer = new FlashContainer(filePath);
         }
 

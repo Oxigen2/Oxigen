@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Data>
+    <LicensedTo>Oxigen II Limited</LicensedTo>
+    <LicenseType>Developer OEM Subscription</LicenseType>
+    <LicenseNote>Limited to 1 developer.</LicenseNote>
+    <OrderID>110405110955</OrderID>
+    <OEM>This is a redistributable license</OEM>
+    <Products>
+      <Product>Aspose.Flash for .NET</Product>
+    </Products>
+    <EditionType>Enterprise</EditionType>
+    <SerialNumber>87f01950-2522-4e58-9cd3-b7ac47fef5bc</SerialNumber>
+    <SubscriptionExpiry>20120406</SubscriptionExpiry>
+    <LicenseVersion>2.2</LicenseVersion>
+  </Data>
+  <Signature>ouv3ZV4pE/SSJSedHxWf7/sctaZbC+DdkqWVc7+7daUoiiZVzV3fYO0W7lh38lrAZlxFxmUPFIYUcDTsN/Q/lVAXs8uwuDYJcHYMQakeIxRnrSKy8QvO+3pfUWcNCW2rMp6nyPjgAqgVDZ1dcgKF3DNurnmE+A8bhZQn9r6Mu8s=</Signature>
+</License>
