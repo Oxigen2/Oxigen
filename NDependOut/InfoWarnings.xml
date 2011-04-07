@@ -1,168 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <InfoWarnings>
-  <Info>04/05/2011 18:49:04 Begin full analysis with NDepend v3.6.0</Info>
-  <Warning>Cant' load the assembly {OxigenWCFErrorReporting}:
-Several .NET assemblies have the name {OxigenWCFErrorReporting} but they are different.
- - C:\Oxigen\app\WCFErrorReporting\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIUserDataMarshallrContracts\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderLib\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderSvc\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\LogFileWriter\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\NoAssetsAnimator\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIContentExchanger\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIILogExchanger\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIILogManipulator\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIMasterDataMarshaller\bin\OxigenWCFErrorReporting.dll   v0.0  8 192 bytes
- - C:\Oxigen\app\OxigenIIScreenSaverConfig\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIISSG\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIUserDataMarshaller\bin\OxigenWCFErrorReporting.dll   v0.0  8 192 bytes
- - C:\Oxigen\app\OxigenIIUserMgmtServices\bin\OxigenWCFErrorReporting.dll   v0.0  8 192 bytes
- - C:\Oxigen\app\UserFileMarshaller\bin\OxigenWCFErrorReporting.dll   v0.0  8 192 bytes
- - C:\Oxigen\app\OxigenService\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\TextDecrypter\bin\Debug\OxigenWCFErrorReporting.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\OxigenWCFErrorReporting.dll   v0.0  8 192 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenInterCommunicationStructures}:
-Several .NET assemblies have the name {OxigenInterCommunicationStructures} but they are different.
- - C:\Oxigen\app\OxigenIIUserDataMarshallrContracts\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderLib\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderSvc\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\MasterDataMarshallerService\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\OxigenHeartbeatAggregator\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\OxigenIIContentExchanger\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\OxigenIILogExchanger\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\OxigenIIMasterDataMarshaller\bin\OxigenInterCommunicationStructures.dll   v0.0  10 240 bytes
- - C:\Oxigen\app\OxigenIIUserDataMarshaller\bin\OxigenInterCommunicationStructures.dll   v0.0  10 240 bytes
- - C:\Oxigen\app\OxigenIIUserMgmtServices\bin\OxigenInterCommunicationStructures.dll   v0.0  10 240 bytes
- - C:\Oxigen\app\OxigenScreenSaverProductAggregator\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\OxigenUninstallInfoAggregator\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
- - C:\Oxigen\app\UMDBService\bin\Debug\OxigenInterCommunicationStructures.dll   v0.0  10 752 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenLoggerInfo}:
-Several .NET assemblies have the name {OxigenLoggerInfo} but they are different.
- - C:\Oxigen\app\OxigenIIUserDataMarshallrContracts\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\LogFileWriter\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\NoAssetsAnimator\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\OxigenIIContentExchanger\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\OxigenIILogExchanger\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\OxigenIILogManipulator\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\OxigenIIMasterDataMarshaller\bin\OxigenLoggerInfo.dll   v0.0  6 656 bytes
- - C:\Oxigen\app\OxigenIIScreenSaverConfig\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\OxigenIISSG\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\OxigenIIUserDataMarshaller\bin\OxigenLoggerInfo.dll   v0.0  6 656 bytes
- - C:\Oxigen\app\OxigenIIUserMgmtServices\bin\OxigenLoggerInfo.dll   v0.0  6 656 bytes
- - C:\Oxigen\app\UserFileMarshaller\bin\OxigenLoggerInfo.dll   v0.0  6 656 bytes
- - C:\Oxigen\app\OxigenService\bin\Debug\OxigenLoggerInfo.dll   v0.0  7 168 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\OxigenLoggerInfo.dll   v0.0  6 656 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenXMLSerializer}:
-Several .NET assemblies have the name {OxigenXMLSerializer} but they are different.
- - C:\Oxigen\app\OxigenIIUserDataMarshallrContracts\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderLib\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderSvc\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\LogFileWriter\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIContentExchanger\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIILogExchanger\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIILogManipulator\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIScreenSaverConfig\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIISSG\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenIIUserDataMarshaller\bin\OxigenXMLSerializer.dll   v0.0  8 192 bytes
- - C:\Oxigen\app\OxigenIIUserMgmtServices\bin\OxigenXMLSerializer.dll   v0.0  8 192 bytes
- - C:\Oxigen\app\OxigenIIXMLSerializer\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\OxigenService\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\libutil\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
- - C:\Oxigen\app\TextDecrypter\bin\Debug\OxigenXMLSerializer.dll   v0.0  8 704 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenExceptions}:
-Several .NET assemblies have the name {OxigenExceptions} but they are different.
- - C:\Oxigen\app\OxigenIIUserDataMarshallrContracts\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\LogFileWriter\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\OxigenIILogStats\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\NoAssetsAnimator\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\OxigenIIContentExchanger\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\OxigenIILogExchanger\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\OxigenIILogManipulator\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\OxigenIIMasterDataMarshaller\bin\OxigenExceptions.dll   v0.0  5 632 bytes
- - C:\Oxigen\app\OxigenIIScreenSaverConfig\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\OxigenIISSG\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\OxigenIIUserDataMarshaller\bin\OxigenExceptions.dll   v0.0  5 632 bytes
- - C:\Oxigen\app\OxigenIIUserMgmtServices\bin\OxigenExceptions.dll   v0.0  5 632 bytes
- - C:\Oxigen\app\RegistryAccess\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\UserFileMarshaller\bin\OxigenExceptions.dll   v0.0  5 632 bytes
- - C:\Oxigen\app\OxigenService\bin\Debug\OxigenExceptions.dll   v0.0  6 144 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\OxigenExceptions.dll   v0.0  5 632 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenIISitesBLClient}:
-Several .NET assemblies have the name {OxigenIISitesBLClient} but they are different.
- - C:\Oxigen\app\OxigenIISitesBLClient\bin\Debug\OxigenIISitesBLClient.dll   v0.0  12 288 bytes
- - C:\Oxigen\app\OxigenIIBLService\bin\OxigenIISitesBLClient.dll   v0.0  11 264 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\OxigenIISitesBLClient.dll   v0.0  11 264 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenIISitesBLServices}:
-Several .NET assemblies have the name {OxigenIISitesBLServices} but they are different.
- - C:\Oxigen\app\BLHost\bin\Debug\OxigenIISitesBLServices.dll   v0.0  37 888 bytes
- - C:\Oxigen\app\BLHostService\bin\Debug\OxigenIISitesBLServices.dll   v0.0  37 888 bytes
- - C:\Oxigen\app\OxigenIIBLService\bin\OxigenIISitesBLServices.dll   v0.0  35 328 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenIIDAClient}:
-Several .NET assemblies have the name {OxigenIIDAClient} but they are different.
- - C:\Oxigen\app\BLHost\bin\Debug\OxigenIIDAClient.dll   v0.0  16 896 bytes
- - C:\Oxigen\app\BLHostService\bin\Debug\OxigenIIDAClient.dll   v0.0  16 896 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderLib\bin\Debug\OxigenIIDAClient.dll   v0.0  16 896 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderSvc\bin\Debug\OxigenIIDAClient.dll   v0.0  16 896 bytes
- - C:\Oxigen\app\OxigenIIBLService\bin\OxigenIIDAClient.dll   v0.0  15 360 bytes
- - C:\Oxigen\app\OxigenIIUserMgmtServices\bin\OxigenIIDAClient.dll   v0.0  15 360 bytes
- - C:\Oxigen\app\UMDBService\bin\Debug\OxigenIIDAClient.dll   v0.0  16 896 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenSOAStructures}:
-Several .NET assemblies have the name {OxigenSOAStructures} but they are different.
- - C:\Oxigen\app\BLHost\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\OxigenIISitesBLClient\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\BLHostService\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderLib\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\ChannelDatabaseToRelayUploaderSvc\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\DAHost\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\DAHostService\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\OxigenIIBLService\bin\OxigenSOAStructures.dll   v0.0  26 624 bytes
- - C:\Oxigen\app\OxigenIIContentExchanger\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\OxigenIIUserMgmtServices\bin\OxigenSOAStructures.dll   v0.0  26 624 bytes
- - C:\Oxigen\app\UMDBService\bin\Debug\OxigenSOAStructures.dll   v0.0  30 208 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\OxigenSOAStructures.dll   v0.0  26 624 bytes
-</Warning>
-  <Warning>Cant' load the assembly {OxigenIIMasterDataMarServices}:
-Several .NET assemblies have the name {OxigenIIMasterDataMarServices} but they are different.
- - C:\Oxigen\app\MasterDataMarshallerService\bin\Debug\OxigenIIMasterDataMarServices.dll   v0.0  12 288 bytes
- - C:\Oxigen\app\OxigenIIMasterDataMarshaller\bin\OxigenIIMasterDataMarServices.dll   v0.0  11 776 bytes
-</Warning>
-  <Warning>Cant' load the assembly {Oxigen.ApplicationServices}:
-Several .NET assemblies have the name {Oxigen.ApplicationServices} but they are different.
- - C:\Oxigen\app\Oxigen.ApplicationServices\bin\Debug\Oxigen.ApplicationServices.dll   v0.0  22 528 bytes
- - C:\Oxigen\app\Oxigen.Web.Controllers\bin\Debug\Oxigen.ApplicationServices.dll   v0.0  22 528 bytes
- - C:\Oxigen\tests\Oxigen.Tests\bin\Debug\Oxigen.ApplicationServices.dll   v0.0  22 528 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\Oxigen.ApplicationServices.dll   v0.0  21 504 bytes
-</Warning>
-  <Warning>Cant' load the assembly {Oxigen.Core}:
-Several .NET assemblies have the name {Oxigen.Core} but they are different.
- - C:\Oxigen\app\Oxigen.ApplicationServices\bin\Debug\Oxigen.Core.dll   v0.0  19 968 bytes
- - C:\Oxigen\app\Oxigen.Web.Controllers\bin\Debug\Oxigen.Core.dll   v0.0  19 968 bytes
- - C:\Oxigen\tests\Oxigen.Tests\bin\Debug\Oxigen.Core.dll   v0.0  19 968 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\Oxigen.Core.dll   v0.0  18 944 bytes
-</Warning>
-  <Warning>Cant' load the assembly {Oxigen.Web.Controllers}:
-Several .NET assemblies have the name {Oxigen.Web.Controllers} but they are different.
- - C:\Oxigen\app\Oxigen.Web.Controllers\bin\Debug\Oxigen.Web.Controllers.dll   v0.0  13 824 bytes
- - C:\Oxigen\tests\Oxigen.Tests\bin\Debug\Oxigen.Web.Controllers.dll   v0.0  13 824 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\Oxigen.Web.Controllers.dll   v0.0  13 312 bytes
-</Warning>
-  <Warning>Cant' load the assembly {Oxigen.Data}:
-Several .NET assemblies have the name {Oxigen.Data} but they are different.
- - C:\Oxigen\tests\Oxigen.Tests\bin\Debug\Oxigen.Data.dll   v0.0  15 360 bytes
- - C:\Oxigen\app\Oxigen.Web\bin\Oxigen.Data.dll   v0.0  14 848 bytes
-</Warning>
+  <Info>04/07/2011 10:45:51 Begin full analysis with NDepend v3.6.0</Info>
   <Warning>Cant' load the assembly {System.Web.Mvc}:
 Can't find the .NET assembly {System.Web.Mvc} in specified folders. 
 Has it been compiled properly? 
@@ -174,9 +12,6 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
   <Warning>Assembly {OxigenIIUserMgmtServices} doesn't contain any type.</Warning>
   <Warning>Assembly {OxigenThirdPartyLibraries} doesn't contain any type.</Warning>
   <Warning>Assembly {SharpArch.Scaffolding} doesn't contain any type.</Warning>
-  <Warning>Assembly {Aspose.Flash} doesn't contain any type.</Warning>
-  <Warning>Assembly {NHibernate.Validator} doesn't contain any type.</Warning>
-  <Warning>Assembly {Inflector.Net} doesn't contain any type.</Warning>
   <Info>Assemblies loaded from {C:\Windows\Microsoft.NET\Framework\v4.0.30319} 
    mscorlib.dll   v4.0.0.0
    System.ServiceModel.dll   v4.0.0.0
@@ -196,33 +31,41 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
    System.Web.dll   v4.0.0.0
    System.Web.Extensions.dll   v4.0.0.0</Info>
   <Warning>No application or third party assembly found in directory {C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF}</Warning>
-  <Warning>No application or third party assembly found in directory {C:\Oxigen\app\WCFErrorReporting\bin\Debug}</Warning>
+  <Info>Assemblies loaded from {C:\Oxigen\app\WCFErrorReporting\bin\Debug} 
+   OxigenWCFErrorReporting.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\OxigenIIUserDataMarshallrContracts\bin\Debug} 
    OxigenUserDataMarshallrContracts.dll   v1.0.0.0
+   OxigenXMLSerializer.dll   v1.0.0.0
+   OxigenInterCommunicationStructures.dll   v1.0.0.0
    OxigenFileLocker.dll   v1.0.0.0
+   OxigenLoggerInfo.dll   v1.0.0.0
+   OxigenExceptions.dll   v1.0.0.0
    OxigenEncryptionDecryption.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\Assets\bin\Debug} 
-   OxigenPlayerType.dll   v1.0.0.0
    OxigenAssets.dll   v1.0.0.0
-   OxigenInclusionExclusionRules.dll   v1.0.0.0
-   OxigenXmlSerializableSortableGenericList.dll   v1.0.0.0</Info>
+   OxigenPlayerType.dll   v1.0.0.0
+   OxigenXmlSerializableSortableGenericList.dll   v1.0.0.0
+   OxigenInclusionExclusionRules.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\BLHost\bin\Debug} 
    BLHost.exe   v1.0.0.0
-   OxigenIIDAContracts.dll   v1.0.0.0
-   BLContracts.dll   v1.0.0.0
+   OxigenIIDAClient.dll   v1.0.0.0
+   OxigenSOAStructures.dll   v1.0.0.0
    FilenameMakerLib.dll   v1.0.0.0
-   DataAccess.dll   v1.0.0.0
-   OxigenProxyClientBaseLib.dll   v1.0.0.0
    OxigenChannelData.dll   v1.0.0.0
-   OxigenDemographic.dll   v1.0.0.0</Info>
-  <Warning>No application or third party assembly found in directory {C:\Oxigen\app\OxigenIISitesBLClient\bin\Debug}</Warning>
+   BLContracts.dll   v1.0.0.0
+   OxigenIIDAContracts.dll   v1.0.0.0
+   OxigenIISitesBLServices.dll   v1.0.0.0
+   OxigenDemographic.dll   v1.0.0.0
+   OxigenProxyClientBaseLib.dll   v1.0.0.0</Info>
+  <Info>Assemblies loaded from {C:\Oxigen\app\OxigenIISitesBLClient\bin\Debug} 
+   OxigenIISitesBLClient.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\BLHostService\bin\Debug} 
    BLHostService.exe   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\BoolContainerLib\bin\Debug} 
    OxigenBoolContainerLib.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\ChannelDatabaseToRelayUploaderLib\bin\Debug} 
-   ChannelDatabaseToRelayUploaderLib.dll   v1.0.0.0
    OxigenIIMasterDataMarContracts.dll   v1.0.0.0
+   ChannelDatabaseToRelayUploaderLib.dll   v1.0.0.0
    OxigenIIMasterDataMarshallerClient.dll   v1.0.0.0
    OxigenFileChecksumCalculator.dll   v1.0.0.0
    OxigenServerCycleConnectAttempt.dll   v1.0.0.0</Info>
@@ -230,7 +73,8 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
    ChannelDatabaseToRelayUploaderSvc.exe   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\DAHost\bin\Debug} 
    DAHost.exe   v1.0.0.0
-   OxigenIIDAServices.dll   v1.0.0.0</Info>
+   OxigenIIDAServices.dll   v1.0.0.0
+   DataAccess.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\FileRightsChecker\bin\Debug} 
    OxigenFileRightsChecker.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\FlatAggregatedLogStructures\bin\Debug} 
@@ -250,12 +94,13 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
    OxigenLogWriteOperations.dll   v1.0.0.0
    OxigenPlaylist.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\MasterDataMarshallerService\bin\Debug} 
-   MasterDataMarshallerService.exe   v1.0.0.0</Info>
+   MasterDataMarshallerService.exe   v1.0.0.0
+   OxigenIIMasterDataMarServices.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\NoAssetsAnimator\bin\Debug} 
    OxigenNoAssetsAnimator.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\OxigenHeartbeatAggregator\bin\Debug} 
-   OxigenHeartbeatAggregator.exe   v1.0.0.0
-   DataAggregators.dll   v1.0.0.0</Info>
+   DataAggregators.dll   v1.0.0.0
+   OxigenHeartbeatAggregator.exe   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\DAHostService\bin\Debug} 
    DAHostService.exe   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\DemographicRange\bin\Debug} 
@@ -273,8 +118,8 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
    OxigenGeneralData.dll   v1.0.0.0
    OxigenCE.exe   v1.22.0.0
    OxigenPlaylistLogic.dll   v1.0.0.0
-   OxigenTaxonomySearch.dll   v1.0.0.0
    OxigenUserDataMarshallerClient.dll   v1.0.0.0
+   OxigenTaxonomySearch.dll   v1.0.0.0
    OxigenUserMgmtServicesClient.dll   v1.2.0.0
    OxigenUserMgmtServicesContracts.dll   v1.2.0.0
    OxigenUserSettings.dll   v1.1.0.0
@@ -293,8 +138,8 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
    OxigenTray.exe   v1.11.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Debug} 
    OxigenPlaylistAssetPicker.dll   v1.0.0.0
-   OxigenStopwatch.dll   v1.0.0.0
-   OxigenServiceContracts.dll   v1.0.0.0</Info>
+   OxigenServiceContracts.dll   v1.0.0.0
+   OxigenStopwatch.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\OxigenIIUserDataMarshaller\bin} 
    OxigenIIUserDataMarshaller.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\OxigenIIUserMgmtServices\bin} 
@@ -309,8 +154,8 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
   <Info>Assemblies loaded from {C:\Oxigen\app\RegexCompiler\bin\Debug} 
    OxigenRegexCompiler.exe   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\RegistryAccess\bin\Debug} 
-   OxigenWindowsVersionDetection.dll   v1.0.0.0
-   OxigenRegistryAccess.dll   v1.0.0.0</Info>
+   OxigenRegistryAccess.dll   v1.0.0.0
+   OxigenWindowsVersionDetection.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\ThirdPartyLibraries\bin\Debug} 
    OxigenThirdPartyLibraries.dll   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\Setup\bin\Debug} 
@@ -332,6 +177,8 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
   <Info>Assemblies loaded from {C:\Oxigen\app\InstallCustomSteps\bin\Debug} 
    InstallCustomSteps.exe   v1.0.0.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\app\Oxigen.ApplicationServices\bin\Debug} 
+   Oxigen.ApplicationServices.dll   v1.9.5.0
+   Oxigen.Core.dll   v1.9.5.0
    Aspose.Flash.dll   v3.5.0.0
    SharpArch.dll   v1.9.5.0
    NHibernate.Validator.dll   v1.3.0.2001
@@ -341,8 +188,10 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
    Microsoft.Practices.ServiceLocation.dll   v1.0.0.0
    FluentNHibernate.dll   v1.2.0.694
    log4net.dll   v1.2.10.0</Info>
-  <Warning>No application or third party assembly found in directory {C:\Oxigen\app\Oxigen.Web.Controllers\bin\Debug}</Warning>
+  <Info>Assemblies loaded from {C:\Oxigen\app\Oxigen.Web.Controllers\bin\Debug} 
+   Oxigen.Web.Controllers.dll   v1.9.5.0</Info>
   <Info>Assemblies loaded from {C:\Oxigen\tests\Oxigen.Tests\bin\Debug} 
+   Oxigen.Data.dll   v1.9.5.0
    Oxigen.Tests.dll   v1.9.5.0
    MvcContrib.TestHelper.dll   v0.0.0.0
    Rhino.Mocks.dll   v3.6.0.0
@@ -355,80 +204,21 @@ Is the NDepend project missing the containing folder of the .NET assembly?</Warn
    AjaxControlToolkit.dll   v1.0.11119.20010
    Aurigma.ImageUploader.dll   v6.5.1.36734
    Ionic.Zip.dll   v1.9.1.5</Info>
-  <Warning>Assembly {OxigenWCFErrorReporting} is referenced by {OxigenUserDataMarshallrContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {OxigenUserDataMarshallrContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenIISitesBLServices} is referenced by {BLHost} but is not found.</Warning>
-  <Warning>Assembly {OxigenSOAStructures} is referenced by {OxigenIIDAContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenIIDAContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenSOAStructures} is referenced by {BLContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenIISitesBLServices} is referenced by {BLHostService} but is not found.</Warning>
-  <Warning>Assembly {OxigenSOAStructures} is referenced by {ChannelDatabaseToRelayUploaderLib} but is not found.</Warning>
-  <Warning>Assembly {OxigenIIDAClient} is referenced by {ChannelDatabaseToRelayUploaderLib} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {ChannelDatabaseToRelayUploaderLib} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {ChannelDatabaseToRelayUploaderLib} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {OxigenIIMasterDataMarContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {OxigenIIMasterDataMarshallerClient} but is not found.</Warning>
-  <Warning>Assembly {OxigenSOAStructures} is referenced by {OxigenIIDAServices} but is not found.</Warning>
-  <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenIIDAServices} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {OxigenLogFileWriter} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {OxigenLogFileWriter} but is not found.</Warning>
+  <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenIIDAClient} but is not found.</Warning>
   <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenLogStats} but is not found.</Warning>
-  <Warning>Assembly {OxigenIIMasterDataMarServices} is referenced by {MasterDataMarshallerService} but is not found.</Warning>
-  <Warning>Assembly {OxigenExceptions} is referenced by {OxigenLogEntry} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {OxigenLogFileReader} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {OxigenLE} but is not found.</Warning>
-  <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenLE} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {OxigenLE} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {OxigenLE} but is not found.</Warning>
-  <Warning>Assembly {OxigenWCFErrorReporting} is referenced by {OxigenLE} but is not found.</Warning>
-  <Warning>Assembly {OxigenExceptions} is referenced by {OxigenLE} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {OxigenCE} but is not found.</Warning>
+  <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenIIDAContracts} but is not found.</Warning>
+  <Warning>Assembly {ImageExtraction} is referenced by {OxigenIISitesBLServices} but is not found.</Warning>
+  <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenIIDAServices} but is not found.</Warning>
   <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenCE} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {OxigenCE} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {OxigenCE} but is not found.</Warning>
-  <Warning>Assembly {OxigenWCFErrorReporting} is referenced by {OxigenCE} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {ScreenSaverConfig} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {ScreenSaverConfig} but is not found.</Warning>
+  <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenLE} but is not found.</Warning>
   <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenPlaylistLogic} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {OxigenPlaylistLogic} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {OxigenPlaylistLogic} but is not found.</Warning>
   <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenTaxonomySearch} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {OxigenTray} but is not found.</Warning>
-  <Warning>Assembly {OxigenWCFErrorReporting} is referenced by {OxigenUserDataMarshallerClient} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {OxigenUserDataMarshallerClient} but is not found.</Warning>
-  <Warning>Assembly {OxigenWCFErrorReporting} is referenced by {OxigenUserMgmtServicesClient} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {OxigenUserMgmtServicesClient} but is not found.</Warning>
-  <Warning>Assembly {OxigenWCFErrorReporting} is referenced by {OxigenUserMgmtServicesContracts} but is not found.</Warning>
   <Warning>Assembly {OxigenChannelSubscriptions} is referenced by {OxigenUserMgmtServicesContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenSOAStructures} is referenced by {OxigenUserMgmtServicesContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenInterCommunicationStructures} is referenced by {OxigenUserMgmtServicesContracts} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {OxigenPlaylistAssetPicker} but is not found.</Warning>
-  <Warning>Assembly {OxigenExceptions} is referenced by {OxigenWindowsVersionDetection} but is not found.</Warning>
-  <Warning>Assembly {OxigenExceptions} is referenced by {OxigenRegistryAccess} but is not found.</Warning>
-  <Warning>Assembly {OxigenWCFErrorReporting} is referenced by {UserFileMarshaller} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {UserFileMarshaller} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {OxigenService} but is not found.</Warning>
-  <Warning>Assembly {OxigenXMLSerializer} is referenced by {libutil} but is not found.</Warning>
-  <Warning>Assembly {Oxigen.Core} is referenced by {Oxigen.Tests} but is not found.</Warning>
-  <Warning>Assembly {Oxigen.ApplicationServices} is referenced by {Oxigen.Tests} but is not found.</Warning>
-  <Warning>Assembly {Oxigen.Web.Controllers} is referenced by {Oxigen.Tests} but is not found.</Warning>
+  <Warning>Assembly {ImageExtraction} is referenced by {Oxigen.ApplicationServices} but is not found.</Warning>
+  <Warning>Assembly {System.Web.Mvc} is referenced by {Oxigen.Web.Controllers} but is not found.</Warning>
   <Warning>Assembly {System.Web.Mvc} is referenced by {Oxigen.Tests} but is not found.</Warning>
-  <Warning>Assembly {Oxigen.Data} is referenced by {Oxigen.Tests} but is not found.</Warning>
-  <Warning>Assembly {Oxigen.Core} is referenced by {OxigenIIPresentation} but is not found.</Warning>
-  <Warning>Assembly {OxigenLoggerInfo} is referenced by {OxigenIIPresentation} but is not found.</Warning>
-  <Warning>Assembly {OxigenSOAStructures} is referenced by {OxigenIIPresentation} but is not found.</Warning>
-  <Warning>Assembly {Oxigen.ApplicationServices} is referenced by {OxigenIIPresentation} but is not found.</Warning>
-  <Warning>Assembly {OxigenIISitesBLClient} is referenced by {OxigenIIPresentation} but is not found.</Warning>
   <Warning>Assembly {System.Web.Mvc} is referenced by {OxigenIIPresentation} but is not found.</Warning>
-  <Warning>Assembly {Oxigen.Web.Controllers} is referenced by {OxigenIIPresentation} but is not found.</Warning>
-  <Warning>Assembly {Oxigen.Data} is referenced by {OxigenIIPresentation} but is not found.</Warning>
-  <Warning>The source file {C:\Oxigen\tests\Oxigen.Tests\Oxigen.ApplicationServices\SlideManagementServiceTests.cs} (last modified 05/04/2011 17:40:15) and the PDB file of the assembly {Oxigen.Tests} (last modified 05/04/2011 16:12:06) are not in-sync.</Warning>
-  <Info>652 source files parsed ; all source files found ; 1 source file not in-sync with PDB</Info>
+  <Info>799 source files parsed ; all source files found ; all source files in-sync with PDB</Info>
   <Info>0 CQL rule has been extracted from code.</Info>
   <Info>No dependency cycle detected in assemblies referencement graph.</Info>
-  <Info>04/05/2011 18:49:08 Analyse dependencies of your application.</Info>
-  <Info>04/05/2011 18:49:09 Building the report (standard).</Info>
-  <Warning>2 critical rules are violated.
-  - Methods with too many parameters - critical (NbParameters)
-  - Types too big - critical (NbLinesOfCode)</Warning>
 </InfoWarnings>

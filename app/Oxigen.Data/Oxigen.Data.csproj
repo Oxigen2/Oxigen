@@ -106,7 +106,9 @@
   <ItemGroup>
     <EmbeddedResource Include="NamedQueries\GetPublisherSummaries.hbm.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\001_InitialDatabase.sql" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\002_CreateTemplates.sql" />
   </ItemGroup>
