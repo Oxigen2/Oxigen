@@ -27,7 +27,9 @@ namespace Oxigen.Web.Controllers
         }
 
         [Transaction]
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
+            ViewData["TemplatePath"] = System.Configuration.ConfigurationSettings.AppSettings["templatePath"];
             IList<TemplateDto> templates = 
                 templateManagementService.GetTemplateSummaries();
             return View(templates);

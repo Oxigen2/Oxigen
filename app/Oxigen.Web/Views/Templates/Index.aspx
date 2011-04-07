@@ -15,7 +15,7 @@
     <table>
         <thead>
             <tr>
-			    <th>MetaData</th>
+			    <th>Name</th>
 			    <th>OwnedBy</th>
 			    <th colspan="3">Action</th>
             </tr>
@@ -24,9 +24,9 @@
 		<%
 		foreach (TemplateDto templateDto in ViewData.Model) { %>
 			<tr>
-				<td><%= templateDto.MetaData %></td>
+				<td><%= templateDto.Name %></td>
 				<td><%= templateDto.DisplayName %></td>
-				<td><%=Html.ActionLink<TemplatesController>( c => c.Show( templateDto.Id ), "Details ") %></td>
+				<td><a href="<%= ViewData["TemplatePath"] + templateDto.Filename %>">View</a></td>
 				<td><%=Html.ActionLink<TemplatesController>( c => c.Edit( templateDto.Id ), "Edit") %></td>
 				<td>
     				<% using (Html.BeginForm<TemplatesController>(c => c.Delete(templateDto.Id))) { %>
