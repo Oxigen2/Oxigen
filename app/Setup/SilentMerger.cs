@@ -163,7 +163,7 @@ namespace Setup
 
     private static bool GetResponsiveURI(ref string UMSUri)
     {
-      UMSUri = SetupHelper.GetResponsiveServer(OxigenIIAdvertising.ServerConnectAttempt.ServerType.MasterGetConfig,
+      UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
           int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
           SetupHelper.GetRandomLetter().ToString(),
           "UserManagementServices.svc");

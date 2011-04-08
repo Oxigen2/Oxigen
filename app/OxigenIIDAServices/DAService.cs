@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using OxigenIIAdvertising.Demographic;
 using System.ServiceModel;
 using System.Diagnostics;
+using System.IO;
 
 namespace OxigenIIAdvertising.Services
 {
@@ -3821,9 +3822,20 @@ namespace OxigenIIAdvertising.Services
 
     private char GetRandomLetter()
     {
-      Random random = new Random();
+        string rand = Path.GetRandomFileName();
 
-      return ((char)((short)'A' + random.Next(26)));
+        short alpha = (short)'A';
+        short zed = (short)'Z';
+
+        foreach (char c in rand)
+        {
+            char cUpper = c.ToString().ToUpper()[0];
+
+            if ((short)cUpper >= alpha && (short)cUpper <= zed)
+                return cUpper;
+        }
+
+        return 'Z';
     }
 
     public List<PC> GetSubscriptionsNotRegistered(string PcProfileToken)

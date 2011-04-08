@@ -164,7 +164,7 @@ namespace Setup
       // Check MAC Address and assign a machine GUID to AppDataSingleton
       string macAddress = SetupHelper.GetMACAddress();
 
-      string UMSUri = SetupHelper.GetResponsiveServer(OxigenIIAdvertising.ServerConnectAttempt.ServerType.MasterGetConfig,
+      string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
         int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
         SetupHelper.GetRandomLetter().ToString(),
         "UserManagementServices.svc");
@@ -215,7 +215,7 @@ namespace Setup
       // Check MAC Address and assign a machine GUID to AppDataSingleton
       string macAddress = SetupHelper.GetMACAddress();
 
-      string UMSUri = SetupHelper.GetResponsiveServer(OxigenIIAdvertising.ServerConnectAttempt.ServerType.MasterGetConfig,
+      string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
         int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
         AppDataSingleton.Instance.User.GetUserGUIDSuffix(),
         "UserManagementServices.svc");

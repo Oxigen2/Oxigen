@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using OxigenIIAdvertising.LoggerInfo;
 
 namespace Setup
 {
@@ -48,6 +49,7 @@ namespace Setup
     private bool _bOldOxigenSystemModified = false;
     private bool _bIs64BitSystem = false;
     private string _username;
+    private Logger _setupLogger = new Logger("Oxigen Installer", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\OxigenInstallLog.txt", LoggingMode.Debug);
 
     public string Username
     {
@@ -576,6 +578,12 @@ namespace Setup
         lock (_lockObject)
           _bRepair = value;
       }
+    }
+
+    public Logger SetupLogger
+    {
+        get { return _setupLogger; }
+        set { _setupLogger = value; }
     }
 
     public bool SilentMode

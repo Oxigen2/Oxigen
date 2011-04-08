@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -52,9 +53,20 @@ namespace FilenameMakerLib
 
     private static char GetRandomLetter()
     {
-      Random random = new Random();
+        string rand = Path.GetRandomFileName();
 
-      return ((char)((short)'A' + random.Next(26)));
+        short alpha = (short)'A';
+        short zed = (short)'Z';
+
+        foreach (char c in rand)
+        {
+            char cUpper = c.ToString().ToUpper()[0];
+
+            if ((short)cUpper >= alpha && (short)cUpper <= zed)
+                return cUpper;
+        }
+
+        return 'Z';
     }
   }
 }

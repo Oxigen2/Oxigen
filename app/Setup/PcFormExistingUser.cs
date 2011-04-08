@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using Setup.UserManagementServicesLive;
-using OxigenIIAdvertising.ServerConnectAttempt;
 
 namespace Setup
 {
@@ -141,7 +140,10 @@ namespace Setup
         string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
 
         if (string.IsNullOrEmpty(url))
-          return SetupHelper.GetGenericErrorConnectingWrapper();
+        {
+            AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Matching PC: Couldn't find a responsive URL.");
+            return SetupHelper.GetGenericErrorConnectingWrapper();
+        }
 
         client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
 
@@ -149,8 +151,9 @@ namespace Setup
 
         wrapper = client.GetMatchedMachineGUID(userGUID, registryPCGUID, "password");
       }
-      catch (System.Net.WebException)
+      catch (System.Net.WebException ex)
       {
+        AppDataSingleton.Instance.SetupLogger.WriteError(ex);
         return SetupHelper.GetGenericErrorConnectingWrapper();
       }
 
@@ -196,6 +199,7 @@ namespace Setup
 
           if (string.IsNullOrEmpty(url))
           {
+              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Getting subscriptions: Couldn't get a responsive URL.");
             _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
             return;
           }
@@ -209,8 +213,9 @@ namespace Setup
             "password",
             out subscriptionsNet);
         }
-        catch (System.Net.WebException)
+        catch (System.Net.WebException ex)
         {
+           AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
           return;
         }
@@ -248,9 +253,11 @@ namespace Setup
         string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
 
         if (string.IsNullOrEmpty(url))
-          return SetupHelper.GetGenericErrorConnectingWrapper();
-
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+        {
+            AppDataSingleton.Instance.SetupLogger.WriteMessage("Comparing MAC Addresses: Couldn't get a responsive URL.");
+            return SetupHelper.GetGenericErrorConnectingWrapper();
+        }
+          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
 
         client.Url = url;
 
@@ -262,8 +269,9 @@ namespace Setup
           "password",
           out newPcGUID, out bMatch, out specified);
       }
-      catch (System.Net.WebException)
+      catch (System.Net.WebException ex)
       {
+          AppDataSingleton.Instance.SetupLogger.WriteError(ex);
         return SetupHelper.GetGenericErrorConnectingWrapper();
       }
 
@@ -283,7 +291,7 @@ namespace Setup
 
         if (string.IsNullOrEmpty(url))
         {
-          MessageBox.Show("PCList Form: could not find a responsive URL");
+            AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("PCList Form: could not find a responsive URL");
           return SetupHelper.GetGenericErrorConnectingWrapper();
         }
 
@@ -293,8 +301,9 @@ namespace Setup
 
         wrapper = client.GetPcListForInstallerEmail(AppDataSingleton.Instance.EmailAddress, "password", out pcs);
       }
-      catch (System.Net.WebException)
+      catch (System.Net.WebException ex)
       {
+          AppDataSingleton.Instance.SetupLogger.WriteError(ex);
         return SetupHelper.GetGenericErrorConnectingWrapper();
       }
       finally
