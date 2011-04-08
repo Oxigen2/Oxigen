@@ -24,7 +24,7 @@
     <script type="text/javascript" src="Scripts/jquery.drop.js"></script>
     <script type="text/javascript" src="Scripts/swfobject.js"></script>
     <script type="text/javascript" src="Scripts/jquery.timeentry.js"></script>
-    <script type="text/javascript" src="Scripts/General.js"></script>
+    <Oxigen:ScriptReference ID="jsContent" Src="~/Scripts/General.js" runat="server" />
     <script type="text/javascript">
       /*<![CDATA[*/
       if (!firefox) {
