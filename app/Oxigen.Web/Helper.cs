@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using OxigenIIAdvertising.SOAStructures;
 using System.Web.SessionState;
 using Ionic.Zip;
@@ -9,11 +14,194 @@ using System.Diagnostics;
 
 namespace OxigenIIPresentation
 {
+    #region ASP.Net script reference helpers
+    public class ScriptReference : WebControl
+    {
+        /* Constructors. */
+
+        public ScriptReference()
+            : base(HtmlTextWriterTag.Script) {
+        }
+
+
+        [UrlProperty, Editor("System.Web.UI.Design.UrlEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor")]
+        public string Src {
+            get {
+                string src = (string)ViewState["Src"];
+                if (src != null) {
+                    return src;
+                }
+                return string.Empty;
+            }
+            set {
+                ViewState["Src"] = value;
+            }
+        }
+
+        public bool Defer {
+            get {
+                object def = ViewState["Defer"];
+                return null == def ? false : (bool)def;
+            }
+            set {
+                ViewState["Defer"] = value;
+            }
+        }
+
+        public string Charset {
+            get {
+                string charset = (string)ViewState["Charset"];
+                if (charset != null) {
+                    return charset;
+                }
+                return string.Empty;
+            }
+            set {
+                ViewState["Charset"] = value;
+            }
+        }
+
+        /* Protected Methods. */
+
+        protected override void AddAttributesToRender(HtmlTextWriter writer) {
+            base.AddAttributesToRender(writer);
+            string src = Src;
+            if (src.Length > 0) {
+                string resolved = src;
+                resolved = Page.ResolveUrl(resolved);
+                if (!src.StartsWith("http://") && !src.StartsWith("https://"))
+                    resolved = ChecksumHelper.AppendChecksum(Context, resolved);
+
+
+                writer.AddAttribute(HtmlTextWriterAttribute.Src, resolved);
+            }
+
+            writer.AddAttribute(HtmlTextWriterAttribute.Type, "text/javascript");
+
+            if (Defer)
+                writer.AddAttribute("defer", "defer");
+            string charset = Charset;
+            if (charset.Length > 0) {
+                writer.AddAttribute("charset", charset);
+            }
+        }
+
+        protected override void RenderContents(HtmlTextWriter writer) {
+        }
+    }
+
+
+    public class StylesheetReference : WebControl
+    {
+        public StylesheetReference()
+            : base(HtmlTextWriterTag.Link) {
+        }
+
+        [UrlProperty, Editor("System.Web.UI.Design.UrlEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor")]
+        public string Href {
+            get {
+                string src = (string)ViewState["Href"];
+                if (src != null) {
+                    return src;
+                }
+                return string.Empty;
+            }
+            set {
+                ViewState["Href"] = value;
+            }
+        }
+
+        public string Media {
+            get {
+                string media = (string)ViewState["Media"];
+                if (media != null) {
+                    return media;
+                }
+                return string.Empty;
+            }
+            set {
+                ViewState["Media"] = value;
+            }
+        }
+
+        protected override void AddAttributesToRender(HtmlTextWriter writer) {
+            base.AddAttributesToRender(writer);
+            string href = Href;
+            if (href.Length > 0) {
+                string resolved = Page.ResolveUrl(href);
+                resolved = ChecksumHelper.AppendChecksum(Context, resolved);
+                writer.AddAttribute(HtmlTextWriterAttribute.Href, resolved);
+            }
+            string media = Media;
+            if (media.Length > 0) {
+                writer.AddAttribute("media", media);
+            }
+            writer.AddAttribute("type", "text/css");
+            writer.AddAttribute("rel", "stylesheet");
+        }
+    }
+
+
+
+    public static class ChecksumHelper
+    {
+        static Dictionary<string, string> _checksums = new Dictionary<string, string>();
+
+        public static string AppendChecksum(HttpContext context, string href) {
+            string sum = GetChecksum(context, href);
+            href += href.Contains("?") ? "&amp;_len=" : "?_len=";
+            href += sum;
+            return href;
+        }
+
+        static string GetChecksum(HttpContext context, string href) {
+            string checksum;
+            bool hasChecksum = _checksums.TryGetValue(href, out checksum);
+            if (hasChecksum)
+                return checksum;
+            string localPath = context.Server.MapPath(href.Split('?')[0]);
+            _checksums[href] = new FileInfo(localPath).Length.ToString();
+            return _checksums[href];
+        }
+    }
+
+    #endregion
+    
+    #region MVC URLHelper Extensions
+
+  public static class URLHelperExtension
+  {
+      public static HtmlString Script(this UrlHelper helper, string contentPath) {
+          return new HtmlString(string.Format("<script type='text/javascript' src='{0}'></script>", LatestContent(helper, contentPath)));
+      }
+
+      public static string LatestContent(this UrlHelper helper, string contentPath) {
+          string file = HttpContext.Current.Server.MapPath(contentPath);
+          if (File.Exists(file)) {
+              var dateTime = File.GetLastWriteTime(file);
+              contentPath = string.Format("{0}?v={1}", contentPath, dateTime.Ticks);
+          }
+          return helper.Content(contentPath);
+      }
+
+      public static HtmlString Css(this UrlHelper helper, string contentPath) {
+          return new HtmlString(string.Format("<link rel='stylesheet' type='text/css' href='{0}' media='screen' />", LatestContent(helper, contentPath)));
+      }
+
+  }
+    #endregion
+
+
+
   /// <summary>
   /// Provides helper methods for user access
   /// </summary>
-  internal static class Helper
+  public static class Helper
   {
+
+      
+      
+      
     /// <summary>
     /// Tries to get the user's user ID from the session variable.
     /// </summary>
