@@ -227,13 +227,7 @@
   </wsdl:message>
   <wsdl:message name="IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddStreamsFromSilentMergeResponse" />
-  </wsdl:message>
-  <wsdl:portType name="IUserManagementServicesStreamer">
-    <wsdl:operation name="GetAppDataFiles">
-      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesStreamer/GetAppDataFiles" name="AppDataFileParameterMessage" message="tns:AppDataFileParameterMessage" />
-      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesStreamer/GetAppDataFilesResponse" name="StreamErrorWrapper" message="tns:StreamErrorWrapper" />
-    </wsdl:operation>
-  </wsdl:portType>
+  </wsdl:message>  
   <wsdl:portType name="IUserManagementServicesNonStreamer">
     <wsdl:operation name="GetUserExistsByUserCredentials">
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/GetUserExistsByUserCredentials" message="tns:IUserManagementServicesNonStreamer_GetUserExistsByUserCredentials_InputMessage" />
@@ -331,30 +325,7 @@
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMerge" message="tns:IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_InputMessage" />
       <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMergeResponse" message="tns:IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_OutputMessage" />
     </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IUserManagementServicesStreamer" type="tns:IUserManagementServicesStreamer">
-    <wsp:PolicyReference URI="#BasicHttpBinding_IUserManagementServicesStreamer_policy" />
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAppDataFiles">
-      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesStreamer/GetAppDataFiles" style="document" />
-      <wsdl:input name="AppDataFileParameterMessage">
-        <soap:header message="tns:AppDataFileParameterMessage_Headers" part="ChannelID" use="literal" />
-        <soap:header message="tns:AppDataFileParameterMessage_Headers" part="Checksum" use="literal" />
-        <soap:header message="tns:AppDataFileParameterMessage_Headers" part="DataFileType" use="literal" />
-        <soap:header message="tns:AppDataFileParameterMessage_Headers" part="MachineGUID" use="literal" />
-        <soap:header message="tns:AppDataFileParameterMessage_Headers" part="SystemPassPhrase" use="literal" />
-        <soap:header message="tns:AppDataFileParameterMessage_Headers" part="UserGUID" use="literal" />
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="StreamErrorWrapper">
-        <soap:header message="tns:StreamErrorWrapper_Headers" part="ErrorCode" use="literal" />
-        <soap:header message="tns:StreamErrorWrapper_Headers" part="ErrorSeverity" use="literal" />
-        <soap:header message="tns:StreamErrorWrapper_Headers" part="ErrorStatus" use="literal" />
-        <soap:header message="tns:StreamErrorWrapper_Headers" part="Message" use="literal" />
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
+  </wsdl:portType>  
   <wsdl:binding name="BasicHttpBinding_IUserManagementServicesNonStreamer" type="tns:IUserManagementServicesNonStreamer">
     <wsp:PolicyReference URI="#BasicHttpBinding_IUserManagementServicesNonStreamer_policy" />
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />

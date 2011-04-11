@@ -49,9 +49,7 @@ namespace Setup.UserManagementServicesLive {
         private ErrorStatus errorStatusValueField;
         
         private string5 messageField;
-        
-        private System.Threading.SendOrPostCallback GetAppDataFilesOperationCompleted;
-        
+               
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -179,48 +177,7 @@ namespace Setup.UserManagementServicesLive {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
-        
-        /// <remarks/>
-        public event GetAppDataFilesCompletedEventHandler GetAppDataFilesCompleted;
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapHeaderAttribute("Message", Direction=System.Web.Services.Protocols.SoapHeaderDirection.Out)]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("ErrorStatusValue", Direction=System.Web.Services.Protocols.SoapHeaderDirection.Out)]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("UserGUID")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("MachineGUID")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("Checksum")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("DataFileTypeValue")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("SystemPassPhrase")]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("ErrorSeverityValue", Direction=System.Web.Services.Protocols.SoapHeaderDirection.Out)]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("ErrorCode", Direction=System.Web.Services.Protocols.SoapHeaderDirection.Out)]
-        [System.Web.Services.Protocols.SoapHeaderAttribute("ChannelID")]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesStreamer/GetAppDataFiles", RequestElementName="AppDataFileParameterMessage", RequestNamespace="http://oxigen.net", ResponseElementName="StreamErrorWrapper", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("ReturnStream", DataType="base64Binary")]
-        public byte[] GetAppDataFiles() {
-            object[] results = this.Invoke("GetAppDataFiles", new object[0]);
-            return ((byte[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetAppDataFilesAsync() {
-            this.GetAppDataFilesAsync(null);
-        }
-        
-        /// <remarks/>
-        public void GetAppDataFilesAsync(object userState) {
-            if ((this.GetAppDataFilesOperationCompleted == null)) {
-                this.GetAppDataFilesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAppDataFilesOperationCompleted);
-            }
-            this.InvokeAsync("GetAppDataFiles", new object[0], this.GetAppDataFilesOperationCompleted, userState);
-        }
-        
-        private void OnGetAppDataFilesOperationCompleted(object arg) {
-            if ((this.GetAppDataFilesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAppDataFilesCompleted(this, new GetAppDataFilesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
+            
         /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
@@ -2245,33 +2202,7 @@ namespace Setup.UserManagementServicesLive {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void GetAppDataFilesCompletedEventHandler(object sender, GetAppDataFilesCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAppDataFilesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAppDataFilesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public byte[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((byte[])(this.results[0]));
-            }
-        }
-    }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void GetUserExistsByUserCredentialsCompletedEventHandler(object sender, GetUserExistsByUserCredentialsCompletedEventArgs e);
