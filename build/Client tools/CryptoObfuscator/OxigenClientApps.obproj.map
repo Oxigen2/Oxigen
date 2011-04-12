@@ -73,7 +73,7 @@
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtOverallPC" NewName="A.M.P" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.btnStop" NewName="A.M.Q" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker" NewName="A.M.R" />
-<Entry OldName="&lt;PrivateImplementationDetails&gt;{49D1D61B-A4DF-459B-8468-EFA804F312F6}.$$method0x6000050-1" NewName="A.N.A" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;{F504A9CF-F55F-496E-8166-AFCD979E2E23}.$$method0x6000050-1" NewName="A.N.A" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog..ctor(DateTime currentRun, Boolean bContentDownloaded, Boolean bExitedWithErrors)" NewName="A.D..ctor(DateTime A, Boolean B, Boolean C)" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog..ctor()" NewName="A.D..ctor()" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_LastRun()" NewName="A.D.get_I()" />
@@ -193,7 +193,7 @@
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm" NewName="A.K" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings" NewName="A.L" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm" NewName="A.M" />
-<Entry OldName="&lt;PrivateImplementationDetails&gt;{49D1D61B-A4DF-459B-8468-EFA804F312F6}" NewName="A.N" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;{F504A9CF-F55F-496E-8166-AFCD979E2E23}" NewName="A.N" />
 <Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\DDFormFader.cs" NewName="File0" />
 <Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\FaderForm.Designer.cs" NewName="File1" />
 <Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\FaderForm.cs" NewName="File2" />
