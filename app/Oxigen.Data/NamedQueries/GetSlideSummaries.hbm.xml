@@ -3,7 +3,7 @@
     <sql-query name="GetSlideSummaries">
       SET NOCOUNT ON;
 
-      SELECT SLIDE_ID, SlideName, Caption, GUID
+      SELECT SLIDE_ID as Id, SlideName, Caption, GUID
       FROM Slides
     </sql-query>
 </hibernate-mapping>

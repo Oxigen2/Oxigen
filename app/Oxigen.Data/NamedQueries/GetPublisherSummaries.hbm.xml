@@ -3,7 +3,7 @@
     <sql-query name="GetPublisherSummaries">
         SET NOCOUNT ON;
 
-	    SELECT Id, UserID, FirstName, LastName, DisplayName, EmailAddress, UsedBytes, TotalAvailableBytes
+	    SELECT PUBLISHER_ID as Id, UserID, FirstName, LastName, DisplayName, EmailAddress, UsedBytes, TotalAvailableBytes
 	    FROM Publishers
     </sql-query>
   <sql-query name="GetPublisherSimpleList">

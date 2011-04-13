@@ -73,8 +73,12 @@
     <Compile Include="NHibernateMaps\TemplateMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AssetContentRepository.cs" />
+    <Compile Include="Repositories\ChannelRepository.cs" />
+    <Compile Include="Repositories\ChannelsSlideRepository.cs" />
     <Compile Include="Repositories\PublisherRepository.cs" />
+    <Compile Include="Repositories\SlideFolderRepository.cs" />
     <Compile Include="Repositories\SlideRepository.cs" />
+    <Compile Include="Repositories\Syndication\RSSFeedRepository.cs" />
     <Compile Include="Repositories\TemplateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +115,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\002_CreateTemplates.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NamedQueries\Syndication\GetRSSFeedSummaries.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Setup\InsertEssentialData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NamedQueries\GetChannelSummaries.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\003_RSSFeed.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NamedQueries\GetSlideFolderSummaries.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NamedQueries\GetChannelsSlideSummaries.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

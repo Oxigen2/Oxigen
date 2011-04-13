@@ -8,7 +8,7 @@ using SharpArch.Core.DomainModel;
 
 namespace Oxigen.Core
 {
-    public abstract class AssetFile : Entity
+    public abstract class AssetFile : AuditEntity
     {
        
         private char GetRandomLetter() {
@@ -60,9 +60,6 @@ namespace Oxigen.Core
 
         public virtual char? SubDir { get; set; }
         public virtual string ImageName { get; set; }
-
-        public virtual DateTime AddDate { get; set; }
-        public virtual DateTime? EditDate { get; set; }
 
         protected abstract string RootFilePath { get;}
         protected abstract string RootThumbnailPath { get; }

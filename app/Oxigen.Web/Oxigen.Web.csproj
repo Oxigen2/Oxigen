@@ -104,9 +104,6 @@
     <Reference Include="MvcContrib.FluentHtml">
       <HintPath>..\..\lib\MvcContrib.FluentHtml.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\lib\NHibernate.dll</HintPath>
     </Reference>
@@ -1044,6 +1041,16 @@
     <Content Include="Views\AssetContents\Edit.aspx" />
     <Content Include="Views\AssetContents\Index.aspx" />
     <Content Include="Views\AssetContents\Show.aspx" />
+    <Content Include="Views\ChannelsSlides\ChannelsSlideForm.ascx" />
+    <Content Include="Views\ChannelsSlides\Create.aspx" />
+    <Content Include="Views\ChannelsSlides\Edit.aspx" />
+    <Content Include="Views\ChannelsSlides\Index.aspx" />
+    <Content Include="Views\ChannelsSlides\Show.aspx" />
+    <Content Include="Views\Channels\ChannelsForm.ascx" />
+    <Content Include="Views\Channels\Create.aspx" />
+    <Content Include="Views\Channels\Edit.aspx" />
+    <Content Include="Views\Channels\Index.aspx" />
+    <Content Include="Views\Channels\Show.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Publishers\Create.aspx" />
     <Content Include="Views\Publishers\Edit.aspx" />
@@ -1051,11 +1058,21 @@
     <Content Include="Views\Publishers\PublisherForm.ascx" />
     <Content Include="Views\Publishers\Show.aspx" />
     <Content Include="Views\Shared\DebugFormSubmission.ascx" />
+    <Content Include="Views\SlideFolders\Create.aspx" />
+    <Content Include="Views\SlideFolders\Edit.aspx" />
+    <Content Include="Views\SlideFolders\Index.aspx" />
+    <Content Include="Views\SlideFolders\Show.aspx" />
+    <Content Include="Views\SlideFolders\SlideFolderForm.ascx" />
     <Content Include="Views\Slides\Create.aspx" />
     <Content Include="Views\Slides\Edit.aspx" />
     <Content Include="Views\Slides\Index.aspx" />
     <Content Include="Views\Slides\Show.aspx" />
     <Content Include="Views\Slides\SlideForm.ascx" />
+    <Content Include="Views\Syndication\RSSFeeds\Create.aspx" />
+    <Content Include="Views\Syndication\RSSFeeds\Edit.aspx" />
+    <Content Include="Views\Syndication\RSSFeeds\Index.aspx" />
+    <Content Include="Views\Syndication\RSSFeeds\RSSFeedForm.ascx" />
+    <Content Include="Views\Syndication\RSSFeeds\Show.aspx" />
     <Content Include="Views\Templates\Create.aspx" />
     <Content Include="Views\Templates\Edit.aspx" />
     <Content Include="Views\Templates\Index.aspx" />
@@ -1512,7 +1529,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57801</DevelopmentServerPort>
+          <DevelopmentServerPort>18374</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

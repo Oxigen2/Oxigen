@@ -44,6 +44,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -58,18 +59,31 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AssetContentManagementService.cs" />
+    <Compile Include="ChannelManagementService.cs" />
+    <Compile Include="ChannelsSlideManagementService.cs" />
     <Compile Include="Flash\SWAFile.cs" />
     <Compile Include="IAssetContentManagementService.cs" />
+    <Compile Include="IChannelManagementService.cs" />
+    <Compile Include="IChannelsSlideManagementService.cs" />
     <Compile Include="IPublisherManagementService.cs" />
+    <Compile Include="ISlideFolderManagementService.cs" />
     <Compile Include="ISlideManagementService.cs" />
     <Compile Include="ITemplateManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublisherManagementService.cs" />
+    <Compile Include="RSS\RssFeedReader.cs" />
+    <Compile Include="SlideFolderManagementService.cs" />
     <Compile Include="SlideManagementService.cs" />
+    <Compile Include="Syndication\IRSSFeedManagementService.cs" />
+    <Compile Include="Syndication\RSSFeedManagementService.cs" />
     <Compile Include="TemplateManagementService.cs" />
     <Compile Include="ViewModels\AssetContentFormViewModel.cs" />
+    <Compile Include="ViewModels\ChannelFormViewModel.cs" />
+    <Compile Include="ViewModels\ChannelsSlideFormViewModel.cs" />
     <Compile Include="ViewModels\PublisherFormViewModel.cs" />
+    <Compile Include="ViewModels\SlideFolderFormViewModel.cs" />
     <Compile Include="ViewModels\SlideFormViewModel.cs" />
+    <Compile Include="ViewModels\Syndication\RSSFeedFormViewModel.cs" />
     <Compile Include="ViewModels\TemplateFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

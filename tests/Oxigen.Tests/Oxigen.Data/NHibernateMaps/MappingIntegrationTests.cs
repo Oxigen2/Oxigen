@@ -28,7 +28,7 @@ namespace Tests.Oxigen.Data.NHibernateMaps
             string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
             configuration = NHibernateSession.Init(new SimpleSessionStorage(), mappingAssemblies,
                                    new AutoPersistenceModelGenerator().Generate(),
-                                   "../../../../app/Oxigen.Web/NHibernate.config");
+                                   "../../../../app/Oxigen.Web/Web.config");
         }
 
         [TearDown]

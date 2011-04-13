@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+    <sql-query name="GetRSSFeedSummaries">
+        SET NOCOUNT ON;
+
+	    SELECT RSSFEED_ID as Id, URL, Name
+	    FROM RSSFeeds
+    </sql-query>
+</hibernate-mapping>

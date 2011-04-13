@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Oxigen.Core.ChannelsSlide">
+    <Position X="6.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAgAAAACAAAAAAAAAAAAEAAAAAAAAAAAEAABAA=</HashCode>
+      <FileName>ChannelsSlide.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Channel" />
+      <Property Name="Slide" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Oxigen.Core.Publisher">
+    <Position X="9" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEEAAAAAACEAAAAAAAAgAAIAAAAAAAAAAAgAAAAg=</HashCode>
+      <FileName>Publisher.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AssignedTemplates" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Oxigen.Core.Slide" Collapsed="true">
+    <Position X="6.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAhEAAAEAAAAACAEBAAAAAEACAGAQAAEAAAAA=</HashCode>
+      <FileName>Slide.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Oxigen.Core.Template">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAACAAAAAAAAAAAAECAAAAAAAAAAAA=</HashCode>
+      <FileName>Template.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Oxigen.Core.SlideFolder" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>SlideFolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Oxigen.Core.AuditEntity" Collapsed="true">
+    <Position X="2" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AuditEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Oxigen.Core.AssetFile" Collapsed="true">
+    <Position X="3.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAABAEAQAAAAAAAAIQAAAAABACAAUAAAAKAIAA=</HashCode>
+      <FileName>AssetFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Oxigen.Core.AssetContent" Collapsed="true">
+    <Position X="8.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAABEAAAAAAAAACAABAACAAAACAGAAAAAAAAAA=</HashCode>
+      <FileName>AssetContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Oxigen.Core.Channel">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUAAAAACgAgAAAAACFAAAKAAAgAAEAAAACQAIAAAgEA=</HashCode>
+      <FileName>Channel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="System.Collections.Generic.IList&lt;T&gt;" Collapsed="true">
+    <Position X="12.5" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

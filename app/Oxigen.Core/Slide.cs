@@ -1,6 +1,7 @@
 using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using System.Collections.Generic;
 
 namespace Oxigen.Core
 {
@@ -40,6 +41,8 @@ namespace Oxigen.Core
 		public virtual DateTime? MadeDirtyLastDate { get; set; }
 
         public virtual int SlideFolderID { get; set; }
+
+        public virtual IList<ChannelsSlide> AssignedChannels { get; set; }
 
         protected override string RootFilePath
             {

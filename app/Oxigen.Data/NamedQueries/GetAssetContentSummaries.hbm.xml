@@ -3,7 +3,7 @@
     <sql-query name="GetAssetContentSummaries">
       SET NOCOUNT ON;
 
-      SELECT ASSETCONTENT_ID, Name, Caption, GUID
+      SELECT ASSETCONTENT_ID as Id, Name, Caption, GUID
       FROM AssetContents
     </sql-query>
 </hibernate-mapping>

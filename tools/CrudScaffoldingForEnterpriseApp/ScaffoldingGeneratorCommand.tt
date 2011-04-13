@@ -16,26 +16,43 @@
  * Examples:  Product, Organization.Employee, Financial.Costs.LedgerEntry
  */
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Template");
+	new EntityScaffoldingDetails("ChannelsSlide");
  
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
  */
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("MetaDate", "string", "3", "", true) 
+	new EntityProperty("Channel", "Channel", null, "", true) 
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Slide", "Slide", null, "", true) 
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ClickThroughURL", "string", null, "", false) 
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("DisplayDuration", "float", -1, "", false) 
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Schedule", "string", null, "", false) 
 );
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("OwnedBy", "Publisher", null, "", false) 
+	new EntityProperty("PresentationConvertedSchedule", "string", null, "", false) 
 );
+
 
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Oxigen\", "Oxigen", entityScaffoldingDetails); 
+	@"C:\Oxigen2\Oxigen\", "Oxigen", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
-generator.Run();
+//generator.Run();
 
 #>

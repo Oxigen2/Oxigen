@@ -17,10 +17,11 @@ namespace Oxigen.Data.NHibernateMaps
 
         public AutoPersistenceModel Generate()
         {
-            return AutoMap.AssemblyOf<Class1>(new AutomappingConfiguration())
+            return AutoMap.AssemblyOf<Slide>(new AutomappingConfiguration())
                 .Conventions.Setup(GetConventions())
                 .IgnoreBase<Entity>()
                 .IgnoreBase<AssetFile>()
+                .IgnoreBase<AuditEntity>()
                 .IgnoreBase(typeof(EntityWithTypedId<>))
                 .UseOverridesFromAssemblyOf<AutoPersistenceModelGenerator>();
         }

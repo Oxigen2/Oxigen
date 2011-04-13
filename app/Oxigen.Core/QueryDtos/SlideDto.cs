@@ -4,8 +4,7 @@ namespace Oxigen.Core.QueryDtos
 {
     public class SlideDto
     {
-        public int SLIDE_ID { get; set; }
-        public int Id { get { return SLIDE_ID; } set { SLIDE_ID = value; } }
+        public int Id { get; set; }
 		public string Filename { get; set; }
 		public string FilenameExtension { get; set; }
 		public string FilenameNoPath { get; set; }

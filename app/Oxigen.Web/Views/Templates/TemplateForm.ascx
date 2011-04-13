@@ -55,7 +55,7 @@
             <%= Html.ValidationMessage("Template.MetaData")%>
         </li>
         <li>
-			<label for="Template_OwnedBy">OwnedBy:</label>
+			<label for="Template_Publisher">Publisher:</label>
 			<div>
 				<%=Html.Hidden("Template.Publisher.Id",
                                   (ViewData.Model.Template != null)
