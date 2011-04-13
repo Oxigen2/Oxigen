@@ -40,7 +40,7 @@
                          var options = $("#RSSFeed_Channel_Id");
                          $.each(result, function (index, item) {
                              options.empty();
-                             options.append($("<option />").val(item.Id).text(item.Name));
+                             options.append($("<option />").val(item.Id).text(item.ChannelName));
                          });
                      });
                  }
