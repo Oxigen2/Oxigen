@@ -4,16 +4,12 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Diagnostics;
-using System.Globalization;
 using Setup.Properties;
 using System.IO;
-using System.ServiceProcess;
-using OxigenIIAdvertising.ServerConnectAttempt;
 using Setup.UserManagementServicesLive;
 using System.Management;
 using System.Reflection;
 using System.Security.Principal;
-using System.Runtime.InteropServices;
 
 namespace Setup
 {
@@ -403,7 +399,20 @@ namespace Setup
 
     internal static char GetRandomLetter()
     {
-      return Convert.ToChar(Path.GetRandomFileName().Substring(0, 1));
+        string rand = Path.GetRandomFileName();
+
+        short alpha = (short)'A';
+        short zed = (short)'Z';
+
+        foreach (char c in rand)
+        {
+            char cUpper = c.ToString().ToUpper()[0];
+
+            if ((short)cUpper >= alpha && (short)cUpper <= zed)
+                return cUpper;
+        }
+
+        return 'Z';
     }
 
     internal static void SetFormControlsToDownloadedDetails(TextBox txtFirstName, TextBox txtLastName, RadioButton rbMale, RadioButton rbFemale,
@@ -1230,16 +1239,19 @@ namespace Setup
         string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
 
         if (string.IsNullOrEmpty(url))
-          return SetupHelper.GetGenericErrorConnectingWrapper();
-
-        client = new Setup.UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+        {
+            AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Registering uninstall: Couldn't find a responsive URL.");
+            return SetupHelper.GetGenericErrorConnectingWrapper();
+        }
+          client = new Setup.UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
 
         client.Url = url;
 
         wrapper = client.RegisterSoftwareUninstall(userGUID, machineGUID, "password");
       }
-      catch (System.Net.WebException)
+      catch (System.Net.WebException ex)
       {
+          AppDataSingleton.Instance.SetupLogger.WriteError(ex);
         return SetupHelper.GetGenericErrorConnectingWrapper();
       }
       finally

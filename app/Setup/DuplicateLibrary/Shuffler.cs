@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OxigenIIAdvertising.ServerConnectAttempt
+namespace Setup
 {
   /// <summary>
   /// Provides static methods that shuffle collections

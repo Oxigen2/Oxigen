@@ -1,0 +1,1336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="{05AB04BD-B62E-4A98-9DA0-9650699CAF8E}" Codepage="1252" Language="1033" Manufacturer="Oxigen" Name="Oxigen" UpgradeCode="{65D1DC03-4E1B-4D33-BF10-F49421240B50}" Version="1.0.0">
+        <Package Compressed="yes" InstallerVersion="200" Languages="1033" Manufacturer="Oxigen" Platform="x86" />
+        <Binary Id="InstallUtil" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />
+        <Binary Id="MSVBDPCADLL" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />
+        <Binary Id="VSDNETCFG" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />
+        <Binary Id="DefBannerBitmap" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />
+        <Binary Id="UpFldrBtn" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />
+        <Binary Id="NewFldrBtn" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />
+        <CustomAction Id="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall" BinaryKey="InstallUtil" DllEntry="ManagedInstall" Execute="deferred" Impersonate="no" />
+        <CustomAction Id="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall.SetProperty" Property="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall" Value="/installtype=notransaction /action=uninstall /LogFile= &quot;[#_330FE5A1348C936B1BEA5490F591A6BE]&quot; &quot;[VSDFxConfigFile]&quot;" />
+        <CustomAction Id="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install" BinaryKey="InstallUtil" DllEntry="ManagedInstall" Execute="deferred" Impersonate="no" />
+        <CustomAction Id="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install.SetProperty" Property="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install" Value="/installtype=notransaction /action=install /LogFile= &quot;[#_2B1873B36854C1AF26BB9D552AB6821D]&quot; &quot;[VSDFxConfigFile]&quot;" />
+        <CustomAction Id="DIRCA_TARGETDIR" Property="TARGETDIR" Value="[ProgramFilesFolder][ProductName]" Execute="firstSequence" />
+        <CustomAction Id="DIRCA_DATAANDSETTINGS" Property="DATAANDSETTINGS" Value="[AppDataFolder]" Execute="firstSequence" />
+        <CustomAction Id="DIRCA_CheckFX" BinaryKey="MSVBDPCADLL" DllEntry="CheckFX" />
+        <CustomAction Id="VSDCA_VsdLaunchConditions" BinaryKey="MSVBDPCADLL" DllEntry="VsdLaunchConditions" />
+        <CustomAction Id="ERRCA_CANCELNEWERVERSION" Error="[VSDVERSIONMSG]" />
+        <CustomAction Id="ERRCA_UIANDADVERTISED" Error="[VSDUIANDADVERTISED]" />
+        <CustomAction Id="VSDCA_FolderForm_AllUsers" Property="FolderForm_AllUsers" Value="ALL" />
+        <CustomTable Id="_VsdLaunchCondition">
+            <Column Id="Condition" PrimaryKey="yes" Type="string" Width="255" Category="Condition" Description="Expression which must evaluate to TRUE in order for install to commence." Modularize="Condition" />
+            <Column Id="Description" Type="string" Width="255" Localizable="yes" Category="Formatted" Description="Localizable text to display when condition fails and install must abort." Modularize="Property" />
+            <Column Id="Url" Type="string" Width="0" Category="Text" Description="URL to navigate to when condition fails and install must abort." />
+            <Row>
+                <Data Column="Condition">VSDFXAvailable</Data>
+                <Data Column="Description">[VSDNETURLMSG]</Data>
+                <Data Column="Url">http://go.microsoft.com/fwlink/?LinkId=76617</Data>
+            </Row>
+        </CustomTable>
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Component Id="C__4FDFBAF0735D43588C25514568160BE6" Guid="{5A6BACC6-FE86-271A-4809-C9811AE36DF9}">
+                <RegistryKey Id="_4FDFBAF0735D43588C25514568160BE6" Action="create" Key="Software\[Manufacturer]" Root="HKLM" />
+            </Component>
+            <Component Id="C__78398ECB590B43D082BE8948751EEE57" Guid="{6F17146E-4893-0D0C-2D20-8173C5FED5D7}">
+                <RegistryValue Id="_78398ECB590B43D082BE8948751EEE57" Root="HKLM" Key="Software\[Manufacturer]" Name="ProgramPath" Value="[TARGETDIR]" Type="string" KeyPath="yes" />
+            </Component>
+            <Component Id="C__82E6CB6ED36640EC8D093334EA39790C" Guid="{034A232E-275F-E904-F037-ED5A57EC6FED}">
+                <RegistryValue Id="_82E6CB6ED36640EC8D093334EA39790C" Root="HKLM" Key="Software\[Manufacturer]" Name="userGUID" Value="[USERGUID]" Type="string" KeyPath="yes" />
+            </Component>
+            <Component Id="C__8EC617AF8038410A9B9109C39D4C2FAC" Guid="{B9C54ABF-68B9-DE9F-5C16-0A2493A1E375}">
+                <RegistryValue Id="_8EC617AF8038410A9B9109C39D4C2FAC" Root="HKLM" Key="Software\[Manufacturer]" Name="pcGUID" Value="[PCGUID]" Type="string" KeyPath="yes" />
+            </Component>
+            <Component Id="C__A8A465734B904C18A7083AEE2CEC0F4D" Guid="{77362198-6070-B138-275B-F9F1695AF642}">
+                <RegistryValue Id="_A8A465734B904C18A7083AEE2CEC0F4D" Root="HKLM" Key="Software\[Manufacturer]" Name="DataSettingsPath" Value="[DATAANDSETTINGS]" Type="string" KeyPath="yes" />
+            </Component>
+            <Component Id="C__6BADC087DD53481FB32D4AD437067F5F" Guid="{8B25453B-7367-E06A-6F2F-85EA1AFE12DA}">
+                <RegistryValue Id="_6BADC087DD53481FB32D4AD437067F5F" Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Run" Name="OxigenServiceStart" Value="[TARGETDIR]bin\OxigenService.exe" Type="string" KeyPath="yes" />
+            </Component>
+            <Component Id="C__4FC332D23F034CBF865CD88803D45D0A" Guid="{FCD04A83-D023-78EE-2236-E34846F06AEA}">
+                <RegistryValue Id="_4FC332D23F034CBF865CD88803D45D0A" Root="HKU" Key=".DEFAULT\Control Panel\Desktop" Name="ScreenSaveTimeOut" Value="180" Type="string" KeyPath="yes" />
+            </Component>
+            <Component Id="C__CE9C806DCF524579A5DB2ECB87F1DF8F" Guid="{26811311-FEFB-8B9F-AE5B-E6FB0F373AC7}">
+                <RegistryValue Id="_CE9C806DCF524579A5DB2ECB87F1DF8F" Root="HKU" Key=".DEFAULT\Control Panel\Desktop" Name="ScreenSaveIsSecure" Value="0" Type="string" KeyPath="yes" />
+            </Component>
+            <Component Id="C__E9BE198098924984BAA5C1C7B2EFD638" Guid="{73940684-44CB-11D3-0B4F-2F6DCB661656}">
+                <RegistryValue Id="_E9BE198098924984BAA5C1C7B2EFD638" Root="HKU" Key=".DEFAULT\Control Panel\Desktop" Name="ScreenSaveActive" Value="1" Type="string" KeyPath="yes" />
+            </Component>
+            <Component Id="C__FA80340217F84034A9AFBDFC413D46D7" Guid="{67E36BA6-E707-B91B-7BEE-8A2B2122DCAB}">
+                <RegistryValue Id="_FA80340217F84034A9AFBDFC413D46D7" Root="HKU" Key=".DEFAULT\Control Panel\Desktop" Name="SCRNSAVE.EXE" Value="Oxigen.scr" Type="string" KeyPath="yes" />
+            </Component>
+            <Directory Id="_AF804D64CA6849F9BAC1C64BA419B904" Name="bin" ShortName="BIN">
+                <Component Id="C__03A3A239ECFA42A89B9F097E994AB480" Guid="{9B553E0D-2645-473E-BFDF-72228D639336}">
+                    <File Id="_03A3A239ECFA42A89B9F097E994AB480" Name="OxigenAdvertList.dll" KeyPath="yes" ShortName="OXIGEN~2.DLL" Assembly=".net" AssemblyManifest="_03A3A239ECFA42A89B9F097E994AB480" AssemblyApplication="_03A3A239ECFA42A89B9F097E994AB480" DiskId="1" Source="SourceDir\File\_03A3A239ECFA42A89B9F097E994AB480" />
+                </Component>
+                <Component Id="C__04A6031A6FF44EC49DEAB46C48F8B8DA" Guid="{3DD1FBB8-CF08-7851-CAA0-5DE72D83371D}">
+                    <File Id="_04A6031A6FF44EC49DEAB46C48F8B8DA" Name="OxigenFileRightsChecker.dll" KeyPath="yes" ShortName="OXIGEN~3.DLL" Assembly=".net" AssemblyManifest="_04A6031A6FF44EC49DEAB46C48F8B8DA" AssemblyApplication="_04A6031A6FF44EC49DEAB46C48F8B8DA" DiskId="1" Source="SourceDir\File\_04A6031A6FF44EC49DEAB46C48F8B8DA" />
+                </Component>
+                <Component Id="C__08B145DB19514168AC5BC4088D9ACD76" Guid="{0FBDA66B-DF4F-F417-A81F-9A50C18038FB}">
+                    <File Id="_08B145DB19514168AC5BC4088D9ACD76" Name="OxigenServiceContracts.dll" KeyPath="yes" ShortName="OXIGEN~4.DLL" Assembly=".net" AssemblyManifest="_08B145DB19514168AC5BC4088D9ACD76" AssemblyApplication="_08B145DB19514168AC5BC4088D9ACD76" DiskId="1" Source="SourceDir\File\_08B145DB19514168AC5BC4088D9ACD76" />
+                </Component>
+                <Component Id="C__0B347E172D1747FA94D28C8B95248FF6" Guid="{1AD97B41-4ADF-CD9C-FCEB-1A6D9A3CC8DE}">
+                    <File Id="_0B347E172D1747FA94D28C8B95248FF6" Name="OxigenUserMgmtServicesContracts.dll" KeyPath="yes" ShortName="OXIGEN~6.DLL" Assembly=".net" AssemblyManifest="_0B347E172D1747FA94D28C8B95248FF6" AssemblyApplication="_0B347E172D1747FA94D28C8B95248FF6" DiskId="1" Source="SourceDir\File\_0B347E172D1747FA94D28C8B95248FF6" />
+                </Component>
+                <Component Id="C__0F1BE6ED0B0644FB966E04CA07F73220" Guid="{1CD5F8EB-3700-1080-E0D2-61BBCEB7099F}">
+                    <File Id="_0F1BE6ED0B0644FB966E04CA07F73220" Name="OxigenUserDataMarshallrContracts.dll" KeyPath="yes" ShortName="OXIGEN~8.DLL" Assembly=".net" AssemblyManifest="_0F1BE6ED0B0644FB966E04CA07F73220" AssemblyApplication="_0F1BE6ED0B0644FB966E04CA07F73220" DiskId="1" Source="SourceDir\File\_0F1BE6ED0B0644FB966E04CA07F73220" />
+                </Component>
+                <Component Id="C__0F320C96856D43759D0EBA38589380D3" Guid="{96491B7F-3AD4-1755-F9AC-CA4C3A58A110}">
+                    <File Id="_0F320C96856D43759D0EBA38589380D3" Name="OxigenService.exe.config" KeyPath="yes" ShortName="OXIGEN~1.CON" DiskId="1" Source="SourceDir\File\_0F320C96856D43759D0EBA38589380D3" />
+                </Component>
+                <Component Id="C__15A6157E17EE4142BE0DC704DD0166EA" Guid="{C59D375B-A665-396F-9F78-938ED5BF47A4}">
+                    <File Id="_15A6157E17EE4142BE0DC704DD0166EA" Name="OxigenXmlSerializableSortableGenericList.dll" KeyPath="yes" ShortName="OXIGE~11.DLL" Assembly=".net" AssemblyManifest="_15A6157E17EE4142BE0DC704DD0166EA" AssemblyApplication="_15A6157E17EE4142BE0DC704DD0166EA" DiskId="1" Source="SourceDir\File\_15A6157E17EE4142BE0DC704DD0166EA" />
+                </Component>
+                <Component Id="C__1AAC54773F3146CEBA3690149648B13E" Guid="{726018A4-27D0-BF82-1A35-A9F8D06D0276}">
+                    <File Id="_1AAC54773F3146CEBA3690149648B13E" Name="OxigenUserDataMarshallerClient.dll" KeyPath="yes" ShortName="OXIGE~13.DLL" Assembly=".net" AssemblyManifest="_1AAC54773F3146CEBA3690149648B13E" AssemblyApplication="_1AAC54773F3146CEBA3690149648B13E" DiskId="1" Source="SourceDir\File\_1AAC54773F3146CEBA3690149648B13E" />
+                </Component>
+                <Component Id="C__1B5081CF7FE7406D83F3D578A6BC1D26" Guid="{8A9F11BB-2B25-4C3B-30F7-CEAA360DF58E}">
+                    <File Id="_1B5081CF7FE7406D83F3D578A6BC1D26" Name="OxigenFileChecksumCalculator.dll" KeyPath="yes" ShortName="OXIGE~14.DLL" Assembly=".net" AssemblyManifest="_1B5081CF7FE7406D83F3D578A6BC1D26" AssemblyApplication="_1B5081CF7FE7406D83F3D578A6BC1D26" DiskId="1" Source="SourceDir\File\_1B5081CF7FE7406D83F3D578A6BC1D26" />
+                </Component>
+                <Component Id="C__1EE5BF0563FF4145AEAF77B27A88057F" Guid="{F7ED1190-E6C9-4DEB-ED8D-C9BE8017F152}">
+                    <File Id="_1EE5BF0563FF4145AEAF77B27A88057F" Name="OxigenAssets.dll" KeyPath="yes" ShortName="OXIGE~15.DLL" Assembly=".net" AssemblyManifest="_1EE5BF0563FF4145AEAF77B27A88057F" AssemblyApplication="_1EE5BF0563FF4145AEAF77B27A88057F" DiskId="1" Source="SourceDir\File\_1EE5BF0563FF4145AEAF77B27A88057F" />
+                </Component>
+                <Component Id="C__38DFC37AD0D142D49B3F6C56CF124127" Guid="{CC171996-0152-A236-7141-53283D4F6BC8}">
+                    <File Id="_38DFC37AD0D142D49B3F6C56CF124127" Name="OxigenSOAStructures.dll" KeyPath="yes" ShortName="OXIGE~24.DLL" Assembly=".net" AssemblyManifest="_38DFC37AD0D142D49B3F6C56CF124127" AssemblyApplication="_38DFC37AD0D142D49B3F6C56CF124127" DiskId="1" Source="SourceDir\File\_38DFC37AD0D142D49B3F6C56CF124127" />
+                </Component>
+                <Component Id="C__404336CCB9AB4A3FB89A97654CE855E9" Guid="{CAD56FA3-7CB1-E70B-33D8-D393399A4853}">
+                    <File Id="_404336CCB9AB4A3FB89A97654CE855E9" Name="OxigenInclusionExclusionRules.dll" KeyPath="yes" ShortName="OXIGE~25.DLL" Assembly=".net" AssemblyManifest="_404336CCB9AB4A3FB89A97654CE855E9" AssemblyApplication="_404336CCB9AB4A3FB89A97654CE855E9" DiskId="1" Source="SourceDir\File\_404336CCB9AB4A3FB89A97654CE855E9" />
+                </Component>
+                <Component Id="C__45C5F693B14A48B1AA8D6F5898F7363E" Guid="{2110336D-C5D5-10B0-015F-4057152A7A65}">
+                    <File Id="_45C5F693B14A48B1AA8D6F5898F7363E" Name="OxigenProxyClientBaseLib.dll" KeyPath="yes" ShortName="OXIGE~27.DLL" Assembly=".net" AssemblyManifest="_45C5F693B14A48B1AA8D6F5898F7363E" AssemblyApplication="_45C5F693B14A48B1AA8D6F5898F7363E" DiskId="1" Source="SourceDir\File\_45C5F693B14A48B1AA8D6F5898F7363E" />
+                </Component>
+                <Component Id="C__474C60F26C7C4F66B7DC554F77E734D4" Guid="{A42E50A0-139D-E3EE-D028-910D7D140131}">
+                    <File Id="_474C60F26C7C4F66B7DC554F77E734D4" Name="OxigenLogStats.dll" KeyPath="yes" ShortName="OXIGE~28.DLL" Assembly=".net" AssemblyManifest="_474C60F26C7C4F66B7DC554F77E734D4" AssemblyApplication="_474C60F26C7C4F66B7DC554F77E734D4" DiskId="1" Source="SourceDir\File\_474C60F26C7C4F66B7DC554F77E734D4" />
+                </Component>
+                <Component Id="C__488ABAF46A7F478EBC4336AD30617FC4" Guid="{DA650A05-AC89-C27A-A3EF-C35152CE3437}">
+                    <File Id="_488ABAF46A7F478EBC4336AD30617FC4" Name="OxigenLE.exe.config" KeyPath="yes" ShortName="OXIGEN~3.CON" DiskId="1" Source="SourceDir\File\_488ABAF46A7F478EBC4336AD30617FC4" />
+                </Component>
+                <Component Id="C__539297B5DE284F6C9EB6C65977511F9E" Guid="{53050285-B0FE-359F-26CF-ECFA6D721259}">
+                    <File Id="_539297B5DE284F6C9EB6C65977511F9E" Name="OxigenLinqToHashSet.dll" KeyPath="yes" ShortName="OXIGE~32.DLL" Assembly=".net" AssemblyManifest="_539297B5DE284F6C9EB6C65977511F9E" AssemblyApplication="_539297B5DE284F6C9EB6C65977511F9E" DiskId="1" Source="SourceDir\File\_539297B5DE284F6C9EB6C65977511F9E" />
+                </Component>
+                 <Component Id="C__609DB8A551CC40EB94D8C8DB011FE4CE" Guid="{2F277D29-A530-E110-09AB-A10153EBC351}">
+                    <File Id="_609DB8A551CC40EB94D8C8DB011FE4CE" Name="OxigenExceptions.dll" KeyPath="yes" ShortName="OXIGE~36.DLL" Assembly=".net" AssemblyManifest="_609DB8A551CC40EB94D8C8DB011FE4CE" AssemblyApplication="_609DB8A551CC40EB94D8C8DB011FE4CE" DiskId="1" Source="SourceDir\File\_609DB8A551CC40EB94D8C8DB011FE4CE" />
+                </Component>
+                <Component Id="C__64F460FD1143407DAE0BE890AE8E1174" Guid="{8437BDFF-5785-3565-EBC0-C822FD67A847}">
+                    <File Id="_64F460FD1143407DAE0BE890AE8E1174" Name="OxigenEncryptionDecryption.dll" KeyPath="yes" ShortName="OXIGE~40.DLL" Assembly=".net" AssemblyManifest="_64F460FD1143407DAE0BE890AE8E1174" AssemblyApplication="_64F460FD1143407DAE0BE890AE8E1174" DiskId="1" Source="SourceDir\File\_64F460FD1143407DAE0BE890AE8E1174" />
+                </Component>
+                <Component Id="C__668B828ED59B45A18323E1E40CE8EC39" Guid="{51FAA3B2-44C4-B080-A442-753493196346}">
+                    <File Id="_668B828ED59B45A18323E1E40CE8EC39" Name="OxigenUserSettings.dll" KeyPath="yes" ShortName="OXIGE~41.DLL" Assembly=".net" AssemblyManifest="_668B828ED59B45A18323E1E40CE8EC39" AssemblyApplication="_668B828ED59B45A18323E1E40CE8EC39" DiskId="1" Source="SourceDir\File\_668B828ED59B45A18323E1E40CE8EC39" />
+                </Component>
+                <Component Id="C__6813D2D311A9498DA87CB9C47E4DA54C" Guid="{57F3A036-F0D7-F915-616C-774C1B35E086}">
+                    <File Id="_6813D2D311A9498DA87CB9C47E4DA54C" Name="OxigenChannelData.dll" KeyPath="yes" ShortName="OXIGE~42.DLL" Assembly=".net" AssemblyManifest="_6813D2D311A9498DA87CB9C47E4DA54C" AssemblyApplication="_6813D2D311A9498DA87CB9C47E4DA54C" DiskId="1" Source="SourceDir\File\_6813D2D311A9498DA87CB9C47E4DA54C" />
+                </Component>
+                <Component Id="C__68A81824D0784993816E66F8ABF4DE02" Guid="{EA9C1288-62DD-0484-A321-BD69E0F98BB3}">
+                    <File Id="_68A81824D0784993816E66F8ABF4DE02" Name="OxigenLoggerInfo.dll" KeyPath="yes" ShortName="OXIGE~44.DLL" Assembly=".net" AssemblyManifest="_68A81824D0784993816E66F8ABF4DE02" AssemblyApplication="_68A81824D0784993816E66F8ABF4DE02" DiskId="1" Source="SourceDir\File\_68A81824D0784993816E66F8ABF4DE02" />
+                </Component>
+                <Component Id="C__7109E0FE3BBD43CBB157BE0FD004C756" Guid="{9ED385CF-C2D2-FFBC-D255-722BBF573560}">
+                    <File Id="_7109E0FE3BBD43CBB157BE0FD004C756" Name="ScreenSaverConfig.exe.config" KeyPath="yes" ShortName="SCREEN~1.CON" DiskId="1" Source="SourceDir\File\_7109E0FE3BBD43CBB157BE0FD004C756" />
+                </Component>
+                <Component Id="C__7BDA16B247244C4D8713D73CAEA0EFEF" Guid="{D5A6B89A-64F0-2E44-CAF4-DA683002AEB5}">
+                    <File Id="_7BDA16B247244C4D8713D73CAEA0EFEF" Name="OxigenPlaylistLogic.dll" KeyPath="yes" ShortName="OXIGE~49.DLL" Assembly=".net" AssemblyManifest="_7BDA16B247244C4D8713D73CAEA0EFEF" AssemblyApplication="_7BDA16B247244C4D8713D73CAEA0EFEF" DiskId="1" Source="SourceDir\File\_7BDA16B247244C4D8713D73CAEA0EFEF" />
+                </Component>
+                <Component Id="C__7EF3ACAC6C9A4567AC9B51883D18D89B" Guid="{D6A2EF63-24B9-4BE1-4D1C-DD3ED1A5EA44}">
+                    <File Id="_7EF3ACAC6C9A4567AC9B51883D18D89B" Name="OxigenWCFErrorReporting.dll" KeyPath="yes" ShortName="OXIGE~50.DLL" Assembly=".net" AssemblyManifest="_7EF3ACAC6C9A4567AC9B51883D18D89B" AssemblyApplication="_7EF3ACAC6C9A4567AC9B51883D18D89B" DiskId="1" Source="SourceDir\File\_7EF3ACAC6C9A4567AC9B51883D18D89B" />
+                </Component>
+                <Component Id="C__7F0348A4391D4948977083A13AA54C1B" Guid="{7610FEF0-67D5-E2EB-2E23-F4C398FFA783}">
+                    <File Id="_7F0348A4391D4948977083A13AA54C1B" Name="OxigenChannelSubscriptions.dll" KeyPath="yes" ShortName="OXIGE~51.DLL" Assembly=".net" AssemblyManifest="_7F0348A4391D4948977083A13AA54C1B" AssemblyApplication="_7F0348A4391D4948977083A13AA54C1B" DiskId="1" Source="SourceDir\File\_7F0348A4391D4948977083A13AA54C1B" />
+                </Component>
+                <Component Id="C__8201E8B3310A4B25AF9FCBE1DC595F2D" Guid="{0126088E-4C6F-B776-5BB2-429EFDEAAD3F}">
+                    <File Id="_8201E8B3310A4B25AF9FCBE1DC595F2D" Name="OxigenTaxonomySearch.dll" KeyPath="yes" ShortName="OXIGE~53.DLL" Assembly=".net" AssemblyManifest="_8201E8B3310A4B25AF9FCBE1DC595F2D" AssemblyApplication="_8201E8B3310A4B25AF9FCBE1DC595F2D" DiskId="1" Source="SourceDir\File\_8201E8B3310A4B25AF9FCBE1DC595F2D" />
+                </Component>
+                <Component Id="C__890588F6B1FA433A82D7403EC04A8122" Guid="{A3AA1EE1-D8AD-F243-9F5C-37D7C4085E08}">
+                    <File Id="_890588F6B1FA433A82D7403EC04A8122" Name="OxigenServerCycleConnectAttempt.dll" KeyPath="yes" ShortName="OXIGE~56.DLL" Assembly=".net" AssemblyManifest="_890588F6B1FA433A82D7403EC04A8122" AssemblyApplication="_890588F6B1FA433A82D7403EC04A8122" DiskId="1" Source="SourceDir\File\_890588F6B1FA433A82D7403EC04A8122" />
+                </Component>
+                <Component Id="C__8F8076C115DB423FA64AE7454974E6F3" Guid="{365621DC-96E4-584F-D1E7-572EC5D1E4F0}">
+                    <File Id="_8F8076C115DB423FA64AE7454974E6F3" Name="OxigenCE.exe" KeyPath="yes" ShortName="OXIGENCE.EXE" Assembly=".net" AssemblyManifest="_8F8076C115DB423FA64AE7454974E6F3" AssemblyApplication="_8F8076C115DB423FA64AE7454974E6F3" DiskId="1" Source="SourceDir\File\_8F8076C115DB423FA64AE7454974E6F3" />
+                </Component>
+                <Component Id="C__A639031151F54F13B6B11EE62C6148D9" Guid="{45079497-24B5-FEFB-EFD8-DCE1229C86EC}">
+                    <File Id="_A639031151F54F13B6B11EE62C6148D9" Name="DataAccess.dll" KeyPath="yes" ShortName="DATAAC~2.DLL" Assembly=".net" AssemblyManifest="_A639031151F54F13B6B11EE62C6148D9" AssemblyApplication="_A639031151F54F13B6B11EE62C6148D9" DiskId="1" Source="SourceDir\File\_A639031151F54F13B6B11EE62C6148D9" />
+                </Component>
+                <Component Id="C__A643C77241B94915B3D4E45C637A63B9" Guid="{5EC89487-A408-F21C-D74C-A8AA5DBD90A4}">
+                    <File Id="_A643C77241B94915B3D4E45C637A63B9" Name="OxigenLogFileReader.dll" KeyPath="yes" ShortName="OXIGE~65.DLL" Assembly=".net" AssemblyManifest="_A643C77241B94915B3D4E45C637A63B9" AssemblyApplication="_A643C77241B94915B3D4E45C637A63B9" DiskId="1" Source="SourceDir\File\_A643C77241B94915B3D4E45C637A63B9" />
+                </Component>
+                <Component Id="C__A8A42F228A844EA59C47407C638AC9A7" Guid="{23B98574-3DF4-4F2C-5E70-B9C368EA376F}">
+                    <File Id="_A8A42F228A844EA59C47407C638AC9A7" Name="OxigenFileLocker.dll" KeyPath="yes" ShortName="OXIGE~66.DLL" Assembly=".net" AssemblyManifest="_A8A42F228A844EA59C47407C638AC9A7" AssemblyApplication="_A8A42F228A844EA59C47407C638AC9A7" DiskId="1" Source="SourceDir\File\_A8A42F228A844EA59C47407C638AC9A7" />
+                </Component>
+                <Component Id="C__AA9DD2E132274C1D9C4C16C196F5CD14" Guid="{26D898B5-6D9C-429C-980D-F7C9824B8484}">
+                    <File Id="_AA9DD2E132274C1D9C4C16C196F5CD14" Name="OxigenDemographicRange.dll" KeyPath="yes" ShortName="OXIGE~67.DLL" Assembly=".net" AssemblyManifest="_AA9DD2E132274C1D9C4C16C196F5CD14" AssemblyApplication="_AA9DD2E132274C1D9C4C16C196F5CD14" DiskId="1" Source="SourceDir\File\_AA9DD2E132274C1D9C4C16C196F5CD14" />
+                </Component>
+                <Component Id="C__AB416EB67CCB42A79ADF08E5DBD07D64" Guid="{645CF4D2-3484-11CF-AD7E-E99F19D189E6}">
+                    <File Id="_AB416EB67CCB42A79ADF08E5DBD07D64" Name="OxigenCompiledRegexes.dll" KeyPath="yes" ShortName="OXIGE~69.DLL" Assembly=".net" AssemblyManifest="_AB416EB67CCB42A79ADF08E5DBD07D64" AssemblyApplication="_AB416EB67CCB42A79ADF08E5DBD07D64" DiskId="1" Source="SourceDir\File\_AB416EB67CCB42A79ADF08E5DBD07D64" />
+                </Component>
+                <Component Id="C__B17210CDEDB94D7DB29273CAD08399E6" Guid="{38FEC527-71DB-14EE-A0EE-9B1410487944}">
+                    <File Id="_B17210CDEDB94D7DB29273CAD08399E6" Name="OxigenTray.exe" KeyPath="yes" ShortName="OXIGEN~1.EXE" Assembly=".net" AssemblyManifest="_B17210CDEDB94D7DB29273CAD08399E6" AssemblyApplication="_B17210CDEDB94D7DB29273CAD08399E6" DiskId="1" Source="SourceDir\File\_B17210CDEDB94D7DB29273CAD08399E6" />
+                </Component>
+                <Component Id="C__BAD6BB3AC14240A38C4D2ADE8E45638F" Guid="{FEE9B437-FD79-7F98-E64A-A89F85E7A4D0}">
+                    <File Id="_BAD6BB3AC14240A38C4D2ADE8E45638F" Name="OxigenPlaylist.dll" KeyPath="yes" ShortName="OXIGE~74.DLL" Assembly=".net" AssemblyManifest="_BAD6BB3AC14240A38C4D2ADE8E45638F" AssemblyApplication="_BAD6BB3AC14240A38C4D2ADE8E45638F" DiskId="1" Source="SourceDir\File\_BAD6BB3AC14240A38C4D2ADE8E45638F" />
+                </Component>
+                <Component Id="C__C215BC70DA93492C80BA72A8A13A508B" Guid="{82FC43CC-824E-CBA2-B3CC-B0175D65C2CF}">
+                    <File Id="_C215BC70DA93492C80BA72A8A13A508B" Name="OxigenService.exe" KeyPath="yes" ShortName="OXIGEN~2.EXE" Assembly=".net" AssemblyManifest="_C215BC70DA93492C80BA72A8A13A508B" AssemblyApplication="_C215BC70DA93492C80BA72A8A13A508B" DiskId="1" Source="SourceDir\File\_C215BC70DA93492C80BA72A8A13A508B" />
+                </Component>
+                <Component Id="C__C79CE05F49854F0493967DD9F0B62312" Guid="{F3766C53-0B8E-5472-CA68-462BEDCADBF0}">
+                    <File Id="_C79CE05F49854F0493967DD9F0B62312" Name="OxigenUserMgmtServicesClient.dll" KeyPath="yes" ShortName="OXIGE~76.DLL" Assembly=".net" AssemblyManifest="_C79CE05F49854F0493967DD9F0B62312" AssemblyApplication="_C79CE05F49854F0493967DD9F0B62312" DiskId="1" Source="SourceDir\File\_C79CE05F49854F0493967DD9F0B62312" />
+                </Component>
+                <Component Id="C__C79CF83D833447C4945930BD74BCB0CD" Guid="{2248DEDB-1E5F-B6BE-A4CB-FF4203DB69B5}">
+                    <File Id="_C79CF83D833447C4945930BD74BCB0CD" Name="OxigenSU.exe" KeyPath="yes" ShortName="OXIGENSU.EXE" Assembly=".net" AssemblyManifest="_C79CF83D833447C4945930BD74BCB0CD" AssemblyApplication="_C79CF83D833447C4945930BD74BCB0CD" DiskId="1" Source="SourceDir\File\_C79CF83D833447C4945930BD74BCB0CD" />
+                </Component>
+                <Component Id="C__C7A7BE14CAE446D8B32E1B6C6CE1445C" Guid="{9E58DEA1-8C5A-16B2-7192-82B1DBB003D9}">
+                    <File Id="_C7A7BE14CAE446D8B32E1B6C6CE1445C" Name="OxigenSU.exe.config" KeyPath="yes" ShortName="OXIGEN~4.CON" DiskId="1" Source="SourceDir\File\_C7A7BE14CAE446D8B32E1B6C6CE1445C" />
+                </Component>
+                <Component Id="C__CDB90C3C3E9E4FD8A3B36622962E9D79" Guid="{3F8AF383-3FB7-AFF0-8BCE-E51530EE3C0E}">
+                    <File Id="_CDB90C3C3E9E4FD8A3B36622962E9D79" Name="OxigenLogEntry.dll" KeyPath="yes" ShortName="OXIGE~78.DLL" Assembly=".net" AssemblyManifest="_CDB90C3C3E9E4FD8A3B36622962E9D79" AssemblyApplication="_CDB90C3C3E9E4FD8A3B36622962E9D79" DiskId="1" Source="SourceDir\File\_CDB90C3C3E9E4FD8A3B36622962E9D79" />
+                </Component>
+                <Component Id="C__CEB66504683E4015BFAC0F974DF78498" Guid="{B6ECA4E7-A173-5640-DC07-259765484903}">
+                    <File Id="_CEB66504683E4015BFAC0F974DF78498" Name="OxigenDemographic.dll" KeyPath="yes" ShortName="OXIGE~79.DLL" Assembly=".net" AssemblyManifest="_CEB66504683E4015BFAC0F974DF78498" AssemblyApplication="_CEB66504683E4015BFAC0F974DF78498" DiskId="1" Source="SourceDir\File\_CEB66504683E4015BFAC0F974DF78498" />
+                </Component>
+                <Component Id="C__D7521D703B604F7B8B7B75043CCDC5E0" Guid="{62B2AD55-F682-56B0-FB7B-1AE40FCC0A34}">
+                    <File Id="_D7521D703B604F7B8B7B75043CCDC5E0" Name="OxigenCE.exe.config" KeyPath="yes" ShortName="OXIGEN~5.CON" DiskId="1" Source="SourceDir\File\_D7521D703B604F7B8B7B75043CCDC5E0" />
+                </Component>
+                <Component Id="C__DECCCA21B6A340DCB40674E56B505CAB" Guid="{35FB7A0A-0667-FF71-0D18-2A3A624539EA}">
+                    <File Id="_DECCCA21B6A340DCB40674E56B505CAB" Name="OxigenTimeSpanObjectWrapper.dll" KeyPath="yes" ShortName="OXIGE~83.DLL" Assembly=".net" AssemblyManifest="_DECCCA21B6A340DCB40674E56B505CAB" AssemblyApplication="_DECCCA21B6A340DCB40674E56B505CAB" DiskId="1" Source="SourceDir\File\_DECCCA21B6A340DCB40674E56B505CAB" />
+                </Component>
+                <Component Id="C__E67F9398F27946D1AA43977D9A1EB939" Guid="{7373E205-720B-93C3-396F-A1CA1C3801D7}">
+                    <File Id="_E67F9398F27946D1AA43977D9A1EB939" Name="OxigenPlayerType.dll" KeyPath="yes" ShortName="OXIGE~85.DLL" Assembly=".net" AssemblyManifest="_E67F9398F27946D1AA43977D9A1EB939" AssemblyApplication="_E67F9398F27946D1AA43977D9A1EB939" DiskId="1" Source="SourceDir\File\_E67F9398F27946D1AA43977D9A1EB939" />
+                </Component>
+                <Component Id="C__EA759C36278B45A8B05EF7B3BE2FE8FA" Guid="{20F82EBD-D303-17A8-4B42-FD65D150F1D5}">
+                    <File Id="_EA759C36278B45A8B05EF7B3BE2FE8FA" Name="OxigenGeneralData.dll" KeyPath="yes" ShortName="OXIGE~87.DLL" Assembly=".net" AssemblyManifest="_EA759C36278B45A8B05EF7B3BE2FE8FA" AssemblyApplication="_EA759C36278B45A8B05EF7B3BE2FE8FA" DiskId="1" Source="SourceDir\File\_EA759C36278B45A8B05EF7B3BE2FE8FA" />
+                </Component>
+                <Component Id="C__EBE1C03BBA5344CEBC3219777A932A8C" Guid="{B5A62E4D-9FD1-75FD-F1A9-45043C8E1BB6}">
+                    <File Id="_EBE1C03BBA5344CEBC3219777A932A8C" Name="OxigenInterCommunicationStructures.dll" KeyPath="yes" ShortName="OXIGE~88.DLL" Assembly=".net" AssemblyManifest="_EBE1C03BBA5344CEBC3219777A932A8C" AssemblyApplication="_EBE1C03BBA5344CEBC3219777A932A8C" DiskId="1" Source="SourceDir\File\_EBE1C03BBA5344CEBC3219777A932A8C" />
+                </Component>
+                <Component Id="C__EE2C7608729A4AC3963CB0EEE761E9BF" Guid="{5051A8A3-E220-95B2-94D2-57AD007F80F5}">
+                    <File Id="_EE2C7608729A4AC3963CB0EEE761E9BF" Name="OxigenXMLSerializer.dll" KeyPath="yes" ShortName="OXIGE~89.DLL" Assembly=".net" AssemblyManifest="_EE2C7608729A4AC3963CB0EEE761E9BF" AssemblyApplication="_EE2C7608729A4AC3963CB0EEE761E9BF" DiskId="1" Source="SourceDir\File\_EE2C7608729A4AC3963CB0EEE761E9BF" />
+                </Component>
+                <Component Id="C__EFFF43CAEA964628913A46D37364411C" Guid="{2F42082D-1B35-09FD-BD39-6C78CD067338}">
+                    <File Id="_EFFF43CAEA964628913A46D37364411C" Name="OxigenXmlSerializableGenericDictionary.dll" KeyPath="yes" ShortName="OXIGE~90.DLL" Assembly=".net" AssemblyManifest="_EFFF43CAEA964628913A46D37364411C" AssemblyApplication="_EFFF43CAEA964628913A46D37364411C" DiskId="1" Source="SourceDir\File\_EFFF43CAEA964628913A46D37364411C" />
+                </Component>
+                <Component Id="C__F74BCBA1DBEB47EA9565C754197DF44D" Guid="{2F7BB21C-D53D-DE8B-3297-8D33AB5816F3}">
+                    <File Id="_F74BCBA1DBEB47EA9565C754197DF44D" Name="ScreenSaverConfig.exe" KeyPath="yes" ShortName="SCREEN~1.EXE" Assembly=".net" AssemblyManifest="_F74BCBA1DBEB47EA9565C754197DF44D" AssemblyApplication="_F74BCBA1DBEB47EA9565C754197DF44D" DiskId="1" Source="SourceDir\File\_F74BCBA1DBEB47EA9565C754197DF44D" />
+                </Component>
+                <Component Id="C__F7A08614EE6C4CE48E65B4F7E1A37965" Guid="{6082FE5D-0FB2-4A28-0073-006EA9F2CEA9}">
+                    <File Id="_F7A08614EE6C4CE48E65B4F7E1A37965" Name="OxigenTray.exe.config" KeyPath="yes" ShortName="OXIGEN~6.CON" DiskId="1" Source="SourceDir\File\_F7A08614EE6C4CE48E65B4F7E1A37965" />
+                </Component>
+                <Component Id="C__F7B7954236D4419EA541DE0375D4363C" Guid="{936D4DB3-6679-DAB0-2F60-CACF7C45138D}">
+                    <File Id="_F7B7954236D4419EA541DE0375D4363C" Name="OxigenLE.exe" KeyPath="yes" ShortName="OXIGENLE.EXE" Assembly=".net" AssemblyManifest="_F7B7954236D4419EA541DE0375D4363C" AssemblyApplication="_F7B7954236D4419EA541DE0375D4363C" DiskId="1" Source="SourceDir\File\_F7B7954236D4419EA541DE0375D4363C" />
+                </Component>
+                <Component Id="C__2B1873B36854C1AF26BB9D552AB6821D" Guid="{8F29525B-C91C-E799-75C2-4A775691F0B2}">
+                    <File Id="_2B1873B36854C1AF26BB9D552AB6821D" Name="OxigenEventLogInstallers.dll" KeyPath="yes" ShortName="OXIGE~95.DLL" Assembly=".net" AssemblyManifest="_2B1873B36854C1AF26BB9D552AB6821D" AssemblyApplication="_2B1873B36854C1AF26BB9D552AB6821D" DiskId="1" Source="SourceDir\File\_2B1873B36854C1AF26BB9D552AB6821D" />
+                </Component>
+                <Component Id="C__330FE5A1348C936B1BEA5490F591A6BE" Guid="{8F29525B-C91C-E799-75C2-4A775691F0B2}">
+                    <File Id="_330FE5A1348C936B1BEA5490F591A6BE" Name="OxigenEventLogInstallers.dll" KeyPath="yes" ShortName="OXIGE~96.DLL" Assembly=".net" AssemblyManifest="_330FE5A1348C936B1BEA5490F591A6BE" AssemblyApplication="_330FE5A1348C936B1BEA5490F591A6BE" DiskId="1" Source="SourceDir\File\_330FE5A1348C936B1BEA5490F591A6BE" />
+                </Component>
+            </Directory>
+            <Directory Id="SystemFolder" ShortSourceName="SYSTEM~1" SourceName="System Folder">
+                <Component Id="C__06619B7607DC4FD7B58826DB5D07EBE1" Guid="{B298E4C8-FCB3-B06F-8CDB-111B7CA31BD8}">
+                    <File Id="_06619B7607DC4FD7B58826DB5D07EBE1" Name="AxInterop.WMPLib.dll" KeyPath="yes" ShortName="AXINTE~1.DLL" Assembly=".net" AssemblyManifest="_06619B7607DC4FD7B58826DB5D07EBE1" AssemblyApplication="_06619B7607DC4FD7B58826DB5D07EBE1" DiskId="1" Source="SourceDir\File\_06619B7607DC4FD7B58826DB5D07EBE1" />
+                </Component>
+                <Component Id="C__0955F2A6E2144A7F8BC7C404C964563F" Guid="{44E1595F-4253-9E09-AB82-C3CEEEEEAA3C}">
+                    <File Id="_0955F2A6E2144A7F8BC7C404C964563F" Name="OxigenUserSettings.dll" KeyPath="yes" ShortName="OXIGEN~5.DLL" Assembly=".net" AssemblyManifest="_0955F2A6E2144A7F8BC7C404C964563F" AssemblyApplication="_0955F2A6E2144A7F8BC7C404C964563F" DiskId="1" Source="SourceDir\File\_0955F2A6E2144A7F8BC7C404C964563F" />
+                </Component>
+                <Component Id="C__12D3E0120E014C2BA258395B4C90C3B7" Guid="{A60FD1DD-AC29-0E85-8909-01D78D2B8E27}">
+                    <File Id="_12D3E0120E014C2BA258395B4C90C3B7" Name="OxigenXmlSerializableGenericDictionary.dll" KeyPath="yes" ShortName="OXIGEN~9.DLL" Assembly=".net" AssemblyManifest="_12D3E0120E014C2BA258395B4C90C3B7" AssemblyApplication="_12D3E0120E014C2BA258395B4C90C3B7" DiskId="1" Source="SourceDir\File\_12D3E0120E014C2BA258395B4C90C3B7" />
+                </Component>
+                <Component Id="C__17551DA8D550466198B31D4C3A1949BC" Guid="{D2D1EB46-F44A-ABBC-D1FB-8768675C27AA}">
+                    <File Id="_17551DA8D550466198B31D4C3A1949BC" Name="Interop.QTOControlLib.dll" KeyPath="yes" ShortName="INTERO~2.DLL" Assembly=".net" AssemblyManifest="_17551DA8D550466198B31D4C3A1949BC" AssemblyApplication="_17551DA8D550466198B31D4C3A1949BC" DiskId="1" Source="SourceDir\File\_17551DA8D550466198B31D4C3A1949BC" />
+                </Component>
+                <Component Id="C__1806949BF94A4150BC958A2DAC191A9C" Guid="{F37EF39D-EEA1-E97F-CDC3-94B8423282E7}">
+                    <File Id="_1806949BF94A4150BC958A2DAC191A9C" Name="Oxigen.scr.config" KeyPath="yes" ShortName="OXIGEN~2.CON" DiskId="1" Source="SourceDir\File\_1806949BF94A4150BC958A2DAC191A9C" />
+                </Component>
+                <Component Id="C__21F0EB31876649AAAC3AB43096E2ED81" Guid="{1EE608F4-78EE-C9E5-DAAA-4D54648605AA}">
+                    <File Id="_21F0EB31876649AAAC3AB43096E2ED81" Name="OxigenSingletons.dll" KeyPath="yes" ShortName="OXIGE~17.DLL" Assembly=".net" AssemblyManifest="_21F0EB31876649AAAC3AB43096E2ED81" AssemblyApplication="_21F0EB31876649AAAC3AB43096E2ED81" DiskId="1" Source="SourceDir\File\_21F0EB31876649AAAC3AB43096E2ED81" />
+                </Component>
+                <Component Id="C__2525BB08EC474DFEA0742287BCF1413E" Guid="{0913AFE5-B01B-3267-265E-7DCFF458ED24}">
+                    <File Id="_2525BB08EC474DFEA0742287BCF1413E" Name="OxigenLogWriteOperations.dll" KeyPath="yes" ShortName="OXIGE~18.DLL" Assembly=".net" AssemblyManifest="_2525BB08EC474DFEA0742287BCF1413E" AssemblyApplication="_2525BB08EC474DFEA0742287BCF1413E" DiskId="1" Source="SourceDir\File\_2525BB08EC474DFEA0742287BCF1413E" />
+                </Component>
+                <Component Id="C__32636D26F16D425BADDD5911CC45D764" Guid="{0BE57705-910C-41AE-F384-D2AAB3768DB3}">
+                    <File Id="_32636D26F16D425BADDD5911CC45D764" Name="OxigenStopwatch.dll" KeyPath="yes" ShortName="OXIGE~21.DLL" Assembly=".net" AssemblyManifest="_32636D26F16D425BADDD5911CC45D764" AssemblyApplication="_32636D26F16D425BADDD5911CC45D764" DiskId="1" Source="SourceDir\File\_32636D26F16D425BADDD5911CC45D764" />
+                </Component>
+                <Component Id="C__3725EC167BB44CC4B84BE5F5EBF9E864" Guid="{C082A67F-88D3-804A-7CDE-805032FB3333}">
+                    <File Id="_3725EC167BB44CC4B84BE5F5EBF9E864" Name="OxigenWCFErrorReporting.dll" KeyPath="yes" ShortName="OXIGE~22.DLL" Assembly=".net" AssemblyManifest="_3725EC167BB44CC4B84BE5F5EBF9E864" AssemblyApplication="_3725EC167BB44CC4B84BE5F5EBF9E864" DiskId="1" Source="SourceDir\File\_3725EC167BB44CC4B84BE5F5EBF9E864" />
+                </Component>
+                <Component Id="C__3DBCDE6768459AADBDD6942C80D8B4B5" Guid="{D5D9B9B4-21BE-2A7B-E66D-79BD92AAD362}">
+                    <File Id="_3DBCDE6768459AADBDD6942C80D8B4B5" Name="QTOControl.dll" KeyPath="yes" ShortName="QTOCON~1.DLL" DiskId="1" Source="SourceDir\File\_3DBCDE6768459AADBDD6942C80D8B4B5" />
+                </Component>
+                <Component Id="C__44C3F952CAAB4BDC9CDE6CF30D152141" Guid="{3FA8BBA5-0FCF-517C-81FC-F7574AC83053}">
+                    <File Id="_44C3F952CAAB4BDC9CDE6CF30D152141" Name="OxigenEncryptionDecryption.dll" KeyPath="yes" ShortName="OXIGE~26.DLL" Assembly=".net" AssemblyManifest="_44C3F952CAAB4BDC9CDE6CF30D152141" AssemblyApplication="_44C3F952CAAB4BDC9CDE6CF30D152141" DiskId="1" Source="SourceDir\File\_44C3F952CAAB4BDC9CDE6CF30D152141" />
+                </Component>
+                <Component Id="C__4C1078259B3F48A39934D5DD94E62CD6" Guid="{D76A9174-E172-DFD7-2786-3E7A0A5811E7}">
+                    <File Id="_4C1078259B3F48A39934D5DD94E62CD6" Name="OxigenProxyClientBaseLib.dll" KeyPath="yes" ShortName="OXIGE~29.DLL" Assembly=".net" AssemblyManifest="_4C1078259B3F48A39934D5DD94E62CD6" AssemblyApplication="_4C1078259B3F48A39934D5DD94E62CD6" DiskId="1" Source="SourceDir\File\_4C1078259B3F48A39934D5DD94E62CD6" />
+                </Component>
+                <Component Id="C__5866B88929C84E1DBE011329F270B952" Guid="{6C809176-58CE-2401-C69C-ACFBF2106383}">
+                    <File Id="_5866B88929C84E1DBE011329F270B952" Name="OxigenNoAssetsAnimator.dll" KeyPath="yes" ShortName="OXIGE~33.DLL" Assembly=".net" AssemblyManifest="_5866B88929C84E1DBE011329F270B952" AssemblyApplication="_5866B88929C84E1DBE011329F270B952" DiskId="1" Source="SourceDir\File\_5866B88929C84E1DBE011329F270B952" />
+                </Component>
+                <Component Id="C__5A354026CDF04C60915794068FF0439C" Guid="{9AC008BF-94AD-8A0D-A2E0-59A9B8B07C9A}">
+                    <File Id="_5A354026CDF04C60915794068FF0439C" Name="Oxigen.scr" KeyPath="yes" ShortName="OXIGEN.SCR" Assembly=".net" AssemblyManifest="_5A354026CDF04C60915794068FF0439C" AssemblyApplication="_5A354026CDF04C60915794068FF0439C" DiskId="1" Source="SourceDir\File\_5A354026CDF04C60915794068FF0439C" />
+                </Component>
+                <Component Id="C__5BC91596BD7F45A7B8F1C31028F8D03C" Guid="{385F469C-3B38-0AFB-FDAE-EA5E0CD7E702}">
+                    <File Id="_5BC91596BD7F45A7B8F1C31028F8D03C" Name="OxigenPlaylistAssetPicker.dll" KeyPath="yes" ShortName="OXIGE~34.DLL" Assembly=".net" AssemblyManifest="_5BC91596BD7F45A7B8F1C31028F8D03C" AssemblyApplication="_5BC91596BD7F45A7B8F1C31028F8D03C" DiskId="1" Source="SourceDir\File\_5BC91596BD7F45A7B8F1C31028F8D03C" />
+                </Component>
+                <Component Id="C__61999B7252F045AE95628D0054B72288" Guid="{29DA5100-2F88-E75B-F2C2-48D356B35596}">
+                    <File Id="_61999B7252F045AE95628D0054B72288" Name="OxigenServiceContracts.dll" KeyPath="yes" ShortName="OXIGE~37.DLL" Assembly=".net" AssemblyManifest="_61999B7252F045AE95628D0054B72288" AssemblyApplication="_61999B7252F045AE95628D0054B72288" DiskId="1" Source="SourceDir\File\_61999B7252F045AE95628D0054B72288" />
+                </Component>
+                <Component Id="C__670592F2FFEB484A9732F50C29681DF5" Guid="{51E3AF2E-58E4-8586-4064-3B4F317F1D9A}">
+                    <File Id="_670592F2FFEB484A9732F50C29681DF5" Name="Interop.ShockwaveFlashObjects.dll" KeyPath="yes" ShortName="INTERO~4.DLL" Assembly=".net" AssemblyManifest="_670592F2FFEB484A9732F50C29681DF5" AssemblyApplication="_670592F2FFEB484A9732F50C29681DF5" DiskId="1" Source="SourceDir\File\_670592F2FFEB484A9732F50C29681DF5" />
+                </Component>
+                <Component Id="C__68671F44260A435696433D1D25764392" Guid="{412F058C-18B2-3141-446B-62A0ADE4AB60}">
+                    <File Id="_68671F44260A435696433D1D25764392" Name="OxigenPlaylist.dll" KeyPath="yes" ShortName="OXIGE~43.DLL" Assembly=".net" AssemblyManifest="_68671F44260A435696433D1D25764392" AssemblyApplication="_68671F44260A435696433D1D25764392" DiskId="1" Source="SourceDir\File\_68671F44260A435696433D1D25764392" />
+                </Component>
+                <Component Id="C__755AEC281D3247E596C0ED2FDBF7F3B3" Guid="{8E2B1CA9-C133-708D-9BC9-5DFE79533D03}">
+                    <File Id="_755AEC281D3247E596C0ED2FDBF7F3B3" Name="Interop.QTOLibrary.dll" KeyPath="yes" ShortName="INTERO~5.DLL" Assembly=".net" AssemblyManifest="_755AEC281D3247E596C0ED2FDBF7F3B3" AssemblyApplication="_755AEC281D3247E596C0ED2FDBF7F3B3" DiskId="1" Source="SourceDir\File\_755AEC281D3247E596C0ED2FDBF7F3B3" />
+                </Component>
+                <Component Id="C__76928676D0BE4998A24714543F2275B3" Guid="{6EC6E6AC-B0BE-B8CA-C7A3-186FB953C2A2}">
+                    <File Id="_76928676D0BE4998A24714543F2275B3" Name="OxigenXMLSerializer.dll" KeyPath="yes" ShortName="OXIGE~46.DLL" Assembly=".net" AssemblyManifest="_76928676D0BE4998A24714543F2275B3" AssemblyApplication="_76928676D0BE4998A24714543F2275B3" DiskId="1" Source="SourceDir\File\_76928676D0BE4998A24714543F2275B3" />
+                </Component>
+                <Component Id="C__7AEF6A9085794275B9527A694FBD71C6" Guid="{FB768E59-78A6-B1E3-AEF6-6675A4896A5B}">
+                    <File Id="_7AEF6A9085794275B9527A694FBD71C6" Name="OxigenFileRightsChecker.dll" KeyPath="yes" ShortName="OXIGE~47.DLL" Assembly=".net" AssemblyManifest="_7AEF6A9085794275B9527A694FBD71C6" AssemblyApplication="_7AEF6A9085794275B9527A694FBD71C6" DiskId="1" Source="SourceDir\File\_7AEF6A9085794275B9527A694FBD71C6" />
+                </Component>
+                <Component Id="C__86D2707D62074CE6A606D216D2CE6ADA" Guid="{420D62C5-3851-1160-D7E3-A0C126403570}">
+                    <File Id="_86D2707D62074CE6A606D216D2CE6ADA" Name="OxigenInternetConnectionCheck.dll" KeyPath="yes" ShortName="OXIGE~54.DLL" Assembly=".net" AssemblyManifest="_86D2707D62074CE6A606D216D2CE6ADA" AssemblyApplication="_86D2707D62074CE6A606D216D2CE6ADA" DiskId="1" Source="SourceDir\File\_86D2707D62074CE6A606D216D2CE6ADA" />
+                </Component>
+                <Component Id="C__879AF09C3E2F4892BAC467A762F5276B" Guid="{DFFE3805-A39C-13BB-8D31-ADBBEE49491E}">
+                    <File Id="_879AF09C3E2F4892BAC467A762F5276B" Name="AxInterop.QTOControlLib.dll" KeyPath="yes" ShortName="AXINTE~2.DLL" Assembly=".net" AssemblyManifest="_879AF09C3E2F4892BAC467A762F5276B" AssemblyApplication="_879AF09C3E2F4892BAC467A762F5276B" DiskId="1" Source="SourceDir\File\_879AF09C3E2F4892BAC467A762F5276B" />
+                </Component>
+                <Component Id="C__8F9B5B37C6964822A3C30D65BDF2670F" Guid="{84AB690B-9CF8-FFB7-9E92-F565F3E085C5}">
+                    <File Id="_8F9B5B37C6964822A3C30D65BDF2670F" Name="OxigenGeneralData.dll" KeyPath="yes" ShortName="OXIGE~58.DLL" Assembly=".net" AssemblyManifest="_8F9B5B37C6964822A3C30D65BDF2670F" AssemblyApplication="_8F9B5B37C6964822A3C30D65BDF2670F" DiskId="1" Source="SourceDir\File\_8F9B5B37C6964822A3C30D65BDF2670F" />
+                </Component>
+                <Component Id="C__97D8DD3BAA414FF1ABD3F10E7F1272A6" Guid="{D1C25989-A819-A8E5-A818-2A38069CA50D}">
+                    <File Id="_97D8DD3BAA414FF1ABD3F10E7F1272A6" Name="OxigenUsageCount.dll" KeyPath="yes" ShortName="OXIGE~61.DLL" Assembly=".net" AssemblyManifest="_97D8DD3BAA414FF1ABD3F10E7F1272A6" AssemblyApplication="_97D8DD3BAA414FF1ABD3F10E7F1272A6" DiskId="1" Source="SourceDir\File\_97D8DD3BAA414FF1ABD3F10E7F1272A6" />
+                </Component>
+                <Component Id="C__9CB2F73757DD4E749A652C5E75222C4D" Guid="{68966077-B21A-BD89-836E-7D7CFCAD8088}">
+                    <File Id="_9CB2F73757DD4E749A652C5E75222C4D" Name="OxigenLogFileWriter.dll" KeyPath="yes" ShortName="OXIGE~63.DLL" Assembly=".net" AssemblyManifest="_9CB2F73757DD4E749A652C5E75222C4D" AssemblyApplication="_9CB2F73757DD4E749A652C5E75222C4D" DiskId="1" Source="SourceDir\File\_9CB2F73757DD4E749A652C5E75222C4D" />
+                </Component>
+                <Component Id="C__9FB092FDB292E7AE109CAD8A63BE0E18" Guid="{5016B897-6BAD-DC61-2B5B-D72E210522DF}">
+                    <File Id="_9FB092FDB292E7AE109CAD8A63BE0E18" Name="QTOLibrary.dll" KeyPath="yes" ShortName="QTOLIB~1.DLL" DiskId="1" Source="SourceDir\File\_9FB092FDB292E7AE109CAD8A63BE0E18" />
+                </Component>
+                <Component Id="C__A0B12CACFFED4AF397754AF80BEF13DB" Guid="{198411A6-8BDE-4E22-72E4-ACE3F49FBC22}">
+                    <File Id="_A0B12CACFFED4AF397754AF80BEF13DB" Name="OxigenAssetScheduling.dll" KeyPath="yes" ShortName="OXIGE~64.DLL" Assembly=".net" AssemblyManifest="_A0B12CACFFED4AF397754AF80BEF13DB" AssemblyApplication="_A0B12CACFFED4AF397754AF80BEF13DB" DiskId="1" Source="SourceDir\File\_A0B12CACFFED4AF397754AF80BEF13DB" />
+                </Component>
+                <Component Id="C__AB9BF4C7B7F04C269902AD2085A64215" Guid="{954E6280-8516-1ACE-A6F4-C9469B29B11A}">
+                    <File Id="_AB9BF4C7B7F04C269902AD2085A64215" Name="Interop.WMPLib.dll" KeyPath="yes" ShortName="INTERO~7.DLL" Assembly=".net" AssemblyManifest="_AB9BF4C7B7F04C269902AD2085A64215" AssemblyApplication="_AB9BF4C7B7F04C269902AD2085A64215" DiskId="1" Source="SourceDir\File\_AB9BF4C7B7F04C269902AD2085A64215" />
+                </Component>
+                <Component Id="C__B5F1FE972ED244B7B7F52B35CF21AC08" Guid="{648C4C98-574C-F67C-D62C-AA14CEA0EED0}">
+                    <File Id="_B5F1FE972ED244B7B7F52B35CF21AC08" Name="OxigenPlayerType.dll" KeyPath="yes" ShortName="OXIGE~70.DLL" Assembly=".net" AssemblyManifest="_B5F1FE972ED244B7B7F52B35CF21AC08" AssemblyApplication="_B5F1FE972ED244B7B7F52B35CF21AC08" DiskId="1" Source="SourceDir\File\_B5F1FE972ED244B7B7F52B35CF21AC08" />
+                </Component>
+                <Component Id="C__B8E3D08C1D134341826685F27B975864" Guid="{02F38A84-D788-995A-6A49-97263B4B2DB0}">
+                    <File Id="_B8E3D08C1D134341826685F27B975864" Name="OxigenFileLocker.dll" KeyPath="yes" ShortName="OXIGE~73.DLL" Assembly=".net" AssemblyManifest="_B8E3D08C1D134341826685F27B975864" AssemblyApplication="_B8E3D08C1D134341826685F27B975864" DiskId="1" Source="SourceDir\File\_B8E3D08C1D134341826685F27B975864" />
+                </Component>
+                <Component Id="C__C39891836796488A82E30FFED66B7FB3" Guid="{5EBCE8CC-9518-82C5-0975-A4C10058775C}">
+                    <File Id="_C39891836796488A82E30FFED66B7FB3" Name="OxigenLoggerInfo.dll" KeyPath="yes" ShortName="OXIGE~75.DLL" Assembly=".net" AssemblyManifest="_C39891836796488A82E30FFED66B7FB3" AssemblyApplication="_C39891836796488A82E30FFED66B7FB3" DiskId="1" Source="SourceDir\File\_C39891836796488A82E30FFED66B7FB3" />
+                </Component>
+                <Component Id="C__CDD9C3C2CE6044559E755846D9890DEB" Guid="{3E55A189-B572-EE61-DCD0-BC9643E41361}">
+                    <File Id="_CDD9C3C2CE6044559E755846D9890DEB" Name="AxInterop.ShockwaveFlashObjects.dll" KeyPath="yes" ShortName="AXINTE~3.DLL" Assembly=".net" AssemblyManifest="_CDD9C3C2CE6044559E755846D9890DEB" AssemblyApplication="_CDD9C3C2CE6044559E755846D9890DEB" DiskId="1" Source="SourceDir\File\_CDD9C3C2CE6044559E755846D9890DEB" />
+                </Component>
+                <Component Id="C__D346EA5E3A574C08A4DE91D7A7536E4A" Guid="{FC2283C1-B6D2-F3D5-496C-DDCFF03E853D}">
+                    <File Id="_D346EA5E3A574C08A4DE91D7A7536E4A" Name="OxigenCompiledRegexes.dll" KeyPath="yes" ShortName="OXIGE~81.DLL" Assembly=".net" AssemblyManifest="_D346EA5E3A574C08A4DE91D7A7536E4A" AssemblyApplication="_D346EA5E3A574C08A4DE91D7A7536E4A" DiskId="1" Source="SourceDir\File\_D346EA5E3A574C08A4DE91D7A7536E4A" />
+                </Component>
+                <Component Id="C__F753624539664990BD72B4EFBC9E5988" Guid="{A1D9D276-8F29-E696-3B57-321BD4100BB6}">
+                    <File Id="_F753624539664990BD72B4EFBC9E5988" Name="OxigenExceptions.dll" KeyPath="yes" ShortName="OXIGE~92.DLL" Assembly=".net" AssemblyManifest="_F753624539664990BD72B4EFBC9E5988" AssemblyApplication="_F753624539664990BD72B4EFBC9E5988" DiskId="1" Source="SourceDir\File\_F753624539664990BD72B4EFBC9E5988" />
+                </Component>
+                <Component Id="C__F795420A9AABE2DE9DB2EA0FC8245159" Guid="{BB662F7D-BA50-37EF-1B5E-1D19EDD1E5A8}">
+                    <File Id="_F795420A9AABE2DE9DB2EA0FC8245159" Name="Flash10l.ocx" KeyPath="yes" ShortName="FLASH10L.OCX" DiskId="1" Source="SourceDir\File\_F795420A9AABE2DE9DB2EA0FC8245159" />
+                </Component>
+                <Component Id="C__FD1E35475CD443D7AC82D6E214ACBBC0" Guid="{802E9434-9603-2EFE-E58F-A4F2A34EE019}">
+                    <File Id="_FD1E35475CD443D7AC82D6E214ACBBC0" Name="Interop.SHDocVw.dll" KeyPath="yes" ShortName="INTERO~9.DLL" Assembly=".net" AssemblyManifest="_FD1E35475CD443D7AC82D6E214ACBBC0" AssemblyApplication="_FD1E35475CD443D7AC82D6E214ACBBC0" DiskId="1" Source="SourceDir\File\_FD1E35475CD443D7AC82D6E214ACBBC0" />
+                </Component>
+            </Directory>
+            <Directory Id="DATAANDSETTINGS" Name="DataAndSettings" ShortName="DATAAN~1">
+                <Component Id="C__B3EB148CD7AC493E92759DF7CC85889F" Guid="{08061880-3FE5-F714-6E42-2A143D2ACC95}" KeyPath="yes">
+                    <CreateFolder Directory="DATAANDSETTINGS" />
+                </Component>
+                <Directory Id="_5C2484F05CED4CF19D48E99D5C943E46" Name="data" ShortName="DATA">
+                    <Directory Id="_BFD11BFE3C994619B82AF9F687CDDE18" Name="Other" ShortName="OTHER">
+                        <Component Id="C__16B31EBFB6654537A19D85399D33539F" Guid="{09977AF3-EA67-5948-D44E-BFBE41EACDBA}" KeyPath="yes">
+                            <CreateFolder Directory="_BFD11BFE3C994619B82AF9F687CDDE18" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="_2C484A977F244EC2A72BCD5D4A292E22" Name="Assets" ShortName="ASSETS">
+                        <Component Id="C__44DBC588196A4D80B4336C33E58644B9" Guid="{D9C71775-97AD-96DF-DCEE-85A6DB7D633B}" KeyPath="yes">
+                            <CreateFolder Directory="_2C484A977F244EC2A72BCD5D4A292E22" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="_E2FA3D17A67B4FC9ABB3531116CB52A6" Name="Temp" ShortName="TEMP">
+                        <Component Id="C__50886DCCAF04419799F10480CB16A388" Guid="{3DD01F50-3795-14AA-E356-79B3AC8F8C7C}" KeyPath="yes">
+                            <CreateFolder Directory="_E2FA3D17A67B4FC9ABB3531116CB52A6" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="_CE31F5D458B5457BAD9AD3347B1E5BAC" Name="SettingsData" ShortName="SETTIN~1">
+                        <Component Id="C__6711D8C478F047449AFBDFCD951D4A48" Guid="{44E5612B-7426-64FD-2374-F39354F55E09}" KeyPath="yes">
+                            <CreateFolder Directory="_CE31F5D458B5457BAD9AD3347B1E5BAC" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="_C020D3B1F55045F9BEAB7C9D3809FBFE" Name="ChannelData" ShortName="CHANNE~1">
+                        <Component Id="C__CCB767F47AD74627AEF150F5C368BDF4" Guid="{D2CCA5C9-7B96-6B53-D51B-DE02EA558BA6}" KeyPath="yes">
+                            <CreateFolder Directory="_C020D3B1F55045F9BEAB7C9D3809FBFE" />
+                        </Component>
+                    </Directory>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="DefaultFeature" ConfigurableDirectory="TARGETDIR" Level="1">
+            <ComponentRef Id="C__01F0849615D797FC9E4C1C9A33E586B2" Primary="yes" />
+            <ComponentRef Id="C__03A3A239ECFA42A89B9F097E994AB480" Primary="yes" />
+            <ComponentRef Id="C__04A6031A6FF44EC49DEAB46C48F8B8DA" Primary="yes" />
+            <ComponentRef Id="C__06619B7607DC4FD7B58826DB5D07EBE1" Primary="yes" />
+            <ComponentRef Id="C__08A904E7ACE799937873F81A5CA8F82E" Primary="yes" />
+            <ComponentRef Id="C__08B145DB19514168AC5BC4088D9ACD76" Primary="yes" />
+            <ComponentRef Id="C__0955F2A6E2144A7F8BC7C404C964563F" Primary="yes" />
+            <ComponentRef Id="C__0B347E172D1747FA94D28C8B95248FF6" Primary="yes" />
+            <ComponentRef Id="C__0E965C3EE3D925D17F27800FFEC21C5E" Primary="yes" />
+            <ComponentRef Id="C__0F1BE6ED0B0644FB966E04CA07F73220" Primary="yes" />
+            <ComponentRef Id="C__0F320C96856D43759D0EBA38589380D3" />
+            <ComponentRef Id="C__12D3E0120E014C2BA258395B4C90C3B7" Primary="yes" />
+            <ComponentRef Id="C__1549F49210C1BBD248565B25F2F83B4E" Primary="yes" />
+            <ComponentRef Id="C__15A6157E17EE4142BE0DC704DD0166EA" Primary="yes" />
+            <ComponentRef Id="C__1704BFE2864E7FCDB2D4DE7A52B490AD" Primary="yes" />
+            <ComponentRef Id="C__17551DA8D550466198B31D4C3A1949BC" Primary="yes" />
+            <ComponentRef Id="C__1806949BF94A4150BC958A2DAC191A9C" />
+            <ComponentRef Id="C__1AAC54773F3146CEBA3690149648B13E" Primary="yes" />
+            <ComponentRef Id="C__1B5081CF7FE7406D83F3D578A6BC1D26" Primary="yes" />
+            <ComponentRef Id="C__1EE5BF0563FF4145AEAF77B27A88057F" Primary="yes" />
+            <ComponentRef Id="C__20F2979277118AA9154645D8859DA751" Primary="yes" />
+            <ComponentRef Id="C__21F0EB31876649AAAC3AB43096E2ED81" Primary="yes" />
+            <ComponentRef Id="C__2525BB08EC474DFEA0742287BCF1413E" Primary="yes" />
+            <ComponentRef Id="C__27C6187022A5E0A4AEBB8708F366D9FB" Primary="yes" />
+            <ComponentRef Id="C__280A06EF94CCA16D2F90AE1D825A1BDC" Primary="yes" />
+            <ComponentRef Id="C__32636D26F16D425BADDD5911CC45D764" Primary="yes" />
+            <ComponentRef Id="C__3725EC167BB44CC4B84BE5F5EBF9E864" Primary="yes" />
+            <ComponentRef Id="C__3882BC0B1BDDD77303B69F599E0890E6" Primary="yes" />
+            <ComponentRef Id="C__38DFC37AD0D142D49B3F6C56CF124127" Primary="yes" />
+            <ComponentRef Id="C__3DBCDE6768459AADBDD6942C80D8B4B5" />
+            <ComponentRef Id="C__3FE0D97DDE8132F26965F0F1D02E5243" Primary="yes" />
+            <ComponentRef Id="C__404336CCB9AB4A3FB89A97654CE855E9" Primary="yes" />
+            <ComponentRef Id="C__44C3F952CAAB4BDC9CDE6CF30D152141" Primary="yes" />
+            <ComponentRef Id="C__45C5F693B14A48B1AA8D6F5898F7363E" Primary="yes" />
+            <ComponentRef Id="C__474C60F26C7C4F66B7DC554F77E734D4" Primary="yes" />
+            <ComponentRef Id="C__488ABAF46A7F478EBC4336AD30617FC4" />
+            <ComponentRef Id="C__4C1078259B3F48A39934D5DD94E62CD6" Primary="yes" />
+            <ComponentRef Id="C__4CEA66E0E84C191EC4FB79ED69F5537A" Primary="yes" />
+            <ComponentRef Id="C__5295D4BF2FECDD7810E8FDFEBC63BF01" Primary="yes" />
+            <ComponentRef Id="C__539297B5DE284F6C9EB6C65977511F9E" Primary="yes" />
+            <ComponentRef Id="C__5866B88929C84E1DBE011329F270B952" Primary="yes" />
+            <ComponentRef Id="C__5A354026CDF04C60915794068FF0439C" Primary="yes" />
+            <ComponentRef Id="C__5BC91596BD7F45A7B8F1C31028F8D03C" Primary="yes" />
+            <ComponentRef Id="C__5CDF4441D985243F14AD06BD5BCA5A4C" Primary="yes" />
+            <ComponentRef Id="C__609DB8A551CC40EB94D8C8DB011FE4CE" Primary="yes" />
+            <ComponentRef Id="C__61999B7252F045AE95628D0054B72288" Primary="yes" />
+            <ComponentRef Id="C__62ACE1B6FDBA81D0016A5E44EFDC417A" Primary="yes" />
+            <ComponentRef Id="C__64931689AD027461B6E418A43E82343B" Primary="yes" />
+            <ComponentRef Id="C__64F460FD1143407DAE0BE890AE8E1174" Primary="yes" />
+            <ComponentRef Id="C__668B828ED59B45A18323E1E40CE8EC39" Primary="yes" />
+            <ComponentRef Id="C__670592F2FFEB484A9732F50C29681DF5" Primary="yes" />
+            <ComponentRef Id="C__6813D2D311A9498DA87CB9C47E4DA54C" Primary="yes" />
+            <ComponentRef Id="C__68671F44260A435696433D1D25764392" Primary="yes" />
+            <ComponentRef Id="C__68A81824D0784993816E66F8ABF4DE02" Primary="yes" />
+            <ComponentRef Id="C__6AFAFCCB5F88AF898C4787064768CCF8" Primary="yes" />
+            <ComponentRef Id="C__70C758098EBDB279C3F4C174EF864B01" Primary="yes" />
+            <ComponentRef Id="C__7109E0FE3BBD43CBB157BE0FD004C756" />
+            <ComponentRef Id="C__755AEC281D3247E596C0ED2FDBF7F3B3" Primary="yes" />
+            <ComponentRef Id="C__76928676D0BE4998A24714543F2275B3" Primary="yes" />
+            <ComponentRef Id="C__7AEF6A9085794275B9527A694FBD71C6" Primary="yes" />
+            <ComponentRef Id="C__7B118010AE2A3C5F4E3391F9A3B33B48" Primary="yes" />
+            <ComponentRef Id="C__7BDA16B247244C4D8713D73CAEA0EFEF" Primary="yes" />
+            <ComponentRef Id="C__7EF3ACAC6C9A4567AC9B51883D18D89B" Primary="yes" />
+            <ComponentRef Id="C__7F0348A4391D4948977083A13AA54C1B" Primary="yes" />
+            <ComponentRef Id="C__815D80A538F78B07309BB759FBA0047B" Primary="yes" />
+            <ComponentRef Id="C__8201E8B3310A4B25AF9FCBE1DC595F2D" Primary="yes" />
+            <ComponentRef Id="C__86D2707D62074CE6A606D216D2CE6ADA" Primary="yes" />
+            <ComponentRef Id="C__879AF09C3E2F4892BAC467A762F5276B" Primary="yes" />
+            <ComponentRef Id="C__8853401E45933424361E5CE505F57BC1" Primary="yes" />
+            <ComponentRef Id="C__890588F6B1FA433A82D7403EC04A8122" Primary="yes" />
+            <ComponentRef Id="C__8E8EED9357393C9D0883A46113D20EBE" Primary="yes" />
+            <ComponentRef Id="C__8F8076C115DB423FA64AE7454974E6F3" Primary="yes" />
+            <ComponentRef Id="C__8F9B5B37C6964822A3C30D65BDF2670F" Primary="yes" />
+            <ComponentRef Id="C__9407E67E6AB0CF272CF918CFF2F5FEE7" Primary="yes" />
+            <ComponentRef Id="C__96E1A3D01E1815BD0DE26C05BB7ACE4C" Primary="yes" />
+            <ComponentRef Id="C__97D8DD3BAA414FF1ABD3F10E7F1272A6" Primary="yes" />
+            <ComponentRef Id="C__9921793EE9FABE2B63D0C31A7077C220" Primary="yes" />
+            <ComponentRef Id="C__9CB2F73757DD4E749A652C5E75222C4D" Primary="yes" />
+            <ComponentRef Id="C__9FB092FDB292E7AE109CAD8A63BE0E18" />
+            <ComponentRef Id="C__A0B12CACFFED4AF397754AF80BEF13DB" Primary="yes" />
+            <ComponentRef Id="C__A639031151F54F13B6B11EE62C6148D9" Primary="yes" />
+            <ComponentRef Id="C__A643C77241B94915B3D4E45C637A63B9" Primary="yes" />
+            <ComponentRef Id="C__A8361052E52022AF38BA3DF283D9F28F" Primary="yes" />
+            <ComponentRef Id="C__A8A42F228A844EA59C47407C638AC9A7" Primary="yes" />
+            <ComponentRef Id="C__AA9DD2E132274C1D9C4C16C196F5CD14" Primary="yes" />
+            <ComponentRef Id="C__AAA1CAB1B9E46FF90F9DF3F355828EB4" Primary="yes" />
+            <ComponentRef Id="C__AB416EB67CCB42A79ADF08E5DBD07D64" Primary="yes" />
+            <ComponentRef Id="C__AB9BF4C7B7F04C269902AD2085A64215" Primary="yes" />
+            <ComponentRef Id="C__B17210CDEDB94D7DB29273CAD08399E6" Primary="yes" />
+            <ComponentRef Id="C__B5F1FE972ED244B7B7F52B35CF21AC08" Primary="yes" />
+            <ComponentRef Id="C__B633146242E68572C9C3D6FBB438DC4B" Primary="yes" />
+            <ComponentRef Id="C__B8992F2255D64D0398F13BB351EEE885" Primary="yes" />
+            <ComponentRef Id="C__B8E3D08C1D134341826685F27B975864" Primary="yes" />
+            <ComponentRef Id="C__BAD6BB3AC14240A38C4D2ADE8E45638F" Primary="yes" />
+            <ComponentRef Id="C__C215BC70DA93492C80BA72A8A13A508B" Primary="yes" />
+            <ComponentRef Id="C__C39891836796488A82E30FFED66B7FB3" Primary="yes" />
+            <ComponentRef Id="C__C79CE05F49854F0493967DD9F0B62312" Primary="yes" />
+            <ComponentRef Id="C__C79CF83D833447C4945930BD74BCB0CD" Primary="yes" />
+            <ComponentRef Id="C__C7A7BE14CAE446D8B32E1B6C6CE1445C" />
+            <ComponentRef Id="C__CB1CD26F225204EE33AAFA1C6E28C46A" Primary="yes" />
+            <ComponentRef Id="C__CDB90C3C3E9E4FD8A3B36622962E9D79" Primary="yes" />
+            <ComponentRef Id="C__CDD9C3C2CE6044559E755846D9890DEB" Primary="yes" />
+            <ComponentRef Id="C__CEB66504683E4015BFAC0F974DF78498" Primary="yes" />
+            <ComponentRef Id="C__D05C5EBDEA6042CFAEAF8D55D4517116" Primary="yes" />
+            <ComponentRef Id="C__D346EA5E3A574C08A4DE91D7A7536E4A" Primary="yes" />
+            <ComponentRef Id="C__D7521D703B604F7B8B7B75043CCDC5E0" />
+            <ComponentRef Id="C__DDC0B485FFF0C7AA1AB34299E57F147B" Primary="yes" />
+            <ComponentRef Id="C__DEBCFDCF3464F990318A494971277230" Primary="yes" />
+            <ComponentRef Id="C__DECCCA21B6A340DCB40674E56B505CAB" Primary="yes" />
+            <ComponentRef Id="C__E1B33297778F51DF4511FD0A33245806" Primary="yes" />
+            <ComponentRef Id="C__E67F9398F27946D1AA43977D9A1EB939" Primary="yes" />
+            <ComponentRef Id="C__EA1CC45DAAD2C782574E85230AB923DF" Primary="yes" />
+            <ComponentRef Id="C__EA759C36278B45A8B05EF7B3BE2FE8FA" Primary="yes" />
+            <ComponentRef Id="C__EBE1C03BBA5344CEBC3219777A932A8C" Primary="yes" />
+            <ComponentRef Id="C__EE2C7608729A4AC3963CB0EEE761E9BF" Primary="yes" />
+            <ComponentRef Id="C__EFFF43CAEA964628913A46D37364411C" Primary="yes" />
+            <ComponentRef Id="C__F69A323D425A37FCAE294F36389920A8" Primary="yes" />
+            <ComponentRef Id="C__F74BCBA1DBEB47EA9565C754197DF44D" Primary="yes" />
+            <ComponentRef Id="C__F753624539664990BD72B4EFBC9E5988" Primary="yes" />
+            <ComponentRef Id="C__F795420A9AABE2DE9DB2EA0FC8245159" />
+            <ComponentRef Id="C__F7A08614EE6C4CE48E65B4F7E1A37965" />
+            <ComponentRef Id="C__F7B7954236D4419EA541DE0375D4363C" Primary="yes" />
+            <ComponentRef Id="C__F807131C2C294A72990180AF9EF156D9" Primary="yes" />
+            <ComponentRef Id="C__FB8E447FC73DADBD9CCF4F8B1D3C45E8" Primary="yes" />
+            <ComponentRef Id="C__FD1E35475CD443D7AC82D6E214ACBBC0" Primary="yes" />
+            <ComponentRef Id="C__B3EB148CD7AC493E92759DF7CC85889F" />
+            <ComponentRef Id="C__16B31EBFB6654537A19D85399D33539F" />
+            <ComponentRef Id="C__44DBC588196A4D80B4336C33E58644B9" />
+            <ComponentRef Id="C__50886DCCAF04419799F10480CB16A388" />
+            <ComponentRef Id="C__6711D8C478F047449AFBDFCD951D4A48" />
+            <ComponentRef Id="C__CCB767F47AD74627AEF150F5C368BDF4" />
+            <ComponentRef Id="C__4FDFBAF0735D43588C25514568160BE6" />
+            <ComponentRef Id="C__78398ECB590B43D082BE8948751EEE57" />
+            <ComponentRef Id="C__82E6CB6ED36640EC8D093334EA39790C" />
+            <ComponentRef Id="C__8EC617AF8038410A9B9109C39D4C2FAC" />
+            <ComponentRef Id="C__A8A465734B904C18A7083AEE2CEC0F4D" />
+            <ComponentRef Id="C__6BADC087DD53481FB32D4AD437067F5F" />
+            <ComponentRef Id="C__4FC332D23F034CBF865CD88803D45D0A" />
+            <ComponentRef Id="C__CE9C806DCF524579A5DB2ECB87F1DF8F" />
+            <ComponentRef Id="C__E9BE198098924984BAA5C1C7B2EFD638" />
+            <ComponentRef Id="C__FA80340217F84034A9AFBDFC413D46D7" />
+            <ComponentRef Id="C__2B1873B36854C1AF26BB9D552AB6821D" Primary="yes" />
+            <ComponentRef Id="C__330FE5A1348C936B1BEA5490F591A6BE" Primary="yes" />
+        </Feature>
+        <Media Id="1" Cabinet="_64688BE271367127961EE39357744018" EmbedCab="yes" />
+        <Property Id="VSDFrameworkVersion" Value="3.5.30729" />
+        <Property Id="VSDAllowLaterFrameworkVersions" Value="False" />
+        <Property Id="ARPCONTACT" Value="Oxigen" />
+        <Property Id="ARPURLINFOABOUT" Value="http://www.oxigen.net" />
+        <Property Id="ALLUSERS" Value="2" />
+        <Property Id="NEWERPRODUCTFOUND" Secure="yes" />
+        <Property Id="VSDNETURLMSG" Value="This setup requires the .NET Framework version [1].  Please install the .NET Framework and run this setup again.  The .NET Framework can be obtained from the web.  Would you like to do this now?" />
+        <Property Id="VSDIISMSG" Value="This setup requires Internet Information Server 4.0 or higher and Windows NT 4.0, Windows 2000 or higher.  This setup cannot be installed on Windows 95, Windows 98, or Windows Me.  Please install Internet Information Server and run this setup again." />
+        <Property Id="VSDUIANDADVERTISED" Value="This advertised application will not be installed because it might be unsafe. Contact your administrator to change the installation user interface option of the package to basic." />
+        <Property Id="VSDNETMSG" Value="This setup requires the .NET Framework version [1].  Please install the .NET Framework and run this setup again." />
+        <Property Id="VSDINVALIDURLMSG" Value="The specified path '[2]' is unavailable. The Internet Information Server might not be running or the path exists and is redirected to another machine. Please check the status of this virtual directory in the Internet Services Manager." />
+        <Property Id="VSDVERSIONMSG" Value="Unable to install because a newer version of this product is already installed." />
+        <Property Id="DefaultUIFont" Value="VsdDefaultUIFont.524F4245_5254_5341_4C45_534153783400" />
+        <Property Id="AdminMaintenanceForm_Action" Value="Repair" />
+        <Property Id="MaintenanceForm_Action" Value="Repair" />
+        <Property Id="ErrorDialog" Value="ErrorDialog" />
+        <Property Id="SFF_UpFldrBtn" Value="UpFldrBtn" />
+        <Property Id="SFF_NewFldrBtn" Value="NewFldrBtn" />
+        <Property Id="EulaForm_Property" Value="No" />
+        <Property Id="FolderForm_AllUsers" Value="ME" />
+        <Property Id="FolderForm_AllUsersVisible" Value="0" />
+        <Property Id="AdminWelcomeForm_NextArgs" Value="AdminFolderForm" />
+        <Property Id="AdminFolderForm_PrevArgs" Value="AdminWelcomeForm" />
+        <Property Id="AdminFolderForm_NextArgs" Value="AdminConfirmInstallForm" />
+        <Property Id="AdminConfirmInstallForm_PrevArgs" Value="AdminFolderForm" />
+        <Property Id="WelcomeForm_NextArgs" Value="EulaForm" />
+        <Property Id="EulaForm_PrevArgs" Value="WelcomeForm" />
+        <Property Id="EulaForm_NextArgs" Value="FolderForm" />
+        <Property Id="FolderForm_PrevArgs" Value="EulaForm" />
+        <Property Id="FolderForm_NextArgs" Value="ConfirmInstallForm" />
+        <Property Id="ConfirmInstallForm_PrevArgs" Value="FolderForm" />
+        <UI>
+            <Error Id="1001">Error [1]. [2]</Error>
+            <RadioButtonGroup Property="AdminMaintenanceForm_Action">
+                <RadioButton Height="17" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Repair [ProductName]" Value="Repair" Width="348" X="0" Y="0" />
+                <RadioButton Height="17" Text="{\VSI_MS_Sans_Serif13.0_0_0}Re&amp;move [ProductName]" Value="Remove" Width="348" X="0" Y="18" />
+            </RadioButtonGroup>
+            <RadioButtonGroup Property="EulaForm_Property">
+                <RadioButton Height="15" Text="{\VSI_MS_Sans_Serif13.0_0_0}I &amp;Do Not Agree" Value="No" Width="138" X="0" Y="0" />
+                <RadioButton Height="15" Text="{\VSI_MS_Sans_Serif13.0_0_0}I &amp;Agree" Value="Yes" Width="138" X="138" Y="0" />
+            </RadioButtonGroup>
+            <RadioButtonGroup Property="FolderForm_AllUsers">
+                <RadioButton Height="17" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Everyone" Value="ALL" Width="342" X="0" Y="0" />
+                <RadioButton Height="17" Text="{\VSI_MS_Sans_Serif13.0_0_0}Just &amp;me" Value="ME" Width="342" X="0" Y="18" />
+            </RadioButtonGroup>
+            <RadioButtonGroup Property="MaintenanceForm_Action">
+                <RadioButton Height="17" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Repair [ProductName]" Value="Repair" Width="348" X="0" Y="0" />
+                <RadioButton Height="17" Text="{\VSI_MS_Sans_Serif13.0_0_0}Re&amp;move [ProductName]" Value="Remove" Width="348" X="0" Y="18" />
+            </RadioButtonGroup>
+            <TextStyle Id="VsdDefaultUIFont.524F4245_5254_5341_4C45_534153783400" FaceName="MS Sans Serif" Size="9" Red="0" Green="0" Blue="0" />
+            <TextStyle Id="VSI_MS_Sans_Serif13.0_0_0" FaceName="MS Sans Serif" Size="9" Red="0" Green="0" Blue="0" />
+            <TextStyle Id="VSI_MS_Sans_Serif16.0_1_0" FaceName="MS Sans Serif" Size="12" Red="0" Green="0" Blue="0" Bold="yes" />
+            <TextStyle Id="VSI_MS_Shell_Dlg13.0_0_0" FaceName="MS Shell Dlg" Size="9" Red="0" Green="0" Blue="0" />
+            <UIText Id="MenuLocal">Will be installed on local hard drive</UIText>
+            <UIText Id="SelParentCostNegNeg">This feature frees up [1] on your hard drive. It has [2] of [3] subfeatures selected. The subfeatures free up [4] on your hard drive.</UIText>
+            <UIText Id="SelNetworkNetwork">This feature will remain to be run from the network</UIText>
+            <UIText Id="SelNetworkLocal">This feature will change from run from network state to be installed on the local hard drive</UIText>
+            <UIText Id="SelNetworkAdvertise">This feature will change from run from network state to set to be installed when required</UIText>
+            <UIText Id="SelNetworkAbsent">This feature will be uninstalled completely, you won't be able to run it from the network</UIText>
+            <UIText Id="SelAbsentAbsent">This feature will remain uninstalled</UIText>
+            <UIText Id="ScriptInProgress">Gathering required information...</UIText>
+            <UIText Id="MenuCD">Will be installed to run from CD</UIText>
+            <UIText Id="SelChildCostNeg">This feature frees up [1] on your hard drive.</UIText>
+            <UIText Id="SelCDLocal">This feature will change from run from CD state to be installed on the local hard drive</UIText>
+            <UIText Id="MenuAbsent">Entire feature will be unavailable</UIText>
+            <UIText Id="SelCDAdvertise">This feature will change from run from CD state to set to be installed when required</UIText>
+            <UIText Id="MenuAllNetwork">Entire feature will be installed to run from network</UIText>
+            <UIText Id="SelLocalNetwork">This feature will be removed from your local hard drive, but will be still available to run from the network</UIText>
+            <UIText Id="SelAdvertiseNetwork">This feature will be available to run from the network</UIText>
+            <UIText Id="MenuAllLocal">Entire feature will be installed on local hard drive</UIText>
+            <UIText Id="SelAdvertiseLocal">This feature will be installed on your local hard drive</UIText>
+            <UIText Id="MenuAllCD">Entire feature will be installed to run from CD</UIText>
+            <UIText Id="SelCDAbsent">This feature will be uninstalled completely, you won't be able to run it from CD</UIText>
+            <UIText Id="MenuAdvertise">Feature will be installed when required</UIText>
+            <UIText Id="SelAdvertiseCD">This feature will be available to run from CD</UIText>
+            <UIText Id="bytes">bytes</UIText>
+            <UIText Id="SelAdvertiseAdvertise">Will be installed when required</UIText>
+            <UIText Id="AbsentPath" />
+            <UIText Id="MB">MB</UIText>
+            <UIText Id="SelAdvertiseAbsent">This feature will become unavailable</UIText>
+            <UIText Id="KB">KB</UIText>
+            <UIText Id="GB">GB</UIText>
+            <UIText Id="SelAbsentNetwork">This feature will be installed to run from the network</UIText>
+            <UIText Id="SelAbsentCD">This feature will be installed to run from CD</UIText>
+            <UIText Id="SelAbsentAdvertise">This feature will be set to be installed when required</UIText>
+            <UIText Id="SelAbsentLocal">This feature will be installed on the local hard drive</UIText>
+            <UIText Id="SelCDCD">This feature will remain to be run from CD</UIText>
+            <UIText Id="NewFolder">Folder|New Folder</UIText>
+            <UIText Id="MenuNetwork">Will be installed to run from network</UIText>
+            <UIText Id="SelLocalCD">This feature will be removed from your local hard drive, but will be still available to run from CD</UIText>
+            <UIText Id="SelLocalAbsent">This feature will be completely removed</UIText>
+            <UIText Id="SelCostPending">Compiling cost for this feature...</UIText>
+            <UIText Id="SelLocalLocal">This feature will remain on you local hard drive</UIText>
+            <UIText Id="SelChildCostPos">This feature requires [1] on your hard drive.</UIText>
+            <UIText Id="SelLocalAdvertise">This feature will be removed from your local hard drive, but will be set to be installed when required</UIText>
+            <UIText Id="SelParentCostNegPos">This feature frees up [1] on your hard drive. It has [2] of [3] subfeatures selected. The subfeatures require [4] on your hard drive.</UIText>
+            <UIText Id="SelParentCostPosNeg">This feature requires [1] on your hard drive. It has [2] of [3] subfeatures selected. The subfeatures free up [4] on your hard drive.</UIText>
+            <UIText Id="SelParentCostPosPos">This feature requires [1] on your hard drive. It has [2] of [3] subfeatures selected. The subfeatures require [4] on your hard drive.</UIText>
+            <UIText Id="TimeRemaining">Time remaining: {[1] minutes }{[2] seconds}</UIText>
+            <UIText Id="VolumeCostAvailable">Available</UIText>
+            <UIText Id="VolumeCostDifference">Difference</UIText>
+            <UIText Id="VolumeCostRequired">Required</UIText>
+            <UIText Id="VolumeCostSize">Disk Size</UIText>
+            <UIText Id="VolumeCostVolume">Volume</UIText>
+            <Dialog Id="UserExitForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="CloseButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Close" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Disabled="yes" />
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Installation Interrupted" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyTextInstall" Type="Text" X="18" Y="63" Width="342" Height="24" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installation was interrupted before [ProductName] could be installed. You need to restart the installer to try again." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+                <Control Id="BodyTextRemove" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer was interrupted before [ProductName] could be removed. You need to restart the installer to try again.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="FatalErrorForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="CloseButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Close" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Disabled="yes" />
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Installation Incomplete" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyTextInstall" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer was interrupted before [ProductName] could be removed. You need to restart the installer to try again.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+                <Control Id="BodyTextRemove" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer was interrupted before [ProductName] could be installed. You need to restart the installer to try again.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="MaintenanceForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="FinishButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Finish" TabSkip="no" Default="yes">
+                    <Publish Property="REINSTALL" Value="ALL">MaintenanceForm_Action="Repair"</Publish>
+                    <Publish Event="Reinstall" Value="ALL">MaintenanceForm_Action="Repair"</Publish>
+                    <Publish Property="REMOVE" Value="ALL">MaintenanceForm_Action="Remove"</Publish>
+                    <Publish Event="Remove" Value="ALL">MaintenanceForm_Action="Remove"</Publish>
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="RepairRadioGroup" Type="RadioButtonGroup" X="18" Y="108" Width="348" Height="48" Property="MaintenanceForm_Action" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiRadioButtonGroup" TabSkip="no" />
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Welcome to the [ProductName] Setup Wizard" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyText" Type="Text" X="9" Y="63" Width="354" Height="42" Text="{\VSI_MS_Sans_Serif13.0_0_0}Select whether you want to repair or remove [ProductName]." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="ResumeForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="FinishButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Finish" TabSkip="no" Default="yes">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Welcome to the [ProductName] Setup Wizard" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyText" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer will resume the installation of [ProductName] on your computer.&#xD;&#xA;&#xD;&#xA;Click &quot;Finish&quot; to continue." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="AdminUserExitForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="CloseButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Close" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Disabled="yes" />
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Installation Interrupted" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyTextInstall" Type="Text" X="18" Y="63" Width="342" Height="24" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installation was interrupted before [ProductName] could be installed. You need to restart the installer to try again." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+                <Control Id="BodyTextRemove" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer was interrupted before [ProductName] could be removed. You need to restart the installer to try again.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="AdminFatalErrorForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="CloseButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Close" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Disabled="yes" />
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Installation Incomplete" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyTextInstall" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer was interrupted before [ProductName] could be installed. You need to restart the installer to try again.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+                <Control Id="BodyTextRemove" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer was interrupted before [ProductName] could be removed. You need to restart the installer to try again.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="AdminMaintenanceForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="FinishButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Finish" TabSkip="no" Default="yes">
+                    <Publish Property="REINSTALL" Value="ALL">AdminMaintenanceForm_Action="Repair"</Publish>
+                    <Publish Event="Reinstall" Value="ALL">AdminMaintenanceForm_Action="Repair"</Publish>
+                    <Publish Property="REMOVE" Value="ALL">AdminMaintenanceForm_Action="Remove"</Publish>
+                    <Publish Event="Remove" Value="ALL">AdminMaintenanceForm_Action="Remove"</Publish>
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="RepairRadioGroup" Type="RadioButtonGroup" X="18" Y="108" Width="348" Height="48" Property="AdminMaintenanceForm_Action" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiRadioButtonGroup" TabSkip="no" />
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Welcome to the [ProductName] Setup Wizard" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyText" Type="Text" X="9" Y="63" Width="354" Height="42" Text="{\VSI_MS_Sans_Serif13.0_0_0}Select whether you want to repair or remove [ProductName]." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="AdminResumeForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="FinishButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Finish" TabSkip="no" Default="yes">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Welcome to the [ProductName] Setup Wizard" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyText" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer will resume the installation of [ProductName] on your computer.&#xD;&#xA;&#xD;&#xA;Click &quot;Finish&quot; to continue." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="AdminFinishedForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="CloseButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Close" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Disabled="yes" />
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Installation Complete" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyTextInstall" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}A network image of [ProductName] has been successfully created.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+                <Control Id="BodyText" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}[ProductName] has been successfully removed.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="Cancel" X="50" Y="50" Width="271" Height="78" Title="[ProductName]" NoMinimize="yes">
+                <Control Id="NoButton" Type="PushButton" X="198" Y="48" Width="65" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;No" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Return" />
+                </Control>
+                <Control Id="YesButton" Type="PushButton" X="126" Y="48" Width="65" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Yes" TabSkip="no">
+                    <Publish Event="EndDialog" Value="Exit" />
+                </Control>
+                <Control Id="BodyText" Type="Text" X="6" Y="9" Width="258" Height="24" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installation is not yet complete. Are you sure you want to exit?" TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="ReadmeForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Default="yes">
+                    <Publish Event="EndDialog" Value="Return">ReadmeForm_NextArgs=""</Publish>
+                    <Publish Event="NewDialog" Value="[ReadmeForm_NextArgs]">ReadmeForm_NextArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="ReadmeText" Type="ScrollableText" X="9" Y="63" Width="357" Height="180" TabSkip="no" Sunken="yes" />
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no">
+                    <Condition Action="disable">ReadmeForm_PrevArgs=""</Condition>
+                    <Condition Action="enable">ReadmeForm_PrevArgs&lt;&gt;""</Condition>
+                    <Publish Event="NewDialog" Value="[ReadmeForm_PrevArgs]">ReadmeForm_PrevArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}[ProductName] Information" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="FinishedForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="CloseButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Close" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Disabled="yes" />
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Installation Complete" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyText" Type="Text" X="9" Y="63" Width="354" Height="138" Text="{\VSI_MS_Sans_Serif13.0_0_0}[ProductName] has been successfully installed.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+                <Control Id="BodyTextRemove" Type="Text" X="9" Y="63" Width="354" Height="138" Text="{\VSI_MS_Sans_Serif13.0_0_0}[ProductName] has been successfully removed.&#xD;&#xA;&#xD;&#xA;Click &quot;Close&quot; to exit." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+                <Control Id="UpdateText" Type="Text" X="9" Y="216" Width="354" Height="36" Text="{\VSI_MS_Sans_Serif13.0_0_0}Please use Windows Update to check for any critical updates to the .NET Framework." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="AdminProgressForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]" Modeless="yes">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Disabled="yes" />
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="ProgressBar" Type="ProgressBar" X="18" Y="108" Width="336" Height="15" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiProgressBar" TabSkip="yes" Disabled="yes">
+                    <Subscribe Event="StopServices" Attribute="Progress" />
+                    <Subscribe Event="DeleteServices" Attribute="Progress" />
+                    <Subscribe Event="RemoveRegistryValues" Attribute="Progress" />
+                    <Subscribe Event="RemoveFiles" Attribute="Progress" />
+                    <Subscribe Event="MoveFiles" Attribute="Progress" />
+                    <Subscribe Event="InstallFiles" Attribute="Progress" />
+                    <Subscribe Event="WriteRegistryValues" Attribute="Progress" />
+                    <Subscribe Event="WriteIniValues" Attribute="Progress" />
+                    <Subscribe Event="StartServices" Attribute="Progress" />
+                    <Subscribe Event="InstallAdminPackage" Attribute="Progress" />
+                    <Subscribe Event="UnmoveFiles" Attribute="Progress" />
+                    <Subscribe Event="SetProgress" Attribute="Progress" />
+                </Control>
+                <Control Id="ProgressLabel" Type="Text" X="18" Y="96" Width="336" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}Please wait..." TabSkip="yes" />
+                <Control Id="InstalledBody" Type="Text" X="9" Y="63" Width="354" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}[ProductName] is being installed." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+                <Control Id="RemovedBody" Type="Text" X="18" Y="63" Width="336" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}[ProductName] is being removed." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+                <Control Id="RemoveBannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Removing [ProductName]" TabSkip="yes" Transparent="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+                <Control Id="InstalledBannerText" Type="Text" X="9" Y="9" Width="255" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Installing [ProductName]" TabSkip="yes" Transparent="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="AdminWelcomeForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Default="yes">
+                    <Publish Event="EndDialog" Value="Return">AdminWelcomeForm_NextArgs=""</Publish>
+                    <Publish Event="NewDialog" Value="[AdminWelcomeForm_NextArgs]">AdminWelcomeForm_NextArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no">
+                    <Condition Action="disable">AdminWelcomeForm_PrevArgs=""</Condition>
+                    <Condition Action="enable">AdminWelcomeForm_PrevArgs&lt;&gt;""</Condition>
+                    <Publish Event="NewDialog" Value="[AdminWelcomeForm_PrevArgs]">AdminWelcomeForm_PrevArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Welcome to the [ProductName] Network Setup Wizard" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="CopyrightWarningText" Type="Text" X="9" Y="186" Width="354" Height="66" Text="{\VSI_MS_Sans_Serif13.0_0_0}WARNING: This computer program is protected by copyright law and international treaties. Unauthorized duplication or distribution of this program, or any portion of it, may result in severe civil or criminal penalties, and will be prosecuted to the maximum extent possible under the law." TabSkip="yes" NoPrefix="yes" />
+                <Control Id="WelcomeText" Type="Text" X="9" Y="63" Width="354" Height="114" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer will guide you through the steps required to install [ProductName] on your computer." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">Installed="" AND NOT RESUME</Condition>
+                    <Condition Action="hide">Installed&lt;&gt;"" OR RESUME</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="AdminFolderForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]" TrackDiskSpace="yes">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Default="yes">
+                    <Publish Event="SetTargetPath" Value="TARGETDIR">1</Publish>
+                    <Publish Event="SpawnDialog" Value="DiskCost">OutOfDiskSpace=1</Publish>
+                    <Publish Event="EndDialog" Value="Return">AdminFolderForm_NextArgs="" AND OutOfDiskSpace&lt;&gt;1</Publish>
+                    <Publish Event="NewDialog" Value="[AdminFolderForm_NextArgs]">AdminFolderForm_NextArgs&lt;&gt;"" AND OutOfDiskSpace&lt;&gt;1</Publish>
+                    <Publish Property="ALLUSERS" Value="2">AdminFolderForm_AllUsers="ALL"</Publish>
+                </Control>
+                <Control Id="FolderLabel" Type="Text" X="18" Y="114" Width="348" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Folder:" TabSkip="no" />
+                <Control Id="FolderEdit" Type="PathEdit" X="18" Y="126" Width="258" Height="18" Property="TARGETDIR" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiPathEdit" TabSkip="no" Sunken="yes" />
+                <Control Id="BrowseButton" Type="PushButton" X="282" Y="126" Width="84" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}B&amp;rowse..." TabSkip="no">
+                    <Publish Property="SelectFolderDialog_Property" Value="TARGETDIR">1</Publish>
+                    <Publish Event="SpawnDialog" Value="SelectFolderDialog">1</Publish>
+                </Control>
+                <Control Id="DiskCostButton" Type="PushButton" X="282" Y="150" Width="84" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Disk Cost..." TabSkip="no">
+                    <Publish Event="SetTargetPath" Value="TARGETDIR">1</Publish>
+                    <Publish Event="SpawnDialog" Value="DiskCost">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no">
+                    <Condition Action="disable">AdminFolderForm_PrevArgs=""</Condition>
+                    <Condition Action="enable">AdminFolderForm_PrevArgs&lt;&gt;""</Condition>
+                    <Publish Event="NewDialog" Value="[AdminFolderForm_PrevArgs]">AdminFolderForm_PrevArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Network Location" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="Body" Type="Text" X="9" Y="63" Width="354" Height="48" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer will create a network image at the following location.&#xD;&#xA;&#xD;&#xA;To create an image in this folder, click &quot;Next&quot;. To use a different folder, enter it below or click &quot;Browse&quot;." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="DiskCost" X="50" Y="50" Width="361" Height="192" Title="[ProductName] Disk Space" NoMinimize="yes" TrackDiskSpace="yes">
+                <Control Id="OKButton" Type="PushButton" X="288" Y="165" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}OK" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Return" />
+                </Control>
+                <Control Id="VolumeCostList1" Type="VolumeCostList" X="6" Y="39" Width="348" Height="114" Text="{\VSI_MS_Sans_Serif13.0_0_0}{116}{80}{80}{80}{80}" TabSkip="no" Sunken="yes" Removable="yes" Fixed="yes" Remote="yes" />
+                <Control Id="AvailableBodyText" Type="Text" X="6" Y="9" Width="348" Height="24" Text="{\VSI_MS_Sans_Serif13.0_0_0}The list below includes the drives you can install [ProductName] to, along with each drive's available and required disk space." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">OutOfDiskSpace&lt;&gt;1</Condition>
+                    <Condition Action="hide">OutOfDiskSpace=1</Condition>
+                </Control>
+                <Control Id="RequiredBodyText" Type="Text" X="6" Y="9" Width="348" Height="24" Text="{\VSI_MS_Sans_Serif13.0_0_0}The amount of required disk space exceeds the amount of available disk space. The highlighted items indicate the drives with insufficient disk space." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">OutOfDiskSpace=1</Condition>
+                    <Condition Action="hide">OutOfDiskSpace&lt;&gt;1</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="SelectFolderDialog" X="50" Y="50" Width="313" Height="223" Title="Browse for Folder" NoMinimize="yes">
+                <Control Id="OKButton" Type="PushButton" X="168" Y="198" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}OK" TabSkip="no" Default="yes">
+                    <Publish Event="SetTargetPath" Value="[SelectFolderDialog_Property]">1</Publish>
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="240" Y="198" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="Reset" Value="{}">1</Publish>
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Id="BrowseText" Type="Text" X="6" Y="9" Width="60" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Browse:" TabSkip="no" />
+                <Control Id="FolderCombo" Type="DirectoryCombo" X="66" Y="6" Width="198" Height="120" Property="SelectFolderDialog_Property" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiDirectoryCombo" TabSkip="no" Indirect="yes" Removable="yes" Fixed="yes" Remote="yes" RAMDisk="yes" Floppy="yes" />
+                <Control Id="FolderUpButton" Type="PushButton" X="270" Y="6" Width="18" Height="18" Text="[SFF_UpFldrBtn]" TabSkip="no" IconSize="16" FixedSize="yes" Icon="yes">
+                    <Publish Event="DirectoryListUp" Value="{}">1</Publish>
+                </Control>
+                <Control Id="NewFolderButton" Type="PushButton" X="288" Y="6" Width="18" Height="18" Text="[SFF_NewFldrBtn]" TabSkip="no" IconSize="16" FixedSize="yes" Icon="yes">
+                    <Publish Event="DirectoryListNew" Value="{}">1</Publish>
+                </Control>
+                <Control Id="FolderList" Type="DirectoryList" X="6" Y="30" Width="300" Height="129" Property="SelectFolderDialog_Property" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiDirectoryList" TabSkip="no" Sunken="yes" Indirect="yes" />
+                <Control Id="FolderText" Type="Text" X="6" Y="171" Width="60" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Folder:" TabSkip="no" />
+                <Control Id="FolderPathEdit" Type="PathEdit" X="66" Y="168" Width="240" Height="18" Property="SelectFolderDialog_Property" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiPathEdit" TabSkip="no" Sunken="yes" Indirect="yes" />
+            </Dialog>
+            <Dialog Id="AdminConfirmInstallForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Default="yes">
+                    <Publish Event="EndDialog" Value="Return">AdminConfirmInstallForm_NextArgs=""</Publish>
+                    <Publish Event="NewDialog" Value="[AdminConfirmInstallForm_NextArgs]">AdminConfirmInstallForm_NextArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no">
+                    <Condition Action="disable">AdminConfirmInstallForm_PrevArgs=""</Condition>
+                    <Condition Action="enable">AdminConfirmInstallForm_PrevArgs&lt;&gt;""</Condition>
+                    <Publish Event="NewDialog" Value="[AdminConfirmInstallForm_PrevArgs]">AdminConfirmInstallForm_PrevArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Confirm Installation" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyText1" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer is ready to install [ProductName] on your computer.&#xD;&#xA;&#xD;&#xA;Click &quot;Next&quot; to start the installation." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="ErrorDialog" X="50" Y="50" Width="330" Height="101" Title="[ProductName]" ErrorDialog="yes">
+                <Control Id="ErrorText" Type="Text" X="6" Y="9" Width="318" Height="48" Text="{\VSI_MS_Sans_Serif13.0_0_0}" TabSkip="no" Disabled="yes" NoPrefix="yes" />
+                <Control Id="N" Type="PushButton" X="120" Y="72" Width="81" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;No" TabSkip="yes">
+                    <Publish Event="EndDialog" Value="ErrorNo" />
+                </Control>
+                <Control Id="Y" Type="PushButton" X="240" Y="72" Width="81" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Yes" TabSkip="yes">
+                    <Publish Event="EndDialog" Value="ErrorYes" />
+                </Control>
+                <Control Id="A" Type="PushButton" X="0" Y="72" Width="81" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}E&amp;xit Installation" TabSkip="yes">
+                    <Publish Event="EndDialog" Value="ErrorAbort" />
+                </Control>
+                <Control Id="C" Type="PushButton" X="42" Y="72" Width="81" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="yes">
+                    <Publish Event="EndDialog" Value="ErrorCancel" />
+                </Control>
+                <Control Id="I" Type="PushButton" X="81" Y="72" Width="81" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}C&amp;ontinue" TabSkip="yes">
+                    <Publish Event="EndDialog" Value="ErrorIgnore" />
+                </Control>
+                <Control Id="O" Type="PushButton" X="159" Y="72" Width="81" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}OK" TabSkip="yes">
+                    <Publish Event="EndDialog" Value="ErrorOk" />
+                </Control>
+                <Control Id="R" Type="PushButton" X="198" Y="72" Width="81" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Try Again" TabSkip="yes">
+                    <Publish Event="EndDialog" Value="ErrorRetry" />
+                </Control>
+            </Dialog>
+            <Dialog Id="ConfirmRemoveDialog" X="50" Y="50" Width="271" Height="78" Title="Remove [ProductName]" NoMinimize="yes">
+                <Control Id="NoButton" Type="PushButton" X="198" Y="48" Width="65" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;No" TabSkip="no" Default="yes" Cancel="yes">
+                    <Publish Property="WelcomeForm_ConfirmRemove" Value="No" />
+                    <Publish Event="EndDialog" Value="Return" />
+                </Control>
+                <Control Id="YesButton" Type="PushButton" X="126" Y="48" Width="65" Height="21" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Yes" TabSkip="no">
+                    <Publish Property="WelcomeForm_ConfirmRemove" Value="Yes" />
+                    <Publish Event="EndDialog" Value="Return" />
+                </Control>
+                <Control Id="BodyText" Type="Text" X="6" Y="9" Width="258" Height="24" Text="{\VSI_MS_Sans_Serif13.0_0_0}You have chosen to remove [ProductName] from your computer. Are you sure you want to remove it?" TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="FilesInUse" X="50" Y="50" Width="361" Height="177" Title="[ProductName] Files in Use" NoMinimize="yes">
+                <Control Id="RetryButton" Type="PushButton" X="99" Y="150" Width="81" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Try Again" TabSkip="no" Default="yes">
+                    <Publish Event="EndDialog" Value="Retry" />
+                </Control>
+                <Control Id="ContinueButton" Type="PushButton" X="186" Y="150" Width="81" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Continue" TabSkip="no">
+                    <Publish Event="EndDialog" Value="Ignore" />
+                </Control>
+                <Control Id="ExitButton" Type="PushButton" X="273" Y="150" Width="81" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}E&amp;xit Installation" TabSkip="no" Cancel="yes">
+                    <Publish Event="EndDialog" Value="Exit" />
+                </Control>
+                <Control Id="ListFilesInUse" Type="ListBox" X="6" Y="51" Width="348" Height="90" Property="FileInUseProcess" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiFilesInUse" TabSkip="no" Sunken="yes" Sorted="yes" />
+                <Control Id="InstallBodyText" Type="Text" X="6" Y="9" Width="345" Height="36" Text="{\VSI_MS_Sans_Serif13.0_0_0}The following applications are using files which the installer must update. You can either close the applications and click &quot;Try Again&quot;, or click &quot;Continue&quot; so that the installer continues the installation, and replaces these files when your system restarts." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+                <Control Id="RemoveBodyText" Type="Text" X="6" Y="9" Width="345" Height="36" Text="{\VSI_MS_Sans_Serif13.0_0_0}The following applications are using files which the installer must remove. You can either close the applications and click &quot;Try Again&quot;, or click &quot;Continue&quot; so that the installer continues the installation, and replaces these files when your system restarts." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="ProgressForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]" Modeless="yes">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Disabled="yes" />
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="ProgressBar" Type="ProgressBar" X="18" Y="108" Width="336" Height="15" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiProgressBar" TabSkip="yes" Disabled="yes">
+                    <Subscribe Event="StopServices" Attribute="Progress" />
+                    <Subscribe Event="DeleteServices" Attribute="Progress" />
+                    <Subscribe Event="RemoveRegistryValues" Attribute="Progress" />
+                    <Subscribe Event="RemoveFiles" Attribute="Progress" />
+                    <Subscribe Event="MoveFiles" Attribute="Progress" />
+                    <Subscribe Event="InstallFiles" Attribute="Progress" />
+                    <Subscribe Event="WriteRegistryValues" Attribute="Progress" />
+                    <Subscribe Event="WriteIniValues" Attribute="Progress" />
+                    <Subscribe Event="StartServices" Attribute="Progress" />
+                    <Subscribe Event="InstallAdminPackage" Attribute="Progress" />
+                    <Subscribe Event="UnmoveFiles" Attribute="Progress" />
+                    <Subscribe Event="SetProgress" Attribute="Progress" />
+                </Control>
+                <Control Id="ProgressLabel" Type="Text" X="18" Y="96" Width="336" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}Please wait..." TabSkip="yes" />
+                <Control Id="InstalledBody" Type="Text" X="9" Y="63" Width="354" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}[ProductName] is being installed." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+                <Control Id="RemovedBody" Type="Text" X="18" Y="63" Width="336" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}[ProductName] is being removed." TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+                <Control Id="RemoveBannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Removing [ProductName]" TabSkip="yes" Transparent="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE&lt;&gt;""</Condition>
+                    <Condition Action="hide">REMOVE=""</Condition>
+                </Control>
+                <Control Id="InstalledBannerText" Type="Text" X="9" Y="9" Width="255" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Installing [ProductName]" TabSkip="yes" Transparent="yes" NoPrefix="yes">
+                    <Condition Action="show">REMOVE=""</Condition>
+                    <Condition Action="hide">REMOVE&lt;&gt;""</Condition>
+                </Control>
+            </Dialog>
+            <Dialog Id="EulaForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="LicenseText" Type="ScrollableText" X="18" Y="105" Width="348" Height="120" TabSkip="no" Sunken="yes" />
+                <Control Id="AgreeRadioGroup" Type="RadioButtonGroup" X="18" Y="231" Width="348" Height="15" Property="EulaForm_Property" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiRadioButtonGroup" TabSkip="no" />
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no">
+                    <Condition Action="disable">EulaForm_PrevArgs=""</Condition>
+                    <Condition Action="enable">EulaForm_PrevArgs&lt;&gt;""</Condition>
+                    <Publish Event="NewDialog" Value="[EulaForm_PrevArgs]">EulaForm_PrevArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Default="yes">
+                    <Condition Action="disable">EulaForm_Property&lt;&gt;"Yes"</Condition>
+                    <Condition Action="enable">EulaForm_Property="Yes"</Condition>
+                    <Publish Event="EndDialog" Value="Return">EulaForm_NextArgs=""</Publish>
+                    <Publish Event="NewDialog" Value="[EulaForm_NextArgs]">EulaForm_NextArgs&lt;&gt;""</Publish>
+                    <Subscribe Event="EulaEvent" Attribute="Enabled" />
+                </Control>
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}License Agreement" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyText" Type="Text" X="9" Y="63" Width="360" Height="40" Text="{\VSI_MS_Sans_Serif13.0_0_0}Please take a moment to read the license agreement now. If you accept the terms below, click &quot;I Agree&quot;, then &quot;Next&quot;. Otherwise click &quot;Cancel&quot;." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="WelcomeForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Default="yes">
+                    <Publish Event="EndDialog" Value="Return">WelcomeForm_NextArgs=""</Publish>
+                    <Publish Event="NewDialog" Value="[WelcomeForm_NextArgs]">WelcomeForm_NextArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no">
+                    <Condition Action="disable">WelcomeForm_PrevArgs=""</Condition>
+                    <Condition Action="enable">WelcomeForm_PrevArgs&lt;&gt;""</Condition>
+                    <Publish Event="NewDialog" Value="[WelcomeForm_PrevArgs]">WelcomeForm_PrevArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Welcome to the [ProductName] Setup Wizard" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="CopyrightWarningText" Type="Text" X="9" Y="186" Width="354" Height="66" Text="{\VSI_MS_Sans_Serif13.0_0_0}WARNING: This computer program is protected by copyright law and international treaties. Unauthorized duplication or distribution of this program, or any portion of it, may result in severe civil or criminal penalties, and will be prosecuted to the maximum extent possible under the law." TabSkip="yes" NoPrefix="yes" />
+                <Control Id="WelcomeText" Type="Text" X="9" Y="63" Width="354" Height="114" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer will guide you through the steps required to install [ProductName] on your computer." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="ConfirmInstallForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Default="yes">
+                    <Publish Event="EndDialog" Value="Return">ConfirmInstallForm_NextArgs=""</Publish>
+                    <Publish Event="NewDialog" Value="[ConfirmInstallForm_NextArgs]">ConfirmInstallForm_NextArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no">
+                    <Condition Action="disable">ConfirmInstallForm_PrevArgs=""</Condition>
+                    <Condition Action="enable">ConfirmInstallForm_PrevArgs&lt;&gt;""</Condition>
+                    <Publish Event="NewDialog" Value="[ConfirmInstallForm_PrevArgs]">ConfirmInstallForm_PrevArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Confirm Installation" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BodyText1" Type="Text" X="9" Y="63" Width="354" Height="180" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer is ready to install [ProductName] on your computer.&#xD;&#xA;&#xD;&#xA;Click &quot;Next&quot; to start the installation." TabSkip="yes" NoPrefix="yes" />
+            </Dialog>
+            <Dialog Id="FolderForm" X="50" Y="50" Width="373" Height="287" Title="[ProductName]" TrackDiskSpace="yes">
+                <Control Id="NextButton" Type="PushButton" X="300" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Next &gt;" TabSkip="no" Default="yes">
+                    <Publish Event="SetTargetPath" Value="TARGETDIR">1</Publish>
+                    <Publish Event="SpawnDialog" Value="DiskCost">OutOfDiskSpace=1</Publish>
+                    <Publish Event="EndDialog" Value="Return">FolderForm_NextArgs="" AND OutOfDiskSpace&lt;&gt;1</Publish>
+                    <Publish Event="NewDialog" Value="[FolderForm_NextArgs]">FolderForm_NextArgs&lt;&gt;"" AND OutOfDiskSpace&lt;&gt;1</Publish>
+                    <Publish Property="ALLUSERS" Value="2">FolderForm_AllUsers="ALL" AND VersionNT&gt;=400 AND Privileged=1 AND FolderForm_AllUsersVisible=1</Publish>
+                    <Publish Property="ALLUSERS">FolderForm_AllUsers="ME" AND VersionNT&gt;=400 AND Privileged=1 AND FolderForm_AllUsersVisible=1</Publish>
+                    <Publish Event="DoAction" Value="FindRelatedProducts">1</Publish>
+                </Control>
+                <Control Id="FolderLabel" Type="Text" X="18" Y="114" Width="348" Height="12" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Folder:" TabSkip="no" />
+                <Control Id="FolderEdit" Type="PathEdit" X="18" Y="126" Width="252" Height="18" Property="TARGETDIR" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiPathEdit" TabSkip="no" Sunken="yes" />
+                <Control Id="BrowseButton" Type="PushButton" X="276" Y="126" Width="90" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}B&amp;rowse..." TabSkip="no">
+                    <Publish Property="SelectFolderDialog_Property" Value="TARGETDIR">1</Publish>
+                    <Publish Event="SpawnDialog" Value="SelectFolderDialog">1</Publish>
+                </Control>
+                <Control Id="DiskCostButton" Type="PushButton" X="276" Y="150" Width="90" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&amp;Disk Cost..." TabSkip="no">
+                    <Publish Event="SetTargetPath" Value="TARGETDIR">1</Publish>
+                    <Publish Event="SpawnDialog" Value="DiskCost">1</Publish>
+                </Control>
+                <Control Id="AllUsersRadioGroup" Type="RadioButtonGroup" X="24" Y="210" Width="342" Height="42" Property="FolderForm_AllUsers" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiRadioButtonGroup" TabSkip="no">
+                    <Condition Action="show">VersionNT&gt;=400 AND Privileged=1 AND FolderForm_AllUsersVisible=1</Condition>
+                    <Condition Action="hide">NOT (VersionNT&gt;=400 AND Privileged=1 AND FolderForm_AllUsersVisible=1)</Condition>
+                </Control>
+                <Control Id="CancelButton" Type="PushButton" X="156" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="Cancel" />
+                </Control>
+                <Control Id="PreviousButton" Type="PushButton" X="228" Y="261" Width="66" Height="18" Text="{\VSI_MS_Sans_Serif13.0_0_0}&lt; &amp;Back" TabSkip="no">
+                    <Condition Action="disable">FolderForm_PrevArgs=""</Condition>
+                    <Condition Action="enable">FolderForm_PrevArgs&lt;&gt;""</Condition>
+                    <Publish Event="NewDialog" Value="[FolderForm_PrevArgs]">FolderForm_PrevArgs&lt;&gt;""</Publish>
+                </Control>
+                <Control Id="BannerBmp" Type="Bitmap" X="0" Y="0" Width="375" Height="52" Text="DefBannerBitmap" TabSkip="no" Disabled="yes" />
+                <Control Id="Line1" Type="Line" X="0" Y="52" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="Line2" Type="Line" X="0" Y="252" Width="375" Height="6" Text="{\VSI_MS_Sans_Serif13.0_0_0}MsiHorizontalLine" TabSkip="yes" Disabled="yes" />
+                <Control Id="BannerText" Type="Text" X="9" Y="9" Width="306" Height="33" Text="{\VSI_MS_Sans_Serif16.0_1_0}Select Installation Folder" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="Body" Type="Text" X="9" Y="63" Width="354" Height="48" Text="{\VSI_MS_Sans_Serif13.0_0_0}The installer will install [ProductName] to the following folder.&#xD;&#xA;&#xD;&#xA;To install in this folder, click &quot;Next&quot;. To install to a different folder, enter it below or click &quot;Browse&quot;." TabSkip="yes" NoPrefix="yes" />
+                <Control Id="AllUsersText" Type="Text" X="18" Y="186" Width="348" Height="24" Text="{\VSI_MS_Shell_Dlg13.0_0_0}Install [ProductName] for yourself, or for anyone who uses this computer:" TabSkip="yes" NoPrefix="yes">
+                    <Condition Action="show">VersionNT&gt;=400 AND Privileged=1 AND FolderForm_AllUsersVisible=1</Condition>
+                    <Condition Action="hide">NOT (VersionNT&gt;=400 AND Privileged=1 AND FolderForm_AllUsersVisible=1)</Condition>
+                </Control>
+            </Dialog>
+        </UI>
+        <Upgrade Id="{65D1DC03-4E1B-4D33-BF10-F49421240B50}">
+            <UpgradeVersion Minimum="1.0.0" Property="NEWERPRODUCTFOUND" OnlyDetect="yes" IncludeMinimum="yes" />
+        </Upgrade>
+        <InstallExecuteSequence>
+            <Custom Action="DIRCA_CheckFX" Sequence="1" />
+            <Custom Action="ERRCA_CANCELNEWERVERSION" Sequence="201">NEWERPRODUCTFOUND AND NOT Installed</Custom>
+            <Custom Action="VSDCA_VsdLaunchConditions" Sequence="399">NOT Installed</Custom>
+            <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
+            <Custom Action="DIRCA_DATAANDSETTINGS" Sequence="754">DATAANDSETTINGS=""</Custom>
+            <Custom Action="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall.SetProperty" Sequence="1698">$C__330FE5A1348C936B1BEA5490F591A6BE=2</Custom>
+            <Custom Action="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall" Sequence="1699">$C__330FE5A1348C936B1BEA5490F591A6BE=2</Custom>
+            <Custom Action="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install.SetProperty" Sequence="5998">$C__2B1873B36854C1AF26BB9D552AB6821D&gt;2</Custom>
+            <Custom Action="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install" Sequence="5999">$C__2B1873B36854C1AF26BB9D552AB6821D&gt;2</Custom>
+            <LaunchConditions Sequence="400">NOT Installed</LaunchConditions>
+            <FindRelatedProducts Sequence="200" />
+            <AppSearch Sequence="100" />
+            <CCPSearch Sequence="500">NOT Installed</CCPSearch>
+            <RMCCPSearch Sequence="600">NOT Installed</RMCCPSearch>
+            <ValidateProductID Sequence="700" />
+            <CostInitialize Sequence="800" />
+            <FileCost Sequence="900" />
+            <IsolateComponents Sequence="950">RedirectedDllSupport</IsolateComponents>
+            <CostFinalize Sequence="1000" />
+            <SetODBCFolders Sequence="1100">NOT Installed</SetODBCFolders>
+            <InstallValidate Sequence="1400" />
+            <InstallInitialize Sequence="1500" />
+            <AllocateRegistrySpace Sequence="1550">NOT Installed</AllocateRegistrySpace>
+            <ProcessComponents Sequence="1600" />
+            <UnpublishComponents Sequence="1700" />
+            <UnpublishFeatures Sequence="1800" />
+            <StopServices Sequence="1900">VersionNT</StopServices>
+            <DeleteServices Sequence="2000">VersionNT</DeleteServices>
+            <UnregisterComPlus Sequence="2100" />
+            <SelfUnregModules Sequence="2200" />
+            <UnregisterTypeLibraries Sequence="2300" />
+            <RemoveODBC Sequence="2400" />
+            <UnregisterFonts Sequence="2500" />
+            <RemoveRegistryValues Sequence="2600" />
+            <UnregisterClassInfo Sequence="2700" />
+            <UnregisterExtensionInfo Sequence="2800" />
+            <UnregisterProgIdInfo Sequence="2900" />
+            <UnregisterMIMEInfo Sequence="3000" />
+            <RemoveIniValues Sequence="3100" />
+            <RemoveShortcuts Sequence="3200" />
+            <RemoveEnvironmentStrings Sequence="3300" />
+            <RemoveDuplicateFiles Sequence="3400" />
+            <RemoveFiles Sequence="3500" />
+            <RemoveFolders Sequence="3600" />
+            <CreateFolders Sequence="3700" />
+            <MoveFiles Sequence="3800" />
+            <InstallFiles Sequence="4000" />
+            <DuplicateFiles Sequence="4210" />
+            <PatchFiles Sequence="4090" />
+            <BindImage Sequence="4300" />
+            <CreateShortcuts Sequence="4500" />
+            <RegisterClassInfo Sequence="4600" />
+            <RegisterExtensionInfo Sequence="4700" />
+            <RegisterProgIdInfo Sequence="4800" />
+            <RegisterMIMEInfo Sequence="4900" />
+            <WriteRegistryValues Sequence="5000" />
+            <WriteIniValues Sequence="5100" />
+            <WriteEnvironmentStrings Sequence="5200" />
+            <RegisterFonts Sequence="5300" />
+            <InstallODBC Sequence="5400" />
+            <RegisterTypeLibraries Sequence="5500" />
+            <SelfRegModules Sequence="5600" />
+            <RegisterComPlus Sequence="5700" />
+            <InstallServices Sequence="5800">VersionNT</InstallServices>
+            <StartServices Sequence="5900">VersionNT</StartServices>
+            <RegisterUser Sequence="6000" />
+            <RegisterProduct Sequence="6100" />
+            <PublishComponents Sequence="6200" />
+            <PublishFeatures Sequence="6300" />
+            <PublishProduct Sequence="6400" />
+            <InstallFinalize Sequence="6600" />
+            <RemoveExistingProducts Sequence="6550" />
+            <InstallExecute Sequence="6500" />
+            <MsiPublishAssemblies Sequence="6250" />
+            <MsiUnpublishAssemblies Sequence="1650" />
+        </InstallExecuteSequence>
+        <InstallUISequence>
+            <Custom Action="DIRCA_CheckFX" Sequence="1" />
+            <Custom Action="ERRCA_UIANDADVERTISED" Sequence="5">ProductState=1</Custom>
+            <Custom Action="VSDCA_VsdLaunchConditions" Sequence="399">NOT Installed</Custom>
+            <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
+            <Custom Action="DIRCA_DATAANDSETTINGS" Sequence="754">DATAANDSETTINGS=""</Custom>
+            <Custom Action="VSDCA_FolderForm_AllUsers" Sequence="997">Installed="" AND NOT RESUME AND ALLUSERS=1</Custom>
+            <Show Dialog="FatalErrorForm" OnExit="error">NOT HideFatalErrorForm</Show>
+            <Show Dialog="UserExitForm" OnExit="cancel" />
+            <Show Dialog="FinishedForm" OnExit="success" />
+            <Show Dialog="ResumeForm" Sequence="998">Installed="" AND RESUME</Show>
+            <Show Dialog="MaintenanceForm" Sequence="999">Installed&lt;&gt;""</Show>
+            <Show Dialog="WelcomeForm" Sequence="1001">Installed="" AND NOT RESUME</Show>
+            <Show Dialog="ProgressForm" Sequence="1299" />
+            <Show Dialog="ReadmeForm" Sequence="1301">REMOVE=""</Show>
+            <LaunchConditions Sequence="400">NOT Installed</LaunchConditions>
+            <AppSearch Sequence="100" />
+            <CCPSearch Sequence="500">NOT Installed</CCPSearch>
+            <RMCCPSearch Sequence="600">NOT Installed</RMCCPSearch>
+            <ValidateProductID Sequence="700" />
+            <CostInitialize Sequence="800" />
+            <FileCost Sequence="900" />
+            <IsolateComponents Sequence="950">RedirectedDllSupport</IsolateComponents>
+            <CostFinalize Sequence="1000" />
+            <ExecuteAction Sequence="1300" />
+        </InstallUISequence>
+        <AdminExecuteSequence>
+            <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
+            <Custom Action="DIRCA_DATAANDSETTINGS" Sequence="754">DATAANDSETTINGS=""</Custom>
+            <CostInitialize Sequence="800" />
+            <FileCost Sequence="900" />
+            <CostFinalize Sequence="1000" />
+            <InstallValidate Sequence="1400" />
+            <InstallInitialize Sequence="1500" />
+            <InstallAdminPackage Sequence="3900" />
+            <InstallFiles Sequence="4000" />
+            <InstallFinalize Sequence="6600" />
+        </AdminExecuteSequence>
+        <AdminUISequence>
+            <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
+            <Custom Action="DIRCA_DATAANDSETTINGS" Sequence="754">DATAANDSETTINGS=""</Custom>
+            <Show Dialog="AdminFatalErrorForm" OnExit="error" />
+            <Show Dialog="AdminUserExitForm" OnExit="cancel" />
+            <Show Dialog="AdminFinishedForm" OnExit="success" />
+            <Show Dialog="AdminResumeForm" Sequence="998">Installed="" AND RESUME</Show>
+            <Show Dialog="AdminMaintenanceForm" Sequence="999">Installed&lt;&gt;""</Show>
+            <Show Dialog="AdminWelcomeForm" Sequence="1001">Installed="" AND NOT RESUME</Show>
+            <Show Dialog="AdminProgressForm" Sequence="1299" />
+            <CostInitialize Sequence="800" />
+            <FileCost Sequence="900" />
+            <CostFinalize Sequence="1000" />
+            <ExecuteAction Sequence="1300" />
+        </AdminUISequence>
+        <AdvertiseExecuteSequence>
+            <CostInitialize Sequence="800" />
+            <CostFinalize Sequence="1000" />
+            <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
+            <Custom Action="DIRCA_DATAANDSETTINGS" Sequence="754">DATAANDSETTINGS=""</Custom>
+            <InstallValidate Sequence="1400" />
+            <InstallInitialize Sequence="1500" />
+            <CreateShortcuts Sequence="4500" />
+            <RegisterClassInfo Sequence="4600" />
+            <RegisterExtensionInfo Sequence="4700" />
+            <RegisterMIMEInfo Sequence="4900" />
+            <RegisterProgIdInfo Sequence="4800" />
+            <PublishComponents Sequence="6200" />
+            <PublishFeatures Sequence="6300" />
+            <PublishProduct Sequence="6400" />
+            <InstallFinalize Sequence="6600" />
+            <MsiPublishAssemblies Sequence="6250" />
+        </AdvertiseExecuteSequence>
+    </Product>
+</Wix>

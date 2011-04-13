@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Threading;
-using OxigenIIAdvertising.ServerConnectAttempt;
 using Setup.UserManagementServicesLive;
 
 namespace Setup
@@ -105,6 +99,7 @@ namespace Setup
 
           if (string.IsNullOrEmpty(url))
           {
+              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Checking user details - Couldn't find a responsive url.");
             _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
             return;
           }
@@ -118,8 +113,10 @@ namespace Setup
             "password",
             out userGUID);
         }
-        catch (System.Net.WebException)
+        catch (System.Net.WebException ex)
         {
+           AppDataSingleton.Instance.SetupLogger.WriteError(ex);
+
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
           return;
         }

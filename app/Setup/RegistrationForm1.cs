@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using Setup.UserManagementServicesLive;
-using OxigenIIAdvertising.ServerConnectAttempt;
 
 namespace Setup
 {
@@ -86,6 +80,7 @@ namespace Setup
 
           if (string.IsNullOrEmpty(url))
           {
+              AppDataSingleton.Instance.SetupLogger.WriteError("Checking if e-mail address exists: Couldn't get a responsive URL");
             _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
             return;
           }
@@ -96,8 +91,9 @@ namespace Setup
 
           _wrapper = client.CheckEmailAddressExists(_emailAddress, "password");
         }
-        catch (System.Net.WebException)
+        catch (System.Net.WebException ex)
         {
+            AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
         }
         finally

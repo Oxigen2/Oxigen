@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections;
 using System.Net;
 
-namespace OxigenIIAdvertising.ServerConnectAttempt
+namespace Setup
 {
   /// <summary>
   /// Static class that provides methods to test responsivess of the remote server collections that connect to
@@ -129,13 +129,16 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
       request.Timeout = timeout;
 
       HttpWebResponse response = null;
-
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Attempting to connect to " + serverURI + "...");
+     
       try
       {
         response = (HttpWebResponse)request.GetResponse();
       }
-      catch
+      catch (Exception ex)
       {
+        AppDataSingleton.Instance.SetupLogger.WriteError(ex);
+
         if (response != null)
           response.Close();
 

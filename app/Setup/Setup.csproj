@@ -524,7 +524,9 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\UserManagementServicesLive\UserManagementServices.wsdl" />
+    <None Include="Web References\UserManagementServicesLive\UserManagementServices.wsdl">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\UserManagementServicesLive\UserManagementServices.xsd" />
     <None Include="Web References\UserManagementServicesLive\UserManagementServices0.xsd" />
     <None Include="Web References\UserManagementServicesLive\UserManagementServices1.xsd" />

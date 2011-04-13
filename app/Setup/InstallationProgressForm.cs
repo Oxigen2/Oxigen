@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using Setup.Properties;
-using OxigenIIAdvertising.ServerConnectAttempt;
 using Setup.UserManagementServicesLive;
 using System.Threading;
 
@@ -111,10 +103,16 @@ namespace Setup
       }
       catch (Exception ex)
       {
-        if (ex is System.Net.WebException)
-          MessageBox.Show("Unable to communicate with Oxigen servers. Please check your internet connection or try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        else
-          MessageBox.Show("An error has occurred. Please contact Oxigen stating the following message:\r\n" + ex.Message + "\r\n\r\nOxigen now will rollback the changes it has made to your system and exit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          if (ex is System.Net.WebException)
+          {
+              AppDataSingleton.Instance.SetupLogger.WriteError(ex);
+
+              MessageBox.Show(
+                  "Unable to communicate with Oxigen servers. Please check your internet connection or try again later.",
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          }
+          else
+              MessageBox.Show("An error has occurred. Please contact Oxigen stating the following message:\r\n" + ex.Message + "\r\n\r\nOxigen now will rollback the changes it has made to your system and exit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         
         progressBar.Value = 80;
         SetupHelper.ShowMessage(lblProgress, "Removing binaries...");
@@ -154,6 +152,7 @@ namespace Setup
     {
       if (!File.Exists(Directory.GetCurrentDirectory() + "\\Oxigen.msi"))
       {
+        AppDataSingleton.Instance.SetupLogger.WriteError(Directory.GetCurrentDirectory() + "\\Oxigen.msi not found.");
         if (MessageBox.Show("Oxigen.msi is not found in the same directory as Setup. You need Oxigen.msi that came with this Setup file to install the Oxigen files. Please make sure Oxigen.msi is in the same folder as Setup. Pressing Cancel will exit installation. Your system will not be modified.", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand) == DialogResult.Retry)
           return CheckMSI();
         else
@@ -201,6 +200,7 @@ namespace Setup
 
           if (string.IsNullOrEmpty(url))
           {
+              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Registering details: couldn't get a responsive URL.");
             _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
             return;
           }
@@ -233,8 +233,9 @@ namespace Setup
             AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
             "password");
         }
-        catch (System.Net.WebException)
+        catch (System.Net.WebException ex)
         {
+            AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
         }
         finally
@@ -269,6 +270,7 @@ namespace Setup
 
           if (string.IsNullOrEmpty(url))
           {
+              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Updating details: couldn't find a responsive URL");
             _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
             return;
           }
@@ -300,8 +302,9 @@ namespace Setup
             SetupHelper.GetMACAddress(),
             "password");
         }
-        catch (System.Net.WebException)
+        catch (System.Net.WebException ex)
         {
+            AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
         }
         finally

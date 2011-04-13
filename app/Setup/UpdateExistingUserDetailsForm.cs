@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Threading;
-using OxigenIIAdvertising.ServerConnectAttempt;
 using Setup.UserManagementServicesLive;
 
 namespace Setup
@@ -141,17 +134,20 @@ namespace Setup
         string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
 
         if (string.IsNullOrEmpty(url))
-          return SetupHelper.GetGenericErrorConnectingWrapper();
-
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+        {
+            AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Updating with existing data: Could not find a responsive URL");
+            return SetupHelper.GetGenericErrorConnectingWrapper();
+        }
+          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
 
         client.Url = url;
         wrapper = client.GetExistingUserDetails(AppDataSingleton.Instance.User.UserGUID,
           AppDataSingleton.Instance.Password,
           "password", out userInfo);
       }
-      catch (System.Net.WebException)
+      catch (System.Net.WebException ex)
       {
+        AppDataSingleton.Instance.SetupLogger.WriteError(ex);
         return SetupHelper.GetGenericErrorConnectingWrapper();
       }
       finally

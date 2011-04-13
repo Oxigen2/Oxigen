@@ -1,18 +1,15 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>3.0</ProductVersion>
-    <ProjectGuid>{55347c44-eca6-4906-a34c-0c88d1adf190}</ProjectGuid>
+    <ProductVersion>3.5</ProductVersion>
+    <ProjectGuid>b3d047d0-9c18-4fc6-98cb-29c326fb7e3c</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>OxigenWix</OutputName>
+    <OutputName>OxigenWiX</OutputName>
     <OutputType>Package</OutputType>
-    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.0\Wix.targets</WixTargetsPath>
-    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.0\Wix.targets</WixTargetsPath>
-    <SccProjectName>SAK</SccProjectName>
-    <SccProvider>SAK</SccProvider>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccLocalPath>SAK</SccLocalPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -27,36 +24,10 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OxigenIIContentExchanger\ContentExchanger.csproj">
-      <Name>ContentExchanger</Name>
-      <Project>{bc84b1f8-b3e8-48b5-93b5-ea1871cbf4c3}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIILogExchanger\LogExchanger.csproj">
-      <Name>LogExchanger</Name>
-      <Project>{7acc96a8-7971-4bc4-a966-fef078e91139}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIIScreenSaverConfig\OxigenIIScreenSaverConfig.csproj">
-      <Name>OxigenIIScreenSaverConfig</Name>
-      <Project>{eff05119-8f47-48c8-9371-83c65b3f9400}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIIScreenSaver\OxigenIIScreenSaver\OxigenIIScreenSaver.csproj">
-      <Name>OxigenIIScreenSaver</Name>
-      <Project>{144d6ca7-61a5-437f-880c-6d3591a5ebd4}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIISSGService\SSGService.csproj">
-      <Name>SSGService</Name>
-      <Project>{6d95252f-f799-4aa9-a617-790fc4522baf}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIISSG\OxigenIITray.csproj">
-      <Name>OxigenIITray</Name>
-      <Project>{a085fd2d-8013-4cbe-b901-68a3c204c5d0}</Project>
-      <Private>True</Private>
-    </ProjectReference>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--

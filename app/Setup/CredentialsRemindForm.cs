@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using Setup.UserManagementServicesLive;
-using OxigenIIAdvertising.ServerConnectAttempt;
 
 namespace Setup
 {
@@ -66,6 +60,7 @@ namespace Setup
 
           if (string.IsNullOrEmpty(url))
           {
+              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Sending an e-mail reminder: Could not find a URL.");
             _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
             return;
           }
@@ -76,8 +71,9 @@ namespace Setup
 
           _wrapper = client.SendEmailReminder(AppDataSingleton.Instance.EmailAddress, "password");
         }
-        catch (System.Net.WebException)
+        catch (System.Net.WebException ex)
         {
+            AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
           return;
         }

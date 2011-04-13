@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OxigenIIAdvertising.ServerConnectAttempt
+namespace Setup
 {
   /// <summary>
   /// Enumeration of types of server to ping

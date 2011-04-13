@@ -1168,6 +1168,9 @@ namespace OxigenIIAdvertising.ContentExchanger
       {
         case DataFileType.GeneralConfiguration:
         case DataFileType.AdvertConditions:
+            _logger.WriteTimestampedMessage(
+                "Connecting to Relay Server. Parameters: maxNoMasterConfigServers = " +
+                _maxNoRelayConfigServers + ", GUIDSuffix = " + _userGUIDSuffix);
           serverURI = GetResponsiveServer(ServerType.RelayGetConfig, _maxNoRelayConfigServers, "UserDataMarshaller.svc");
 
           if (serverURI == "")
@@ -1181,6 +1184,9 @@ namespace OxigenIIAdvertising.ContentExchanger
           break;
         case DataFileType.DemographicData:          
         case DataFileType.ChannelSubscriptions:
+              _logger.WriteTimestampedMessage(
+                  "Connecting to User Management Services. Parameters: maxNoMasterConfigServers = " +
+                  _maxNoRelayConfigServers + ", GUIDSuffix = " + _userGUIDSuffix);
           serverURI = GetResponsiveServer(ServerType.MasterGetConfig, _maxNoMasterConfigServers, _userGUIDSuffix, "UserManagementServices.svc");
          
           if (serverURI == "")

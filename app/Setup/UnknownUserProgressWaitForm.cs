@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Threading;
-using OxigenIIAdvertising.ServerConnectAttempt;
-using Setup.UserManagementServicesLive;
+﻿using Setup.UserManagementServicesLive;
 
 namespace Setup
 {
@@ -42,6 +33,7 @@ namespace Setup
 
           if (string.IsNullOrEmpty(url))
           {
+              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Matching with existing records: Couldn't find a responsive URL.");
             _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
             return;
           }
@@ -52,8 +44,9 @@ namespace Setup
 
           _wrapper = client.GetMatchedUserGUID(_userGUID, "password");
         }
-        catch (System.Net.WebException)
+        catch (System.Net.WebException ex)
         {
+          AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
         }
         finally
