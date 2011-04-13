@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
-    <sql-query name="GetChannelSummaries">
-        SET NOCOUNT ON;
+  <sql-query name="GetChannelSummaries">
+    SET NOCOUNT ON;
 
-	    SELECT Channel_ID as Id, CategoryID, Publisher, ChannelName, ChannelGUID, ChannelDescription, ChannelLongDescription, Keywords, ImagePath, bHasDefaultThumbnail, bLocked, bAcceptPasswordRequests, ChannelPassword, ChannelGUIDSuffix, NoContent, NoFollowers, AddDate, EditDate, MadeDirtyLastDate, ContentLastAddedDate
-	    FROM Channels
-    </sql-query>
+    SELECT Channel_ID as Id, ChannelName
+    FROM Channels
+  </sql-query>
+  <sql-query name="GetChannelSummariesByPublisher">
+    SET NOCOUNT ON;
+
+    SELECT Channel_ID as Id, ChannelName
+    FROM Channels
+    WHERE PublisherID = :publisherId
+  </sql-query>
 </hibernate-mapping>

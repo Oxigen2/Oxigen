@@ -17,5 +17,6 @@ namespace Oxigen.ApplicationServices
         ActionConfirmation SaveOrUpdate(Channel channel);
         ActionConfirmation UpdateWith(Channel channelFromForm, int idOfChannelToUpdate);
         ActionConfirmation Delete(int id);
+        IList<ChannelDto> GetByPublisher (int id);
     }
 }

@@ -33,7 +33,13 @@ namespace Oxigen.Web.Controllers
                 templateManagementService.GetTemplateSummaries();
             return View(templates);
         }
-
+        [Transaction]
+        public ActionResult ListByProducer(int id)
+        {
+            IList<TemplateDto> slideFolders =
+                templateManagementService.GetByPublisher(id);
+            return Json(slideFolders, JsonRequestBehavior.AllowGet);
+        }
         [Transaction]
         public ActionResult Show(int id) {
             Template template = templateManagementService.Get(id);

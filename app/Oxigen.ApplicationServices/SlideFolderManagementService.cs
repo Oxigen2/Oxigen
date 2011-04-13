@@ -109,6 +109,11 @@ namespace Oxigen.ApplicationServices
             }
         }
 
+        public IList<SlideFolderDto> GetByProducer(int producerId)
+        {
+            return slideFolderRepository.GetByPublisher(producerId);
+        }
+
         private void TransferFormValuesTo(SlideFolder slideFolderToUpdate, SlideFolder slideFolderFromForm) {
 		    slideFolderToUpdate.SlideFolderName = slideFolderFromForm.SlideFolderName;
 			slideFolderToUpdate.Publisher = slideFolderFromForm.Publisher;

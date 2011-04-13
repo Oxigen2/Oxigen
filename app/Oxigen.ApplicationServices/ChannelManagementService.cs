@@ -109,6 +109,11 @@ namespace Oxigen.ApplicationServices
             }
         }
 
+        public IList<ChannelDto> GetByPublisher(int id)
+        {
+            return channelRepository.GetByPublisher(id);
+        }
+
         private void TransferFormValuesTo(Channel channelToUpdate, Channel channelFromForm) {
 		    channelToUpdate.CategoryID = channelFromForm.CategoryID;
 			channelToUpdate.Publisher = channelFromForm.Publisher;

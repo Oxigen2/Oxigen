@@ -152,8 +152,10 @@ namespace Oxigen.ApplicationServices
                     slideFromTemplate.UpdateBitmap("MasterImage", Image.FromFile(assetContent.FileFullPathName));
                     slideFromTemplate.UpdateText("MasterText", caption);
                     slideFromTemplate.UpdateText("CreditText", credit);
-                    var image = slideFromTemplate.GetThumbnail();
-                    ImageUtilities.Crop(image, 100, 75, AnchorPosition.Center).Save(slide.ThumbnailFullPathName);
+                    //Aspose has a bug with getting thumbnail so use the asset content image for now
+                    //var image = slideFromTemplate.GetThumbnail();
+                    //ImageUtilities.Crop(image, 100, 75, AnchorPosition.Center).Save(slide.ThumbnailFullPathName);
+                    File.Copy(assetContent.ThumbnailFullPathName, slide.ThumbnailFullPathName);
                     slideFromTemplate.Save(slide.FileFullPathName);
                 }
                 else
