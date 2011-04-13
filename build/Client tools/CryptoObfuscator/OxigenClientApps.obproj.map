@@ -1,270 +1,356 @@
-﻿<Mappings><Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._currentRun" NewName="A.M.A" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._lastRun" NewName="A.M.B" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._lastDownloadedContent" NewName="A.M.C" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._lastStatus" NewName="A.M.D" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._logPath" NewName="A.M.E" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._bHasLog" NewName="A.M.F" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._bContentDownloaded" NewName="A.M.G" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._bExitedWithErrors" NewName="A.M.H" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userGUID" NewName="A.N.A" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userGUIDSuffix" NewName="A.N.B" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._machineGUID" NewName="A.N.C" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._systemPassPhrase" NewName="A.N.D" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._appDataPath" NewName="A.N.E" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._playlistPath" NewName="A.N.F" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._generalDataPath" NewName="A.N.G" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._advertDataPath" NewName="A.N.H" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._demographicDataPath" NewName="A.N.I" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userChannelSubscriptionsPath" NewName="A.N.J" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._assetPath" NewName="A.N.K" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._channelDataPath" NewName="A.N.L" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userSettingsPath" NewName="A.N.M" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._binariesPath" NewName="A.N.N" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._debugFilePath" NewName="A.N.O" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._password" NewName="A.N.P" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._maxNoRelayConfigServers" NewName="A.N.Q" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._maxNoRelayChannelAssetServers" NewName="A.N.R" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._maxNoRelayChannelDataServers" NewName="A.N.S" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._maxNoMasterConfigServers" NewName="A.N.T" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._serverTimeout" NewName="A.N.U" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._daysToKeepAssetFiles" NewName="A.N.V" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._assetFolderSize" NewName="A.N.W" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._majorVersionNumber" NewName="A.N.X" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._minorVersionNumber" NewName="A.N.Y" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._defaultDisplayDuration" NewName="A.N.Z" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._primaryDomainName" NewName="A.N.AB" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._secondaryDomainName" NewName="A.N.BB" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userDataMarshallerStreamerClient" NewName="A.N.CB" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userManagementServicesStreamerClient" NewName="A.N.DB" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._logger" NewName="A.N.EB" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._bGlobalsSet" NewName="A.N.FB" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._worker" NewName="A.N.GB" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus._bLowDiskSpace" NewName="A.O.A" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus._bLowAssetSpace" NewName="A.O.B" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus._bContentDownloaded" NewName="A.O.C" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus._bExitWithError" NewName="A.O.D" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus._overallProgress" NewName="A.P.A" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus._taskProgress" NewName="A.P.B" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus._taskMessage" NewName="A.P.C" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.resourceMan" NewName="A.R.A" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.resourceCulture" NewName="A.R.B" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.MF_BYPOSITION" NewName="A.T.A" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm._bError" NewName="A.T.B" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm._bFinished" NewName="A.T.C" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.components" NewName="A.T.D" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.progressBar" NewName="A.T.E" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.label1" NewName="A.T.F" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.backgroundWorker" NewName="A.T.G" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.MF_BYPOSITION" NewName="A.V.A" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm._bFinished" NewName="A.V.B" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm._bCancelled" NewName="A.V.C" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm._systemCultureInfo" NewName="A.V.D" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.components" NewName="A.V.E" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.progressBarOverall" NewName="A.V.F" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.progressBarCurrent" NewName="A.V.G" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.label1" NewName="A.V.H" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.label2" NewName="A.V.I" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.label3" NewName="A.V.J" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.label4" NewName="A.V.K" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.lblCurrentOperation" NewName="A.V.L" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtLastRunDate" NewName="A.V.M" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtLastRunStatus" NewName="A.V.N" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtContentLastDownloaded" NewName="A.V.O" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtOverallPC" NewName="A.V.P" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.btnStop" NewName="A.V.Q" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker" NewName="A.V.R" />
-<Entry OldName="&lt;PrivateImplementationDetails&gt;{2EA53767-215A-42AC-BFEC-8FC17E0A4641}.$$method0x6000050-1" NewName="A.W.A" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog..ctor(DateTime currentRun, Boolean bContentDownloaded, Boolean bExitedWithErrors)" NewName="A.M..ctor(DateTime A, Boolean B, Boolean C)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog..ctor()" NewName="A.M..ctor()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_LastRun()" NewName="A.M.get_I()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_LastDownloadedContent()" NewName="A.M.get_J()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_LastStatus()" NewName="A.M.get_K()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_HasLog()" NewName="A.M.get_L()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.set_HasLog(Boolean value)" NewName="A.M.set_L(Boolean A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.SaveLog()" NewName="A.M.M()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.LoadLog()" NewName="A.M.N()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger..ctor(BackgroundWorker worker)" NewName="A.N..ctor(BackgroundWorker A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger..ctor()" NewName="A.N..ctor()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetDiskFreeSpaceEx(String lpDirectoryName, UInt64&amp; lpFreeBytesAvailable, UInt64&amp; lpTotalNumberOfBytes, UInt64&amp; lpTotalNumberOfFreeBytes)" NewName="A.N.HB(String A, UInt64&amp; B, UInt64&amp; C, UInt64&amp; D)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.Execute()" NewName="A.N.IB()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetMachineGUIDIfNotExists()" NewName="A.N.JB()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.IsProcessRunning(String processName)" NewName="A.N.KB(String A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetSubscriptions(String subscriptionSource)" NewName="A.N.LB(String A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetMACAddress()" NewName="A.N.MB()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SaveMachineGUID(String machineGUID)" NewName="A.N.NB(String A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.FilterChannelSubscriptionsByLock(ChannelSubscriptions channelSubscriptions)" NewName="A.N.OB(ChannelSubscriptions A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.IsDiskSpaceLow()" NewName="A.N.PB()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.FileAccessRights()" NewName="A.N.QB()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.DirStructureOK()" NewName="A.N.RB()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.CleanUpUnusedFiles(ChannelSubscriptions channelSubscriptions, Playlist playlist)" NewName="A.N.SB(ChannelSubscriptions A, Playlist B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetAssetsToKeep(Playlist playlist)" NewName="A.N.TB(Playlist A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.CleanUpUnsubscribedChannelFiles(ChannelSubscriptions channelSubscriptions)" NewName="A.N.UB(ChannelSubscriptions A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.CleanUpAssetFolder(HashSet`1 playlistAssetsToKeep)" NewName="A.N.VB(HashSet`1 A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(String message)" NewName="A.N.WB(String A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(Single taskValue, String message)" NewName="A.N.WB(Single A, String B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(Single taskValue)" NewName="A.N.WB(Single A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(Single taskValue, Single overallValue)" NewName="A.N.WB(Single A, Single B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(Single taskValue, Single overallValue, String taskMessage)" NewName="A.N.WB(Single A, Single B, String C)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.UpdateConfigFiles(Boolean&amp; bCancelled)" NewName="A.N.XB(Boolean&amp; A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetChannelSubscriptions()" NewName="A.N.YB()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetChannelDataFiles(ChannelSubscriptions channelSubscriptions, Boolean&amp; bCancelled)" NewName="A.N.ZB(ChannelSubscriptions A, Boolean&amp; B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SetGlobals()" NewName="A.N.AC()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetAssetFiles(Playlist playlist, Boolean&amp; bLowAssetSpace, Boolean&amp; bContentDownloaded, Boolean&amp; bCancelled)" NewName="A.N.BC(Playlist A, Boolean&amp; B, Boolean&amp; C, Boolean&amp; D)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.LoopAndGetAssetFiles[T](HashSet`1 playlistAssets, AssetType assetType, String channelName, Boolean&amp; bLowAssetSpace, Boolean&amp; bContentDownloaded, Boolean&amp; bCancelled)" NewName="A.N.CC[A](HashSet`1 A, AssetType B, String C, Boolean&amp; D, Boolean&amp; E, Boolean&amp; F)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetResponsiveServer(ServerType serverType, Int32 maxNoServers, String endpointSuffix)" NewName="A.N.DC(ServerType A, Int32 B, String C)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetResponsiveServer(ServerType serverType, Int32 maxNoServers, String letter, String endpointSuffix)" NewName="A.N.DC(ServerType A, Int32 B, String C, String D)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.UpdateDataFile(DataFileType dataFileType)" NewName="A.N.EC(DataFileType A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SaveStreamAndDispose(Stream stream, String filePath, Boolean bEncryptNeeded, Boolean bCheckDirectorySize)" NewName="A.N.FC(Stream A, String B, Boolean C, Boolean D)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SaveStreamAndDispose(Stream stream, String filePath, Boolean bEncryptNeeded, Boolean bCheckDirectorySize, Boolean&amp; bContentDownloaded)" NewName="A.N.FC(Stream A, String B, Boolean C, Boolean D, Boolean&amp; E)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetDirectorySize(String path)" NewName="A.N.GC(String A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.EncryptByteArrayAndSave(Byte[] buffer, String outputPath)" NewName="A.N.HC(Byte[] A, String B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.StreamToByteArray(Stream stream)" NewName="A.N.IC(Stream A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus..ctor()" NewName="A.O..ctor()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.get_LowDiskSpace()" NewName="A.O.get_E()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.set_LowDiskSpace(Boolean value)" NewName="A.O.set_E(Boolean A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.get_LowAssetSpace()" NewName="A.O.get_F()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.set_LowAssetSpace(Boolean value)" NewName="A.O.set_F(Boolean A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.get_ContentDownloaded()" NewName="A.O.get_G()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.set_ContentDownloaded(Boolean value)" NewName="A.O.set_G(Boolean A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.get_ExitWithError()" NewName="A.O.get_H()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.set_ExitWithError(Boolean value)" NewName="A.O.set_H(Boolean A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus..ctor(Single taskProgress, Single overallProgress, String taskMessage)" NewName="A.P..ctor(Single A, Single B, String C)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.get_OverallProgress()" NewName="A.P.get_D()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.set_OverallProgress(Single value)" NewName="A.P.set_D(Single A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.get_TaskProgress()" NewName="A.P.get_E()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.set_TaskProgress(Single value)" NewName="A.P.set_E(Single A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.get_TaskMessage()" NewName="A.P.get_F()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.set_TaskMessage(String value)" NewName="A.P.set_F(String A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Program.Main(String[] args)" NewName="A.Q.A(String[] A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Program.GetGeneralData()" NewName="A.Q.B()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Program.GetUser()" NewName="A.Q.C()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources..ctor()" NewName="A.R..ctor()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_ResourceManager()" NewName="A.R.get_ResourceManager()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_Culture()" NewName="A.R.get_Culture()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.set_Culture(CultureInfo value)" NewName="A.R.set_Culture(CultureInfo value)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_CannotConvertStreamToByteArray()" NewName="A.R.get_CannotConvertStreamToByteArray()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_CannotDownloadGeneralDataSafeMode()" NewName="A.R.get_CannotDownloadGeneralDataSafeMode()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_CannotSaveStream()" NewName="A.R.get_CannotSaveStream()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_LowAssetSpaceHeader()" NewName="A.R.get_LowAssetSpaceHeader()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_LowAssetSpaceText()" NewName="A.R.get_LowAssetSpaceText()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_LowDiskSpaceHeader()" NewName="A.R.get_LowDiskSpaceHeader()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_LowDiskSpaceText()" NewName="A.R.get_LowDiskSpaceText()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_oxigen()" NewName="A.R.get_oxigen()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_SMCompleted()" NewName="A.R.get_SMCompleted()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_SMGeneralError()" NewName="A.R.get_SMGeneralError()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.RegistryAccess.GetRegistryKey(String path)" NewName="A.S.A(String A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.RegistryAccess.GetRoot(String root)" NewName="A.S.B(String A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm..ctor()" NewName="A.T..ctor()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.RemoveMenu(IntPtr hMenu, Int32 nPosition, Int32 wFlags)" NewName="A.T.H(IntPtr A, Int32 B, Int32 C)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.GetSystemMenu(IntPtr hWnd, Boolean bRevert)" NewName="A.T.I(IntPtr A, Boolean B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.GetMenuItemCount(IntPtr hWnd)" NewName="A.T.J(IntPtr A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.SafeModeForm_Load(Object sender, EventArgs e)" NewName="A.T.K(Object A, EventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.SafeModeForm_Shown(Object sender, EventArgs e)" NewName="A.T.L(Object A, EventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.Worker_DoWork(Object sender, DoWorkEventArgs e)" NewName="A.T.M(Object A, DoWorkEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.SaveStreamAndDispose(Stream stream, String filePath)" NewName="A.T.N(Stream A, String B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.StreamToByteArray(Stream stream)" NewName="A.T.O(Stream A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.Worker_ProgressChanged(Object sender, ProgressChangedEventArgs e)" NewName="A.T.P(Object A, ProgressChangedEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.Worker_Completed(Object sender, RunWorkerCompletedEventArgs e)" NewName="A.T.Q(Object A, RunWorkerCompletedEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.SafeModeForm_Closing(Object sender, FormClosingEventArgs e)" NewName="A.T.R(Object A, FormClosingEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.Dispose(Boolean disposing)" NewName="A.T.Dispose(Boolean disposing)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.InitializeComponent()" NewName="A.T.S()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings..ctor()" NewName="A.U..ctor()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings.SettingChangingEventHandler(Object sender, SettingChangingEventArgs e)" NewName="A.U.A(Object A, SettingChangingEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings.SettingsSavingEventHandler(Object sender, CancelEventArgs e)" NewName="A.U.B(Object A, CancelEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm..ctor(CultureInfo systemCultureInfo)" NewName="A.V..ctor(CultureInfo A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.RemoveMenu(IntPtr hMenu, Int32 nPosition, Int32 wFlags)" NewName="A.V.S(IntPtr A, Int32 B, Int32 C)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.GetSystemMenu(IntPtr hWnd, Boolean bRevert)" NewName="A.V.T(IntPtr A, Boolean B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.GetMenuItemCount(IntPtr hWnd)" NewName="A.V.U(IntPtr A)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.VerboseRunForm_Shown(Object sender, EventArgs e)" NewName="A.V.V(Object A, EventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker_DoWork(Object sender, DoWorkEventArgs e)" NewName="A.V.W(Object A, DoWorkEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker_ProgressChanged(Object sender, ProgressChangedEventArgs e)" NewName="A.V.X(Object A, ProgressChangedEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e)" NewName="A.V.Y(Object A, RunWorkerCompletedEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.btnStop_Click(Object sender, EventArgs e)" NewName="A.V.Z(Object A, EventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.VerboseRunForm_Closing(Object sender, FormClosingEventArgs e)" NewName="A.V.AB(Object A, FormClosingEventArgs B)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.Dispose(Boolean disposing)" NewName="A.V.Dispose(Boolean disposing)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.InitializeComponent()" NewName="A.V.BB()" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog" NewName="A.M" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger" NewName="A.N" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus" NewName="A.O" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus" NewName="A.P" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Program" NewName="A.Q" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources" NewName="A.R" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.RegistryAccess" NewName="A.S" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm" NewName="A.T" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings" NewName="A.U" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm" NewName="A.V" />
-<Entry OldName="&lt;PrivateImplementationDetails&gt;{2EA53767-215A-42AC-BFEC-8FC17E0A4641}" NewName="A.W" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\AppDataSingleton.cs" NewName="File0" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\ComponentInfo.cs" NewName="File1" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\ComponentParameterMessage.cs" NewName="File2" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\Cryptography.cs" NewName="File3" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\FileDirectoryRightsChecker.cs" NewName="File4" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\GeneralData.cs" NewName="File5" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\ProxyClientBase.cs" NewName="File6" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\ResponsiveServerDeterminator.cs" NewName="File7" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\Shuffler.cs" NewName="File8" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\SimpleErrorWrapper.cs" NewName="File9" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\StreamErrorWrapper.cs" NewName="File10" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\User.cs" NewName="File11" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\StringErrorWrapper.cs" NewName="File12" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\UserManagementServicesNonStreamerClient.cs" NewName="File13" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\UpdatePrompter.cs" NewName="File14" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\UserManagementServicesNonStreamerSUClient.cs" NewName="File15" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\ErrorForm.cs" NewName="File16" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\ErrorForm.Designer.cs" NewName="File17" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\UserDataMarshallerSUClient.cs" NewName="File18" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\UserDataMarshallerSUStreamerClient.cs" NewName="File19" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\ProgressForm.cs" NewName="File20" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\ProgressForm.Designer.cs" NewName="File21" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\Program.cs" NewName="File22" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\Properties\Resources.Designer.cs" NewName="File23" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\Properties\Settings.Designer.cs" NewName="File24" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\SerializableDictionary.cs" NewName="File25" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\Serializer.cs" NewName="File26" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\ComponentListRetriever.cs" NewName="File27" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\VersionParameterMessage.cs" NewName="File28" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\UserFileMarshallerSUClient.cs" NewName="File29" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\VerboseModeForm.cs" NewName="File30" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenSU\VerboseModeForm.Designer.cs" NewName="File31" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\DDFormFader.cs" NewName="File32" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\FaderForm.Designer.cs" NewName="File33" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\FaderForm.cs" NewName="File34" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\PreviewScreenSaver.cs" NewName="File35" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\PreviewScreenSaver.Designer.cs" NewName="File36" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\ScreensaverGuardianClient.cs" NewName="File37" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\ScreenSaver.cs" NewName="File38" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\ScreenSaver.Designer.cs" NewName="File39" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\Program.cs" NewName="File40" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\Properties\Resources.Designer.cs" NewName="File41" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\ScreenSaverMessageFilter.cs" NewName="File42" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIPlaylistMaker\PlaylistMaker.cs" NewName="File43" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIILogExchanger\Exchanger.cs" NewName="File44" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIILogExchanger\LogFlattener.cs" NewName="File45" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIILogExchanger\Program.cs" NewName="File46" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIILogExchanger\Properties\Resources.Designer.cs" NewName="File47" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIILogExchanger\Properties\Settings.Designer.cs" NewName="File48" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\CELog.cs" NewName="File49" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Exchanger.cs" NewName="File50" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\ExchangeStatus.cs" NewName="File51" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Program.cs" NewName="File52" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Properties\Resources.Designer.cs" NewName="File53" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\RegistryAccess.cs" NewName="File54" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\SafeModeForm.cs" NewName="File55" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\SafeModeForm.Designer.cs" NewName="File56" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Settings.cs" NewName="File57" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Settings.Designer.cs" NewName="File58" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\VerboseRunForm.cs" NewName="File59" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\VerboseRunForm.Designer.cs" NewName="File60" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenService\OxigenTimer.cs" NewName="File61" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenService\Program.cs" NewName="File62" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenService\Properties\Resources.Designer.cs" NewName="File63" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenService\Properties\Settings.Designer.cs" NewName="File64" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenService\ScreensaverGuardianComm.cs" NewName="File65" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenService\ServiceOperations.cs" NewName="File66" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\CELog.cs" NewName="File67" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\ScreenSaverConfigForm.cs" NewName="File68" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\ScreenSaverConfigForm.Designer.cs" NewName="File69" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\Program.cs" NewName="File70" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\Properties\Resources.Designer.cs" NewName="File71" />
-<Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\Properties\Settings.Designer.cs" NewName="File72" />
+﻿<Mappings><Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus._bLowDiskSpace" NewName="A.J.A" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus._bLowAssetSpace" NewName="A.J.B" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus._bContentDownloaded" NewName="A.J.C" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus._bExitWithError" NewName="A.J.D" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus._overallProgress" NewName="A.K.A" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus._taskProgress" NewName="A.K.B" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus._taskMessage" NewName="A.K.C" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.resourceMan" NewName="A.N.A" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.resourceCulture" NewName="A.N.B" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.MF_BYPOSITION" NewName="A.O.A" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.components" NewName="A.O.B" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.progressBar" NewName="A.O.C" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.label1" NewName="A.O.D" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.backgroundWorker" NewName="A.O.E" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm._bError" NewName="A.O.F" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm._bFinished" NewName="A.O.G" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.MF_BYPOSITION" NewName="A.P.A" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.components" NewName="A.P.B" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.progressBarOverall" NewName="A.P.C" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.progressBarCurrent" NewName="A.P.D" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.label1" NewName="A.P.E" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.label2" NewName="A.P.F" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.label3" NewName="A.P.G" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.label4" NewName="A.P.H" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.lblCurrentOperation" NewName="A.P.I" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtLastRunDate" NewName="A.P.J" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtLastRunStatus" NewName="A.P.K" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtContentLastDownloaded" NewName="A.P.L" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtOverallPC" NewName="A.P.M" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.btnStop" NewName="A.P.N" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker" NewName="A.P.O" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm._bFinished" NewName="A.P.P" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm._bCancelled" NewName="A.P.Q" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm._systemCultureInfo" NewName="A.P.R" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._currentRun" NewName="A.Q.A" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._lastRun" NewName="A.Q.B" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._lastDownloadedContent" NewName="A.Q.C" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._lastStatus" NewName="A.Q.D" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._logPath" NewName="A.Q.E" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._bHasLog" NewName="A.Q.F" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._bContentDownloaded" NewName="A.Q.G" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog._bExitedWithErrors" NewName="A.Q.H" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userGUID" NewName="A.S.A" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userGUIDSuffix" NewName="A.S.B" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._machineGUID" NewName="A.S.C" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._systemPassPhrase" NewName="A.S.D" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._appDataPath" NewName="A.S.E" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._playlistPath" NewName="A.S.F" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._generalDataPath" NewName="A.S.G" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._advertDataPath" NewName="A.S.H" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._demographicDataPath" NewName="A.S.I" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userChannelSubscriptionsPath" NewName="A.S.J" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._assetPath" NewName="A.S.K" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._channelDataPath" NewName="A.S.L" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userSettingsPath" NewName="A.S.M" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._binariesPath" NewName="A.S.N" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._debugFilePath" NewName="A.S.O" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._password" NewName="A.S.P" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._maxNoRelayConfigServers" NewName="A.S.Q" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._maxNoRelayChannelAssetServers" NewName="A.S.R" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._maxNoRelayChannelDataServers" NewName="A.S.S" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._maxNoMasterConfigServers" NewName="A.S.T" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._serverTimeout" NewName="A.S.U" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._daysToKeepAssetFiles" NewName="A.S.V" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._assetFolderSize" NewName="A.S.W" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._majorVersionNumber" NewName="A.S.X" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._minorVersionNumber" NewName="A.S.Y" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._defaultDisplayDuration" NewName="A.S.Z" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._primaryDomainName" NewName="A.S.AB" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._secondaryDomainName" NewName="A.S.BB" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userDataMarshallerStreamerClient" NewName="A.S.CB" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._userManagementServicesStreamerClient" NewName="A.S.DB" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._logger" NewName="A.S.EB" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._bGlobalsSet" NewName="A.S.FB" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger._worker" NewName="A.S.GB" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;{1CA91880-68D6-49E0-8CCA-9CFDCE688949}.$$method0x600004b-1" NewName="A.T.A" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus..ctor()" NewName="A.J..ctor()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.get_LowDiskSpace()" NewName="A.J.get_E()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.set_LowDiskSpace(Boolean value)" NewName="A.J.set_E(Boolean A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.get_LowAssetSpace()" NewName="A.J.get_F()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.set_LowAssetSpace(Boolean value)" NewName="A.J.set_F(Boolean A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.get_ContentDownloaded()" NewName="A.J.get_G()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.set_ContentDownloaded(Boolean value)" NewName="A.J.set_G(Boolean A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.get_ExitWithError()" NewName="A.J.get_H()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus.set_ExitWithError(Boolean value)" NewName="A.J.set_H(Boolean A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus..ctor(Single taskProgress, Single overallProgress, String taskMessage)" NewName="A.K..ctor(Single A, Single B, String C)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.get_OverallProgress()" NewName="A.K.get_D()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.set_OverallProgress(Single value)" NewName="A.K.set_D(Single A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.get_TaskProgress()" NewName="A.K.get_E()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.set_TaskProgress(Single value)" NewName="A.K.set_E(Single A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.get_TaskMessage()" NewName="A.K.get_F()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus.set_TaskMessage(String value)" NewName="A.K.set_F(String A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Program.Main(String[] args)" NewName="A.L.A(String[] A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Program.GetGeneralData()" NewName="A.L.B()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Program.GetUser()" NewName="A.L.C()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings..ctor()" NewName="A.M..ctor()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings.SettingChangingEventHandler(Object sender, SettingChangingEventArgs e)" NewName="A.M.A(Object A, SettingChangingEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings.SettingsSavingEventHandler(Object sender, CancelEventArgs e)" NewName="A.M.B(Object A, CancelEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources..ctor()" NewName="A.N..ctor()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_ResourceManager()" NewName="A.N.get_ResourceManager()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_Culture()" NewName="A.N.get_Culture()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.set_Culture(CultureInfo value)" NewName="A.N.set_Culture(CultureInfo value)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_CannotConvertStreamToByteArray()" NewName="A.N.get_CannotConvertStreamToByteArray()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_CannotDownloadGeneralDataSafeMode()" NewName="A.N.get_CannotDownloadGeneralDataSafeMode()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_CannotSaveStream()" NewName="A.N.get_CannotSaveStream()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_LowAssetSpaceHeader()" NewName="A.N.get_LowAssetSpaceHeader()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_LowAssetSpaceText()" NewName="A.N.get_LowAssetSpaceText()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_LowDiskSpaceHeader()" NewName="A.N.get_LowDiskSpaceHeader()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_LowDiskSpaceText()" NewName="A.N.get_LowDiskSpaceText()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_oxigen()" NewName="A.N.get_oxigen()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_SMCompleted()" NewName="A.N.get_SMCompleted()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources.get_SMGeneralError()" NewName="A.N.get_SMGeneralError()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm..ctor()" NewName="A.O..ctor()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.Dispose(Boolean disposing)" NewName="A.O.Dispose(Boolean disposing)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.InitializeComponent()" NewName="A.O.H()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.RemoveMenu(IntPtr hMenu, Int32 nPosition, Int32 wFlags)" NewName="A.O.I(IntPtr A, Int32 B, Int32 C)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.GetSystemMenu(IntPtr hWnd, Boolean bRevert)" NewName="A.O.J(IntPtr A, Boolean B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.GetMenuItemCount(IntPtr hWnd)" NewName="A.O.K(IntPtr A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.SafeModeForm_Load(Object sender, EventArgs e)" NewName="A.O.L(Object A, EventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.SafeModeForm_Shown(Object sender, EventArgs e)" NewName="A.O.M(Object A, EventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.Worker_DoWork(Object sender, DoWorkEventArgs e)" NewName="A.O.N(Object A, DoWorkEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.SaveStreamAndDispose(Stream stream, String filePath)" NewName="A.O.O(Stream A, String B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.StreamToByteArray(Stream stream)" NewName="A.O.P(Stream A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.Worker_ProgressChanged(Object sender, ProgressChangedEventArgs e)" NewName="A.O.Q(Object A, ProgressChangedEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.Worker_Completed(Object sender, RunWorkerCompletedEventArgs e)" NewName="A.O.R(Object A, RunWorkerCompletedEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm.SafeModeForm_Closing(Object sender, FormClosingEventArgs e)" NewName="A.O.S(Object A, FormClosingEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm..ctor(CultureInfo systemCultureInfo)" NewName="A.P..ctor(CultureInfo A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.Dispose(Boolean disposing)" NewName="A.P.Dispose(Boolean disposing)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.InitializeComponent()" NewName="A.P.S()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.RemoveMenu(IntPtr hMenu, Int32 nPosition, Int32 wFlags)" NewName="A.P.T(IntPtr A, Int32 B, Int32 C)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.GetSystemMenu(IntPtr hWnd, Boolean bRevert)" NewName="A.P.U(IntPtr A, Boolean B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.GetMenuItemCount(IntPtr hWnd)" NewName="A.P.V(IntPtr A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.VerboseRunForm_Shown(Object sender, EventArgs e)" NewName="A.P.W(Object A, EventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker_DoWork(Object sender, DoWorkEventArgs e)" NewName="A.P.X(Object A, DoWorkEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker_ProgressChanged(Object sender, ProgressChangedEventArgs e)" NewName="A.P.Y(Object A, ProgressChangedEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e)" NewName="A.P.Z(Object A, RunWorkerCompletedEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.btnStop_Click(Object sender, EventArgs e)" NewName="A.P.AB(Object A, EventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.VerboseRunForm_Closing(Object sender, FormClosingEventArgs e)" NewName="A.P.BB(Object A, FormClosingEventArgs B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog..ctor(DateTime currentRun, Boolean bContentDownloaded, Boolean bExitedWithErrors)" NewName="A.Q..ctor(DateTime A, Boolean B, Boolean C)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog..ctor()" NewName="A.Q..ctor()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_LastRun()" NewName="A.Q.get_I()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_LastDownloadedContent()" NewName="A.Q.get_J()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_LastStatus()" NewName="A.Q.get_K()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_HasLog()" NewName="A.Q.get_L()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.set_HasLog(Boolean value)" NewName="A.Q.set_L(Boolean A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.SaveLog()" NewName="A.Q.M()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.LoadLog()" NewName="A.Q.N()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.RegistryAccess.GetRegistryKey(String path)" NewName="A.R.A(String A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.RegistryAccess.GetRoot(String root)" NewName="A.R.B(String A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger..ctor(BackgroundWorker worker)" NewName="A.S..ctor(BackgroundWorker A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger..ctor()" NewName="A.S..ctor()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetDiskFreeSpaceEx(String lpDirectoryName, UInt64&amp; lpFreeBytesAvailable, UInt64&amp; lpTotalNumberOfBytes, UInt64&amp; lpTotalNumberOfFreeBytes)" NewName="A.S.HB(String A, UInt64&amp; B, UInt64&amp; C, UInt64&amp; D)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.Execute()" NewName="A.S.IB()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetMachineGUIDIfNotExists()" NewName="A.S.JB()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.IsProcessRunning(String processName)" NewName="A.S.KB(String A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetSubscriptions(String subscriptionSource)" NewName="A.S.LB(String A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetMACAddress()" NewName="A.S.MB()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SaveMachineGUID(String machineGUID)" NewName="A.S.NB(String A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.FilterChannelSubscriptionsByLock(ChannelSubscriptions channelSubscriptions)" NewName="A.S.OB(ChannelSubscriptions A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.IsDiskSpaceLow()" NewName="A.S.PB()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.FileAccessRights()" NewName="A.S.QB()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.DirStructureOK()" NewName="A.S.RB()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.CleanUpUnusedFiles(ChannelSubscriptions channelSubscriptions, Playlist playlist)" NewName="A.S.SB(ChannelSubscriptions A, Playlist B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetAssetsToKeep(Playlist playlist)" NewName="A.S.TB(Playlist A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.CleanUpUnsubscribedChannelFiles(ChannelSubscriptions channelSubscriptions)" NewName="A.S.UB(ChannelSubscriptions A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.CleanUpAssetFolder(HashSet`1 playlistAssetsToKeep)" NewName="A.S.VB(HashSet`1 A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(String message)" NewName="A.S.WB(String A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(Single taskValue, String message)" NewName="A.S.WB(Single A, String B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(Single taskValue)" NewName="A.S.WB(Single A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(Single taskValue, Single overallValue)" NewName="A.S.WB(Single A, Single B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.ReportProgress(Single taskValue, Single overallValue, String taskMessage)" NewName="A.S.WB(Single A, Single B, String C)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.UpdateConfigFiles(Boolean&amp; bCancelled)" NewName="A.S.XB(Boolean&amp; A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetChannelSubscriptions()" NewName="A.S.YB()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetChannelDataFiles(ChannelSubscriptions channelSubscriptions, Boolean&amp; bCancelled)" NewName="A.S.ZB(ChannelSubscriptions A, Boolean&amp; B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SetGlobals()" NewName="A.S.AC()" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetAssetFiles(Playlist playlist, Boolean&amp; bLowAssetSpace, Boolean&amp; bContentDownloaded, Boolean&amp; bCancelled)" NewName="A.S.BC(Playlist A, Boolean&amp; B, Boolean&amp; C, Boolean&amp; D)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.LoopAndGetAssetFiles[T](HashSet`1 playlistAssets, AssetType assetType, String channelName, Boolean&amp; bLowAssetSpace, Boolean&amp; bContentDownloaded, Boolean&amp; bCancelled)" NewName="A.S.CC[A](HashSet`1 A, AssetType B, String C, Boolean&amp; D, Boolean&amp; E, Boolean&amp; F)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetResponsiveServer(ServerType serverType, Int32 maxNoServers, String endpointSuffix)" NewName="A.S.DC(ServerType A, Int32 B, String C)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetResponsiveServer(ServerType serverType, Int32 maxNoServers, String letter, String endpointSuffix)" NewName="A.S.DC(ServerType A, Int32 B, String C, String D)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.UpdateDataFile(DataFileType dataFileType)" NewName="A.S.EC(DataFileType A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SaveStreamAndDispose(Stream stream, String filePath, Boolean bEncryptNeeded, Boolean bCheckDirectorySize)" NewName="A.S.FC(Stream A, String B, Boolean C, Boolean D)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SaveStreamAndDispose(Stream stream, String filePath, Boolean bEncryptNeeded, Boolean bCheckDirectorySize, Boolean&amp; bContentDownloaded)" NewName="A.S.FC(Stream A, String B, Boolean C, Boolean D, Boolean&amp; E)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetDirectorySize(String path)" NewName="A.S.GC(String A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.EncryptByteArrayAndSave(Byte[] buffer, String outputPath)" NewName="A.S.HC(Byte[] A, String B)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.StreamToByteArray(Stream stream)" NewName="A.S.IC(Stream A)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ExchangeStatus" NewName="A.J" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.ProcessStatus" NewName="A.K" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Program" NewName="A.L" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings" NewName="A.M" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Resources" NewName="A.N" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm" NewName="A.O" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm" NewName="A.P" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog" NewName="A.Q" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.RegistryAccess" NewName="A.R" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger" NewName="A.S" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;{1CA91880-68D6-49E0-8CCA-9CFDCE688949}" NewName="A.T" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\ScreenSaverConfigForm.Designer.cs" NewName="File0" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\ScreenSaverConfigForm.cs" NewName="File1" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\Properties\Settings.Designer.cs" NewName="File2" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\Properties\Resources.Designer.cs" NewName="File3" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\Program.cs" NewName="File4" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\CELog.cs" NewName="File5" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\Program.cs" NewName="File6" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\Serializer.cs" NewName="File7" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\OxigenForm.Designer.cs" NewName="File8" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\OxigenForm.cs" NewName="File9" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\SetupForm.cs" NewName="File10" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\SetupForm.Designer.cs" NewName="File11" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\CredentialsForm.cs" NewName="File12" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\CredentialsForm.Designer.cs" NewName="File13" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\OlderOxigenExistsForm.Designer.cs" NewName="File14" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\OlderOxigenExistsForm.cs" NewName="File15" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\ResponsiveServerDeterminator.cs" NewName="File16" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\ChannelSubscriptions.cs" NewName="File17" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\ChannelSubscription.cs" NewName="File18" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\Wow.cs" NewName="File19" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\Properties\Settings.Designer.cs" NewName="File20" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\InstallationProgressForm.cs" NewName="File21" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\InstallationProgressForm.Designer.cs" NewName="File22" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\Oxigen1Uninstaller.cs" NewName="File23" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\Shuffler.cs" NewName="File24" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\WelcomeForm.cs" NewName="File25" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\WelcomeForm.Designer.cs" NewName="File26" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\Properties\Resources.Designer.cs" NewName="File27" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\PcFormExistingUser.Designer.cs" NewName="File28" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\PcFormExistingUser.cs" NewName="File29" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UnknownProgressWaitForm.Designer.cs" NewName="File30" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UnknownProgressWaitForm.cs" NewName="File31" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RepairConfirm.cs" NewName="File32" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RepairConfirm.Designer.cs" NewName="File33" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UninstallPromptForm.Designer.cs" NewName="File34" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UninstallPromptForm.cs" NewName="File35" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\ExistingUserPromptForm.Designer.cs" NewName="File36" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\ExistingUserPromptForm.cs" NewName="File37" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\MergeChannelsForm.cs" NewName="File38" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\MergeChannelsForm.Designer.cs" NewName="File39" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UninstallComplete.cs" NewName="File40" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UninstallComplete.Designer.cs" NewName="File41" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RegistrationForm2.Designer.cs" NewName="File42" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RegistrationForm2.cs" NewName="File43" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\PrerequisitesForm.Designer.cs" NewName="File44" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\PrerequisitesForm.cs" NewName="File45" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UnknownUserProgressWaitForm.Designer.cs" NewName="File46" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UnknownUserProgressWaitForm.cs" NewName="File47" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\SubscriptionsUpdatedForm.cs" NewName="File48" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\SubscriptionsUpdatedForm.Designer.cs" NewName="File49" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\SilentInstaller.cs" NewName="File50" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UninstallProgressForm.Designer.cs" NewName="File51" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UninstallProgressForm.cs" NewName="File52" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\ErrorForm.cs" NewName="File53" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\ErrorForm.Designer.cs" NewName="File54" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UpdateExistingUserDetailsForm.cs" NewName="File55" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UpdateExistingUserDetailsForm.Designer.cs" NewName="File56" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RegistrationForm4.cs" NewName="File57" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RegistrationForm4.Designer.cs" NewName="File58" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\PCFormNewUser.Designer.cs" NewName="File59" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\PCFormNewUser.cs" NewName="File60" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RegistrationForm3.cs" NewName="File61" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RegistrationForm3.Designer.cs" NewName="File62" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\SerializableDictionary.cs" NewName="File63" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\TermsAndConditionsForm.cs" NewName="File64" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\TermsAndConditionsForm.Designer.cs" NewName="File65" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\Cryptography.cs" NewName="File66" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\User.cs" NewName="File67" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\GeneralData.cs" NewName="File68" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RegistrationForm1.cs" NewName="File69" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RegistrationForm1.Designer.cs" NewName="File70" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\InstallConfirm.cs" NewName="File71" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\InstallConfirm.Designer.cs" NewName="File72" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\Web References\UserManagementServicesLive\Reference.cs" NewName="File73" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\Screensaver.cs" NewName="File74" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\RemoteServiceException.cs" NewName="File75" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\AppDataSingleton.cs" NewName="File76" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\WindowsController.cs" NewName="File77" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\OxigenExistsForm.Designer.cs" NewName="File78" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\OxigenExistsForm.cs" NewName="File79" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\InstallComplete.cs" NewName="File80" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\InstallComplete.Designer.cs" NewName="File81" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\CredentialsRemindForm.cs" NewName="File82" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\CredentialsRemindForm.Designer.cs" NewName="File83" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\InstallationPathsForm.Designer.cs" NewName="File84" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\InstallationPathsForm.cs" NewName="File85" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UninstallOldOxigenWaitForm.Designer.cs" NewName="File86" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\UninstallOldOxigenWaitForm.cs" NewName="File87" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\SilentMerger.cs" NewName="File88" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\SetupHelper.cs" NewName="File89" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\GenericRegistryAccess.cs" NewName="File90" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\Setup\DuplicateLibrary\Logger.cs" NewName="File91" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIILogExchanger\Properties\Resources.Designer.cs" NewName="File92" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIILogExchanger\LogFlattener.cs" NewName="File93" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIILogExchanger\Exchanger.cs" NewName="File94" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIILogExchanger\Properties\Settings.Designer.cs" NewName="File95" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIILogExchanger\Program.cs" NewName="File96" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\ExchangeStatus.cs" NewName="File97" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Program.cs" NewName="File98" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Settings.cs" NewName="File99" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Properties\Resources.Designer.cs" NewName="File100" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\SafeModeForm.Designer.cs" NewName="File101" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\SafeModeForm.cs" NewName="File102" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\VerboseRunForm.Designer.cs" NewName="File103" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\VerboseRunForm.cs" NewName="File104" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Settings.Designer.cs" NewName="File105" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\CELog.cs" NewName="File106" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\RegistryAccess.cs" NewName="File107" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIContentExchanger\Exchanger.cs" NewName="File108" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIPlaylistMaker\PlaylistMaker.cs" NewName="File109" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\FaderForm.Designer.cs" NewName="File110" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\FaderForm.cs" NewName="File111" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\PreviewScreenSaver.Designer.cs" NewName="File112" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\PreviewScreenSaver.cs" NewName="File113" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\Properties\Resources.Designer.cs" NewName="File114" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\ScreenSaver.Designer.cs" NewName="File115" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\ScreenSaver.cs" NewName="File116" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\ScreenSaverMessageFilter.cs" NewName="File117" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\Program.cs" NewName="File118" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\ScreensaverGuardianClient.cs" NewName="File119" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenIIScreenSaver\OxigenIIScreenSaver\DDFormFader.cs" NewName="File120" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\SerializableDictionary.cs" NewName="File121" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\ComponentParameterMessage.cs" NewName="File122" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\VersionParameterMessage.cs" NewName="File123" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\ProxyClientBase.cs" NewName="File124" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\FileDirectoryRightsChecker.cs" NewName="File125" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\StreamErrorWrapper.cs" NewName="File126" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\UserManagementServicesNonStreamerClient.cs" NewName="File127" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\SimpleErrorWrapper.cs" NewName="File128" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\StringErrorWrapper.cs" NewName="File129" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\UserDataMarshallerSUStreamerClient.cs" NewName="File130" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\Properties\Settings.Designer.cs" NewName="File131" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\Properties\Resources.Designer.cs" NewName="File132" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\Cryptography.cs" NewName="File133" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\VerboseModeForm.cs" NewName="File134" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\VerboseModeForm.Designer.cs" NewName="File135" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\ProgressForm.Designer.cs" NewName="File136" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\ProgressForm.cs" NewName="File137" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\Program.cs" NewName="File138" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\ErrorForm.cs" NewName="File139" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\ErrorForm.Designer.cs" NewName="File140" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\UpdatePrompter.cs" NewName="File141" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\GeneralData.cs" NewName="File142" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\Shuffler.cs" NewName="File143" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\ResponsiveServerDeterminator.cs" NewName="File144" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\ComponentInfo.cs" NewName="File145" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\Serializer.cs" NewName="File146" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\UserDataMarshallerSUClient.cs" NewName="File147" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\AppDataSingleton.cs" NewName="File148" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\ComponentListRetriever.cs" NewName="File149" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\UserFileMarshallerSUClient.cs" NewName="File150" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\UserManagementServicesNonStreamerSUClient.cs" NewName="File151" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenSU\DuplicateLibraries\User.cs" NewName="File152" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenService\ScreensaverGuardianComm.cs" NewName="File153" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenService\OxigenTimer.cs" NewName="File154" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenService\Program.cs" NewName="File155" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenService\Properties\Settings.Designer.cs" NewName="File156" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenService\ServiceOperations.cs" NewName="File157" />
+<Entry OldName="C:\Oxigen2\Oxigen\app\OxigenService\Properties\Resources.Designer.cs" NewName="File158" />
 </Mappings>

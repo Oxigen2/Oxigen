@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+ <Product Id="05AB04BD-B62E-4A98-9DA0-9650699CAF8E" Name="Oxigen" Language="1033" Version="1.0.0.0" Manufacturer="Oxigen" UpgradeCode="65D1DC03-4E1B-4D33-BF10-F49421240B50">
+    <Package InstallerVersion="200" Compressed="yes" />
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />    
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Component Id="C__4FDFBAF0735D43588C25514568160BE6" Guid="{5A6BACC6-FE86-271A-4809-C9811AE36DF9}">
+        <RegistryKey Id="_4FDFBAF0735D43588C25514568160BE6" Action="create" Key="Software\[Manufacturer]" Root="HKLM" />
+      </Component>
+      <Component Id="C__78398ECB590B43D082BE8948751EEE57" Guid="{6F17146E-4893-0D0C-2D20-8173C5FED5D7}">
+        <RegistryValue Id="_78398ECB590B43D082BE8948751EEE57" Root="HKLM" Key="Software\[Manufacturer]" Name="ProgramPath" Value="[TARGETDIR]" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="C__82E6CB6ED36640EC8D093334EA39790C" Guid="{034A232E-275F-E904-F037-ED5A57EC6FED}">
+        <RegistryValue Id="_82E6CB6ED36640EC8D093334EA39790C" Root="HKLM" Key="Software\[Manufacturer]" Name="userGUID" Value="[USERGUID]" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="C__8EC617AF8038410A9B9109C39D4C2FAC" Guid="{B9C54ABF-68B9-DE9F-5C16-0A2493A1E375}">
+        <RegistryValue Id="_8EC617AF8038410A9B9109C39D4C2FAC" Root="HKLM" Key="Software\[Manufacturer]" Name="pcGUID" Value="[PCGUID]" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="C__A8A465734B904C18A7083AEE2CEC0F4D" Guid="{77362198-6070-B138-275B-F9F1695AF642}">
+        <RegistryValue Id="_A8A465734B904C18A7083AEE2CEC0F4D" Root="HKLM" Key="Software\[Manufacturer]" Name="DataSettingsPath" Value="[DATAANDSETTINGS]" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="C__6BADC087DD53481FB32D4AD437067F5F" Guid="{8B25453B-7367-E06A-6F2F-85EA1AFE12DA}">
+        <RegistryValue Id="_6BADC087DD53481FB32D4AD437067F5F" Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Run" Name="OxigenServiceStart" Value="[TARGETDIR]bin\OxigenService.exe" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="C__4FC332D23F034CBF865CD88803D45D0A" Guid="{FCD04A83-D023-78EE-2236-E34846F06AEA}">
+        <RegistryValue Id="_4FC332D23F034CBF865CD88803D45D0A" Root="HKU" Key=".DEFAULT\Control Panel\Desktop" Name="ScreenSaveTimeOut" Value="180" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="C__CE9C806DCF524579A5DB2ECB87F1DF8F" Guid="{26811311-FEFB-8B9F-AE5B-E6FB0F373AC7}">
+        <RegistryValue Id="_CE9C806DCF524579A5DB2ECB87F1DF8F" Root="HKU" Key=".DEFAULT\Control Panel\Desktop" Name="ScreenSaveIsSecure" Value="0" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="C__E9BE198098924984BAA5C1C7B2EFD638" Guid="{73940684-44CB-11D3-0B4F-2F6DCB661656}">
+        <RegistryValue Id="_E9BE198098924984BAA5C1C7B2EFD638" Root="HKU" Key=".DEFAULT\Control Panel\Desktop" Name="ScreenSaveActive" Value="1" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="C__FA80340217F84034A9AFBDFC413D46D7" Guid="{67E36BA6-E707-B91B-7BEE-8A2B2122DCAB}">
+        <RegistryValue Id="_FA80340217F84034A9AFBDFC413D46D7" Root="HKU" Key=".DEFAULT\Control Panel\Desktop" Name="SCRNSAVE.EXE" Value="Oxigen.scr" Type="string" KeyPath="yes" />
+      </Component>
+      <Component Id="OxigenEventLogEntries" Guid="{09736F1D-E77E-4B51-B856-4C0F1A5E7F72}">
+        <Util:EventSource xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension" Name="Oxigen Service" Log="Application" EventMessageFile="%SystemRoot%\Microsoft.NET\Framework\v2.0.50727\EventLogMessages.dll"/>
+        <Util:EventSource xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension" Name="Oxigen Tray" Log="Application" EventMessageFile="%SystemRoot%\Microsoft.NET\Framework\v2.0.50727\EventLogMessages.dll"/>
+        <Util:EventSource xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension" Name="OxigenSU" Log="Application" EventMessageFile="%SystemRoot%\Microsoft.NET\Framework\v2.0.50727\EventLogMessages.dll"/>
+      </Component>
+      <Directory Id="BIN" Name="bin">
+        <Component Id="C__03A3A239ECFA42A89B9F097E994AB480" Guid="{9B553E0D-2645-473E-BFDF-72228D639336}">
+          <File Id="_03A3A239ECFA42A89B9F097E994AB480" Name="OxigenAdvertList.dll" KeyPath="yes" ShortName="OXIGEN~2.DLL" Assembly=".net" AssemblyManifest="_03A3A239ECFA42A89B9F097E994AB480" AssemblyApplication="_03A3A239ECFA42A89B9F097E994AB480" DiskId="1" Source="SourceDir\InstallationPackage\OxigenAdvertList.dll" />
+        </Component>
+        <Component Id="C__04A6031A6FF44EC49DEAB46C48F8B8DA" Guid="{3DD1FBB8-CF08-7851-CAA0-5DE72D83371D}">
+          <File Id="_04A6031A6FF44EC49DEAB46C48F8B8DA" Name="OxigenFileRightsChecker.dll" KeyPath="yes" ShortName="OXIGEN~3.DLL" Assembly=".net" AssemblyManifest="_04A6031A6FF44EC49DEAB46C48F8B8DA" AssemblyApplication="_04A6031A6FF44EC49DEAB46C48F8B8DA" DiskId="1" Source="SourceDir\InstallationPackage\OxigenFileRightsChecker.dll" />
+        </Component>
+        <Component Id="C__08B145DB19514168AC5BC4088D9ACD76" Guid="{0FBDA66B-DF4F-F417-A81F-9A50C18038FB}">
+          <File Id="_08B145DB19514168AC5BC4088D9ACD76" Name="OxigenServiceContracts.dll" KeyPath="yes" ShortName="OXIGEN~4.DLL" Assembly=".net" AssemblyManifest="_08B145DB19514168AC5BC4088D9ACD76" AssemblyApplication="_08B145DB19514168AC5BC4088D9ACD76" DiskId="1" Source="SourceDir\InstallationPackage\OxigenServiceContracts.dll" />
+        </Component>
+        <Component Id="C__0B347E172D1747FA94D28C8B95248FF6" Guid="{1AD97B41-4ADF-CD9C-FCEB-1A6D9A3CC8DE}">
+          <File Id="_0B347E172D1747FA94D28C8B95248FF6" Name="OxigenUserMgmtServicesContracts.dll" KeyPath="yes" ShortName="OXIGEN~6.DLL" Assembly=".net" AssemblyManifest="_0B347E172D1747FA94D28C8B95248FF6" AssemblyApplication="_0B347E172D1747FA94D28C8B95248FF6" DiskId="1" Source="SourceDir\InstallationPackage\OxigenUserMgmtServicesContracts.dll" />
+        </Component>
+        <Component Id="C__0F1BE6ED0B0644FB966E04CA07F73220" Guid="{1CD5F8EB-3700-1080-E0D2-61BBCEB7099F}">
+          <File Id="_0F1BE6ED0B0644FB966E04CA07F73220" Name="OxigenUserDataMarshallrContracts.dll" KeyPath="yes" ShortName="OXIGEN~8.DLL" Assembly=".net" AssemblyManifest="_0F1BE6ED0B0644FB966E04CA07F73220" AssemblyApplication="_0F1BE6ED0B0644FB966E04CA07F73220" DiskId="1" Source="SourceDir\InstallationPackage\OxigenUserDataMarshallrContracts.dll" />
+        </Component>
+        <Component Id="C__0F320C96856D43759D0EBA38589380D3" Guid="{96491B7F-3AD4-1755-F9AC-CA4C3A58A110}">
+          <File Id="_0F320C96856D43759D0EBA38589380D3" Name="OxigenService.exe.config" KeyPath="yes" ShortName="OXIGEN~1.CON" DiskId="1" Source="SourceDir\InstallationPackage\OxigenService.exe.config" />
+        </Component>
+        <Component Id="C__15A6157E17EE4142BE0DC704DD0166EA" Guid="{C59D375B-A665-396F-9F78-938ED5BF47A4}">
+          <File Id="_15A6157E17EE4142BE0DC704DD0166EA" Name="OxigenXmlSerializableSortableGenericList.dll" KeyPath="yes" ShortName="OXIGE~11.DLL" Assembly=".net" AssemblyManifest="_15A6157E17EE4142BE0DC704DD0166EA" AssemblyApplication="_15A6157E17EE4142BE0DC704DD0166EA" DiskId="1" Source="SourceDir\InstallationPackage\OxigenXmlSerializableSortableGenericList.dll" />
+        </Component>
+        <Component Id="C__1AAC54773F3146CEBA3690149648B13E" Guid="{726018A4-27D0-BF82-1A35-A9F8D06D0276}">
+          <File Id="_1AAC54773F3146CEBA3690149648B13E" Name="OxigenUserDataMarshallerClient.dll" KeyPath="yes" ShortName="OXIGE~13.DLL" Assembly=".net" AssemblyManifest="_1AAC54773F3146CEBA3690149648B13E" AssemblyApplication="_1AAC54773F3146CEBA3690149648B13E" DiskId="1" Source="SourceDir\InstallationPackage\OxigenUserDataMarshallerClient.dll" />
+        </Component>
+        <Component Id="C__1B5081CF7FE7406D83F3D578A6BC1D26" Guid="{8A9F11BB-2B25-4C3B-30F7-CEAA360DF58E}">
+          <File Id="_1B5081CF7FE7406D83F3D578A6BC1D26" Name="OxigenFileChecksumCalculator.dll" KeyPath="yes" ShortName="OXIGE~14.DLL" Assembly=".net" AssemblyManifest="_1B5081CF7FE7406D83F3D578A6BC1D26" AssemblyApplication="_1B5081CF7FE7406D83F3D578A6BC1D26" DiskId="1" Source="SourceDir\InstallationPackage\OxigenFileChecksumCalculator.dll" />
+        </Component>
+        <Component Id="C__1EE5BF0563FF4145AEAF77B27A88057F" Guid="{F7ED1190-E6C9-4DEB-ED8D-C9BE8017F152}">
+          <File Id="_1EE5BF0563FF4145AEAF77B27A88057F" Name="OxigenAssets.dll" KeyPath="yes" ShortName="OXIGE~15.DLL" Assembly=".net" AssemblyManifest="_1EE5BF0563FF4145AEAF77B27A88057F" AssemblyApplication="_1EE5BF0563FF4145AEAF77B27A88057F" DiskId="1" Source="SourceDir\InstallationPackage\OxigenAssets.dll" />
+        </Component>
+        <Component Id="C__404336CCB9AB4A3FB89A97654CE855E9" Guid="{CAD56FA3-7CB1-E70B-33D8-D393399A4853}">
+          <File Id="_404336CCB9AB4A3FB89A97654CE855E9" Name="OxigenInclusionExclusionRules.dll" KeyPath="yes" ShortName="OXIGE~25.DLL" Assembly=".net" AssemblyManifest="_404336CCB9AB4A3FB89A97654CE855E9" AssemblyApplication="_404336CCB9AB4A3FB89A97654CE855E9" DiskId="1" Source="SourceDir\InstallationPackage\OxigenInclusionExclusionRules.dll" />
+        </Component>
+        <Component Id="C__45C5F693B14A48B1AA8D6F5898F7363E" Guid="{2110336D-C5D5-10B0-015F-4057152A7A65}">
+          <File Id="_45C5F693B14A48B1AA8D6F5898F7363E" Name="OxigenProxyClientBaseLib.dll" KeyPath="yes" ShortName="OXIGE~27.DLL" Assembly=".net" AssemblyManifest="_45C5F693B14A48B1AA8D6F5898F7363E" AssemblyApplication="_45C5F693B14A48B1AA8D6F5898F7363E" DiskId="1" Source="SourceDir\InstallationPackage\OxigenProxyClientBaseLib.dll" />
+        </Component>
+        <Component Id="C__474C60F26C7C4F66B7DC554F77E734D4" Guid="{A42E50A0-139D-E3EE-D028-910D7D140131}">
+          <File Id="_474C60F26C7C4F66B7DC554F77E734D4" Name="OxigenLogStats.dll" KeyPath="yes" ShortName="OXIGE~28.DLL" Assembly=".net" AssemblyManifest="_474C60F26C7C4F66B7DC554F77E734D4" AssemblyApplication="_474C60F26C7C4F66B7DC554F77E734D4" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLogStats.dll" />
+        </Component>
+        <Component Id="C__488ABAF46A7F478EBC4336AD30617FC4" Guid="{DA650A05-AC89-C27A-A3EF-C35152CE3437}">
+          <File Id="_488ABAF46A7F478EBC4336AD30617FC4" Name="OxigenLE.exe.config" KeyPath="yes" ShortName="OXIGEN~3.CON" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLE.exe.config" />
+        </Component>
+        <Component Id="C__539297B5DE284F6C9EB6C65977511F9E" Guid="{53050285-B0FE-359F-26CF-ECFA6D721259}">
+          <File Id="_539297B5DE284F6C9EB6C65977511F9E" Name="OxigenLinqToHashSet.dll" KeyPath="yes" ShortName="OXIGE~32.DLL" Assembly=".net" AssemblyManifest="_539297B5DE284F6C9EB6C65977511F9E" AssemblyApplication="_539297B5DE284F6C9EB6C65977511F9E" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLinqToHashSet.dll" />
+        </Component>
+        <Component Id="C__609DB8A551CC40EB94D8C8DB011FE4CE" Guid="{2F277D29-A530-E110-09AB-A10153EBC351}">
+          <File Id="_609DB8A551CC40EB94D8C8DB011FE4CE" Name="OxigenExceptions.dll" KeyPath="yes" ShortName="OXIGE~36.DLL" Assembly=".net" AssemblyManifest="_609DB8A551CC40EB94D8C8DB011FE4CE" AssemblyApplication="_609DB8A551CC40EB94D8C8DB011FE4CE" DiskId="1" Source="SourceDir\InstallationPackage\OxigenExceptions.dll" />
+        </Component>
+        <Component Id="C__64F460FD1143407DAE0BE890AE8E1174" Guid="{8437BDFF-5785-3565-EBC0-C822FD67A847}">
+          <File Id="_64F460FD1143407DAE0BE890AE8E1174" Name="OxigenEncryptionDecryption.dll" KeyPath="yes" ShortName="OXIGE~40.DLL" Assembly=".net" AssemblyManifest="_64F460FD1143407DAE0BE890AE8E1174" AssemblyApplication="_64F460FD1143407DAE0BE890AE8E1174" DiskId="1" Source="SourceDir\InstallationPackage\OxigenEncryptionDecryption.dll" />
+        </Component>
+        <Component Id="C__668B828ED59B45A18323E1E40CE8EC39" Guid="{51FAA3B2-44C4-B080-A442-753493196346}">
+          <File Id="_668B828ED59B45A18323E1E40CE8EC39" Name="OxigenUserSettings.dll" KeyPath="yes" ShortName="OXIGE~41.DLL" Assembly=".net" AssemblyManifest="_668B828ED59B45A18323E1E40CE8EC39" AssemblyApplication="_668B828ED59B45A18323E1E40CE8EC39" DiskId="1" Source="SourceDir\InstallationPackage\OxigenUserSettings.dll" />
+        </Component>
+        <Component Id="C__6813D2D311A9498DA87CB9C47E4DA54C" Guid="{57F3A036-F0D7-F915-616C-774C1B35E086}">
+          <File Id="_6813D2D311A9498DA87CB9C47E4DA54C" Name="OxigenChannelData.dll" KeyPath="yes" ShortName="OXIGE~42.DLL" Assembly=".net" AssemblyManifest="_6813D2D311A9498DA87CB9C47E4DA54C" AssemblyApplication="_6813D2D311A9498DA87CB9C47E4DA54C" DiskId="1" Source="SourceDir\InstallationPackage\OxigenChannelData.dll" />
+        </Component>
+        <Component Id="C__68A81824D0784993816E66F8ABF4DE02" Guid="{EA9C1288-62DD-0484-A321-BD69E0F98BB3}">
+          <File Id="_68A81824D0784993816E66F8ABF4DE02" Name="OxigenLoggerInfo.dll" KeyPath="yes" ShortName="OXIGE~44.DLL" Assembly=".net" AssemblyManifest="_68A81824D0784993816E66F8ABF4DE02" AssemblyApplication="_68A81824D0784993816E66F8ABF4DE02" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLoggerInfo.dll" />
+        </Component>
+        <Component Id="C__7109E0FE3BBD43CBB157BE0FD004C756" Guid="{9ED385CF-C2D2-FFBC-D255-722BBF573560}">
+          <File Id="_7109E0FE3BBD43CBB157BE0FD004C756" Name="ScreenSaverConfig.exe.config" KeyPath="yes" ShortName="SCREEN~1.CON" DiskId="1" Source="SourceDir\InstallationPackage\ScreenSaverConfig.exe.config" />
+        </Component>
+        <Component Id="C__7BDA16B247244C4D8713D73CAEA0EFEF" Guid="{D5A6B89A-64F0-2E44-CAF4-DA683002AEB5}">
+          <File Id="_7BDA16B247244C4D8713D73CAEA0EFEF" Name="OxigenPlaylistLogic.dll" KeyPath="yes" ShortName="OXIGE~49.DLL" Assembly=".net" AssemblyManifest="_7BDA16B247244C4D8713D73CAEA0EFEF" AssemblyApplication="_7BDA16B247244C4D8713D73CAEA0EFEF" DiskId="1" Source="SourceDir\InstallationPackage\OxigenPlaylistLogic.dll" />
+        </Component>
+        <Component Id="C__7EF3ACAC6C9A4567AC9B51883D18D89B" Guid="{D6A2EF63-24B9-4BE1-4D1C-DD3ED1A5EA44}">
+          <File Id="_7EF3ACAC6C9A4567AC9B51883D18D89B" Name="OxigenWCFErrorReporting.dll" KeyPath="yes" ShortName="OXIGE~50.DLL" Assembly=".net" AssemblyManifest="_7EF3ACAC6C9A4567AC9B51883D18D89B" AssemblyApplication="_7EF3ACAC6C9A4567AC9B51883D18D89B" DiskId="1" Source="SourceDir\InstallationPackage\OxigenWCFErrorReporting.dll" />
+        </Component>
+        <Component Id="C__7F0348A4391D4948977083A13AA54C1B" Guid="{7610FEF0-67D5-E2EB-2E23-F4C398FFA783}">
+          <File Id="_7F0348A4391D4948977083A13AA54C1B" Name="OxigenChannelSubscriptions.dll" KeyPath="yes" ShortName="OXIGE~51.DLL" Assembly=".net" AssemblyManifest="_7F0348A4391D4948977083A13AA54C1B" AssemblyApplication="_7F0348A4391D4948977083A13AA54C1B" DiskId="1" Source="SourceDir\InstallationPackage\OxigenChannelSubscriptions.dll" />
+        </Component>
+        <Component Id="C__8201E8B3310A4B25AF9FCBE1DC595F2D" Guid="{0126088E-4C6F-B776-5BB2-429EFDEAAD3F}">
+          <File Id="_8201E8B3310A4B25AF9FCBE1DC595F2D" Name="OxigenTaxonomySearch.dll" KeyPath="yes" ShortName="OXIGE~53.DLL" Assembly=".net" AssemblyManifest="_8201E8B3310A4B25AF9FCBE1DC595F2D" AssemblyApplication="_8201E8B3310A4B25AF9FCBE1DC595F2D" DiskId="1" Source="SourceDir\InstallationPackage\OxigenTaxonomySearch.dll" />
+        </Component>
+        <Component Id="C__890588F6B1FA433A82D7403EC04A8122" Guid="{A3AA1EE1-D8AD-F243-9F5C-37D7C4085E08}">
+          <File Id="_890588F6B1FA433A82D7403EC04A8122" Name="OxigenServerCycleConnectAttempt.dll" KeyPath="yes" ShortName="OXIGE~56.DLL" Assembly=".net" AssemblyManifest="_890588F6B1FA433A82D7403EC04A8122" AssemblyApplication="_890588F6B1FA433A82D7403EC04A8122" DiskId="1" Source="SourceDir\InstallationPackage\OxigenServerCycleConnectAttempt.dll" />
+        </Component>
+        <Component Id="C__8F8076C115DB423FA64AE7454974E6F3" Guid="{365621DC-96E4-584F-D1E7-572EC5D1E4F0}">
+          <File Id="_8F8076C115DB423FA64AE7454974E6F3" Name="OxigenCE.exe" KeyPath="yes" ShortName="OXIGENCE.EXE" Assembly=".net" AssemblyManifest="_8F8076C115DB423FA64AE7454974E6F3" AssemblyApplication="_8F8076C115DB423FA64AE7454974E6F3" DiskId="1" Source="SourceDir\InstallationPackage\OxigenCE.exe" />
+        </Component>
+        <Component Id="C__A643C77241B94915B3D4E45C637A63B9" Guid="{5EC89487-A408-F21C-D74C-A8AA5DBD90A4}">
+          <File Id="_A643C77241B94915B3D4E45C637A63B9" Name="OxigenLogFileReader.dll" KeyPath="yes" ShortName="OXIGE~65.DLL" Assembly=".net" AssemblyManifest="_A643C77241B94915B3D4E45C637A63B9" AssemblyApplication="_A643C77241B94915B3D4E45C637A63B9" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLogFileReader.dll" />
+        </Component>
+        <Component Id="C__A8A42F228A844EA59C47407C638AC9A7" Guid="{23B98574-3DF4-4F2C-5E70-B9C368EA376F}">
+          <File Id="_A8A42F228A844EA59C47407C638AC9A7" Name="OxigenFileLocker.dll" KeyPath="yes" ShortName="OXIGE~66.DLL" Assembly=".net" AssemblyManifest="_A8A42F228A844EA59C47407C638AC9A7" AssemblyApplication="_A8A42F228A844EA59C47407C638AC9A7" DiskId="1" Source="SourceDir\InstallationPackage\OxigenFileLocker.dll" />
+        </Component>
+        <Component Id="C__AA9DD2E132274C1D9C4C16C196F5CD14" Guid="{26D898B5-6D9C-429C-980D-F7C9824B8484}">
+          <File Id="_AA9DD2E132274C1D9C4C16C196F5CD14" Name="OxigenDemographicRange.dll" KeyPath="yes" ShortName="OXIGE~67.DLL" Assembly=".net" AssemblyManifest="_AA9DD2E132274C1D9C4C16C196F5CD14" AssemblyApplication="_AA9DD2E132274C1D9C4C16C196F5CD14" DiskId="1" Source="SourceDir\InstallationPackage\OxigenDemographicRange.dll" />
+        </Component>
+        <Component Id="C__B17210CDEDB94D7DB29273CAD08399E6" Guid="{38FEC527-71DB-14EE-A0EE-9B1410487944}">
+          <File Id="_B17210CDEDB94D7DB29273CAD08399E6" Name="OxigenTray.exe" KeyPath="yes" ShortName="OXIGEN~1.EXE" Assembly=".net" AssemblyManifest="_B17210CDEDB94D7DB29273CAD08399E6" AssemblyApplication="_B17210CDEDB94D7DB29273CAD08399E6" DiskId="1" Source="SourceDir\InstallationPackage\OxigenTray.exe" />
+        </Component>
+        <Component Id="C__BAD6BB3AC14240A38C4D2ADE8E45638F" Guid="{FEE9B437-FD79-7F98-E64A-A89F85E7A4D0}">
+          <File Id="_BAD6BB3AC14240A38C4D2ADE8E45638F" Name="OxigenPlaylist.dll" KeyPath="yes" ShortName="OXIGE~74.DLL" Assembly=".net" AssemblyManifest="_BAD6BB3AC14240A38C4D2ADE8E45638F" AssemblyApplication="_BAD6BB3AC14240A38C4D2ADE8E45638F" DiskId="1" Source="SourceDir\InstallationPackage\OxigenPlaylist.dll" />
+        </Component>
+        <Component Id="C__C215BC70DA93492C80BA72A8A13A508B" Guid="{82FC43CC-824E-CBA2-B3CC-B0175D65C2CF}">
+          <File Id="_C215BC70DA93492C80BA72A8A13A508B" Name="OxigenService.exe" KeyPath="yes" ShortName="OXIGEN~2.EXE" Assembly=".net" AssemblyManifest="_C215BC70DA93492C80BA72A8A13A508B" AssemblyApplication="_C215BC70DA93492C80BA72A8A13A508B" DiskId="1" Source="SourceDir\InstallationPackage\OxigenService.exe" />
+        </Component>
+        <Component Id="C__C79CE05F49854F0493967DD9F0B62312" Guid="{F3766C53-0B8E-5472-CA68-462BEDCADBF0}">
+          <File Id="_C79CE05F49854F0493967DD9F0B62312" Name="OxigenUserMgmtServicesClient.dll" KeyPath="yes" ShortName="OXIGE~76.DLL" Assembly=".net" AssemblyManifest="_C79CE05F49854F0493967DD9F0B62312" AssemblyApplication="_C79CE05F49854F0493967DD9F0B62312" DiskId="1" Source="SourceDir\InstallationPackage\OxigenUserMgmtServicesClient.dll" />
+        </Component>
+        <Component Id="C__C79CF83D833447C4945930BD74BCB0CD" Guid="{2248DEDB-1E5F-B6BE-A4CB-FF4203DB69B5}">
+          <File Id="_C79CF83D833447C4945930BD74BCB0CD" Name="OxigenSU.exe" KeyPath="yes" ShortName="OXIGENSU.EXE" Assembly=".net" AssemblyManifest="_C79CF83D833447C4945930BD74BCB0CD" AssemblyApplication="_C79CF83D833447C4945930BD74BCB0CD" DiskId="1" Source="SourceDir\InstallationPackage\OxigenSU.exe" />
+        </Component>
+        <Component Id="C__C7A7BE14CAE446D8B32E1B6C6CE1445C" Guid="{9E58DEA1-8C5A-16B2-7192-82B1DBB003D9}">
+          <File Id="_C7A7BE14CAE446D8B32E1B6C6CE1445C" Name="OxigenSU.exe.config" KeyPath="yes" ShortName="OXIGEN~4.CON" DiskId="1" Source="SourceDir\InstallationPackage\OxigenSU.exe.config" />
+        </Component>
+        <Component Id="C__CDB90C3C3E9E4FD8A3B36622962E9D79" Guid="{3F8AF383-3FB7-AFF0-8BCE-E51530EE3C0E}">
+          <File Id="_CDB90C3C3E9E4FD8A3B36622962E9D79" Name="OxigenLogEntry.dll" KeyPath="yes" ShortName="OXIGE~78.DLL" Assembly=".net" AssemblyManifest="_CDB90C3C3E9E4FD8A3B36622962E9D79" AssemblyApplication="_CDB90C3C3E9E4FD8A3B36622962E9D79" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLogEntry.dll" />
+        </Component>
+        <Component Id="C__CEB66504683E4015BFAC0F974DF78498" Guid="{B6ECA4E7-A173-5640-DC07-259765484903}">
+          <File Id="_CEB66504683E4015BFAC0F974DF78498" Name="OxigenDemographic.dll" KeyPath="yes" ShortName="OXIGE~79.DLL" Assembly=".net" AssemblyManifest="_CEB66504683E4015BFAC0F974DF78498" AssemblyApplication="_CEB66504683E4015BFAC0F974DF78498" DiskId="1" Source="SourceDir\InstallationPackage\OxigenDemographic.dll" />
+        </Component>
+        <Component Id="C__D7521D703B604F7B8B7B75043CCDC5E0" Guid="{62B2AD55-F682-56B0-FB7B-1AE40FCC0A34}">
+          <File Id="_D7521D703B604F7B8B7B75043CCDC5E0" Name="OxigenCE.exe.config" KeyPath="yes" ShortName="OXIGEN~5.CON" DiskId="1" Source="SourceDir\InstallationPackage\OxigenCE.exe.config" />
+        </Component>
+        <Component Id="C__DECCCA21B6A340DCB40674E56B505CAB" Guid="{35FB7A0A-0667-FF71-0D18-2A3A624539EA}">
+          <File Id="_DECCCA21B6A340DCB40674E56B505CAB" Name="OxigenTimeSpanObjectWrapper.dll" KeyPath="yes" ShortName="OXIGE~83.DLL" Assembly=".net" AssemblyManifest="_DECCCA21B6A340DCB40674E56B505CAB" AssemblyApplication="_DECCCA21B6A340DCB40674E56B505CAB" DiskId="1" Source="SourceDir\InstallationPackage\OxigenTimeSpanObjectWrapper.dll" />
+        </Component>
+        <Component Id="C__E67F9398F27946D1AA43977D9A1EB939" Guid="{7373E205-720B-93C3-396F-A1CA1C3801D7}">
+          <File Id="_E67F9398F27946D1AA43977D9A1EB939" Name="OxigenPlayerType.dll" KeyPath="yes" ShortName="OXIGE~85.DLL" Assembly=".net" AssemblyManifest="_E67F9398F27946D1AA43977D9A1EB939" AssemblyApplication="_E67F9398F27946D1AA43977D9A1EB939" DiskId="1" Source="SourceDir\InstallationPackage\OxigenPlayerType.dll" />
+        </Component>
+        <Component Id="C__EA759C36278B45A8B05EF7B3BE2FE8FA" Guid="{20F82EBD-D303-17A8-4B42-FD65D150F1D5}">
+          <File Id="_EA759C36278B45A8B05EF7B3BE2FE8FA" Name="OxigenGeneralData.dll" KeyPath="yes" ShortName="OXIGE~87.DLL" Assembly=".net" AssemblyManifest="_EA759C36278B45A8B05EF7B3BE2FE8FA" AssemblyApplication="_EA759C36278B45A8B05EF7B3BE2FE8FA" DiskId="1" Source="SourceDir\InstallationPackage\OxigenGeneralData.dll" />
+        </Component>
+        <Component Id="C__EBE1C03BBA5344CEBC3219777A932A8C" Guid="{B5A62E4D-9FD1-75FD-F1A9-45043C8E1BB6}">
+          <File Id="_EBE1C03BBA5344CEBC3219777A932A8C" Name="OxigenInterCommunicationStructures.dll" KeyPath="yes" ShortName="OXIGE~88.DLL" Assembly=".net" AssemblyManifest="_EBE1C03BBA5344CEBC3219777A932A8C" AssemblyApplication="_EBE1C03BBA5344CEBC3219777A932A8C" DiskId="1" Source="SourceDir\InstallationPackage\OxigenInterCommunicationStructures.dll" />
+        </Component>
+        <Component Id="C__EE2C7608729A4AC3963CB0EEE761E9BF" Guid="{5051A8A3-E220-95B2-94D2-57AD007F80F5}">
+          <File Id="_EE2C7608729A4AC3963CB0EEE761E9BF" Name="OxigenXMLSerializer.dll" KeyPath="yes" ShortName="OXIGE~89.DLL" Assembly=".net" AssemblyManifest="_EE2C7608729A4AC3963CB0EEE761E9BF" AssemblyApplication="_EE2C7608729A4AC3963CB0EEE761E9BF" DiskId="1" Source="SourceDir\InstallationPackage\OxigenXMLSerializer.dll" />
+        </Component>
+        <Component Id="C__EFFF43CAEA964628913A46D37364411C" Guid="{2F42082D-1B35-09FD-BD39-6C78CD067338}">
+          <File Id="_EFFF43CAEA964628913A46D37364411C" Name="OxigenXmlSerializableGenericDictionary.dll" KeyPath="yes" ShortName="OXIGE~90.DLL" Assembly=".net" AssemblyManifest="_EFFF43CAEA964628913A46D37364411C" AssemblyApplication="_EFFF43CAEA964628913A46D37364411C" DiskId="1" Source="SourceDir\InstallationPackage\OxigenXmlSerializableGenericDictionary.dll" />
+        </Component>
+        <Component Id="C__F74BCBA1DBEB47EA9565C754197DF44D" Guid="{2F7BB21C-D53D-DE8B-3297-8D33AB5816F3}">
+          <File Id="_F74BCBA1DBEB47EA9565C754197DF44D" Name="ScreenSaverConfig.exe" KeyPath="yes" ShortName="SCREEN~1.EXE" Assembly=".net" AssemblyManifest="_F74BCBA1DBEB47EA9565C754197DF44D" AssemblyApplication="_F74BCBA1DBEB47EA9565C754197DF44D" DiskId="1" Source="SourceDir\InstallationPackage\ScreenSaverConfig.exe" />
+        </Component>
+        <Component Id="C__F7A08614EE6C4CE48E65B4F7E1A37965" Guid="{6082FE5D-0FB2-4A28-0073-006EA9F2CEA9}">
+          <File Id="_F7A08614EE6C4CE48E65B4F7E1A37965" Name="OxigenTray.exe.config" KeyPath="yes" ShortName="OXIGEN~6.CON" DiskId="1" Source="SourceDir\InstallationPackage\OxigenTray.exe.config" />
+        </Component>
+        <Component Id="C__F7B7954236D4419EA541DE0375D4363C" Guid="{936D4DB3-6679-DAB0-2F60-CACF7C45138D}">
+          <File Id="_F7B7954236D4419EA541DE0375D4363C" Name="OxigenLE.exe" KeyPath="yes" ShortName="OXIGENLE.EXE" Assembly=".net" AssemblyManifest="_F7B7954236D4419EA541DE0375D4363C" AssemblyApplication="_F7B7954236D4419EA541DE0375D4363C" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLE.exe" />
+        </Component>
+      </Directory>
+      <Directory Id="SystemFolder" ShortSourceName="SYSTEM~1" SourceName="System Folder">
+        <Component Id="C__06619B7607DC4FD7B58826DB5D07EBE1" Guid="{B298E4C8-FCB3-B06F-8CDB-111B7CA31BD8}">
+          <File Id="_06619B7607DC4FD7B58826DB5D07EBE1" Name="AxInterop.WMPLib.dll" KeyPath="yes" ShortName="AXINTE~1.DLL" Assembly=".net" AssemblyManifest="_06619B7607DC4FD7B58826DB5D07EBE1" AssemblyApplication="_06619B7607DC4FD7B58826DB5D07EBE1" DiskId="1" Source="SourceDir\InstallationPackage\AxInterop.WMPLib.dll" />
+        </Component>
+        <Component Id="C__0955F2A6E2144A7F8BC7C404C964563F" Guid="{44E1595F-4253-9E09-AB82-C3CEEEEEAA3C}">
+          <File Id="_0955F2A6E2144A7F8BC7C404C964563F" Name="OxigenUserSettings.dll" KeyPath="yes" ShortName="OXIGEN~5.DLL" Assembly=".net" AssemblyManifest="_0955F2A6E2144A7F8BC7C404C964563F" AssemblyApplication="_0955F2A6E2144A7F8BC7C404C964563F" DiskId="1" Source="SourceDir\InstallationPackage\OxigenUserSettings.dll" />
+        </Component>
+        <Component Id="C__12D3E0120E014C2BA258395B4C90C3B7" Guid="{A60FD1DD-AC29-0E85-8909-01D78D2B8E27}">
+          <File Id="_12D3E0120E014C2BA258395B4C90C3B7" Name="OxigenXmlSerializableGenericDictionary.dll" KeyPath="yes" ShortName="OXIGEN~9.DLL" Assembly=".net" AssemblyManifest="_12D3E0120E014C2BA258395B4C90C3B7" AssemblyApplication="_12D3E0120E014C2BA258395B4C90C3B7" DiskId="1" Source="SourceDir\InstallationPackage\OxigenXmlSerializableGenericDictionary.dll" />
+        </Component>
+        <Component Id="C__17551DA8D550466198B31D4C3A1949BC" Guid="{D2D1EB46-F44A-ABBC-D1FB-8768675C27AA}">
+          <File Id="_17551DA8D550466198B31D4C3A1949BC" Name="Interop.QTOControlLib.dll" KeyPath="yes" ShortName="INTERO~2.DLL" Assembly=".net" AssemblyManifest="_17551DA8D550466198B31D4C3A1949BC" AssemblyApplication="_17551DA8D550466198B31D4C3A1949BC" DiskId="1" Source="SourceDir\InstallationPackage\Interop.QTOControlLib.dll" />
+        </Component>
+        <Component Id="C__1806949BF94A4150BC958A2DAC191A9C" Guid="{F37EF39D-EEA1-E97F-CDC3-94B8423282E7}">
+          <File Id="_1806949BF94A4150BC958A2DAC191A9C" Name="Oxigen.scr.config" KeyPath="yes" ShortName="OXIGEN~2.CON" DiskId="1" Source="SourceDir\InstallationPackage\Oxigen.scr.config" />
+        </Component>
+        <Component Id="C__21F0EB31876649AAAC3AB43096E2ED81" Guid="{1EE608F4-78EE-C9E5-DAAA-4D54648605AA}">
+          <File Id="_21F0EB31876649AAAC3AB43096E2ED81" Name="OxigenSingletons.dll" KeyPath="yes" ShortName="OXIGE~17.DLL" Assembly=".net" AssemblyManifest="_21F0EB31876649AAAC3AB43096E2ED81" AssemblyApplication="_21F0EB31876649AAAC3AB43096E2ED81" DiskId="1" Source="SourceDir\InstallationPackage\OxigenSingletons.dll" />
+        </Component>
+        <Component Id="C__2525BB08EC474DFEA0742287BCF1413E" Guid="{0913AFE5-B01B-3267-265E-7DCFF458ED24}">
+          <File Id="_2525BB08EC474DFEA0742287BCF1413E" Name="OxigenLogWriteOperations.dll" KeyPath="yes" ShortName="OXIGE~18.DLL" Assembly=".net" AssemblyManifest="_2525BB08EC474DFEA0742287BCF1413E" AssemblyApplication="_2525BB08EC474DFEA0742287BCF1413E" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLogWriteOperations.dll" />
+        </Component>
+        <Component Id="C__32636D26F16D425BADDD5911CC45D764" Guid="{0BE57705-910C-41AE-F384-D2AAB3768DB3}">
+          <File Id="_32636D26F16D425BADDD5911CC45D764" Name="OxigenStopwatch.dll" KeyPath="yes" ShortName="OXIGE~21.DLL" Assembly=".net" AssemblyManifest="_32636D26F16D425BADDD5911CC45D764" AssemblyApplication="_32636D26F16D425BADDD5911CC45D764" DiskId="1" Source="SourceDir\InstallationPackage\OxigenStopwatch.dll" />
+        </Component>
+        <Component Id="C__3725EC167BB44CC4B84BE5F5EBF9E864" Guid="{C082A67F-88D3-804A-7CDE-805032FB3333}">
+          <File Id="_3725EC167BB44CC4B84BE5F5EBF9E864" Name="OxigenWCFErrorReporting.dll" KeyPath="yes" ShortName="OXIGE~22.DLL" Assembly=".net" AssemblyManifest="_3725EC167BB44CC4B84BE5F5EBF9E864" AssemblyApplication="_3725EC167BB44CC4B84BE5F5EBF9E864" DiskId="1" Source="SourceDir\InstallationPackage\OxigenWCFErrorReporting.dll" />
+        </Component>
+        <Component Id="C__3DBCDE6768459AADBDD6942C80D8B4B5" Guid="{D5D9B9B4-21BE-2A7B-E66D-79BD92AAD362}">
+          <File Id="_3DBCDE6768459AADBDD6942C80D8B4B5" Name="QTOControl.dll" KeyPath="yes" ShortName="QTOCON~1.DLL" DiskId="1" Source="SourceDir\InstallationPackage\QTOControl.dll" />
+        </Component>
+        <Component Id="C__44C3F952CAAB4BDC9CDE6CF30D152141" Guid="{3FA8BBA5-0FCF-517C-81FC-F7574AC83053}">
+          <File Id="_44C3F952CAAB4BDC9CDE6CF30D152141" Name="OxigenEncryptionDecryption.dll" KeyPath="yes" ShortName="OXIGE~26.DLL" Assembly=".net" AssemblyManifest="_44C3F952CAAB4BDC9CDE6CF30D152141" AssemblyApplication="_44C3F952CAAB4BDC9CDE6CF30D152141" DiskId="1" Source="SourceDir\InstallationPackage\OxigenEncryptionDecryption.dll" />
+        </Component>
+        <Component Id="C__4C1078259B3F48A39934D5DD94E62CD6" Guid="{D76A9174-E172-DFD7-2786-3E7A0A5811E7}">
+          <File Id="_4C1078259B3F48A39934D5DD94E62CD6" Name="OxigenProxyClientBaseLib.dll" KeyPath="yes" ShortName="OXIGE~29.DLL" Assembly=".net" AssemblyManifest="_4C1078259B3F48A39934D5DD94E62CD6" AssemblyApplication="_4C1078259B3F48A39934D5DD94E62CD6" DiskId="1" Source="SourceDir\InstallationPackage\OxigenProxyClientBaseLib.dll" />
+        </Component>
+        <Component Id="C__5866B88929C84E1DBE011329F270B952" Guid="{6C809176-58CE-2401-C69C-ACFBF2106383}">
+          <File Id="_5866B88929C84E1DBE011329F270B952" Name="OxigenNoAssetsAnimator.dll" KeyPath="yes" ShortName="OXIGE~33.DLL" Assembly=".net" AssemblyManifest="_5866B88929C84E1DBE011329F270B952" AssemblyApplication="_5866B88929C84E1DBE011329F270B952" DiskId="1" Source="SourceDir\InstallationPackage\OxigenNoAssetsAnimator.dll" />
+        </Component>
+        <Component Id="C__5A354026CDF04C60915794068FF0439C" Guid="{9AC008BF-94AD-8A0D-A2E0-59A9B8B07C9A}">
+          <File Id="_5A354026CDF04C60915794068FF0439C" Name="Oxigen.scr" KeyPath="yes" ShortName="OXIGEN.SCR" Assembly=".net" AssemblyManifest="_5A354026CDF04C60915794068FF0439C" AssemblyApplication="_5A354026CDF04C60915794068FF0439C" DiskId="1" Source="SourceDir\InstallationPackage\Oxigen.scr" />
+        </Component>
+        <Component Id="C__5BC91596BD7F45A7B8F1C31028F8D03C" Guid="{385F469C-3B38-0AFB-FDAE-EA5E0CD7E702}">
+          <File Id="_5BC91596BD7F45A7B8F1C31028F8D03C" Name="OxigenPlaylistAssetPicker.dll" KeyPath="yes" ShortName="OXIGE~34.DLL" Assembly=".net" AssemblyManifest="_5BC91596BD7F45A7B8F1C31028F8D03C" AssemblyApplication="_5BC91596BD7F45A7B8F1C31028F8D03C" DiskId="1" Source="SourceDir\InstallationPackage\OxigenPlaylistAssetPicker.dll" />
+        </Component>
+        <Component Id="C__61999B7252F045AE95628D0054B72288" Guid="{29DA5100-2F88-E75B-F2C2-48D356B35596}">
+          <File Id="_61999B7252F045AE95628D0054B72288" Name="OxigenServiceContracts.dll" KeyPath="yes" ShortName="OXIGE~37.DLL" Assembly=".net" AssemblyManifest="_61999B7252F045AE95628D0054B72288" AssemblyApplication="_61999B7252F045AE95628D0054B72288" DiskId="1" Source="SourceDir\InstallationPackage\OxigenServiceContracts.dll" />
+        </Component>
+        <Component Id="C__670592F2FFEB484A9732F50C29681DF5" Guid="{51E3AF2E-58E4-8586-4064-3B4F317F1D9A}">
+          <File Id="_670592F2FFEB484A9732F50C29681DF5" Name="Interop.ShockwaveFlashObjects.dll" KeyPath="yes" ShortName="INTERO~4.DLL" Assembly=".net" AssemblyManifest="_670592F2FFEB484A9732F50C29681DF5" AssemblyApplication="_670592F2FFEB484A9732F50C29681DF5" DiskId="1" Source="SourceDir\InstallationPackage\Interop.ShockwaveFlashObjects.dll" />
+        </Component>
+        <Component Id="C__68671F44260A435696433D1D25764392" Guid="{412F058C-18B2-3141-446B-62A0ADE4AB60}">
+          <File Id="_68671F44260A435696433D1D25764392" Name="OxigenPlaylist.dll" KeyPath="yes" ShortName="OXIGE~43.DLL" Assembly=".net" AssemblyManifest="_68671F44260A435696433D1D25764392" AssemblyApplication="_68671F44260A435696433D1D25764392" DiskId="1" Source="SourceDir\InstallationPackage\OxigenPlaylist.dll" />
+        </Component>
+        <Component Id="C__755AEC281D3247E596C0ED2FDBF7F3B3" Guid="{8E2B1CA9-C133-708D-9BC9-5DFE79533D03}">
+          <File Id="_755AEC281D3247E596C0ED2FDBF7F3B3" Name="Interop.QTOLibrary.dll" KeyPath="yes" ShortName="INTERO~5.DLL" Assembly=".net" AssemblyManifest="_755AEC281D3247E596C0ED2FDBF7F3B3" AssemblyApplication="_755AEC281D3247E596C0ED2FDBF7F3B3" DiskId="1" Source="SourceDir\InstallationPackage\Interop.QTOLibrary.dll" />
+        </Component>
+        <Component Id="C__76928676D0BE4998A24714543F2275B3" Guid="{6EC6E6AC-B0BE-B8CA-C7A3-186FB953C2A2}">
+          <File Id="_76928676D0BE4998A24714543F2275B3" Name="OxigenXMLSerializer.dll" KeyPath="yes" ShortName="OXIGE~46.DLL" Assembly=".net" AssemblyManifest="_76928676D0BE4998A24714543F2275B3" AssemblyApplication="_76928676D0BE4998A24714543F2275B3" DiskId="1" Source="SourceDir\InstallationPackage\OxigenXMLSerializer.dll" />
+        </Component>
+        <Component Id="C__7AEF6A9085794275B9527A694FBD71C6" Guid="{FB768E59-78A6-B1E3-AEF6-6675A4896A5B}">
+          <File Id="_7AEF6A9085794275B9527A694FBD71C6" Name="OxigenFileRightsChecker.dll" KeyPath="yes" ShortName="OXIGE~47.DLL" Assembly=".net" AssemblyManifest="_7AEF6A9085794275B9527A694FBD71C6" AssemblyApplication="_7AEF6A9085794275B9527A694FBD71C6" DiskId="1" Source="SourceDir\InstallationPackage\OxigenFileRightsChecker.dll" />
+        </Component>
+        <Component Id="C__86D2707D62074CE6A606D216D2CE6ADA" Guid="{420D62C5-3851-1160-D7E3-A0C126403570}">
+          <File Id="_86D2707D62074CE6A606D216D2CE6ADA" Name="OxigenInternetConnectionCheck.dll" KeyPath="yes" ShortName="OXIGE~54.DLL" Assembly=".net" AssemblyManifest="_86D2707D62074CE6A606D216D2CE6ADA" AssemblyApplication="_86D2707D62074CE6A606D216D2CE6ADA" DiskId="1" Source="SourceDir\InstallationPackage\OxigenInternetConnectionCheck.dll" />
+        </Component>
+        <Component Id="C__879AF09C3E2F4892BAC467A762F5276B" Guid="{DFFE3805-A39C-13BB-8D31-ADBBEE49491E}">
+          <File Id="_879AF09C3E2F4892BAC467A762F5276B" Name="AxInterop.QTOControlLib.dll" KeyPath="yes" ShortName="AXINTE~2.DLL" Assembly=".net" AssemblyManifest="_879AF09C3E2F4892BAC467A762F5276B" AssemblyApplication="_879AF09C3E2F4892BAC467A762F5276B" DiskId="1" Source="SourceDir\InstallationPackage\AxInterop.QTOControlLib.dll" />
+        </Component>
+        <Component Id="C__8F9B5B37C6964822A3C30D65BDF2670F" Guid="{84AB690B-9CF8-FFB7-9E92-F565F3E085C5}">
+          <File Id="_8F9B5B37C6964822A3C30D65BDF2670F" Name="OxigenGeneralData.dll" KeyPath="yes" ShortName="OXIGE~58.DLL" Assembly=".net" AssemblyManifest="_8F9B5B37C6964822A3C30D65BDF2670F" AssemblyApplication="_8F9B5B37C6964822A3C30D65BDF2670F" DiskId="1" Source="SourceDir\InstallationPackage\OxigenGeneralData.dll" />
+        </Component>
+        <Component Id="C__97D8DD3BAA414FF1ABD3F10E7F1272A6" Guid="{D1C25989-A819-A8E5-A818-2A38069CA50D}">
+          <File Id="_97D8DD3BAA414FF1ABD3F10E7F1272A6" Name="OxigenUsageCount.dll" KeyPath="yes" ShortName="OXIGE~61.DLL" Assembly=".net" AssemblyManifest="_97D8DD3BAA414FF1ABD3F10E7F1272A6" AssemblyApplication="_97D8DD3BAA414FF1ABD3F10E7F1272A6" DiskId="1" Source="SourceDir\InstallationPackage\OxigenUsageCount.dll" />
+        </Component>
+        <Component Id="C__9CB2F73757DD4E749A652C5E75222C4D" Guid="{68966077-B21A-BD89-836E-7D7CFCAD8088}">
+          <File Id="_9CB2F73757DD4E749A652C5E75222C4D" Name="OxigenLogFileWriter.dll" KeyPath="yes" ShortName="OXIGE~63.DLL" Assembly=".net" AssemblyManifest="_9CB2F73757DD4E749A652C5E75222C4D" AssemblyApplication="_9CB2F73757DD4E749A652C5E75222C4D" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLogFileWriter.dll" />
+        </Component>
+        <Component Id="C__9FB092FDB292E7AE109CAD8A63BE0E18" Guid="{5016B897-6BAD-DC61-2B5B-D72E210522DF}">
+          <File Id="_9FB092FDB292E7AE109CAD8A63BE0E18" Name="QTOLibrary.dll" KeyPath="yes" ShortName="QTOLIB~1.DLL" DiskId="1" Source="SourceDir\InstallationPackage\QTOLibrary.dll" />
+        </Component>
+        <Component Id="C__A0B12CACFFED4AF397754AF80BEF13DB" Guid="{198411A6-8BDE-4E22-72E4-ACE3F49FBC22}">
+          <File Id="_A0B12CACFFED4AF397754AF80BEF13DB" Name="OxigenAssetScheduling.dll" KeyPath="yes" ShortName="OXIGE~64.DLL" Assembly=".net" AssemblyManifest="_A0B12CACFFED4AF397754AF80BEF13DB" AssemblyApplication="_A0B12CACFFED4AF397754AF80BEF13DB" DiskId="1" Source="SourceDir\InstallationPackage\OxigenAssetScheduling.dll" />
+        </Component>
+        <Component Id="C__AB9BF4C7B7F04C269902AD2085A64215" Guid="{954E6280-8516-1ACE-A6F4-C9469B29B11A}">
+          <File Id="_AB9BF4C7B7F04C269902AD2085A64215" Name="Interop.WMPLib.dll" KeyPath="yes" ShortName="INTERO~7.DLL" Assembly=".net" AssemblyManifest="_AB9BF4C7B7F04C269902AD2085A64215" AssemblyApplication="_AB9BF4C7B7F04C269902AD2085A64215" DiskId="1" Source="SourceDir\InstallationPackage\Interop.WMPLib.dll" />
+        </Component>
+        <Component Id="C__B5F1FE972ED244B7B7F52B35CF21AC08" Guid="{648C4C98-574C-F67C-D62C-AA14CEA0EED0}">
+          <File Id="_B5F1FE972ED244B7B7F52B35CF21AC08" Name="OxigenPlayerType.dll" KeyPath="yes" ShortName="OXIGE~70.DLL" Assembly=".net" AssemblyManifest="_B5F1FE972ED244B7B7F52B35CF21AC08" AssemblyApplication="_B5F1FE972ED244B7B7F52B35CF21AC08" DiskId="1" Source="SourceDir\InstallationPackage\OxigenPlayerType.dll" />
+        </Component>
+        <Component Id="C__B8E3D08C1D134341826685F27B975864" Guid="{02F38A84-D788-995A-6A49-97263B4B2DB0}">
+          <File Id="_B8E3D08C1D134341826685F27B975864" Name="OxigenFileLocker.dll" KeyPath="yes" ShortName="OXIGE~73.DLL" Assembly=".net" AssemblyManifest="_B8E3D08C1D134341826685F27B975864" AssemblyApplication="_B8E3D08C1D134341826685F27B975864" DiskId="1" Source="SourceDir\InstallationPackage\OxigenFileLocker.dll" />
+        </Component>
+        <Component Id="C__C39891836796488A82E30FFED66B7FB3" Guid="{5EBCE8CC-9518-82C5-0975-A4C10058775C}">
+          <File Id="_C39891836796488A82E30FFED66B7FB3" Name="OxigenLoggerInfo.dll" KeyPath="yes" ShortName="OXIGE~75.DLL" Assembly=".net" AssemblyManifest="_C39891836796488A82E30FFED66B7FB3" AssemblyApplication="_C39891836796488A82E30FFED66B7FB3" DiskId="1" Source="SourceDir\InstallationPackage\OxigenLoggerInfo.dll" />
+        </Component>
+        <Component Id="C__CDD9C3C2CE6044559E755846D9890DEB" Guid="{3E55A189-B572-EE61-DCD0-BC9643E41361}">
+          <File Id="_CDD9C3C2CE6044559E755846D9890DEB" Name="AxInterop.ShockwaveFlashObjects.dll" KeyPath="yes" ShortName="AXINTE~3.DLL" Assembly=".net" AssemblyManifest="_CDD9C3C2CE6044559E755846D9890DEB" AssemblyApplication="_CDD9C3C2CE6044559E755846D9890DEB" DiskId="1" Source="SourceDir\InstallationPackage\AxInterop.ShockwaveFlashObjects.dll" />
+        </Component>
+        <Component Id="C__F753624539664990BD72B4EFBC9E5988" Guid="{A1D9D276-8F29-E696-3B57-321BD4100BB6}">
+          <File Id="_F753624539664990BD72B4EFBC9E5988" Name="OxigenExceptions.dll" KeyPath="yes" ShortName="OXIGE~92.DLL" Assembly=".net" AssemblyManifest="_F753624539664990BD72B4EFBC9E5988" AssemblyApplication="_F753624539664990BD72B4EFBC9E5988" DiskId="1" Source="SourceDir\InstallationPackage\OxigenExceptions.dll" />
+        </Component>
+        <Component Id="C__F795420A9AABE2DE9DB2EA0FC8245159" Guid="{BB662F7D-BA50-37EF-1B5E-1D19EDD1E5A8}">
+          <File Id="_F795420A9AABE2DE9DB2EA0FC8245159" Name="Flash10l.ocx" KeyPath="yes" ShortName="FLASH10L.OCX" DiskId="1" Source="SourceDir\InstallationPackage\Flash10l.ocx" />
+        </Component>
+        <Component Id="C__FD1E35475CD443D7AC82D6E214ACBBC0" Guid="{802E9434-9603-2EFE-E58F-A4F2A34EE019}">
+          <File Id="_FD1E35475CD443D7AC82D6E214ACBBC0" Name="Interop.SHDocVw.dll" KeyPath="yes" ShortName="INTERO~9.DLL" Assembly=".net" AssemblyManifest="_FD1E35475CD443D7AC82D6E214ACBBC0" AssemblyApplication="_FD1E35475CD443D7AC82D6E214ACBBC0" DiskId="1" Source="SourceDir\InstallationPackage\Interop.SHDocVw.dll" />
+        </Component>
+      </Directory>
+      <Directory Id="DATAANDSETTINGS" Name="DataAndSettings" ShortName="DATAAN~1">
+        <Component Id="C__B3EB148CD7AC493E92759DF7CC85889F" Guid="{08061880-3FE5-F714-6E42-2A143D2ACC95}" KeyPath="yes">
+          <CreateFolder Directory="DATAANDSETTINGS" />
+        </Component>
+        <Directory Id="_5C2484F05CED4CF19D48E99D5C943E46" Name="data" ShortName="DATA">
+          <Directory Id="_BFD11BFE3C994619B82AF9F687CDDE18" Name="Other" ShortName="OTHER">
+            <Component Id="C__16B31EBFB6654537A19D85399D33539F" Guid="{09977AF3-EA67-5948-D44E-BFBE41EACDBA}" KeyPath="yes">
+              <CreateFolder Directory="_BFD11BFE3C994619B82AF9F687CDDE18" />
+            </Component>
+          </Directory>
+          <Directory Id="_2C484A977F244EC2A72BCD5D4A292E22" Name="Assets" ShortName="ASSETS">
+            <Component Id="C__44DBC588196A4D80B4336C33E58644B9" Guid="{D9C71775-97AD-96DF-DCEE-85A6DB7D633B}" KeyPath="yes">
+              <CreateFolder Directory="_2C484A977F244EC2A72BCD5D4A292E22" />
+            </Component>
+          </Directory>
+          <Directory Id="_E2FA3D17A67B4FC9ABB3531116CB52A6" Name="Temp" ShortName="TEMP">
+            <Component Id="C__50886DCCAF04419799F10480CB16A388" Guid="{3DD01F50-3795-14AA-E356-79B3AC8F8C7C}" KeyPath="yes">
+              <CreateFolder Directory="_E2FA3D17A67B4FC9ABB3531116CB52A6" />
+            </Component>
+          </Directory>
+          <Directory Id="_CE31F5D458B5457BAD9AD3347B1E5BAC" Name="SettingsData" ShortName="SETTIN~1">
+            <Component Id="C__6711D8C478F047449AFBDFCD951D4A48" Guid="{44E5612B-7426-64FD-2374-F39354F55E09}" KeyPath="yes">
+              <CreateFolder Directory="_CE31F5D458B5457BAD9AD3347B1E5BAC" />
+            </Component>
+          </Directory>
+          <Directory Id="_C020D3B1F55045F9BEAB7C9D3809FBFE" Name="ChannelData" ShortName="CHANNE~1">
+            <Component Id="C__CCB767F47AD74627AEF150F5C368BDF4" Guid="{D2CCA5C9-7B96-6B53-D51B-DE02EA558BA6}" KeyPath="yes">
+              <CreateFolder Directory="_C020D3B1F55045F9BEAB7C9D3809FBFE" />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+    <Feature Id="DefaultFeature" ConfigurableDirectory="TARGETDIR" Level="1">
+      <ComponentRef Id="C__03A3A239ECFA42A89B9F097E994AB480" Primary="yes" />
+      <ComponentRef Id="C__04A6031A6FF44EC49DEAB46C48F8B8DA" Primary="yes" />
+      <ComponentRef Id="C__06619B7607DC4FD7B58826DB5D07EBE1" Primary="yes" />
+      <ComponentRef Id="C__08B145DB19514168AC5BC4088D9ACD76" Primary="yes" />
+      <ComponentRef Id="C__0955F2A6E2144A7F8BC7C404C964563F" Primary="yes" />
+      <ComponentRef Id="C__0B347E172D1747FA94D28C8B95248FF6" Primary="yes" />
+      <ComponentRef Id="C__0F1BE6ED0B0644FB966E04CA07F73220" Primary="yes" />
+      <ComponentRef Id="C__0F320C96856D43759D0EBA38589380D3" />
+      <ComponentRef Id="C__12D3E0120E014C2BA258395B4C90C3B7" Primary="yes" />     
+      <ComponentRef Id="C__15A6157E17EE4142BE0DC704DD0166EA" Primary="yes" />
+      <ComponentRef Id="C__17551DA8D550466198B31D4C3A1949BC" Primary="yes" />
+      <ComponentRef Id="C__1806949BF94A4150BC958A2DAC191A9C" />
+      <ComponentRef Id="C__1AAC54773F3146CEBA3690149648B13E" Primary="yes" />
+      <ComponentRef Id="C__1B5081CF7FE7406D83F3D578A6BC1D26" Primary="yes" />
+      <ComponentRef Id="C__1EE5BF0563FF4145AEAF77B27A88057F" Primary="yes" />
+      <ComponentRef Id="C__21F0EB31876649AAAC3AB43096E2ED81" Primary="yes" />
+      <ComponentRef Id="C__2525BB08EC474DFEA0742287BCF1413E" Primary="yes" />
+      <ComponentRef Id="C__32636D26F16D425BADDD5911CC45D764" Primary="yes" />
+      <ComponentRef Id="C__3725EC167BB44CC4B84BE5F5EBF9E864" Primary="yes" />
+      <ComponentRef Id="C__3DBCDE6768459AADBDD6942C80D8B4B5" />
+      <ComponentRef Id="C__404336CCB9AB4A3FB89A97654CE855E9" Primary="yes" />
+      <ComponentRef Id="C__44C3F952CAAB4BDC9CDE6CF30D152141" Primary="yes" />
+      <ComponentRef Id="C__45C5F693B14A48B1AA8D6F5898F7363E" Primary="yes" />
+      <ComponentRef Id="C__474C60F26C7C4F66B7DC554F77E734D4" Primary="yes" />
+      <ComponentRef Id="C__488ABAF46A7F478EBC4336AD30617FC4" />
+      <ComponentRef Id="C__4C1078259B3F48A39934D5DD94E62CD6" Primary="yes" />
+      <ComponentRef Id="C__539297B5DE284F6C9EB6C65977511F9E" Primary="yes" />
+      <ComponentRef Id="C__5866B88929C84E1DBE011329F270B952" Primary="yes" />
+      <ComponentRef Id="C__5A354026CDF04C60915794068FF0439C" Primary="yes" />
+      <ComponentRef Id="C__5BC91596BD7F45A7B8F1C31028F8D03C" Primary="yes" />
+      <ComponentRef Id="C__609DB8A551CC40EB94D8C8DB011FE4CE" Primary="yes" />
+      <ComponentRef Id="C__61999B7252F045AE95628D0054B72288" Primary="yes" />
+      <ComponentRef Id="C__64F460FD1143407DAE0BE890AE8E1174" Primary="yes" />
+      <ComponentRef Id="C__668B828ED59B45A18323E1E40CE8EC39" Primary="yes" />
+      <ComponentRef Id="C__670592F2FFEB484A9732F50C29681DF5" Primary="yes" />
+      <ComponentRef Id="C__6813D2D311A9498DA87CB9C47E4DA54C" Primary="yes" />
+      <ComponentRef Id="C__68671F44260A435696433D1D25764392" Primary="yes" />
+      <ComponentRef Id="C__68A81824D0784993816E66F8ABF4DE02" Primary="yes" />
+      <ComponentRef Id="C__7109E0FE3BBD43CBB157BE0FD004C756" />
+      <ComponentRef Id="C__755AEC281D3247E596C0ED2FDBF7F3B3" Primary="yes" />
+      <ComponentRef Id="C__76928676D0BE4998A24714543F2275B3" Primary="yes" />
+      <ComponentRef Id="C__7AEF6A9085794275B9527A694FBD71C6" Primary="yes" />
+      <ComponentRef Id="C__7BDA16B247244C4D8713D73CAEA0EFEF" Primary="yes" />
+      <ComponentRef Id="C__7EF3ACAC6C9A4567AC9B51883D18D89B" Primary="yes" />
+      <ComponentRef Id="C__7F0348A4391D4948977083A13AA54C1B" Primary="yes" />      
+      <ComponentRef Id="C__8201E8B3310A4B25AF9FCBE1DC595F2D" Primary="yes" />
+      <ComponentRef Id="C__86D2707D62074CE6A606D216D2CE6ADA" Primary="yes" />
+      <ComponentRef Id="C__879AF09C3E2F4892BAC467A762F5276B" Primary="yes" />
+      <ComponentRef Id="C__890588F6B1FA433A82D7403EC04A8122" Primary="yes" />
+      <ComponentRef Id="C__8F8076C115DB423FA64AE7454974E6F3" Primary="yes" />
+      <ComponentRef Id="C__8F9B5B37C6964822A3C30D65BDF2670F" Primary="yes" />
+      <ComponentRef Id="C__97D8DD3BAA414FF1ABD3F10E7F1272A6" Primary="yes" />
+      <ComponentRef Id="C__9CB2F73757DD4E749A652C5E75222C4D" Primary="yes" />
+      <ComponentRef Id="C__9FB092FDB292E7AE109CAD8A63BE0E18" />
+      <ComponentRef Id="C__A0B12CACFFED4AF397754AF80BEF13DB" Primary="yes" />
+      <ComponentRef Id="C__A643C77241B94915B3D4E45C637A63B9" Primary="yes" />
+      <ComponentRef Id="C__A8A42F228A844EA59C47407C638AC9A7" Primary="yes" />
+      <ComponentRef Id="C__AA9DD2E132274C1D9C4C16C196F5CD14" Primary="yes" />
+      <ComponentRef Id="C__AB9BF4C7B7F04C269902AD2085A64215" Primary="yes" />
+      <ComponentRef Id="C__B17210CDEDB94D7DB29273CAD08399E6" Primary="yes" />
+      <ComponentRef Id="C__B5F1FE972ED244B7B7F52B35CF21AC08" Primary="yes" />
+      <ComponentRef Id="C__B8E3D08C1D134341826685F27B975864" Primary="yes" />
+      <ComponentRef Id="C__BAD6BB3AC14240A38C4D2ADE8E45638F" Primary="yes" />
+      <ComponentRef Id="C__C215BC70DA93492C80BA72A8A13A508B" Primary="yes" />
+      <ComponentRef Id="C__C39891836796488A82E30FFED66B7FB3" Primary="yes" />
+      <ComponentRef Id="C__C79CE05F49854F0493967DD9F0B62312" Primary="yes" />
+      <ComponentRef Id="C__C79CF83D833447C4945930BD74BCB0CD" Primary="yes" />
+      <ComponentRef Id="C__C7A7BE14CAE446D8B32E1B6C6CE1445C" />
+      <ComponentRef Id="C__CDB90C3C3E9E4FD8A3B36622962E9D79" Primary="yes" />
+      <ComponentRef Id="C__CDD9C3C2CE6044559E755846D9890DEB" Primary="yes" />
+      <ComponentRef Id="C__CEB66504683E4015BFAC0F974DF78498" Primary="yes" />
+      <ComponentRef Id="C__D7521D703B604F7B8B7B75043CCDC5E0" />
+      <ComponentRef Id="C__DECCCA21B6A340DCB40674E56B505CAB" Primary="yes" />
+      <ComponentRef Id="C__E67F9398F27946D1AA43977D9A1EB939" Primary="yes" />
+      <ComponentRef Id="C__EA759C36278B45A8B05EF7B3BE2FE8FA" Primary="yes" />
+      <ComponentRef Id="C__EBE1C03BBA5344CEBC3219777A932A8C" Primary="yes" />
+      <ComponentRef Id="C__EE2C7608729A4AC3963CB0EEE761E9BF" Primary="yes" />
+      <ComponentRef Id="C__EFFF43CAEA964628913A46D37364411C" Primary="yes" />
+      <ComponentRef Id="C__F74BCBA1DBEB47EA9565C754197DF44D" Primary="yes" />
+      <ComponentRef Id="C__F753624539664990BD72B4EFBC9E5988" Primary="yes" />
+      <ComponentRef Id="C__F795420A9AABE2DE9DB2EA0FC8245159" />
+      <ComponentRef Id="C__F7A08614EE6C4CE48E65B4F7E1A37965" />
+      <ComponentRef Id="C__F7B7954236D4419EA541DE0375D4363C" Primary="yes" />
+      <ComponentRef Id="C__FD1E35475CD443D7AC82D6E214ACBBC0" Primary="yes" />
+      <ComponentRef Id="C__B3EB148CD7AC493E92759DF7CC85889F" />
+      <ComponentRef Id="C__16B31EBFB6654537A19D85399D33539F" />
+      <ComponentRef Id="C__44DBC588196A4D80B4336C33E58644B9" />
+      <ComponentRef Id="C__50886DCCAF04419799F10480CB16A388" />
+      <ComponentRef Id="C__6711D8C478F047449AFBDFCD951D4A48" />
+      <ComponentRef Id="C__CCB767F47AD74627AEF150F5C368BDF4" />
+      <ComponentRef Id="C__4FDFBAF0735D43588C25514568160BE6" />
+      <ComponentRef Id="C__78398ECB590B43D082BE8948751EEE57" />
+      <ComponentRef Id="C__82E6CB6ED36640EC8D093334EA39790C" />
+      <ComponentRef Id="C__8EC617AF8038410A9B9109C39D4C2FAC" />
+      <ComponentRef Id="C__A8A465734B904C18A7083AEE2CEC0F4D" />
+      <ComponentRef Id="C__6BADC087DD53481FB32D4AD437067F5F" />
+      <ComponentRef Id="C__4FC332D23F034CBF865CD88803D45D0A" />
+      <ComponentRef Id="C__CE9C806DCF524579A5DB2ECB87F1DF8F" />
+      <ComponentRef Id="C__E9BE198098924984BAA5C1C7B2EFD638" />
+      <ComponentRef Id="C__FA80340217F84034A9AFBDFC413D46D7" />
+      <ComponentRef Id="OxigenEventLogEntries"/>
+    </Feature>
+  </Product>
+</Wix>
