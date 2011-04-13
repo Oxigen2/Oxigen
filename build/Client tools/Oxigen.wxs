@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:ui="http://schemas.microsoft.com/wix/UIExtension">
   <Product Id="05AB04BD-B62E-4A98-9DA0-9650699CAF8E" Name="Oxigen" Language="1033" Version="1.0.0.0" Manufacturer="Oxigen" UpgradeCode="65D1DC03-4E1B-4D33-BF10-F49421240B50">
-    <Package InstallerVersion="200" Compressed="yes" />
-    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />    
+    <Package InstallerVersion="200" Compressed="yes" Manufacturer="Oxigen" Platform="x86"/>
+    <CustomAction Id="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall" BinaryKey="InstallUtil" DllEntry="ManagedInstall" Execute="deferred" Impersonate="no" />
+            <CustomAction Id="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall.SetProperty" Property="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall" Value="/installtype=notransaction /action=uninstall /LogFile= &quot;[#_330FE5A1348C936B1BEA5490F591A6BE]&quot; &quot;[VSDFxConfigFile]&quot;" />
+            <CustomAction Id="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install" BinaryKey="InstallUtil" DllEntry="ManagedInstall" Execute="deferred" Impersonate="no" />
+            <CustomAction Id="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install.SetProperty" Property="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install" Value="/installtype=notransaction /action=install /LogFile= &quot;[#_2B1873B36854C1AF26BB9D552AB6821D]&quot; &quot;[VSDFxConfigFile]&quot;" />
+            <CustomAction Id="DIRCA_TARGETDIR" Property="TARGETDIR" Value="[ProgramFilesFolder][ProductName]" Execute="firstSequence" />
+            <CustomAction Id="DIRCA_DATAANDSETTINGS" Property="DATAANDSETTINGS" Value="[AppDataFolder]" Execute="firstSequence" />
+            <CustomAction Id="DIRCA_CheckFX" BinaryKey="MSVBDPCADLL" DllEntry="CheckFX" />
+            <CustomAction Id="VSDCA_VsdLaunchConditions" BinaryKey="MSVBDPCADLL" DllEntry="VsdLaunchConditions" />
+            <CustomAction Id="ERRCA_CANCELNEWERVERSION" Error="[VSDVERSIONMSG]" />
+            <CustomAction Id="ERRCA_UIANDADVERTISED" Error="[VSDUIANDADVERTISED]" />
+            <CustomAction Id="VSDCA_FolderForm_AllUsers" Property="FolderForm_AllUsers" Value="ALL" />
+            <CustomTable Id="_VsdLaunchCondition">
+                <Column Id="Condition" PrimaryKey="yes" Type="string" Width="255" Category="Condition" Description="Expression which must evaluate to TRUE in order for install to commence." Modularize="Condition" />
+                <Column Id="Description" Type="string" Width="255" Localizable="yes" Category="Formatted" Description="Localizable text to display when condition fails and install must abort." Modularize="Property" />
+                <Column Id="Url" Type="string" Width="0" Category="Text" Description="URL to navigate to when condition fails and install must abort." />
+                <Row>
+                    <Data Column="Condition">VSDFXAvailable</Data>
+                    <Data Column="Description">[VSDNETURLMSG]</Data>
+                    <Data Column="Url">http://go.microsoft.com/fwlink/?LinkId=76617</Data>
+                </Row>
+        </CustomTable>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Component Id="C__4FDFBAF0735D43588C25514568160BE6" Guid="{5A6BACC6-FE86-271A-4809-C9811AE36DF9}">
         <RegistryKey Id="_4FDFBAF0735D43588C25514568160BE6" Action="create" Key="Software\[Manufacturer]" Root="HKLM" />
@@ -431,6 +451,129 @@
       <ComponentRef Id="C__FA80340217F84034A9AFBDFC413D46D7" />
       <ComponentRef Id="OxigenEventLogEntries"/>
     </Feature>
+    <Media Id="1" Cabinet="_64688BE271367127961EE39357744018" EmbedCab="yes" />
+            <Property Id="VSDFrameworkVersion" Value="3.5.30729" />
+            <Property Id="VSDAllowLaterFrameworkVersions" Value="False" />
+            <Property Id="ARPCONTACT" Value="Oxigen" />
+            <Property Id="ARPURLINFOABOUT" Value="http://www.oxigen.net" />
+            <Property Id="ALLUSERS" Value="2" />
+            <Property Id="NEWERPRODUCTFOUND" Secure="yes" />
+            <Property Id="VSDNETURLMSG" Value="This setup requires the .NET Framework version [1].  Please install the .NET Framework and run this setup again.  The .NET Framework can be obtained from the web.  Would you like to do this now?" />
+            <Property Id="VSDIISMSG" Value="This setup requires Internet Information Server 4.0 or higher and Windows NT 4.0, Windows 2000 or higher.  This setup cannot be installed on Windows 95, Windows 98, or Windows Me.  Please install Internet Information Server and run this setup again." />
+            <Property Id="VSDUIANDADVERTISED" Value="This advertised application will not be installed because it might be unsafe. Contact your administrator to change the installation user interface option of the package to basic." />
+            <Property Id="VSDNETMSG" Value="This setup requires the .NET Framework version [1].  Please install the .NET Framework and run this setup again." />
+            <Property Id="VSDINVALIDURLMSG" Value="The specified path '[2]' is unavailable. The Internet Information Server might not be running or the path exists and is redirected to another machine. Please check the status of this virtual directory in the Internet Services Manager." />
+            <Property Id="VSDVERSIONMSG" Value="Unable to install because a newer version of this product is already installed." />
+            <Property Id="DefaultUIFont" Value="VsdDefaultUIFont.524F4245_5254_5341_4C45_534153783400" />
+            <Property Id="AdminMaintenanceForm_Action" Value="Repair" />
+            <Property Id="MaintenanceForm_Action" Value="Repair" />
+            <Property Id="ErrorDialog" Value="ErrorDialog" />
+            <Property Id="SFF_UpFldrBtn" Value="UpFldrBtn" />
+            <Property Id="SFF_NewFldrBtn" Value="NewFldrBtn" />
+            <Property Id="EulaForm_Property" Value="No" />
+            <Property Id="FolderForm_AllUsers" Value="ME" />
+            <Property Id="FolderForm_AllUsersVisible" Value="0" />
+            <Property Id="AdminWelcomeForm_NextArgs" Value="AdminFolderForm" />
+            <Property Id="AdminFolderForm_PrevArgs" Value="AdminWelcomeForm" />
+            <Property Id="AdminFolderForm_NextArgs" Value="AdminConfirmInstallForm" />
+            <Property Id="AdminConfirmInstallForm_PrevArgs" Value="AdminFolderForm" />
+            <Property Id="WelcomeForm_NextArgs" Value="EulaForm" />
+            <Property Id="EulaForm_PrevArgs" Value="WelcomeForm" />
+            <Property Id="EulaForm_NextArgs" Value="FolderForm" />
+            <Property Id="FolderForm_PrevArgs" Value="EulaForm" />
+            <Property Id="FolderForm_NextArgs" Value="ConfirmInstallForm" />
+        <Property Id="ConfirmInstallForm_PrevArgs" Value="FolderForm" />
+    <Upgrade Id="{65D1DC03-4E1B-4D33-BF10-F49421240B50}">
+                <UpgradeVersion Minimum="1.0.0" Property="NEWERPRODUCTFOUND" OnlyDetect="yes" IncludeMinimum="yes" />
+            </Upgrade>
+            <InstallExecuteSequence>
+                <Custom Action="DIRCA_CheckFX" Sequence="1" />
+                <Custom Action="ERRCA_CANCELNEWERVERSION" Sequence="201">NEWERPRODUCTFOUND AND NOT Installed</Custom>
+                <Custom Action="VSDCA_VsdLaunchConditions" Sequence="399">NOT Installed</Custom>
+                <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
+                <Custom Action="DIRCA_DATAANDSETTINGS" Sequence="754">DATAANDSETTINGS=""</Custom>
+                <Custom Action="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall.SetProperty" Sequence="1698">$C__330FE5A1348C936B1BEA5490F591A6BE=2</Custom>
+                <Custom Action="_A434B508_FC13_4C3D_A4C4_00B5731B7801.uninstall" Sequence="1699">$C__330FE5A1348C936B1BEA5490F591A6BE=2</Custom>
+                <Custom Action="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install.SetProperty" Sequence="5998">$C__2B1873B36854C1AF26BB9D552AB6821D&gt;2</Custom>
+                <Custom Action="_E802BAE7_69DF_4773_83AE_35AA0E68DD7B.install" Sequence="5999">$C__2B1873B36854C1AF26BB9D552AB6821D&gt;2</Custom>
+                <LaunchConditions Sequence="400">NOT Installed</LaunchConditions>
+                <FindRelatedProducts Sequence="200" />
+                <AppSearch Sequence="100" />
+                <CCPSearch Sequence="500">NOT Installed</CCPSearch>
+                <RMCCPSearch Sequence="600">NOT Installed</RMCCPSearch>
+                <ValidateProductID Sequence="700" />
+                <CostInitialize Sequence="800" />
+                <FileCost Sequence="900" />
+                <IsolateComponents Sequence="950">RedirectedDllSupport</IsolateComponents>
+                <CostFinalize Sequence="1000" />
+                <SetODBCFolders Sequence="1100">NOT Installed</SetODBCFolders>
+                <InstallValidate Sequence="1400" />
+                <InstallInitialize Sequence="1500" />
+                <AllocateRegistrySpace Sequence="1550">NOT Installed</AllocateRegistrySpace>
+                <ProcessComponents Sequence="1600" />
+                <UnpublishComponents Sequence="1700" />
+                <UnpublishFeatures Sequence="1800" />
+                <StopServices Sequence="1900">VersionNT</StopServices>
+                <DeleteServices Sequence="2000">VersionNT</DeleteServices>
+                <UnregisterComPlus Sequence="2100" />
+                <SelfUnregModules Sequence="2200" />
+                <UnregisterTypeLibraries Sequence="2300" />
+                <RemoveODBC Sequence="2400" />
+                <UnregisterFonts Sequence="2500" />
+                <RemoveRegistryValues Sequence="2600" />
+                <UnregisterClassInfo Sequence="2700" />
+                <UnregisterExtensionInfo Sequence="2800" />
+                <UnregisterProgIdInfo Sequence="2900" />
+                <UnregisterMIMEInfo Sequence="3000" />
+                <RemoveIniValues Sequence="3100" />
+                <RemoveShortcuts Sequence="3200" />
+                <RemoveEnvironmentStrings Sequence="3300" />
+                <RemoveDuplicateFiles Sequence="3400" />
+                <RemoveFiles Sequence="3500" />
+                <RemoveFolders Sequence="3600" />
+                <CreateFolders Sequence="3700" />
+                <MoveFiles Sequence="3800" />
+                <InstallFiles Sequence="4000" />
+                <DuplicateFiles Sequence="4210" />
+                <PatchFiles Sequence="4090" />
+                <BindImage Sequence="4300" />
+                <CreateShortcuts Sequence="4500" />
+                <RegisterClassInfo Sequence="4600" />
+                <RegisterExtensionInfo Sequence="4700" />
+                <RegisterProgIdInfo Sequence="4800" />
+                <RegisterMIMEInfo Sequence="4900" />
+                <WriteRegistryValues Sequence="5000" />
+                <WriteIniValues Sequence="5100" />
+                <WriteEnvironmentStrings Sequence="5200" />
+                <RegisterFonts Sequence="5300" />
+                <InstallODBC Sequence="5400" />
+                <RegisterTypeLibraries Sequence="5500" />
+                <SelfRegModules Sequence="5600" />
+                <RegisterComPlus Sequence="5700" />
+                <InstallServices Sequence="5800">VersionNT</InstallServices>
+                <StartServices Sequence="5900">VersionNT</StartServices>
+                <RegisterUser Sequence="6000" />
+                <RegisterProduct Sequence="6100" />
+                <PublishComponents Sequence="6200" />
+                <PublishFeatures Sequence="6300" />
+                <PublishProduct Sequence="6400" />
+                <InstallFinalize Sequence="6600" />
+                <RemoveExistingProducts Sequence="6550" />
+                <InstallExecute Sequence="6500" />
+                <MsiPublishAssemblies Sequence="6250" />
+                <MsiUnpublishAssemblies Sequence="1650" />
+            </InstallExecuteSequence>            
+            <AdminExecuteSequence>
+                <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
+                <Custom Action="DIRCA_DATAANDSETTINGS" Sequence="754">DATAANDSETTINGS=""</Custom>
+                <CostInitialize Sequence="800" />
+                <FileCost Sequence="900" />
+                <CostFinalize Sequence="1000" />
+                <InstallValidate Sequence="1400" />
+                <InstallInitialize Sequence="1500" />
+                <InstallAdminPackage Sequence="3900" />
+                <InstallFiles Sequence="4000" />
+                <InstallFinalize Sequence="6600" />
+            </AdminExecuteSequence>            
   </Product>
 </Wix>
--->

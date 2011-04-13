@@ -4,13 +4,13 @@
 	<property name="BaseSolutionDir" value="C:\Oxigen2\Oxigen\app\"/>
 	<property name="ObfuscatorDir" value="C:\Oxigen2\Oxigen\build\Client tools\CryptoObfuscator\"/>
 	<property name="SolutionPath" value="C:\Oxigen2\Oxigen\OxigenIIAdvertising.sln"/>
-	<property name="CryptoObfuscatorPath" value="C:\Program Files (x86)\LogicNP Software\Crypto Obfuscator For .Net 2010 R2\co.exe"/>
 	<property name="SignToolPath" value="C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\signtool.exe"/>
 	<property name="CertificateLocation" value="C:\Oxigen2\Oxigen\build\Client tools\Certificates\oxigen II Ltd Code Signing Cert.pfx"/>
 	<property name="InstallationPackageDir" value="C:\Oxigen2\Oxigen\build\Client tools\InstallationPackage\"/>
 	<property name="InteropsDir" value="C:\Oxigen2\Oxigen\build\Client tools\Interops\"/>
 	<property name="InstallationPackageCompiledProduct" value="C:\Oxigen2\Oxigen\build\Client tools\InstallationPackage\Compiled\"/>
-	<property name="WiXDir" value="C:\Program Files (x86)\Windows Installer XML v3.5\bin\"/>
+	<property name="CryptoObfuscatorPath" value="${environment::get-folder-path('ProgramFiles')}\LogicNP Software\Crypto Obfuscator For .Net 2010 R2\co.exe"/>
+	<property name="WiXDir" value="${environment::get-folder-path('ProgramFiles')}\Windows Installer XML v3.5\bin\"/>
 	<target name="deploy">
 		<echo message="Building OxigenIIAdvertising.sln..." />
 		<!-- <msbuild project="${SolutionPath}">
@@ -19,7 +19,7 @@
 		</msbuild> -->
 		<echo message="Encrypting string data in client-side binaries..." />
 		<!-- Call the Crypto Obfuscator program -->
-		<exec program="${CryptoObfuscatorPath}" commandline="projectfile=&quot;${ObfuscatorDir}OxigenClientApps.obproj&quot;"/>
+		<!-- <exec program="${CryptoObfuscatorPath}" commandline="projectfile=&quot;${ObfuscatorDir}OxigenClientApps.obproj&quot;"/> -->
 		<!-- Delete pdbs from InstallationPackageDir -->
 		<delete>
 			<fileset>
@@ -30,7 +30,7 @@
 		<!-- <call target="sign"/> -->
 		<!-- Copy files needed to create the client MSI. Obfuscated files will be created on the
 		same directory by Crypto Obfuscator so there is no to copy them here. -->
-		<copy todir="${InstallationPackageDir}" failonerror="true">
+		<!-- <copy todir="${InstallationPackageDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}Assets\bin\Release\">
 				<include name="OxigenAssets.dll" />
 			</fileset>
@@ -295,9 +295,9 @@
 				<include name="OxigenTray.exe" />
 				<include name="OxigenTray.exe.config" />
 			</fileset>
-		</copy>	
+		</copy>	-->
 		<!-- Do the same for the App.config files -->
-		<copy todir="${InstallationPackageDir}" failonerror="true">
+		<!-- <copy todir="${InstallationPackageDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}OxigenService\bin\Release\">
 				<include name="OxigenService.exe.config" />
 			</fileset>
@@ -331,13 +331,13 @@
 			<fileset basedir="${BaseSolutionDir}OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Release\">
 				<include name="Oxigen.scr.config" />
 			</fileset>
-		</copy>
+		</copy> -->
 		<!-- Interops -->
-		<copy todir="${InstallationPackageDir}" failonerror="true">
+		<!-- <copy todir="${InstallationPackageDir}" failonerror="true">
 			<fileset basedir="${InteropsDir}">
 				<include name="**" />
 			</fileset>
-		</copy>
+		</copy> -->
 		<call target="makeMSI"/>
 		<!-- TODO Sign the MSI -->
 	</target>
@@ -369,17 +369,7 @@
 		<echo message="Creating dir..." />
 		<mkdir dir="${InstallationPackageCompiledProduct}"/>
 		<echo message="WiX dir: ${WiXDir}" />	
-		<delete file="File" />	
-		<loadtasks assembly="${WiXDir}Microsoft.Tools.WindowsInstallerXml.NAntTasks.dll" /> 
-		<candle	exedir="${WiXDir}" verbose="true" out="${InstallationPackageDir}" warningsaserrors="true" rebuild="true" extensions="${WiXDir}\WixUtilExtension.dll">			
-			<sources basedir="${InstallationPackageDir}">				
-				<include name="Oxigen.wxs" />				
-			</sources>			
-		</candle>		
-		<light exedir="${WiXDir}" out="${InstallationPackageCompiledProduct}Oxigen.msi" warningsaserrors="true" suppressices="ICE57" cultures="en-gb" extensions="${WiXDir}\WixUtilExtension.dll">			
-			<sources basedir="${InstallationPackageDir}">				
-				<include name="*.wixobj" />				
-			</sources>			
-		</light>
+		<exec program="${WiXDir}candle.exe" commandline="Oxigen.wxs -ext &quot;WixUtilExtension&quot;"/>
+		<exec program="${WiXDir}light.exe" commandline="Oxigen.wixobj -out &quot;${InstallationPackageCompiledProduct}Oxigen.msi&quot; -sice:ICE57 -spdb -ext &quot;WixUtilExtension&quot; -cultures:en-gb"/>
 	</target>
 </project>
