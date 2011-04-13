@@ -6,6 +6,6 @@ namespace Oxigen.Core.QueryDtos
     {
         public int Id { get; set; }
 		public string SlideFolderName { get; set; }
-		public Publisher Publisher { get; set; }
+		public int PublisherID { get; set; }
     }
 }

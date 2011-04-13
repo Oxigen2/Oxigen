@@ -8,5 +8,6 @@ namespace Oxigen.Core.RepositoryInterfaces
     public interface ITemplateRepository : IRepository<Template>
     {
         IList<TemplateDto> GetTemplateSummaries();
+        IList<TemplateDto> GetByPublisher(int id);
     }
 }

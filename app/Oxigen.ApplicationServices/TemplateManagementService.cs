@@ -124,6 +124,11 @@ namespace Oxigen.ApplicationServices
 
         }
 
+        public IList<TemplateDto> GetByPublisher(int id)
+        {
+            return templateRepository.GetByPublisher(id);
+        }
+
         private void SaveFile(Template template, string fileName, byte[] fileByteArray)
         {
             FileStream fs = new FileStream(template.FileFullPathName, FileMode.Create, FileAccess.Write);

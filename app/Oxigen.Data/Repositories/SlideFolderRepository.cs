@@ -1,3 +1,4 @@
+using System;
 using SharpArch.Data.NHibernate;
 using System.Collections.Generic;
 using NHibernate;
@@ -14,6 +15,17 @@ namespace Oxigen.Data.Repositories
             ISession session = SharpArch.Data.NHibernate.NHibernateSession.Current;
 
             IQuery query = session.GetNamedQuery("GetSlideFolderSummaries")
+                .SetResultTransformer(Transformers.AliasToBean<SlideFolderDto>());
+
+            return query.List<SlideFolderDto>();
+        }
+
+        public IList<SlideFolderDto> GetByPublisher(int publisherId)
+        {
+            ISession session = SharpArch.Data.NHibernate.NHibernateSession.Current;
+
+            IQuery query = session.GetNamedQuery("GetSlideFolderSummariesByPublisher")
+                .SetParameter("publisherId", publisherId)
                 .SetResultTransformer(Transformers.AliasToBean<SlideFolderDto>());
 
             return query.List<SlideFolderDto>();

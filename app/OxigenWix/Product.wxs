@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="05AB04BD-B62E-4A98-9DA0-9650699CAF8E" Name="Oxigen" Language="1033" Version="1.0.0.0" Manufacturer="Oxigen" UpgradeCode="65D1DC03-4E1B-4D33-BF10-F49421240B50">
     <Package InstallerVersion="200" Compressed="yes" />
@@ -456,3 +457,4 @@
     </Feature>
   </Product>
 </Wix>
+-->

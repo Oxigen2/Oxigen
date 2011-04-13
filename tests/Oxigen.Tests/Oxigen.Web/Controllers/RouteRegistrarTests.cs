@@ -17,7 +17,9 @@
         public void CanVerifyRouteMaps()
         {
             "~/".Route().ShouldMapTo<HomeController>(x => x.Index());
+            //"~/SlideFolders/ListByProducer/1".Route().ShouldMapTo<SlideFoldersController>(x => x.ListByProducer(1));
         }
+
 
         [SetUp]
         public void SetUp()

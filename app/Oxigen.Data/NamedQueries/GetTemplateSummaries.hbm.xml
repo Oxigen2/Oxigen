@@ -6,4 +6,11 @@
       SELECT TEMPLATE_ID as Id, Name, DisplayName
       FROM Templates INNER JOIN Publishers ON Templates.PublisherID = Publishers.PUBLISHER_ID
     </sql-query>
+  <sql-query name="GetTemplateSummariesByPublisher">
+    SET NOCOUNT ON;
+
+    SELECT TEMPLATE_ID as Id, Name, DisplayName
+    FROM Templates INNER JOIN Publishers ON Templates.PublisherID = Publishers.PUBLISHER_ID
+    WHERE PublisherID = :publisherId
+  </sql-query>
 </hibernate-mapping>

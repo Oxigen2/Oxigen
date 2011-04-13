@@ -17,5 +17,6 @@ namespace Oxigen.ApplicationServices
         ActionConfirmation SaveOrUpdate(SlideFolder slideFolder);
         ActionConfirmation UpdateWith(SlideFolder slideFolderFromForm, int idOfSlideFolderToUpdate);
         ActionConfirmation Delete(int id);
+        IList<SlideFolderDto> GetByProducer(int producerId);
     }
 }

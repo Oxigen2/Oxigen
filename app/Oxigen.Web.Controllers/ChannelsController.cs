@@ -33,6 +33,14 @@ namespace Oxigen.Web.Controllers
         }
 
         [Transaction]
+        public ActionResult ListByProducer(int id)
+        {
+            IList<ChannelDto> channelDtos =
+                channelManagementService.GetByPublisher(id);
+            return Json(channelDtos, JsonRequestBehavior.AllowGet);
+        }
+
+        [Transaction]
         public ActionResult Show(int id) {
             Channel channel = channelManagementService.Get(id);
             return View(channel);

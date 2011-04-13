@@ -22,17 +22,31 @@
                  select: function (event, ui) {
                      $("#PublisherDisplayName").val(ui.item.label);
                      $("#RSSFeed_Publisher_Id").val(ui.item.id);
-                     $.getJSON("/Publisher/" + ui.item.id + "/GetSlideFolders", function (result) {
-                         var options = $("#slide_folder_options");
-                         //don't forget error handling!
-                         $.each(result, function (item) {
+                     $.getJSON("/SlideFolders/ListByProducer/" + ui.item.id, function (result) {
+                         var options = $("#RSSFeed_SlideFolder_Id");
+                         $.each(result, function (index, item) {
+                             options.empty();
+                             options.append($("<option />").val(item.Id).text(item.SlideFolderName));
+                         });
+                     });
+                     $.getJSON("/Templates/ListByProducer/" + ui.item.id, function (result) {
+                         var options = $("#RSSFeed_SlideFolder_Id");
+                         $.each(result, function (index, item) {
+                             options.empty();
                              options.append($("<option />").val(item.Id).text(item.Name));
                          });
                      });
-
+                     $.getJSON("/Channels/ListByProducer/" + ui.item.id, function (result) {
+                         var options = $("#RSSFeed_Channel_Id");
+                         $.each(result, function (index, item) {
+                             options.empty();
+                             options.append($("<option />").val(item.Id).text(item.Name));
+                         });
+                     });
                  }
              });
          });
+        
 </script>
 
 
@@ -48,7 +62,7 @@
 
     <ul>
         <li>
-			<label for="RSSFeed_Publisher">Publisher:</label>
+			<label for="PublisherDisplayName">Publisher:</label>
 			<div>
 				<%=Html.Hidden("RSSFeed.Publisher.Id",
                                   (ViewData.Model.RSSFeed != null)
@@ -61,6 +75,8 @@
 			</div>
 			<%= Html.ValidationMessage("RSSFeed.Publisher.Id")%>
 		</li>
+
+
 		<li>
 			<label for="RSSFeed_URL">URL:</label>
 			<div>
@@ -77,29 +93,27 @@
 			</div>
 			<%= Html.ValidationMessage("RSSFeed.Name")%>
 		</li>
-		<li>
-			<label for="RSSFeed_LastChecked">LastChecked:</label>
+        <li>
+			<label for="RSSFeed_SlideFolder_Id">Slide Folder:</label>
 			<div>
-				<%= Html.TextBox("RSSFeed.LastChecked", 
-					(ViewData.Model.RSSFeed != null) ? ViewData.Model.RSSFeed.LastChecked.ToString() : "")%>
+				<select id="RSSFeed_SlideFolder_Id" name="RSSFeed.SlideFolder.Id"></select>
+                   
 			</div>
-			<%= Html.ValidationMessage("RSSFeed.LastChecked")%>
+			<%= Html.ValidationMessage("RSSFeed.SlideFolder.Id")%>
 		</li>
 		<li>
-			<label for="RSSFeed_LastItem">LastItem:</label>
+			<label for="RSSFeed_Template_Id">Template:</label>
 			<div>
-				<%= Html.TextBox("RSSFeed.LastItem", 
-					(ViewData.Model.RSSFeed != null) ? ViewData.Model.RSSFeed.LastItem.ToString() : "")%>
+				<select id="RSSFeed_Template_Id" name="RSSFeed.Template.Id"></select>
 			</div>
-			<%= Html.ValidationMessage("RSSFeed.LastItem")%>
+			<%= Html.ValidationMessage("RSSFeed.Template.Id")%>
 		</li>
-		<li>
-			<label for="RSSFeed_Template_Name">Template:</label>
+        <li>
+			<label for="RSSFeed_Channel_Id">Channel:</label>
 			<div>
-				<%= Html.TextBox("RSSFeed.Template.Name", 
-					(ViewData.Model.RSSFeed != null) ? ViewData.Model.RSSFeed.Template.Name : "")%>
+				<select id="RSSFeed_Channel_Id" name="RSSFeed.Channel.Id"></select>
 			</div>
-			<%= Html.ValidationMessage("RSSFeed.Template.Name")%>
+			<%= Html.ValidationMessage("RSSFeed.Channel.Id")%>
 		</li>
 		<li>
 			<label for="RSSFeed_XSLT">XSLT:</label>

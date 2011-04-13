@@ -18,5 +18,6 @@ namespace Oxigen.ApplicationServices
         ActionConfirmation UpdateWith(Template templateFromForm, int idOfTemplateToUpdate, string fileName, byte[] fileByteArray);
         ActionConfirmation Delete(int id);
         ActionConfirmation Create(Template template, string fileName, byte[] fileByteArray);
+        IList<TemplateDto> GetByPublisher(int id);
     }
 }

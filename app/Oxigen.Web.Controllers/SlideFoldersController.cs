@@ -33,6 +33,14 @@ namespace Oxigen.Web.Controllers
         }
 
         [Transaction]
+        public ActionResult ListByProducer(int id)
+        {
+            IList<SlideFolderDto> slideFolders =
+                slideFolderManagementService.GetByProducer(id);
+            return Json(slideFolders, JsonRequestBehavior.AllowGet);
+        }
+
+        [Transaction]
         public ActionResult Show(int id) {
             SlideFolder slideFolder = slideFolderManagementService.Get(id);
             return View(slideFolder);

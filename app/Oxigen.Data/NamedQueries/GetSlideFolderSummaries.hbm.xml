@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
-    <sql-query name="GetSlideFolderSummaries">
-        SET NOCOUNT ON;
+    <sql-query name="GetSlideFolderSummariesByPublisher">
+      SET NOCOUNT ON;
 
-	    SELECT SLIDEFOLDER_ID as Id, SlideFolderName, Publisher
-	    FROM SlideFolders
+      SELECT SLIDEFOLDER_ID as Id, SlideFolderName, PublisherID
+      FROM SlideFolders
+      WHERE PublisherID = :publisherId
     </sql-query>
 </hibernate-mapping>
