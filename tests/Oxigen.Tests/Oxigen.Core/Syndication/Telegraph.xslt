@@ -5,7 +5,7 @@
 
   <xsl:template match="/rss/channel">
     { items: [
-    <xsl:for-each select="item">
+    <xsl:for-each select="item[enclosure]">
       {
       "date": "<xsl:value-of select="pubDate"
            disable-output-escaping="yes"  />",

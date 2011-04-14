@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using Oxigen.Core.RepositoryInterfaces;
 using SharpArch.Core;
 using Oxigen.Core.Syndication;
 using Oxigen.ApplicationServices.ViewModels.Syndication;
@@ -11,10 +12,17 @@ namespace Oxigen.ApplicationServices.Syndication
 {
     public class RSSFeedManagementService : IRSSFeedManagementService
     {
-        public RSSFeedManagementService(IRSSFeedRepository rSSFeedRepository) {
+        public RSSFeedManagementService(IRSSFeedRepository rSSFeedRepository, IChannelsSlideRepository channelsSlideRepository, ISlideRepository slideRepository)
+        {
             Check.Require(rSSFeedRepository != null, "rSSFeedRepository may not be null");
-
             this.rSSFeedRepository = rSSFeedRepository;
+
+            Check.Require(channelsSlideRepository != null, "channelsSlideRepository may not be null");
+            this.channelsSlideRepository = channelsSlideRepository;
+
+            Check.Require(slideRepository != null, "channelsSlideRepository may not be null");
+            this.slideRepository = slideRepository;
+
         }
 
         public RSSFeed Get(int id) {
@@ -109,14 +117,30 @@ namespace Oxigen.ApplicationServices.Syndication
             }
         }
 
+        public ActionConfirmation Run(int id)
+        {
+            var rssFeed = rSSFeedRepository.Get(id);
+            rssFeed.Run();
+            foreach (var channelSlide in rssFeed.Channel.AssignedSlides)
+            {
+                slideRepository.SaveOrUpdate(channelSlide.Slide);
+                channelsSlideRepository.SaveOrUpdate(channelSlide);
+            }
+            rSSFeedRepository.SaveOrUpdate(rssFeed);
+            return ActionConfirmation.CreateSuccessConfirmation("Success");
+        }
+
         private void TransferFormValuesTo(RSSFeed rSSFeedToUpdate, RSSFeed rSSFeedFromForm) {
+            rSSFeedToUpdate.Name = rSSFeedFromForm.Name;
 		    rSSFeedToUpdate.URL = rSSFeedFromForm.URL;
-			rSSFeedToUpdate.LastChecked = rSSFeedFromForm.LastChecked;
-			rSSFeedToUpdate.LastItem = rSSFeedFromForm.LastItem;
 			rSSFeedToUpdate.Template = rSSFeedFromForm.Template;
+            rSSFeedToUpdate.Channel = rSSFeedFromForm.Channel;
+            rSSFeedToUpdate.SlideFolder = rSSFeedFromForm.SlideFolder;
 			rSSFeedToUpdate.XSLT = rSSFeedFromForm.XSLT;
         }
 
         IRSSFeedRepository rSSFeedRepository;
+        IChannelsSlideRepository channelsSlideRepository;
+        ISlideRepository slideRepository;
     }
 }

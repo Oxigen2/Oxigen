@@ -1072,6 +1072,7 @@
     <Content Include="Views\Syndication\RSSFeeds\Edit.aspx" />
     <Content Include="Views\Syndication\RSSFeeds\Index.aspx" />
     <Content Include="Views\Syndication\RSSFeeds\RSSFeedForm.ascx" />
+    <Content Include="Views\Syndication\RSSFeeds\Run.aspx" />
     <Content Include="Views\Syndication\RSSFeeds\Show.aspx" />
     <Content Include="Views\Templates\Create.aspx" />
     <Content Include="Views\Templates\Edit.aspx" />
