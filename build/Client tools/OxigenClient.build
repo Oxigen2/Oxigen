@@ -370,6 +370,6 @@
 		<mkdir dir="${InstallationPackageCompiledProduct}"/>
 		<echo message="WiX dir: ${WiXDir}" />	
 		<exec program="${WiXDir}candle.exe" commandline="Oxigen.wxs -ext &quot;WixUtilExtension&quot;"/>
-		<exec program="${WiXDir}light.exe" commandline="Oxigen.wixobj -out &quot;${InstallationPackageCompiledProduct}Oxigen.msi&quot; -sice:ICE57 -spdb -ext &quot;WixUtilExtension&quot; -cultures:en-gb"/>
+		<exec program="${WiXDir}light.exe" commandline="Oxigen.wixobj -out &quot;${InstallationPackageCompiledProduct}Oxigen.msi&quot; -dcl:high -sice:ICE57 -spdb -ext &quot;WixUtilExtension&quot; -cultures:en-gb"/>
 	</target>
 </project>
