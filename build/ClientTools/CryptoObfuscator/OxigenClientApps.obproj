@@ -1,6 +1,6 @@
 <Project Name="New Obfuscator Project" UseRelativePaths="True" PropogateObfuscationSettings="False" PropogateWatermarkSettings="True" PropogateOutputSettings="True" PropogateAuthenticodeSettings="True" CheckVersionsWhileResolvingAssemblies="True" ID="{47feff1a-8788-4eaf-9de1-b54045906065}">
   <SearchDirectories />
-  <OutputSettings OutputPath="..\InstallationPackage" EncryptDependancies="False" CompressDependancies="False" MainAssemblyPath="" RunAssemblyPath="" SNPath="" SignToolPath="C:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\signtool.exe" LicensingDLLPath="" LicensingMergeAssemblyName="">
+  <OutputSettings OutputPath="..\InstallationPackage\Temp" EncryptDependancies="False" CompressDependancies="False" MainAssemblyPath="" RunAssemblyPath="" SNPath="" SignToolPath="C:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\signtool.exe" LicensingDLLPath="" LicensingMergeAssemblyName="">
     <AdditionalAssemblies />
   </OutputSettings>
   <ObfuscationSettings RenamingScheme="1" UseOverloadedFieldNames="False" UseOverloadedMethodNames="False" HonorObfuscationAttributes="True" ExcludeSerializedTypes="True" ProcessInlineStrings="True" ForceXAMLProcessingModeExclude="False" ForceRenameParams="False" />
