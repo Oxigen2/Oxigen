@@ -29,4 +29,4 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 TempRepository
-build/Client tools/CryptoObfuscator/CryptoObfuscator_Output
+build/ClientTools/InstallationPackage

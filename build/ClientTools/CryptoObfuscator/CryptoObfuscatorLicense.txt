@@ -1,0 +1,41 @@
+Dear Customer,
+
+Thank you for purchasing from LogicNP Software. The following is the license
+information for the products you purchased.
+
+License holder's name : Alun Johns
+Company Name : Oxigen II Limited
+Email : alunj@oxigen.net
+
+Type of license : 1-Developer License
+Support And Upgrade Subscription Ends on : #No Subscription Purchased#
+Number of Licenses : 1
+
+Crypto Obfuscator For .Net 2010 R2 Enterprise Edition License String:
+lgCAADTXUBCVi8sBQQBOYW1lPUFsdW4gSm9obnMjQ29tcGFueT1PeGlnZW4gSUkgTGltaXRlZCNFbWFpbD1hbHVuakBveGlnZW4ubmV0IwEHZRtjmyYmD/8A0VaQ8m1iV6QpVIrieuZEFYUukPHVDS1zCtsAKxTjoADzNyX75Td4
+
+To activate the license :
+1. In the main application, select 'Help' --> 'Enter License...'.
+2. Enter ONLY the license string from the email and click OK (the license
+string is the encoded garbled string). You should receive a 'Thank you for
+purchasing Crypto Obfuscator For .Net...' message.
+3. Close and restart the Crypto Obfuscator For .Net application.
+
+Please take note of the following :
+
+1. The license holder's name, company name and email is embedded in the
+license string, so each license string is traceable to the person/company
+which purchased the license.
+2. The controls are licensed on a per-developer basis, so only as many
+developers can use this license as indicated in the license information
+above. If additional developers need to use the controls, you will need
+additional licenses.
+3. Also note that the license is not a concurrent license but is a named
+license, so different developers cannot use the same license at any time.
+
+You will be notified of any updates to this product.If you have any queries,
+suggestions,comments or bug-reports, please contact us at support@ssware.com
+or sales@ssware.com .
+
+Thank You
+LogicNP Software
