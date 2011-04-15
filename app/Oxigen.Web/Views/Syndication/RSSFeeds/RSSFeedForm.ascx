@@ -30,7 +30,7 @@
                          });
                      });
                      $.getJSON("/Templates/ListByProducer/" + ui.item.id, function (result) {
-                         var options = $("#RSSFeed_SlideFolder_Id");
+                         var options = $("#RSSFeed_Template_Id");
                          $.each(result, function (index, item) {
                              options.empty();
                              options.append($("<option />").val(item.Id).text(item.Name));
@@ -118,7 +118,7 @@
 		<li>
 			<label for="RSSFeed_XSLT">XSLT:</label>
 			<div>
-				<%= Html.TextBox("RSSFeed.XSLT", 
+				<%= Html.TextArea("RSSFeed.XSLT", 
 					(ViewData.Model.RSSFeed != null) ? ViewData.Model.RSSFeed.XSLT.ToString() : "")%>
 			</div>
 			<%= Html.ValidationMessage("RSSFeed.XSLT")%>

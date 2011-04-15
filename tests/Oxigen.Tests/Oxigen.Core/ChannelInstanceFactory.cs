@@ -19,7 +19,6 @@ namespace Tests.Oxigen.Core
 				bLocked = false, 
 				bAcceptPasswordRequests = true, 
 				ChannelPassword = null, 
-				ChannelGUIDSuffix = "A", 
 				NoContent = 0, 
 				NoFollowers = 0, 
 				AddDate = DateTime.Parse("4/12/2011 2:09:36 PM"), 

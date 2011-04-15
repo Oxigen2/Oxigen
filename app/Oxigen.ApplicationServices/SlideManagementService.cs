@@ -141,8 +141,6 @@ namespace Oxigen.ApplicationServices
                 slide.DisplayDuration = assetContent.DisplayDuration;
                 slide.UserGivenDate = assetContent.UserGivenDate;
                 slide.Name = assetContent.Name;
-                slide.Length = assetContent.Length;
-
                 if (bUseTemplate)
                 {
                     slide.PreviewType = "Flash";
@@ -157,6 +155,7 @@ namespace Oxigen.ApplicationServices
                     //ImageUtilities.Crop(image, 100, 75, AnchorPosition.Center).Save(slide.ThumbnailFullPathName);
                     File.Copy(assetContent.ThumbnailFullPathName, slide.ThumbnailFullPathName);
                     slideFromTemplate.Save(slide.FileFullPathName);
+                    slide.Length = (int)new FileInfo(slide.FileFullPathName).Length;
                 }
                 else
                 {
@@ -169,7 +168,7 @@ namespace Oxigen.ApplicationServices
                         slide.PlayerType = "VideoQT";
                     else
                         slide.PlayerType = "VideoNonQT";
-
+                    slide.Length = assetContent.Length;
                     File.Copy(assetContent.FileFullPathName, slide.FileFullPathName);
                     File.Copy(assetContent.ThumbnailFullPathName, slide.ThumbnailFullPathName);
 

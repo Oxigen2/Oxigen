@@ -5,7 +5,7 @@ using SharpArch.Core.DomainModel;
 
 namespace Oxigen.Core
 {
-    public class Publisher : Entity
+    public class Publisher : AuditEntity
     {
 		[DomainSignature]
 		public virtual int UserID { get; set; }
@@ -13,7 +13,7 @@ namespace Oxigen.Core
 		public virtual string FirstName { get; set; }
 
 		public virtual string LastName { get; set; }
-
+        
 		public virtual string DisplayName { get; set; }
 
 		public virtual string EmailAddress { get; set; }

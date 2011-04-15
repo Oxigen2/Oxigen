@@ -17,5 +17,6 @@ namespace Oxigen.ApplicationServices.Syndication
         ActionConfirmation SaveOrUpdate(RSSFeed rSSFeed);
         ActionConfirmation UpdateWith(RSSFeed rSSFeedFromForm, int idOfRSSFeedToUpdate);
         ActionConfirmation Delete(int id);
+        ActionConfirmation Run(int id);
     }
 }

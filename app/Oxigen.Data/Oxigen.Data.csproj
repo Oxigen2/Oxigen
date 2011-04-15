@@ -134,6 +134,9 @@
   <ItemGroup>
     <EmbeddedResource Include="NamedQueries\GetChannelsSlideSummaries.hbm.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\004_IncreaseURLSize.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

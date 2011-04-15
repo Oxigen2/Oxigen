@@ -127,7 +127,6 @@ namespace Oxigen.ApplicationServices
 			channelToUpdate.bLocked = channelFromForm.bLocked;
 			channelToUpdate.bAcceptPasswordRequests = channelFromForm.bAcceptPasswordRequests;
 			channelToUpdate.ChannelPassword = channelFromForm.ChannelPassword;
-			channelToUpdate.ChannelGUIDSuffix = channelFromForm.ChannelGUIDSuffix;
 			channelToUpdate.NoContent = channelFromForm.NoContent;
 			channelToUpdate.NoFollowers = channelFromForm.NoFollowers;
 			channelToUpdate.AddDate = channelFromForm.AddDate;

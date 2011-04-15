@@ -26,6 +26,14 @@ namespace Oxigen.Web.Controllers.Syndication
         }
 
         [Transaction]
+        public ActionResult Run(int Id)
+        {
+            ActionConfirmation confirmation =
+                rSSFeedManagementService.Run(Id);
+            return View(confirmation);
+        }
+
+        [Transaction]
         public ActionResult Index() {
             IList<RSSFeedDto> rSSFeeds = 
                 rSSFeedManagementService.GetRSSFeedSummaries();
@@ -47,9 +55,10 @@ namespace Oxigen.Web.Controllers.Syndication
 
         [ValidateAntiForgeryToken]
         [Transaction]
+        [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(RSSFeed rSSFeed) {
-            if (ViewData.ModelState.IsValid) {
+            //if (ViewData.ModelState.IsValid) {
                 ActionConfirmation saveOrUpdateConfirmation = 
                     rSSFeedManagementService.SaveOrUpdate(rSSFeed);
 
@@ -58,9 +67,9 @@ namespace Oxigen.Web.Controllers.Syndication
                         saveOrUpdateConfirmation.Message;
                     return RedirectToAction("Index");
                 }
-            } else {
-                rSSFeed = null;
-            }
+            //} else {
+            //    rSSFeed = null;
+            //}
 
             RSSFeedFormViewModel viewModel = 
                 rSSFeedManagementService.CreateFormViewModelFor(rSSFeed);
@@ -76,9 +85,10 @@ namespace Oxigen.Web.Controllers.Syndication
 
         [ValidateAntiForgeryToken]
         [Transaction]
+        [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(RSSFeed rSSFeed) {
-            if (ViewData.ModelState.IsValid) {
+            //if (ViewData.ModelState.IsValid) {
                 ActionConfirmation updateConfirmation = 
                     rSSFeedManagementService.UpdateWith(rSSFeed, rSSFeed.Id);
 
@@ -87,7 +97,7 @@ namespace Oxigen.Web.Controllers.Syndication
                         updateConfirmation.Message;
                     return RedirectToAction("Index");
                 }
-            }
+            //}
 
             RSSFeedFormViewModel viewModel = 
                 rSSFeedManagementService.CreateFormViewModelFor(rSSFeed);

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Oxigen.Core
 {
-    public class Channel : Entity
+    public class Channel : AuditEntity
     {
 		public virtual int? CategoryID { get; set; }
 
@@ -32,19 +32,16 @@ namespace Oxigen.Core
 
 		public virtual string ChannelPassword { get; set; }
 
-		public virtual string ChannelGUIDSuffix { get; set; }
+        //Computed field on DB so Ignore
+		//public virtual string ChannelGUIDSuffix { get; set; }
 
 		public virtual int NoContent { get; set; }
 
 		public virtual int NoFollowers { get; set; }
 
-		public virtual DateTime AddDate { get; set; }
+		public virtual DateTime? MadeDirtyLastDate { get; set; }
 
-		public virtual DateTime EditDate { get; set; }
-
-		public virtual DateTime MadeDirtyLastDate { get; set; }
-
-		public virtual DateTime ContentLastAddedDate { get; set; }
+		public virtual DateTime? ContentLastAddedDate { get; set; }
 
         public virtual IList<ChannelsSlide> AssignedSlides { get; set; }
     }
