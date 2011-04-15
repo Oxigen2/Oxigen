@@ -360,7 +360,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       }
 
       string UMSUri = GetResponsiveServer(ServerType.MasterGetConfig, _maxNoMasterConfigServers,
-            _userGUIDSuffix, "UserManagementServices.svc");
+            _userGUIDSuffix, "UserManagementServices.svc", _logger);
 
       if (string.IsNullOrEmpty(UMSUri))
         return true;
@@ -840,7 +840,7 @@ namespace OxigenIIAdvertising.ContentExchanger
           appDataFileParameterMessage.Checksum = localChecksum;
 
           string serverURI = GetResponsiveServer(ServerType.RelayChannelData, _maxNoRelayChannelDataServers, 
-            channelSubscription.GetGUIDSuffix(), "UserDataMarshaller.svc");
+            channelSubscription.GetGUIDSuffix(), "UserDataMarshaller.svc", _logger);
 
           if (serverURI != "")
           {
@@ -1047,7 +1047,7 @@ namespace OxigenIIAdvertising.ContentExchanger
           assetFileParameterMessage.Checksum = checksum;
           assetFileParameterMessage.AssetFileName = pa.AssetFilename;
 
-          serverURI = GetResponsiveServer(ServerType.RelayChannelAssets, _maxNoRelayChannelAssetServers, pa.GetAssetFilenameGUIDSuffix(), "UserDataMarshaller.svc"); // first letter of asset name
+          serverURI = GetResponsiveServer(ServerType.RelayChannelAssets, _maxNoRelayChannelAssetServers, pa.GetAssetFilenameGUIDSuffix(), "UserDataMarshaller.svc", _logger); // first letter of asset name
 
           if (serverURI != "")
           {
@@ -1106,17 +1106,17 @@ namespace OxigenIIAdvertising.ContentExchanger
       ReportProgress(100);
     }
 
-    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string endpointSuffix)
+    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string endpointSuffix, Logger logger)
     {
-      return GetResponsiveServer(serverType, maxNoServers, "", endpointSuffix);
+        return GetResponsiveServer(serverType, maxNoServers, "", endpointSuffix, logger);
     }
 
-    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string letter, string endpointSuffix)
+    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string letter, string endpointSuffix, Logger logger)
     {
       try
       {
-        return ResponsiveServerDeterminator.GetResponsiveURI(serverType, maxNoServers, _serverTimeout, 
-          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix);
+        return ResponsiveServerDeterminator.GetResponsiveURI(serverType, maxNoServers, _serverTimeout,
+          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix, logger);
       }
       catch (Exception ex)
       {
@@ -1171,7 +1171,7 @@ namespace OxigenIIAdvertising.ContentExchanger
             _logger.WriteTimestampedMessage(
                 "Connecting to Relay Server. Parameters: maxNoMasterConfigServers = " +
                 _maxNoRelayConfigServers + ", GUIDSuffix = " + _userGUIDSuffix);
-          serverURI = GetResponsiveServer(ServerType.RelayGetConfig, _maxNoRelayConfigServers, "UserDataMarshaller.svc");
+          serverURI = GetResponsiveServer(ServerType.RelayGetConfig, _maxNoRelayConfigServers, "UserDataMarshaller.svc", _logger);
 
           if (serverURI == "")
           {
@@ -1187,7 +1187,7 @@ namespace OxigenIIAdvertising.ContentExchanger
               _logger.WriteTimestampedMessage(
                   "Connecting to User Management Services. Parameters: maxNoMasterConfigServers = " +
                   _maxNoRelayConfigServers + ", GUIDSuffix = " + _userGUIDSuffix);
-          serverURI = GetResponsiveServer(ServerType.MasterGetConfig, _maxNoMasterConfigServers, _userGUIDSuffix, "UserManagementServices.svc");
+          serverURI = GetResponsiveServer(ServerType.MasterGetConfig, _maxNoMasterConfigServers, _userGUIDSuffix, "UserManagementServices.svc", _logger);
          
           if (serverURI == "")
           {             

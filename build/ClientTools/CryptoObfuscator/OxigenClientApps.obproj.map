@@ -73,7 +73,7 @@
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.txtOverallPC" NewName="A.S.P" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.btnStop" NewName="A.S.Q" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm.backgroundWorker" NewName="A.S.R" />
-<Entry OldName="&lt;PrivateImplementationDetails&gt;{ACFE9DAF-8B7F-4C8B-B5ED-C377E8C1BFEA}.$$method0x6000050-1" NewName="A.T.A" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;{6228706B-6218-439B-9645-4314D12BDAA5}.$$method0x6000050-1" NewName="A.T.A" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog..ctor(DateTime currentRun, Boolean bContentDownloaded, Boolean bExitedWithErrors)" NewName="A.J..ctor(DateTime A, Boolean B, Boolean C)" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog..ctor()" NewName="A.J..ctor()" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.CELog.get_LastRun()" NewName="A.J.get_I()" />
@@ -111,8 +111,8 @@
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SetGlobals()" NewName="A.K.AC()" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetAssetFiles(Playlist playlist, Boolean&amp; bLowAssetSpace, Boolean&amp; bContentDownloaded, Boolean&amp; bCancelled)" NewName="A.K.BC(Playlist A, Boolean&amp; B, Boolean&amp; C, Boolean&amp; D)" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.LoopAndGetAssetFiles[T](HashSet`1 playlistAssets, AssetType assetType, String channelName, Boolean&amp; bLowAssetSpace, Boolean&amp; bContentDownloaded, Boolean&amp; bCancelled)" NewName="A.K.CC[A](HashSet`1 A, AssetType B, String C, Boolean&amp; D, Boolean&amp; E, Boolean&amp; F)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetResponsiveServer(ServerType serverType, Int32 maxNoServers, String endpointSuffix)" NewName="A.K.DC(ServerType A, Int32 B, String C)" />
-<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetResponsiveServer(ServerType serverType, Int32 maxNoServers, String letter, String endpointSuffix)" NewName="A.K.DC(ServerType A, Int32 B, String C, String D)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetResponsiveServer(ServerType serverType, Int32 maxNoServers, String endpointSuffix, Logger logger)" NewName="A.K.DC(ServerType A, Int32 B, String C, Logger D)" />
+<Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.GetResponsiveServer(ServerType serverType, Int32 maxNoServers, String letter, String endpointSuffix, Logger logger)" NewName="A.K.DC(ServerType A, Int32 B, String C, String D, Logger E)" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.UpdateDataFile(DataFileType dataFileType)" NewName="A.K.EC(DataFileType A)" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SaveStreamAndDispose(Stream stream, String filePath, Boolean bEncryptNeeded, Boolean bCheckDirectorySize)" NewName="A.K.FC(Stream A, String B, Boolean C, Boolean D)" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.Exchanger.SaveStreamAndDispose(Stream stream, String filePath, Boolean bEncryptNeeded, Boolean bCheckDirectorySize, Boolean&amp; bContentDownloaded)" NewName="A.K.FC(Stream A, String B, Boolean C, Boolean D, Boolean&amp; E)" />
@@ -193,7 +193,7 @@
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.SafeModeForm" NewName="A.Q" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.Properties.Settings" NewName="A.R" />
 <Entry OldName="OxigenIIAdvertising.ContentExchanger.VerboseRunForm" NewName="A.S" />
-<Entry OldName="&lt;PrivateImplementationDetails&gt;{ACFE9DAF-8B7F-4C8B-B5ED-C377E8C1BFEA}" NewName="A.T" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;{6228706B-6218-439B-9645-4314D12BDAA5}" NewName="A.T" />
 <Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\CELog.cs" NewName="File0" />
 <Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\ScreenSaverConfigForm.cs" NewName="File1" />
 <Entry OldName="c:\Oxigen2\Oxigen\app\OxigenIIScreenSaverConfig\ScreenSaverConfigForm.Designer.cs" NewName="File2" />

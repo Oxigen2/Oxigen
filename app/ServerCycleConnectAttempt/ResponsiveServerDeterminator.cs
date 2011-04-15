@@ -27,7 +27,12 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
     /// <exception cref="UriFormatException">The URI specified in requestUriString is not a valid URI.</exception>
     public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string primaryDomainName, string secondaryDomainName, string endpointSuffix)
     {
-      return GetResponsiveURI(serverType, maxNoServers, timeout, "", primaryDomainName, secondaryDomainName, endpointSuffix);
+      return GetResponsiveURI(serverType, maxNoServers, timeout, "", primaryDomainName, secondaryDomainName, endpointSuffix, null);
+    }
+
+    public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string letter, string primaryDomainName, string secondaryDomainName, string endpointSuffix) 
+    {
+        return GetResponsiveURI(serverType, maxNoServers, timeout, letter, primaryDomainName, secondaryDomainName, endpointSuffix, null); 
     }
 
     /// <summary>
@@ -44,7 +49,7 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
     /// <exception cref="NotSupportedException">The request scheme specified in requestUriString has not been registered.</exception>
     /// <exception cref="System.Security.SecurityException">The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.</exception>
     /// <exception cref="UriFormatException">The URI specified in requestUriString is not a valid URI.</exception>
-    public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string letter, string primaryDomainName, string secondaryDomainName, string endpointSuffix)
+    public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string letter, string primaryDomainName, string secondaryDomainName, string endpointSuffix, LoggerInfo.Logger logger)
     {
       string serverURIPrefix = "https://";
 
@@ -76,38 +81,43 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
       if (letter != "")
         serverURIPrefix += letter + "-";
 
-      return ConnectionURI(maxNoServers, timeout, serverURIPrefix, primaryDomainName, secondaryDomainName, endpointSuffix);
+      return ConnectionURI(maxNoServers, timeout, serverURIPrefix, primaryDomainName, secondaryDomainName, endpointSuffix, logger);
     }
 
-    private static string ConnectionURI(int maxNoServers, int timeout, string serverURIPrefix, 
-      string primaryDomainName, string secondaryDomainName, string endpointSuffix)
+    private static string ConnectionURI(int maxNoServers, int timeout, string serverURIPrefix,
+      string primaryDomainName, string secondaryDomainName, string endpointSuffix, LoggerInfo.Logger logger) 
     {
-      string serverURI = "";
+        string serverURI = "";
 
-      int[] serverNumbers = FillInArray(maxNoServers);
-      
-      int[] shuffledServerNumbers = Shuffler.ShuffleArray<int>(serverNumbers);
+        int[] serverNumbers = FillInArray(maxNoServers);
 
-      // try primary domain
-      foreach (int serverNumber in shuffledServerNumbers)
-      {
-        serverURI = serverURIPrefix + serverNumber + primaryDomainName + "/" + endpointSuffix;
+        int[] shuffledServerNumbers = Shuffler.ShuffleArray<int>(serverNumbers);
 
-        if (ConnectionSucceeded(serverURI, timeout))
-          return serverURI;
-      }
+        // try primary domain
+        foreach (int serverNumber in shuffledServerNumbers) {
+            serverURI = serverURIPrefix + serverNumber + primaryDomainName + "/" + endpointSuffix;
 
-      // if no server was yielded so far, try secondary domain
-      foreach (int serverNumber in shuffledServerNumbers)
-      {
-        serverURI = serverURIPrefix + serverNumber + secondaryDomainName + "/" + endpointSuffix;
+            if (logger != null)
+                logger.WriteTimestampedMessage("Attempting to connect to: " + serverURI);
 
-        if (ConnectionSucceeded(serverURI, timeout))
-          return serverURI;
-      }
+            if (ConnectionSucceeded(serverURI, timeout))
+                return serverURI;
+        }
 
-      // if secondary domain hasn't yielded results, exit with empty string
-      return "";
+        // if no server was yielded so far, try secondary domain
+        foreach (int serverNumber in shuffledServerNumbers) 
+        {
+            serverURI = serverURIPrefix + serverNumber + secondaryDomainName + "/" + endpointSuffix;
+
+            if (logger != null)
+                logger.WriteTimestampedMessage("Attempting to connect to: " + serverURI);
+
+            if (ConnectionSucceeded(serverURI, timeout))
+                return serverURI;
+        }
+
+        // if secondary domain hasn't yielded results, exit with empty string
+        return "";
     }
 
     private static int[] FillInArray(int maxNoServers)
