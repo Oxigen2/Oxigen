@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using Aspose.Flash.Bitmaps;
 using Aspose.Flash.Swf;
 using Aspose.Flash.Text;
+using ImageExtraction;
 
 namespace Oxigen.ApplicationServices.Flash
 {
@@ -20,6 +22,14 @@ namespace Oxigen.ApplicationServices.Flash
             var lic = new Aspose.Flash.License();
             lic.SetLicense("Aspose.Flash.lic");
             _flashContainer = new FlashContainer(filePath);
+        }
+
+        public SWAFile(Stream stream)
+        {
+            var lic = new Aspose.Flash.License();
+            lic.SetLicense("Aspose.Flash.lic");
+            _flashContainer = new FlashContainer(stream);
+            stream.Close();
         }
 
         public void UpdateEmbeddedXML(string embeddedName, string XML) {
@@ -122,9 +132,15 @@ namespace Oxigen.ApplicationServices.Flash
 
         }
 
-        public Image GetThumbnail()
+
+        public Image GetLastFrameImage()
         {
             return _flashContainer.Render(_flashContainer.NumberOfFrames-1);
+        }
+
+        public Image GetLastFrameImageAsThumbnail()
+        {
+            return ImageUtilities.Crop(GetLastFrameImage(), 100, 75, AnchorPosition.Center);
         }
     }
 }

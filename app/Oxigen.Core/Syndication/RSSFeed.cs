@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Drawing;
@@ -67,6 +68,7 @@ namespace Oxigen.Core.Syndication
             dom.Load(output);
             bool bFirst = true;
             var previousLastItem = LastItem;
+            var channelssidesList = new List<ChannelsSlide>();
             foreach (XmlNode item in dom.DocumentElement.ChildNodes)
             {
                 string guid = item.SelectSingleNode("guid").InnerText;
@@ -111,8 +113,8 @@ namespace Oxigen.Core.Syndication
                 ImageUtilities.Crop(img, 100, 75, AnchorPosition.Center).Save(slide.ThumbnailFullPathName);
                 slideFromTemplate.Save(slide.FileFullPathName);
                 slide.Length = (int)new FileInfo(slide.FileFullPathName).Length;
-
-                Channel.AssignedSlides.Add(new ChannelsSlide
+                //Add slides in reverse order
+                channelssidesList.Insert(0, new ChannelsSlide
                                                {
                                                    Channel = Channel,
                                                    ClickThroughURL = slide.ClickThroughURL,
@@ -132,6 +134,11 @@ namespace Oxigen.Core.Syndication
                 Channel.ContentLastAddedDate = DateTime.Now;
                 Channel.MadeDirtyLastDate = DateTime.Now;
             }
+            foreach(var channelssilde in channelssidesList)
+            {    
+                Channel.AssignedSlides.Add(channelssilde);
+            }
+
         }
     }
 }

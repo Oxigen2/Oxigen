@@ -8,6 +8,8 @@ namespace Oxigen.Data.NHibernateMaps.Conventions
         public void Apply(FluentNHibernate.Conventions.Instances.IOneToManyCollectionInstance instance)
         {
             instance.Key.Column(instance.EntityType.Name + "ID");
+            instance.Inverse();
+            instance.Cascade.All();
         }
     }
 }

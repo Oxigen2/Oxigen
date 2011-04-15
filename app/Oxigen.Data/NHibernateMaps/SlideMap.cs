@@ -12,6 +12,9 @@ namespace Oxigen.Data.NHibernateMaps
             mapping.Map(x => x.ImageName).Column("ImageFilename");
             mapping.IgnoreProperty(x => x.FileFullPathName);
             mapping.IgnoreProperty(x => x.ThumbnailFullPathName);
+            mapping.HasMany(x => x.AssignedChannels)
+                .Cascade.All()
+                .Inverse();
 
 
         }

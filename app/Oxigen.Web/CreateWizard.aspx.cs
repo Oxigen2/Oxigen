@@ -9,6 +9,7 @@ using System.Xml;
 using Aurigma.ImageUploader;
 using Microsoft.Practices.ServiceLocation;
 using Oxigen.ApplicationServices;
+using Oxigen.ApplicationServices.Flash;
 using Oxigen.Core;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
@@ -246,11 +247,15 @@ namespace OxigenIIPresentation
         if (bIsImage)
           thumbnail1File.SaveAs(thumbnailFullPath);
         else if (bIsVideo)
-          CopyDefaultThumbnailForType(extension, thumbnailAssetContentPath, thumbnailFullPath);
+            CopyDefaultThumbnailForType(extension, thumbnailAssetContentPath, thumbnailFullPath);
         else
-          File.Copy(thumbnailAssetContentPath + "flash-swf.jpg", thumbnailFullPath);
+        {
+            //var swa = new SWAFile(sourceFile.InputStream);
+            //swa.GetLastFrameImageAsThumbnail().Save(thumbnailFullPath);
+            File.Copy(thumbnailAssetContentPath + "flash-swf.jpg", thumbnailFullPath);
+        }
 
-        // get resized file and save
+          // get resized file and save
         HttpPostedFile thumbnail2File = Request.Files["Thumbnail2_" + i];
 
         if (bIsImage)
