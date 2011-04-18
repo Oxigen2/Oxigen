@@ -49,7 +49,7 @@ namespace Setup
     private bool _bOldOxigenSystemModified = false;
     private bool _bIs64BitSystem = false;
     private string _username;
-    private Logger _setupLogger = new Logger("Oxigen Installer", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\OxigenInstallLog.txt", LoggingMode.Debug);
+    private Logger _setupLogger = new Logger("Oxigen Installer", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\OxigenInstallLog.txt", LoggingMode.Release);
 
     public string Username
     {
