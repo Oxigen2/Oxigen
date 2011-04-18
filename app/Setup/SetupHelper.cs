@@ -606,6 +606,8 @@ namespace Setup
 
     internal static void InstallMSI(OxigenForm callerForm)
     {
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("msiexec.exe /i \"Oxigen.msi\" /qn ALLUSERS=1 TARGETDIR=\"" + AppDataSingleton.Instance.BinariesPath + "\" DATAANDSETTINGS=\"" + AppDataSingleton.Instance.DataPath + "\" PCGUID=" + AppDataSingleton.Instance.User.MachineGUID + " USERGUID=" + AppDataSingleton.Instance.User.UserGUID + " REBOOT=ReallySuppress");
+        
       Process process = null;
 
       ProcessStartInfo startInfo = new ProcessStartInfo("msiexec.exe", "/i \"Oxigen.msi\" /qn ALLUSERS=1 TARGETDIR=\"" + AppDataSingleton.Instance.BinariesPath + "\" DATAANDSETTINGS=\"" + AppDataSingleton.Instance.DataPath + "\" PCGUID=" + AppDataSingleton.Instance.User.MachineGUID + " USERGUID=" + AppDataSingleton.Instance.User.UserGUID + " REBOOT=ReallySuppress");
@@ -649,6 +651,14 @@ namespace Setup
     }
 
     static OxigenIIAdvertising.LoggerInfo.Logger _log = new OxigenIIAdvertising.LoggerInfo.Logger("Install Process", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Debug.txt", OxigenIIAdvertising.LoggerInfo.LoggingMode.Debug);
+
+    private static string GetBinaryPathAboveBin() 
+    {
+        if (GenericRegistryAccess.RegistryKeyExists("HKEY_LOCAL_MACHINE\\Software\\Oxigen"))
+            return (string)GenericRegistryAccess.GetRegistryValue("HKEY_LOCAL_MACHINE\\Software\\Oxigen", "ProgramPath");
+        else
+            return (string)GenericRegistryAccess.GetRegistryValue("HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Oxigen", "ProgramPath");
+    }
 
     internal static void DoPostMSIInstallSteps()
     {
@@ -909,7 +919,10 @@ namespace Setup
       if (AppDataSingleton.Instance.Repair)
         return;
 
-      File.Copy("Setup.exe", AppDataSingleton.Instance.BinariesPath + "Setup.exe", true);
+      // 64-bit / MSI issue workaround
+      // On 64 bit machines, you tell msiexec.exe to install Oxigen on the default program files location, it makes its own choice whether to install it on Program Files or Program Files (x86) folder.
+      // Therefore, we can't make use of AppDataSingleton.Instance.BinariesPath top copy Setup to install dir. Solution: Access the registry
+      File.Copy("Setup.exe", GetBinaryPathAboveBin() + "\\Setup.exe", true);
     }
 
     internal static void RemoveSetup()
@@ -1035,13 +1048,9 @@ namespace Setup
       return pricipal.IsInRole(WindowsBuiltInRole.Administrator);
     }
 
-    internal static string GetPublicDocumentsFolder()
+    internal static string GetProgramDataFolder()
     {
-      StringBuilder path = new StringBuilder(260);
-
-      SHGetSpecialFolderPath(IntPtr.Zero, path, CSIDL_COMMON_DOCUMENTS, false);
-
-      return path.ToString();
+        return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
     }
 
     internal static string GetSystemDirectory()
@@ -1050,8 +1059,6 @@ namespace Setup
       SHGetSpecialFolderPath(IntPtr.Zero, path, 0x0029, false);
       return path.ToString();
     }
-
-    private const int CSIDL_COMMON_DOCUMENTS = 0x002e;
 
     [System.Runtime.InteropServices.DllImport("shell32.dll")]
     private static extern bool SHGetSpecialFolderPath(IntPtr hwndOwner,
@@ -1185,12 +1192,12 @@ namespace Setup
 
     internal static void SetRegistryForModifyUninstall()
     {
-      string uninstallString = AppDataSingleton.Instance.BinariesPath + "Setup.exe /u";
+      string uninstallString = GetBinaryPathAboveBin() + "Setup.exe /u";
 
       GenericRegistryAccess.SetRegistryValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{05AB04BD-B62E-4A98-9DA0-9650699CAF8E}", "UninstallString", uninstallString);
       GenericRegistryAccess.SetRegistryValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{05AB04BD-B62E-4A98-9DA0-9650699CAF8E}", "WindowsInstaller", 0);
 
-      string modifyPath = AppDataSingleton.Instance.BinariesPath + "Setup.exe /u"; // when we do Repair install, change this to /m
+      string modifyPath = GetBinaryPathAboveBin() + "Setup.exe /u"; // when we do Repair install, change this to /m
 
       GenericRegistryAccess.SetRegistryValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{05AB04BD-B62E-4A98-9DA0-9650699CAF8E}", "ModifyPath", modifyPath);
     }

@@ -116,7 +116,7 @@ namespace Setup
     {
       if (string.IsNullOrEmpty(AppDataSingleton.Instance.DataPath))
       {
-        AppDataSingleton.Instance.DataPath = SetupHelper.GetPublicDocumentsFolder() + "\\Oxigen\\";
+        AppDataSingleton.Instance.DataPath = SetupHelper.GetProgramDataFolder() + "\\Oxigen\\";
         return true;
       }
 
@@ -214,19 +214,27 @@ namespace Setup
     {
       // Check MAC Address and assign a machine GUID to AppDataSingleton
       string macAddress = SetupHelper.GetMACAddress();
-
-      string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("MAC Address: " + macAddress);
+        string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
         int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
         AppDataSingleton.Instance.User.GetUserGUIDSuffix(),
         "UserManagementServices.svc");
 
       if (string.IsNullOrEmpty(UMSUri))
+      {
+          AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details not found");
         return false;
+      }
+      else
+          AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details: " + UMSUri);
 
       UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
       
       SimpleErrorWrapper wrapper = null;
 
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("UserGUID: " + AppDataSingleton.Instance.User.UserGUID);
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("MachineGUID: " + AppDataSingleton.Instance.User.MachineGUID);
+        
       try
       {
         client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
@@ -243,8 +251,10 @@ namespace Setup
           macAddress,          
           "password");
       }
-      catch (System.Net.WebException)
+      catch (System.Net.WebException ex)
       {
+         AppDataSingleton.Instance.SetupLogger.WriteError(ex);
+
         return false;
       }
       finally
@@ -262,8 +272,12 @@ namespace Setup
         }
       }
 
-      if (wrapper.ErrorStatus != ErrorStatus1.Success)
-        return false;
+      if (wrapper.ErrorStatus != ErrorStatus1.Success) 
+      {
+          AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Send Details failed: message: " + wrapper.Message);
+          return false;
+      }
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Send Details: success");
 
       return  true;
     }
@@ -271,6 +285,8 @@ namespace Setup
     private static void InstallMSI()
     {
       Process process = null;
+
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("msiexec.exe /i \"Oxigen.msi\" /qn ALLUSERS=1 TARGETDIR=\"" + AppDataSingleton.Instance.BinariesPath + "\" DATAANDSETTINGS=\"" + AppDataSingleton.Instance.DataPath + "\" PCGUID=" + AppDataSingleton.Instance.User.MachineGUID + " USERGUID=" + AppDataSingleton.Instance.User.UserGUID + " REBOOT=ReallySuppress");
 
       ProcessStartInfo startInfo = new ProcessStartInfo("msiexec.exe", "/i \"Oxigen.msi\" /qn ALLUSERS=1 TARGETDIR=\"" + AppDataSingleton.Instance.BinariesPath + "\" DATAANDSETTINGS=\"" + AppDataSingleton.Instance.DataPath + "\" PCGUID=" + AppDataSingleton.Instance.User.MachineGUID + " USERGUID=" + AppDataSingleton.Instance.User.UserGUID + " REBOOT=ReallySuppress");
 

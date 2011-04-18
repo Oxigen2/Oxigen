@@ -25,7 +25,7 @@ namespace Setup
       else
         txtBinariesPath.Text = defaultBinaryInstallationFolder;
 
-      string defaultDataInstallationFolder = SetupHelper.GetPublicDocumentsFolder() + "\\Oxigen";
+      string defaultDataInstallationFolder = SetupHelper.GetProgramDataFolder() + "\\Oxigen";
 
       if (!string.IsNullOrEmpty(AppDataSingleton.Instance.DataPath))
         txtDataPath.Text = AppDataSingleton.Instance.DataPath;
