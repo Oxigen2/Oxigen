@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="NHibernateMaps\AssetContentMap.cs" />
     <Compile Include="NHibernateMaps\PublisherMap.cs" />
+    <Compile Include="NHibernateMaps\SlideFolderMap.cs" />
     <Compile Include="NHibernateMaps\SlideMap.cs" />
     <Compile Include="NHibernateMaps\TemplateMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\004_IncreaseURLSize.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\005_SlideFolderCount.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

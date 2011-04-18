@@ -4,20 +4,16 @@
   <xsl:output method="html" omit-xml-declaration="yes" />
 
   <xsl:template match="/rss/channel">
-    { items: [
+    <items>
     <xsl:for-each select="item[enclosure]">
-      {
-      "date": "<xsl:value-of select="pubDate"
-           disable-output-escaping="yes"  />",
-      "guid": "<xsl:value-of select="guid"
-               disable-output-escaping="yes"  />",
-      "url": "<xsl:value-of select="link"
-                disable-output-escaping="yes"  />",
-      "title": "<xsl:value-of select="title"
-           disable-output-escaping="yes"  />",
-      "image": "<xsl:value-of select="enclosure/@url"/>"
-      }<xsl:if test="position() != last()">,</xsl:if>
+      <item>
+        <date><xsl:value-of select="pubDate"/></date>
+      ``<guid><xsl:value-of select="guid" /></guid>
+        <title><xsl:value-of select="title"/></title>
+        <url><xsl:value-of select="link"/></url>
+        <image><xsl:value-of select="enclosure/@url"/></image>
+    </item>
     </xsl:for-each>
-    ] }
+  </items>  
   </xsl:template>
 </xsl:stylesheet>
