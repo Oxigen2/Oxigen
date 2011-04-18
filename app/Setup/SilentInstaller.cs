@@ -116,7 +116,7 @@ namespace Setup
     {
       if (string.IsNullOrEmpty(AppDataSingleton.Instance.DataPath))
       {
-        AppDataSingleton.Instance.DataPath = SetupHelper.GetProgramDataFolder() + "\\Oxigen\\";
+        AppDataSingleton.Instance.DataPath = SetupHelper.GetDefaultDataFolder() + "\\Oxigen\\";
         return true;
       }
 

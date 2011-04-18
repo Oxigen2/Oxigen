@@ -1048,9 +1048,14 @@ namespace Setup
       return pricipal.IsInRole(WindowsBuiltInRole.Administrator);
     }
 
-    internal static string GetProgramDataFolder()
-    {
-        return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+    private const int CSIDL_COMMON_DOCUMENTS = 0x002e;
+
+    internal static string GetDefaultDataFolder() {
+        StringBuilder path = new StringBuilder(260);
+
+        SHGetSpecialFolderPath(IntPtr.Zero, path, CSIDL_COMMON_DOCUMENTS, false);
+
+        return path.ToString();
     }
 
     internal static string GetSystemDirectory()
