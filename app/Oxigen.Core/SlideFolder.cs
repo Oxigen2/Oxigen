@@ -11,5 +11,9 @@ namespace Oxigen.Core
 
 		[DomainSignature]
 		public virtual Publisher Publisher { get; set; }
+
+        public virtual int MaxSlideCount { get; set; }
+
+        public virtual int SlideCount { get; set;  }
     }
 }
