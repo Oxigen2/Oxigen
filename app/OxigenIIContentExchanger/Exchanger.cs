@@ -316,27 +316,43 @@ namespace OxigenIIAdvertising.ContentExchanger
       if (!string.IsNullOrEmpty(_machineGUID))
         return true;
 
-      Microsoft.Win32.RegistryKey uninstallKey = RegistryAccess.GetRegistryKey(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{3803E7AD-1837-4A73-A948-80B7C98DE747}\");
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists 1");
+
+      Microsoft.Win32.RegistryKey uninstallKey = RegistryAccess.GetRegistryKey(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{05AB04BD-B62E-4A98-9DA0-9650699CAF8E}\");
+
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists 2");
 
       if (uninstallKey == null)
-        throw new ArgumentException(@"Registry key doesn't exist: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{3803E7AD-1837-4A73-A948-80B7C98DE747}\");
+          throw new ArgumentException(@"Registry key doesn't exist: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{05AB04BD-B62E-4A98-9DA0-9650699CAF8E}\");
+
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists 3");
 
       string sourceInstallation = uninstallKey.GetValue("InstallSource").ToString();
 
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists 4");
+
       if (sourceInstallation == null)
-        throw new ArgumentException(@"Registry value doesn't exist: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{3803E7AD-1837-4A73-A948-80B7C98DE747}\InstallSource");
+          throw new ArgumentException(@"Registry value doesn't exist: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{05AB04BD-B62E-4A98-9DA0-9650699CAF8E}\InstallSource");
+
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExistse 5");
 
       string[][] subscriptions = null;
 
       if (File.Exists(sourceInstallation + "Setup.ini"))
         subscriptions = GetSubscriptions(sourceInstallation + "Setup.ini");
 
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists 6");
+
       // register PC and upload subscriptions
       string macAddress = GetMACAddress();
+
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists 7");  
 
       // start the Guardian if it isn't running
       if (!IsProcessRunning("OxigenService"))
       {
+        _logger.WriteTimestampedMessage("GetM_C_IfNotExists 8");  
+
         try
         {
           System.Diagnostics.Process.Start(_binariesPath + "OxigenService.exe");
@@ -349,6 +365,8 @@ namespace OxigenIIAdvertising.ContentExchanger
 
       if (!IsProcessRunning("OxigenTray"))
       {
+          _logger.WriteTimestampedMessage("GetM_C_IfNotExists 9");
+
         try
         {
           System.Diagnostics.Process.Start(_binariesPath + "OxigenTray.exe");
@@ -359,22 +377,32 @@ namespace OxigenIIAdvertising.ContentExchanger
         }
       }
 
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists 10");
+
       string UMSUri = GetResponsiveServer(ServerType.MasterGetConfig, _maxNoMasterConfigServers,
             _userGUIDSuffix, "UserManagementServices.svc", _logger);
 
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists 11");
+
       if (string.IsNullOrEmpty(UMSUri))
-        return true;
+      {
+          _logger.WriteTimestampedMessage("GetM_C_IfNotExists 12");
+          return true;
+      }
 
       UserManagementServicesNonStreamerClient client = null;
       StringErrorWrapper sw = null;
 
       try
       {
+          _logger.WriteTimestampedMessage("GetM_C_IfNotExists 13");
         client = new UserManagementServicesNonStreamerClient();
+        _logger.WriteTimestampedMessage("GetM_C_IfNotExists 14");
         client.Endpoint.Address = new System.ServiceModel.EndpointAddress(UMSUri);
         sw = client.AddSubscriptionsAndNewPC(_userGUID, macAddress, Environment.MachineName,
           _majorVersionNumber, _minorVersionNumber,
           subscriptions, "password");
+        _logger.WriteTimestampedMessage("GetM_C_IfNotExists 15");
       }
       catch (Exception ex)
       {
@@ -387,6 +415,9 @@ namespace OxigenIIAdvertising.ContentExchanger
           client.Dispose();
       }
 
+      _logger.WriteTimestampedMessage("GetM_C_IfNotExists: communicated to server.");
+
+
       if (sw.ErrorStatus != ErrorStatus.Success)
       {
         _logger.WriteError(sw.ErrorStatus + " " + sw.Message);
@@ -395,6 +426,8 @@ namespace OxigenIIAdvertising.ContentExchanger
 
       if (sw.ErrorStatus == ErrorStatus.Success)
       {
+        _logger.WriteTimestampedMessage("GetM_C_IfNotExists: success.");
+
         _machineGUID = sw.ReturnString;
         SaveMachineGUID(_machineGUID);
         return true;

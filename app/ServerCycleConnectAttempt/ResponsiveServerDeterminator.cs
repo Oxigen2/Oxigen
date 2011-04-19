@@ -100,7 +100,7 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
             if (logger != null)
                 logger.WriteTimestampedMessage("Attempting to connect to: " + serverURI);
 
-            if (ConnectionSucceeded(serverURI, timeout))
+            if (ConnectionSucceeded(serverURI, timeoutm logger))
                 return serverURI;
         }
 
@@ -112,7 +112,7 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
             if (logger != null)
                 logger.WriteTimestampedMessage("Attempting to connect to: " + serverURI);
 
-            if (ConnectionSucceeded(serverURI, timeout))
+            if (ConnectionSucceeded(serverURI, timeout, logger))
                 return serverURI;
         }
 
@@ -130,7 +130,7 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
       return serverNumbers;
     }
 
-    private static bool ConnectionSucceeded(string serverURI, int timeout)
+    private static bool ConnectionSucceeded(string serverURI, int timeout, LoggerInfo.Logger logger)
     {
       HttpWebRequest request = (HttpWebRequest)WebRequest.Create(serverURI);
       request.Timeout = timeout;
@@ -141,11 +141,12 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
       {
         response = (HttpWebResponse)request.GetResponse();
       }
-      catch
+      catch (Exception ex)
       {
         if (response != null)
           response.Close();
 
+        logger.WriteError(ex);
         return false;
       }
 
