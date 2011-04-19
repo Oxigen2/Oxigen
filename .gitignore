@@ -30,3 +30,4 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 TempRepository
 build/ClientTools/InstallationPackage
+build/ClientTools/CryptoObfuscator/OxigenClientApps.obproj.map
