@@ -1197,7 +1197,7 @@ namespace Setup
 
     internal static void SetRegistryForModifyUninstall()
     {
-        AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("In SetRegistryForModifyUninstall()");
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("In SetRegistryForModifyUninstall()");
       string uninstallString = GetBinaryPathAboveBin() + "Setup.exe /u";
 
       GenericRegistryAccess.SetRegistryValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{05AB04BD-B62E-4A98-9DA0-9650699CAF8E}", "UninstallString", uninstallString);
