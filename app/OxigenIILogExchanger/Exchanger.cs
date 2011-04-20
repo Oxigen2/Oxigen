@@ -841,7 +841,7 @@ namespace OxigenIIAdvertising.LogExchanger
 
       try
       {
-        _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebug.txt";
+        _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebugLE.txt";
         _userSettingsPath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\UserSettings.dat";
         _password = "password";
 
@@ -942,8 +942,10 @@ namespace OxigenIIAdvertising.LogExchanger
 
       if (dateTimeErrorWrapper.ErrorStatus == ErrorStatus.Failure)
       {
-        _logger.WriteError((IErrorReporting)dateTimeErrorWrapper);
-        return null;
+          var errorReporting = (IErrorReporting) dateTimeErrorWrapper;
+
+          _logger.WriteError(errorReporting.ErrorCode, errorReporting.Message);
+          return null;
       }
 
       TimeSpan timeDiff = (dateTimeErrorWrapper.ReturnDateTime).Subtract(DateTime.Now);

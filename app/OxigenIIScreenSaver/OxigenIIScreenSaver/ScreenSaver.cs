@@ -139,11 +139,11 @@ namespace OxigenIIAdvertising.ScreenSaver
     public ScreenSaver(int screenNo, Playlist playlist, float advertDisplayThreshold,
       float protectedContentTime, float displayMessageAssetDisplayLength, int requestTimeout, 
       bool bMuteFlash, bool bMuteVideo, int flashVolume, int videoVolume,
-      bool bErrorOnSetup, string displayMessage, string appToRun, string debugFilePath,
+      bool bErrorOnSetup, string displayMessage, string appToRun,
       string tempDecryptPath, string assetPath, bool bInsufficientMemoryForLargeFiles,
-      object lockPlaylistObj, float defaultDisplayLength)
+      object lockPlaylistObj, float defaultDisplayLength, Logger logger)
     {
-      _logger = new Logger("ScreenSaver in monitor " + screenNo, debugFilePath, LoggingMode.Debug);
+      _logger = logger;
 
       InitializeComponent();
 

@@ -28,11 +28,11 @@ namespace OxigenIIAdvertising.ScreenSaver
     private Logger _logger = null;
     private IntPtr _previewHandle;
 
-    public PreviewScreenSaver(IntPtr previewHandle, string debugFilePath)
+    public PreviewScreenSaver(IntPtr previewHandle, Logger logger)
     {
       InitializeComponent();
 
-      _logger = new Logger("ScreenSaver in preview mode", debugFilePath, LoggingMode.Debug);
+       _logger = logger;
 
       _previewHandle = previewHandle;
     }

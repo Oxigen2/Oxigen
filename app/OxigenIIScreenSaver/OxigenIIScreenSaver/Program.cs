@@ -198,7 +198,7 @@ namespace OxigenIIAdvertising.ScreenSaver
       {
         _appDataPath = ConfigurationSettings.AppSettings["AppDataPath"];
 
-        _debugFilePath = _appDataPath + "SettingsData\\OxigenDebug.txt";
+        _debugFilePath = _appDataPath + "SettingsData\\OxigenDebugSS.txt";
         _userSettingsPath = _appDataPath + "SettingsData\\UserSettings.dat";
         _screenSaverConfigPath = ConfigurationSettings.AppSettings["BinariesPath"] + "ScreenSaverConfig.exe";
         _tempDecryptPath = _appDataPath + "Temp\\";
@@ -919,12 +919,12 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         if (_user == null)
           _logger.WriteError("user is null");
-
+          
         ScreenSaver screenSaver = new ScreenSaver(i, new Playlist(_playlist), _advertDisplayThreshold, 
           _protectedContentTime, _displayMessageAssetDisplayLength, _requestTimeout, bMuteFlash, bMuteVideo,
           flashVolume, videoVolume, _bErrorOnStartup, _displayMessage, _appToRun, 
-          _debugFilePath, _tempDecryptPath, _assetPath, _bInsufficientMemoryForLargeFiles, _lockPlaylistObj, 
-          defaultDisplayDuration);
+          _tempDecryptPath, _assetPath, _bInsufficientMemoryForLargeFiles, _lockPlaylistObj, 
+          defaultDisplayDuration, _logger);
         _logger.WriteTimestampedMessage("Successfully created Screensaver in monitor " + i);
         
         _screenSavers[i] = screenSaver;
@@ -955,7 +955,7 @@ namespace OxigenIIAdvertising.ScreenSaver
     {
       _bPreviewMode = true;
       _screenSavers = new PreviewScreenSaver[1];
-      _screenSavers[0] = new PreviewScreenSaver(new IntPtr(long.Parse(previewHandle)), _debugFilePath);
+      _screenSavers[0] = new PreviewScreenSaver(new IntPtr(long.Parse(previewHandle)), _logger);
 
       _logger.WriteTimestampedMessage("successfully started a preview screensaver.");
     }

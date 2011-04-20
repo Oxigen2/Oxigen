@@ -44,8 +44,6 @@ namespace OxigenIIPresentation.CommandHandlers.Processors.Get
 
       return Flatten(folderList);
     }
-
-    private Logger _logger = new Logger("ContentFoldersProcessor", @"\\OXIGEN01\Repository\UAT\Debug.txt");
     
     private string Flatten(List<List<CreateContentGenericFolder>> folderList)
     {
@@ -67,11 +65,7 @@ namespace OxigenIIPresentation.CommandHandlers.Processors.Get
         sb.Replace(",,", "||", sb.Length - 2, 2);
       }
 
-      string returnString = sb.ToString().TrimEnd(new char[] { '|' });
-
-      _logger.WriteMessage(returnString);
-
-      return returnString;
+      return sb.ToString().TrimEnd(new char[] { '|' });
     }
   }
 }

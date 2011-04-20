@@ -147,13 +147,10 @@ namespace OxigenIIPresentation
       }
       catch (Exception ex)
       {
-        logger.WriteMessage(ex.ToString());
-
+        // TODO: handle
         throw ex;
       }
     }
-
-      Logger logger = new Logger("Create Page", System.Configuration.ConfigurationSettings.AppSettings["debugPath"], LoggingMode.Debug);
 
     private void UploadAndSaveToDB(out long totalUploadSize)
     {
