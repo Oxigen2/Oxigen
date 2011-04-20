@@ -1,4 +1,5 @@
 using System;
+using NHibernate.Criterion;
 using SharpArch.Data.NHibernate;
 using System.Collections.Generic;
 using NHibernate;
@@ -29,6 +30,15 @@ namespace Oxigen.Data.Repositories
                 .SetResultTransformer(Transformers.AliasToBean<SlideFolderDto>());
 
             return query.List<SlideFolderDto>();
+        }
+
+        public IList<SlideFolder> GetSlideFoldersWithTooManySlides()
+        {
+            ISession session = NHibernateSession.Current;
+            var criteria = session.CreateCriteria(typeof(SlideFolder))
+                .Add(Restrictions.GtProperty("SlideCount", "MaxSlideCount"))
+                .Add(Restrictions.Gt("MaxSlideCount", 0));
+            return criteria.List<SlideFolder>();
         }
     }
 }

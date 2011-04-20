@@ -1,4 +1,6 @@
-﻿namespace Oxigen.Web
+﻿using Oxigen.ApplicationServices.Syndication;
+
+namespace Oxigen.Web
 {
     using System;
     using System.Reflection;
@@ -110,6 +112,7 @@
                 this.webSessionStorage, 
                 new[] { this.Server.MapPath("~/bin/Oxigen.Data.dll") }, 
                 new AutoPersistenceModelGenerator().Generate());
+            
         }
 
         #endregion

@@ -112,6 +112,7 @@
     <Compile Include="Oxigen.ApplicationServices\RSS\SyndicationFeedReaderTests.cs" />
     <Compile Include="Oxigen.ApplicationServices\SlideFolderManagementServiceTests.cs" />
     <Compile Include="Oxigen.ApplicationServices\SlideManagementServiceTests.cs" />
+    <Compile Include="Oxigen.ApplicationServices\SWAFileTest.cs" />
     <Compile Include="Oxigen.ApplicationServices\Syndication\RSSFeedManagementServiceTests.cs" />
     <Compile Include="Oxigen.ApplicationServices\TemplateManagementServiceTests.cs" />
     <Compile Include="Oxigen.Core\AssetContentInstanceFactory.cs" />

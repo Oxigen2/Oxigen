@@ -8,7 +8,7 @@
     <xsl:for-each select="item[enclosure]">
       <item>
         <date><xsl:value-of select="pubDate"/></date>
-      ``<guid><xsl:value-of select="guid" /></guid>
+        <guid><xsl:value-of select="guid" /></guid>
         <title><xsl:value-of select="title"/></title>
         <url><xsl:value-of select="link"/></url>
         <image><xsl:value-of select="enclosure/@url"/></image>

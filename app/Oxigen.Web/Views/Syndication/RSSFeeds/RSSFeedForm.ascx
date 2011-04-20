@@ -24,22 +24,22 @@
                      $("#RSSFeed_Publisher_Id").val(ui.item.id);
                      $.getJSON("/SlideFolders/ListByProducer/" + ui.item.id, function (result) {
                          var options = $("#RSSFeed_SlideFolder_Id");
-                         $.each(result, function (index, item) {
-                             options.empty();
+                         options.empty();
+                         $.each(result, function (index, item) {                            
                              options.append($("<option />").val(item.Id).text(item.SlideFolderName));
                          });
                      });
                      $.getJSON("/Templates/ListByProducer/" + ui.item.id, function (result) {
                          var options = $("#RSSFeed_Template_Id");
+                         options.empty();
                          $.each(result, function (index, item) {
-                             options.empty();
                              options.append($("<option />").val(item.Id).text(item.Name));
                          });
                      });
                      $.getJSON("/Channels/ListByProducer/" + ui.item.id, function (result) {
                          var options = $("#RSSFeed_Channel_Id");
+                         options.empty();
                          $.each(result, function (index, item) {
-                             options.empty();
                              options.append($("<option />").val(item.Id).text(item.ChannelName));
                          });
                      });

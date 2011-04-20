@@ -1,18 +1,20 @@
 using System.Collections.Generic;
 using System;
+using System.IO;
 using Oxigen.Core.RepositoryInterfaces;
 using SharpArch.Core;
 using Oxigen.Core.Syndication;
 using Oxigen.ApplicationServices.ViewModels.Syndication;
 using Oxigen.Core.QueryDtos.Syndication;
 using Oxigen.Core.RepositoryInterfaces.Syndication;
-using Oxigen.Core; 
+using Oxigen.Core;
+using SharpArch.Data.NHibernate;
 
 namespace Oxigen.ApplicationServices.Syndication
 {
     public class RSSFeedManagementService : IRSSFeedManagementService
     {
-        public RSSFeedManagementService(IRSSFeedRepository rSSFeedRepository, IChannelsSlideRepository channelsSlideRepository, ISlideRepository slideRepository)
+        public RSSFeedManagementService(IRSSFeedRepository rSSFeedRepository, IChannelsSlideRepository channelsSlideRepository, ISlideRepository slideRepository, ISlideFolderRepository slideFolderRepository)
         {
             Check.Require(rSSFeedRepository != null, "rSSFeedRepository may not be null");
             this.rSSFeedRepository = rSSFeedRepository;
@@ -23,6 +25,8 @@ namespace Oxigen.ApplicationServices.Syndication
             Check.Require(slideRepository != null, "channelsSlideRepository may not be null");
             this.slideRepository = slideRepository;
 
+            Check.Require(slideFolderRepository != null, "channelsSlideRepository may not be null");
+            this.slideFolderRepository = slideFolderRepository;
         }
 
         public RSSFeed Get(int id) {
@@ -120,6 +124,12 @@ namespace Oxigen.ApplicationServices.Syndication
         public ActionConfirmation Run(int id)
         {
             var rssFeed = rSSFeedRepository.Get(id);
+            Run(rssFeed);
+            return ActionConfirmation.CreateSuccessConfirmation("Success");
+        }
+
+        private void Run(RSSFeed rssFeed)
+        {
             rssFeed.Run();
             foreach (var channelSlide in rssFeed.Channel.AssignedSlides)
             {
@@ -127,6 +137,51 @@ namespace Oxigen.ApplicationServices.Syndication
                 channelsSlideRepository.SaveOrUpdate(channelSlide);
             }
             rSSFeedRepository.SaveOrUpdate(rssFeed);
+        }
+
+        public ActionConfirmation Refresh()
+        {
+            try
+            {
+                //NHibernateSession.GetDefaultSessionFactory().OpenSession();
+                var rssFeeds = rSSFeedRepository.GetAll();
+                foreach (var rssFeed in rssFeeds)
+                {
+                    rSSFeedRepository.DbContext.BeginTransaction();
+                    Run(rssFeed);
+                    rSSFeedRepository.DbContext.CommitChanges();
+                    rSSFeedRepository.DbContext.CommitTransaction();
+                }
+
+                NHibernateSession.Current.Clear();
+
+                List<string> filesToDelete = new List<string>();
+                var slideFolders = slideFolderRepository.GetSlideFoldersWithTooManySlides();
+                slideFolderRepository.DbContext.BeginTransaction();
+
+                foreach (var slideFolder in slideFolders)
+                {
+                    int numberOfSlideToRemove = slideFolder.SlideCount - slideFolder.MaxSlideCount;
+                    for (int x = 0; x < numberOfSlideToRemove; x++)
+                    {
+                        var slide = slideFolder.Slides[0];
+                        filesToDelete.Add(slide.FileFullPathName);
+                        slideFolder.Slides.RemoveAt(0);
+                        slideRepository.Delete(slide);
+                    }
+                }
+                slideFolderRepository.DbContext.CommitChanges();
+                rSSFeedRepository.DbContext.CommitTransaction();
+
+                foreach (var filePath in filesToDelete)
+                {
+                    if (File.Exists(filePath)) File.Delete(filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                return ActionConfirmation.CreateFailureConfirmation(ex.ToString());
+            }
             return ActionConfirmation.CreateSuccessConfirmation("Success");
         }
 
@@ -142,5 +197,6 @@ namespace Oxigen.ApplicationServices.Syndication
         IRSSFeedRepository rSSFeedRepository;
         IChannelsSlideRepository channelsSlideRepository;
         ISlideRepository slideRepository;
+        ISlideFolderRepository slideFolderRepository;
     }
 }
