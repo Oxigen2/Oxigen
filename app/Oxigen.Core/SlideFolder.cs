@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
@@ -15,5 +16,6 @@ namespace Oxigen.Core
         public virtual int MaxSlideCount { get; set; }
 
         public virtual int SlideCount { get; set;  }
+        public virtual IList<Slide> Slides { get; set; }
     }
 }

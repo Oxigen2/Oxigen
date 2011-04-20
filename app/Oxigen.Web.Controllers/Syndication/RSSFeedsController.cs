@@ -33,6 +33,13 @@ namespace Oxigen.Web.Controllers.Syndication
             return View(confirmation);
         }
 
+        public ActionResult Refresh()
+        {
+            ActionConfirmation confirmation = rSSFeedManagementService.Refresh();
+            
+            return View("Run", confirmation);
+        }
+
         [Transaction]
         public ActionResult Index() {
             IList<RSSFeedDto> rSSFeeds = 

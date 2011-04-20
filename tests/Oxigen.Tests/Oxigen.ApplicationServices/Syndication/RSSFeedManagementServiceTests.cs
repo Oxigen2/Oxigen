@@ -26,7 +26,7 @@ namespace Tests.Oxigen.ApplicationServices.Syndication
                 .Return(MockRepository.GenerateMock<IDbContext>());
             
             rSSFeedManagementService =
-                new RSSFeedManagementService(rSSFeedRepository, null, null);
+                new RSSFeedManagementService(rSSFeedRepository, null, null, null);
         }
 
         [Test]

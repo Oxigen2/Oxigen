@@ -10,8 +10,9 @@ COMMIT
 BEGIN TRANSACTION
 GO
 ALTER TABLE dbo.SlideFolders ADD
-	MaxSlideCount int NOT NULL CONSTRAINT DF_SlideFolders_se DEFAULT 0,
-	SlideCount int NOT NULL CONSTRAINT DF_SlideFolders_se DEFAULT 0
+	MaxSlideCount int NOT NULL CONSTRAINT DF_SlideFolders_se DEFAULT 0
+ALTER TABLE dbo.SlideFolders ADD
+	SlideCount int NOT NULL CONSTRAINT DF_SlideFolders_sc DEFAULT 0
 GO
 ALTER TABLE dbo.SlideFolders SET (LOCK_ESCALATION = TABLE)
 GO
@@ -70,3 +71,6 @@ as NewSlideGroups on NewSlideGroups.SLIDEFOLDER_ID = SlideFolders.SLIDEFOLDER_ID
 
 END
 
+GO
+
+exec mt_UpdateSlideCountInFolders

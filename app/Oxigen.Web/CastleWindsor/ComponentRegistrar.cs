@@ -1,4 +1,6 @@
-﻿namespace Oxigen.Web.CastleWindsor
+﻿using Oxigen.ApplicationServices.Syndication;
+
+namespace Oxigen.Web.CastleWindsor
 {
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
@@ -25,6 +27,7 @@
                     Component.For(typeof(IValidator))
                         .ImplementedBy(typeof(Validator))
                         .Named("validator"));
+            
         }
 
         #endregion

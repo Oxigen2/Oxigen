@@ -13,7 +13,7 @@ public class SyndicationAreaRegistration : System.Web.Mvc.AreaRegistration
     public override void RegisterArea(System.Web.Mvc.AreaRegistrationContext context) {
         context.MapRoute(
                 "Syndication_default",
-                "Syndication/{controller}/{action}/{id}",
+                "yndication/{controller}/{action}/{id}",
                 new { action = "Index", id = "" }
             );
     }

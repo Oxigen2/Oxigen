@@ -9,5 +9,6 @@ namespace Oxigen.Core.RepositoryInterfaces
     {
         IList<SlideFolderDto> GetSlideFolderSummaries();
         IList<SlideFolderDto> GetByPublisher(int publisherId);
+        IList<SlideFolder> GetSlideFoldersWithTooManySlides();
     }
 }

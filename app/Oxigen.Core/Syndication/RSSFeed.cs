@@ -78,7 +78,7 @@ namespace Oxigen.Core.Syndication
                     bFirst = false;
                     LastItem = guid;
                 }
-                Channel.NoContent += 1;
+                
                 DateTime date = DateTime.Parse(item.SelectSingleNode("date").InnerText);
                 
                 string url = item.SelectSingleNode("url").InnerText;
@@ -105,8 +105,8 @@ namespace Oxigen.Core.Syndication
 
                 var slideFromTemplate = new SWAFile(Template.FileFullPathName);
                 slideFromTemplate.UpdateBitmap("MasterImage", img);
-                slideFromTemplate.UpdateText("MasterText", title);
-                slideFromTemplate.UpdateText("CreditText", credit);
+                slideFromTemplate.UpdateText("TitleText", title);
+                slideFromTemplate.UpdateText("ImageCreditText", credit);
                 slideFromTemplate.UpdateText("DateText", date.ToString("d MMMM yyyy HH:mm"));
                 //Aspose has a bug with getting thumbnail so use the asset content image for now
                 //var image = slideFromTemplate.GetThumbnail();
