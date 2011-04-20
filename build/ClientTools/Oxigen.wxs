@@ -69,6 +69,9 @@
         <Component Id="C__1EE5BF0563FF4145AEAF77B27A88057F" Guid="{F7ED1190-E6C9-4DEB-ED8D-C9BE8017F152}">
           <File Id="_1EE5BF0563FF4145AEAF77B27A88057F" Name="OxigenAssets.dll" KeyPath="yes" ShortName="OXIGE~15.DLL" Assembly=".net" AssemblyManifest="_1EE5BF0563FF4145AEAF77B27A88057F" AssemblyApplication="_1EE5BF0563FF4145AEAF77B27A88057F" DiskId="1" Source="SourceDir\OxigenAssets.dll" />
         </Component>
+        <Component Id="C__38DFC37AD0D142D49B3F6C56CF124127" Guid="{CC171996-0152-A236-7141-53283D4F6BC8}">
+	  <File Id="_38DFC37AD0D142D49B3F6C56CF124127" Name="OxigenSOAStructures.dll" KeyPath="yes" ShortName="OXIGE~24.DLL" Assembly=".net" AssemblyManifest="_38DFC37AD0D142D49B3F6C56CF124127" AssemblyApplication="_38DFC37AD0D142D49B3F6C56CF124127" DiskId="1" Source="SourceDir\OxigenSOAStructures.dll" />
+	</Component>
         <Component Id="C__404336CCB9AB4A3FB89A97654CE855E9" Guid="{CAD56FA3-7CB1-E70B-33D8-D393399A4853}">
           <File Id="_404336CCB9AB4A3FB89A97654CE855E9" Name="OxigenInclusionExclusionRules.dll" KeyPath="yes" ShortName="OXIGE~25.DLL" Assembly=".net" AssemblyManifest="_404336CCB9AB4A3FB89A97654CE855E9" AssemblyApplication="_404336CCB9AB4A3FB89A97654CE855E9" DiskId="1" Source="SourceDir\OxigenInclusionExclusionRules.dll" />
         </Component>
@@ -347,6 +350,7 @@
       <ComponentRef Id="C__2525BB08EC474DFEA0742287BCF1413E" Primary="yes" />
       <ComponentRef Id="C__32636D26F16D425BADDD5911CC45D764" Primary="yes" />
       <ComponentRef Id="C__3725EC167BB44CC4B84BE5F5EBF9E864" Primary="yes" />
+      <ComponentRef Id="C__38DFC37AD0D142D49B3F6C56CF124127" Primary="yes" />
       <ComponentRef Id="C__3DBCDE6768459AADBDD6942C80D8B4B5" />
       <ComponentRef Id="C__404336CCB9AB4A3FB89A97654CE855E9" Primary="yes" />
       <ComponentRef Id="C__44C3F952CAAB4BDC9CDE6CF30D152141" Primary="yes" />

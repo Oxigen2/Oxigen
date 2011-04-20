@@ -266,6 +266,10 @@
       <Project>{17265B81-FA8E-4016-BE6A-CEAB89CAE76E}</Project>
       <Name>ProxyClientBaseLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RegistryAccess\RegistryAccess.csproj">
+      <Project>{7C486BC9-00F6-48F7-BB49-4CFABBE47DF1}</Project>
+      <Name>RegistryAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServerCycleConnectAttempt\ServerCycleConnectAttempt.csproj">
       <Project>{CB76EF64-7ACD-4799-95C4-D7B032994EC4}</Project>
       <Name>ServerCycleConnectAttempt</Name>
