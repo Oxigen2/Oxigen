@@ -1,5 +1,5 @@
 <%@ Page Title="RSSFeed Details" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-	Inherits="System.Web.Mvc.ViewPage<Oxigen.Core.Syndication.RSSFeed>" %>
+	Inherits="System.Web.Mvc.ViewPage<Oxigen.Core.RSSFeed>" %>
 <%@ Import Namespace="Oxigen.Web.Controllers.Syndication" %>
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">

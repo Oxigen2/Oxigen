@@ -1,6 +1,6 @@
-using Oxigen.Core.Syndication;
+using Oxigen.Core;
 
-namespace Oxigen.ApplicationServices.ViewModels.Syndication
+namespace Oxigen.ApplicationServices.ViewModels
 {
     public class RSSFeedFormViewModel
     {

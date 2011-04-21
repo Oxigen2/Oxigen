@@ -3,15 +3,15 @@ using Rhino.Mocks;
 using SharpArch.Testing.NUnit;
 using System.Collections.Generic;
 using SharpArch.Core.PersistenceSupport;
-using Oxigen.Core.Syndication;
-using Oxigen.ApplicationServices.Syndication;
-using Oxigen.ApplicationServices.ViewModels.Syndication;
-using Oxigen.Core.QueryDtos.Syndication;
-using Oxigen.Core.RepositoryInterfaces.Syndication;
-using Tests.Oxigen.Core.Syndication;
+using Oxigen.Core;
+using Oxigen.ApplicationServices;
+using Oxigen.ApplicationServices.ViewModels;
+using Oxigen.Core.QueryDtos;
+using Oxigen.Core.RepositoryInterfaces;
+using Tests.Oxigen.Core;
 using Oxigen.Core; 
 
-namespace Tests.Oxigen.ApplicationServices.Syndication
+namespace Tests.Oxigen.ApplicationServices
 {
     [TestFixture]
     public class RSSFeedManagementServiceTests

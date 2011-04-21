@@ -3,14 +3,13 @@ using System;
 using System.IO;
 using Oxigen.Core.RepositoryInterfaces;
 using SharpArch.Core;
-using Oxigen.Core.Syndication;
-using Oxigen.ApplicationServices.ViewModels.Syndication;
-using Oxigen.Core.QueryDtos.Syndication;
-using Oxigen.Core.RepositoryInterfaces.Syndication;
+using Oxigen.ApplicationServices.ViewModels;
+using Oxigen.Core.QueryDtos;
+using Oxigen.Core.RepositoryInterfaces;
 using Oxigen.Core;
 using SharpArch.Data.NHibernate;
 
-namespace Oxigen.ApplicationServices.Syndication
+namespace Oxigen.ApplicationServices
 {
     public class RSSFeedManagementService : IRSSFeedManagementService
     {

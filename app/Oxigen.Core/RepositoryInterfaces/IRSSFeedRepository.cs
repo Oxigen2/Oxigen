@@ -1,9 +1,9 @@
 using SharpArch.Core.PersistenceSupport;
 using System.Collections.Generic;
-using Oxigen.Core.Syndication;
-using Oxigen.Core.QueryDtos.Syndication;
+using Oxigen.Core;
+using Oxigen.Core.QueryDtos;
 
-namespace Oxigen.Core.RepositoryInterfaces.Syndication
+namespace Oxigen.Core.RepositoryInterfaces
 {
     public interface IRSSFeedRepository : IRepository<RSSFeed>
     {

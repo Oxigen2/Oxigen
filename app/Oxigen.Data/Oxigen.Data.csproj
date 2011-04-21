@@ -81,7 +81,7 @@
     <Compile Include="Repositories\PublisherRepository.cs" />
     <Compile Include="Repositories\SlideFolderRepository.cs" />
     <Compile Include="Repositories\SlideRepository.cs" />
-    <Compile Include="Repositories\Syndication\RSSFeedRepository.cs" />
+    <Compile Include="Repositories\RSSFeedRepository.cs" />
     <Compile Include="Repositories\TemplateRepository.cs" />
   </ItemGroup>
   <ItemGroup>

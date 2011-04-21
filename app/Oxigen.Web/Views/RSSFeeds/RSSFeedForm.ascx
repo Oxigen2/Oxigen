@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true"
-	Inherits="System.Web.Mvc.ViewUserControl<Oxigen.ApplicationServices.ViewModels.Syndication.RSSFeedFormViewModel>" %>
+	Inherits="System.Web.Mvc.ViewUserControl<Oxigen.ApplicationServices.ViewModels.RSSFeedFormViewModel>" %>
 <%@ Import Namespace="Oxigen.Core.Syndication" %>
 <%@ Import Namespace="Oxigen.Web.Controllers" %>
 <%@ Import Namespace="Oxigen.Web.Controllers.Syndication" %> 

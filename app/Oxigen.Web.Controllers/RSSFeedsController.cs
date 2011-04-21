@@ -7,14 +7,13 @@ using NHibernate.Validator.Engine;
 using System.Text;
 using SharpArch.Web.CommonValidator;
 using SharpArch.Core;
-using Oxigen.Core.Syndication;
-using Oxigen.ApplicationServices.Syndication;
-using Oxigen.ApplicationServices.ViewModels.Syndication;
-using Oxigen.Core.QueryDtos.Syndication;
-using Oxigen.Core.RepositoryInterfaces.Syndication;
+using Oxigen.ApplicationServices;
+using Oxigen.ApplicationServices.ViewModels;
+using Oxigen.Core.QueryDtos;
+using Oxigen.Core.RepositoryInterfaces;
 using Oxigen.Core; 
 
-namespace Oxigen.Web.Controllers.Syndication
+namespace Oxigen.Web.Controllers
 {
     [HandleError]
     public class RSSFeedsController : Controller
