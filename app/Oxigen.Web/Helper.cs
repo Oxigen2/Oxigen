@@ -9,7 +9,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using OxigenIIAdvertising.SOAStructures;
 using System.Web.SessionState;
-using Ionic.Zip;
 using System.Diagnostics;
 
 namespace OxigenIIPresentation
@@ -360,22 +359,7 @@ namespace OxigenIIPresentation
     {
       string convertedPCName = pcName.Replace(" ", "_").Replace("\\", "_").Replace("/", "_");
 
-      using (ZipFile zf = new ZipFile())
-      {
-        zf.AddDirectory(tempInstallersPathTemp);
-
-        SelfExtractorSaveOptions options = new SelfExtractorSaveOptions();
-        options.Copyright = "Oxigen";
-        options.DefaultExtractDirectory = "%TEMP%\\Oxigen";
-        options.Flavor = SelfExtractorFlavor.ConsoleApplication;
-        options.ProductName = "Oxigen";
-        options.Quiet = true;
-        options.RemoveUnpackedFilesAfterExecute = true;
-        options.ExtractExistingFile = ExtractExistingFileAction.OverwriteSilently;
-        options.PostExtractCommandLine = "%TEMP%\\Oxigen\\Setup.exe";
-        zf.SaveSelfExtractor(tempInstallersPathTemp + "\\" + convertedPCName + ".exe", options);
-      }
-
+      RunProcessAndWaitForExit(HttpContext.Current.Request.MapPath(HttpContext.Current.Request.ApplicationPath) + "Bin\\Oxigen.SelfExtractorCreator.exe", convertedPCName + " " + tempInstallersPathTemp);
       // sign the self-extractor
       RunProcessAndWaitForExit(System.Configuration.ConfigurationSettings.AppSettings["signToolPath"], System.Configuration.ConfigurationSettings.AppSettings["signToolArguments"] + "\"" + tempInstallersPathTemp + convertedPCName + ".exe\" >> " + System.Configuration.ConfigurationSettings.AppSettings["debugPath"]);
 
