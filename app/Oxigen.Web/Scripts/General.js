@@ -987,7 +987,7 @@ function cloneStream(original, destination) {
             initPager(destination)
         }
         $(this).removeClass('SelectedStream')
-        // $(this).clone(true, true).appendTo(last_stream_view) // will give that "instantaneous copy across" visual effect
+        $(this).clone(true, true).appendTo(last_stream_view) // will give that "instantaneous copy across" visual effect
         if (visible_page.is(':not(div.' + destination + ' div.StreamView:last)')) {
             visible_page.animate({ left: '-350px' }, 600, function () {
                 $(this).css('display', 'none')
