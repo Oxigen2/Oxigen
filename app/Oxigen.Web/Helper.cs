@@ -359,7 +359,7 @@ namespace OxigenIIPresentation
     {
       string convertedPCName = pcName.Replace(" ", "_").Replace("\\", "_").Replace("/", "_");
 
-      RunProcessAndWaitForExit(HttpContext.Current.Request.MapPath(HttpContext.Current.Request.ApplicationPath) + "Bin\\Oxigen.SelfExtractorCreator.exe", convertedPCName + " " + tempInstallersPathTemp);
+      RunProcessAndWaitForExit(HttpContext.Current.Request.MapPath(HttpContext.Current.Request.ApplicationPath) + "Bin\\Oxigen.SelfExtractorCreator.exe", convertedPCName + " \"" + tempInstallersPathTemp + "\\\"");
       // sign the self-extractor
       RunProcessAndWaitForExit(System.Configuration.ConfigurationSettings.AppSettings["signToolPath"], System.Configuration.ConfigurationSettings.AppSettings["signToolArguments"] + "\"" + tempInstallersPathTemp + convertedPCName + ".exe\" >> " + System.Configuration.ConfigurationSettings.AppSettings["debugPath"]);
 
@@ -371,10 +371,12 @@ namespace OxigenIIPresentation
       Process process = null;
 
       ProcessStartInfo startInfo = new ProcessStartInfo(fileName, arguments);
-
+      startInfo.RedirectStandardError = true;
+      startInfo.UseShellExecute = false;
       process = Process.Start(startInfo);
-
+      string error = process.StandardError.ReadToEnd();
       process.WaitForExit();
+      //throw new Exception(process.ExitCode.ToString() + error + arguments);
     }
 
     public static List<T> AddToFrontOfDropDown<T>(List<T> list, T insertObj)
