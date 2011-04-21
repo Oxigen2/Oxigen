@@ -20,21 +20,4 @@ namespace Oxigen.Web.Controllers
         }
     }
 
-    public class RootAreaRegistration : System.Web.Mvc.AreaRegistration
-    {
-        public override string AreaName {
-            get {
-                return "Root";
-            }
-        }
-
-        public override void RegisterArea(System.Web.Mvc.AreaRegistrationContext context) {
-            context.MapRoute(
-                    "Root_default",
-                    "{controller}/{action}/{id}",
-                    new { action = "Index", id = "" }
-                );
-        }
-    }
-
 }

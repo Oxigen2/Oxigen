@@ -117,6 +117,7 @@ namespace Oxigen.ApplicationServices
         private void TransferFormValuesTo(SlideFolder slideFolderToUpdate, SlideFolder slideFolderFromForm) {
 		    slideFolderToUpdate.SlideFolderName = slideFolderFromForm.SlideFolderName;
 			slideFolderToUpdate.Publisher = slideFolderFromForm.Publisher;
+            slideFolderToUpdate.MaxSlideCount = slideFolderFromForm.MaxSlideCount;
         }
 
         ISlideFolderRepository slideFolderRepository;

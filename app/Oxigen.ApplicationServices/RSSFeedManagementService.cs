@@ -53,6 +53,9 @@ namespace Oxigen.ApplicationServices
         public RSSFeedFormViewModel CreateFormViewModelFor(RSSFeed rSSFeed) {
             RSSFeedFormViewModel viewModel = CreateFormViewModel();
             viewModel.RSSFeed = rSSFeed;
+            //viewModel.SlideFolders = rSSFeed.Publisher.SlideFolders;
+            //viewModel.Templates = rSSFeed.Publisher.AssignedTemplates;
+            //viewModel.Channels = rSSFeed.Publisher.Channels;
             return viewModel;
         }
 

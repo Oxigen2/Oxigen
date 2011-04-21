@@ -24,12 +24,20 @@
 			<%= Html.ValidationMessage("SlideFolder.SlideFolderName")%>
 		</li>
 		<li>
-			<label for="SlideFolder_Publisher">Publisher:</label>
+			<label for="SlideFolder_Publisher">Publisher Id:</label>
 			<div>
-				<%= Html.TextBox("SlideFolder.Publisher", 
-					(ViewData.Model.SlideFolder != null) ? ViewData.Model.SlideFolder.Publisher.ToString() : "")%>
+				<%= Html.TextBox("SlideFolder.Publisher.Id", 
+					(ViewData.Model.SlideFolder != null) ? ViewData.Model.SlideFolder.Publisher.Id.ToString() : "")%>
 			</div>
 			<%= Html.ValidationMessage("SlideFolder.Publisher")%>
+		</li>
+        <li>
+			<label for="SlideFolder_MaxSlideCount">Maximum Slide Count:</label>
+			<div>
+				<%= Html.TextBox("SlideFolder.MaxSlideCount",
+                           (ViewData.Model.SlideFolder != null) ? ViewData.Model.SlideFolder.MaxSlideCount.ToString() : "")%>
+			</div>
+			<%= Html.ValidationMessage("SlideFolder.MaxSlideCount")%>
 		</li>
 	    <li>
             <%= Html.SubmitButton("btnSave", "Save SlideFolder") %>

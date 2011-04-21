@@ -132,7 +132,9 @@
     <EmbeddedResource Include="Migrations\003_RSSFeed.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="NamedQueries\GetSlideFolderSummaries.hbm.xml" />
+    <EmbeddedResource Include="NamedQueries\GetSlideFolderSummaries.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NamedQueries\GetChannelsSlideSummaries.hbm.xml" />
