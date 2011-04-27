@@ -72,7 +72,7 @@
         <li>
 			<label for="Template_DisplayDuration">Display Duration (secs):</label>
 			<div>
-                    <%=Html.TextBox("Template.DisplayDuration", (ViewData.Model.Template != null) ? ViewData.Model.Template.DisplayDuration.ToString() : "15")
+                    <%=Html.TextBox("Template.DisplayDuration", (ViewData.Model.Template != null) ? ViewData.Model.Template.DisplayDuration.ToString() : "10")
                     %>
                    
 			</div>
