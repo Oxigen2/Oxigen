@@ -13,6 +13,7 @@ namespace Oxigen.Core
         }
 
         public virtual string MetaData { get; set; }
+        public virtual float DisplayDuration { get; set; }
 
         protected override string RootFilePath
         {

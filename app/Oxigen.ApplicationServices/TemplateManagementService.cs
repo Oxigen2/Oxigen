@@ -140,6 +140,8 @@ namespace Oxigen.ApplicationServices
         private void TransferFormValuesTo(Template templateToUpdate, Template templateFromForm) {
 		    templateToUpdate.MetaData = templateFromForm.MetaData;
             templateToUpdate.Publisher = templateFromForm.Publisher;
+            templateToUpdate.Name = templateFromForm.Name;
+            templateToUpdate.DisplayDuration = templateFromForm.DisplayDuration;
         }
 
         ITemplateRepository templateRepository;

@@ -68,6 +68,20 @@
 			</div>
 			<%= Html.ValidationMessage("Template.Publisher.Id")%>
 		</li>
+        <li>
+			<label for="Template_Publisher">Display Duration (secs):</label>
+			<div>
+				<%=Html.Hidden("Template.DisplayDuration",
+                                  (ViewData.Model.Template != null)
+                                             ? ViewData.Model.Template.DisplayDuration.ToString()
+                                      : "")%>
+
+                    <%=Html.TextBox("PublisherDisplayDuration", (ViewData.Model.Template != null) ? ViewData.Model.Template.DisplayDuration.ToString() : "")
+                    %>
+                   
+			</div>
+			<%= Html.ValidationMessage("Template.DisplayDuration")%>
+		</li>
 	    <li>
             <%= Html.SubmitButton("btnSave", "Save Template") %>
 	        <%= Html.Button("btnCancel", "Cancel", HtmlButtonType.Button, 
