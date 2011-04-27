@@ -12,7 +12,7 @@ using System.Xml;
 using Newtonsoft.Json.Linq;
 
 
-namespace Oxigen.Core.Syndication
+namespace Oxigen.Core
 {
     public class RSSFeed : Entity
     {

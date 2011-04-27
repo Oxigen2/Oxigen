@@ -81,7 +81,7 @@
     <Compile Include="QueryDtos\PublisherLookupDto.cs" />
     <Compile Include="QueryDtos\SlideDto.cs" />
     <Compile Include="QueryDtos\SlideFolderDto.cs" />
-    <Compile Include="QueryDtos\Syndication\RSSFeedDto.cs" />
+    <Compile Include="QueryDtos\RSSFeedDto.cs" />
     <Compile Include="QueryDtos\TemplateDto.cs" />
     <Compile Include="RepositoryInterfaces\IAssetContentRepository.cs" />
     <Compile Include="RepositoryInterfaces\IChannelRepository.cs" />
@@ -90,11 +90,11 @@
     <Compile Include="RepositoryInterfaces\ISlideFolderRepository.cs" />
     <Compile Include="RepositoryInterfaces\ISlideRepository.cs" />
     <Compile Include="RepositoryInterfaces\ITemplateRepository.cs" />
-    <Compile Include="RepositoryInterfaces\Syndication\IRSSFeedRepository.cs" />
+    <Compile Include="RepositoryInterfaces\IRSSFeedRepository.cs" />
     <Compile Include="Slide.cs" />
     <Compile Include="SlideFolder.cs" />
     <Compile Include="AuditEntity.cs" />
-    <Compile Include="Syndication\RSSFeed.cs" />
+    <Compile Include="RSSFeed.cs" />
     <Compile Include="Template.cs" />
   </ItemGroup>
   <ItemGroup>

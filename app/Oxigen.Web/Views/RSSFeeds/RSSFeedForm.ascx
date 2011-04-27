@@ -1,8 +1,8 @@
 <%@ Control Language="C#" AutoEventWireup="true"
-	Inherits="System.Web.Mvc.ViewUserControl<Oxigen.ApplicationServices.ViewModels.Syndication.RSSFeedFormViewModel>" %>
-<%@ Import Namespace="Oxigen.Core.Syndication" %>
+	Inherits="System.Web.Mvc.ViewUserControl<Oxigen.ApplicationServices.ViewModels.RSSFeedFormViewModel>" %>
+<%@ Import Namespace="Oxigen.Core" %>
 <%@ Import Namespace="Oxigen.Web.Controllers" %>
-<%@ Import Namespace="Oxigen.Web.Controllers.Syndication" %> 
+<%@ Import Namespace="Oxigen.Web.Controllers" %> 
 
      <script type="text/javascript" language="javascript">
          $(function () {
@@ -96,7 +96,7 @@
         <li>
 			<label for="RSSFeed_SlideFolder_Id">Slide Folder:</label>
 			<div>
-				<select id="RSSFeed_SlideFolder_Id" name="RSSFeed.SlideFolder.Id"></select>
+				<select id="RSSFeed_SlideFolder_Id" name="RSSFeed.SlideFolder.Id"></select><a onclick="location.href='/slidefolders/edit/' + $('#RSSFeed_SlideFolder_Id').val();">Edit</a>
                    
 			</div>
 			<%= Html.ValidationMessage("RSSFeed.SlideFolder.Id")%>

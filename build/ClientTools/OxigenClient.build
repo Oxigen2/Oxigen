@@ -10,6 +10,7 @@
 	<property name="InstallationPackageDir" value="C:\Oxigen2\Oxigen\build\ClientTools\InstallationPackage\"/>
 	<property name="InstallationPackageTempDir" value="C:\Oxigen2\Oxigen\build\ClientTools\InstallationPackage\Temp\"/>
 	<property name="InteropsDir" value="C:\Oxigen2\Oxigen\build\ClientTools\Interops\"/>	
+	<property name="LibDir" value="C:\Oxigen2\Oxigen\lib\"/>	
 	<property name="InstallationPackageCompiledProduct" value="C:\Oxigen2\Oxigen\build\ClientTools\InstallationPackage\Compiled\"/>
 	<property name="CryptoObfuscatorPath" value="${environment::get-folder-path('ProgramFiles')}\LogicNP Software\Crypto Obfuscator For .Net 2010 R2\co.exe"/>
 	<property name="WiXDir" value="${environment::get-folder-path('ProgramFiles')}\Windows Installer XML v3.5\bin\"/>
@@ -36,6 +37,11 @@
 		</delete>
 		<!-- Copy files needed to create the client MSI. Obfuscated files will be created on the
 		same directory by Crypto Obfuscator so there is no to copy them here. -->
+		<copy todir="${InstallationPackageTempDir}" failonerror="true">
+			<fileset basedir="${LibDir}">
+				<include name="log4net.dll" />
+			</fileset>
+		</copy>	
 		<copy todir="${InstallationPackageTempDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}Assets\bin\Release\">
 				<include name="OxigenAssets.dll" />

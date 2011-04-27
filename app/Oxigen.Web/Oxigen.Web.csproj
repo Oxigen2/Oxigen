@@ -120,10 +120,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdPartyLibraries\Files\Aurigma.ImageUploader.dll</HintPath>
     </Reference>
-    <Reference Include="Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdPartyLibraries\Files\Ionic.Zip.dll</HintPath>
-    </Reference>
     <Reference Include="SharpArch, Version=1.9.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\lib\SharpArch.dll</HintPath>
     </Reference>
@@ -1068,12 +1064,12 @@
     <Content Include="Views\Slides\Index.aspx" />
     <Content Include="Views\Slides\Show.aspx" />
     <Content Include="Views\Slides\SlideForm.ascx" />
-    <Content Include="Views\Syndication\RSSFeeds\Create.aspx" />
-    <Content Include="Views\Syndication\RSSFeeds\Edit.aspx" />
-    <Content Include="Views\Syndication\RSSFeeds\Index.aspx" />
-    <Content Include="Views\Syndication\RSSFeeds\RSSFeedForm.ascx" />
-    <Content Include="Views\Syndication\RSSFeeds\Run.aspx" />
-    <Content Include="Views\Syndication\RSSFeeds\Show.aspx" />
+    <Content Include="Views\RSSFeeds\Create.aspx" />
+    <Content Include="Views\RSSFeeds\Edit.aspx" />
+    <Content Include="Views\RSSFeeds\Index.aspx" />
+    <Content Include="Views\RSSFeeds\RSSFeedForm.ascx" />
+    <Content Include="Views\RSSFeeds\Run.aspx" />
+    <Content Include="Views\RSSFeeds\Show.aspx" />
     <Content Include="Views\Templates\Create.aspx" />
     <Content Include="Views\Templates\Edit.aspx" />
     <Content Include="Views\Templates\Index.aspx" />
@@ -1472,6 +1468,10 @@
     <ProjectReference Include="..\Oxigen.Data\Oxigen.Data.csproj">
       <Project>{63E9AECE-3385-44F0-BDF9-4C01DD3C0647}</Project>
       <Name>Oxigen.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oxigen.SelfExtractorCreator\Oxigen.SelfExtractorCreator.csproj">
+      <Project>{632DB5A9-B35A-40A3-A9DD-462066948181}</Project>
+      <Name>Oxigen.SelfExtractorCreator</Name>
     </ProjectReference>
     <ProjectReference Include="..\Oxigen.Web.Controllers\Oxigen.Web.Controllers.csproj">
       <Project>{518B2E4B-2B9B-48EF-8736-DDB6A0F78E79}</Project>

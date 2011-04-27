@@ -1,12 +1,12 @@
 using NUnit.Framework;
 using SharpArch.Testing;
 using SharpArch.Testing.NUnit;
-using Oxigen.Core.Syndication;
+using Oxigen.Core;
 using System.Xml;
 using System.Reflection;
 using System.IO;
 
-namespace Tests.Oxigen.Core.Syndication
+namespace Tests.Oxigen.Core
 {
 	[TestFixture]
     public class RSSFeedTests

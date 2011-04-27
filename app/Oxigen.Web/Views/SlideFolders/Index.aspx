@@ -15,8 +15,10 @@
     <table>
         <thead>
             <tr>
-			    <th>SlideFolderName</th>
-			    <th>Publisher</th>
+			    <th>Folder Name</th>
+			    <th>Publisher Id</th>
+                <th>Slide Count</th>
+                <th>Max Slide Count</th>
 			    <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -25,7 +27,9 @@
 		foreach (SlideFolderDto slideFolderDto in ViewData.Model) { %>
 			<tr>
 				<td><%= slideFolderDto.SlideFolderName %></td>
-				<td><%= slideFolderDto.Publisher %></td>
+				<td><%= slideFolderDto.PublisherID %></td>
+                <td><%= slideFolderDto.SlideCount %></td>
+                <td><%= slideFolderDto.MaxSlideCount %></td>
 				<td><%=Html.ActionLink<SlideFoldersController>( c => c.Show( slideFolderDto.Id ), "Details ") %></td>
 				<td><%=Html.ActionLink<SlideFoldersController>( c => c.Edit( slideFolderDto.Id ), "Edit") %></td>
 				<td>

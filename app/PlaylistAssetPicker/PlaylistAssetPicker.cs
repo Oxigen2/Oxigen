@@ -532,6 +532,8 @@ namespace OxigenIIAdvertising.PlaylistLogic
     {
       string filePath = _assetFilePath + "\\" + assetFolder + "\\" + assetFileName;
 
+     _logger.WriteMessage("FilePath: " + filePath);
+
       bool bFileExists = File.Exists(filePath);
 
       bool bFileIsDecryptable = bFileExists && EncryptionDecryption.EncryptionDecryptionHelper.TryIfFileDecryptable(filePath, _password);

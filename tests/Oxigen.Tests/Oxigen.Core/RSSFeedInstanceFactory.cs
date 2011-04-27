@@ -1,7 +1,7 @@
 using System;
-using Oxigen.Core.Syndication;
+using Oxigen.Core;
 
-namespace Tests.Oxigen.Core.Syndication
+namespace Tests.Oxigen.Core
 {
     public class RSSFeedInstanceFactory
     {

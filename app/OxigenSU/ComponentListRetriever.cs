@@ -274,6 +274,7 @@ namespace OxigenSU
 
     private ComponentInfo[] GetSystemComponents(ComponentInfo[] downloadedComponentList)
     {
+      // TODO: on 64 bit systems it still returns C:\Windows\System32.
       string systemFolder = Environment.GetFolderPath(Environment.SpecialFolder.System);
 
       List<ComponentInfo> systemComponents = new List<ComponentInfo>();

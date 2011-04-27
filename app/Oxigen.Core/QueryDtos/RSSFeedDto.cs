@@ -1,6 +1,6 @@
 using System;
 
-namespace Oxigen.Core.QueryDtos.Syndication
+namespace Oxigen.Core.QueryDtos
 {
     public class RSSFeedDto
     {

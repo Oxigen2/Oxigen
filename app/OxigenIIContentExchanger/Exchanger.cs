@@ -923,7 +923,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         _appDataPath = ConfigurationSettings.AppSettings["AppDataPath"];
         _binariesPath = ConfigurationSettings.AppSettings["BinariesPath"];
 
-        _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebug.txt";
+        _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebugCE.txt";
         _logger = new Logger("Content Exchanger", _debugFilePath, LoggingMode.Debug);
 
         _generalDataPath = _appDataPath + "SettingsData\\ss_general_data.dat";
@@ -1242,7 +1242,7 @@ namespace OxigenIIAdvertising.ContentExchanger
 
       if (sw.ErrorStatus == ErrorStatus.Failure)
       {
-        _logger.WriteError(sw);
+        _logger.WriteError(sw.ErrorCode, sw.Message);
 
         return;
       }

@@ -85,6 +85,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -106,10 +109,6 @@
     <ProjectReference Include="..\OxigenIIExceptions\Exceptions.csproj">
       <Project>{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}</Project>
       <Name>Exceptions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WCFErrorReporting\WCFErrorReporting.csproj">
-      <Project>{023A7A25-2BAE-4B3F-AC20-6FA65055C852}</Project>
-      <Name>WCFErrorReporting</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,8 @@
 <%@ Page Title="RSSFeeds" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-	Inherits="System.Web.Mvc.ViewPage<IEnumerable<Oxigen.Core.QueryDtos.Syndication.RSSFeedDto>>" %>
-<%@ Import Namespace="Oxigen.Core.QueryDtos.Syndication" %>
+	Inherits="System.Web.Mvc.ViewPage<IEnumerable<Oxigen.Core.QueryDtos.RSSFeedDto>>" %>
+<%@ Import Namespace="Oxigen.Core.QueryDtos" %>
 <%@ Import Namespace="Oxigen.Web.Controllers" %>
-<%@ Import Namespace="Oxigen.Web.Controllers.Syndication" %> 
+<%@ Import Namespace="Oxigen.Web.Controllers" %> 
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 

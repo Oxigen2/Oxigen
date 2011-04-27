@@ -4,16 +4,16 @@ using Rhino.Mocks;
 using SharpArch.Testing.NUnit;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Oxigen.Core.Syndication;
-using Oxigen.Core.QueryDtos.Syndication;
-using Oxigen.ApplicationServices.Syndication;
-using Oxigen.ApplicationServices.ViewModels.Syndication;
-using Oxigen.Web.Controllers.Syndication;
-using Tests.Oxigen.Core.Syndication;
+using Oxigen.Core;
+using Oxigen.Core.QueryDtos;
+using Oxigen.ApplicationServices;
+using Oxigen.ApplicationServices.ViewModels;
+using Oxigen.Web.Controllers;
+using Tests.Oxigen.Core;
 using Oxigen.Core;
 using Oxigen.Web.Controllers; 
 
-namespace Tests.Oxigen.Web.Controllers.Syndication
+namespace Tests.Oxigen.Web.Controllers
 {
     [TestFixture]
     public class RSSFeedsControllerTests

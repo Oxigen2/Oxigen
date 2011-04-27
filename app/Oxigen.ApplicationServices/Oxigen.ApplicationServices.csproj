@@ -74,11 +74,10 @@
     <Compile Include="ITemplateManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublisherManagementService.cs" />
-    <Compile Include="RSS\RssFeedReader.cs" />
     <Compile Include="SlideFolderManagementService.cs" />
     <Compile Include="SlideManagementService.cs" />
-    <Compile Include="Syndication\IRSSFeedManagementService.cs" />
-    <Compile Include="Syndication\RSSFeedManagementService.cs" />
+    <Compile Include="IRSSFeedManagementService.cs" />
+    <Compile Include="RSSFeedManagementService.cs" />
     <Compile Include="TemplateManagementService.cs" />
     <Compile Include="ViewModels\AssetContentFormViewModel.cs" />
     <Compile Include="ViewModels\ChannelFormViewModel.cs" />
@@ -86,7 +85,7 @@
     <Compile Include="ViewModels\PublisherFormViewModel.cs" />
     <Compile Include="ViewModels\SlideFolderFormViewModel.cs" />
     <Compile Include="ViewModels\SlideFormViewModel.cs" />
-    <Compile Include="ViewModels\Syndication\RSSFeedFormViewModel.cs" />
+    <Compile Include="ViewModels\RSSFeedFormViewModel.cs" />
     <Compile Include="ViewModels\TemplateFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

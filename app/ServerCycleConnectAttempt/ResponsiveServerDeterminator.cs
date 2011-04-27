@@ -100,7 +100,7 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
             if (logger != null)
                 logger.WriteTimestampedMessage("Attempting to connect to: " + serverURI);
 
-            if (ConnectionSucceeded(serverURI, timeoutm logger))
+            if (ConnectionSucceeded(serverURI, timeout, logger))
                 return serverURI;
         }
 

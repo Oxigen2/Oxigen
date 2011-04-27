@@ -23,5 +23,7 @@ namespace Oxigen.Core
 		public virtual long TotalAvailableBytes { get; set; }
 
         public virtual IList<Template> AssignedTemplates { get; set; }
+        public virtual IList<Channel> Channels { get; set; }
+        public virtual IList<SlideFolder> SlideFolders { get; set; }
     }
 }

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Oxigen.Core.Syndication;
-using Oxigen.ApplicationServices.ViewModels.Syndication;
-using Oxigen.Core.QueryDtos.Syndication;
+using Oxigen.Core;
+using Oxigen.ApplicationServices.ViewModels;
+using Oxigen.Core.QueryDtos;
 using Oxigen.Core; 
 
-namespace Oxigen.ApplicationServices.Syndication
+namespace Oxigen.ApplicationServices
 {
     public interface IRSSFeedManagementService
     {

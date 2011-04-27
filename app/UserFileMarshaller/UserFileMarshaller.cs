@@ -26,8 +26,6 @@ namespace OxigenIIDownloadServers
       _eventLog = new EventLog();
       _eventLog.Log = String.Empty;
       _eventLog.Source = "Oxigen User File Marshaller";
-
-      _logger = new Logger("UFM", _debugFilePath + "Debug.txt", LoggingMode.Debug);
     }
 
     public StreamErrorWrapper GetComponent(ComponentParameterMessage message)
