@@ -97,7 +97,7 @@ namespace Oxigen.Core
                 slide.Caption = title.Length > 400 ?  title.Substring(0, 400-3) + "..." : title;
                 slide.ClickThroughURL = url;
                 slide.Creator = Publisher.DisplayName;
-                slide.DisplayDuration = -1;
+                slide.DisplayDuration = Template.DisplayDuration;
                 slide.UserGivenDate = date;
                 slide.Name = title.Length > 50 ? title.Substring(0, 50 - 3) + "..." : title;
                 slide.PreviewType = "Flash";
