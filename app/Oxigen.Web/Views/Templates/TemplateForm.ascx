@@ -39,14 +39,15 @@
     <ul>
         <li>
             <label for="File">
-                MetaDate:</label>
+                Template File:
+            </label>
             <div>
                 <input type="file" id="file" name="file" size="23" />
             </div>
             <%= Html.ValidationMessage("File")%>
         </li>
         <li>
-            <label for="Template_MetaDate">
+            <label for="Template_MetaData">
                 MetaData:</label>
             <div>
                 <%= Html.TextBox("Template.MetaData",
@@ -67,6 +68,15 @@
                    
 			</div>
 			<%= Html.ValidationMessage("Template.Publisher.Id")%>
+		</li>
+        <li>
+			<label for="Template_DisplayDuration">Display Duration (secs):</label>
+			<div>
+                    <%=Html.TextBox("Template.DisplayDuration", (ViewData.Model.Template != null) ? ViewData.Model.Template.DisplayDuration.ToString() : "10")
+                    %>
+                   
+			</div>
+			<%= Html.ValidationMessage("Template.DisplayDuration")%>
 		</li>
 	    <li>
             <%= Html.SubmitButton("btnSave", "Save Template") %>

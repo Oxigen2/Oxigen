@@ -119,6 +119,7 @@ namespace Oxigen.ApplicationServices
             SaveFile(newTemplate, fileName, fileByteArray);
             newTemplate.MetaData = template.MetaData;
             newTemplate.Publisher = template.Publisher;
+            newTemplate.DisplayDuration = template.DisplayDuration;
             templateRepository.SaveOrUpdate(newTemplate);
             return ActionConfirmation.CreateSuccessConfirmation("The template was successfully uploaded");
 
@@ -140,6 +141,7 @@ namespace Oxigen.ApplicationServices
         private void TransferFormValuesTo(Template templateToUpdate, Template templateFromForm) {
 		    templateToUpdate.MetaData = templateFromForm.MetaData;
             templateToUpdate.Publisher = templateFromForm.Publisher;
+            templateToUpdate.DisplayDuration = templateFromForm.DisplayDuration;
         }
 
         ITemplateRepository templateRepository;

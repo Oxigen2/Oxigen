@@ -67,7 +67,7 @@
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Content Include="Migrations\006_ChannelContentCountByTrigger.sql" />
+    <EmbeddedResource Include="Migrations\006_ChannelContentCountByTrigger.sql" />
     <Compile Include="NHibernateMaps\AssetContentMap.cs" />
     <Compile Include="NHibernateMaps\ChannelMap.cs" />
     <Compile Include="NHibernateMaps\PublisherMap.cs" />
@@ -144,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\005_SlideFolderCount.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\007_AddDisplayDurationToTemplates.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

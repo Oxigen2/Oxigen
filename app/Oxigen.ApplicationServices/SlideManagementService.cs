@@ -138,11 +138,11 @@ namespace Oxigen.ApplicationServices
                 slide.Caption = caption;
                 slide.ClickThroughURL = assetContent.URL;
                 slide.Creator = credit;
-                slide.DisplayDuration = assetContent.DisplayDuration;
                 slide.UserGivenDate = assetContent.UserGivenDate;
                 slide.Name = assetContent.Name;
                 if (bUseTemplate)
                 {
+                    slide.DisplayDuration = template.DisplayDuration;
                     slide.PreviewType = "Flash";
                     slide.PlayerType = "Flash";
 
@@ -159,6 +159,7 @@ namespace Oxigen.ApplicationServices
                 }
                 else
                 {
+                    slide.DisplayDuration = assetContent.DisplayDuration;
                     slide.PreviewType = assetContent.PreviewType;
                     if (slide.PreviewType == "Image")
                         slide.PlayerType = "Image";
