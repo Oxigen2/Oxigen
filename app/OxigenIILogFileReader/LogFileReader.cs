@@ -56,7 +56,7 @@ namespace OxigenIIAdvertising.LogExchanger
       {
         logger.WriteError(ex);
 
-        hashT = GetEntries<T>(ref fileStream, inputPath1, decryptionPassword);
+        hashT = GetEntries<T>(ref fileStream, inputPath2, decryptionPassword);
 
         logger.WriteMessage(DateTime.Now.ToString() + " successfully read and decrypted " + inputPath2);
       }

@@ -10,6 +10,7 @@ using Setup.UserManagementServicesLive;
 using System.Management;
 using System.Reflection;
 using System.Security.Principal;
+using System.ComponentModel;
 
 namespace Setup
 {
@@ -604,6 +605,10 @@ namespace Setup
       File.WriteAllText(configFilePath, newConfig.ToString(), Encoding.ASCII);
     }
 
+    private const int ERROR_SUCCESS = 0;
+    private const int ERROR_SUCCESS_REBOOT_INITIATED = 1641;
+    private const int ERROR_SUCCESS_REBOOT_REQUIRED = 3010;
+
     internal static void InstallMSI(OxigenForm callerForm)
     {
       AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("msiexec.exe /i \"Oxigen.msi\" /qn ALLUSERS=1 TARGETDIR=\"" + AppDataSingleton.Instance.BinariesPath + "\" DATAANDSETTINGS=\"" + AppDataSingleton.Instance.DataPath + "\" PCGUID=" + AppDataSingleton.Instance.User.MachineGUID + " USERGUID=" + AppDataSingleton.Instance.User.UserGUID + " REBOOT=ReallySuppress");
@@ -616,7 +621,7 @@ namespace Setup
       {
         process = Process.Start(startInfo);
       }
-      catch
+      catch (Win32Exception)
       {
         // environment variables have been tampered with by user
         MessageBox.Show("Cannot find msiexec.exe. Please contact your system administrator.\r\nYour system has not been modified. Installation will now exit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -624,8 +629,27 @@ namespace Setup
         Application.Exit();
         return;
       }
+      catch (Exception ex)
+      {
+        MessageBox.Show("An error has occurred.\r\nYour system has not been modified. Installation will now exit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage(ex.ToString());
+        callerForm.Dispose();
+        Application.Exit();
+        return;  
+      }
 
       process.WaitForExit();
+
+      if (process.ExitCode != ERROR_SUCCESS && 
+          process.ExitCode != ERROR_SUCCESS_REBOOT_INITIATED && 
+          process.ExitCode != ERROR_SUCCESS_REBOOT_REQUIRED)
+      {
+          MessageBox.Show("Installation has failed. Exit code was: " + process.ExitCode + ".\r\nYour system has not been modified. Installation will now exit.", "Error",
+                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+          callerForm.Dispose();
+          Application.Exit();
+          return;
+      }
     }
 
     internal static void UninstallMSI(OxigenForm callerForm)
@@ -650,7 +674,7 @@ namespace Setup
       process.WaitForExit();
     }
 
-    static OxigenIIAdvertising.LoggerInfo.Logger _log = new OxigenIIAdvertising.LoggerInfo.Logger("Install Process", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Debug.txt", OxigenIIAdvertising.LoggerInfo.LoggingMode.Debug);
+    static OxigenIIAdvertising.LoggerInfo.Logger _log = new OxigenIIAdvertising.LoggerInfo.Logger("Install Process", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\OxigenInstallLog.txt", OxigenIIAdvertising.LoggerInfo.LoggingMode.Debug);
 
     private static string GetBinaryPathAboveBin() 
     {
@@ -1051,11 +1075,7 @@ namespace Setup
     private const int CSIDL_COMMON_DOCUMENTS = 0x002e;
 
     internal static string GetDefaultDataFolder() {
-        StringBuilder path = new StringBuilder(260);
-
-        SHGetSpecialFolderPath(IntPtr.Zero, path, CSIDL_COMMON_DOCUMENTS, false);
-
-        return path.ToString();
+        return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
     }
 
     internal static string GetSystemDirectory()

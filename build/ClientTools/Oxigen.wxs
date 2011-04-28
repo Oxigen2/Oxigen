@@ -305,32 +305,44 @@
       </Directory>
       <Directory Id="DATAANDSETTINGS" Name="DataAndSettings" ShortName="DATAAN~1">
         <Component Id="C__B3EB148CD7AC493E92759DF7CC85889F" Guid="{08061880-3FE5-F714-6E42-2A143D2ACC95}" KeyPath="yes">
-          <CreateFolder Directory="DATAANDSETTINGS" />
+          <CreateFolder Directory="DATAANDSETTINGS">
+          	<Permission User="Everyone" GenericAll="yes"/>
+          </CreateFolder>
         </Component>
         <Directory Id="_5C2484F05CED4CF19D48E99D5C943E46" Name="data" ShortName="DATA">
           <Directory Id="_BFD11BFE3C994619B82AF9F687CDDE18" Name="Other" ShortName="OTHER">
             <Component Id="C__16B31EBFB6654537A19D85399D33539F" Guid="{09977AF3-EA67-5948-D44E-BFBE41EACDBA}" KeyPath="yes">
-              <CreateFolder Directory="_BFD11BFE3C994619B82AF9F687CDDE18" />
+              <CreateFolder Directory="_BFD11BFE3C994619B82AF9F687CDDE18">
+		 <Permission User="Everyone" GenericAll="yes"/>
+	      </CreateFolder>
             </Component>
           </Directory>
           <Directory Id="_2C484A977F244EC2A72BCD5D4A292E22" Name="Assets" ShortName="ASSETS">
             <Component Id="C__44DBC588196A4D80B4336C33E58644B9" Guid="{D9C71775-97AD-96DF-DCEE-85A6DB7D633B}" KeyPath="yes">
-              <CreateFolder Directory="_2C484A977F244EC2A72BCD5D4A292E22" />
+              <CreateFolder Directory="_2C484A977F244EC2A72BCD5D4A292E22">
+              	<Permission User="Everyone" GenericAll="yes"/>
+              </CreateFolder>
             </Component>
           </Directory>
           <Directory Id="_E2FA3D17A67B4FC9ABB3531116CB52A6" Name="Temp" ShortName="TEMP">
             <Component Id="C__50886DCCAF04419799F10480CB16A388" Guid="{3DD01F50-3795-14AA-E356-79B3AC8F8C7C}" KeyPath="yes">
-              <CreateFolder Directory="_E2FA3D17A67B4FC9ABB3531116CB52A6" />
+              <CreateFolder Directory="_E2FA3D17A67B4FC9ABB3531116CB52A6">
+		<Permission User="Everyone" GenericAll="yes"/>
+	      </CreateFolder>
             </Component>
           </Directory>
           <Directory Id="_CE31F5D458B5457BAD9AD3347B1E5BAC" Name="SettingsData" ShortName="SETTIN~1">
             <Component Id="C__6711D8C478F047449AFBDFCD951D4A48" Guid="{44E5612B-7426-64FD-2374-F39354F55E09}" KeyPath="yes">
-              <CreateFolder Directory="_CE31F5D458B5457BAD9AD3347B1E5BAC" />
+              <CreateFolder Directory="_CE31F5D458B5457BAD9AD3347B1E5BAC">
+		<Permission User="Everyone" GenericAll="yes"/>
+	      </CreateFolder>
             </Component>
           </Directory>
           <Directory Id="_C020D3B1F55045F9BEAB7C9D3809FBFE" Name="ChannelData" ShortName="CHANNE~1">
             <Component Id="C__CCB767F47AD74627AEF150F5C368BDF4" Guid="{D2CCA5C9-7B96-6B53-D51B-DE02EA558BA6}" KeyPath="yes">
-              <CreateFolder Directory="_C020D3B1F55045F9BEAB7C9D3809FBFE" />
+              <CreateFolder Directory="_C020D3B1F55045F9BEAB7C9D3809FBFE">
+		<Permission User="Everyone" GenericAll="yes"/>
+	      </CreateFolder>
             </Component>
           </Directory>
         </Directory>
