@@ -74,13 +74,6 @@ namespace Setup
       
       SetupHelper.InstallMSI(this);
 
-      if (!SetupHelper.OxigenExists())
-      {
-        MessageBox.Show("An error has occurred. Please contact Oxigen with the following message:\r\nOxigen MSI was not installed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        Application.Exit();
-        return;
-      }
-
       progressBar.Value = 80;
 
       SetupHelper.ShowMessage(lblProgress, "Saving settings...");

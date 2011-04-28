@@ -143,7 +143,7 @@ namespace OxigenIIAdvertising.LoggerInfo
             try {
                 lock (_lockObj)
                 {
-                   _log.Debug(_name + ": " + message); 
+                   _log.Debug(message); 
                 }
             }
             catch {
@@ -202,7 +202,7 @@ namespace OxigenIIAdvertising.LoggerInfo
                             <file value=""" + outputPath + @""" />
                             <appendToFile value=""true"" />
                             <param name=""RollingStyle"" value=""Size""/>
-                            <maxSizeRollBackups value=""3""/>
+                            <maxSizeRollBackups value=""1""/>
                             <maximumFileSize value=""2MB""/>
                             <layout type=""log4net.Layout.PatternLayout"">
                               <conversionPattern value=""%date [%thread] %-5level %logger [%property{NDC}] - %message%newline"" />

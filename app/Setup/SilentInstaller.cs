@@ -70,10 +70,8 @@ namespace Setup
 
       try
       {
-        InstallMSI();
-
-        if (!SetupHelper.OxigenExists())
-          return;
+          if (!InstallMSI())
+              return;
 
         SetupHelper.DoPostMSIInstallSteps();
         SetupHelper.CopySetup();
@@ -282,11 +280,9 @@ namespace Setup
       return  true;
     }
 
-    private static void InstallMSI()
+    private static bool InstallMSI()
     {
       Process process = null;
-
-      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("msiexec.exe /i \"Oxigen.msi\" /qn ALLUSERS=1 TARGETDIR=\"" + AppDataSingleton.Instance.BinariesPath + "\" DATAANDSETTINGS=\"" + AppDataSingleton.Instance.DataPath + "\" PCGUID=" + AppDataSingleton.Instance.User.MachineGUID + " USERGUID=" + AppDataSingleton.Instance.User.UserGUID + " REBOOT=ReallySuppress");
 
       ProcessStartInfo startInfo = new ProcessStartInfo("msiexec.exe", "/i \"Oxigen.msi\" /qn ALLUSERS=1 TARGETDIR=\"" + AppDataSingleton.Instance.BinariesPath + "\" DATAANDSETTINGS=\"" + AppDataSingleton.Instance.DataPath + "\" PCGUID=" + AppDataSingleton.Instance.User.MachineGUID + " USERGUID=" + AppDataSingleton.Instance.User.UserGUID + " REBOOT=ReallySuppress");
 
@@ -296,10 +292,15 @@ namespace Setup
       }
       catch
       {
-        return;
+        return false;
       }
 
       process.WaitForExit();
+
+      if (process.ExitCode != 0)
+          return false;
+
+      return true;
     }    
 
     private static void UninstallMSI()
