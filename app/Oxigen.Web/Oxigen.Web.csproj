@@ -80,6 +80,12 @@
     <Reference Include="CommonServiceLocator.WindsorAdapter">
       <HintPath>..\..\lib\CommonServiceLocator.WindsorAdapter.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\..\packages\elmah.1.1\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Contrib.Mvc">
+      <HintPath>..\..\packages\Elmah.Contrib.Mvc.1.0\lib\net40\Elmah.Contrib.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\lib\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -156,6 +162,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Error413.aspx" />
     <Content Include="Presentation\1-1_home.htm" />
     <Content Include="Presentation\1-2_home.htm" />
     <Content Include="Presentation\1-3_home.htm" />
@@ -207,6 +214,7 @@
     <Content Include="Presentation\images\Oxigen_logo.gif" />
     <Content Include="Presentation\Index.htm" />
     <Content Include="Presentation\stylesheet.css" />
+    <Content Include="ErrorGeneric.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Administrator\Add.aspx.cs">
@@ -615,6 +623,13 @@
     <Compile Include="CreateSuccess.aspx.designer.cs">
       <DependentUpon>CreateSuccess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error413.aspx.cs">
+      <DependentUpon>Error413.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error413.aspx.designer.cs">
+      <DependentUpon>Error413.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -767,12 +782,12 @@
     <Compile Include="CreateWizard.aspx.designer.cs">
       <DependentUpon>CreateWizard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
     </Compile>
     <Compile Include="Download.aspx.cs">
       <DependentUpon>Download.aspx</DependentUpon>
@@ -853,6 +868,13 @@
     <Compile Include="Viewmedia.aspx.designer.cs">
       <DependentUpon>Viewmedia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ErrorGeneric.aspx.cs">
+      <DependentUpon>ErrorGeneric.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorGeneric.aspx.designer.cs">
+      <DependentUpon>ErrorGeneric.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\sharp_arch.jpg" />
@@ -868,7 +890,7 @@
     <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
     <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Default.aspx" />
+    <Content Include="Error404.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\Default\arrow-down.gif" />
     <Content Include="Images\Default\arrow-left-footer.gif" />
@@ -1452,6 +1474,7 @@
     <Content Include="Uploader.aspx" />
     <Content Include="Viewmedia.aspx" />
     <Content Include="GeneralSettings\ss_general_data.dat" />
+    <Content Include="packages.config" />
     <None Include="Resources\LiveScreensaverIntro.pdf" />
     <Content Include="Resources\OxigenInstallationRequirements.pdf" />
     <None Include="Resources\Sports_2009.pdf" />
