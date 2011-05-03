@@ -272,10 +272,20 @@ namespace OxigenSU
       return components;
     }
 
+    internal static string GetSystemDirectory() 
+    {
+        StringBuilder path = new StringBuilder(260);
+        SHGetSpecialFolderPath(IntPtr.Zero, path, 0x0029, false);
+        return path.ToString();
+    }
+
+    [System.Runtime.InteropServices.DllImport("shell32.dll")]
+    private static extern bool SHGetSpecialFolderPath(IntPtr hwndOwner,
+       [System.Runtime.InteropServices.Out] StringBuilder lpszPath, int nFolder, bool fCreate);
+
     private ComponentInfo[] GetSystemComponents(ComponentInfo[] downloadedComponentList)
     {
-      // TODO: on 64 bit systems it still returns C:\Windows\System32.
-      string systemFolder = Environment.GetFolderPath(Environment.SpecialFolder.System);
+      string systemFolder = GetSystemDirectory();
 
       List<ComponentInfo> systemComponents = new List<ComponentInfo>();
 
