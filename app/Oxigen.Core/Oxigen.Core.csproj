@@ -96,6 +96,7 @@
     <Compile Include="AuditEntity.cs" />
     <Compile Include="RSSFeed.cs" />
     <Compile Include="Template.cs" />
+    <Compile Include="TemplateMetaData.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

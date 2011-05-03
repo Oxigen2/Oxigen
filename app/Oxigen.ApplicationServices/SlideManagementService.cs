@@ -148,8 +148,8 @@ namespace Oxigen.ApplicationServices
 
                     var slideFromTemplate = new SWAFile(template.FileFullPathName); 
                     slideFromTemplate.UpdateBitmap("MasterImage", Image.FromFile(assetContent.FileFullPathName));
-                    slideFromTemplate.UpdateText("MasterText", caption);
-                    slideFromTemplate.UpdateText("CreditText", credit);
+                    slideFromTemplate.UpdateText("TitleText", caption);
+                    slideFromTemplate.UpdateText("ImageCreditText", credit);
                     //Aspose has a bug with getting thumbnail so use the asset content image for now
                     //var image = slideFromTemplate.GetThumbnail();
                     //ImageUtilities.Crop(image, 100, 75, AnchorPosition.Center).Save(slide.ThumbnailFullPathName);

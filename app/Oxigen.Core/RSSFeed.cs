@@ -107,7 +107,7 @@ namespace Oxigen.Core
                 slideFromTemplate.UpdateBitmap("MasterImage", img);
                 slideFromTemplate.UpdateText("TitleText", title);
                 slideFromTemplate.UpdateText("ImageCreditText", credit);
-                slideFromTemplate.UpdateText("DateText", date.ToString("d MMMM yyyy HH:mm"));
+                slideFromTemplate.UpdateText("PublishedDate", date.ToString("d MMMM yyyy HH:mm"));
                 //Aspose has a bug with getting thumbnail so use the asset content image for now
                 //var image = slideFromTemplate.GetThumbnail();
                 ImageUtilities.Crop(img, 100, 75, AnchorPosition.Center).Save(slide.ThumbnailFullPathName);
