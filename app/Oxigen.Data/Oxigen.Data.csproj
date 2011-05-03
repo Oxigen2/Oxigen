@@ -148,6 +148,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\007_AddDisplayDurationToTemplates.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\008_Elmah.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
