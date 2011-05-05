@@ -71,10 +71,6 @@ namespace OxigenIIAdvertising.ServiceContracts.UserManagementServices
     SimpleErrorWrapper GetMatchedMachineGUID(string userGUID, string machineGUID, string systemPassPhrase);
 
     [OperationContract]
-    SimpleErrorWrapper CompareMACAddresses(string macAddressClient, string userGUID, int softwareMajorVersionNumber,
-      int softwareMinorVersionNumber, out string newMachineGUID, out bool bMatch, string systemPassPhrase);
-
-    [OperationContract]
     SimpleErrorWrapper SendEmailReminder(string emailAddress, string systemPassPhrase);
 
     [OperationContract]
@@ -83,13 +79,10 @@ namespace OxigenIIAdvertising.ServiceContracts.UserManagementServices
     [OperationContract]
     void SendErrorReport(string macAddress, string exceptionDetails);
 
+    // needed for software updater (version < 1.33)
     [OperationContract]
     StringErrorWrapper CreatePCIfNotExists(string userGUID, string macAddress, string machineName,
       int majorVersionNumber, int minorVersionNumber, string systemPassPhrase);
-
-    [OperationContract]
-    StringErrorWrapper AddSubscriptionsAndNewPC(string userGUID, string macAddress, string machineName,
-      int majorVersionNumber, int minorVersionNumber, string[][] subscriptions, string systemPassPhrase);
 
     [OperationContract]
     SimpleErrorWrapper SyncWithServerNoPersonalDetails(string userGUID,
@@ -102,20 +95,20 @@ namespace OxigenIIAdvertising.ServiceContracts.UserManagementServices
       string systemPassPhrase);
 
     [OperationContract]
-    StringErrorWrapper CheckIfPCExistsReturnGUID(string username, string macAddress, string systemPassPhrase);
+    StringErrorWrapper GetUserGUIDByUsername(string username, string systemPassPhrase);
 
     [OperationContract]
-    SimpleErrorWrapper RemoveStreamsFromSilentMerge(string macAddress, 
+    SimpleErrorWrapper RemoveStreamsFromSilentMerge(string machineGUID, 
       OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions,
       string systemPassPhrase);
 
     [OperationContract]
-    SimpleErrorWrapper ReplaceStreamsFromSilentMerge(string macAddress,
+    SimpleErrorWrapper ReplaceStreamsFromSilentMerge(string machineGUID,
       OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions,
       string systemPassPhrase);
 
     [OperationContract]
-    SimpleErrorWrapper AddStreamsFromSilentMerge(string macAddress,
+    SimpleErrorWrapper AddStreamsFromSilentMerge(string machineGUID,
       OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions,
       string systemPassPhrase);
   }

@@ -276,10 +276,6 @@ namespace OxigenIIAdvertising.ServiceContracts.DAServices
     bool GetMatchedMachineGUID(string userGUID, string machineGUID);
 
     [OperationContract]
-    void CompareMACAddresses(string macAddressClient, string userGUID, int softwareMajorVersionNumber,
-      int softwareMinorVersioNumber, out string newMachineGUID, out bool bMatch);
-
-    [OperationContract]
     void RemovePCFromUninstall(string userGUID, string emailGUID);
 
     [OperationContract]
@@ -334,24 +330,18 @@ namespace OxigenIIAdvertising.ServiceContracts.DAServices
     void RemoveUserAccount(int userID);
 
     [OperationContract]
-    string CreatePCIfNotExists(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber);
-
-    [OperationContract]
-    string AddSubscriptionsAndNewPC(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber, string[][] subscriptions);
-
-    [OperationContract]
     string SyncWithServerNoPersonalDetails(string userGUID, string machineGUID, string macAddress, string machineName, int softwareMajorVersionNumber, int softwareMinorVersionNumber, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
-    string CheckIfPCExistsReturnGUID(string username, string macAddress);
+    string GetUserGUIDByUsername(string username);
 
     [OperationContract]
-    void RemoveStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+    void RemoveStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
-    void ReplaceStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+    void ReplaceStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
-    void AddStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+    void AddStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
   }
 }

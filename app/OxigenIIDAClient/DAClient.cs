@@ -441,12 +441,6 @@ namespace OxigenIIAdvertising.DAClients
       return Channel.GetMatchedMachineGUID(userGUID, machineGUID);
     }
 
-    public void CompareMACAddresses(string macAddressClient, string userGUID, int softwareMajorVersionNumber,
-      int softwareMinorVersioNumber, out string newMachineGUID, out bool bMatch)
-    {
-      Channel.CompareMACAddresses(macAddressClient, userGUID, softwareMajorVersionNumber, softwareMinorVersioNumber, out newMachineGUID, out bMatch);
-    }
-
     public void RemovePCFromUninstall(string userGUID, string machineGUID)
     {
       Channel.RemovePCFromUninstall(userGUID, machineGUID);
@@ -531,39 +525,28 @@ namespace OxigenIIAdvertising.DAClients
       Channel.RemoveUserAccount(userID);
     }
 
-    public string CreatePCIfNotExists(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber)
-    {
-      return Channel.CreatePCIfNotExists(userGUID, macAddress, machineName, majorVersionNumber, minorVersionNumber);
-    }
-
-    public string AddSubscriptionsAndNewPC(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber, string[][] subscriptions)
-    {
-      return Channel.AddSubscriptionsAndNewPC(userGUID, macAddress, machineName, majorVersionNumber, minorVersionNumber, subscriptions);
-    }
-
     public string SyncWithServerNoPersonalDetails(string userGUID, string machineGUID, string macAddress, string machineName, int softwareMajorVersionNumber, int softwareMinorVersionNumber, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
     {
       return Channel.SyncWithServerNoPersonalDetails(userGUID, machineGUID, macAddress, machineName, softwareMajorVersionNumber, softwareMinorVersionNumber, channelSubscriptions);
     }
 
-    public string CheckIfPCExistsReturnGUID(string username, string macAddress)
+      public string  GetUserGUIDByUsername(string username) {
+          return Channel.GetUserGUIDByUsername(username);
+      }
+
+      public void RemoveStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
     {
-      return Channel.CheckIfPCExistsReturnGUID(username, macAddress);
+        Channel.RemoveStreamsFromSilentMerge(machineGUID, channelSubscriptions);
     }
 
-    public void RemoveStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    public void ReplaceStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
     {
-      Channel.RemoveStreamsFromSilentMerge(macAddress, channelSubscriptions);
+        Channel.ReplaceStreamsFromSilentMerge(machineGUID, channelSubscriptions);
     }
 
-    public void ReplaceStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    public void AddStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
     {
-      Channel.ReplaceStreamsFromSilentMerge(macAddress, channelSubscriptions);
-    }
-
-    public void AddStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
-    {
-      Channel.AddStreamsFromSilentMerge(macAddress, channelSubscriptions);
+        Channel.AddStreamsFromSilentMerge(machineGUID, channelSubscriptions);
     }
   }
 }

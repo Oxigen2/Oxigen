@@ -296,9 +296,9 @@
         <Component Id="C__F753624539664990BD72B4EFBC9E5988" Guid="{A1D9D276-8F29-E696-3B57-321BD4100BB6}">
           <File Id="_F753624539664990BD72B4EFBC9E5988" Name="OxigenExceptions.dll" KeyPath="yes" ShortName="OXIGE~92.DLL" Assembly=".net" AssemblyManifest="_F753624539664990BD72B4EFBC9E5988" AssemblyApplication="_F753624539664990BD72B4EFBC9E5988" DiskId="1" Source="SourceDir\OxigenExceptions.dll" />
         </Component>
-        <Component Id="C__F795420A9AABE2DE9DB2EA0FC8245159" Guid="{BB662F7D-BA50-37EF-1B5E-1D19EDD1E5A8}">
+        <!-- <Component Id="C__F795420A9AABE2DE9DB2EA0FC8245159" Guid="{BB662F7D-BA50-37EF-1B5E-1D19EDD1E5A8}">
           <File Id="_F795420A9AABE2DE9DB2EA0FC8245159" Name="Flash10l.ocx" KeyPath="yes" ShortName="FLASH10L.OCX" DiskId="1" Source="SourceDir\Flash10l.ocx" />
-        </Component>
+        </Component> -->
         <Component Id="C__FD1E35475CD443D7AC82D6E214ACBBC0" Guid="{802E9434-9603-2EFE-E58F-A4F2A34EE019}">
           <File Id="_FD1E35475CD443D7AC82D6E214ACBBC0" Name="Interop.SHDocVw.dll" KeyPath="yes" ShortName="INTERO~9.DLL" Assembly=".net" AssemblyManifest="_FD1E35475CD443D7AC82D6E214ACBBC0" AssemblyApplication="_FD1E35475CD443D7AC82D6E214ACBBC0" DiskId="1" Source="SourceDir\Interop.SHDocVw.dll" />
         </Component>
@@ -432,7 +432,7 @@
       <ComponentRef Id="C__EFFF43CAEA964628913A46D37364411C" Primary="yes" />
       <ComponentRef Id="C__F74BCBA1DBEB47EA9565C754197DF44D" Primary="yes" />
       <ComponentRef Id="C__F753624539664990BD72B4EFBC9E5988" Primary="yes" />
-      <ComponentRef Id="C__F795420A9AABE2DE9DB2EA0FC8245159" />
+      <!-- <ComponentRef Id="C__F795420A9AABE2DE9DB2EA0FC8245159" /> -->
       <ComponentRef Id="C__F7A08614EE6C4CE48E65B4F7E1A37965" />
       <ComponentRef Id="C__F7B7954236D4419EA541DE0375D4363C" Primary="yes" />
       <ComponentRef Id="C__FD1E35475CD443D7AC82D6E214ACBBC0" Primary="yes" />

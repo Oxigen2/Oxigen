@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using ServiceErrorReporting;
 using OxigenIIAdvertising.ServiceContracts.UserManagementServices;
@@ -10,14 +9,12 @@ using System.IO;
 using OxigenIIAdvertising.XMLSerializer;
 using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.Demographic;
-using OxigenIIAdvertising.InclusionExclusionRules;
 using System.Diagnostics;
 using OxigenIIAdvertising.DAClients;
-using OxigenIIAdvertising.LoggerInfo;
 using System.Transactions;
 using OxigenIIUserMgmtServicesService;
 using OxigenIIAdvertising.SOAStructures;
-using System.Net.Mail;
+using log4net;
 
 namespace OxigenIIAdvertising.MasterServers
 {
@@ -34,11 +31,14 @@ namespace OxigenIIAdvertising.MasterServers
 
     private EventLog _eventLog = null;
 
+    private readonly ILog _logger = LogManager.GetLogger(typeof(UserManagementServices));
+
     public UserManagementServices()
     {
       _eventLog = new EventLog();
       _eventLog.Log = String.Empty;
       _eventLog.Source = "Oxigen User Management Services";
+      log4net.Config.XmlConfigurator.Configure();
     }
 
     /// <summary>
@@ -370,6 +370,8 @@ namespace OxigenIIAdvertising.MasterServers
         }
         catch (Exception ex)
         {
+          _logger.Error(ex.ToString());
+          
           try
           {
             _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
@@ -529,6 +531,8 @@ namespace OxigenIIAdvertising.MasterServers
         }
         catch (Exception ex)
         {
+          _logger.Error(ex.ToString());
+
           try
           {
             _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
@@ -552,9 +556,18 @@ namespace OxigenIIAdvertising.MasterServers
         }
         catch (Exception ex)
         {
-          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+          _logger.Error(ex.ToString());
 
-          throw ex;
+          try
+          {
+            _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+          }
+          catch
+          {
+            // ignore exception
+          }
+
+          return GetGenericRetriableErrorWrapper();
         }
 
         ts.Complete();
@@ -807,46 +820,6 @@ namespace OxigenIIAdvertising.MasterServers
       return wrapper;
     }
 
-    public SimpleErrorWrapper CompareMACAddresses(string macAddressClient, string userGUID, int softwareMajorVersionNumber,
-      int softwareMinorVersionNumber, out string newMachineGUID, out bool bMatch, string systemPassPhrase)
-    {
-      newMachineGUID = null;
-      bMatch = false;
-
-      if (systemPassPhrase != _systemPassPhrase)
-        return GetUnauthorizedAccessErrorWrapper(systemPassPhrase);
-
-      DAClient client = null;
-
-      try
-      {
-        client = new DAClient();
-
-        client.CompareMACAddresses(macAddressClient, userGUID, softwareMajorVersionNumber,
-        softwareMinorVersionNumber,out newMachineGUID, out bMatch);
-      }
-      catch (Exception ex)
-      {
-        try
-        {
-          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
-        }
-        catch
-        {
-          // ignore exception
-        }
-
-        return GetGenericRetriableErrorWrapper();
-      }
-      finally
-      {
-        if (client != null)
-          client.Dispose();
-      }
-
-      return GetGenericSuccessWrapper();
-    }
-
     public static string GenerateRandomString(int length)
     {
       System.Text.StringBuilder passWord = new System.Text.StringBuilder(length);
@@ -961,6 +934,7 @@ namespace OxigenIIAdvertising.MasterServers
       return GetGenericSuccessWrapper();
     }
 
+    // needed for software updater (version < 1.33)
     public StringErrorWrapper CreatePCIfNotExists(string userGUID, string macAddress, string machineName,
       int majorVersionNumber, int minorVersionNumber, string systemPassPhrase)
     {
@@ -976,46 +950,10 @@ namespace OxigenIIAdvertising.MasterServers
         };
       }
 
-      string machineGUID = null;
-
-      DAClient client = null;
-
-      try
-      {
-        client = new DAClient();
-
-        machineGUID = client.CreatePCIfNotExists(userGUID, macAddress, machineName, majorVersionNumber, minorVersionNumber);
-      }
-      catch (Exception ex)
-      {
-        try
-        {
-          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
-        }
-        catch
-        {
-          // ignore exception
-        }
-
-        return new StringErrorWrapper()
-        {
-          ErrorCode = "ERR:001",
-          ErrorSeverity = ErrorSeverity.Retriable,
-          ErrorStatus = ErrorStatus.Failure,
-          Message = "Error getting PC details",
-          ReturnString = String.Empty
-        };
-      }
-      finally
-      {
-        if (client != null)
-          client.Dispose();
-      }
-
       return new StringErrorWrapper()
       {
         ErrorStatus = ErrorStatus.Success,
-        ReturnString = machineGUID
+        ReturnString = "OBSOLETE"
       };
     }
 
@@ -1027,12 +965,6 @@ namespace OxigenIIAdvertising.MasterServers
       sb.AppendLine();
       sb.Append(exceptionDetails);
       sb.AppendLine();
-      sb.AppendLine();
-      sb.Append("User's MAC address : ");
-      sb.Append(macAddress);
-      sb.AppendLine();
-      sb.AppendLine();
-      sb.Append("If MAC address is not found in database, it may be because the user ran the software installer and the error occurred before any data was sent up.");
 
       try
       {
@@ -1042,73 +974,6 @@ namespace OxigenIIAdvertising.MasterServers
       {
         _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
       }
-    }
-
-    public StringErrorWrapper AddSubscriptionsAndNewPC(string userGUID, 
-      string macAddress, 
-      string machineName, 
-      int majorVersionNumber, 
-      int minorVersionNumber, 
-      string[][] subscriptions, 
-      string systemPassPhrase)
-    {
-      if (systemPassPhrase != _systemPassPhrase)
-      {
-        return new StringErrorWrapper()
-        {
-          ErrorCode = "ERR:004",
-          ErrorSeverity = ErrorSeverity.Retriable,
-          ErrorStatus = ErrorStatus.Failure,
-          Message = "Invalid authentication",
-          ReturnString = String.Empty
-        };
-      }
-
-      string machineGUID = null;
-      DAClient client = null;
-
-      try
-      {
-        client = new DAClient();
-
-        machineGUID = client.AddSubscriptionsAndNewPC(userGUID, 
-          macAddress, 
-          machineName,
-          majorVersionNumber, 
-          minorVersionNumber,
-          subscriptions);
-      }
-      catch (Exception ex)
-      {
-        try
-        {
-          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
-        }
-        catch
-        {
-          // ignore exception
-        }
-
-        return new StringErrorWrapper()
-        {
-          ErrorCode = "ERR:001",
-          ErrorSeverity = ErrorSeverity.Retriable,
-          ErrorStatus = ErrorStatus.Failure,
-          Message = "Error getting PC details",
-          ReturnString = String.Empty
-        };
-      }
-      finally
-      {
-        if (client != null)
-          client.Dispose();
-      }
-
-      return new StringErrorWrapper()
-      {
-        ErrorStatus = ErrorStatus.Success,
-        ReturnString = machineGUID
-      };
     }
 
     public SimpleErrorWrapper SyncWithServerNoPersonalDetails(string userGUID,
@@ -1176,63 +1041,64 @@ namespace OxigenIIAdvertising.MasterServers
       };
     }
 
-    public StringErrorWrapper CheckIfPCExistsReturnGUID(string username, string macAddress, string systemPassPhrase)
+    public StringErrorWrapper GetUserGUIDByUsername(string username,  string systemPassPhrase)
     {
-      if (systemPassPhrase != _systemPassPhrase)
-      {
-        return new StringErrorWrapper()
+        if (systemPassPhrase != _systemPassPhrase)
         {
-          ErrorCode = "ERR:004",
-          ErrorSeverity = ErrorSeverity.Retriable,
-          ErrorStatus = ErrorStatus.Failure,
-          Message = "Invalid authentication",
-          ReturnString = String.Empty
-        };
-      }
+            return new StringErrorWrapper()
+            {
+                ErrorCode = "ERR:004",
+                ErrorSeverity = ErrorSeverity.Retriable,
+                ErrorStatus = ErrorStatus.Failure,
+                Message = "Invalid authentication",
+                ReturnString = String.Empty
+            };
+        }
 
-      string guids = null;
-      DAClient client = null;
+        string userGUID = null;
+        DAClient client = null;
 
-      try
-      {
-        client = new DAClient();
-
-        guids = client.CheckIfPCExistsReturnGUID(username, macAddress);
-      }
-      catch (Exception ex)
-      {
         try
         {
-          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+            client = new DAClient();
+
+            userGUID = client.GetUserGUIDByUsername(username);
         }
-        catch
+        catch (Exception ex)
         {
-          // ignore exception
+          _logger.Error(ex.ToString());
+            try
+            {
+                _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+            }
+            catch
+            {
+                // ignore exception
+            }
+
+            return new StringErrorWrapper()
+            {
+                ErrorCode = "ERR:001",
+                ErrorSeverity = ErrorSeverity.Retriable,
+                ErrorStatus = ErrorStatus.Failure,
+                Message = "Error getting user GUID",
+                ReturnString = String.Empty
+            };
+        }
+        finally
+        {
+            if (client != null)
+                client.Dispose();
         }
 
         return new StringErrorWrapper()
         {
-          ErrorCode = "ERR:001",
-          ErrorSeverity = ErrorSeverity.Retriable,
-          ErrorStatus = ErrorStatus.Failure,
-          Message = "Error comparing MAC Addresses",
-          ReturnString = String.Empty
+            ErrorStatus = ErrorStatus.Success,
+            ReturnString = userGUID
         };
-      }
-      finally
-      {
-        if (client != null)
-          client.Dispose();
-      }
-
-      return new StringErrorWrapper()
-      {
-        ErrorStatus = ErrorStatus.Success,
-        ReturnString = guids
-      };
     }
 
-    public SimpleErrorWrapper RemoveStreamsFromSilentMerge(string macAddress,
+    public SimpleErrorWrapper RemoveStreamsFromSilentMerge(string machineGUID,
       AppData.ChannelSubscriptions channelSubscriptions,
       string systemPassPhrase)
     {
@@ -1253,7 +1119,62 @@ namespace OxigenIIAdvertising.MasterServers
       {
         client = new DAClient();
 
-        client.RemoveStreamsFromSilentMerge(macAddress, channelSubscriptions);
+        client.RemoveStreamsFromSilentMerge(machineGUID, channelSubscriptions);
+      }
+      catch (Exception ex)
+      {
+        _logger.Error(ex.ToString());
+        try
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+        catch
+        {
+          // ignore exception
+        }
+
+        return new SimpleErrorWrapper()
+        {
+          ErrorCode = "ERR:001",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Error syncing with server",
+        };
+      }
+      finally
+      {
+        if (client != null)
+          client.Dispose();
+      }
+
+      return new SimpleErrorWrapper()
+      {
+        ErrorStatus = ErrorStatus.Success
+      };
+    }
+
+    public SimpleErrorWrapper ReplaceStreamsFromSilentMerge(string machineGUID,
+      AppData.ChannelSubscriptions channelSubscriptions,
+      string systemPassPhrase)
+    {
+      if (systemPassPhrase != _systemPassPhrase)
+      {
+        return new SimpleErrorWrapper()
+        {
+          ErrorCode = "ERR:004",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Invalid authentication",
+        };
+      }
+
+      DAClient client = null;
+
+      try
+      {
+        client = new DAClient();
+
+        client.ReplaceStreamsFromSilentMerge(machineGUID, channelSubscriptions);
       }
       catch (Exception ex)
       {
@@ -1286,7 +1207,7 @@ namespace OxigenIIAdvertising.MasterServers
       };
     }
 
-    public SimpleErrorWrapper ReplaceStreamsFromSilentMerge(string macAddress,
+    public SimpleErrorWrapper AddStreamsFromSilentMerge(string machineGUID,
       AppData.ChannelSubscriptions channelSubscriptions,
       string systemPassPhrase)
     {
@@ -1307,61 +1228,7 @@ namespace OxigenIIAdvertising.MasterServers
       {
         client = new DAClient();
 
-        client.ReplaceStreamsFromSilentMerge(macAddress, channelSubscriptions);
-      }
-      catch (Exception ex)
-      {
-        try
-        {
-          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
-        }
-        catch
-        {
-          // ignore exception
-        }
-
-        return new SimpleErrorWrapper()
-        {
-          ErrorCode = "ERR:001",
-          ErrorSeverity = ErrorSeverity.Retriable,
-          ErrorStatus = ErrorStatus.Failure,
-          Message = "Error syncing with server",
-        };
-      }
-      finally
-      {
-        if (client != null)
-          client.Dispose();
-      }
-
-      return new SimpleErrorWrapper()
-      {
-        ErrorStatus = ErrorStatus.Success
-      };
-    }
-
-    public SimpleErrorWrapper AddStreamsFromSilentMerge(string macAddress,
-      AppData.ChannelSubscriptions channelSubscriptions,
-      string systemPassPhrase)
-    {
-      if (systemPassPhrase != _systemPassPhrase)
-      {
-        return new SimpleErrorWrapper()
-        {
-          ErrorCode = "ERR:004",
-          ErrorSeverity = ErrorSeverity.Retriable,
-          ErrorStatus = ErrorStatus.Failure,
-          Message = "Invalid authentication",
-        };
-      }
-
-      DAClient client = null;
-
-      try
-      {
-        client = new DAClient();
-
-        client.AddStreamsFromSilentMerge(macAddress, channelSubscriptions);
+        client.AddStreamsFromSilentMerge(machineGUID, channelSubscriptions);
       }
       catch (Exception ex)
       {

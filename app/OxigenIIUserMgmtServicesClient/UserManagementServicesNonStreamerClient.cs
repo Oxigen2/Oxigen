@@ -6,6 +6,7 @@ namespace OxigenIIAdvertising.UserManagementServicesServiceClient
 {
   public class UserManagementServicesNonStreamerClient : ProxyClientBase<IUserManagementServicesNonStreamer>
   {
+      // needed for software updater (version < 1.33)
     public StringErrorWrapper CreatePCIfNotExists(string userGUID, string macAddress, 
       string machineName, int majorVersionNumber, 
       int minorVersionNumber, string systemPassPhrase)
@@ -13,13 +14,6 @@ namespace OxigenIIAdvertising.UserManagementServicesServiceClient
       return Channel.CreatePCIfNotExists(userGUID, macAddress, 
         machineName, majorVersionNumber, minorVersionNumber, 
         systemPassPhrase);
-    }
-
-    public StringErrorWrapper AddSubscriptionsAndNewPC(string userGUID, string macAddress, string machineName,
-  int majorVersionNumber, int minorVersionNumber, string[][] subscriptions, string systemPassPhrase)
-    {
-      return Channel.AddSubscriptionsAndNewPC(userGUID, macAddress, machineName,
-      majorVersionNumber, minorVersionNumber, subscriptions, systemPassPhrase);
     }
   }
 }

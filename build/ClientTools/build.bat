@@ -1,3 +1,3 @@
 nant -buildfile:OxigenClient.build
-@echo Build Completed.
+@echo End.
 @pause
