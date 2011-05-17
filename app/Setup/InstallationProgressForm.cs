@@ -90,8 +90,9 @@ namespace Setup
 
         SendDetails();
 
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("InstallationProgress_Shown 1");
         SetupHelper.SetRegistryForModifyUninstall();
-
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("InstallationProgress_Shown 2");
         progressBar.Value = 95;
       }
       catch (Exception ex)
@@ -191,6 +192,8 @@ namespace Setup
         {
           string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
 
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 1");
+
           if (string.IsNullOrEmpty(url))
           {
               AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Registering details: couldn't get a responsive URL.");
@@ -198,9 +201,15 @@ namespace Setup
             return;
           }
 
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 2");
+
           client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
 
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 3");
+
           client.Url = url;
+
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 4");
 
           _wrapper = client.RegisterNewUser(AppDataSingleton.Instance.EmailAddress,
             AppDataSingleton.Instance.Password,
@@ -225,6 +234,8 @@ namespace Setup
             AppDataSingleton.Instance.NewPCName,
             AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
             "password");
+
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 5");
         }
         catch (System.Net.WebException ex)
         {
@@ -297,7 +308,7 @@ namespace Setup
         }
         catch (System.Net.WebException ex)
         {
-            AppDataSingleton.Instance.SetupLogger.WriteError(ex);
+          AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
         }
         finally

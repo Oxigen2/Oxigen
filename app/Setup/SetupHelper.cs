@@ -876,27 +876,7 @@ namespace Setup
 
     internal static string GetMACAddress()
     {
-      ManagementObjectSearcher query = null;
-      ManagementObjectCollection queryCollection = null;
-
-      try
-      {
-        query = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled='TRUE'");
-
-        queryCollection = query.Get();
-
-        foreach (ManagementObject mo in queryCollection)
-        {
-          if (mo["MacAddress"] != null)
-            return (mo["MacAddress"]).ToString();
-        }
-      }
-      catch (Exception ex)
-      {
-        return ex.ToString();
-      }
-
-      return String.Empty;
+        return null;
     }
 
     internal static string GetPcGUIDFromRegistry()
@@ -1342,6 +1322,29 @@ namespace Setup
       }
 
       return true;
+    }
+
+    internal static string GetFromRegistry(string value) {
+      RegistryKey oxigenKey = GetOxigenRegistryKey();
+
+      if (oxigenKey == null)
+        return null;
+
+      object objVal = oxigenKey.GetValue(value);
+
+      if (objVal == null)
+        return null;
+
+      return (string)objVal;
+    }
+
+    private static RegistryKey GetOxigenRegistryKey() {
+      RegistryKey key32 = GenericRegistryAccess.GetRegistryKey(@"HKEY_LOCAL_MACHINE\SOFTWARE\Oxigen");
+
+      if (key32 != null)
+        return key32;
+
+      return GenericRegistryAccess.GetRegistryKey(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Oxigen");
     }
   }
 

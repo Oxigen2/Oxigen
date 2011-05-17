@@ -145,12 +145,12 @@ namespace OxigenIIAdvertising.LogExchanger
 
       foreach (ChannelSubscription channelSubscription in channelSubscriptions.SubscriptionSet)
       {
-        if (!AggregateAndUploadAdvertAndNonAdvertSpecificLogs(channelSubscription.ChannelID, channelSubscription.GetGUIDSuffix(), dateTimeDiff, bRawLogsExist))
+        if (!AggregateAndUploadNonAdvertSpecificLogs(channelSubscription.ChannelID, channelSubscription.GetGUIDSuffix(), dateTimeDiff, bRawLogsExist))
           return;
       }
 
       // adverts: channel 0
-      if (!AggregateAndUploadAdvertAndNonAdvertSpecificLogs(0, "", dateTimeDiff, bRawLogsExist))
+      if (!AggregateAndUploadNonAdvertSpecificLogs(0, "", dateTimeDiff, bRawLogsExist))
         return;
 
       // advert-specific logs (adverts - channel weighting calculations)
@@ -198,7 +198,7 @@ namespace OxigenIIAdvertising.LogExchanger
     }
 
     // returns false if there's a critical error or application can otherwise not continue (e.g. no data)
-    private bool AggregateAndUploadAdvertAndNonAdvertSpecificLogs(long channelID, string channelGUIDSuffix, TimeSpanWrapperClass dateTimeDiff, bool bRawLogsExist)
+    private bool AggregateAndUploadNonAdvertSpecificLogs(long channelID, string channelGUIDSuffix, TimeSpanWrapperClass dateTimeDiff, bool bRawLogsExist)
     {
       //
       // Work unit 1: aggregate to flat aggregated files
@@ -246,11 +246,11 @@ namespace OxigenIIAdvertising.LogExchanger
       // if no responsive servers found, return. at this point data have been aggregated, try next channel
       if (sendLogURI == "")
       {
-        _logger.WriteTimestampedMessage("AggregateAndUploadAdvertAndNonAdvertSpecificLogs: URL not found");
+        _logger.WriteTimestampedMessage("AggregateAndUploadNonAdvertSpecificLogs: URL not found");
         return true;
       }
 
-      _logger.WriteTimestampedMessage("AggregateAndUploadAdvertAndNonAdvertSpecificLogs: URL: " + sendLogURI + "/file");
+      _logger.WriteTimestampedMessage("AggregateAndUploadNonAdvertSpecificLogs: URL: " + sendLogURI + "/file");
 
       _userDataMarshallerStreamerClient.Endpoint.Address = new EndpointAddress(sendLogURI + "/file");
 
@@ -277,9 +277,6 @@ namespace OxigenIIAdvertising.LogExchanger
         return true;
       }
 
-      // get a responsive endpoint address uri
-      string timeServerURI = GetResponsiveServer(ServerType.RelayLogs, _maxNoRelayLogServers, _machineGUIDSuffix, "UserDataMarshaller.svc");
-
       // if we have the time difference, time-correct
       if (dateTimeDiff != null)
         TimeCorrect(dateTimeDiff.TimeSpan);
@@ -301,11 +298,11 @@ namespace OxigenIIAdvertising.LogExchanger
       // if no responsive servers found, return
       if (sendLogURI == "")
       {
-        _logger.WriteTimestampedMessage("AggregateAndUploadAdvertAndNonAdvertSpecificLogs: URL not found");
+        _logger.WriteTimestampedMessage("AggregateAndUploadNonAdvertSpecificLogs: URL not found");
         return true;
       }
 
-      _logger.WriteTimestampedMessage("AggregateAndUploadAdvertAndNonAdvertSpecificLogs: URL: " + sendLogURI + "/file");
+      _logger.WriteTimestampedMessage("AggregateAndUploadNonAdvertSpecificLogs: URL: " + sendLogURI + "/file");
 
       _userDataMarshallerStreamerClient.Endpoint.Address = new EndpointAddress(sendLogURI + "/file");
 
@@ -432,7 +429,7 @@ namespace OxigenIIAdvertising.LogExchanger
       return true;
     }
 
-    private void TruncateAdvertSpecificAggregatedFilesIfUploaded()
+    private void TruncateNonAdvertSpecificAggregatedFilesIfUploaded()
     {
       if (_bDateImpressionsPerAssetUploaded)
         TryTruncate(_dateImpressionsPerAssetStream);
@@ -441,7 +438,7 @@ namespace OxigenIIAdvertising.LogExchanger
         TryTruncate(_dateClicksPerAssetStream);
     }
 
-    private void TruncateNonAdvertSpecificAggregatedFilesIfUploaded()
+    private void TruncateAdvertSpecificAggregatedFilesIfUploaded()
     {
       if (_bAdvertChannelImpressionProportionsUploaded)
         TryTruncate(_advertChannelImpressionProportionsStream);

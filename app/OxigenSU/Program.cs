@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Configuration;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Security.Principal;
 using System.IO;
+using System.Configuration;
 
 namespace OxigenSU
 {
@@ -41,7 +43,10 @@ namespace OxigenSU
 
       System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("en-GB");
       System.Threading.Thread.CurrentThread.CurrentCulture = ci;
-      System.Threading.Thread.CurrentThread.CurrentUICulture = ci; 
+      System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+
+      // make dynamic updates to app.config as necessary
+      UpdateConfig();
 
       string appDataPath = System.Configuration.ConfigurationSettings.AppSettings["AppDataPath"];
 
@@ -103,6 +108,19 @@ namespace OxigenSU
         UpdatePrompter prompter = new UpdatePrompter(clr, appDataPath);
         prompter.PromptForUpdateIfExists();
       }
+    }
+
+    // update maximum received message size programmatically for older versions.
+    private static void UpdateConfig()
+    {
+      Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+      ServiceModelSectionGroup sm = config.GetSectionGroup("system.serviceModel") as ServiceModelSectionGroup;
+
+      sm.Bindings.BasicHttpBinding.Bindings["StreamedBindingUFM"].MaxReceivedMessageSize = 209715200;
+      config.Save(ConfigurationSaveMode.Modified);
+
+      ConfigurationManager.RefreshSection("system.serviceModel");
     }
 
     private static bool HasAdminRights()

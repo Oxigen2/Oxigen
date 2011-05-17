@@ -82,6 +82,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InterCommunicationStructures\InterCommunicationStructures.csproj">
+      <Project>{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}</Project>
+      <Name>InterCommunicationStructures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OxigenIIChannelData\ChannelData.csproj">
       <Project>{5DF6DC54-E02D-47A8-B74D-C89F9E944687}</Project>
       <Name>ChannelData</Name>

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfPcInfo">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PcInfo" nillable="true" type="tns:PcInfo" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPcInfo" nillable="true" type="tns:ArrayOfPcInfo" />
-  <xs:complexType name="PcInfo">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="PcID" type="xs:int" />
-      <xs:element minOccurs="0" name="PcName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PcInfo" nillable="true" type="tns:PcInfo" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InterCommunicationStructures" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InterCommunicationStructures" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="DataFileType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GeneralConfiguration" />
+      <xs:enumeration value="AdvertConditions" />
+      <xs:enumeration value="DemographicData" />
+      <xs:enumeration value="ChannelSubscriptions" />
+      <xs:enumeration value="ChannelData" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataFileType" nillable="true" type="tns:DataFileType" />
 </xs:schema>

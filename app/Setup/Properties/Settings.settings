@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Setup_UserManagementServicesLive_UserManagementServices" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc/file</Value>
+      <Value Profile="(Default)">https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc/file</Value>
     </Setting>
   </Settings>
 </SettingsFile>

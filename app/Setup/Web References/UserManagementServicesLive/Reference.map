@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?disco" filename="UserManagementServices.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd0" filename="UserManagementServices.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd7" filename="UserManagementServices0.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd5" filename="UserManagementServices1.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd1" filename="UserManagementServices2.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?wsdl=wsdl0" filename="UserManagementServices.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd8" filename="UserManagementServices3.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd4" filename="UserManagementServices4.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd2" filename="UserManagementServices5.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?wsdl" filename="UserManagementServices0.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd6" filename="UserManagementServices6.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd3" filename="UserManagementServices7.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd6" filename="UserManagementServices.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd2" filename="UserManagementServices0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd3" filename="UserManagementServices1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd4" filename="UserManagementServices2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd5" filename="UserManagementServices3.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?wsdl=wsdl0" filename="UserManagementServices.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd7" filename="UserManagementServices4.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?wsdl" filename="UserManagementServices0.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?disco" filename="UserManagementServices.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd1" filename="UserManagementServices5.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd0" filename="UserManagementServices6.xsd" />
   </Results>
 </DiscoveryClientResultsFile>

@@ -511,10 +511,10 @@
     <None Include="Resources\questionmark.png" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc">
+    <WebReferenceUrl Include="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\UserManagementServicesLive\</RelPath>
-      <UpdateFromURL>https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc</UpdateFromURL>
+      <UpdateFromURL>https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -570,7 +570,6 @@
     <None Include="Web References\UserManagementServicesLive\StringErrorWrapper.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\UserManagementServicesLive\UserManagementServices7.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

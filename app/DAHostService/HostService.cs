@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace DAHostService
     public HostService()
     {
       InitializeComponent();
-
+      this.ServiceName = ConfigurationManager.AppSettings["serviceName"];
       eventLog.Log = String.Empty;
       eventLog.Source = "Oxigen Data Access Host";
       eventLog.ModifyOverflowPolicy(OverflowAction.OverwriteAsNeeded, 7);

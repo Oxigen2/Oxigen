@@ -1,38 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:simpleType name="ErrorSeverity">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Severe" />
-      <xs:enumeration value="Retriable" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ErrorSeverity" nillable="true" type="tns:ErrorSeverity" />
-  <xs:simpleType name="ErrorStatus">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Success" />
-      <xs:enumeration value="Failure" />
-      <xs:enumeration value="ChecksumEqual" />
-      <xs:enumeration value="NoData" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ErrorStatus" nillable="true" type="tns:ErrorStatus" />
-  <xs:complexType name="SimpleErrorWrapper">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfPcInfo">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ErrorSeverity" type="tns:ErrorSeverity" />
-      <xs:element minOccurs="0" name="ErrorStatus" type="tns:ErrorStatus" />
-      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PcInfo" nillable="true" type="tns:PcInfo" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="SimpleErrorWrapper" nillable="true" type="tns:SimpleErrorWrapper" />
-  <xs:complexType name="StringErrorWrapper">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:SimpleErrorWrapper">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ReturnString" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
+  <xs:element name="ArrayOfPcInfo" nillable="true" type="tns:ArrayOfPcInfo" />
+  <xs:complexType name="PcInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PcID" type="xs:int" />
+      <xs:element minOccurs="0" name="PcName" nillable="true" type="xs:string" />
+    </xs:sequence>
   </xs:complexType>
-  <xs:element name="StringErrorWrapper" nillable="true" type="tns:StringErrorWrapper" />
+  <xs:element name="PcInfo" nillable="true" type="tns:PcInfo" />
 </xs:schema>

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.ServiceModel;
+using DirectoryEnumerator;
+using log4net;
 using OxigenIIAdvertising.ServiceContracts.MasterDataMarshaller;
-using ServiceErrorReporting;
 using InterCommunicationStructures;
 using OxigenIIAdvertising.FileChecksumCalculator;
 using System.IO;
@@ -13,16 +13,19 @@ using System.Diagnostics;
 namespace OxigenIIAdvertising.RelayServers
 {
   [ServiceBehavior(Namespace = "http://oxigen.net")]
-  public class MasterDataMarshaller : IMasterDataMarshallerStreamer
+  public class MasterDataMarshaller : IMasterDataMarshallerStreamer, IMasterDataMarshaller
   {
     private string _appDataPath = System.Configuration.ConfigurationSettings.AppSettings["appDataPath"];
     private string _assetPath = System.Configuration.ConfigurationSettings.AppSettings["assetPath"];
     private string _channelDataPath = System.Configuration.ConfigurationSettings.AppSettings["channelDataPath"];
-    private string _debugFilePath = System.Configuration.ConfigurationSettings.AppSettings["debugFilePath"];
     private string _aggregatedLogsPath = System.Configuration.ConfigurationSettings.AppSettings["aggregatedLogsPath"];
     private string _machineSpecificDataPath = System.Configuration.ConfigurationSettings.AppSettings["machineSpecificDataPath"];
+    private string _machineSpecificDataPathUDM = System.Configuration.ConfigurationSettings.AppSettings["machineSpecificDataPathUDM"];
     private string _systemPassPhrase = System.Configuration.ConfigurationSettings.AppSettings["systemPassPhrase"];
     private int _maxUninstallRows = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["maxUninstallRows"]);
+    private string[] _retrievedSoftwareInfoFiles = null;
+
+    private readonly ILog _logger = LogManager.GetLogger(typeof(MasterDataMarshaller));
 
     private EventLog _eventLog = null;
 
@@ -31,6 +34,7 @@ namespace OxigenIIAdvertising.RelayServers
       _eventLog = new EventLog();
       _eventLog.Log = String.Empty;
       _eventLog.Source = "Oxigen Master Data Marshaller";
+      log4net.Config.XmlConfigurator.Configure();
     }
 
     public void SetAppDataFiles(AppDataFileStreamParameterMessage appDataFileStreamParameterMessage)
@@ -437,6 +441,102 @@ namespace OxigenIIAdvertising.RelayServers
       }
 
       return "";
+    }
+
+    public MachineVersionInfo[] GetMachineVersionInfo(int fileLimit)
+    {
+      _eventLog.WriteEntry("GetMachineVersionInfo()..", EventLogEntryType.Information);
+      _logger.Debug("GetMachineVersionInfo() 1");
+      MachineVersionInfo[] machineVersionInfos = null;
+      _logger.Debug("GetMachineVersionInfo() 2");
+      try
+      {
+        _logger.Debug("GetMachineVersionInfo() 3");
+        _retrievedSoftwareInfoFiles = FastDirectoryEnumerator.GetFiles(_machineSpecificDataPathUDM, "current_software*", SearchOption.AllDirectories, fileLimit);
+        _logger.Debug("GetMachineVersionInfo() 4");
+        machineVersionInfos = new MachineVersionInfo[_retrievedSoftwareInfoFiles.Length];
+        _logger.Debug("GetMachineVersionInfo() 5");
+      }
+      catch (Exception ex)
+      {
+        _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        _logger.Error(ex.ToString());
+        throw;
+      }
+
+      _logger.Debug(_retrievedSoftwareInfoFiles.Length + " files will be processed.");
+      _eventLog.WriteEntry(_retrievedSoftwareInfoFiles.Length + " files will be processed.", EventLogEntryType.Information);
+
+      for (int i = 0; i < _retrievedSoftwareInfoFiles.Length; i++)
+      {
+        try
+        {
+          DateTime lastUpdatedAt;
+          int majorVersionNumber;
+          int minorVersionNumber;
+
+          string contents = File.ReadAllText(_retrievedSoftwareInfoFiles[i]);
+          string machineGUID = GetMachineGUIDFromPath(_retrievedSoftwareInfoFiles[i]);
+          string[] contentsArray = contents.Split(new string[] { "||" }, StringSplitOptions.RemoveEmptyEntries);
+          string[] versionComponents = contentsArray[1].Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+
+          if (!DateTime.TryParse(contentsArray[0], out lastUpdatedAt))
+            continue;
+
+          if (!int.TryParse(versionComponents[0], out majorVersionNumber))
+            continue;
+
+          if (!int.TryParse(versionComponents[1], out minorVersionNumber))
+            continue;
+
+          machineVersionInfos[i] = new MachineVersionInfo(machineGUID, lastUpdatedAt, majorVersionNumber, minorVersionNumber);
+        }
+        catch (Exception ex)
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+      }
+
+      _logger.Debug("Retrieved " + machineVersionInfos.Length + " version info data.");
+
+      return machineVersionInfos;
+    }
+
+    public void DeleteSoftwareInfoFiles(HashSet<string> machineGUIDSFailedToUpdate)
+    {
+      _eventLog.WriteEntry("DeleteSoftwareInfoFiles()..", EventLogEntryType.Information);
+      if (_retrievedSoftwareInfoFiles == null) 
+      {
+        _logger.Debug("_retrievedSoftwareInfoFiles is null");
+        return;
+      }
+
+      int count = 0;
+
+      foreach (string file in _retrievedSoftwareInfoFiles) 
+      {
+        if (!machineGUIDSFailedToUpdate.Contains(GetMachineGUIDFromPath(file)))
+        {
+          //try {
+          //  File.Delete(file);
+          count++;
+          //}
+          //catch (Exception ex) {
+          //  _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+          //}
+          
+          _logger.Debug(file + " deleted.");
+        }
+      }
+
+      _logger.Info(count + " files deleted.");
+    }
+
+    private static string GetMachineGUIDFromPath(string path)
+    {
+      string pathNoFile = Path.GetDirectoryName(path);
+      return pathNoFile.Substring(pathNoFile.LastIndexOf("\\") + 1,
+                                         pathNoFile.Length - pathNoFile.LastIndexOf("\\") - 1);
     }
   }
 }

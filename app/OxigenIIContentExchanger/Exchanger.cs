@@ -333,31 +333,6 @@ namespace OxigenIIAdvertising.ContentExchanger
       return subscriptions;
     }   
 
-    private string GetMACAddress()
-    {
-      ManagementObjectSearcher query = null;
-      ManagementObjectCollection queryCollection = null;
-
-      try
-      {
-        query = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled='TRUE'");
-
-        queryCollection = query.Get();
-
-        foreach (ManagementObject mo in queryCollection)
-        {
-          if (mo["MacAddress"] != null)
-            return (mo["MacAddress"]).ToString();
-        }
-      }
-      catch (Exception ex)
-      {
-        return ex.ToString();
-      }
-
-      return String.Empty;
-    }
-
     private void SaveMachineGUID(string machineGUID)
     {
       User user = (User)Serializer.Deserialize(typeof(User), _userSettingsPath, _password);
