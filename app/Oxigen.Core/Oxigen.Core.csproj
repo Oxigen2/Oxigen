@@ -36,6 +36,12 @@
     <Reference Include="Aspose.Flash">
       <HintPath>..\..\lib\Aspose.Flash.dll</HintPath>
     </Reference>
+    <Reference Include="CSScriptLibrary.v3.5">
+      <HintPath>..\..\lib\CSScriptLibrary.v3.5.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -94,7 +100,10 @@
     <Compile Include="Slide.cs" />
     <Compile Include="SlideFolder.cs" />
     <Compile Include="AuditEntity.cs" />
-    <Compile Include="RSSFeed.cs" />
+    <Compile Include="Syndication\RSSFeed.cs" />
+    <Compile Include="Syndication\SlideFeed.cs" />
+    <Compile Include="Syndication\SlideFeedItem.cs" />
+    <Compile Include="Syndication\SlideFeedParser.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="TemplateMetaData.cs" />
   </ItemGroup>
@@ -111,6 +120,7 @@
       <Name>ImageExtraction</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

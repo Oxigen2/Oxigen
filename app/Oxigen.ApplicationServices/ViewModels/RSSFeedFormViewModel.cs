@@ -1,4 +1,5 @@
 using Oxigen.Core;
+using Oxigen.Core.Syndication;
 
 namespace Oxigen.ApplicationServices.ViewModels
 {

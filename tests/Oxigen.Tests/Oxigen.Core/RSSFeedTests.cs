@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Oxigen.Core.Syndication;
 using SharpArch.Testing;
 using SharpArch.Testing.NUnit;
 using Oxigen.Core;
@@ -22,17 +23,17 @@ namespace Tests.Oxigen.Core
             instance.ShouldEqual(instanceToCompareTo);
         }
 
-        [Test]
-        public void CanProcessFeed() {
-            RSSFeed instance = new RSSFeed();
+        //[Test]
+        //public void CanProcessFeed() {
+        //    RSSFeed instance = new RSSFeed();
             
-            instance.XSLT = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(
-                    "Tests.Oxigen.Core.Syndication.Telegraph.xslt")).ReadToEnd();
-            var telegraphFeed = Assembly.GetExecutingAssembly().GetManifestResourceStream(
-                    "Tests.Oxigen.Core.Syndication.TelegraphSample.xml");
-            RSSFeed.GetFeed = (URL) => new XmlTextReader(telegraphFeed);
-            System.Console.Write(instance.ApplyXSLT());
-        }
+        //    instance.XSLT = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(
+        //            "Tests.Oxigen.Core.Syndication.Telegraph.xslt")).ReadToEnd();
+        //    var telegraphFeed = Assembly.GetExecutingAssembly().GetManifestResourceStream(
+        //            "Tests.Oxigen.Core.Syndication.TelegraphSample.xml");
+        //    RSSFeed.GetFeed = (URL) => new XmlTextReader(telegraphFeed);
+        //    System.Console.Write(instance.ApplyXSLT());
+        //}
 
 
     }

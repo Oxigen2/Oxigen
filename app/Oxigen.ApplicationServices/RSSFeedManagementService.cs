@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using Oxigen.Core.RepositoryInterfaces;
+using Oxigen.Core.Syndication;
 using SharpArch.Core;
 using Oxigen.ApplicationServices.ViewModels;
 using Oxigen.Core.QueryDtos;

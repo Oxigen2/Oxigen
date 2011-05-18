@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<slidefeed>
+  <script name="ScrapeImage">
+    var hw = new HtmlWeb();
+    var doc = hw.Load(url);
+    var node = doc.DocumentNode.SelectSingleNode("//div[@id=\"articleImageHolder\"]//img");
+    var src = node.Attributes["src"].Value;
+  </script>
+
+  <items>
+  <item guid="**GUID**">
+    <parameter name="ClickThroughUrl" type="text">
+      Click trough URL
+    </parameter>
+    <parameter name="Title" type="text">
+      Title of Slide
+    </parameter>
+    <parameter name="PublishedDate" type="">
+      Title of Slide
+    </parameter>
+    <parameter name="MasterImage" type="image">
+      <call-script name="ScrapeImage">
+        <wih-param name="url">**URL**</wih-param>
+      </call-script>
+    </parameter>
+      
+  </item>
+  </items>
+</slidefeed>

@@ -1,3 +1,4 @@
+using Oxigen.Core.Syndication;
 using SharpArch.Data.NHibernate;
 using System.Collections.Generic;
 using NHibernate;

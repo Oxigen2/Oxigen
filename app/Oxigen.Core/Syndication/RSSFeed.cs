@@ -12,7 +12,7 @@ using System.Xml;
 using Newtonsoft.Json.Linq;
 
 
-namespace Oxigen.Core
+namespace Oxigen.Core.Syndication
 {
     public class RSSFeed : Entity
     {
@@ -30,28 +30,28 @@ namespace Oxigen.Core
 
 		public virtual string XSLT { get; set; }
 
-        public virtual string ApplyXSLT()
-        {
-            XslCompiledTransform xslt = new XslCompiledTransform();
-            var xmlReader = new XmlTextReader(new StringReader(XSLT));
-            xslt.Load(xmlReader);
-            var output = new StringWriter();
-            xslt.Transform(GetFeed(URL), null, output);
-            var jsonString = output.ToString();
-            Console.Write(jsonString);
-            JObject jsonFeed = JObject.Parse(jsonString);
-            foreach (JToken item in jsonFeed["items"]) {
-                DateTime date = item["date"].Value<DateTime>();
-                string guid = (string)item["guid"].Value<string>();
-                string url = (string)item["url"].Value<string>();
-                string title = (string)item["title"].Value<string>();
-                string image = (string)item["image"].Value<string>();
-                string credit = item["credit"] == null ? null : item["credit"].Value<string>();
-                
-            }
-            
-            return output.ToString();
-        }
+        //public virtual string ApplyXSLT()
+        //{
+        //    XslCompiledTransform xslt = new XslCompiledTransform();
+        //    var xmlReader = new XmlTextReader(new StringReader(XSLT));
+        //    xslt.Load(xmlReader);
+        //    var output = new StringWriter();
+        //    xslt.Transform(GetFeed(URL), null, output);
+        //    var jsonString = output.ToString();
+        //    Console.Write(jsonString);
+        //    JObject jsonFeed = JObject.Parse(jsonString);
+        //    foreach (JToken item in jsonFeed["items"]) {
+        //        DateTime date = item["date"].Value<DateTime>();
+        //        string guid = (string)item["guid"].Value<string>();
+        //        string url = (string)item["url"].Value<string>();
+        //        string title = (string)item["title"].Value<string>();
+        //        string image = (string)item["image"].Value<string>();
+        //        string credit = item["credit"] == null ? null : item["credit"].Value<string>();
+        //        
+        //    }
+        //    
+        //    return output.ToString();
+        //}
         
         public static Func<string, XmlReader> GetFeed = (URL) => new XmlTextReader(WebRequest.Create(URL).GetResponse().GetResponseStream());
 
@@ -65,33 +65,22 @@ namespace Oxigen.Core
             xslt.Transform(GetFeed(URL), null, output);
             var dom = new XmlDocument();
             output.Seek(0, SeekOrigin.Begin);
-            dom.Load(output);
+            var slideFeedParser = new SlideFeedParser(output);
+            var slideFeed = slideFeedParser.Parse(LastItem);
             bool bFirst = true;
-            var previousLastItem = LastItem;
             var channelssidesList = new List<ChannelsSlide>();
-            foreach (XmlNode item in dom.DocumentElement.ChildNodes)
+            foreach (var item in slideFeed.Items)
             {
-                string guid = item.SelectSingleNode("guid").InnerText;
-                if (guid == previousLastItem) break;
                 if (bFirst)
                 {
                     bFirst = false;
-                    LastItem = guid;
+                    LastItem = item.Guid;
                 }
-                
-                DateTime date = DateTime.Parse(item.SelectSingleNode("date").InnerText);
-                
-                string url = item.SelectSingleNode("url").InnerText;
-                string title = item.SelectSingleNode("title").InnerText;
-                string imageUrl = item.SelectSingleNode("image").InnerText;
-                string credit = item.SelectSingleNode("credit") == null ? null : item.SelectSingleNode("credit").InnerText;
 
-                WebRequest req = WebRequest.Create(imageUrl);
-                WebResponse response = req.GetResponse();       
-                Stream stream = response.GetResponseStream();
-                Image img = Image.FromStream(stream);
-                stream.Close();
-
+                string title = item.Parameters["TitleText"].GetValue();
+                string url = item.Parameters["ClickThroughUrl"].GetValue();
+                DateTime date = ((DateParameter) item.Parameters["PublishedDate"]).Date;
+                Image img = ((ImageParameter) item.Parameters["MasterImage"]).GetImage();
                 var slide = new Slide(".swf");
                 slide.SlideFolderID = SlideFolder.Id;
                 slide.Caption = title.Length > 400 ?  title.Substring(0, 400-3) + "..." : title;
@@ -104,10 +93,11 @@ namespace Oxigen.Core
                 slide.PlayerType = "Flash";
 
                 var slideFromTemplate = new SWAFile(Template.FileFullPathName);
-                slideFromTemplate.UpdateBitmap("MasterImage", img);
-                slideFromTemplate.UpdateText("TitleText", title);
-                slideFromTemplate.UpdateText("ImageCreditText", credit);
-                slideFromTemplate.UpdateText("PublishedDate", date.ToString("d MMMM yyyy HH:mm"));
+                foreach (var parameter in item.Parameters.Values)
+                {
+                    parameter.PassTo(slideFromTemplate);
+                }
+
                 //Aspose has a bug with getting thumbnail so use the asset content image for now
                 //var image = slideFromTemplate.GetThumbnail();
                 ImageUtilities.Crop(img, 100, 75, AnchorPosition.Center).Save(slide.ThumbnailFullPathName);
@@ -129,7 +119,7 @@ namespace Oxigen.Core
 
             }
             LastChecked = DateTime.Now;
-            if (previousLastItem != LastItem)
+            if (slideFeed.Items.Count>0)
             { 
                 Channel.ContentLastAddedDate = DateTime.Now;
                 Channel.MadeDirtyLastDate = DateTime.Now;

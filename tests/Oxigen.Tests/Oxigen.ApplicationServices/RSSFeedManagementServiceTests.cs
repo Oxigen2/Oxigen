@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Oxigen.Core.Syndication;
 using Rhino.Mocks;
 using SharpArch.Testing.NUnit;
 using System.Collections.Generic;
