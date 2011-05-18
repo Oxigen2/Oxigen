@@ -1,3 +1,4 @@
+using Oxigen.Core.Syndication;
 using SharpArch.Core.PersistenceSupport;
 using System.Collections.Generic;
 using Oxigen.Core;

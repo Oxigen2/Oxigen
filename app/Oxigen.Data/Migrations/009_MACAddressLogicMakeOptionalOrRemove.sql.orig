@@ -108,6 +108,7 @@
 		SocioEconomicStatus.SocioEconomicType = 'I'
 		AND SocioEconomicStatus.SocioEconomicValue = @AnnualHouseholdIncome;
 		
+<<<<<<< HEAD
 	INSERT INTO Users(UserGUID, Username, UserPassword, AccountTypeID, AddDate)
 	VALUES (@UserGUID, @EmailAddress, @Password, @AccountTypeID, GETDATE()); 
 
@@ -198,6 +199,13 @@
 	GO
 	SET QUOTED_IDENTIFIER ON
 	GO
+	DROP PROCEDURE [dbo].[dp_addStreamByMacAddress]
+	GO
+
+	SET ANSI_NULLS ON
+	GO
+	SET QUOTED_IDENTIFIER ON
+	GO
 	DROP PROCEDURE [dbo].[dp_removeAllStreamsByMacAddress]
 	GO
 
@@ -234,6 +242,134 @@
 		Users
 	WHERE
 		Users.Username = @Username;
+=======
+INSERT INTO Users(UserGUID, Username, UserPassword, AccountTypeID, AddDate)
+VALUES (@UserGUID, @EmailAddress, @Password, @AccountTypeID, GETDATE()); 
+
+SET @UserID = SCOPE_IDENTITY();
+
+INSERT INTO Consumers(UserID, LocationTaxonomyTreeID, FirstName, LastName, EmailAddress, Gender, DOB, TownCity, State,
+Country, OccupationSectorID, EmploymentLevelID, AnnualHouseholdIncomeID, AddDate)
+VALUES
+(@UserID, @TownCityID, @FirstName, @LastName, @EmailAddress, @Gender, @DOB, @TownCity, @State, @Country, @OccupationSectorID,
+@EmploymentLevelID, @AnnualHouseholdIncomeID, GETDATE());
+
+SET @ConsumerID = SCOPE_IDENTITY();
+
+INSERT INTO PCs(PCGUID, MACAddress, MajorVersionNumber, MinorVersionNumber, PcName, AddDate, ConsumerID, bLinkedToClient)
+VALUES (@MachineGUID, @MACAddress, @SoftwareMajorVersionNumber, @SoftwareMinorVersionNumber, @MachineName, GETDATE(), @ConsumerID, 1);
+
+INSERT INTO Publishers(FirstName, LastName, EmailAddress, UserID, UsedBytes, TotalAvailableBytes)
+VALUES (@FirstName, @LastName, @EmailAddress, @UserID, 0, @TotalAvailableBytes);
+
+SET @PublisherID = SCOPE_IDENTITY();
+
+INSERT INTO AssetContentFolders(PublisherID, AssetContentFolderName)
+VALUES (@PublisherID, 'My Content Folder');
+
+INSERT INTO SlideFolders(PublisherID, SlideFolderName)
+VALUES (@PublisherID, 'My Slide Folder');
+
+SET @ChannelGUID = CONVERT(nvarchar(38), NEWID()) + '_' + @UserGUIDSuffix;
+
+INSERT INTO Channels(PublisherID, ChannelName, ChannelGUID, ImagePath, bHasDefaultThumbnail, bLocked, bAcceptPasswordRequests, NoContent, NoFollowers)
+VALUES(@PublisherID, @FirstName + ' ' + @LastName, @ChannelGUID, @UserGUIDSuffix + '/' + @ChannelGUID + '.gif', 1, 0, 1, 0, 0);
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[dp_addPCByGUID]    Script Date: 05/04/2011 16:02:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[dp_addPCByGUID]
+(
+@EmailAddress nvarchar(50),
+@MachineGUID nvarchar(50),
+@MACAddress nvarchar(20) = NULL,
+@PCName nvarchar(100),
+@SoftwareMajorVersionNumber int,
+@SoftwareMinorVersionNumber int
+)
+
+AS
+
+DECLARE @ConsumerID int;
+
+SELECT
+	@ConsumerID = Consumers.CONSUMER_ID
+FROM
+	Consumers INNER JOIN Users ON Consumers.UserID = Users.USER_ID
+WHERE
+	Users.Username = @EmailAddress;
+
+INSERT INTO PCs(ConsumerID, PCGUID, MACAddress, MajorVersionNumber, MinorVersionNumber, PcName, bLinkedToClient)
+VALUES (@ConsumerID, @MachineGUID, @MACAddress, @SoftwareMajorVersionNumber, @SoftwareMinorVersionNumber, @PCName, 1);
+
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP PROCEDURE [dbo].[dp_editCompareMacAddressesLink]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP PROCEDURE [dbo].[dp_getIfPCExistsReturnGUID]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP PROCEDURE [dbo].[dp_createPcIfNotExists]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP PROCEDURE [dbo].[dp_removeAllStreamsByMacAddress]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP PROCEDURE [dbo].[dp_addStreamByMacAddress]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP PROCEDURE [dbo].[dp_removeStreamByMacAddress]
+GO
+
+/****** Object:  StoredProcedure [dbo].[dp_getUserGUIDByUsername]    Script Date: 05/04/2011 17:57:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[dp_getUserGUIDByUsername]
+(
+@Username nvarchar(100),
+@UserGUID nvarchar(50) OUTPUT
+)
+
+AS
+
+SELECT
+	@UserGUID = Users.UserGUID
+FROM
+	Users
+WHERE
+	Users.Username = @Username;
+>>>>>>> 41484fc997fa17617230374f2caf2b4b66f59b56
 	
 	IF @UserGUID IS NULL
 		SET @UserGUID = '-'

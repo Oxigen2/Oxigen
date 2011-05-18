@@ -1,4 +1,5 @@
 using System.Web.Mvc;
+using Oxigen.Core.Syndication;
 using SharpArch.Core.PersistenceSupport;
 using SharpArch.Core.DomainModel;
 using System.Collections.Generic;

@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using Oxigen.Core;
 using Oxigen.ApplicationServices.ViewModels;
 using Oxigen.Core.QueryDtos;
-using Oxigen.Core; 
+using Oxigen.Core;
+using Oxigen.Core.Syndication;
 
 namespace Oxigen.ApplicationServices
 {

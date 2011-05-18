@@ -153,8 +153,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\009_MACAddressLogicMakeOptionalOrRemove.sql" />
+<<<<<<< HEAD
     <Content Include="Migrations\010_RSSXsltToTextField.sql" />
+=======
     <Content Include="Migrations\010_VersionUpdatedAtColumnPCsTable.sql" />
+>>>>>>> 41484fc997fa17617230374f2caf2b4b66f59b56
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

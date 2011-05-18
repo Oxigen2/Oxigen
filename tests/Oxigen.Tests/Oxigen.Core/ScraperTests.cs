@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using SharpArch.Testing;
 using SharpArch.Testing.NUnit;
 using System.Collections.Generic;
@@ -19,8 +20,18 @@ namespace Tests.Oxigen.Core
             var doc = hw.Load("http://www.mediaweek.co.uk/news/rss/1067882/IPC-Global-amplify-Ford-Fiestas-summer/");
             var node = doc.DocumentNode.SelectSingleNode("//div[@id=\"articleImageHolder\"]//img");
             var src = node.Attributes["src"].Value;
+            
             src.ShouldEqual(
                 "http://cached.imagescaler.hbpl.co.uk/resize/scaleToFit/427/285/?sURL=http://offlinehbpl.hbpl.co.uk/news/OWM/B662E6EC-D287-2E41-A137FE30F1A23DD6.JPG");
+        }
+
+        [Test]
+        public void TestRegex()
+        {
+            string input =
+                "http://cached.imagescaler.hbpl.co.uk/resize/scaleToFit/427/285/?sURL=http://offlinehbpl.hbpl.co.uk/news/OWM/B662E6EC-D287-2E41-A137FE30F1A23DD6.JPG";
+            Regex.Replace(input, "/scaleToFit/\\d+/\\d+/", "/scaleToFit/854/570/").ShouldEqual(
+                "http://cached.imagescaler.hbpl.co.uk/resize/scaleToFit/854/570/?sURL=http://offlinehbpl.hbpl.co.uk/news/OWM/B662E6EC-D287-2E41-A137FE30F1A23DD6.JPG");
         }
     }
 }

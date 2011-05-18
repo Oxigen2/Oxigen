@@ -126,6 +126,7 @@
     <Compile Include="Oxigen.Core\PublisherInstanceFactory.cs" />
     <Compile Include="Oxigen.Core\PublisherTests.cs" />
     <Compile Include="Oxigen.Core\ScraperTests.cs" />
+    <Compile Include="Oxigen.Core\SlideFeedParserTests.cs" />
     <Compile Include="Oxigen.Core\SlideFolderInstanceFactory.cs" />
     <Compile Include="Oxigen.Core\SlideFolderTests.cs" />
     <Compile Include="Oxigen.Core\SlideInstanceFactory.cs" />
@@ -179,6 +180,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Oxigen.ApplicationServices\RSS\Guardian.xslt" />
+    <Content Include="Oxigen.ApplicationServices\RSS\mediaweek.xslt" />
+    <Content Include="Oxigen.ApplicationServices\RSS\rssschema.xml" />
     <EmbeddedResource Include="Oxigen.ApplicationServices\RSS\Telegraph.xslt" />
     <EmbeddedResource Include="Oxigen.ApplicationServices\RSS\TelegraphSample.xml" />
   </ItemGroup>

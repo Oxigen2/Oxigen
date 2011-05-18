@@ -1,5 +1,6 @@
 using System;
 using Oxigen.Core;
+using Oxigen.Core.Syndication;
 
 namespace Tests.Oxigen.Core
 {
