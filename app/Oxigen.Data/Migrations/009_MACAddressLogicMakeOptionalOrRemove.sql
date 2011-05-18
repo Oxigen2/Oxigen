@@ -198,13 +198,6 @@
 	GO
 	SET QUOTED_IDENTIFIER ON
 	GO
-	DROP PROCEDURE [dbo].[dp_addStreamByMacAddress]
-	GO
-
-	SET ANSI_NULLS ON
-	GO
-	SET QUOTED_IDENTIFIER ON
-	GO
 	DROP PROCEDURE [dbo].[dp_removeAllStreamsByMacAddress]
 	GO
 

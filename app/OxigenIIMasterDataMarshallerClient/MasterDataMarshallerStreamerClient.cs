@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OxigenIIAdvertising.ServiceContracts.MasterDataMarshaller;
-using System.ServiceModel;
-using ServiceErrorReporting;
+﻿using OxigenIIAdvertising.ServiceContracts.MasterDataMarshaller;
 using InterCommunicationStructures;
 using ProxyClientBaseLib;
 using System.IO;

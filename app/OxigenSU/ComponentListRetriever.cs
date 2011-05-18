@@ -71,87 +71,11 @@ namespace OxigenSU
 
       ComponentInfo[] downloadedComponentList = null;
 
-      // Check if MAC Address has a match on server
-      if (!GetMachineGUIDIfNotExists(maxNoUMSServers, timeout))
-        return;
-
       if (!DownloadComponentList(maxNoUFMServers, timeout, ref downloadedComponentList))
         return;
 
       // compare local file versions with downloaded list
       _changedComponents = GetChangedComponents(downloadedComponentList);
-    }
-
-    private bool GetMachineGUIDIfNotExists(int maxNoUMSServers, int timeout)
-    {
-      if (!string.IsNullOrEmpty(_user.MachineGUID))
-        return true;
-
-      string macAddress = GetMACAddress();
-
-      UserManagementServicesNonStreamerClient client = null;
-      StringErrorWrapper wrapper = null;
-
-      try
-      {
-        string uri = ResponsiveServerDeterminator.GetResponsiveURI(ServerType.MasterGetConfig, maxNoUMSServers, timeout,
-        _user.GetUserGUIDSuffix(), _generalData.Properties["primaryDomainName"],
-        _generalData.Properties["secondaryDomainName"], "UserManagementServices.svc");
-
-        if (string.IsNullOrEmpty(uri))
-          return false;
-
-        client = new UserManagementServicesNonStreamerClient();
-        client.Endpoint.Address = new EndpointAddress(uri);
-
-        wrapper = client.CreatePCIfNotExists(_user.UserGUID, macAddress, Environment.MachineName, _user.SoftwareMajorVersionNumber,
-          _user.SoftwareMinorVersionNumber, "password");
-
-        if (wrapper.ErrorStatus == ErrorStatus.Failure)
-          return false;
-
-        if (wrapper.ErrorStatus == ErrorStatus.Success)
-        {
-          _user.MachineGUID = wrapper.ReturnString;
-          Serializer.Serialize(_user, _appDataPath + "\\SettingsData\\UserSettings.dat", "password");
-        }
-      }
-      catch
-      {
-        return false;
-      }
-      finally
-      {
-        if (client != null)
-          client.Dispose();
-      }
-
-      return true;
-    }
-
-    private string GetMACAddress()
-    {
-      ManagementObjectSearcher query = null;
-      ManagementObjectCollection queryCollection = null;
-
-      try
-      {
-        query = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled='TRUE'");
-
-        queryCollection = query.Get();
-
-        foreach (ManagementObject mo in queryCollection)
-        {
-          if (mo["MacAddress"] != null)
-            return (mo["MacAddress"]).ToString();
-        }
-      }
-      catch (Exception ex)
-      {
-        return ex.ToString();
-      }
-
-      return String.Empty;
     }
 
     private HashSet<ComponentInfo> GetChangedComponents(ComponentInfo[] downloadedComponentList)
@@ -313,44 +237,6 @@ namespace OxigenSU
       }
 
       return systemComponents.ToArray();
-    }
-
-    private bool SaveStreamAndDispose(Stream stream, string filePath)
-    {
-      FileStream fileStream = null;
-      byte[] downloadedData = null;
-
-      try
-      {
-        downloadedData = StreamToByteArray(stream);
-      }
-      catch
-      {
-        _log.WriteEntry(String.Format("Could not process file: {0}", filePath) + EventLogEntryType.Error);
-        return false;
-      }
-      finally
-      {
-        if (stream != null)
-          stream.Dispose();
-      }
-
-      try
-      {
-        File.WriteAllBytes(filePath, downloadedData);
-      }
-      catch 
-      {
-        _log.WriteEntry(String.Format("Could not save file: {0}", filePath), EventLogEntryType.Error);
-        return false;
-      }
-      finally
-      {
-        if (fileStream != null)
-          fileStream.Dispose();
-      }
-
-      return true;
     }
 
     private byte[] StreamToByteArray(Stream stream)

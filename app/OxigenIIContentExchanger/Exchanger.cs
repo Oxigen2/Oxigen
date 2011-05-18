@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net;
 using OxigenIIAdvertising.FileChecksumCalculator;
 using System.IO;
 using OxigenIIAdvertising.XMLSerializer;
@@ -13,15 +12,12 @@ using OxigenIIAdvertising.UserDataMarshallerServiceClient;
 using ServiceErrorReporting;
 using OxigenIIAdvertising.PlaylistLogic;
 using OxigenIIAdvertising.AppData;
-using OxigenIIAdvertising.ContentExchanger.Properties;
 using OxigenIIAdvertising.UserSettings;
 using System.Configuration;
 using OxigenIIAdvertising.UserManagementServicesServiceClient;
 using OxigenIIAdvertising.EncryptionDecryption;
 using InterCommunicationStructures;
 using OxigenIIAdvertising.FileRights;
-using System.Windows.Forms;
-using System.Management;
 using System.Diagnostics;
 
 namespace OxigenIIAdvertising.ContentExchanger
@@ -44,6 +40,7 @@ namespace OxigenIIAdvertising.ContentExchanger
     private string _userSettingsPath = "";
     private string _binariesPath = "";
     private string _debugFilePath = "";
+    private string _cdnSubdomain = "";
 
     private string _password = "";
 
@@ -54,8 +51,6 @@ namespace OxigenIIAdvertising.ContentExchanger
     private int _serverTimeout = -1;
     private int _daysToKeepAssetFiles = -1;
     private long _assetFolderSize = -1;
-    private int _majorVersionNumber = -1;
-    private int _minorVersionNumber = -1;
     private float _defaultDisplayDuration = -1F;
 
     private string _primaryDomainName = "";
@@ -332,31 +327,6 @@ namespace OxigenIIAdvertising.ContentExchanger
 
       return subscriptions;
     }   
-
-    private string GetMACAddress()
-    {
-      ManagementObjectSearcher query = null;
-      ManagementObjectCollection queryCollection = null;
-
-      try
-      {
-        query = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled='TRUE'");
-
-        queryCollection = query.Get();
-
-        foreach (ManagementObject mo in queryCollection)
-        {
-          if (mo["MacAddress"] != null)
-            return (mo["MacAddress"]).ToString();
-        }
-      }
-      catch (Exception ex)
-      {
-        return ex.ToString();
-      }
-
-      return String.Empty;
-    }
 
     private void SaveMachineGUID(string machineGUID)
     {
@@ -780,6 +750,7 @@ namespace OxigenIIAdvertising.ContentExchanger
     {
       try
       {
+        _cdnSubdomain = ConfigurationSettings.AppSettings["cdnSubdomain"];
         _appDataPath = ConfigurationSettings.AppSettings["AppDataPath"];
         _binariesPath = ConfigurationSettings.AppSettings["BinariesPath"];
 
@@ -905,16 +876,12 @@ namespace OxigenIIAdvertising.ContentExchanger
     private void LoopAndGetAssetFiles<T>(HashSet<T> playlistAssets, AssetType assetType, string channelName, 
       ref bool bLowAssetSpace, ref bool bContentDownloaded, ref bool bCancelled) where T : PlaylistAsset
     {
-      AssetFileParameterMessage assetFileParameterMessage = new AssetFileParameterMessage();
-      assetFileParameterMessage.AssetType = assetType;
-      assetFileParameterMessage.SystemPassPhrase = _systemPassPhrase;
-      assetFileParameterMessage.UserGUID = _userGUID;
-      assetFileParameterMessage.MachineGUID = _machineGUID;
-
       int noAssets = playlistAssets.Count;
 
       if (noAssets == 0)
         return;
+
+      string assetTypeFolder = assetType == AssetType.Advert ? "AdvertSlides" : "ContentSlides";
 
       float step = 100F / (float)noAssets;
       int counter = 1;
@@ -931,57 +898,33 @@ namespace OxigenIIAdvertising.ContentExchanger
 
         string assetDir = _assetPath + pa.GetAssetFilenameGUIDSuffix().ToUpper() + "\\";
         string assetFullPath = assetDir + pa.AssetFilename;
-        string serverURI = "";
+
+        // If file exists, move on to the next one. No need to check if file has changed on the server
+        // because that would be a new file under a different database ID.
+        if (File.Exists(assetFullPath))
+          continue;
 
         try
         {
-          string checksum = ChecksumCalculator.GetChecksum(assetFullPath);
+          if (!Directory.Exists(assetDir))
+            Directory.CreateDirectory(assetDir);
 
-          assetFileParameterMessage.Checksum = checksum;
-          assetFileParameterMessage.AssetFileName = pa.AssetFilename;
+          var client = new WebClient();
 
-          serverURI = GetResponsiveServer(ServerType.RelayChannelAssets, _maxNoRelayChannelAssetServers, pa.GetAssetFilenameGUIDSuffix(), "UserDataMarshaller.svc", _logger); // first letter of asset name
+          byte[] buffer = client.DownloadData(_cdnSubdomain + "/" + assetTypeFolder + "/" + pa.GetAssetFilenameGUIDSuffix().ToUpper());
 
-          if (serverURI != "")
+          // check if saving of this slide will exceed allowed size in destination folder
+          long directorySize = GetDirectorySize(_assetPath);
+          if (buffer.Length + directorySize >= _assetFolderSize)
           {
-            _logger.WriteMessage("Attempting to connect to: " + serverURI);
-
-            _userDataMarshallerStreamerClient.Endpoint.Address = new EndpointAddress(serverURI + "/file");
-
-            StreamErrorWrapper sw = _userDataMarshallerStreamerClient.GetAssetFile(assetFileParameterMessage);
-
-            if (sw.ErrorStatus != ErrorStatus.Success)
-            {
-              _logger.WriteTimestampedMessage("Asset " + pa.AssetID + " not retrieved. Status: " + sw.ErrorStatus + " Message: " + sw.Message);
-              sw.ReturnStream.Dispose();
-            }
-
-            if (sw.ErrorStatus == ErrorStatus.Failure)
-              _logger.WriteError(sw.ErrorCode + " " + sw.Message);
-
-            if (sw.ErrorStatus == ErrorStatus.Success)
-            {
-              _logger.WriteTimestampedMessage("Retrieved data for asset " + pa.AssetID);
-
-              if (!Directory.Exists(assetDir))
-                Directory.CreateDirectory(assetDir);
-
-              if (assetType == AssetType.Advert)
-                bLowAssetSpace = SaveStreamAndDispose(sw.ReturnStream, assetFullPath, false, true);
-              else
-                bLowAssetSpace = SaveStreamAndDispose(sw.ReturnStream, assetFullPath, false, true, ref bContentDownloaded);
-
-              if (bLowAssetSpace)
-              {
-                _logger.WriteTimestampedMessage("Allocated disk space low to save asset " + pa.AssetID);
-                return;
-              }
-            }
+            _logger.WriteMessage("downloadedData.Length + directorySize = " + (buffer.Length + directorySize) + ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
+            return;
           }
-          else
-          {
-            _logger.WriteTimestampedMessage("No responsive server found for asset " + pa.AssetID);
-          }
+
+          File.WriteAllBytes(assetFullPath, buffer);
+
+          if (assetType == AssetType.Content)
+            bContentDownloaded = true;
         }
         catch (Exception ex)
         {
@@ -1115,20 +1058,12 @@ namespace OxigenIIAdvertising.ContentExchanger
       }
     }
 
-    private bool SaveStreamAndDispose(Stream stream, string filePath, bool bEncryptNeeded,
-      bool bCheckDirectorySize)
-    {
-      bool bContentDownloaded = false;
-      return SaveStreamAndDispose(stream, filePath, bEncryptNeeded, bCheckDirectorySize, ref bContentDownloaded);
-    }
-
     /// <summary>
     /// Saves a stream to a file
     /// </summary>
     /// <param name="stream">the stream to save</param>
     /// <param name="filePath">path of file to save</param>
     /// <param name="bEncryptNeeded">true to encrypt file before saving it if it's not already encrypted</param>
-    /// <param name="bCheckDirectorySize">true to check if there is enough space to save the file</param>
     /// <returns>true if file to be saved will make the asset directory have low disk space,
     /// false if not, regardless whether the file save has succeeded</returns>
     /// <exception cref="FileNotFoundException">The file cannot be found, such as when mode is FileMode.Truncate or FileMode.Open,
@@ -1137,9 +1072,7 @@ namespace OxigenIIAdvertising.ContentExchanger
     /// <exception cref="DirectoryNotFoundException">The specified path is invalid</exception>
     /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.
     /// For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
-    private bool SaveStreamAndDispose(Stream stream, string filePath, bool bEncryptNeeded, 
-      bool bCheckDirectorySize, 
-      ref bool bContentDownloaded)
+    private void SaveStreamAndDispose(Stream stream, string filePath, bool bEncryptNeeded)
     {
       FileStream fileStream = null;
       byte[] downloadedData = null;
@@ -1151,26 +1084,12 @@ namespace OxigenIIAdvertising.ContentExchanger
       catch (Exception ex)
       {
         _logger.WriteError(ex);
-
-        return false; // continue on with the next file in the caller method
+        return; // continue on with the next file in the caller method
       }
       finally
       {
         if (stream != null)
           stream.Dispose();
-      }
-
-      // is space to be occupied between the allowed asset folder size 
-      // and the allowed asset folder size?
-      if (bCheckDirectorySize)
-      {
-        long directorySize = GetDirectorySize(_assetPath);
-
-        if (downloadedData.Length + directorySize >= _assetFolderSize)
-        {
-          _logger.WriteMessage("downloadedData.Length + directorySize = " + (downloadedData.Length + directorySize) + ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
-          return true;
-        }
       }
 
       try
@@ -1179,10 +1098,6 @@ namespace OxigenIIAdvertising.ContentExchanger
           EncryptByteArrayAndSave(downloadedData, filePath);
         else
           File.WriteAllBytes(filePath, downloadedData);
-
-        // the boolean is set here but only the overload that is used by content assets will make use of it
-        // outside of this method
-        bContentDownloaded = true;
       }
       catch (Exception ex)
       {
@@ -1193,8 +1108,6 @@ namespace OxigenIIAdvertising.ContentExchanger
         if (fileStream != null)
           fileStream.Dispose();
       }
-
-      return false;
     }
 
     public long GetDirectorySize(string path)

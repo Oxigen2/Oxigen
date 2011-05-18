@@ -11,9 +11,6 @@ namespace OxigenIIAdvertising.ServiceContracts.UserManagementServices
   public interface IUserManagementServicesNonStreamer
   {
     [OperationContract]
-    void SendErrorReport(string macAddress, string exceptionDetails);
-
-    [OperationContract]
-    StringErrorWrapper CreatePCIfNotExists(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber, string systemPassPhrase);
+    void SendErrorReport(string machineGUID, string exceptionDetails);
   }
 }

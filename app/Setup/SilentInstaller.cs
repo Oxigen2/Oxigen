@@ -18,8 +18,12 @@ namespace Setup
     /// </summary>
     internal static void Install()
     {
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 1");
+
       if (!SetupHelper.HasAdminRights())
         return;
+
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 2");
 
       if (SetupHelper.OlderOxigenExists())
       {
@@ -30,22 +34,35 @@ namespace Setup
           return;
       }
 
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 3");
+
       if (SetupHelper.OxigenExists())
         return;
-  
+
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 4");
+
       if (!SetupHelper.PrerequisitesMet())
         return;
+
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 5");
 
       if (!File.Exists(Directory.GetCurrentDirectory() + "\\Oxigen.msi"))
         return;
 
-      string userGUID = null;
-      string machineGUID = null;
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 6");
+        
+      string userGUID = GetUserGUIDByUsername();
 
-      CheckServerAndGetGUIDs(ref userGUID, ref machineGUID);
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 7");
 
-      if (string.IsNullOrEmpty(userGUID) || string.IsNullOrEmpty(machineGUID))
+      if (string.IsNullOrEmpty(userGUID))
         return;
+
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 8");
+
+      string machineGUID = System.Guid.NewGuid().ToString().ToUpper() + "_" + SetupHelper.GetRandomLetter();
+
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 9");
 
       AppDataSingleton.Instance.User.UserGUID = userGUID;
       AppDataSingleton.Instance.User.MachineGUID = machineGUID;
@@ -54,40 +71,79 @@ namespace Setup
       if (!GetBinaryPath())
         return;
 
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 10");
+
       if (!GetDataPath())
         return;
+
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 11");
 
       if (!SetupHelper.IsSufficientSpace(AppDataSingleton.Instance.BinariesPath, _binaryRequiredSpace))
         return;
 
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 12");
+
       if (!SetupHelper.IsSufficientSpace(AppDataSingleton.Instance.DataPath, _dataRequiredSpace))
         return;
 
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 13");
+
       CalculateMaxDiskSpaceForAssets();
 
-      if (AppDataSingleton.Instance.FileDetectedChannelSubscriptionsLocal.SubscriptionSet != null)
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 14");
+
+      if (AppDataSingleton.Instance.FileDetectedChannelSubscriptionsLocal.SubscriptionSet != null) {
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 14 - 1");
         AppDataSingleton.Instance.ChannelSubscriptionsToUpload.SubscriptionSet = SetupHelper.GetChannelSubscriptionsNetFromLocal(AppDataSingleton.Instance.FileDetectedChannelSubscriptionsLocal.SubscriptionSet);
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 14 - 2");
+      }
+
+      AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 15");
 
       try
       {
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 16");
+
           if (!InstallMSI())
               return;
 
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 17");
+
         SetupHelper.DoPostMSIInstallSteps();
+
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 18");
+
         SetupHelper.CopySetup();
+
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 19");
 
         if (!SendDetails())
         {
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 20");
+
           UninstallMSI();
+
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 21");
+
           SetupHelper.RemoveAllFiles(AppDataSingleton.Instance.BinariesPath + "bin", SetupHelper.GetSystemDirectory(), AppDataSingleton.Instance.DataPath);
+
+          AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 22");
+
           return;
         }
 
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 23");
+
         SetupHelper.SetRegistryForModifyUninstall();
+
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 24");
       }
-      catch
+      catch (Exception ex)
       {
+        AppDataSingleton.Instance.SetupLogger.WriteMessage(ex.ToString());
+
         UninstallMSI();
+
         SetupHelper.RemoveAllFiles(AppDataSingleton.Instance.BinariesPath + "bin", SetupHelper.GetSystemDirectory(), AppDataSingleton.Instance.DataPath);
         return;
       }
@@ -157,7 +213,7 @@ namespace Setup
       SetupHelper.RemoveAllFiles(binaryPath + "bin", SetupHelper.GetSystemDirectory(), dataSettingsPath);
     }
 
-    private static void CheckServerAndGetGUIDs(ref string userGUID, ref string machineGUID)
+    private static string GetUserGUIDByUsername()
     {
       // Check MAC Address and assign a machine GUID to AppDataSingleton
       string macAddress = SetupHelper.GetMACAddress();
@@ -168,7 +224,7 @@ namespace Setup
         "UserManagementServices.svc");
 
       if (string.IsNullOrEmpty(UMSUri))
-        return;
+        return null;
 
       UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
       
@@ -177,12 +233,16 @@ namespace Setup
       try
       {
         client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+
         client.Url = UMSUri;
-        wrapper = client.CheckIfPCExistsReturnGUID(AppDataSingleton.Instance.Username, macAddress, "password");
+
+        wrapper = client.GetUserGUIDByUsername(AppDataSingleton.Instance.Username, "password");
       }
       catch (System.Net.WebException)
       {
-        return;
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("GetUserGUIDByUsername 8");
+
+        return null;
       }
       finally
       {
@@ -199,39 +259,35 @@ namespace Setup
         }
       }
 
-      if (wrapper.ErrorStatus != ErrorStatus1.Success)
-        return;
-
-      string[] parameters = wrapper.ReturnString.Split(new char[]{'|'});
-
-      userGUID = parameters[0];
-      machineGUID = parameters[1];
+      if (wrapper.ErrorStatus != ErrorStatus1.Success) {
+        AppDataSingleton.Instance.SetupLogger.WriteMessage(wrapper.Message);
+        return null;
+      }
+        
+      return wrapper.ReturnString;
     }
 
     private static bool SendDetails()
     {
       // Check MAC Address and assign a machine GUID to AppDataSingleton
       string macAddress = SetupHelper.GetMACAddress();
-      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("MAC Address: " + macAddress);
-        string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
-        int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
-        AppDataSingleton.Instance.User.GetUserGUIDSuffix(),
-        "UserManagementServices.svc");
+      
+      string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
+      int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
+      AppDataSingleton.Instance.User.GetUserGUIDSuffix(),
+      "UserManagementServices.svc");
 
-      if (string.IsNullOrEmpty(UMSUri))
+      if (string.IsNullOrEmpty(UMSUri)) 
       {
-          AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details not found");
+        AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details not found");
         return false;
       }
-      else
-          AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details: " + UMSUri);
+
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details: " + UMSUri);
 
       UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
       
       SimpleErrorWrapper wrapper = null;
-
-      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("UserGUID: " + AppDataSingleton.Instance.User.UserGUID);
-      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("MachineGUID: " + AppDataSingleton.Instance.User.MachineGUID);
         
       try
       {
@@ -275,6 +331,7 @@ namespace Setup
           AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Send Details failed: message: " + wrapper.Message);
           return false;
       }
+
       AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Send Details: success");
 
       return  true;

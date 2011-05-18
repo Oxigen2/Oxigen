@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -29,6 +30,8 @@ namespace OxigenIIAdvertising.ContentExchanger
 
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
+
+      AddCdnSubdomain();
 
       System.Globalization.CultureInfo systemCultureInfo = System.Globalization.CultureInfo.CurrentCulture;
 
@@ -75,36 +78,15 @@ namespace OxigenIIAdvertising.ContentExchanger
       }
     }
 
-    private static GeneralData GetGeneralData()
-    {
-      GeneralData generalData = null;
+    private static void AddCdnSubdomain() {
+      Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+      config.AppSettings.Settings.Add("cdnSubdomain", "http://the-cdnsubdomain.com");
 
-      try
-      {
-        generalData = (GeneralData)XMLSerializer.Serializer.DeserializeNoLock(typeof(GeneralData), System.Configuration.ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\ss_general_data.dat", "password");
-      }
-      catch
-      {
-        // can't display interface, so ignore.
-      }
+      // Save the changes in App.config file.
+      config.Save(ConfigurationSaveMode.Modified);
 
-      return generalData;
-    }
-
-    private static User GetUser()
-    {
-      User user = null;
-
-      try
-      {
-        user = (User)XMLSerializer.Serializer.DeserializeNoLock(typeof(User), System.Configuration.ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\UserSettings.dat", "password");
-      }
-      catch
-      {
-        // can't display interface, so ignore.
-      }
-
-      return user;
+      // Force a reload of a changed section.
+      ConfigurationManager.RefreshSection("appSettings");
     }
   }
 }

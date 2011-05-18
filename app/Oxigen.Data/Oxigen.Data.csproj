@@ -154,6 +154,7 @@
   <ItemGroup>
     <Content Include="Migrations\009_MACAddressLogicMakeOptionalOrRemove.sql" />
     <Content Include="Migrations\010_RSSXsltToTextField.sql" />
+    <Content Include="Migrations\010_VersionUpdatedAtColumnPCsTable.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

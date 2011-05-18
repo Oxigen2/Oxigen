@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using InterCommunicationStructures;
 using OxigenIIAdvertising.SOAStructures;
 using System.ServiceModel;
 using OxigenIIAdvertising.Demographic;
@@ -343,5 +344,8 @@ namespace OxigenIIAdvertising.ServiceContracts.DAServices
 
     [OperationContract]
     void AddStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+
+    [OperationContract]
+    HashSet<string> UpdateSoftwareVersionInfo(MachineVersionInfo[] mi);
   }
 }

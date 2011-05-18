@@ -53,15 +53,14 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://oxigen.net/Imports">
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd0" namespace="http://oxigen.net" />
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InterCommunicationStructures" />
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" />
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" />
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/OxigenIIUserMgmtServicesService" />
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" />
-      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd8" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd0" namespace="http://oxigen.net" />
+      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InterCommunicationStructures" />
+      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
+      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" />
+      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" />
+      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/OxigenIIUserMgmtServicesService" />
+      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="AppDataFileParameterMessage">
@@ -162,12 +161,6 @@
   <wsdl:message name="IUserManagementServicesNonStreamer_GetMatchedMachineGUID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMatchedMachineGUIDResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserManagementServicesNonStreamer_CompareMACAddresses_InputMessage">
-    <wsdl:part name="parameters" element="tns:CompareMACAddresses" />
-  </wsdl:message>
-  <wsdl:message name="IUserManagementServicesNonStreamer_CompareMACAddresses_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CompareMACAddressesResponse" />
-  </wsdl:message>
   <wsdl:message name="IUserManagementServicesNonStreamer_SendEmailReminder_InputMessage">
     <wsdl:part name="parameters" element="tns:SendEmailReminder" />
   </wsdl:message>
@@ -192,23 +185,17 @@
   <wsdl:message name="IUserManagementServicesNonStreamer_CreatePCIfNotExists_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreatePCIfNotExistsResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserManagementServicesNonStreamer_AddSubscriptionsAndNewPC_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddSubscriptionsAndNewPC" />
-  </wsdl:message>
-  <wsdl:message name="IUserManagementServicesNonStreamer_AddSubscriptionsAndNewPC_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddSubscriptionsAndNewPCResponse" />
-  </wsdl:message>
   <wsdl:message name="IUserManagementServicesNonStreamer_SyncWithServerNoPersonalDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:SyncWithServerNoPersonalDetails" />
   </wsdl:message>
   <wsdl:message name="IUserManagementServicesNonStreamer_SyncWithServerNoPersonalDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:SyncWithServerNoPersonalDetailsResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserManagementServicesNonStreamer_CheckIfPCExistsReturnGUID_InputMessage">
-    <wsdl:part name="parameters" element="tns:CheckIfPCExistsReturnGUID" />
+  <wsdl:message name="IUserManagementServicesNonStreamer_GetUserGUIDByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserGUIDByUsername" />
   </wsdl:message>
-  <wsdl:message name="IUserManagementServicesNonStreamer_CheckIfPCExistsReturnGUID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CheckIfPCExistsReturnGUIDResponse" />
+  <wsdl:message name="IUserManagementServicesNonStreamer_GetUserGUIDByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserGUIDByUsernameResponse" />
   </wsdl:message>
   <wsdl:message name="IUserManagementServicesNonStreamer_RemoveStreamsFromSilentMerge_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveStreamsFromSilentMerge" />
@@ -227,7 +214,7 @@
   </wsdl:message>
   <wsdl:message name="IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddStreamsFromSilentMergeResponse" />
-  </wsdl:message>  
+  </wsdl:message>
   <wsdl:portType name="IUserManagementServicesNonStreamer">
     <wsdl:operation name="GetUserExistsByUserCredentials">
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/GetUserExistsByUserCredentials" message="tns:IUserManagementServicesNonStreamer_GetUserExistsByUserCredentials_InputMessage" />
@@ -281,10 +268,6 @@
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/GetMatchedMachineGUID" message="tns:IUserManagementServicesNonStreamer_GetMatchedMachineGUID_InputMessage" />
       <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/GetMatchedMachineGUIDResponse" message="tns:IUserManagementServicesNonStreamer_GetMatchedMachineGUID_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CompareMACAddresses">
-      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CompareMACAddresses" message="tns:IUserManagementServicesNonStreamer_CompareMACAddresses_InputMessage" />
-      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CompareMACAddressesResponse" message="tns:IUserManagementServicesNonStreamer_CompareMACAddresses_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="SendEmailReminder">
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/SendEmailReminder" message="tns:IUserManagementServicesNonStreamer_SendEmailReminder_InputMessage" />
       <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/SendEmailReminderResponse" message="tns:IUserManagementServicesNonStreamer_SendEmailReminder_OutputMessage" />
@@ -301,17 +284,13 @@
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CreatePCIfNotExists" message="tns:IUserManagementServicesNonStreamer_CreatePCIfNotExists_InputMessage" />
       <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CreatePCIfNotExistsResponse" message="tns:IUserManagementServicesNonStreamer_CreatePCIfNotExists_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddSubscriptionsAndNewPC">
-      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddSubscriptionsAndNewPC" message="tns:IUserManagementServicesNonStreamer_AddSubscriptionsAndNewPC_InputMessage" />
-      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddSubscriptionsAndNewPCResponse" message="tns:IUserManagementServicesNonStreamer_AddSubscriptionsAndNewPC_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="SyncWithServerNoPersonalDetails">
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/SyncWithServerNoPersonalDetails" message="tns:IUserManagementServicesNonStreamer_SyncWithServerNoPersonalDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/SyncWithServerNoPersonalDetailsResponse" message="tns:IUserManagementServicesNonStreamer_SyncWithServerNoPersonalDetails_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CheckIfPCExistsReturnGUID">
-      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CheckIfPCExistsReturnGUID" message="tns:IUserManagementServicesNonStreamer_CheckIfPCExistsReturnGUID_InputMessage" />
-      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CheckIfPCExistsReturnGUIDResponse" message="tns:IUserManagementServicesNonStreamer_CheckIfPCExistsReturnGUID_OutputMessage" />
+    <wsdl:operation name="GetUserGUIDByUsername">
+      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/GetUserGUIDByUsername" message="tns:IUserManagementServicesNonStreamer_GetUserGUIDByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/GetUserGUIDByUsernameResponse" message="tns:IUserManagementServicesNonStreamer_GetUserGUIDByUsername_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RemoveStreamsFromSilentMerge">
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/RemoveStreamsFromSilentMerge" message="tns:IUserManagementServicesNonStreamer_RemoveStreamsFromSilentMerge_InputMessage" />
@@ -325,7 +304,7 @@
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMerge" message="tns:IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_InputMessage" />
       <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMergeResponse" message="tns:IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_OutputMessage" />
     </wsdl:operation>
-  </wsdl:portType>  
+  </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserManagementServicesNonStreamer" type="tns:IUserManagementServicesNonStreamer">
     <wsp:PolicyReference URI="#BasicHttpBinding_IUserManagementServicesNonStreamer_policy" />
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -446,15 +425,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CompareMACAddresses">
-      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/CompareMACAddresses" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="SendEmailReminder">
       <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/SendEmailReminder" style="document" />
       <wsdl:input>
@@ -491,15 +461,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddSubscriptionsAndNewPC">
-      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/AddSubscriptionsAndNewPC" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="SyncWithServerNoPersonalDetails">
       <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/SyncWithServerNoPersonalDetails" style="document" />
       <wsdl:input>
@@ -509,8 +470,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CheckIfPCExistsReturnGUID">
-      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/CheckIfPCExistsReturnGUID" style="document" />
+    <wsdl:operation name="GetUserGUIDByUsername">
+      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/GetUserGUIDByUsername" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

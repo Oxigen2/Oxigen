@@ -10,14 +10,9 @@ namespace OxigenSU
 {
   public class UserManagementServicesNonStreamerSUClient : ProxyClientBase<IUserManagementServicesNonStreamer>, IUserManagementServicesNonStreamer
   {
-    public void SendErrorReport(string macAddress, string exceptionDetails)
+    public void SendErrorReport(string machineGUID, string exceptionDetails)
     {
-      SendErrorReport(macAddress, exceptionDetails);
-    }
-
-    public StringErrorWrapper CreatePCIfNotExists(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber, string systemPassPhrase)
-    {
-      return CreatePCIfNotExists(userGUID, macAddress, machineName, majorVersionNumber, minorVersionNumber, systemPassPhrase);
+      SendErrorReport(machineGUID, exceptionDetails);
     }
   }
 }

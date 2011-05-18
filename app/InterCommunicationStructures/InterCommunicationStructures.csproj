@@ -58,7 +58,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
@@ -113,6 +113,7 @@
     <Compile Include="ComponentInfoCollection.cs" />
     <Compile Include="LogDataParameterMessage.cs" />
     <Compile Include="LogAggregatedDataParameterMessage.cs" />
+    <Compile Include="MachineVersionInfo.cs" />
     <Compile Include="MasterParameterMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamMasterParameterMessage.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using OxigenIIAdvertising.SOAStructures;
@@ -11,18 +12,22 @@ using OxigenIIAdvertising.Demographic;
 using System.ServiceModel;
 using System.Diagnostics;
 using System.IO;
+using InterCommunicationStructures;
+using log4net;
 
 namespace OxigenIIAdvertising.Services
 {
   public class DAService : IDAService
   {
     private EventLog _eventLog = null;
+    private readonly ILog _logger = LogManager.GetLogger(typeof(DAService));
 
     public DAService()
     {
       _eventLog = new EventLog();
       _eventLog.Log = String.Empty;
       _eventLog.Source = "Oxigen Data Access Host";
+      log4net.Config.XmlConfigurator.Configure();
     }
 
     public PageChannelData GetChannelListByCategoryID(int userID, int categoryID, int startChannelNo, int endChannelNo, 
@@ -4764,6 +4769,80 @@ namespace OxigenIIAdvertising.Services
 
         ts.Complete();
       }
+    }
+
+    public HashSet<string> UpdateSoftwareVersionInfo(MachineVersionInfo[] mi)
+    {
+      _logger.Debug("UpdateSoftwareVersionInfo() 0");
+      SqlDatabase sqlDatabase = null;
+      var failedMachineGUIDs = new HashSet<string>();
+      _logger.Debug("UpdateSoftwareVersionInfo() 1");
+
+      int nonExistingMachineGUIDs = 0;
+      int errorMachineGUIDs = 0;
+
+      using (TransactionScope ts = new TransactionScope())
+      {
+        _logger.Debug("UpdateSoftwareVersionInfo() 2");
+        try
+        {
+          _logger.Debug("UpdateSoftwareVersionInfo() 3");
+          sqlDatabase = new SqlDatabase();
+          _logger.Debug("UpdateSoftwareVersionInfo() 4");
+          sqlDatabase.Open();
+          _logger.Debug("UpdateSoftwareVersionInfo() 5");
+
+          foreach (MachineVersionInfo machineVersionInfo in mi)
+          {
+            try
+            {
+              sqlDatabase.AddInputParameter("@MachineGUID", machineVersionInfo.MachineGUID);
+              sqlDatabase.AddInputParameter("@VersionUpdatedAt", machineVersionInfo.VersionUpdatedAt);
+              sqlDatabase.AddInputParameter("@MajorVersionNumber", machineVersionInfo.MajorVersionNumber);
+              sqlDatabase.AddInputParameter("@MinorVersionNumber", machineVersionInfo.MinorVersionNumber);
+              SqlParameter machineLiveParam = sqlDatabase.AddOutputParameter("@MachineLive", SqlDbType.Bit, 1, null);
+
+              sqlDatabase.ExecuteNonQuery("dp_addMachineVersionInfo");
+
+              if (!(bool)machineLiveParam.Value) {
+                nonExistingMachineGUIDs++;
+                _logger.Warn("PC GUID " + machineVersionInfo.MachineGUID + " does not exist or is marked as deleted.");
+                failedMachineGUIDs.Add(machineVersionInfo.MachineGUID);
+              }
+
+              sqlDatabase.ClearParameters();
+            }
+            catch (Exception ex) {
+              errorMachineGUIDs++;
+              _logger.Error(ex.ToString());
+              _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+              failedMachineGUIDs.Add(machineVersionInfo.MachineGUID);
+            }
+          }
+        }
+        catch (Exception ex)
+        {
+          _logger.Debug(ex.ToString());
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+          throw ex;
+        }
+        finally
+        {
+          if (sqlDatabase != null)
+            sqlDatabase.Dispose();
+        }
+
+        _logger.Debug("UpdateSoftwareVersionInfo() 6");
+
+        ts.Complete();
+
+        _logger.Debug("UpdateSoftwareVersionInfo() 7");
+      }
+
+      _logger.Debug("UpdateSoftwareVersionInfo() 8");
+      _logger.Info(failedMachineGUIDs.Count + " updates failed. " + nonExistingMachineGUIDs + " do not exist or are marked as deleted. " + errorMachineGUIDs + " could not be updated due to errors.");
+
+      return failedMachineGUIDs;
     }
   }
 }

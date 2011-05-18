@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://oxigen.net" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UserManagementServices" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsdl:import namespace="http://oxigen.net" location="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?wsdl=wsdl0" />
+  <wsdl:import namespace="http://oxigen.net" location="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:service name="UserManagementServices">
     <wsdl:port name="BasicHttpBinding_IUserManagementServicesStreamer" binding="i0:BasicHttpBinding_IUserManagementServicesStreamer">
-      <soap:address location="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc/file" />
+      <soap:address location="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc/file" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IUserManagementServicesNonStreamer" binding="i0:BasicHttpBinding_IUserManagementServicesNonStreamer">
-      <soap:address location="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc" />
+      <soap:address location="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -8,6 +8,9 @@ namespace Setup
   {
     private static bool ValidateArgs(string[] args)
     {
+      if (args.Length < 2)
+        return false;
+
       switch (args[1].ToLower())
       {
         case "/a":
@@ -26,13 +29,13 @@ namespace Setup
       if (!SetupHelper.OxigenExists())
         return;
 
-      if (args.Length < 2)
+      if (!ValidateArgs(args))
         return;
 
       if (AppDataSingleton.Instance.FileDetectedChannelSubscriptionsLocal.SubscriptionSet != null)
       {
         AppDataSingleton.Instance.ChannelSubscriptionsToUpload.SubscriptionSet = SetupHelper.GetChannelSubscriptionsNetFromLocal(AppDataSingleton.Instance.FileDetectedChannelSubscriptionsLocal.SubscriptionSet);
-        
+
         switch (args[1].ToLower())
         {
           case "/a":
@@ -53,7 +56,7 @@ namespace Setup
     private static void DeleteStreams()
     {
       string UMSUri = null;
-      string macAddress = SetupHelper.GetMACAddress();
+      string machineGUID = SetupHelper.GetFromRegistry("pcGUID");
 
       if (!GetResponsiveURI(ref UMSUri))
         return;
@@ -63,9 +66,10 @@ namespace Setup
       try
       {
         client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+
         client.Url = UMSUri;
 
-        client.RemoveStreamsFromSilentMerge(macAddress,
+        client.RemoveStreamsFromSilentMerge(machineGUID,
           AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
       }
       catch (System.Net.WebException)
@@ -90,7 +94,7 @@ namespace Setup
     private static void ReplaceStreams()
     {
       string UMSUri = null;
-      string macAddress = SetupHelper.GetMACAddress();
+      string machineGUID = SetupHelper.GetFromRegistry("pcGUID");
 
       if (!GetResponsiveURI(ref UMSUri))
         return;
@@ -102,7 +106,7 @@ namespace Setup
         client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
         client.Url = UMSUri;
 
-        client.ReplaceStreamsFromSilentMerge(macAddress,
+        client.ReplaceStreamsFromSilentMerge(machineGUID,
           AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
       }
       catch (System.Net.WebException)
@@ -127,7 +131,7 @@ namespace Setup
     private static void AddStreams()
     {
       string UMSUri = null;
-      string macAddress = SetupHelper.GetMACAddress();
+      string machineGUID = SetupHelper.GetFromRegistry("pcGUID");
 
       if (!GetResponsiveURI(ref UMSUri))
         return;
@@ -139,7 +143,7 @@ namespace Setup
         client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
         client.Url = UMSUri;
 
-        client.AddStreamsFromSilentMerge(macAddress,
+        client.AddStreamsFromSilentMerge(machineGUID,
           AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
       }
       catch (System.Net.WebException)
@@ -172,6 +176,6 @@ namespace Setup
         return false;
 
       return true;
-    }    
+    }
   }
 }

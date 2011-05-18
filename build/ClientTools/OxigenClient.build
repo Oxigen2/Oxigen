@@ -5,7 +5,7 @@
 	<property name="ClientToolsDir" value="C:\Oxigen2\Oxigen\build\ClientTools\"/>
 	<property name="ObfuscatorDir" value="C:\Oxigen2\Oxigen\build\ClientTools\CryptoObfuscator\"/>
 	<property name="SolutionPath" value="C:\Oxigen2\Oxigen\OxigenIIAdvertising.sln"/>
-	<property name="SignToolPath" value="C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\signtool.exe"/>
+	<property name="SignToolPath" value="C:\Program Files\Microsoft SDKs\Windows\v7.0\Bin\signtool.exe"/>
 	<property name="CertificateLocation" value="C:\Oxigen2\Oxigen\build\ClientTools\Certificates\oxigen II Ltd Code Signing Cert.pfx"/>
 	<property name="InstallationPackageDir" value="C:\Oxigen2\Oxigen\build\ClientTools\InstallationPackage\"/>
 	<property name="InstallationPackageTempDir" value="C:\Oxigen2\Oxigen\build\ClientTools\InstallationPackage\Temp\"/>
@@ -37,11 +37,6 @@
 		</delete>
 		<!-- Copy files needed to create the client MSI. Obfuscated files will be created on the
 		same directory by Crypto Obfuscator so there is no to copy them here. -->
-		<copy todir="${InstallationPackageTempDir}" failonerror="true">
-			<fileset basedir="${LibDir}">
-				<include name="log4net.dll" />
-			</fileset>
-		</copy>	
 		<copy todir="${InstallationPackageTempDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}Assets\bin\Release\">
 				<include name="OxigenAssets.dll" />
@@ -356,9 +351,17 @@
 			</fileset>
 		</copy>
 		<!-- Sign binaries -->
-		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.exe&quot;" failonerror="false"/>
-		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.dll&quot;" failonerror="false"/>
-		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.scr&quot;" failonerror="false"/>
+		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.exe&quot;" failonerror="true"/>
+		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.dll&quot;" failonerror="true"/>
+		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.scr&quot;" failonerror="true"/>
+		<!-- Now that all binaries but log4net.dll are signed, copy log4net.dll to the installation package temp directory. log4net.dll will go in unsigned.
+		Signature and certificate would increase the size of log4net.dll to just over 200K which is above the Software Updater's download limit for older users.
+		This step is just good to have and not a necessity as current users will have a software updater that allows larger downloads but we want to keep all users to have the same version of all binaries. -->
+		<copy todir="${InstallationPackageTempDir}" failonerror="true">
+			<fileset basedir="${BaseSolutionDir}log4NetCustom\bin\Release\">
+				<include name="log4net.dll" />
+			</fileset>
+		</copy>	
 		<move file="${InstallationPackageTempDir}Setup.exe" todir="${InstallationPackageDir}"/>
 		<call target="makeMSI"/>
 		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageDir}Oxigen.msi&quot;" failonerror="false"/>

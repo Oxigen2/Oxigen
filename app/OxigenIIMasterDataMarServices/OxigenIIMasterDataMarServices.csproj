@@ -57,7 +57,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
@@ -83,6 +83,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -104,6 +107,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DirectoryEnumerator\DirectoryEnumerator.csproj">
+      <Project>{B80BF0A6-4B9B-4D01-A966-4C30FD4E0D7B}</Project>
+      <Name>DirectoryEnumerator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileChecksumCalculator\FileChecksumCalculator\FileChecksumCalculator.csproj">
       <Project>{9336AE54-20DB-468F-93BA-837CDAB30221}</Project>
       <Name>FileChecksumCalculator</Name>

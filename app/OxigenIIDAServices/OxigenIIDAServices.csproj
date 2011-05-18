@@ -57,7 +57,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
@@ -83,6 +83,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -112,6 +115,10 @@
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{F50C29A8-6B88-436F-A938-61166E695483}</Project>
       <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterCommunicationStructures\InterCommunicationStructures.csproj">
+      <Project>{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}</Project>
+      <Name>InterCommunicationStructures</Name>
     </ProjectReference>
     <ProjectReference Include="..\OxigenIIChannelData\ChannelData.csproj">
       <Project>{5DF6DC54-E02D-47A8-B74D-C89F9E944687}</Project>

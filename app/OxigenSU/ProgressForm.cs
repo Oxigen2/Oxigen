@@ -569,16 +569,15 @@ namespace OxigenSU
 
     private bool SaveStreamAndDispose(Stream stream, string filePath)
     {
-      FileStream fileStream = null;
       byte[] downloadedData = null;
 
       try
       {
         downloadedData = StreamToByteArray(stream);
       }
-      catch
+      catch (Exception ex)
       {
-        _log.WriteEntry(String.Format("Could not process file: {0}", filePath) + EventLogEntryType.Error);
+        _log.WriteEntry(String.Format("Could not process file: {0}", filePath) + ". The error was: " + ex.ToString(),EventLogEntryType.Error);
         return false;
       }
       finally
@@ -591,15 +590,10 @@ namespace OxigenSU
       {
         File.WriteAllBytes(filePath, downloadedData);
       }
-      catch
+      catch (Exception ex)
       {
-        _log.WriteEntry(String.Format("Could not save file: {0}", filePath), EventLogEntryType.Error);
+        _log.WriteEntry(String.Format("Could not save file: {0}", filePath) + ". The error was: " + ex.ToString(), EventLogEntryType.Error);
         return false;
-      }
-      finally
-      {
-        if (fileStream != null)
-          fileStream.Dispose();
       }
 
       return true;
