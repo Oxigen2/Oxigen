@@ -48,38 +48,37 @@ namespace Setup
     /// <exception cref="System.Security.SecurityException">The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.</exception>
     /// <exception cref="UriFormatException">The URI specified in requestUriString is not a valid URI.</exception>
     public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string letter, string primaryDomainName, string secondaryDomainName, string endpointSuffix) {
-      return "https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc";
-      //string serverURIPrefix = "https://";
+     // NOTE: uncomment for testing. return "https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc";
+      string serverURIPrefix = "https://";
 
-      //switch (serverType)
-      //{
-      //  case ServerType.MasterGetConfig:
-      //    serverURIPrefix += "master-getconfig-";
-      //    break;
-      //  case ServerType.RelayChannelAssets:
-      //    serverURIPrefix += "relay-channelassets-";
-      //    break;
-      //  case ServerType.RelayChannelData:
-      //    serverURIPrefix += "relay-channeldata-";
-      //    break;
-      //  case ServerType.RelayGetConfig:
-      //    serverURIPrefix += "relay-getconfig-";
-      //    break;
-      //  case ServerType.RelayLogCont:
-      //    serverURIPrefix += "relay-sendlogcon-";
-      //    break;
-      //  case ServerType.RelayLogAdv:
-      //    serverURIPrefix += "relay-sendlogadv-";
-      //    break;
-      //  case ServerType.RelayLogs:
-      //    serverURIPrefix += "relay-logs-";
-      //    break;
-      //}
-      
-      //if (letter != "")
-      //  serverURIPrefix += letter + "-";
+      switch (serverType) {
+        case ServerType.MasterGetConfig:
+          serverURIPrefix += "master-getconfig-";
+          break;
+        case ServerType.RelayChannelAssets:
+          serverURIPrefix += "relay-channelassets-";
+          break;
+        case ServerType.RelayChannelData:
+          serverURIPrefix += "relay-channeldata-";
+          break;
+        case ServerType.RelayGetConfig:
+          serverURIPrefix += "relay-getconfig-";
+          break;
+        case ServerType.RelayLogCont:
+          serverURIPrefix += "relay-sendlogcon-";
+          break;
+        case ServerType.RelayLogAdv:
+          serverURIPrefix += "relay-sendlogadv-";
+          break;
+        case ServerType.RelayLogs:
+          serverURIPrefix += "relay-logs-";
+          break;
+      }
 
-      //return ConnectionURI(maxNoServers, timeout, serverURIPrefix, primaryDomainName, secondaryDomainName, endpointSuffix);
+      if (letter != "")
+        serverURIPrefix += letter + "-";
+
+      return ConnectionURI(maxNoServers, timeout, serverURIPrefix, primaryDomainName, secondaryDomainName, endpointSuffix);
     }
 
     private static string ConnectionURI(int maxNoServers, int timeout, string serverURIPrefix, 

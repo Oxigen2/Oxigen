@@ -271,19 +271,19 @@ namespace Setup
     {
       // Check MAC Address and assign a machine GUID to AppDataSingleton
       string macAddress = SetupHelper.GetMACAddress();
-      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("MAC Address: " + macAddress);
-        string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
-        int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
-        AppDataSingleton.Instance.User.GetUserGUIDSuffix(),
-        "UserManagementServices.svc");
+      
+      string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
+      int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
+      AppDataSingleton.Instance.User.GetUserGUIDSuffix(),
+      "UserManagementServices.svc");
 
-      if (string.IsNullOrEmpty(UMSUri))
+      if (string.IsNullOrEmpty(UMSUri)) 
       {
-          AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details not found");
+        AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details not found");
         return false;
       }
-      else
-          AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details: " + UMSUri);
+
+      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details: " + UMSUri);
 
       UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
       
@@ -331,6 +331,7 @@ namespace Setup
           AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Send Details failed: message: " + wrapper.Message);
           return false;
       }
+
       AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Send Details: success");
 
       return  true;
