@@ -45,6 +45,7 @@ namespace OxigenIIAdvertising.ContentExchanger
     private string _password = "";
 
     private int _maxNoRelayConfigServers = -1;
+
     private int _maxNoRelayChannelAssetServers = -1;
     private int _maxNoRelayChannelDataServers = -1;
     private int _maxNoMasterConfigServers = -1;
@@ -52,6 +53,8 @@ namespace OxigenIIAdvertising.ContentExchanger
     private int _daysToKeepAssetFiles = -1;
     private long _assetFolderSize = -1;
     private float _defaultDisplayDuration = -1F;
+    private int _majorVersionNumber = -1;
+    private int _minorVersionNumber = -1;
 
     private string _primaryDomainName = "";
     private string _secondaryDomainName = "";
@@ -723,7 +726,7 @@ namespace OxigenIIAdvertising.ContentExchanger
 
             if (sw.ErrorStatus == ErrorStatus.Success)
             {
-              SaveStreamAndDispose(sw.ReturnStream, channelFileFullPath, false, false);
+              SaveStreamAndDispose(sw.ReturnStream, channelFileFullPath, false);
               
               _logger.WriteTimestampedMessage("Channel data for " + channelSubscription.ChannelID + " have not been retrieved.");
             }            
@@ -1054,7 +1057,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       {
         _logger.WriteTimestampedMessage("Saving file for " + dataFileType.ToString());
 
-        SaveStreamAndDispose(sw.ReturnStream, filePath, bEncryptNeeded, false);
+        SaveStreamAndDispose(sw.ReturnStream, filePath, bEncryptNeeded);
       }
     }
 
