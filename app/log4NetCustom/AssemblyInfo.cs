@@ -47,7 +47,7 @@ using System.Runtime.CompilerServices;
 #if (CLI_1_0)
 [assembly: AssemblyTitle("log4net for CLI 1.0 Compatible Frameworks")]
 #elif (NET_1_0)
-[assembly: AssemblyTitle("log4net for .NET Framework 1.0")]
+[assembly: AssemblyTitle("log4net for .NET Framework 2.0")]
 #elif (NET_1_1)
 [assembly: AssemblyTitle("log4net for .NET Framework 1.1")]
 #elif (NET_2_0)
@@ -81,7 +81,7 @@ using System.Runtime.CompilerServices;
 #endif
 
 [assembly: AssemblyDescription("The Apache Software Foundation log4net Logging Framework")]
-[assembly: AssemblyProduct("log4net")]
+[assembly: AssemblyProduct("OxigenLog4netMin")]
 [assembly: AssemblyDefaultAlias("log4net")]
 [assembly: AssemblyCulture("")]		
 		
@@ -116,4 +116,3 @@ using System.Runtime.CompilerServices;
 #endif
 // We do not use a CSP key for strong naming
 // [assembly: AssemblyKeyName("")]
-
