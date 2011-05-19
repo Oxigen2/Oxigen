@@ -13,7 +13,7 @@ namespace OxigenIIPresentation.CommandHandlers.Processors.Get
   {
     public GetPreviewProcessor(HttpSessionState session) : base(session) { }
 
-    OxigenIIAdvertising.LoggerInfo.Logger log = new OxigenIIAdvertising.LoggerInfo.Logger("Preview", @"E:\Client Sites\OxigenIIAdvertisingSystem\Debug.txt", OxigenIIAdvertising.LoggerInfo.LoggingMode.Debug);
+    Oxigen.LoggerInfoServer.Logger log = new Oxigen.LoggerInfoServer.Logger("Preview", @"E:\Client Sites\OxigenIIAdvertisingSystem\Debug.txt", Oxigen.LoggerInfoServer.LoggingMode.Debug);
 
     internal override string Execute(System.Collections.Specialized.NameValueCollection commandParameters)
     {

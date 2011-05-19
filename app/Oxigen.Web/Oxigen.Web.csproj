@@ -1492,6 +1492,10 @@
       <Project>{63E9AECE-3385-44F0-BDF9-4C01DD3C0647}</Project>
       <Name>Oxigen.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Oxigen.LoggerInfoServer\Oxigen.LoggerInfoServer.csproj">
+      <Project>{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}</Project>
+      <Name>Oxigen.LoggerInfoServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Oxigen.SelfExtractorCreator\Oxigen.SelfExtractorCreator.csproj">
       <Project>{632DB5A9-B35A-40A3-A9DD-462066948181}</Project>
       <Name>Oxigen.SelfExtractorCreator</Name>
@@ -1503,10 +1507,6 @@
     <ProjectReference Include="..\FilenameMakerLib\FilenameMakerLib.csproj">
       <Project>{17060F4B-F9EE-4C1E-A787-F1F1F7F7A5F2}</Project>
       <Name>FilenameMakerLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIILoggerInfo\LoggerInfo.csproj">
-      <Project>{24134EAF-1B5B-4329-9071-15629067E98D}</Project>
-      <Name>LoggerInfo</Name>
     </ProjectReference>
     <ProjectReference Include="..\OxigenIISitesBLClient\OxigenIISitesBLClient.csproj">
       <Project>{83BBF96A-3E50-4944-AE2A-C4D4E409D01C}</Project>

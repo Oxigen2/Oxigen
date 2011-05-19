@@ -14,7 +14,7 @@ namespace OxigenIIPresentation.CommandHandlers.Processors.Get
 
     public PasswordRequestProcessor(HttpSessionState session) : base(session) { }
 
-    private OxigenIIAdvertising.LoggerInfo.Logger logger = new OxigenIIAdvertising.LoggerInfo.Logger("Password Requests", @"E:\Client Sites\OxigenIIAdvertisingSystem\debug.txt", OxigenIIAdvertising.LoggerInfo.LoggingMode.Debug);
+    private Oxigen.LoggerInfoServer.Logger logger = new Oxigen.LoggerInfoServer.Logger("Password Requests", @"E:\Client Sites\OxigenIIAdvertisingSystem\debug.txt", Oxigen.LoggerInfoServer.LoggingMode.Debug);
 
     internal override string Execute(string[] parameters)
     {

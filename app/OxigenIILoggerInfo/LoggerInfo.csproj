@@ -106,9 +106,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\log4NetCustom\log4net.csproj">
+    <ProjectReference Include="..\log4NetCustom\Oxigen.Log4netMin.csproj">
       <Project>{F6A02431-167E-4347-BC43-65532C31CDB7}</Project>
-      <Name>log4net</Name>
+      <Name>Oxigen.Log4netMin</Name>
     </ProjectReference>
     <ProjectReference Include="..\OxigenIIExceptions\Exceptions.csproj">
       <Project>{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}</Project>

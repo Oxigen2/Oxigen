@@ -13,7 +13,6 @@ using Oxigen.ApplicationServices.Flash;
 using Oxigen.Core;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
-using OxigenIIAdvertising.LoggerInfo;
 using AssetContent = OxigenIIAdvertising.SOAStructures.AssetContent;
 
 namespace OxigenIIPresentation

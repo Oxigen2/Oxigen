@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace OxigenIIAdvertising.LoggerInfo
+namespace Oxigen.LoggerInfoServer
 {
   public class Logger
   {
@@ -17,12 +17,12 @@ namespace OxigenIIAdvertising.LoggerInfo
     {
       get { return _outputPath; }
 
-      set 
+      set
       {
         if (_outputPath != "")
           throw new InvalidOperationException("Property OutputPath has alreade been defined");
 
-        _outputPath = value; 
+        _outputPath = value;
       }
     }
 

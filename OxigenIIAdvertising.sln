@@ -246,7 +246,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oxigen.SelfExtractorCreator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryEnumerator", "app\DirectoryEnumerator\DirectoryEnumerator.csproj", "{B80BF0A6-4B9B-4D01-A966-4C30FD4E0D7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "log4net", "app\log4NetCustom\log4net.csproj", "{F6A02431-167E-4347-BC43-65532C31CDB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oxigen.Log4netMin", "app\log4NetCustom\Oxigen.Log4netMin.csproj", "{F6A02431-167E-4347-BC43-65532C31CDB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oxigen.LoggerInfoServer", "app\Oxigen.LoggerInfoServer\Oxigen.LoggerInfoServer.csproj", "{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1944,6 +1946,18 @@ Global
 		{F6A02431-167E-4347-BC43-65532C31CDB7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F6A02431-167E-4347-BC43-65532C31CDB7}.Release|x64.ActiveCfg = Release|Any CPU
 		{F6A02431-167E-4347-BC43-65532C31CDB7}.Release|x86.ActiveCfg = Release|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Release|x64.ActiveCfg = Release|Any CPU
+		{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

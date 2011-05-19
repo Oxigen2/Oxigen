@@ -7,7 +7,6 @@ using System.Web.SessionState;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
 using System.Text;
-using OxigenIIAdvertising.LoggerInfo;
 
 namespace OxigenIIPresentation.CommandHandlers.Processors.Get
 {

@@ -354,12 +354,12 @@
 		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.exe&quot;" failonerror="true"/>
 		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.dll&quot;" failonerror="true"/>
 		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageTempDir}*.scr&quot;" failonerror="true"/>
-		<!-- Now that all binaries but OxigenLog4NetMin.dll are signed, copy OxigenLog4NetMin.dll to the installation package temp directory. OxigenLog4NetMin.dll will go in unsigned.
-		Signature and certificate would increase the size of OxigenLog4NetMin.dll to just over 200K which is above the Software Updater's download limit for older users.
+		<!-- Now that all binaries but Oxigen.Log4NetMin.dll are signed, copy Oxigen.Log4NetMin.dll to the installation package temp directory. Oxigen.Log4NetMin.dll will go in unsigned.
+		Signature and certificate would increase the size of Oxigen.Log4NetMin.dll to just over 200K which is above the Software Updater's download limit for older users.
 		This step is just good to have and not a necessity as current users will have a software updater that allows larger downloads but we want to keep all users to have the same version of all binaries. -->
 		<copy todir="${InstallationPackageTempDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}log4NetCustom\bin\Release\">
-				<include name="OxigenLog4NetMin.dll" />
+				<include name="Oxigen.Log4NetMin.dll" />
 			</fileset>
 		</copy>	
 		<move file="${InstallationPackageTempDir}Setup.exe" todir="${InstallationPackageDir}"/>

@@ -81,7 +81,7 @@ using System.Runtime.CompilerServices;
 #endif
 
 [assembly: AssemblyDescription("The Apache Software Foundation log4net Logging Framework")]
-[assembly: AssemblyProduct("OxigenLog4netMin")]
+[assembly: AssemblyProduct("Oxigen.Log4netMin")]
 [assembly: AssemblyDefaultAlias("log4net")]
 [assembly: AssemblyCulture("")]		
 		

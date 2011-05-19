@@ -6,7 +6,7 @@ using OxigenIIAdvertising.BLClients;
 using System.Web.SessionState;
 using OxigenIIAdvertising.SOAStructures;
 using System.Text.RegularExpressions;
-using OxigenIIAdvertising.LoggerInfo;
+
 
 namespace OxigenIIPresentation.CommandHandlers.Processors.Post
 {
