@@ -180,7 +180,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Oxigen.ApplicationServices\RSS\Guardian.xslt" />
-    <Content Include="Oxigen.ApplicationServices\RSS\mediaweek.xslt" />
+    <Content Include="Oxigen.ApplicationServices\RSS\leeds.xslt" />
+    <Content Include="Oxigen.ApplicationServices\RSS\mediaweek.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Oxigen.ApplicationServices\RSS\rssschema.xml" />
     <EmbeddedResource Include="Oxigen.ApplicationServices\RSS\Telegraph.xslt" />
     <EmbeddedResource Include="Oxigen.ApplicationServices\RSS\TelegraphSample.xml" />
