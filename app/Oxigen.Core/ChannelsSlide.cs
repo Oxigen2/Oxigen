@@ -6,9 +6,10 @@ namespace Oxigen.Core
 {
     public class ChannelsSlide : Entity
     {
+        public ChannelsSlide() {}
         public ChannelsSlide(Channel channel, Slide slide)
         {
-            Channel = Channel;
+            Channel = channel;
             ClickThroughURL = slide.ClickThroughURL;
             DisplayDuration = slide.DisplayDuration;
             Slide = slide;
