@@ -120,6 +120,7 @@ namespace Oxigen.Core.Syndication
 
         private string RunScript(string script, string functionName, string functionParam)
         {
+            CSScript.CacheEnabled = true;
             AsmHelper helper = new AsmHelper(CSScript.LoadCode(script, null, false));
             return (string)helper.Invoke("Script." + functionName, functionParam);
         }
