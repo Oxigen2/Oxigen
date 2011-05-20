@@ -30,36 +30,6 @@ namespace Setup
         txtPCName.Text = AppDataSingleton.Instance.NewPCName;
     }
 
-    private SimpleErrorWrapper GetGUIDMatch(string userGUID, string registryPCGUID, ref bool bGUIDMatch)
-    {
-      SimpleErrorWrapper wrapper = null;
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
-
-      try
-      {
-        string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
-
-        if (string.IsNullOrEmpty(url))
-        {
-            AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Matching PC: Couldn't find a responsive URL.");
-            return SetupHelper.GetGenericErrorConnectingWrapper();
-        }
-
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-        client.Url = url;
-
-        wrapper = client.GetMatchedMachineGUID(userGUID, registryPCGUID, "password");
-      }
-      catch (System.Net.WebException ex)
-      {
-        AppDataSingleton.Instance.SetupLogger.WriteError(ex);
-        return SetupHelper.GetGenericErrorConnectingWrapper();
-      }
-
-      return wrapper;
-    }
-
     private void btnNext_Click(object sender, EventArgs e)
     {
       string pcName = txtPCName.Text.Trim();
@@ -85,105 +55,6 @@ namespace Setup
 
       SetupHelper.OpenForm<UpdateExistingUserDetailsForm>(this);
     }
-
-    private void GetPCSubscriptionsByMachineGUID(string newPcGUID)
-    {
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
-      Setup.UserManagementServicesLive.ChannelSubscriptions subscriptionsNet = null;
-
-      lock (_lockObj)
-      {
-        try
-        {
-          string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
-
-          if (string.IsNullOrEmpty(url))
-          {
-              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Getting subscriptions: Couldn't get a responsive URL.");
-            _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-            return;
-          }
-
-          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-          client.Url = url;
-
-          _wrapper = client.GetPCSubscriptionsByMachineGUID(AppDataSingleton.Instance.User.UserGUID,
-            newPcGUID,
-            "password",
-            out subscriptionsNet);
-        }
-        catch (System.Net.WebException ex)
-        {
-           AppDataSingleton.Instance.SetupLogger.WriteError(ex);
-          _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-          return;
-        }
-        finally
-        {
-          if (client != null)
-          {
-            try
-            {
-              client.Dispose();
-            }
-            catch
-            {
-              client.Abort();
-            }
-          }
-        }
-
-        if (subscriptionsNet.SubscriptionSet.Length > 0)
-          AppDataSingleton.Instance.DownloadedChannelSubscriptionsLocal.SubscriptionSet = SetupHelper.GetChannelSubscriptionsLocalFromNet(subscriptionsNet.SubscriptionSet);
-      }
-    }
-
-    private SimpleErrorWrapper GetPCList(out PcInfo[] pcs)
-    {
-      pcs = null;
-      SimpleErrorWrapper wrapper = null;
-
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
-
-      try
-      {
-        string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
-
-        if (string.IsNullOrEmpty(url))
-        {
-            AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("PCList Form: could not find a responsive URL");
-          return SetupHelper.GetGenericErrorConnectingWrapper();
-        }
-
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-        client.Url = url;
-
-        wrapper = client.GetPcListForInstallerEmail(AppDataSingleton.Instance.EmailAddress, "password", out pcs);
-      }
-      catch (System.Net.WebException ex)
-      {
-          AppDataSingleton.Instance.SetupLogger.WriteError(ex);
-        return SetupHelper.GetGenericErrorConnectingWrapper();
-      }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
-      }
-
-      return wrapper;
-    }
     
     private void btnCancel_Click(object sender, EventArgs e)
     {
@@ -199,20 +70,6 @@ namespace Setup
       }
 
       SetupHelper.OpenForm<CredentialsForm>(this);
-    }
-
-    private void ddPCs_SelectedIndexChanged(object sender, EventArgs e)
-    {
-      if (((ComboBox)sender).SelectedIndex == 0)
-      {
-        lblPCName.Enabled = true;
-        txtPCName.Enabled = true;
-      }
-      else
-      {
-        lblPCName.Enabled = false;
-        txtPCName.Enabled = false;
-      }
     }
   }
 }
