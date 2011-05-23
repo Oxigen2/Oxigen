@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Configuration;
 using System.Diagnostics;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
 using System.ServiceModel;
 using OxigenIIAdvertising.Services;
 using OxigenIIAdvertising.ServiceContracts.BLServices;
@@ -17,7 +13,7 @@ namespace BLHostService
     public HostService()
     {
       InitializeComponent();
-
+      this.ServiceName = ConfigurationManager.AppSettings["serviceName"];
       eventLog.Log = String.Empty;
       eventLog.Source = "Oxigen Business Logic Host";
       eventLog.ModifyOverflowPolicy(OverflowAction.OverwriteAsNeeded, 7);
