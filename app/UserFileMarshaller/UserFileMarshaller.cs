@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ServiceModel;
 using System.Diagnostics;
 using ServiceErrorReporting;
 using System.IO;
 using InterCommunicationStructures;
-using OxigenIIAdvertising.LoggerInfo;
 
 namespace OxigenIIDownloadServers
 {
@@ -19,7 +15,6 @@ namespace OxigenIIDownloadServers
     private string _systemPassPhrase = System.Configuration.ConfigurationSettings.AppSettings["systemPassPhrase"];
     private string _changesetPath = System.Configuration.ConfigurationSettings.AppSettings["changeSetPath"];
     private string _debugFilePath = System.Configuration.ConfigurationSettings.AppSettings["debugFilePath"];
-    private Logger _logger = null;
 
     public UserFileMarshaller()
     {
@@ -56,7 +51,7 @@ namespace OxigenIIDownloadServers
 
       if (!File.Exists(changesetFullPath))
       {
-        _logger.WriteTimestampedMessage("File does not exist: " + changesetFullPath);
+        _eventLog.WriteEntry("File does not exist: " + changesetFullPath, EventLogEntryType.Warning);
 
         streamErrorWrapper.ErrorCode = "ERR:002";
         streamErrorWrapper.Message = "File not found";
