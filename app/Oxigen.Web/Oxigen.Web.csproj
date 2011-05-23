@@ -1475,6 +1475,7 @@
     <Content Include="Viewmedia.aspx" />
     <Content Include="GeneralSettings\ss_general_data.dat" />
     <Content Include="packages.config" />
+    <None Include="Oxigen.Web.wpp.targets" />
     <None Include="Resources\LiveScreensaverIntro.pdf" />
     <Content Include="Resources\OxigenInstallationRequirements.pdf" />
     <None Include="Resources\Sports_2009.pdf" />
@@ -1553,7 +1554,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2656</DevelopmentServerPort>
+          <DevelopmentServerPort>13133</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

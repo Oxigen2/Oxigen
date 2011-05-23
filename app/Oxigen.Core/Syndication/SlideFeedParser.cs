@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml;
 using CSScriptLibrary;
+using HtmlAgilityPack;
 
 namespace Oxigen.Core.Syndication
 {
@@ -30,15 +31,12 @@ namespace Oxigen.Core.Syndication
             {
                 string guid = item.Attributes["guid"].Value;
                 if (guid == lastGuid) break;
-                try
-                {
+                //try
+                //{
                     SlideFeedItem slideFeedItem = GetSlideFeedItem(item);
-                    slideFeed.Items.Add(slideFeedItem);
-                }
-                catch(Exception ex)
-                {
-                    //TODO Logerror
-                }
+                    if (slideFeedItem != null) slideFeed.Items.Add(slideFeedItem);
+                //}
+
             }
             
             return slideFeed;
@@ -63,10 +61,11 @@ namespace Oxigen.Core.Syndication
                     string functionName = callScriptNode.Attributes["name"].Value;
                     string functionParam = parameterNode.InnerText.Trim();
                     parameterData = RunScript(_dom.SelectSingleNode(@"slidefeed/script").InnerText, functionName, functionParam);
-                    if (parameterData == null)
-                    {
-                        throw new Exception("Could not get " + parametername + " for " + slideFeedItem.Guid);
-                    }
+                    //if (parameterData == null)
+                    //{
+                        //throw new Exception("Could not get " + parametername + " for " + slideFeedItem.Guid);
+                    //}
+                    if (parameterData == null) return null;
                 }
                 else
                 {
@@ -120,8 +119,16 @@ namespace Oxigen.Core.Syndication
 
         private string RunScript(string script, string functionName, string functionParam)
         {
+            CSScript.CacheEnabled = true;
             AsmHelper helper = new AsmHelper(CSScript.LoadCode(script, null, false));
             return (string)helper.Invoke("Script." + functionName, functionParam);
+        }
+
+        //Keep at least on refeference to the HtmlAgilityPack to force the Web Deployment Package to include the assembly
+        //This is currenly only used by the runtime scripts
+        private void ReferenceHtmlAgilityPack()
+        {
+            var hw = new HtmlWeb();
         }
     }
 }
