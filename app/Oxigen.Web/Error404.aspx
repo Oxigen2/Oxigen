@@ -8,7 +8,7 @@
 
             <p>You can either:</p>
         <ul>
-            <li><a href="mailto:admin@videojug.com?subject=Error 404: <%=Request.QueryString["aspxerrorpath"] %>">contact us</a></li>
+            <li><a href="/contactus.aspx?subject=Error 404: <%=Request.QueryString["aspxerrorpath"] %>">contact us</a></li>
             <li>go to the <a href='/'>home page</a></li>
         </ul>
 </asp:Content>

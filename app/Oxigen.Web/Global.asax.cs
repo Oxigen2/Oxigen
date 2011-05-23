@@ -1,5 +1,7 @@
 ﻿
 
+using Elmah.Contrib.Mvc;
+
 namespace Oxigen.Web
 {
     using System;
@@ -83,6 +85,7 @@ namespace Oxigen.Web
             this.InitializeServiceLocator();
 
             AreaRegistration.RegisterAllAreas();
+            RegisterGlobalFilters(GlobalFilters.Filters);
             RouteRegistrar.RegisterRoutesTo(RouteTable.Routes);
         }
 
@@ -115,6 +118,13 @@ namespace Oxigen.Web
             
         }
 
+
         #endregion
+
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters) {
+            filters.Add(new ElmahHandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute());
+        }
+
     }
 }

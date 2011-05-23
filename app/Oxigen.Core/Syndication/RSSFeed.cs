@@ -67,16 +67,10 @@ namespace Oxigen.Core.Syndication
             output.Seek(0, SeekOrigin.Begin);
             var slideFeedParser = new SlideFeedParser(output);
             var slideFeed = slideFeedParser.Parse(LastItem);
-            bool bFirst = true;
             var channelssidesList = new List<ChannelsSlide>();
+      
             foreach (var item in slideFeed.Items)
             {
-                if (bFirst)
-                {
-                    bFirst = false;
-                    LastItem = item.Guid;
-                }
-
                 string title = item.Parameters["TitleText"].GetValue();
                 string url = item.Parameters["ClickThroughUrl"].GetValue();
                 DateTime date = ((DateParameter) item.Parameters["PublishedDate"]).Date;
@@ -104,23 +98,13 @@ namespace Oxigen.Core.Syndication
                 slideFromTemplate.Save(slide.FileFullPathName);
                 slide.Length = (int)new FileInfo(slide.FileFullPathName).Length;
                 //Add slides in reverse order
-                channelssidesList.Insert(0, new ChannelsSlide
-                                               {
-                                                   Channel = Channel,
-                                                   ClickThroughURL = slide.ClickThroughURL,
-                                                   DisplayDuration = slide.DisplayDuration,
-                                                   Slide = slide,
-                                                   Schedule =
-                                                       "date >= 9/03/2011 and date <= 9/03/2013 and dayofweek = monday || date >= 9/03/2011 and date <= 9/03/2013 and dayofweek = tuesday || date >= 9/03/2011 and date <= 9/03/2013 and dayofweek = wednesday || date >= 9/03/2011 and date <= 9/03/2013 and dayofweek = thursday || date >= 9/03/2011 and date <= 9/03/2013 and dayofweek = friday || date >= 9/03/2011 and date <= 9/03/2013 and dayofweek = saturday || date >= 9/03/2011 and date <= 9/03/2013 and dayofweek = sunday",
-                                                   PresentationConvertedSchedule =
-                                                       "[\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\"],[\"9/03/2011\",\"9/03/2013\",\"\",\"\"]"
-
-                                               });
+                channelssidesList.Insert(0, new ChannelsSlide(Channel, slide));
 
             }
             LastChecked = DateTime.Now;
             if (slideFeed.Items.Count>0)
-            { 
+            {
+                LastItem = slideFeed.Items[0].Guid;
                 Channel.ContentLastAddedDate = DateTime.Now;
                 Channel.MadeDirtyLastDate = DateTime.Now;
             }
