@@ -934,7 +934,6 @@ namespace OxigenIIAdvertising.MasterServers
       return GetGenericSuccessWrapper();
     }
 
-    // needed for software updater (version < 1.33)
     public StringErrorWrapper CreatePCIfNotExists(string userGUID, string macAddress, string machineName,
       int majorVersionNumber, int minorVersionNumber, string systemPassPhrase)
     {
@@ -950,10 +949,46 @@ namespace OxigenIIAdvertising.MasterServers
         };
       }
 
+      string machineGUID = null;
+
+      DAClient client = null;
+
+      try
+      {
+        client = new DAClient();
+
+        machineGUID = client.CreatePCIfNotExists(userGUID, macAddress, machineName, majorVersionNumber, minorVersionNumber);
+      }
+      catch (Exception ex)
+      {
+        try
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+        catch
+        {
+          // ignore exception
+        }
+
+        return new StringErrorWrapper()
+        {
+          ErrorCode = "ERR:001",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Error getting PC details",
+          ReturnString = String.Empty
+        };
+      }
+      finally
+      {
+        if (client != null)
+          client.Dispose();
+      }
+
       return new StringErrorWrapper()
       {
         ErrorStatus = ErrorStatus.Success,
-        ReturnString = "OBSOLETE"
+        ReturnString = machineGUID
       };
     }
 
@@ -1098,7 +1133,7 @@ namespace OxigenIIAdvertising.MasterServers
         };
     }
 
-    public SimpleErrorWrapper RemoveStreamsFromSilentMerge(string machineGUID,
+    public SimpleErrorWrapper RemoveStreamsFromSilentMergeByMachineGUID(string machineGUID,
       AppData.ChannelSubscriptions channelSubscriptions,
       string systemPassPhrase)
     {
@@ -1119,7 +1154,7 @@ namespace OxigenIIAdvertising.MasterServers
       {
         client = new DAClient();
 
-        client.RemoveStreamsFromSilentMerge(machineGUID, channelSubscriptions);
+        client.RemoveStreamsFromSilentMergeByMachineGUID(machineGUID, channelSubscriptions);
       }
       catch (Exception ex)
       {
@@ -1153,7 +1188,7 @@ namespace OxigenIIAdvertising.MasterServers
       };
     }
 
-    public SimpleErrorWrapper ReplaceStreamsFromSilentMerge(string machineGUID,
+    public SimpleErrorWrapper ReplaceStreamsFromSilentMergeByMachineGUID(string machineGUID,
       AppData.ChannelSubscriptions channelSubscriptions,
       string systemPassPhrase)
     {
@@ -1174,7 +1209,7 @@ namespace OxigenIIAdvertising.MasterServers
       {
         client = new DAClient();
 
-        client.ReplaceStreamsFromSilentMerge(machineGUID, channelSubscriptions);
+        client.ReplaceStreamsFromSilentMergeByMachineGUID(machineGUID, channelSubscriptions);
       }
       catch (Exception ex)
       {
@@ -1207,7 +1242,7 @@ namespace OxigenIIAdvertising.MasterServers
       };
     }
 
-    public SimpleErrorWrapper AddStreamsFromSilentMerge(string machineGUID,
+    public SimpleErrorWrapper AddStreamsFromSilentMergeByMachineGUID(string machineGUID,
       AppData.ChannelSubscriptions channelSubscriptions,
       string systemPassPhrase)
     {
@@ -1228,7 +1263,332 @@ namespace OxigenIIAdvertising.MasterServers
       {
         client = new DAClient();
 
-        client.AddStreamsFromSilentMerge(machineGUID, channelSubscriptions);
+        client.AddStreamsFromSilentMergeByMachineGUID(machineGUID, channelSubscriptions);
+      }
+      catch (Exception ex)
+      {
+        try
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+        catch
+        {
+          // ignore exception
+        }
+
+        return new SimpleErrorWrapper()
+        {
+          ErrorCode = "ERR:001",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Error syncing with server",
+        };
+      }
+      finally
+      {
+        if (client != null)
+          client.Dispose();
+      }
+
+      return new SimpleErrorWrapper()
+      {
+        ErrorStatus = ErrorStatus.Success
+      };
+    }
+
+    public SimpleErrorWrapper CompareMACAddresses(string macAddressClient, string userGUID, int softwareMajorVersionNumber,
+      int softwareMinorVersionNumber, out string newMachineGUID, out bool bMatch, string systemPassPhrase)
+    {
+      newMachineGUID = null;
+      bMatch = false;
+
+      if (systemPassPhrase != _systemPassPhrase)
+        return GetUnauthorizedAccessErrorWrapper(systemPassPhrase);
+
+      DAClient client = null;
+
+      try
+      {
+        client = new DAClient();
+
+        client.CompareMACAddresses(macAddressClient, userGUID, softwareMajorVersionNumber,
+        softwareMinorVersionNumber, out newMachineGUID, out bMatch);
+      }
+      catch (Exception ex)
+      {
+        try
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+        catch
+        {
+          // ignore exception
+        }
+
+        return GetGenericRetriableErrorWrapper();
+      }
+      finally
+      {
+        if (client != null)
+          client.Dispose();
+      }
+
+      return GetGenericSuccessWrapper();
+    }
+
+    public StringErrorWrapper AddSubscriptionsAndNewPC(string userGUID,
+      string macAddress,
+      string machineName,
+      int majorVersionNumber,
+      int minorVersionNumber,
+      string[][] subscriptions,
+      string systemPassPhrase)
+    {
+      if (systemPassPhrase != _systemPassPhrase)
+      {
+        return new StringErrorWrapper()
+        {
+          ErrorCode = "ERR:004",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Invalid authentication",
+          ReturnString = String.Empty
+        };
+      }
+
+      string machineGUID = null;
+      DAClient client = null;
+
+      try
+      {
+        client = new DAClient();
+
+        machineGUID = client.AddSubscriptionsAndNewPC(userGUID,
+          macAddress,
+          machineName,
+          majorVersionNumber,
+          minorVersionNumber,
+          subscriptions);
+      }
+      catch (Exception ex)
+      {
+        try
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+        catch
+        {
+          // ignore exception
+        }
+
+        return new StringErrorWrapper()
+        {
+          ErrorCode = "ERR:001",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Error getting PC details",
+          ReturnString = String.Empty
+        };
+      }
+      finally
+      {
+        if (client != null)
+          client.Dispose();
+      }
+
+      return new StringErrorWrapper()
+      {
+        ErrorStatus = ErrorStatus.Success,
+        ReturnString = machineGUID
+      };
+    }
+
+    public StringErrorWrapper CheckIfPCExistsReturnGUID(string username, string macAddress, string systemPassPhrase)
+    {
+      if (systemPassPhrase != _systemPassPhrase)
+      {
+        return new StringErrorWrapper()
+        {
+          ErrorCode = "ERR:004",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Invalid authentication",
+          ReturnString = String.Empty
+        };
+      }
+
+      string guids = null;
+      DAClient client = null;
+
+      try
+      {
+        client = new DAClient();
+
+        guids = client.CheckIfPCExistsReturnGUID(username, macAddress);
+      }
+      catch (Exception ex)
+      {
+        try
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+        catch
+        {
+          // ignore exception
+        }
+
+        return new StringErrorWrapper()
+        {
+          ErrorCode = "ERR:001",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Error comparing MAC Addresses",
+          ReturnString = String.Empty
+        };
+      }
+      finally
+      {
+        if (client != null)
+          client.Dispose();
+      }
+
+      return new StringErrorWrapper()
+      {
+        ErrorStatus = ErrorStatus.Success,
+        ReturnString = guids
+      };
+    }
+
+    public SimpleErrorWrapper RemoveStreamsFromSilentMerge(string macAddress,
+      AppData.ChannelSubscriptions channelSubscriptions,
+      string systemPassPhrase)
+    {
+      if (systemPassPhrase != _systemPassPhrase)
+      {
+        return new SimpleErrorWrapper()
+        {
+          ErrorCode = "ERR:004",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Invalid authentication",
+        };
+      }
+
+      DAClient client = null;
+
+      try
+      {
+        client = new DAClient();
+
+        client.RemoveStreamsFromSilentMerge(macAddress, channelSubscriptions);
+      }
+      catch (Exception ex)
+      {
+        try
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+        catch
+        {
+          // ignore exception
+        }
+
+        return new SimpleErrorWrapper()
+        {
+          ErrorCode = "ERR:001",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Error syncing with server",
+        };
+      }
+      finally
+      {
+        if (client != null)
+          client.Dispose();
+      }
+
+      return new SimpleErrorWrapper()
+      {
+        ErrorStatus = ErrorStatus.Success
+      };
+    }
+
+    public SimpleErrorWrapper ReplaceStreamsFromSilentMerge(string macAddress,
+      AppData.ChannelSubscriptions channelSubscriptions,
+      string systemPassPhrase)
+    {
+      if (systemPassPhrase != _systemPassPhrase)
+      {
+        return new SimpleErrorWrapper()
+        {
+          ErrorCode = "ERR:004",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Invalid authentication",
+        };
+      }
+
+      DAClient client = null;
+
+      try
+      {
+        client = new DAClient();
+
+        client.ReplaceStreamsFromSilentMerge(macAddress, channelSubscriptions);
+      }
+      catch (Exception ex)
+      {
+        try
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        }
+        catch
+        {
+          // ignore exception
+        }
+
+        return new SimpleErrorWrapper()
+        {
+          ErrorCode = "ERR:001",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Error syncing with server",
+        };
+      }
+      finally
+      {
+        if (client != null)
+          client.Dispose();
+      }
+
+      return new SimpleErrorWrapper()
+      {
+        ErrorStatus = ErrorStatus.Success
+      };
+    }
+
+    public SimpleErrorWrapper AddStreamsFromSilentMerge(string macAddress,
+      AppData.ChannelSubscriptions channelSubscriptions,
+      string systemPassPhrase)
+    {
+      if (systemPassPhrase != _systemPassPhrase)
+      {
+        return new SimpleErrorWrapper()
+        {
+          ErrorCode = "ERR:004",
+          ErrorSeverity = ErrorSeverity.Retriable,
+          ErrorStatus = ErrorStatus.Failure,
+          Message = "Invalid authentication",
+        };
+      }
+
+      DAClient client = null;
+
+      try
+      {
+        client = new DAClient();
+
+        client.AddStreamsFromSilentMerge(macAddress, channelSubscriptions);
       }
       catch (Exception ex)
       {
