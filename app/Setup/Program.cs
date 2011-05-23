@@ -31,6 +31,9 @@ namespace Setup
       if (setupProcesses.Length > 1)
         return;
 
+      if (!string.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["debugMode"]))
+        AppDataSingleton.Instance.DebugMode = true;
+
       SetupForm form;
 
       if (File.Exists("Setup.ini"))
