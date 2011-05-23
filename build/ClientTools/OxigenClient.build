@@ -5,7 +5,7 @@
 	<property name="ClientToolsDir" value="C:\Oxigen2\Oxigen\build\ClientTools\"/>
 	<property name="ObfuscatorDir" value="C:\Oxigen2\Oxigen\build\ClientTools\CryptoObfuscator\"/>
 	<property name="SolutionPath" value="C:\Oxigen2\Oxigen\OxigenIIAdvertising.sln"/>
-	<property name="SignToolPath" value="C:\Program Files\Microsoft SDKs\Windows\v7.0\Bin\signtool.exe"/>
+	<property name="SignToolPath" value="C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\signtool.exe"/>
 	<property name="CertificateLocation" value="C:\Oxigen2\Oxigen\build\ClientTools\Certificates\oxigen II Ltd Code Signing Cert.pfx"/>
 	<property name="InstallationPackageDir" value="C:\Oxigen2\Oxigen\build\ClientTools\InstallationPackage\"/>
 	<property name="InstallationPackageTempDir" value="C:\Oxigen2\Oxigen\build\ClientTools\InstallationPackage\Temp\"/>
@@ -359,7 +359,7 @@
 		This step is just good to have and not a necessity as current users will have a software updater that allows larger downloads but we want to keep all users to have the same version of all binaries. -->
 		<copy todir="${InstallationPackageTempDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}log4NetCustom\bin\Release\">
-				<include name="Oxigen.Log4NetMin.dll" />
+				<include name="OxigenLog4NetMin.dll" />
 			</fileset>
 		</copy>	
 		<move file="${InstallationPackageTempDir}Setup.exe" todir="${InstallationPackageDir}"/>

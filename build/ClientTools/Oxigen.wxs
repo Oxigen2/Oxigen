@@ -61,7 +61,7 @@
           <File Id="_15A6157E17EE4142BE0DC704DD0166EA" Name="OxigenXmlSerializableSortableGenericList.dll" KeyPath="yes" ShortName="OXIGE~11.DLL" Assembly=".net" AssemblyManifest="_15A6157E17EE4142BE0DC704DD0166EA" AssemblyApplication="_15A6157E17EE4142BE0DC704DD0166EA" DiskId="1" Source="SourceDir\OxigenXmlSerializableSortableGenericList.dll" />
         </Component>
         <Component Id="Log4Net_bin" Guid="{CAD3F8DD-EE70-49d1-B961-26E7B9E3B256}">
-	  <File Id="File_Log4Net_bin" Name="log4net.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Log4Net_bin" AssemblyApplication="File_Log4Net_bin" DiskId="1" Source="SourceDir\Oxigen.Log4NetMin.dll" />
+	  <File Id="File_Log4Net_bin" Name="OxigenLog4NetMin.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Log4Net_bin" AssemblyApplication="File_Log4Net_bin" DiskId="1" Source="SourceDir\OxigenLog4NetMin.dll" />
         </Component>
         <Component Id="C__1AAC54773F3146CEBA3690149648B13E" Guid="{726018A4-27D0-BF82-1A35-A9F8D06D0276}">
           <File Id="_1AAC54773F3146CEBA3690149648B13E" Name="OxigenUserDataMarshallerClient.dll" KeyPath="yes" ShortName="OXIGE~13.DLL" Assembly=".net" AssemblyManifest="_1AAC54773F3146CEBA3690149648B13E" AssemblyApplication="_1AAC54773F3146CEBA3690149648B13E" DiskId="1" Source="SourceDir\OxigenUserDataMarshallerClient.dll" />
@@ -192,7 +192,7 @@
       </Directory>
       <Directory Id="SystemFolder" ShortSourceName="SYSTEM~1" SourceName="System Folder">
       	<Component Id="Log4Net_sys" Guid="{C9ABE50A-5EC2-4EEC-9350-12408078702A}">
-      	  <File Id="File_Log4Net_sys" Name="log4net.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Log4Net_sys" AssemblyApplication="File_Log4Net_sys" DiskId="1" Source="SourceDir\Oxigen.Log4NetMin.dll" />
+      	  <File Id="File_Log4Net_sys" Name="OxigenLog4NetMin.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Log4Net_sys" AssemblyApplication="File_Log4Net_sys" DiskId="1" Source="SourceDir\OxigenLog4NetMin.dll" />
         </Component>
         <Component Id="C__06619B7607DC4FD7B58826DB5D07EBE1" Guid="{B298E4C8-FCB3-B06F-8CDB-111B7CA31BD8}">
           <File Id="_06619B7607DC4FD7B58826DB5D07EBE1" Name="AxInterop.WMPLib.dll" KeyPath="yes" ShortName="AXINTE~1.DLL" Assembly=".net" AssemblyManifest="_06619B7607DC4FD7B58826DB5D07EBE1" AssemblyApplication="_06619B7607DC4FD7B58826DB5D07EBE1" DiskId="1" Source="SourceDir\AxInterop.WMPLib.dll" />
