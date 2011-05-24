@@ -205,7 +205,7 @@ namespace OxigenIIAdvertising.LoggerInfo
                             <maxSizeRollBackups value=""1""/>
                             <maximumFileSize value=""2MB""/>
                             <layout type=""log4net.Layout.PatternLayout"">
-                              <conversionPattern value=""%date [%thread] %-5level %logger [%property{NDC}] - %message%newline"" />
+                              <conversionPattern value=""%date [%thread] %-5level %logger - %message%newline"" />
                             </layout>
                           </appender> 
                           <logger name=""" + name + @""">    

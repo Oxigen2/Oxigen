@@ -19,59 +19,20 @@ CREATE TABLE [dbo].[PCVersionHistory](
 
 GO
 
+-- first row for existing PCs --
+INSERT INTO PCVersionHistory (PcID, MajorVersionNumber, MinorVersionNumber, UpdatedAt)
+SELECT PC_ID, MajorVersionNumber, MinorVersionNumber, AddDate
+FROM PCs
+WHERE PCs.PCGUID IS NOT NULL
+AND MajorVersionNumber IS NOT NULL
+
+GO
+
 ALTER TABLE [dbo].[PCVersionHistory]  WITH CHECK ADD  CONSTRAINT [FK_PCVersionHistory_PCs] FOREIGN KEY([PcID])
 REFERENCES [dbo].[PCs] ([PC_ID])
 GO
 
 ALTER TABLE [dbo].[PCVersionHistory] CHECK CONSTRAINT [FK_PCVersionHistory_PCs]
-GO
-
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[dp_addMachineVersionInfo]
-(
-@MachineGUID nvarchar(50),
-@VersionUpdatedAt datetime,
-@MajorVersionNumber int,
-@MinorVersionNumber int,
-@MachineLive bit OUTPUT
-)
-
-AS
-
-DECLARE @PcID int;
-
-IF NOT EXISTS (SELECT 1 FROM PCs WHERE PCs.PCGUID = @MachineGUID)
-BEGIN
-
-	SET @MachineLive = 0;
-
-END
-ELSE
-BEGIN
-
-	SET @MachineLive = 1;
-	
-	SELECT
-		@PcID = PCs.PC_ID
-	FROM
-		PCs
-	WHERE
-		PCs.PCGUID = @MachineGUID;
-			
-	IF NOT EXISTS (SELECT 1 FROM PCVersionHistory 
-			WHERE PCVersionHistory.PcID = @PcID
-			AND PCVersionHistory.MajorVersionNumber = @MajorVersionNumber
-			AND PCVersionHistory.MinorVersionNumber = @MinorVersionNumber)				
-	
-		INSERT INTO PCVersionHistory(PcID, MajorVersionNumber, MinorVersionNumber, UpdatedAt)
-		VALUES (@PcID, @MajorVersionNumber, @MinorVersionNumber, @VersionUpdatedAt)
-			
-END
-
 GO
 
 /****** Object:  StoredProcedure [dbo].[dp_addPCByGUID]    Script Date: 05/13/2011 16:44:14 ******/
@@ -512,11 +473,64 @@ DELETE FROM Users WHERE Users.USER_ID = @UserID;
 
 GO
 
--- first row for existing PCs --
-INSERT INTO PCVersionHistory (PcID, MajorVersionNumber, MinorVersionNumber, UpdatedAt)
-SELECT PC_ID, MajorVersionNumber, MinorVersionNumber, AddDate
-FROM PCs
-WHERE PCs.PCGUID IS NOT NULL
-AND MajorVersionNumber IS NOT NULL
+
+/****** Object:  StoredProcedure [dbo].[dp_createPcIfNotExists]    Script Date: 05/20/2011 17:39:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[dp_createPcIfNotExists]
+
+(@UserGUID nvarchar(50), 
+@MachineName nvarchar(50),
+@MacAddress nvarchar(20), 
+@MajorVersionNumber int,
+@MinorVersionNumber int,
+@MachineGUID nvarchar(50) OUTPUT)
+
+AS
+
+DECLARE @PcID int;
+DECLARE @ConsumerID int;
+DECLARE @RandomCharacter char(1);
+DECLARE @ValidCharacters char(26);
+DECLARE @RandomNumber float;
+DECLARE @RandomNumberInt tinyint;
+	
+IF NOT EXISTS(SELECT 1 FROM	PCs WHERE PCs.MACAddress = @MacAddress)
+BEGIN
+
+	SET @ValidCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	
+	SET @RandomNumber  = RAND();
+	SET @RandomNumberInt = Convert(tinyint, (25 * @RandomNumber + 1));	
+	SET @RandomCharacter = SUBSTRING(@ValidCharacters, @RandomNumberInt, 1);
+
+	SELECT
+		@ConsumerID = Consumers.CONSUMER_ID
+	FROM
+		Consumers INNER JOIN Users on Consumers.UserID = Users.USER_ID
+	WHERE
+		Users.UserGUID = @UserGUID;
+	
+	-- create a new pc profile --
+	SET @MachineGUID = NEWID();
+	SET @MachineGUID = @MachineGUID + '_' + @RandomCharacter;
+
+	INSERT INTO PCs(ConsumerID, PCGUID, MACAddress, PcName, MajorVersionNumber, MinorVersionNumber, bLinkedToClient, AddDate)
+	VALUES (@ConsumerID, @MachineGUID, @MacAddress, @MachineName, @MajorVersionNumber, @MinorVersionNumber, 1, getdate());
+
+	SET @PcID = SCOPE_IDENTITY();
+
+	INSERT INTO PCVersionHistory(PcID, MajorVersionNumber, MinorVersionNumber, UpdatedAt)
+	VALUES (@PcID, @MajorVersionNumber, @MinorVersionNumber, GETDATE())
+END
+ELSE
+	SELECT 
+		@MachineGUID = PCs.PCGUID
+	FROM
+		PCs
+	WHERE
+		PCs.MACAddress = @MacAddress;
 
 GO

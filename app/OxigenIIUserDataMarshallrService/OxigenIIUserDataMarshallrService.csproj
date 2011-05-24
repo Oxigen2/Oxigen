@@ -57,7 +57,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
@@ -114,10 +114,6 @@
     <ProjectReference Include="..\InterCommunicationStructures\InterCommunicationStructures.csproj">
       <Project>{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}</Project>
       <Name>InterCommunicationStructures</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIILoggerInfo\LoggerInfo.csproj">
-      <Project>{24134EAF-1B5B-4329-9071-15629067E98D}</Project>
-      <Name>LoggerInfo</Name>
     </ProjectReference>
     <ProjectReference Include="..\OxigenIIUserDataMarshallrContracts\OxigenIIUserDataMarshallrContracts.csproj">
       <Project>{5CE5DD0D-7208-4ADD-B851-489CE91925E3}</Project>

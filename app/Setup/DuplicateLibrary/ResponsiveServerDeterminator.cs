@@ -48,7 +48,10 @@ namespace Setup
     /// <exception cref="System.Security.SecurityException">The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.</exception>
     /// <exception cref="UriFormatException">The URI specified in requestUriString is not a valid URI.</exception>
     public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string letter, string primaryDomainName, string secondaryDomainName, string endpointSuffix) {
-     // NOTE: uncomment for testing. return "https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc";
+     
+      if (AppDataSingleton.Instance.DebugMode)
+       return "https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc";
+      
       string serverURIPrefix = "https://";
 
       switch (serverType) {

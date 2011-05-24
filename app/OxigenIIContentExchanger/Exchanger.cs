@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
+using System.Linq;
+using System.Text;
 using OxigenIIAdvertising.FileChecksumCalculator;
 using System.IO;
 using OxigenIIAdvertising.XMLSerializer;
@@ -12,12 +13,15 @@ using OxigenIIAdvertising.UserDataMarshallerServiceClient;
 using ServiceErrorReporting;
 using OxigenIIAdvertising.PlaylistLogic;
 using OxigenIIAdvertising.AppData;
+using OxigenIIAdvertising.ContentExchanger.Properties;
 using OxigenIIAdvertising.UserSettings;
 using System.Configuration;
 using OxigenIIAdvertising.UserManagementServicesServiceClient;
 using OxigenIIAdvertising.EncryptionDecryption;
 using InterCommunicationStructures;
 using OxigenIIAdvertising.FileRights;
+using System.Windows.Forms;
+using System.Management;
 using System.Diagnostics;
 
 namespace OxigenIIAdvertising.ContentExchanger
@@ -40,21 +44,19 @@ namespace OxigenIIAdvertising.ContentExchanger
     private string _userSettingsPath = "";
     private string _binariesPath = "";
     private string _debugFilePath = "";
-    private string _cdnSubdomain = "";
 
     private string _password = "";
 
     private int _maxNoRelayConfigServers = -1;
-
     private int _maxNoRelayChannelAssetServers = -1;
     private int _maxNoRelayChannelDataServers = -1;
     private int _maxNoMasterConfigServers = -1;
     private int _serverTimeout = -1;
     private int _daysToKeepAssetFiles = -1;
     private long _assetFolderSize = -1;
-    private float _defaultDisplayDuration = -1F;
     private int _majorVersionNumber = -1;
     private int _minorVersionNumber = -1;
+    private float _defaultDisplayDuration = -1F;
 
     private string _primaryDomainName = "";
     private string _secondaryDomainName = "";
@@ -145,7 +147,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       }
 
       try
-      {       
+      {
         // update config files
         bool bCancelled = false;
 
@@ -166,7 +168,7 @@ namespace OxigenIIAdvertising.ContentExchanger
 
         // raed the downloaded channel subscriptions
         ChannelSubscriptions channelSubscriptions = GetChannelSubscriptions();
-       
+
         if (channelSubscriptions == null)
         {
           _userDataMarshallerStreamerClient.Dispose();
@@ -235,7 +237,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         }
 
         ReportProgress(100, 30);
-                
+
         // clean up unused files
         CleanUpUnusedFiles(channelSubscriptions, playlist);
 
@@ -329,7 +331,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       }
 
       return subscriptions;
-    }   
+    }
 
     private void SaveMachineGUID(string machineGUID)
     {
@@ -347,7 +349,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       if (channelSubscriptions == null || channelSubscriptions.SubscriptionSet.Count == 0)
         return newSubscriptions;
 
-      foreach(ChannelSubscription subscription in channelSubscriptions.SubscriptionSet)
+      foreach (ChannelSubscription subscription in channelSubscriptions.SubscriptionSet)
       {
         if (!subscription.Locked)
           newSubscriptions.SubscriptionSet.Add(subscription);
@@ -580,7 +582,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         bCancelled = true;
         return;
       }
-      
+
       try
       {
         _logger.WriteTimestampedMessage("Updating advert list");
@@ -662,7 +664,7 @@ namespace OxigenIIAdvertising.ContentExchanger
 
       return channelSubscriptions;
     }
-       
+
     private void GetChannelDataFiles(ChannelSubscriptions channelSubscriptions, ref bool bCancelled)
     {
       ReportProgress(0, 10, "Updating your subscriptions' playlist");
@@ -692,7 +694,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         }
 
         ReportProgress(count * step, 10, "Updating playlist for Stream: " + channelSubscription.ChannelName);
-        
+
         // checksum of channel file
         channelFileFullPath = _channelDataPath + channelSubscription.ChannelID + "_channel.dat";
 
@@ -705,8 +707,8 @@ namespace OxigenIIAdvertising.ContentExchanger
           appDataFileParameterMessage.ChannelID = channelSubscription.ChannelID;
           appDataFileParameterMessage.Checksum = localChecksum;
 
-          string serverURI = GetResponsiveServer(ServerType.RelayChannelData, _maxNoRelayChannelDataServers, 
-            channelSubscription.GetGUIDSuffix(), "UserDataMarshaller.svc", _logger);
+          string serverURI = GetResponsiveServer(ServerType.RelayChannelData, _maxNoRelayChannelDataServers,
+            channelSubscription.GetGUIDSuffix(), "UserDataMarshaller.svc");
 
           if (serverURI != "")
           {
@@ -726,10 +728,10 @@ namespace OxigenIIAdvertising.ContentExchanger
 
             if (sw.ErrorStatus == ErrorStatus.Success)
             {
-              SaveStreamAndDispose(sw.ReturnStream, channelFileFullPath, false);
-              
+              SaveStreamAndDispose(sw.ReturnStream, channelFileFullPath, false, false);
+
               _logger.WriteTimestampedMessage("Channel data for " + channelSubscription.ChannelID + " have not been retrieved.");
-            }            
+            }
           }
           else
           {
@@ -753,11 +755,10 @@ namespace OxigenIIAdvertising.ContentExchanger
     {
       try
       {
-        _cdnSubdomain = ConfigurationSettings.AppSettings["cdnSubdomain"];
         _appDataPath = ConfigurationSettings.AppSettings["AppDataPath"];
         _binariesPath = ConfigurationSettings.AppSettings["BinariesPath"];
 
-        _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebugCE.txt";
+        _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebug.txt";
         _logger = new Logger("Content Exchanger", _debugFilePath, LoggingMode.Debug);
 
         _generalDataPath = _appDataPath + "SettingsData\\ss_general_data.dat";
@@ -818,7 +819,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         ReportProgress(0, 50, "Preparing to retrieve content...");
 
         // Get Advert assets
-        LoopAndGetAssetFiles<AdvertPlaylistAsset>(playlist.AdvertBucket.AdvertAssets, AssetType.Advert, null, 
+        LoopAndGetAssetFiles<AdvertPlaylistAsset>(playlist.AdvertBucket.AdvertAssets, AssetType.Advert, null,
           ref bLowAssetSpace, ref bContentDownloaded, ref bCancelled);
 
         if (bCancelled)
@@ -838,7 +839,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         {
           _logger.WriteTimestampedMessage("Attempting to get assets for channel " + cb.ChannelID);
 
-          LoopAndGetAssetFiles<ContentPlaylistAsset>(cb.ContentAssets, AssetType.Content, cb.ChannelName, 
+          LoopAndGetAssetFiles<ContentPlaylistAsset>(cb.ContentAssets, AssetType.Content, cb.ChannelName,
             ref bLowAssetSpace, ref bContentDownloaded, ref bCancelled);
 
           if (bCancelled)
@@ -876,19 +877,23 @@ namespace OxigenIIAdvertising.ContentExchanger
     /// <exception cref="DirectoryNotFoundException">The specified path is invalid</exception>
     /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.
     /// For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
-    private void LoopAndGetAssetFiles<T>(HashSet<T> playlistAssets, AssetType assetType, string channelName, 
+    private void LoopAndGetAssetFiles<T>(HashSet<T> playlistAssets, AssetType assetType, string channelName,
       ref bool bLowAssetSpace, ref bool bContentDownloaded, ref bool bCancelled) where T : PlaylistAsset
     {
+      AssetFileParameterMessage assetFileParameterMessage = new AssetFileParameterMessage();
+      assetFileParameterMessage.AssetType = assetType;
+      assetFileParameterMessage.SystemPassPhrase = _systemPassPhrase;
+      assetFileParameterMessage.UserGUID = _userGUID;
+      assetFileParameterMessage.MachineGUID = _machineGUID;
+
       int noAssets = playlistAssets.Count;
 
       if (noAssets == 0)
         return;
 
-      string assetTypeFolder = assetType == AssetType.Advert ? "AdvertSlides" : "ContentSlides";
-
       float step = 100F / (float)noAssets;
       int counter = 1;
-   
+
       foreach (PlaylistAsset pa in playlistAssets)
       {
         if (_worker != null && _worker.CancellationPending)
@@ -901,33 +906,57 @@ namespace OxigenIIAdvertising.ContentExchanger
 
         string assetDir = _assetPath + pa.GetAssetFilenameGUIDSuffix().ToUpper() + "\\";
         string assetFullPath = assetDir + pa.AssetFilename;
-
-        // If file exists, move on to the next one. No need to check if file has changed on the server
-        // because that would be a new file under a different database ID.
-        if (File.Exists(assetFullPath))
-          continue;
+        string serverURI = "";
 
         try
         {
-          if (!Directory.Exists(assetDir))
-            Directory.CreateDirectory(assetDir);
+          string checksum = ChecksumCalculator.GetChecksum(assetFullPath);
 
-          var client = new WebClient();
+          assetFileParameterMessage.Checksum = checksum;
+          assetFileParameterMessage.AssetFileName = pa.AssetFilename;
 
-          byte[] buffer = client.DownloadData(_cdnSubdomain + "/" + assetTypeFolder + "/" + pa.GetAssetFilenameGUIDSuffix().ToUpper());
+          serverURI = GetResponsiveServer(ServerType.RelayChannelAssets, _maxNoRelayChannelAssetServers, pa.GetAssetFilenameGUIDSuffix(), "UserDataMarshaller.svc"); // first letter of asset name
 
-          // check if saving of this slide will exceed allowed size in destination folder
-          long directorySize = GetDirectorySize(_assetPath);
-          if (buffer.Length + directorySize >= _assetFolderSize)
+          if (serverURI != "")
           {
-            _logger.WriteMessage("downloadedData.Length + directorySize = " + (buffer.Length + directorySize) + ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
-            return;
+            _logger.WriteMessage("Attempting to connect to: " + serverURI);
+
+            _userDataMarshallerStreamerClient.Endpoint.Address = new EndpointAddress(serverURI + "/file");
+
+            StreamErrorWrapper sw = _userDataMarshallerStreamerClient.GetAssetFile(assetFileParameterMessage);
+
+            if (sw.ErrorStatus != ErrorStatus.Success)
+            {
+              _logger.WriteTimestampedMessage("Asset " + pa.AssetID + " not retrieved. Status: " + sw.ErrorStatus + " Message: " + sw.Message);
+              sw.ReturnStream.Dispose();
+            }
+
+            if (sw.ErrorStatus == ErrorStatus.Failure)
+              _logger.WriteError(sw.ErrorCode + " " + sw.Message);
+
+            if (sw.ErrorStatus == ErrorStatus.Success)
+            {
+              _logger.WriteTimestampedMessage("Retrieved data for asset " + pa.AssetID);
+
+              if (!Directory.Exists(assetDir))
+                Directory.CreateDirectory(assetDir);
+
+              if (assetType == AssetType.Advert)
+                bLowAssetSpace = SaveStreamAndDispose(sw.ReturnStream, assetFullPath, false, true);
+              else
+                bLowAssetSpace = SaveStreamAndDispose(sw.ReturnStream, assetFullPath, false, true, ref bContentDownloaded);
+
+              if (bLowAssetSpace)
+              {
+                _logger.WriteTimestampedMessage("Allocated disk space low to save asset " + pa.AssetID);
+                return;
+              }
+            }
           }
-
-          File.WriteAllBytes(assetFullPath, buffer);
-
-          if (assetType == AssetType.Content)
-            bContentDownloaded = true;
+          else
+          {
+            _logger.WriteTimestampedMessage("No responsive server found for asset " + pa.AssetID);
+          }
         }
         catch (Exception ex)
         {
@@ -945,17 +974,17 @@ namespace OxigenIIAdvertising.ContentExchanger
       ReportProgress(100);
     }
 
-    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string endpointSuffix, Logger logger)
+    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string endpointSuffix)
     {
-        return GetResponsiveServer(serverType, maxNoServers, "", endpointSuffix, logger);
+      return GetResponsiveServer(serverType, maxNoServers, "", endpointSuffix);
     }
 
-    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string letter, string endpointSuffix, Logger logger)
+    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string letter, string endpointSuffix)
     {
       try
       {
         return ResponsiveServerDeterminator.GetResponsiveURI(serverType, maxNoServers, _serverTimeout,
-          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix, logger);
+          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix);
       }
       catch (Exception ex)
       {
@@ -999,7 +1028,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       appDataFileParameterMessage.SystemPassPhrase = _systemPassPhrase;
       appDataFileParameterMessage.UserGUID = _userGUID;
       appDataFileParameterMessage.MachineGUID = _machineGUID;
-    
+
       StreamErrorWrapper sw = null;
       string serverURI = "";
 
@@ -1007,10 +1036,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       {
         case DataFileType.GeneralConfiguration:
         case DataFileType.AdvertConditions:
-            _logger.WriteTimestampedMessage(
-                "Connecting to Relay Server. Parameters: maxNoMasterConfigServers = " +
-                _maxNoRelayConfigServers + ", GUIDSuffix = " + _userGUIDSuffix);
-          serverURI = GetResponsiveServer(ServerType.RelayGetConfig, _maxNoRelayConfigServers, "UserDataMarshaller.svc", _logger);
+          serverURI = GetResponsiveServer(ServerType.RelayGetConfig, _maxNoRelayConfigServers, "UserDataMarshaller.svc");
 
           if (serverURI == "")
           {
@@ -1021,15 +1047,12 @@ namespace OxigenIIAdvertising.ContentExchanger
           _userDataMarshallerStreamerClient.Endpoint.Address = new EndpointAddress(serverURI + "/file");
           sw = _userDataMarshallerStreamerClient.GetAppDataFiles(appDataFileParameterMessage);
           break;
-        case DataFileType.DemographicData:          
+        case DataFileType.DemographicData:
         case DataFileType.ChannelSubscriptions:
-              _logger.WriteTimestampedMessage(
-                  "Connecting to User Management Services. Parameters: maxNoMasterConfigServers = " +
-                  _maxNoRelayConfigServers + ", GUIDSuffix = " + _userGUIDSuffix);
-          serverURI = GetResponsiveServer(ServerType.MasterGetConfig, _maxNoMasterConfigServers, _userGUIDSuffix, "UserManagementServices.svc", _logger);
-         
+          serverURI = GetResponsiveServer(ServerType.MasterGetConfig, _maxNoMasterConfigServers, _userGUIDSuffix, "UserManagementServices.svc");
+
           if (serverURI == "")
-          {             
+          {
             _logger.WriteTimestampedMessage("No responsive server found to get ss_demo_data.dat/ss_channel_subscription_data.dat");
             return;
           }
@@ -1048,7 +1071,7 @@ namespace OxigenIIAdvertising.ContentExchanger
 
       if (sw.ErrorStatus == ErrorStatus.Failure)
       {
-        _logger.WriteError(sw.ErrorCode, sw.Message);
+        _logger.WriteError(sw.Message);
 
         return;
       }
@@ -1057,8 +1080,15 @@ namespace OxigenIIAdvertising.ContentExchanger
       {
         _logger.WriteTimestampedMessage("Saving file for " + dataFileType.ToString());
 
-        SaveStreamAndDispose(sw.ReturnStream, filePath, bEncryptNeeded);
+        SaveStreamAndDispose(sw.ReturnStream, filePath, bEncryptNeeded, false);
       }
+    }
+
+    private bool SaveStreamAndDispose(Stream stream, string filePath, bool bEncryptNeeded,
+      bool bCheckDirectorySize)
+    {
+      bool bContentDownloaded = false;
+      return SaveStreamAndDispose(stream, filePath, bEncryptNeeded, bCheckDirectorySize, ref bContentDownloaded);
     }
 
     /// <summary>
@@ -1067,6 +1097,7 @@ namespace OxigenIIAdvertising.ContentExchanger
     /// <param name="stream">the stream to save</param>
     /// <param name="filePath">path of file to save</param>
     /// <param name="bEncryptNeeded">true to encrypt file before saving it if it's not already encrypted</param>
+    /// <param name="bCheckDirectorySize">true to check if there is enough space to save the file</param>
     /// <returns>true if file to be saved will make the asset directory have low disk space,
     /// false if not, regardless whether the file save has succeeded</returns>
     /// <exception cref="FileNotFoundException">The file cannot be found, such as when mode is FileMode.Truncate or FileMode.Open,
@@ -1075,24 +1106,40 @@ namespace OxigenIIAdvertising.ContentExchanger
     /// <exception cref="DirectoryNotFoundException">The specified path is invalid</exception>
     /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.
     /// For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
-    private void SaveStreamAndDispose(Stream stream, string filePath, bool bEncryptNeeded)
+    private bool SaveStreamAndDispose(Stream stream, string filePath, bool bEncryptNeeded,
+      bool bCheckDirectorySize,
+      ref bool bContentDownloaded)
     {
       FileStream fileStream = null;
       byte[] downloadedData = null;
 
       try
-      {      
+      {
         downloadedData = StreamToByteArray(stream);
       }
       catch (Exception ex)
       {
         _logger.WriteError(ex);
-        return; // continue on with the next file in the caller method
+
+        return false; // continue on with the next file in the caller method
       }
       finally
       {
         if (stream != null)
           stream.Dispose();
+      }
+
+      // is space to be occupied between the allowed asset folder size 
+      // and the allowed asset folder size?
+      if (bCheckDirectorySize)
+      {
+        long directorySize = GetDirectorySize(_assetPath);
+
+        if (downloadedData.Length + directorySize >= _assetFolderSize)
+        {
+          _logger.WriteMessage("downloadedData.Length + directorySize = " + (downloadedData.Length + directorySize) + ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
+          return true;
+        }
       }
 
       try
@@ -1101,6 +1148,10 @@ namespace OxigenIIAdvertising.ContentExchanger
           EncryptByteArrayAndSave(downloadedData, filePath);
         else
           File.WriteAllBytes(filePath, downloadedData);
+
+        // the boolean is set here but only the overload that is used by content assets will make use of it
+        // outside of this method
+        bContentDownloaded = true;
       }
       catch (Exception ex)
       {
@@ -1111,6 +1162,8 @@ namespace OxigenIIAdvertising.ContentExchanger
         if (fileStream != null)
           fileStream.Dispose();
       }
+
+      return false;
     }
 
     public long GetDirectorySize(string path)
@@ -1122,14 +1175,14 @@ namespace OxigenIIAdvertising.ContentExchanger
       foreach (string file in files)
       {
         FileInfo info = new FileInfo(file);
-        
+
         size += info.Length;
       }
 
       return size;
     }
 
-    private void EncryptByteArrayAndSave(byte[]buffer, string outputPath)
+    private void EncryptByteArrayAndSave(byte[] buffer, string outputPath)
     {
       byte[] encryptedData = Cryptography.Encrypt(buffer, _password);
 

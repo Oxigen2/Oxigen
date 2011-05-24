@@ -28,25 +28,24 @@
     /// </summary>
     private void InitializeComponent()
     {
-        this.serviceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
-        this.serviceInstaller = new System.ServiceProcess.ServiceInstaller();
-        // 
-        // serviceProcessInstaller
-        // 
-        this.serviceProcessInstaller.Password = null;
-        this.serviceProcessInstaller.Username = null;
-        // 
-        // serviceInstaller
-        // 
-        this.serviceInstaller.Description = "Hosts the named-pipes Business Logic Service for the Oxigen websites";
-        this.serviceInstaller.DisplayName = "Oxigen Business Logic Host";
-        this.serviceInstaller.ServiceName = "Oxigen Business Logic Host";
-        this.serviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
-        this.serviceInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.serviceInstaller_AfterInstall);
-        // 
-        // ProjectInstaller
-        // 
-        this.Installers.AddRange(new System.Configuration.Install.Installer[] {
+      this.serviceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
+      this.serviceInstaller = new System.ServiceProcess.ServiceInstaller();
+      // 
+      // serviceProcessInstaller
+      // 
+      this.serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+      this.serviceProcessInstaller.Password = null;
+      this.serviceProcessInstaller.Username = null;
+      // 
+      // serviceInstaller
+      // 
+      this.serviceInstaller.Description = "Hosts the named-pipes Business Logic Service for the Oxigen websites";
+      this.serviceInstaller.ServiceName = "Oxigen Business Logic Host";
+      this.serviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
+      // 
+      // ProjectInstaller
+      // 
+      this.Installers.AddRange(new System.Configuration.Install.Installer[] {
             this.serviceProcessInstaller,
             this.serviceInstaller});
 
