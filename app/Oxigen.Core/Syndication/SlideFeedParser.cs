@@ -31,11 +31,9 @@ namespace Oxigen.Core.Syndication
             {
                 string guid = item.Attributes["guid"].Value;
                 if (guid == lastGuid) break;
-                //try
-                //{
-                    SlideFeedItem slideFeedItem = GetSlideFeedItem(item);
-                    if (slideFeedItem != null) slideFeed.Items.Add(slideFeedItem);
-                //}
+
+                SlideFeedItem slideFeedItem = GetSlideFeedItem(item);
+                if (slideFeedItem != null) slideFeed.Items.Add(slideFeedItem);
 
             }
             
@@ -61,10 +59,6 @@ namespace Oxigen.Core.Syndication
                     string functionName = callScriptNode.Attributes["name"].Value;
                     string functionParam = parameterNode.InnerText.Trim();
                     parameterData = RunScript(_dom.SelectSingleNode(@"slidefeed/script").InnerText, functionName, functionParam);
-                    //if (parameterData == null)
-                    //{
-                        //throw new Exception("Could not get " + parametername + " for " + slideFeedItem.Guid);
-                    //}
                     if (parameterData == null) return null;
                 }
                 else

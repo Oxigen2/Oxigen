@@ -14,20 +14,35 @@ namespace Tests.Oxigen.Core
             var slideFeedParser = new SlideFeedParser(@"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <slidefeed>
   <script>
-    //css_ref HtmlAgilityPack.dll;
-    using HtmlAgilityPack;
-    using System.Text.RegularExpressions;
-    public class Script {
-        static public string ScrapeImage(string url) {
-            var hw = new HtmlWeb();
-            var doc = hw.Load(url);
-            var node = doc.DocumentNode.SelectSingleNode(""//div[@id=\""articleImageHolder\""]//img"");
-            var src = node.Attributes[""src""].Value;
-            src = Regex.Replace(src, ""/scaleToFit/\\d+/\\d+/"", ""/scaleToFit/854/570/"");
-            return src;
+<![CDATA[using System.Text.RegularExpressions;
+        public class Script {
+        static string ImageExtraction(string input)
+        {
+
+        int startIndex = input.IndexOf(@""src="");
+        int endIndex = input.IndexOf(@""/&gt"");
+
+        string output = input.Substring(startIndex + 5, endIndex - startIndex - 7);
+        return output;
         }
-    }
-  </script>
+        
+        static string DescriptionExtraction(string input)
+        {
+
+        int startIndex = input.IndexOf(@""/&gt"");
+
+        string output = input.Substring(startIndex + 5);
+        int maxLength = 140;
+        if (output.Length > maxLength)
+        {
+        output = output.Substring(0, maxLength);
+        int index = output.LastIndexOf("" "");
+        output = output.Substring(0, index) + ""..."";
+        }
+        return output;
+        }
+}
+        ]]>    </script>
 
   <item guid=""**GUID**"">
     <parameter name=""ClickThroughUrl"" type=""text"">

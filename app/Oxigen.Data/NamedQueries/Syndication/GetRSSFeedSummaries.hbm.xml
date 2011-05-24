@@ -3,7 +3,7 @@
     <sql-query name="GetRSSFeedSummaries">
         SET NOCOUNT ON;
 
-	    SELECT RSSFEED_ID as Id, URL, Name
+	    SELECT RSSFEED_ID as Id, URL, Name, LastRunHadError
 	    FROM RSSFeeds
     </sql-query>
 </hibernate-mapping>

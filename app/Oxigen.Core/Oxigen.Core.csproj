@@ -39,6 +39,9 @@
     <Reference Include="CSScriptLibrary.v3.5">
       <HintPath>..\..\lib\CSScriptLibrary.v3.5.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\..\packages\elmah.1.1\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
