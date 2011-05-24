@@ -18,6 +18,7 @@
 			    <th>URL</th>
 			    <th>Name</th>
                 <th>Last Run Had Error</th>
+                <th>Last Run Date</th>
 			    <th colspan="4">Action</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
 				<td><%= rSSFeedDto.URL %></td>
 				<td><%= rSSFeedDto.Name %></td>
                 <td><%= rSSFeedDto.LastRunHadError %></td>
+                <td><%= rSSFeedDto.LastErrorDate.ToString() %></td>
                 <td><%=Html.ActionLink<RSSFeedsController>( c => c.Run( rSSFeedDto.Id ), "Run ") %></td>
 				<td><%=Html.ActionLink<RSSFeedsController>( c => c.Show( rSSFeedDto.Id ), "Details ") %></td>
 				<td><%=Html.ActionLink<RSSFeedsController>( c => c.Edit( rSSFeedDto.Id ), "Edit") %></td>
