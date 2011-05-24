@@ -15,10 +15,11 @@
     <table>
         <thead>
             <tr>
+                <th>Publisher</th>
 			    <th>URL</th>
 			    <th>Name</th>
                 <th>Last Run Had Error</th>
-                <th>Last Run Date</th>
+                <th>Last Run Error Date</th>
 			    <th colspan="4">Action</th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@
 		<%
 		foreach (RSSFeedDto rSSFeedDto in ViewData.Model) { %>
 			<tr>
+                <td><%= rSSFeedDto.PublisherDisplayName %></td>  
 				<td><%= rSSFeedDto.URL %></td>
 				<td><%= rSSFeedDto.Name %></td>
                 <td><%= rSSFeedDto.LastRunHadError %></td>

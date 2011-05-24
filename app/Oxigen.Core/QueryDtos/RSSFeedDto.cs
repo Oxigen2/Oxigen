@@ -9,5 +9,7 @@ namespace Oxigen.Core.QueryDtos
         public string Name { get; set; }
         public bool LastRunHadError { get; set; }
         public DateTime? LastErrorDate { get; set; }
+        public string PublisherDisplayName { get; set; }
+
     }
 }

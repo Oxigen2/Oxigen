@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
     <sql-query name="GetRSSFeedSummaries">
-        SET NOCOUNT ON;
+      SET NOCOUNT ON;
 
-	    SELECT RSSFEED_ID as Id, URL, Name, LastRunHadError, LastErrorDate
-	    FROM RSSFeeds
+      SELECT RSSFeeds.RSSFEED_ID as Id, RSSFeeds.URL, RSSFeeds.Name, RSSFeeds.LastRunHadError, RSSFeeds.LastErrorDate, Publishers.DisplayName as PublisherDisplayName
+      FROM RSSFeeds
+      INNER JOIN Publishers on RSSFeeds.PublisherID = Publishers.PUBLISHER_ID
     </sql-query>
 </hibernate-mapping>
