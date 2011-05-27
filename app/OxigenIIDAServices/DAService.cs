@@ -4650,7 +4650,7 @@ namespace OxigenIIAdvertising.Services
         return userGUID == "-" ? string.Empty : userGUID;
     }
 
-    public void RemoveStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    public void RemoveStreamsFromSilentMergeByMachineGUID(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
     {
       SqlDatabase sqlDatabase = null;
 
@@ -4694,7 +4694,7 @@ namespace OxigenIIAdvertising.Services
       }
     }
 
-    public void ReplaceStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    public void ReplaceStreamsFromSilentMergeByMachineGUID(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
     {
       SqlDatabase sqlDatabase = null;
 
@@ -4734,7 +4734,7 @@ namespace OxigenIIAdvertising.Services
       }
     }
 
-    public void AddStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    public void AddStreamsFromSilentMergeByMachineGUID(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
     {
       SqlDatabase sqlDatabase = null;
 
@@ -4773,24 +4773,18 @@ namespace OxigenIIAdvertising.Services
 
     public HashSet<string> UpdateSoftwareVersionInfo(MachineVersionInfo[] mi)
     {
-      _logger.Debug("UpdateSoftwareVersionInfo() 0");
       SqlDatabase sqlDatabase = null;
       var failedMachineGUIDs = new HashSet<string>();
-      _logger.Debug("UpdateSoftwareVersionInfo() 1");
 
       int nonExistingMachineGUIDs = 0;
       int errorMachineGUIDs = 0;
 
       using (TransactionScope ts = new TransactionScope())
       {
-        _logger.Debug("UpdateSoftwareVersionInfo() 2");
         try
         {
-          _logger.Debug("UpdateSoftwareVersionInfo() 3");
           sqlDatabase = new SqlDatabase();
-          _logger.Debug("UpdateSoftwareVersionInfo() 4");
           sqlDatabase.Open();
-          _logger.Debug("UpdateSoftwareVersionInfo() 5");
 
           foreach (MachineVersionInfo machineVersionInfo in mi)
           {
@@ -4832,17 +4826,318 @@ namespace OxigenIIAdvertising.Services
             sqlDatabase.Dispose();
         }
 
-        _logger.Debug("UpdateSoftwareVersionInfo() 6");
-
         ts.Complete();
-
-        _logger.Debug("UpdateSoftwareVersionInfo() 7");
       }
 
-      _logger.Debug("UpdateSoftwareVersionInfo() 8");
-      _logger.Info(failedMachineGUIDs.Count + " updates failed. " + nonExistingMachineGUIDs + " do not exist or are marked as deleted. " + errorMachineGUIDs + " could not be updated due to errors.");
-
       return failedMachineGUIDs;
+    }
+
+    public void CompareMACAddresses(string macAddressClient, string userGUID, int softwareMajorVersionNumber,
+      int softwareMinorVersionNumber, out string newMachineGUID, out bool bMatch)
+    {
+      SqlDatabase sqlDatabase = null;
+
+      newMachineGUID = System.Guid.NewGuid().ToString().ToUpper() + "_" + GetRandomLetter();
+
+      try
+      {
+        sqlDatabase = new SqlDatabase();
+        sqlDatabase.Open();
+
+        sqlDatabase.AddInputParameter("@MacAddressClient", macAddressClient);
+        sqlDatabase.AddInputParameter("@UserGUID", userGUID);
+        sqlDatabase.AddInputParameter("@NewMachineGUID", newMachineGUID);
+        sqlDatabase.AddInputParameter("@SoftwareMajorVersionNumber", softwareMajorVersionNumber);
+        sqlDatabase.AddInputParameter("@SoftwareMinorVersionNumber", softwareMinorVersionNumber);
+        SqlParameter bMatchParameter = sqlDatabase.AddOutputParameter("@bMatch", System.Data.SqlDbType.Bit, 1, null);
+
+        sqlDatabase.ExecuteNonQuery("dp_editCompareMacAddressesLink");
+
+        bMatch = (bool)bMatchParameter.Value;
+      }
+      catch (Exception ex)
+      {
+        _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+
+        throw ex;
+      }
+      finally
+      {
+        sqlDatabase.Dispose();
+      }
+    }
+
+    public string CheckIfPCExistsReturnGUID(string username, string macAddress)
+    {
+      SqlDatabase sqlDatabase = null;
+      string userGUID = null;
+      string machineGUID = null;
+
+      try
+      {
+        sqlDatabase = new SqlDatabase();
+        sqlDatabase.Open();
+
+        sqlDatabase.AddInputParameter("@MACAddress", macAddress);
+        sqlDatabase.AddInputParameter("@Username", username);
+        SqlParameter userGUIDParam = sqlDatabase.AddOutputParameter("@UserGUID", System.Data.SqlDbType.NVarChar, 50, null);
+        SqlParameter machineGUIDParam = sqlDatabase.AddOutputParameter("@MachineGUID", System.Data.SqlDbType.NVarChar, 50, null);
+
+        sqlDatabase.ExecuteNonQuery("dp_getIfPCExistsReturnGUID");
+
+        if (machineGUIDParam.Value != DBNull.Value)
+        {
+          machineGUID = (string)machineGUIDParam.Value;
+          _eventLog.WriteEntry("machineGUIDParam.Value is not null", EventLogEntryType.Information);
+        }
+        else
+        {
+          machineGUID = System.Guid.NewGuid().ToString().ToUpper() + "_" + GetRandomLetter();
+          _eventLog.WriteEntry("machineGUIDParam.Value is null", EventLogEntryType.Information);
+        }
+
+        userGUID = (string)userGUIDParam.Value;
+      }
+      catch (Exception ex)
+      {
+        _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        throw ex;
+      }
+      finally
+      {
+        sqlDatabase.Dispose();
+      }
+
+      return userGUID + "|" + machineGUID;
+    }
+
+    public string AddSubscriptionsAndNewPC(string userGUID,
+      string macAddress,
+      string machineName,
+      int majorVersionNumber,
+      int minorVersionNumber,
+      string[][] subscriptions)
+    {
+      string machineGUID;
+
+      SqlDatabase sqlDatabase = null;
+
+      using (TransactionScope ts = new TransactionScope())
+      {
+        try
+        {
+          sqlDatabase = new SqlDatabase();
+          sqlDatabase.Open();
+
+          sqlDatabase.AddInputParameter("@UserGUID", userGUID);
+          sqlDatabase.AddInputParameter("@MacAddress", macAddress);
+          sqlDatabase.AddInputParameter("@MachineName", machineName);
+          sqlDatabase.AddInputParameter("@MajorVersionNumber", majorVersionNumber);
+          sqlDatabase.AddInputParameter("@MinorVersionNumber", minorVersionNumber);
+          SqlParameter machineGUIDParam = sqlDatabase.AddOutputParameter("@MachineGUID", System.Data.SqlDbType.NVarChar, 50, null);
+
+          sqlDatabase.ExecuteNonQuery("dp_createPcIfNotExists");
+
+          machineGUID = (string)machineGUIDParam.Value;
+
+          if (subscriptions != null)
+          {
+            sqlDatabase.ClearParameters();
+
+            sqlDatabase.AddInputParameter("@MachineGUID", machineGUID);
+            sqlDatabase.AddInputParameter("@UserGUID", userGUID);
+
+            sqlDatabase.ExecuteNonQuery("dp_removePCSubscriptions");
+
+            sqlDatabase.AddInputParameter("@ChannelWeightingUnnormalized");
+            sqlDatabase.AddInputParameter("@ChannelID");
+
+            foreach (string[] subscriptionElements in subscriptions)
+            {
+              int channelID;
+              int channelWeightingUnnormalized;
+
+              if (int.TryParse(subscriptionElements[0], out channelID)
+                && int.TryParse(subscriptionElements[3], out channelWeightingUnnormalized))
+              {
+                sqlDatabase.EditInputParameter("@ChannelWeightingUnnormalized", channelWeightingUnnormalized);
+                sqlDatabase.EditInputParameter("@ChannelID", channelID);
+
+                sqlDatabase.ExecuteNonQuery("dp_addSubscriptionByMachineGUID");
+              }
+            }
+          }
+        }
+        catch (Exception ex)
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+
+          throw ex;
+        }
+        finally
+        {
+          sqlDatabase.Dispose();
+        }
+
+        ts.Complete();
+      }
+
+      return machineGUID;
+    }
+
+    public string CreatePCIfNotExists(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber)
+    {
+      string machineGUID;
+
+      SqlDatabase sqlDatabase = null;
+
+      using (TransactionScope ts = new TransactionScope())
+      {
+        try
+        {
+          sqlDatabase = new SqlDatabase();
+          sqlDatabase.Open();
+
+          sqlDatabase.AddInputParameter("@UserGUID", userGUID);
+          sqlDatabase.AddInputParameter("@MacAddress", macAddress);
+          sqlDatabase.AddInputParameter("@MachineName", machineName);
+          sqlDatabase.AddInputParameter("@MajorVersionNumber", majorVersionNumber);
+          sqlDatabase.AddInputParameter("@MinorVersionNumber", minorVersionNumber);
+          SqlParameter machineGUIDParam = sqlDatabase.AddOutputParameter("@MachineGUID", System.Data.SqlDbType.NVarChar, 50, null);
+
+          sqlDatabase.ExecuteNonQuery("dp_createPcIfNotExists");
+
+          machineGUID = (string)machineGUIDParam.Value;
+        }
+        catch (Exception ex)
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+
+          throw ex;
+        }
+        finally
+        {
+          sqlDatabase.Dispose();
+        }
+
+        ts.Complete();
+      }
+
+      return machineGUID;
+    }
+
+    public void RemoveStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    {
+      SqlDatabase sqlDatabase = null;
+
+      using (TransactionScope ts = new TransactionScope())
+      {
+        try
+        {
+          sqlDatabase = new SqlDatabase();
+          sqlDatabase.Open();
+
+          sqlDatabase.AddInputParameter("@MACAddress", macAddress);
+          sqlDatabase.AddInputParameter("@ChannelGUID");
+          sqlDatabase.AddInputParameter("@ChannelWeighting");
+
+          foreach (OxigenIIAdvertising.AppData.ChannelSubscription cs in channelSubscriptions.SubscriptionSet)
+          {
+            sqlDatabase.EditInputParameter("@ChannelGUID", cs.ChannelGUID);
+            sqlDatabase.EditInputParameter("@ChannelWeighting", cs.ChannelWeightingUnnormalised);
+
+            sqlDatabase.ExecuteNonQuery("dp_removeStreamByMacAddress");
+          }
+        }
+        catch (Exception ex)
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+          throw ex;
+        }
+        finally
+        {
+          sqlDatabase.Dispose();
+        }
+
+        ts.Complete();
+      }
+    }
+
+    public void ReplaceStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    {
+      SqlDatabase sqlDatabase = null;
+
+      using (TransactionScope ts = new TransactionScope())
+      {
+        try
+        {
+          sqlDatabase = new SqlDatabase();
+          sqlDatabase.Open();
+
+          sqlDatabase.AddInputParameter("@MACAddress", macAddress);
+
+          sqlDatabase.ExecuteNonQuery("dp_removeAllStreamsByMacAddress");
+
+          sqlDatabase.AddInputParameter("@ChannelGUID");
+          sqlDatabase.AddInputParameter("@ChannelWeighting");
+
+          foreach (OxigenIIAdvertising.AppData.ChannelSubscription cs in channelSubscriptions.SubscriptionSet)
+          {
+            sqlDatabase.EditInputParameter("@ChannelGUID", cs.ChannelGUID);
+            sqlDatabase.EditInputParameter("@ChannelWeighting", cs.ChannelWeightingUnnormalised);
+
+            sqlDatabase.ExecuteNonQuery("dp_addStreamByMacAddress");
+          }
+        }
+        catch (Exception ex)
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+          throw ex;
+        }
+        finally
+        {
+          sqlDatabase.Dispose();
+        }
+
+        ts.Complete();
+      }
+    }
+
+    public void AddStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    {
+      SqlDatabase sqlDatabase = null;
+
+      using (TransactionScope ts = new TransactionScope())
+      {
+        try
+        {
+          sqlDatabase = new SqlDatabase();
+          sqlDatabase.Open();
+
+          sqlDatabase.AddInputParameter("@MACAddress", macAddress);
+          sqlDatabase.AddInputParameter("@ChannelGUID");
+          sqlDatabase.AddInputParameter("@ChannelWeighting");
+
+          foreach (OxigenIIAdvertising.AppData.ChannelSubscription cs in channelSubscriptions.SubscriptionSet)
+          {
+            sqlDatabase.EditInputParameter("@ChannelGUID", cs.ChannelGUID);
+            sqlDatabase.EditInputParameter("@ChannelWeighting", cs.ChannelWeightingUnnormalised);
+
+            sqlDatabase.ExecuteNonQuery("dp_addStreamByMacAddress");
+          }
+        }
+        catch (Exception ex)
+        {
+          _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+          throw ex;
+        }
+        finally
+        {
+          sqlDatabase.Dispose();
+        }
+
+        ts.Complete();
+      }
     }
   }
 }

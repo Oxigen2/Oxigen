@@ -531,28 +531,65 @@ namespace OxigenIIAdvertising.DAClients
       return Channel.SyncWithServerNoPersonalDetails(userGUID, machineGUID, macAddress, machineName, softwareMajorVersionNumber, softwareMinorVersionNumber, channelSubscriptions);
     }
 
-      public string  GetUserGUIDByUsername(string username) {
-          return Channel.GetUserGUIDByUsername(username);
-      }
-
-      public void RemoveStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    public string GetUserGUIDByUsername(string username)
     {
-        Channel.RemoveStreamsFromSilentMerge(machineGUID, channelSubscriptions);
+      return Channel.GetUserGUIDByUsername(username);
     }
 
-    public void ReplaceStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    public void RemoveStreamsFromSilentMergeByMachineGUID(string machineGUID, AppData.ChannelSubscriptions channelSubscriptions)
     {
-        Channel.ReplaceStreamsFromSilentMerge(machineGUID, channelSubscriptions);
+      Channel.RemoveStreamsFromSilentMerge(machineGUID, channelSubscriptions);
     }
 
-    public void AddStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    public void ReplaceStreamsFromSilentMergeByMachineGUID(string machineGUID, AppData.ChannelSubscriptions channelSubscriptions)
     {
-        Channel.AddStreamsFromSilentMerge(machineGUID, channelSubscriptions);
+      Channel.ReplaceStreamsFromSilentMerge(machineGUID, channelSubscriptions);
+    }
+
+    public void AddStreamsFromSilentMergeByMachineGUID(string machineGUID, AppData.ChannelSubscriptions channelSubscriptions)
+    {
+      Channel.AddStreamsFromSilentMerge(machineGUID, channelSubscriptions);
     }
 
     public HashSet<string> UpdateSoftwareVersionInfo(MachineVersionInfo[] mi)
     {
       return Channel.UpdateSoftwareVersionInfo(mi);
+    }
+
+    public void CompareMACAddresses(string macAddressClient, string userGUID, int softwareMajorVersionNumber,
+  int softwareMinorVersioNumber, out string newMachineGUID, out bool bMatch)
+    {
+      Channel.CompareMACAddresses(macAddressClient, userGUID, softwareMajorVersionNumber, softwareMinorVersioNumber, out newMachineGUID, out bMatch);
+    }
+
+    public string CreatePCIfNotExists(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber)
+    {
+      return Channel.CreatePCIfNotExists(userGUID, macAddress, machineName, majorVersionNumber, minorVersionNumber);
+    }
+
+    public string AddSubscriptionsAndNewPC(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber, string[][] subscriptions)
+    {
+      return Channel.AddSubscriptionsAndNewPC(userGUID, macAddress, machineName, majorVersionNumber, minorVersionNumber, subscriptions);
+    }
+
+    public string CheckIfPCExistsReturnGUID(string username, string macAddress)
+    {
+      return Channel.CheckIfPCExistsReturnGUID(username, macAddress);
+    }
+
+    public void RemoveStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    {
+      Channel.RemoveStreamsFromSilentMerge(macAddress, channelSubscriptions);
+    }
+
+    public void ReplaceStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    {
+      Channel.ReplaceStreamsFromSilentMerge(macAddress, channelSubscriptions);
+    }
+
+    public void AddStreamsFromSilentMerge(string macAddress, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions)
+    {
+      Channel.AddStreamsFromSilentMerge(macAddress, channelSubscriptions);
     }
   }
 }
