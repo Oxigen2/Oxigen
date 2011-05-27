@@ -155,6 +155,7 @@
     <Content Include="Migrations\009_MACAddressLogicMakeOptional.sql" />
     <Content Include="Migrations\010_RSSXsltToTextField.sql" />
     <Content Include="Migrations\011_VersionUpdatedAtColumnPCsTable.sql" />
+    <EmbeddedResource Include="Migrations\011_RSSFeedAddLastErrorDate.sql" />
     <Content Include="Migrations\012_LogicalDelete.sql" />
     <Content Include="Migrations\013_ActivityReports.sql" />
   </ItemGroup>

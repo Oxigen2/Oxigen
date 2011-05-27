@@ -30,7 +30,7 @@ namespace Oxigen.Web.Controllers
         {
             ActionConfirmation confirmation =
                 rSSFeedManagementService.Run(Id);
-            return View(confirmation);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Refresh()
