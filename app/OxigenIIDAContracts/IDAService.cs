@@ -167,7 +167,7 @@ namespace OxigenIIAdvertising.ServiceContracts.DAServices
     string RemoveChannel(int userID, int channelID);
 
     [OperationContract]
-    List<OxigenIIAdvertising.AppData.Channel> GetChannelsDirty();
+    List<AppData.Channel> GetChannelsDirty();
 
     [OperationContract]
     List<SimpleFileInfo> GetAssetsDirty();
@@ -182,7 +182,7 @@ namespace OxigenIIAdvertising.ServiceContracts.DAServices
     DemographicData GetUserDemographicData(string userGUID);
 
     [OperationContract]
-    OxigenIIAdvertising.AppData.ChannelSubscriptions GetUserChannelSubscriptions(string userGUID, string machineGUID);
+    AppData.ChannelSubscriptions GetUserChannelSubscriptions(string userGUID, string machineGUID);
 
     [OperationContract]
     [TransactionFlow(TransactionFlowOption.Mandatory)]
@@ -248,7 +248,7 @@ namespace OxigenIIAdvertising.ServiceContracts.DAServices
       string macAddress,
       int softwareMajorVersionNumber, 
       int softwareMinorVersionNumber, 
-      OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+      AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
     [TransactionFlow(TransactionFlowOption.Mandatory)]
@@ -256,19 +256,41 @@ namespace OxigenIIAdvertising.ServiceContracts.DAServices
       DateTime dob, string townCity, string state, string country, string occupationSector,
       string employmentLevel, string annualHouseholdIncome, string userGUID, string machineGUID, 
       int softwareMajorVersionNumber, int softwareMinorVersionNumber, string macAddress, 
-      string machineName, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions, out string channelGUID);
+      string machineName, AppData.ChannelSubscriptions channelSubscriptions, out string channelGUID);
 
     [OperationContract]
     bool EmailAddressExists(string emailAddress);
 
     [OperationContract]
-    void EditSubscriptionsByGUID(string userGUID, string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+    void EditSubscriptionsByGUID(string userGUID, string machineGUID, AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
-    OxigenIIAdvertising.AppData.ChannelSubscriptions GetPCSubscriptionsByPCID(string userGUID, int pcID);
+    AppData.ChannelSubscriptions GetPCSubscriptionsByPCID(string userGUID, int pcID);
 
     [OperationContract]
-    OxigenIIAdvertising.AppData.ChannelSubscriptions GetPCSubscriptionsByMachineGUID(string userGUID, string machineGUID);
+    AppData.ChannelSubscriptions GetPCSubscriptionsByMachineGUID(string userGUID, string machineGUID);
+
+    [OperationContract]
+    void CompareMACAddresses(string macAddressClient, string userGUID, int softwareMajorVersionNumber,
+      int softwareMinorVersioNumber, out string newMachineGUID, out bool bMatch);
+
+    [OperationContract]
+    string CreatePCIfNotExists(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber);
+
+    [OperationContract]
+    string AddSubscriptionsAndNewPC(string userGUID, string macAddress, string machineName, int majorVersionNumber, int minorVersionNumber, string[][] subscriptions);
+
+    [OperationContract]
+    string CheckIfPCExistsReturnGUID(string username, string macAddress);
+
+    [OperationContract]
+    void RemoveStreamsFromSilentMerge(string macAddress, AppData.ChannelSubscriptions channelSubscriptions);
+
+    [OperationContract]
+    void ReplaceStreamsFromSilentMerge(string macAddress, AppData.ChannelSubscriptions channelSubscriptions);
+
+    [OperationContract]
+    void AddStreamsFromSilentMerge(string macAddress, AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
     bool GetMatchedUserGUID(string userGUID);
@@ -331,19 +353,19 @@ namespace OxigenIIAdvertising.ServiceContracts.DAServices
     void RemoveUserAccount(int userID);
 
     [OperationContract]
-    string SyncWithServerNoPersonalDetails(string userGUID, string machineGUID, string macAddress, string machineName, int softwareMajorVersionNumber, int softwareMinorVersionNumber, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+    string SyncWithServerNoPersonalDetails(string userGUID, string machineGUID, string macAddress, string machineName, int softwareMajorVersionNumber, int softwareMinorVersionNumber, AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
     string GetUserGUIDByUsername(string username);
 
     [OperationContract]
-    void RemoveStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+    void RemoveStreamsFromSilentMergeByMachineGUID(string machineGUID, AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
-    void ReplaceStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+    void ReplaceStreamsFromSilentMergeByMachineGUID(string machineGUID, AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
-    void AddStreamsFromSilentMerge(string machineGUID, OxigenIIAdvertising.AppData.ChannelSubscriptions channelSubscriptions);
+    void AddStreamsFromSilentMergeByMachineGUID(string machineGUID, AppData.ChannelSubscriptions channelSubscriptions);
 
     [OperationContract]
     HashSet<string> UpdateSoftwareVersionInfo(MachineVersionInfo[] mi);

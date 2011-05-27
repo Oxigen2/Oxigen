@@ -156,6 +156,7 @@
     <Content Include="Migrations\010_RSSXsltToTextField.sql" />
     <Content Include="Migrations\011_VersionUpdatedAtColumnPCsTable.sql" />
     <Content Include="Migrations\012_LogicalDelete.sql" />
+    <Content Include="Migrations\013_ActivityReports.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
