@@ -305,9 +305,9 @@
 		<copy todir="${InstallationPackageTempDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}OxigenIISSG\bin\Release\">
 				<include name="OxigenTray.exe" />
-				<include name="OxigenTray.exe.config" />
 			</fileset>
 		</copy>
+		<copy file="${BaseSolutionDir}OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Release\Oxigen.exe" tofile="${InstallationPackageTempDir}Oxigen.scr" failonerror="true"/>
 		<!-- Do the same for the App.config files -->
 		<copy todir="${InstallationPackageTempDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}OxigenService\bin\Release\">
@@ -339,11 +339,7 @@
 				<include name="OxigenTray.exe.config" />
 			</fileset>
 		</copy>	
-		<copy todir="${InstallationPackageTempDir}" failonerror="true">
-			<fileset basedir="${BaseSolutionDir}OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Release\">
-				<include name="Oxigen.scr.config" />
-			</fileset>
-		</copy>
+		<copy file="${BaseSolutionDir}OxigenIIScreenSaver\OxigenIIScreenSaver\bin\Release\Oxigen.exe.config" tofile="${InstallationPackageTempDir}Oxigen.scr.config" failonerror="true"/>
 		<!-- Interops -->
 		<copy todir="${InstallationPackageTempDir}" failonerror="true">
 			<fileset basedir="${InteropsDir}">
