@@ -400,7 +400,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DuplicateLibrary\app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -447,6 +450,9 @@
       <DependentUpon>WelcomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Wow.cs" />
+    <None Include="Web References\UserManagementServicesLive\UserManagementServices7.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
@@ -511,10 +517,10 @@
     <None Include="Resources\questionmark.png" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc">
+    <WebReferenceUrl Include="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\UserManagementServicesLive\</RelPath>
-      <UpdateFromURL>https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc</UpdateFromURL>
+      <UpdateFromURL>https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

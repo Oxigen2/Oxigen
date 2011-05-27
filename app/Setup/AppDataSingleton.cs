@@ -49,6 +49,7 @@ namespace Setup
     private bool _bOldOxigenSystemModified = false;
     private bool _bIs64BitSystem = false;
     private string _username;
+    private bool _bDebugMode = false;
     private Logger _setupLogger = new Logger("Oxigen Installer", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\OxigenInstallLog.txt", LoggingMode.Release);
 
     public string Username
@@ -590,6 +591,12 @@ namespace Setup
     {
       get { return _bSilentMode; }
       set { _bSilentMode = value; }
+    }
+
+    public bool DebugMode
+    {
+      get { return _bDebugMode; }
+      set { _bDebugMode = value; }
     }
 
     private AppDataSingleton()

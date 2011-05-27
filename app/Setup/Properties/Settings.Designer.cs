@@ -26,8 +26,7 @@ namespace Setup.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc/file" +
-            "")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc/file")]
         public string Setup_UserManagementServicesLive_UserManagementServices {
             get {
                 return ((string)(this["Setup_UserManagementServicesLive_UserManagementServices"]));

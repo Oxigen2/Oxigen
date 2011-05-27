@@ -104,10 +104,10 @@ namespace Setup
       {
         AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 16");
 
-          if (!InstallMSI())
-              return;
+        if (!InstallMSI())
+          return;
 
-          AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 17");
+        AppDataSingleton.Instance.SetupLogger.WriteMessage("Silent Install 17");
 
         SetupHelper.DoPostMSIInstallSteps();
 

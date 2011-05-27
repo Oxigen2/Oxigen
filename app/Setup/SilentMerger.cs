@@ -69,7 +69,7 @@ namespace Setup
 
         client.Url = UMSUri;
 
-        client.RemoveStreamsFromSilentMerge(machineGUID,
+        client.RemoveStreamsFromSilentMergeByMachineGUID(machineGUID,
           AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
       }
       catch (System.Net.WebException)
@@ -106,7 +106,7 @@ namespace Setup
         client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
         client.Url = UMSUri;
 
-        client.ReplaceStreamsFromSilentMerge(machineGUID,
+        client.ReplaceStreamsFromSilentMergeByMachineGUID(machineGUID,
           AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
       }
       catch (System.Net.WebException)
@@ -143,7 +143,7 @@ namespace Setup
         client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
         client.Url = UMSUri;
 
-        client.AddStreamsFromSilentMerge(machineGUID,
+        client.AddStreamsFromSilentMergeByMachineGUID(machineGUID,
           AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
       }
       catch (System.Net.WebException)
