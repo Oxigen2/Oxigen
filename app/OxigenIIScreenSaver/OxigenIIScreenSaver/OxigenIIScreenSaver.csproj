@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -331,20 +331,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>  -->
-  <Target Name="AfterBuild">
-    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)$(TargetName).scr" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="$(TargetPath).config" DestinationFiles="$(TargetDir)$(TargetName).scr.config" SkipUnchangedFiles="true" />
-    <Delete Files="$(TargetPath)" />
-    <Delete Files="$(TargetPath).config" />
-  </Target>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)TempRepository\System32\" /y
-xcopy "$(TargetDir)*.dll" "$(SolutionDir)TempRepository\System32\" /y
-xcopy "$(TargetDir)*.config" "$(SolutionDir)TempRepository\System32\" /y
-
-xcopy "$(TargetDir)$(TargetName).scr"  "$(SolutionDir)TempRepository\System32\" /y
-
-del "$(SolutionDir)TempRepository\System32\$(TargetName).exe"
-del "$(SolutionDir)TempRepository\System32\$(TargetName).exe.config"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

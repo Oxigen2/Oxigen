@@ -697,6 +697,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         _logger.WriteTimestampedMessage("successfully stopped threads.");
 
         // if spacebar was hit, pop up browser windows and write click logs
+        #region bClickThroughPressed
         if (bClickThroughPressed)
         {
           foreach (ScreenSaver screenSaver in _screenSavers)
@@ -759,7 +760,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             }
           }
         }
-
+        #endregion
         WriteLogs(true);
 
         // dispose of all forms, for each monitor
