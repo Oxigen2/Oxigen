@@ -17,7 +17,10 @@ namespace DAHostService
     {
       InitializeComponent();
 
-      serviceInstaller.ServiceName = GetConfigurationValue("serviceName");
+      string serviceName = GetConfigurationValue("serviceName");
+
+      serviceInstaller.ServiceName = serviceName;
+      serviceInstaller.DisplayName = serviceName; 
     }
 
     private static string GetConfigurationValue(string key)
