@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Xml;
 using log4net;
 using OxigenIIAdvertising.Exceptions;
