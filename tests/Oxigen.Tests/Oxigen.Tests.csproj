@@ -53,6 +53,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Inflector.Net.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -135,6 +139,7 @@
     <Compile Include="Oxigen.Core\RSSFeedTests.cs" />
     <Compile Include="Oxigen.Core\TemplateInstanceFactory.cs" />
     <Compile Include="Oxigen.Core\TemplateTests.cs" />
+    <Compile Include="Oxigen.UserDataMarshaller\ClientDataLoggerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\AssetContentsControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\ChannelsControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\ChannelsSlidesControllerTests.cs" />
@@ -174,6 +179,14 @@
       <Project>{63E9AECE-3385-44F0-BDF9-4C01DD3C0647}</Project>
       <Name>Oxigen.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\app\OxigenIIUserDataMarshaller\OxigenIIUserDataMarshaller.csproj">
+      <Project>{D1F4201F-CAAC-48B3-B8DC-D52E04BCDB90}</Project>
+      <Name>OxigenIIUserDataMarshaller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\app\OxigenIIUserDataMarshallrService\OxigenIIUserDataMarshallrService.csproj">
+      <Project>{F49B55D4-1F4D-4F24-A978-4FA55A39EFDF}</Project>
+      <Name>OxigenIIUserDataMarshallrService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Hibernate.cfg.xml">
@@ -185,6 +198,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Oxigen.ApplicationServices\RSS\rssschema.xml" />
+    <Content Include="Oxigen.UserDataMarshaller\ImpressionLogs.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Oxigen.ApplicationServices\RSS\Telegraph.xslt" />
     <EmbeddedResource Include="Oxigen.ApplicationServices\RSS\TelegraphSample.xml" />
   </ItemGroup>
