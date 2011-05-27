@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Text;
+using log4net;
+using OxigenIIUserDataMarshallrService;
 using ServiceErrorReporting;
 using System.IO;
-using OxigenIIAdvertising.FileChecksumCalculator;
 using System.ServiceModel;
 using OxigenIIAdvertising.ServiceContracts.UserDataMarshaller;
-using System.Web;
-using OxigenIIAdvertising.XMLSerializer;
 using InterCommunicationStructures;
 using System.Diagnostics;
-using OxigenIIAdvertising.LoggerInfo;
 
 namespace OxigenIIAdvertising.RelayServers
 {
@@ -22,28 +20,29 @@ namespace OxigenIIAdvertising.RelayServers
   public class UserDataMarshaller : IUserDataMarshaller, IUserDataMarshallerStreamer, 
     IUserDataMarshallerSU, IUserDataMarshallerSUStreamer
   {
-    private string _appDataPath = System.Configuration.ConfigurationSettings.AppSettings["appDataPath"];
-    private string _assetPath = System.Configuration.ConfigurationSettings.AppSettings["assetPath"];
-    private string _logPath = System.Configuration.ConfigurationSettings.AppSettings["logPath"];
-    private string _debugFilePath = System.Configuration.ConfigurationSettings.AppSettings["debugFilePath"];
-    private string _machineSpecificDataPath = System.Configuration.ConfigurationSettings.AppSettings["machineSpecificDataPath"];
-    private string _channelDataPath = System.Configuration.ConfigurationSettings.AppSettings["channelDataPath"];
-    private string _systemPassPhrase = System.Configuration.ConfigurationSettings.AppSettings["systemPassPhrase"];
-    private string _changesetPath = System.Configuration.ConfigurationSettings.AppSettings["changesetPath"];
+    private string _appDataPath = ConfigurationManager.AppSettings["appDataPath"];
+    private string _assetPath = ConfigurationManager.AppSettings["assetPath"];
+    private string _logPath = ConfigurationManager.AppSettings["logPath"];
+    private string _debugFilePath = ConfigurationManager.AppSettings["debugFilePath"];
+    private string _machineSpecificDataPath = ConfigurationManager.AppSettings["machineSpecificDataPath"];
+    private string _channelDataPath = ConfigurationManager.AppSettings["channelDataPath"];
+    private string _systemPassPhrase = ConfigurationManager.AppSettings["systemPassPhrase"];
+    private string _changesetPath = ConfigurationManager.AppSettings["changesetPath"];
 
-    private EventLog _eventLog = null;
-    Logger _logger = null;
+    private static readonly ILog _applicationLog = LogManager.GetLogger("ApplicationLog");
+    private static readonly ILog _impressionsLogger = LogManager.GetLogger("ImpressionsLogger");
+    private static readonly ILog _clicksLogger = LogManager.GetLogger("ClicksLogger");
+    private static readonly ILog _generalUsageLogger = LogManager.GetLogger("GeneralUsageLogger");
+    private static readonly ILog _adClicksChannelProportionsLogger = LogManager.GetLogger("AdClicksChannelProportionsLogger");
+    private static readonly ILog _adImpressionsChannelProportionsLogger = LogManager.GetLogger("AdImpressionsChannelProportionsLogger");
+    private static readonly ILog _softwareVersionInfoLogger = LogManager.GetLogger("SoftwareVersionInfoLogger");
 
     /// <summary>
     /// Constructor for UserDataMarshaller that initializes a logger object
     /// </summary>
     public UserDataMarshaller()
     {
-      _logger = new Logger("UDM", _debugFilePath + "Debug.txt", LoggingMode.Debug);
-
-      _eventLog = new EventLog();
-      _eventLog.Log = "Oxigen Services";
-      _eventLog.Source = "Oxigen User Data Marshaller";
+      log4net.Config.XmlConfigurator.Configure();
     }
 
     /// <summary>
@@ -89,25 +88,75 @@ namespace OxigenIIAdvertising.RelayServers
 
         return simpleErrorWrapper;
       }
+      try
+      {
+        LogDataFile(logDataParameterMessage);
+      }
+      catch (Exception ex)
+      {
+        _applicationLog.Error(ex.ToString());
+      }
 
-      string folderPath = null;
+      return simpleErrorWrapper;
+    }
 
+    private void LogDataFile(LogDataParameterMessage logDataParameterMessage)
+    {
+      var clientDataLogger = new ClientDataLogger();
       switch (logDataParameterMessage.ChannelID)
       {
         case "-1":
-          folderPath = _logPath + logDataParameterMessage.MachineGUID + "\\AdvertSpecificLogs";
+          clientDataLogger.LogAdImpressionOrClickChannelProportion(
+            logDataParameterMessage.FileName == "i_d_a.dat" ? _adImpressionsChannelProportionsLogger : _adClicksChannelProportionsLogger,
+            logDataParameterMessage.MachineGUID, logDataParameterMessage.LogFileStream);
           break;
         case "-2":
-          folderPath = _logPath + logDataParameterMessage.MachineGUID + "\\UsageLogs";
+          clientDataLogger.LogGeneralUsage(_generalUsageLogger, logDataParameterMessage.LogFileStream);
+          TryLogLastImpressionToDB(logDataParameterMessage.MachineGUID);
           break;
         default:
-          folderPath = _logPath + logDataParameterMessage.MachineGUID + "\\" + logDataParameterMessage.ChannelID;
+          ILog log;
+          if (logDataParameterMessage.FileName == "i_d_a.dat")
+          {
+            //We do not always receive these so log LastImpression when we recieve General Usage file instead
+            //TryLogLastImpressionToDB(logDataParameterMessage.MachineGUID);
+            log = _impressionsLogger;
+          }
+          else
+          {
+            TryLogLastClickToDB(logDataParameterMessage.MachineGUID);
+            log = _clicksLogger;
+          }
+          clientDataLogger.LogImpressionsOrClicks(log, logDataParameterMessage.MachineGUID, logDataParameterMessage.ChannelID, logDataParameterMessage.LogFileStream);
           break;
       }
+    }
 
-      SaveLogStreamAndDispose(simpleErrorWrapper, logDataParameterMessage.LogFileStream, folderPath, logDataParameterMessage.FileName);
+    private void TryLogLastClickToDB(string machineGuid)
+    {
+      TryRunSQL(string.Format("update PCs Set LastImpressionDate = GetDate() where PCGUID = '{0}'", machineGuid));
+    }
 
-      return simpleErrorWrapper;
+    private void TryLogLastImpressionToDB(string machineGuid)
+    {
+      TryRunSQL(string.Format("update PCs Set LastClickDate = GetDate() where PCGUID = '{0}'", machineGuid));
+    }
+
+    private void TryRunSQL(string sql)
+    {
+      try
+      {
+        using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Oxigen"].ConnectionString))
+        {
+          SqlCommand command = new SqlCommand(sql, connection);
+          connection.Open();
+          command.ExecuteNonQuery();
+        }
+      }
+      catch (Exception ex)
+      {
+        _applicationLog.Error(ex.ToString());
+      }
     }
 
     private void SaveLogStreamAndDispose(SimpleErrorWrapperMessage simpleErrorWrapper, Stream readStream, string path, string fileName)
@@ -314,33 +363,7 @@ namespace OxigenIIAdvertising.RelayServers
     /// <returns>A SimpleErrorWrapper object with the operation result</returns>
     public SimpleErrorWrapper RegisterHeartBeat(string systemPassPhrase, string userGUID, string machineGUID)
     {
-      SimpleErrorWrapper simpleErrorWrapper = new SimpleErrorWrapper();
-
-      if (systemPassPhrase != "password")
-      {
-        simpleErrorWrapper.ErrorCode = "ERR:001";
-        simpleErrorWrapper.Message = "Authentication failure";
-        simpleErrorWrapper.ErrorSeverity = ErrorSeverity.Retriable;
-        simpleErrorWrapper.ErrorStatus = ErrorStatus.Failure;
-
-        return simpleErrorWrapper;
-      }
-
-      string heartbeatPath = _machineSpecificDataPath + machineGUID + "\\heartbeat.dat";
-
-      if (!WriteTextToNewFile(DateTime.Now.ToString(), heartbeatPath))
-      {
-        simpleErrorWrapper.ErrorStatus = ErrorStatus.Failure;
-        simpleErrorWrapper.ErrorSeverity = ErrorSeverity.Retriable;
-        simpleErrorWrapper.ErrorCode = "ERR:004";
-        simpleErrorWrapper.Message = "Heartbeat could not be registered.";
-
-        return simpleErrorWrapper;
-      }
-
-      simpleErrorWrapper.ErrorStatus = ErrorStatus.Success;
-
-      return simpleErrorWrapper;
+      throw new NotImplementedException();
     }
 
     /// <summary>
@@ -390,33 +413,7 @@ namespace OxigenIIAdvertising.RelayServers
     /// <returns>A SimpleErrorWrapper object with the operation result</returns>
     public SimpleErrorWrapper SetCurrentScreenSaverProduct(string systemPassPhrase, string userGUID, string machineGUID, string screenSaverName)
     {
-      SimpleErrorWrapper simpleErrorWrapper = new SimpleErrorWrapper();
-
-      if (systemPassPhrase != _systemPassPhrase)
-      {
-        simpleErrorWrapper.ErrorCode = "ERR:001";
-        simpleErrorWrapper.Message = "Authentication failure";
-        simpleErrorWrapper.ErrorSeverity = ErrorSeverity.Retriable;
-        simpleErrorWrapper.ErrorStatus = ErrorStatus.Failure;
-
-        return simpleErrorWrapper;
-      }
-
-      string currentScreenSaverInfoPath = _machineSpecificDataPath + machineGUID + "\\current_screensaver_info.dat";
-
-      if (!WriteTextToNewFile(DateTime.Now.ToString() + "||" + screenSaverName, currentScreenSaverInfoPath))
-      {
-        simpleErrorWrapper.ErrorStatus = ErrorStatus.Failure;
-        simpleErrorWrapper.ErrorSeverity = ErrorSeverity.Retriable;
-        simpleErrorWrapper.ErrorCode = "ERR:004";
-        simpleErrorWrapper.Message = "Screensaver info could not be registered.";
-
-        return simpleErrorWrapper;
-      }
-
-      simpleErrorWrapper.ErrorStatus = ErrorStatus.Success;
-
-      return simpleErrorWrapper;
+      throw new NotImplementedException();
     }
 
     private bool WriteTextToNewFile(string data, string fullPath)
@@ -445,7 +442,6 @@ namespace OxigenIIAdvertising.RelayServers
       int length = 256;
       byte[] buffer = new byte[length];
       int bytesRead = readStream.Read(buffer, 0, length);
-
       while (bytesRead > 0)
       {
         writeStream.Write(buffer, 0, bytesRead);
@@ -497,9 +493,8 @@ namespace OxigenIIAdvertising.RelayServers
 
       if (!File.Exists(appDataFullPath))
       {
-//        _eventLog.WriteEntry("Attempted access to " + appDataFullPath + ". File does not exist", EventLogEntryType.Warning);
+        _applicationLog.Warn("Attempted access to " + appDataFullPath + ". File does not exist");
 
-        _logger.WriteTimestampedMessage("Attempted access to " + appDataFullPath + ". File does not exist.");
         streamErrorWrapper.ErrorStatus = ErrorStatus.NoData;
         streamErrorWrapper.ErrorSeverity = ErrorSeverity.Retriable;
         streamErrorWrapper.ErrorCode = "WARN:001";
@@ -530,10 +525,16 @@ namespace OxigenIIAdvertising.RelayServers
         return simpleErrorWrapper;
       }
 
-      string path = _machineSpecificDataPath + machineGUID + "\\current_software.dat";
+      var clientDataLogger = new ClientDataLogger();
 
-      if (!WriteTextToNewFile(DateTime.Now.ToString() + "||" + version, path))
+      try
       {
+        clientDataLogger.LogLatestSoftwareVersionInfo(_softwareVersionInfoLogger, machineGUID, version);
+      }
+      catch (Exception ex)
+      {
+        _applicationLog.Error("Software version info could not be registered: " + ex);
+
         simpleErrorWrapper.ErrorStatus = ErrorStatus.Failure;
         simpleErrorWrapper.ErrorSeverity = ErrorSeverity.Retriable;
         simpleErrorWrapper.ErrorCode = "ERR:005";
