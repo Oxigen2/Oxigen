@@ -53,14 +53,15 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://oxigen.net/Imports">
-      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd0" namespace="http://oxigen.net" />
-      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InterCommunicationStructures" />
-      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
-      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" />
-      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" />
-      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/OxigenIIUserMgmtServicesService" />
-      <xsd:import schemaLocation="https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd0" namespace="http://oxigen.net" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InterCommunicationStructures" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ServiceErrorReporting" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.AppData" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/OxigenIIUserMgmtServicesService" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/OxigenIIAdvertising.SOAStructures" />
+      <xsd:import schemaLocation="https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc?xsd=xsd8" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="AppDataFileParameterMessage">
@@ -215,6 +216,42 @@
   <wsdl:message name="IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddStreamsFromSilentMergeResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_RemoveStreamsFromSilentMergeByMachineGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveStreamsFromSilentMergeByMachineGUID" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_RemoveStreamsFromSilentMergeByMachineGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveStreamsFromSilentMergeByMachineGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_ReplaceStreamsFromSilentMergeByMachineGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReplaceStreamsFromSilentMergeByMachineGUID" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_ReplaceStreamsFromSilentMergeByMachineGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReplaceStreamsFromSilentMergeByMachineGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_AddStreamsFromSilentMergeByMachineGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStreamsFromSilentMergeByMachineGUID" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_AddStreamsFromSilentMergeByMachineGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStreamsFromSilentMergeByMachineGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_CompareMACAddresses_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompareMACAddresses" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_CompareMACAddresses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompareMACAddressesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_AddSubscriptionsAndNewPC_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSubscriptionsAndNewPC" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_AddSubscriptionsAndNewPC_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSubscriptionsAndNewPCResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_CheckIfPCExistsReturnGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIfPCExistsReturnGUID" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementServicesNonStreamer_CheckIfPCExistsReturnGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIfPCExistsReturnGUIDResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManagementServicesNonStreamer">
     <wsdl:operation name="GetUserExistsByUserCredentials">
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/GetUserExistsByUserCredentials" message="tns:IUserManagementServicesNonStreamer_GetUserExistsByUserCredentials_InputMessage" />
@@ -303,6 +340,30 @@
     <wsdl:operation name="AddStreamsFromSilentMerge">
       <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMerge" message="tns:IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_InputMessage" />
       <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMergeResponse" message="tns:IUserManagementServicesNonStreamer_AddStreamsFromSilentMerge_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveStreamsFromSilentMergeByMachineGUID">
+      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/RemoveStreamsFromSilentMergeByMachineGUID" message="tns:IUserManagementServicesNonStreamer_RemoveStreamsFromSilentMergeByMachineGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/RemoveStreamsFromSilentMergeByMachineGUIDResponse" message="tns:IUserManagementServicesNonStreamer_RemoveStreamsFromSilentMergeByMachineGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReplaceStreamsFromSilentMergeByMachineGUID">
+      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/ReplaceStreamsFromSilentMergeByMachineGUID" message="tns:IUserManagementServicesNonStreamer_ReplaceStreamsFromSilentMergeByMachineGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/ReplaceStreamsFromSilentMergeByMachineGUIDResponse" message="tns:IUserManagementServicesNonStreamer_ReplaceStreamsFromSilentMergeByMachineGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStreamsFromSilentMergeByMachineGUID">
+      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMergeByMachineGUID" message="tns:IUserManagementServicesNonStreamer_AddStreamsFromSilentMergeByMachineGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMergeByMachineGUIDResponse" message="tns:IUserManagementServicesNonStreamer_AddStreamsFromSilentMergeByMachineGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompareMACAddresses">
+      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CompareMACAddresses" message="tns:IUserManagementServicesNonStreamer_CompareMACAddresses_InputMessage" />
+      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CompareMACAddressesResponse" message="tns:IUserManagementServicesNonStreamer_CompareMACAddresses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSubscriptionsAndNewPC">
+      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddSubscriptionsAndNewPC" message="tns:IUserManagementServicesNonStreamer_AddSubscriptionsAndNewPC_InputMessage" />
+      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/AddSubscriptionsAndNewPCResponse" message="tns:IUserManagementServicesNonStreamer_AddSubscriptionsAndNewPC_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfPCExistsReturnGUID">
+      <wsdl:input wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CheckIfPCExistsReturnGUID" message="tns:IUserManagementServicesNonStreamer_CheckIfPCExistsReturnGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://oxigen.net/IUserManagementServicesNonStreamer/CheckIfPCExistsReturnGUIDResponse" message="tns:IUserManagementServicesNonStreamer_CheckIfPCExistsReturnGUID_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserManagementServicesNonStreamer" type="tns:IUserManagementServicesNonStreamer">
@@ -499,6 +560,60 @@
     </wsdl:operation>
     <wsdl:operation name="AddStreamsFromSilentMerge">
       <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMerge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveStreamsFromSilentMergeByMachineGUID">
+      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/RemoveStreamsFromSilentMergeByMachineGUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReplaceStreamsFromSilentMergeByMachineGUID">
+      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/ReplaceStreamsFromSilentMergeByMachineGUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStreamsFromSilentMergeByMachineGUID">
+      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMergeByMachineGUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompareMACAddresses">
+      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/CompareMACAddresses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubscriptionsAndNewPC">
+      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/AddSubscriptionsAndNewPC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfPCExistsReturnGUID">
+      <soap:operation soapAction="http://oxigen.net/IUserManagementServicesNonStreamer/CheckIfPCExistsReturnGUID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

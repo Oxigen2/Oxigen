@@ -249,11 +249,23 @@ namespace Setup.UserManagementServicesLive {
         
         private System.Threading.SendOrPostCallback AddStreamsFromSilentMergeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RemoveStreamsFromSilentMergeByMachineGUIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ReplaceStreamsFromSilentMergeByMachineGUIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddStreamsFromSilentMergeByMachineGUIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CompareMACAddressesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddSubscriptionsAndNewPCOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CheckIfPCExistsReturnGUIDOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public BasicHttpBinding_IUserManagementServicesNonStreamer() {
-            this.Url = "https://staging-usermanagementservices.oxigen.net/UserManagementServices.svc";
+            this.Url = "https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -352,6 +364,24 @@ namespace Setup.UserManagementServicesLive {
         
         /// <remarks/>
         public event AddStreamsFromSilentMergeCompletedEventHandler AddStreamsFromSilentMergeCompleted;
+        
+        /// <remarks/>
+        public event RemoveStreamsFromSilentMergeByMachineGUIDCompletedEventHandler RemoveStreamsFromSilentMergeByMachineGUIDCompleted;
+        
+        /// <remarks/>
+        public event ReplaceStreamsFromSilentMergeByMachineGUIDCompletedEventHandler ReplaceStreamsFromSilentMergeByMachineGUIDCompleted;
+        
+        /// <remarks/>
+        public event AddStreamsFromSilentMergeByMachineGUIDCompletedEventHandler AddStreamsFromSilentMergeByMachineGUIDCompleted;
+        
+        /// <remarks/>
+        public event CompareMACAddressesCompletedEventHandler CompareMACAddressesCompleted;
+        
+        /// <remarks/>
+        public event AddSubscriptionsAndNewPCCompletedEventHandler AddSubscriptionsAndNewPCCompleted;
+        
+        /// <remarks/>
+        public event CheckIfPCExistsReturnGUIDCompletedEventHandler CheckIfPCExistsReturnGUIDCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/GetUserExistsByUserCredentia" +
@@ -1256,26 +1286,26 @@ namespace Setup.UserManagementServicesLive {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/RemoveStreamsFromSilentMerge" +
             "", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public SimpleErrorWrapper RemoveStreamsFromSilentMerge([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string machineGUID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
+        public SimpleErrorWrapper RemoveStreamsFromSilentMerge([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string macAddress, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
             object[] results = this.Invoke("RemoveStreamsFromSilentMerge", new object[] {
-                        machineGUID,
+                        macAddress,
                         channelSubscriptions,
                         systemPassPhrase});
             return ((SimpleErrorWrapper)(results[0]));
         }
         
         /// <remarks/>
-        public void RemoveStreamsFromSilentMergeAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
-            this.RemoveStreamsFromSilentMergeAsync(machineGUID, channelSubscriptions, systemPassPhrase, null);
+        public void RemoveStreamsFromSilentMergeAsync(string macAddress, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
+            this.RemoveStreamsFromSilentMergeAsync(macAddress, channelSubscriptions, systemPassPhrase, null);
         }
         
         /// <remarks/>
-        public void RemoveStreamsFromSilentMergeAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
+        public void RemoveStreamsFromSilentMergeAsync(string macAddress, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
             if ((this.RemoveStreamsFromSilentMergeOperationCompleted == null)) {
                 this.RemoveStreamsFromSilentMergeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveStreamsFromSilentMergeOperationCompleted);
             }
             this.InvokeAsync("RemoveStreamsFromSilentMerge", new object[] {
-                        machineGUID,
+                        macAddress,
                         channelSubscriptions,
                         systemPassPhrase}, this.RemoveStreamsFromSilentMergeOperationCompleted, userState);
         }
@@ -1291,26 +1321,26 @@ namespace Setup.UserManagementServicesLive {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/ReplaceStreamsFromSilentMerg" +
             "e", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public SimpleErrorWrapper ReplaceStreamsFromSilentMerge([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string machineGUID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
+        public SimpleErrorWrapper ReplaceStreamsFromSilentMerge([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string macAddress, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
             object[] results = this.Invoke("ReplaceStreamsFromSilentMerge", new object[] {
-                        machineGUID,
+                        macAddress,
                         channelSubscriptions,
                         systemPassPhrase});
             return ((SimpleErrorWrapper)(results[0]));
         }
         
         /// <remarks/>
-        public void ReplaceStreamsFromSilentMergeAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
-            this.ReplaceStreamsFromSilentMergeAsync(machineGUID, channelSubscriptions, systemPassPhrase, null);
+        public void ReplaceStreamsFromSilentMergeAsync(string macAddress, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
+            this.ReplaceStreamsFromSilentMergeAsync(macAddress, channelSubscriptions, systemPassPhrase, null);
         }
         
         /// <remarks/>
-        public void ReplaceStreamsFromSilentMergeAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
+        public void ReplaceStreamsFromSilentMergeAsync(string macAddress, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
             if ((this.ReplaceStreamsFromSilentMergeOperationCompleted == null)) {
                 this.ReplaceStreamsFromSilentMergeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnReplaceStreamsFromSilentMergeOperationCompleted);
             }
             this.InvokeAsync("ReplaceStreamsFromSilentMerge", new object[] {
-                        machineGUID,
+                        macAddress,
                         channelSubscriptions,
                         systemPassPhrase}, this.ReplaceStreamsFromSilentMergeOperationCompleted, userState);
         }
@@ -1325,26 +1355,26 @@ namespace Setup.UserManagementServicesLive {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMerge", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public SimpleErrorWrapper AddStreamsFromSilentMerge([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string machineGUID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
+        public SimpleErrorWrapper AddStreamsFromSilentMerge([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string macAddress, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
             object[] results = this.Invoke("AddStreamsFromSilentMerge", new object[] {
-                        machineGUID,
+                        macAddress,
                         channelSubscriptions,
                         systemPassPhrase});
             return ((SimpleErrorWrapper)(results[0]));
         }
         
         /// <remarks/>
-        public void AddStreamsFromSilentMergeAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
-            this.AddStreamsFromSilentMergeAsync(machineGUID, channelSubscriptions, systemPassPhrase, null);
+        public void AddStreamsFromSilentMergeAsync(string macAddress, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
+            this.AddStreamsFromSilentMergeAsync(macAddress, channelSubscriptions, systemPassPhrase, null);
         }
         
         /// <remarks/>
-        public void AddStreamsFromSilentMergeAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
+        public void AddStreamsFromSilentMergeAsync(string macAddress, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
             if ((this.AddStreamsFromSilentMergeOperationCompleted == null)) {
                 this.AddStreamsFromSilentMergeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddStreamsFromSilentMergeOperationCompleted);
             }
             this.InvokeAsync("AddStreamsFromSilentMerge", new object[] {
-                        machineGUID,
+                        macAddress,
                         channelSubscriptions,
                         systemPassPhrase}, this.AddStreamsFromSilentMergeOperationCompleted, userState);
         }
@@ -1353,6 +1383,236 @@ namespace Setup.UserManagementServicesLive {
             if ((this.AddStreamsFromSilentMergeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AddStreamsFromSilentMergeCompleted(this, new AddStreamsFromSilentMergeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/RemoveStreamsFromSilentMerge" +
+            "ByMachineGUID", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public SimpleErrorWrapper RemoveStreamsFromSilentMergeByMachineGUID([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string machineGUID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
+            object[] results = this.Invoke("RemoveStreamsFromSilentMergeByMachineGUID", new object[] {
+                        machineGUID,
+                        channelSubscriptions,
+                        systemPassPhrase});
+            return ((SimpleErrorWrapper)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RemoveStreamsFromSilentMergeByMachineGUIDAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
+            this.RemoveStreamsFromSilentMergeByMachineGUIDAsync(machineGUID, channelSubscriptions, systemPassPhrase, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveStreamsFromSilentMergeByMachineGUIDAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
+            if ((this.RemoveStreamsFromSilentMergeByMachineGUIDOperationCompleted == null)) {
+                this.RemoveStreamsFromSilentMergeByMachineGUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveStreamsFromSilentMergeByMachineGUIDOperationCompleted);
+            }
+            this.InvokeAsync("RemoveStreamsFromSilentMergeByMachineGUID", new object[] {
+                        machineGUID,
+                        channelSubscriptions,
+                        systemPassPhrase}, this.RemoveStreamsFromSilentMergeByMachineGUIDOperationCompleted, userState);
+        }
+        
+        private void OnRemoveStreamsFromSilentMergeByMachineGUIDOperationCompleted(object arg) {
+            if ((this.RemoveStreamsFromSilentMergeByMachineGUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveStreamsFromSilentMergeByMachineGUIDCompleted(this, new RemoveStreamsFromSilentMergeByMachineGUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/ReplaceStreamsFromSilentMerg" +
+            "eByMachineGUID", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public SimpleErrorWrapper ReplaceStreamsFromSilentMergeByMachineGUID([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string machineGUID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
+            object[] results = this.Invoke("ReplaceStreamsFromSilentMergeByMachineGUID", new object[] {
+                        machineGUID,
+                        channelSubscriptions,
+                        systemPassPhrase});
+            return ((SimpleErrorWrapper)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ReplaceStreamsFromSilentMergeByMachineGUIDAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
+            this.ReplaceStreamsFromSilentMergeByMachineGUIDAsync(machineGUID, channelSubscriptions, systemPassPhrase, null);
+        }
+        
+        /// <remarks/>
+        public void ReplaceStreamsFromSilentMergeByMachineGUIDAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
+            if ((this.ReplaceStreamsFromSilentMergeByMachineGUIDOperationCompleted == null)) {
+                this.ReplaceStreamsFromSilentMergeByMachineGUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnReplaceStreamsFromSilentMergeByMachineGUIDOperationCompleted);
+            }
+            this.InvokeAsync("ReplaceStreamsFromSilentMergeByMachineGUID", new object[] {
+                        machineGUID,
+                        channelSubscriptions,
+                        systemPassPhrase}, this.ReplaceStreamsFromSilentMergeByMachineGUIDOperationCompleted, userState);
+        }
+        
+        private void OnReplaceStreamsFromSilentMergeByMachineGUIDOperationCompleted(object arg) {
+            if ((this.ReplaceStreamsFromSilentMergeByMachineGUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ReplaceStreamsFromSilentMergeByMachineGUIDCompleted(this, new ReplaceStreamsFromSilentMergeByMachineGUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/AddStreamsFromSilentMergeByM" +
+            "achineGUID", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public SimpleErrorWrapper AddStreamsFromSilentMergeByMachineGUID([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string machineGUID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ChannelSubscriptions channelSubscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
+            object[] results = this.Invoke("AddStreamsFromSilentMergeByMachineGUID", new object[] {
+                        machineGUID,
+                        channelSubscriptions,
+                        systemPassPhrase});
+            return ((SimpleErrorWrapper)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddStreamsFromSilentMergeByMachineGUIDAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase) {
+            this.AddStreamsFromSilentMergeByMachineGUIDAsync(machineGUID, channelSubscriptions, systemPassPhrase, null);
+        }
+        
+        /// <remarks/>
+        public void AddStreamsFromSilentMergeByMachineGUIDAsync(string machineGUID, ChannelSubscriptions channelSubscriptions, string systemPassPhrase, object userState) {
+            if ((this.AddStreamsFromSilentMergeByMachineGUIDOperationCompleted == null)) {
+                this.AddStreamsFromSilentMergeByMachineGUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddStreamsFromSilentMergeByMachineGUIDOperationCompleted);
+            }
+            this.InvokeAsync("AddStreamsFromSilentMergeByMachineGUID", new object[] {
+                        machineGUID,
+                        channelSubscriptions,
+                        systemPassPhrase}, this.AddStreamsFromSilentMergeByMachineGUIDOperationCompleted, userState);
+        }
+        
+        private void OnAddStreamsFromSilentMergeByMachineGUIDOperationCompleted(object arg) {
+            if ((this.AddStreamsFromSilentMergeByMachineGUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddStreamsFromSilentMergeByMachineGUIDCompleted(this, new AddStreamsFromSilentMergeByMachineGUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/CompareMACAddresses", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public SimpleErrorWrapper CompareMACAddresses([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string macAddressClient, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userGUID, int softwareMajorVersionNumber, [System.Xml.Serialization.XmlIgnoreAttribute()] bool softwareMajorVersionNumberSpecified, int softwareMinorVersionNumber, [System.Xml.Serialization.XmlIgnoreAttribute()] bool softwareMinorVersionNumberSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string newMachineGUID, out bool bMatch, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool bMatchSpecified) {
+            object[] results = this.Invoke("CompareMACAddresses", new object[] {
+                        macAddressClient,
+                        userGUID,
+                        softwareMajorVersionNumber,
+                        softwareMajorVersionNumberSpecified,
+                        softwareMinorVersionNumber,
+                        softwareMinorVersionNumberSpecified,
+                        systemPassPhrase});
+            newMachineGUID = ((string)(results[1]));
+            bMatch = ((bool)(results[2]));
+            bMatchSpecified = ((bool)(results[3]));
+            return ((SimpleErrorWrapper)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CompareMACAddressesAsync(string macAddressClient, string userGUID, int softwareMajorVersionNumber, bool softwareMajorVersionNumberSpecified, int softwareMinorVersionNumber, bool softwareMinorVersionNumberSpecified, string systemPassPhrase) {
+            this.CompareMACAddressesAsync(macAddressClient, userGUID, softwareMajorVersionNumber, softwareMajorVersionNumberSpecified, softwareMinorVersionNumber, softwareMinorVersionNumberSpecified, systemPassPhrase, null);
+        }
+        
+        /// <remarks/>
+        public void CompareMACAddressesAsync(string macAddressClient, string userGUID, int softwareMajorVersionNumber, bool softwareMajorVersionNumberSpecified, int softwareMinorVersionNumber, bool softwareMinorVersionNumberSpecified, string systemPassPhrase, object userState) {
+            if ((this.CompareMACAddressesOperationCompleted == null)) {
+                this.CompareMACAddressesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCompareMACAddressesOperationCompleted);
+            }
+            this.InvokeAsync("CompareMACAddresses", new object[] {
+                        macAddressClient,
+                        userGUID,
+                        softwareMajorVersionNumber,
+                        softwareMajorVersionNumberSpecified,
+                        softwareMinorVersionNumber,
+                        softwareMinorVersionNumberSpecified,
+                        systemPassPhrase}, this.CompareMACAddressesOperationCompleted, userState);
+        }
+        
+        private void OnCompareMACAddressesOperationCompleted(object arg) {
+            if ((this.CompareMACAddressesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CompareMACAddressesCompleted(this, new CompareMACAddressesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/AddSubscriptionsAndNewPC", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public StringErrorWrapper AddSubscriptionsAndNewPC([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userGUID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string macAddress, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string machineName, int majorVersionNumber, [System.Xml.Serialization.XmlIgnoreAttribute()] bool majorVersionNumberSpecified, int minorVersionNumber, [System.Xml.Serialization.XmlIgnoreAttribute()] bool minorVersionNumberSpecified, [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)] [System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")] [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", NestingLevel=1)] string[][] subscriptions, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
+            object[] results = this.Invoke("AddSubscriptionsAndNewPC", new object[] {
+                        userGUID,
+                        macAddress,
+                        machineName,
+                        majorVersionNumber,
+                        majorVersionNumberSpecified,
+                        minorVersionNumber,
+                        minorVersionNumberSpecified,
+                        subscriptions,
+                        systemPassPhrase});
+            return ((StringErrorWrapper)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddSubscriptionsAndNewPCAsync(string userGUID, string macAddress, string machineName, int majorVersionNumber, bool majorVersionNumberSpecified, int minorVersionNumber, bool minorVersionNumberSpecified, string[][] subscriptions, string systemPassPhrase) {
+            this.AddSubscriptionsAndNewPCAsync(userGUID, macAddress, machineName, majorVersionNumber, majorVersionNumberSpecified, minorVersionNumber, minorVersionNumberSpecified, subscriptions, systemPassPhrase, null);
+        }
+        
+        /// <remarks/>
+        public void AddSubscriptionsAndNewPCAsync(string userGUID, string macAddress, string machineName, int majorVersionNumber, bool majorVersionNumberSpecified, int minorVersionNumber, bool minorVersionNumberSpecified, string[][] subscriptions, string systemPassPhrase, object userState) {
+            if ((this.AddSubscriptionsAndNewPCOperationCompleted == null)) {
+                this.AddSubscriptionsAndNewPCOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddSubscriptionsAndNewPCOperationCompleted);
+            }
+            this.InvokeAsync("AddSubscriptionsAndNewPC", new object[] {
+                        userGUID,
+                        macAddress,
+                        machineName,
+                        majorVersionNumber,
+                        majorVersionNumberSpecified,
+                        minorVersionNumber,
+                        minorVersionNumberSpecified,
+                        subscriptions,
+                        systemPassPhrase}, this.AddSubscriptionsAndNewPCOperationCompleted, userState);
+        }
+        
+        private void OnAddSubscriptionsAndNewPCOperationCompleted(object arg) {
+            if ((this.AddSubscriptionsAndNewPCCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddSubscriptionsAndNewPCCompleted(this, new AddSubscriptionsAndNewPCCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://oxigen.net/IUserManagementServicesNonStreamer/CheckIfPCExistsReturnGUID", RequestNamespace="http://oxigen.net", ResponseNamespace="http://oxigen.net", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public StringErrorWrapper CheckIfPCExistsReturnGUID([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string username, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string macAddress, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string systemPassPhrase) {
+            object[] results = this.Invoke("CheckIfPCExistsReturnGUID", new object[] {
+                        username,
+                        macAddress,
+                        systemPassPhrase});
+            return ((StringErrorWrapper)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CheckIfPCExistsReturnGUIDAsync(string username, string macAddress, string systemPassPhrase) {
+            this.CheckIfPCExistsReturnGUIDAsync(username, macAddress, systemPassPhrase, null);
+        }
+        
+        /// <remarks/>
+        public void CheckIfPCExistsReturnGUIDAsync(string username, string macAddress, string systemPassPhrase, object userState) {
+            if ((this.CheckIfPCExistsReturnGUIDOperationCompleted == null)) {
+                this.CheckIfPCExistsReturnGUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckIfPCExistsReturnGUIDOperationCompleted);
+            }
+            this.InvokeAsync("CheckIfPCExistsReturnGUID", new object[] {
+                        username,
+                        macAddress,
+                        systemPassPhrase}, this.CheckIfPCExistsReturnGUIDOperationCompleted, userState);
+        }
+        
+        private void OnCheckIfPCExistsReturnGUIDOperationCompleted(object arg) {
+            if ((this.CheckIfPCExistsReturnGUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CheckIfPCExistsReturnGUIDCompleted(this, new CheckIfPCExistsReturnGUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2694,6 +2954,186 @@ namespace Setup.UserManagementServicesLive {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((SimpleErrorWrapper)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void RemoveStreamsFromSilentMergeByMachineGUIDCompletedEventHandler(object sender, RemoveStreamsFromSilentMergeByMachineGUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RemoveStreamsFromSilentMergeByMachineGUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RemoveStreamsFromSilentMergeByMachineGUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public SimpleErrorWrapper Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((SimpleErrorWrapper)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ReplaceStreamsFromSilentMergeByMachineGUIDCompletedEventHandler(object sender, ReplaceStreamsFromSilentMergeByMachineGUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ReplaceStreamsFromSilentMergeByMachineGUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ReplaceStreamsFromSilentMergeByMachineGUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public SimpleErrorWrapper Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((SimpleErrorWrapper)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void AddStreamsFromSilentMergeByMachineGUIDCompletedEventHandler(object sender, AddStreamsFromSilentMergeByMachineGUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddStreamsFromSilentMergeByMachineGUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddStreamsFromSilentMergeByMachineGUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public SimpleErrorWrapper Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((SimpleErrorWrapper)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CompareMACAddressesCompletedEventHandler(object sender, CompareMACAddressesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CompareMACAddressesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CompareMACAddressesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public SimpleErrorWrapper Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((SimpleErrorWrapper)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string newMachineGUID {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool bMatch {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[2]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool bMatchSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[3]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void AddSubscriptionsAndNewPCCompletedEventHandler(object sender, AddSubscriptionsAndNewPCCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddSubscriptionsAndNewPCCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddSubscriptionsAndNewPCCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public StringErrorWrapper Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((StringErrorWrapper)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void CheckIfPCExistsReturnGUIDCompletedEventHandler(object sender, CheckIfPCExistsReturnGUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CheckIfPCExistsReturnGUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CheckIfPCExistsReturnGUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public StringErrorWrapper Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((StringErrorWrapper)(this.results[0]));
             }
         }
     }
