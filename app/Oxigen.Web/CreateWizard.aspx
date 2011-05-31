@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="true" EnableScriptLocalization="true" ID="scm" />
+<ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="false" EnableScriptLocalization="false" ID="scm" />
 <div id="ProgressBackHolder"></div>
 <div class="DownloadCreatePage">
   <div class="CreateArrowLeft" id="CreateArrowLeft" onclick="createArrowLeft();return false"></div>
