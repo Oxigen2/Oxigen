@@ -52,7 +52,7 @@
   <div class="BottomFix" style="height:20px"></div>
   <div class="BigButtonGreen" style="float:right;">
     <img id="ForJSButtonGreenCentre" src="Images/Default/button-green-large.png" alt="" />
-    <asp:linkbutton id="downloadLink" OnClick="Download_Click" runat="server">Download now<span>&raquo;</span></asp:linkbutton>
+    <asp:linkbutton id="downloadLink"  OnClientClick="_gaq.push(['_trackPageview', '/download/now'])" OnClick="Download_Click" runat="server">Download now<span>&raquo;</span></asp:linkbutton>
   </div>
   <div class="BigButtonGreen" style="float:right">
     <img id="ForJSButtonGreenCentre2" src="Images/Default/button-green-large.png" alt="" />

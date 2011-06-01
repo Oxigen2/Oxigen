@@ -40,7 +40,7 @@
         </table>
     </td>
     <td>
-        <asp:linkbutton ID="DownloadButton" runat="server" Text="Download Now" OnCommand="DownloadButton_Command" />
+        <asp:linkbutton ID="DownloadButton" runat="server" Text="Download Now"  OnClientClick="_gaq.push(['_trackPageview', '/download/now'])" OnCommand="DownloadButton_Command" />
     </td>
     </tr>
     <tr>
