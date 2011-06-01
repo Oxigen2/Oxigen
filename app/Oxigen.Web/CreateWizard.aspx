@@ -851,7 +851,7 @@
 					
 					<div class="ButtonGreen">
             <img id="ForJSButtonGreen2" src="Images/Default/button-green.png" alt="" />
-            <a class="send" href="#" onclick="imageUploader1.Send();imageUploaderValidation();return false;">Upload</a>
+            <a href="#" onclick="imageUploader1.Send();imageUploaderValidation();return false;">Upload</a>
           </div>
 					
 				</div>
