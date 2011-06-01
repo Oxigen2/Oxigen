@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Public.Master" AutoEventWireup="true" CodeBehind="CreateWizard.aspx.cs" Inherits="OxigenIIPresentation.Create" %>
 <%@ Register assembly="Aurigma.ImageUploader" namespace="Aurigma.ImageUploader" tagprefix="cc1" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="false" EnableScriptLocalization="false" ID="scm" />
+
 <div id="ProgressBackHolder"></div>
 <div class="DownloadCreatePage">
   <div class="CreateArrowLeft" id="CreateArrowLeft" onclick="createArrowLeft();return false"></div>
@@ -287,16 +287,12 @@
               <input onkeyup="findGoButton2('PostButton')" id="MultiSchedDur" onkeyup="checkDuration(this)" class="TextBox" type="text" />
             </div>
               <div class="FormHolder CentreMetaDiv" id="MultiSchedSD2">
-                <span>Start Date:</span>
-                <asp:textbox onkeyup="findGoButton2('PostButton')" id="MultiSchedSD" class="TextBox CentreMetaDate" runat="server" />
-                  <asp:ImageButton runat="Server" CssClass="CalendarButton" ID="ImageButton3" ImageUrl="~/Images/Default/calendarlogo.gif" AlternateText="Click to show calendar" />
-                  <ajaxToolkit:CalendarExtender CssClass="CalendarPopUp" Enabled="true" ID="CalendarExtender4" format="dd/MM/yyyy" runat="server" TargetControlID="MultiSchedSD" PopupButtonID="ImageButton3" PopupPosition="BottomLeft" />
+                <span>Start (dd/MM/yyyy):</span>
+                <asp:textbox onkeyup="findGoButton2('PostButton')" id="MultiSchedSD" class="TextBox" runat="server" />
               </div>
                <div class="FormHolder CentreMetaDiv" id="MultiSchedED2">
-                <span>End Date:</span>
-                <asp:textbox onkeyup="findGoButton2('PostButton')" id="MultiSchedED" class="TextBox CentreMetaDate" runat="server" />
-                  <asp:ImageButton runat="Server" CssClass="CalendarButton" ID="ImageButton4" ImageUrl="~/Images/Default/calendarlogo.gif" AlternateText="Click to show calendar" />
-                  <ajaxToolkit:CalendarExtender CssClass="CalendarPopUp" Enabled="true" ID="CalendarExtender5" format="dd/MM/yyyy" runat="server" TargetControlID="MultiSchedED" PopupButtonID="ImageButton4" PopupPosition="BottomLeft" />
+                <span>End (dd/MM/yyyy):</span>
+                <asp:textbox onkeyup="findGoButton2('PostButton')" id="MultiSchedED" class="TextBox" runat="server" />
               </div>
                <div class="FormHolder CentreMetaDiv TimeField">
                 <span>Start Time (HH:MM):</span>
@@ -839,10 +835,9 @@
 					    <div class="DefaultSettingsDiv">Caption</div>
 					    <div id="ForJSUploadDescription" style="display:inline"><asp:textbox class="DefaultSettingsInput" id="UploadDescription" runat="server" name="DefaultDescription" /></div>
 					    <div class="BottomFix"></div>
-					    <div class="DefaultSettingsDiv">Date</div>
-					    <div id="ForJSUploadDate" style="display:inline"><asp:textbox class="UploaderDate DefaultSettingsInput" id="UploadDate" runat="server" name="DefaultDate" /></div> 
-					      <asp:ImageButton runat="Server" CssClass="CalendarButton UploaderDateButton" ID="ibtnUploadDate" ImageUrl="~/Images/Default/calendarlogo.gif" AlternateText="Click to show calendar" />
-                <ajaxToolkit:CalendarExtender CssClass="CalendarPopUp" Enabled="true" ID="CalendarExtender1" format="dd/MM/yyyy" runat="server" TargetControlID="UploadDate" PopupButtonID="ibtnUploadDate" PopupPosition="BottomLeft" />
+					    <div class="DefaultSettingsDiv">Date (dd/MM/yyyy)</div>
+					    <div id="ForJSUploadDate" style="display:inline"><asp:textbox class="DefaultSettingsInput" id="UploadDate" runat="server" name="DefaultDate" /></div> 
+					      
 					    <div class="BottomFix"></div>
               <div class="DefaultSettingsDiv">URL</div>
 					    <div id="ForJSUploadURL" style="display:inline"><asp:textbox class="DefaultSettingsInput" id="UploadURL" runat="server" name="DefaultURL" /></div>
@@ -925,12 +920,8 @@
         <div class="InBetweenRForms"></div> 
         <div class="RFormBox">
           <div class="PropertyBox" id="RCDate2" >            
-            <div class="RFormCalendar">
-              <asp:ImageButton runat="Server" CssClass="CalendarButton" ID="ImageButton1" ImageUrl="~/Images/Default/calendarlogo.gif" AlternateText="Click to show calendar" />
-              <ajaxToolkit:CalendarExtender CssClass="CalendarPopUp" Enabled="true" ID="CalendarExtender2" format="dd/MM/yyyy" runat="server" TargetControlID="RCDate" PopupButtonID="ImageButton1" PopupPosition="BottomLeft" />
-            </div>
-            <asp:textbox onkeyup="findGoButton('updateProperties','this')" id="RCDate" runat="server" class="RFormCalendarText TextBox" tabindex="1" value="12/12/2009" /> 
-            <span>Date</span>
+            <asp:textbox onkeyup="findGoButton('updateProperties','this')" id="RCDate" runat="server" class="TextBox" tabindex="1" value="12/12/2009" /> 
+            <span>Date (dd/MM/yyyy)</span>
             <div class="BottomFix"></div>
           </div>
           <div class="BottomFix"></div>
@@ -975,7 +966,6 @@
       <div class="DivPopTop"></div>
       <div class="DivPopMiddle">
         <p>Manage scheduling settings for this item.</p>
-        <p>Please enter a date and time in the format of DD/MM/YYYY HH:MM</p>
         <div class="OxiValidation"></div>
         <div class="RFormBox">
           <div class="PropertyBox">
@@ -999,28 +989,20 @@
           <div class="RFormBox">
             <div class="PropertyBox">
               <div class="LeftDateBox">
-                <span>Start Date</span>                
-                <div class="LeftDateCalendar">
-                  <asp:ImageButton runat="Server" CssClass="CalendarButton" ID="ibtnPropStartDate" ImageUrl="~/Images/Default/calendarlogo.gif" AlternateText="Click to show calendar" />
-                  <ajaxToolkit:CalendarExtender CssClass="CalendarPopUp" Enabled="true" ID="CalendarExtender1" format="dd/MM/yyyy" runat="server" TargetControlID="propStartDate" PopupButtonID="ibtnPropStartDate" PopupPosition="BottomLeft" />
-                </div>
+                <span>Start Date (dd/MM/yyyy)</span>                
                 <asp:textbox runat="server" id="propStartDate" class="TextBox TextBox2" tabindex="1" value="10/02/2010"/>
               </div>
               <div class="RightDateBox">
-                <span>End Date</span>                
-                <div class="RightDateCalendar">
-                  <asp:ImageButton runat="Server" CssClass="CalendarButton" ID="ibtnPropEndDate" ImageUrl="~/Images/Default/calendarlogo.gif" AlternateText="Click to show calendar" />
-                  <ajaxToolkit:CalendarExtender CssClass="CalendarPopUp" Enabled="true" ID="CalendarExtender6" format="dd/MM/yyyy" runat="server" TargetControlID="propEndDate" PopupButtonID="ibtnPropEndDate" PopupPosition="BottomLeft" />
-                </div>
+                <span>End Date (dd/MM/yyyy)</span>                
                 <asp:textbox runat="server" id="propEndDate" class="TextBox TextBox2" tabindex="1" value="10/02/2011"/>
               </div>
               <div class="BottomFix"></div>
               <div class="LeftDateBox TimeField">
-                <span>Start Time</span>
+                <span>Start Time (HH:MM)</span>
                 <input type="text" class="TextBox" tabindex="1" value="10:00"/>
               </div>
               <div class="RightDateBox TimeField">
-                <span>End Time</span>
+                <span>End Time (HH:MM)</span>
                 <input type="text" class="TextBox" tabindex="1" value="20:00"/>
               </div>
               <script type="text/javascript">
