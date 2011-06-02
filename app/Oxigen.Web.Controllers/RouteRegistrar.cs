@@ -12,6 +12,7 @@ namespace Oxigen.Web.Controllers
             routes.IgnoreRoute("get.ox");
             routes.IgnoreRoute("put.ox");
             routes.IgnoreRoute("");
+            routes.MapRoute("Installer", "{installer}/{channels}", new { controller = "Download", action = "Installer" });
             routes.MapRoute(
                 "Default",                                              // Route name
                 "{controller}/{action}/{id}",                           // URL with parameters
