@@ -16,10 +16,10 @@
         [Test]
         public void CanVerifyRouteMaps()
         {
-            "~/".Route().ShouldMapTo<HomeController>(x => x.Index());
-            //"~/SlideFolders/ListByProducer/1".Route().ShouldMapTo<SlideFoldersController>(x => x.ListByProducer(1));
+            "~/installer/XYZ".Route().ShouldMapTo<DownloadController>(x => x.Installer("XYZ"));
+            //"~/".Route().ShouldMapTo<HomeController>(x => x.Index());
+            
         }
-
 
         [SetUp]
         public void SetUp()
