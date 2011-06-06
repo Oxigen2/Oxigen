@@ -70,6 +70,7 @@
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ModelBinders\InstallerSetupBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublishersController.cs" />
     <Compile Include="RouteRegistrar.cs" />
@@ -88,6 +89,7 @@
       <Name>Oxigen.ApplicationServices</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

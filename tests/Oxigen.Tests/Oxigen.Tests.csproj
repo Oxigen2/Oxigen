@@ -127,6 +127,7 @@
     <Compile Include="Oxigen.Core\ChannelsSlideInstanceFactory.cs" />
     <Compile Include="Oxigen.Core\ChannelsSlideTests.cs" />
     <Compile Include="Oxigen.Core\ChannelTests.cs" />
+    <Compile Include="Oxigen.Core\Installer\SetupFileTests.cs" />
     <Compile Include="Oxigen.Core\PublisherInstanceFactory.cs" />
     <Compile Include="Oxigen.Core\PublisherTests.cs" />
     <Compile Include="Oxigen.Core\ScraperTests.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Oxigen.Web\Controllers\AssetContentsControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\ChannelsControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\ChannelsSlidesControllerTests.cs" />
+    <Compile Include="Oxigen.Web\Controllers\ModelBinders\InstallerSetupModelBinderTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\PublishersControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\RouteRegistrarTests.cs" />
     <Compile Include="Oxigen.Data\NHibernateMaps\MappingIntegrationTests.cs" />

@@ -44,5 +44,10 @@ namespace Oxigen.Core
 		public virtual DateTime? ContentLastAddedDate { get; set; }
 
         public virtual IList<ChannelsSlide> AssignedSlides { get; set; }
+
+        static public int DefaultWeighting 
+        {
+            get { return 10; }
+        }
     }
 }
