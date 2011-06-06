@@ -1474,7 +1474,7 @@
     <Content Include="packages.config" />
     <None Include="Oxigen.Web.wpp.targets" />
     <None Include="Resources\LiveScreensaverIntro.pdf" />
-    <Content Include="Resources\OxigenInstallationRequirements.pdf" />
+    <None Include="Resources\OxigenInstallationRequirements.pdf" />
     <None Include="Resources\Sports_2009.pdf" />
   </ItemGroup>
   <ItemGroup>
