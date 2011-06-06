@@ -140,6 +140,7 @@
     <Compile Include="Oxigen.Core\TemplateInstanceFactory.cs" />
     <Compile Include="Oxigen.Core\TemplateTests.cs" />
     <Compile Include="Oxigen.UserDataMarshaller\ClientDataLoggerTests.cs" />
+    <Compile Include="Oxigen.Web.Assets\RouteRegistrarTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\AssetContentsControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\ChannelsControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\ChannelsSlidesControllerTests.cs" />
@@ -167,6 +168,10 @@
       <Project>{EA00777D-3D7A-4406-8BFB-E5A90CF0E8A9}</Project>
       <Name>Oxigen.ApplicationServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\app\Oxigen.Web.Assets\Oxigen.Web.Assets.csproj">
+      <Project>{69ED477B-2DB0-4664-A92E-F2E490A6BF17}</Project>
+      <Name>Oxigen.Web.Assets</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\app\Oxigen.Web.Controllers\Oxigen.Web.Controllers.csproj">
       <Project>{518B2E4B-2B9B-48EF-8736-DDB6A0F78E79}</Project>
       <Name>Oxigen.Web.Controllers</Name>
@@ -178,10 +183,6 @@
     <ProjectReference Include="..\..\app\Oxigen.Data\Oxigen.Data.csproj">
       <Project>{63E9AECE-3385-44F0-BDF9-4C01DD3C0647}</Project>
       <Name>Oxigen.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\app\OxigenIIUserDataMarshaller\OxigenIIUserDataMarshaller.csproj">
-      <Project>{D1F4201F-CAAC-48B3-B8DC-D52E04BCDB90}</Project>
-      <Name>OxigenIIUserDataMarshaller</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\app\OxigenIIUserDataMarshallrService\OxigenIIUserDataMarshallrService.csproj">
       <Project>{F49B55D4-1F4D-4F24-A978-4FA55A39EFDF}</Project>
@@ -198,9 +199,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Oxigen.ApplicationServices\RSS\rssschema.xml" />
-    <Content Include="Oxigen.UserDataMarshaller\ImpressionLogs.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Oxigen.ApplicationServices\RSS\Telegraph.xslt" />
     <EmbeddedResource Include="Oxigen.ApplicationServices\RSS\TelegraphSample.xml" />
   </ItemGroup>
