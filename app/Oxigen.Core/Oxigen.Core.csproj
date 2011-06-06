@@ -81,6 +81,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Flash\SWAFile.cs" />
+    <Compile Include="Installer\SetupFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publisher.cs" />
     <Compile Include="QueryDtos\AssetContentDto.cs" />

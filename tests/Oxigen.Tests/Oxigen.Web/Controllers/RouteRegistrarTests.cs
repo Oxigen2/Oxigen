@@ -1,4 +1,7 @@
-﻿namespace Tests.Oxigen.Controllers
+﻿using System;
+using System.Web.Mvc;
+
+namespace Tests.Oxigen.Controllers
 {
     using System.Web.Routing;
 
@@ -16,7 +19,7 @@
         [Test]
         public void CanVerifyRouteMaps()
         {
-            "~/installer/XYZ".Route().ShouldMapTo<DownloadController>(x => x.Installer("XYZ"));
+            "~/installer/XYZ".Route().ShouldMapTo<DownloadController>(x => x.Installer(null));
             //"~/".Route().ShouldMapTo<HomeController>(x => x.Index());
             
         }

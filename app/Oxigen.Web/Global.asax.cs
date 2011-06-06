@@ -1,6 +1,9 @@
 ﻿
 
 using Elmah.Contrib.Mvc;
+using Oxigen.ApplicationServices;
+using Oxigen.Core.Installer;
+using Oxigen.Web.Controllers.ModelBinders;
 
 namespace Oxigen.Web
 {
@@ -80,9 +83,12 @@ namespace Oxigen.Web
 
             ModelBinders.Binders.DefaultBinder = new SharpModelBinder();
 
+
             ModelValidatorProviders.Providers.Add(new NHibernateValidatorProvider());
 
             this.InitializeServiceLocator();
+
+            ModelBinders.Binders.Add(typeof(SetupFile), new InsallerSetupBinder(ServiceLocator.Current.GetInstance<IChannelManagementService>()));
 
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
