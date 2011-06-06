@@ -104,7 +104,7 @@
     <p>Full installation requirements can be downloaded <a href="/Resources/OxigenInstallationRequirements.pdf">here</a>.</p>
     <table class="FAQCentred" cellspacing="0">
       <tr>
-        <td>.NET Framework v3.5 or above</td>
+        <td>.NET Framework v3.5</td>
         <td><a href="http://www.microsoft.com/net/download.aspx" target="_blank">www.microsoft.com</a></td>
       </tr>
       <tr>
@@ -268,12 +268,8 @@
       <li>switch your virus scanner back on</li>
     </ul>
     <h3 id="TroubleError">Error 0xc0000135 occurs when I try to run the Oxigen installer.<a href="#">- Back to top</a></h3>
-    <p>This error is usually due to a problem with your .NET installation.  Please bring your .NET installation up to date by installing each of the following updates in turn:</p>
-    <p>v2.0 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0856eacb-4362-4b0d-8edd-aab15c5e04f5" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0856eacb-4362-4b0d-8edd-aab15c5e04f5</a></p>
-    <p>v3.0 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=10cc340b-f857-4a14-83f5-25634c3bf043" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=10cc340b-f857-4a14-83f5-25634c3bf043</a></p>
-    <p>v3.5 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=ab99342f-5d1a-413d-8319-81da479ab0d7" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=ab99342f-5d1a-413d-8319-81da479ab0d7</a></p>
-    <p>v4.0 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0a391abd-25c1-4fc0-919f-b21f31ab88b7" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0a391abd-25c1-4fc0-919f-b21f31ab88b7</a></p>
-    <p>Please note that you cannot just install v4.0 as .NET is cumulative.</p>
+    <p>This error is usually due to a problem with your .NET installation.  Please bring your .NET installation up to date by installing:</p>
+    <p>Microsoft .NET 3.5 SP1 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=ab99342f-5d1a-413d-8319-81da479ab0d7" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=ab99342f-5d1a-413d-8319-81da479ab0d7</a></p>
     <h3 id="TroubleError2">Error 001 occurs when I try to run the Oxigen installer.<a href="#">- Back to top</a></h3>    
     <p>This error is usually due to an old registry key still being present on your machine. To remove the key:</p>
     <ul>
