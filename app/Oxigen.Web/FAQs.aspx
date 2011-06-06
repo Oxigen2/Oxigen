@@ -271,7 +271,7 @@
     <p>This error is usually due to a problem with your .NET installation.  Please bring your .NET installation up to date by installing each of the following updates in turn:</p>
     <p>v2.0 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0856eacb-4362-4b0d-8edd-aab15c5e04f5" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0856eacb-4362-4b0d-8edd-aab15c5e04f5</a></p>
     <p>v3.0 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=10cc340b-f857-4a14-83f5-25634c3bf043" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=10cc340b-f857-4a14-83f5-25634c3bf043</a></p>
-    <p>v3.5 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=e3821449-3c6b-42f1-9fd9-0041345b3385" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=e3821449-3c6b-42f1-9fd9-0041345b3385</a></p>
+    <p>v3.5 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=ab99342f-5d1a-413d-8319-81da479ab0d7" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=ab99342f-5d1a-413d-8319-81da479ab0d7</a></p>
     <p>v4.0 - <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0a391abd-25c1-4fc0-919f-b21f31ab88b7" target="_blank">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0a391abd-25c1-4fc0-919f-b21f31ab88b7</a></p>
     <p>Please note that you cannot just install v4.0 as .NET is cumulative.</p>
     <h3 id="TroubleError2">Error 001 occurs when I try to run the Oxigen installer.<a href="#">- Back to top</a></h3>    
