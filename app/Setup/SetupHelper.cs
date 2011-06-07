@@ -1108,7 +1108,7 @@ namespace Setup
 
     internal static bool PrerequisitesMet()
     {
-      return (IsRamSufficient() != RAMStatus.CannotInstall) && DotNet35SExists() && FlashActiveXExists()
+      return (IsRamSufficient() != RAMStatus.CannotInstall) && DotNet35Exists() && FlashActiveXExists()
         && QuickTimeRightVersionExists() && WindowsMediaPlayerRightVersionExists(); 
     }    
 
@@ -1125,7 +1125,7 @@ namespace Setup
       return RAMStatus.CannotInstall;
     }
 
-    internal static bool DotNet35SExists()
+    internal static bool DotNet35Exists()
     {
       return GenericRegistryAccess.RegistryKeyExists(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5");
     }

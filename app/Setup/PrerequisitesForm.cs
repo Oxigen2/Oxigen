@@ -50,7 +50,7 @@ namespace Setup
       Application.DoEvents();
       Thread.Sleep(500);
 
-      if (SetupHelper.DotNet35SExists())
+      if (SetupHelper.DotNet35Exists())
         dotNetIndicator.Image = Resources.tick;
       else
       {
@@ -127,7 +127,7 @@ namespace Setup
 
     private void linkNET_Clicked(object sender, EventArgs e)
     {
-      System.Diagnostics.Process.Start("http://www.microsoft.com/downloads/details.aspx?FamilyID=9cfb2d51-5ff4-4491-b0e5-b386f32c0992");
+      System.Diagnostics.Process.Start("http://www.microsoft.com/downloads/en/details.aspx?FamilyID=ab99342f-5d1a-413d-8319-81da479ab0d7");
 
       Application.Exit();
     }

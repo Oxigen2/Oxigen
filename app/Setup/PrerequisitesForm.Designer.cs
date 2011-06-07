@@ -63,8 +63,7 @@
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(396, 13);
       this.label1.TabIndex = 4;
-      this.label1.Text = "Oxigen needs to have the following hardware and software installed in order to ru" +
-          "n.";
+      this.label1.Text = "Oxigen needs to have the following hardware and software installed in order to run.";
       // 
       // label2
       // 
