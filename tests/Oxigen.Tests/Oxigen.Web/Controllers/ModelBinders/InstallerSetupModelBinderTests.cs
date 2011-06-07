@@ -28,7 +28,7 @@ namespace Tests.Oxigen.Web.Controllers.ModelBinders
                  }; 
             var bindingContext = new ModelBindingContext() { ValueProvider = dict };
             var binder = new InsallerSetupBinder(channelsManagementService);
-            var setupFile = (SetupFile)binder.BindModel(null, bindingContext);
+            var setupFile = (InstallerSetup)binder.BindModel(null, bindingContext);
 
             setupFile.GetSetupText().ShouldEqual("11,,ArsenalGUID,,Arsenal,,10\r\n");
         }
@@ -45,7 +45,7 @@ namespace Tests.Oxigen.Web.Controllers.ModelBinders
                  };
             var bindingContext = new ModelBindingContext() { ValueProvider = dict };
             var binder = new InsallerSetupBinder(channelsManagementService);
-            var setupFile = (SetupFile)binder.BindModel(null, bindingContext);
+            var setupFile = (InstallerSetup)binder.BindModel(null, bindingContext);
 
             setupFile.GetSetupText().ShouldEqual("11,,ArsenalGUID,,Arsenal,,10\r\n22,,LeedsGUID,,Leeds,,10\r\n");
         }
@@ -62,7 +62,7 @@ namespace Tests.Oxigen.Web.Controllers.ModelBinders
                  };
             var bindingContext = new ModelBindingContext() { ValueProvider = dict };
             var binder = new InsallerSetupBinder(channelsManagementService);
-            var setupFile = (SetupFile)binder.BindModel(null, bindingContext);
+            var setupFile = (InstallerSetup)binder.BindModel(null, bindingContext);
 
             setupFile.GetSetupText().ShouldEqual("11,,ArsenalGUID,,Arsenal,,30\r\n22,,LeedsGUID,,Leeds,,40\r\n");
         }
@@ -78,7 +78,7 @@ namespace Tests.Oxigen.Web.Controllers.ModelBinders
                  };
             var bindingContext = new ModelBindingContext() { ValueProvider = dict };
             var binder = new InsallerSetupBinder(channelsManagementService);
-            var setupFile = (SetupFile)binder.BindModel(null, bindingContext);
+            var setupFile = (InstallerSetup)binder.BindModel(null, bindingContext);
 
             setupFile.GetSetupText().ShouldEqual("22,,LeedsGUID,,Leeds United,,10\r\n");
         }

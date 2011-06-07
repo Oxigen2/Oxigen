@@ -24,7 +24,7 @@ namespace Oxigen.Web.Controllers.ModelBinders
 
             string serializedSubscription = value.AttemptedValue;
             var subscriptions = serializedSubscription.Split('+');
-            var setupFile = new SetupFile();
+            var setupFile = new InstallerSetup();
             foreach (var subscription in subscriptions)
             {
                 var values = subscription.Split('-');

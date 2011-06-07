@@ -88,7 +88,7 @@ namespace Oxigen.Web
 
             this.InitializeServiceLocator();
 
-            ModelBinders.Binders.Add(typeof(SetupFile), new InsallerSetupBinder(ServiceLocator.Current.GetInstance<IChannelManagementService>()));
+            ModelBinders.Binders.Add(typeof(InstallerSetup), new InsallerSetupBinder(ServiceLocator.Current.GetInstance<IChannelManagementService>()));
 
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);

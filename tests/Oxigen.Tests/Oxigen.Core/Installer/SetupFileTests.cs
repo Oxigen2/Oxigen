@@ -13,7 +13,7 @@ namespace Tests.Oxigen.Core.Installer
         [Test]
         public void CanCreateSingleLineTest()
         {
-            var setupFile = new SetupFile();
+            var setupFile = new InstallerSetup();
             setupFile.Add(10, "GUID", "Stream Name", 20);
 
             var setupText = setupFile.GetSetupText();
@@ -24,7 +24,7 @@ namespace Tests.Oxigen.Core.Installer
         [Test]
         public void CanCreateMultiLineTest()
         {
-            var setupFile = new SetupFile();
+            var setupFile = new InstallerSetup();
             setupFile.Add(10, "GUID", "Stream Name", 20);
             setupFile.Add(30, "GUID2", "Stream Name 2", 30);
 
@@ -36,7 +36,7 @@ namespace Tests.Oxigen.Core.Installer
         [Test]
         public void CanCreateEmptyTest()
         {
-            var setupFile = new SetupFile();
+            var setupFile = new InstallerSetup();
             var setupText = setupFile.GetSetupText();
             setupText.ShouldEqual("");
         }
