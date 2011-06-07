@@ -21,7 +21,7 @@ namespace OxigenIIAdvertising.RelayServers
     IUserDataMarshallerSU, IUserDataMarshallerSUStreamer
   {
     private string _appDataPath = ConfigurationManager.AppSettings["appDataPath"];
-    private string _assetPath = ConfigurationManager.AppSettings["assetPath"];
+
     private string _logPath = ConfigurationManager.AppSettings["logPath"];
     private string _debugFilePath = ConfigurationManager.AppSettings["debugFilePath"];
     private string _machineSpecificDataPath = ConfigurationManager.AppSettings["machineSpecificDataPath"];
@@ -230,9 +230,7 @@ namespace OxigenIIAdvertising.RelayServers
       }
 
       // _assetPath/<asset's GUID suffix>/asset filename
-      string assetFullPath = _assetPath +
-        assetFileParameterMessage.AssetFileName.Substring(assetFileParameterMessage.AssetFileName.LastIndexOf("_") + 1, 1)
-        + "\\" + assetFileParameterMessage.AssetFileName;
+      string assetFullPath = FileRepositoryHelper.GetAssetFullPath(assetFileParameterMessage.AssetFileName);
 
       if (!File.Exists(assetFullPath))
       {

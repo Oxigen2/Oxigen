@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientDataLogger.cs" />
+    <Compile Include="FileRepositoryHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDataMarshaller.cs" />
   </ItemGroup>

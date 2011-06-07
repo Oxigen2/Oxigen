@@ -114,10 +114,6 @@
       <Project>{50DAC8FF-4F6B-44FD-8875-50E65CD736B3}</Project>
       <Name>InterCommunicationStructures</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OxigenIILoggerInfo\LoggerInfo.csproj">
-      <Project>{24134EAF-1B5B-4329-9071-15629067E98D}</Project>
-      <Name>LoggerInfo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OxigenIIXMLSerializer\XMLSerializer.csproj">
       <Project>{905FC382-9356-4BD1-9F66-0947A6F2FC57}</Project>
       <Name>XMLSerializer</Name>
