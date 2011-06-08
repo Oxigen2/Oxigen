@@ -171,32 +171,8 @@ namespace ChannelDatabaseToRelayUploaderLib
       return channelIDs;
     }
 
-    // doesn't necessarily have to be a GUID, but can be a string of a filename format.
-    // will get one character after the last underscore of the string parameter
-    private string GetGUIDSuffix(string GUID)
-    {
-      return GUID.Substring(GUID.LastIndexOf("_") + 1, 1);
-    }
-
-    private string GetResponsiveServer(string letter, string endpointSuffix)
-    {
-      try
-      {
-        return ResponsiveServerDeterminator.GetResponsiveURI(ServerType.RelayChannelAssets, _maxNoServers, _serverTimeout,
-          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix);
-      }
-      catch (Exception ex)
-      {
-        LogException(_eventLog, ex.ToString());
-
-        return "";
-      }
-    }
-
     private HashSet<int> UploadAssets(List<SimpleFileInfo> assets)
     {
-      string assetContentPath = System.Configuration.ConfigurationSettings.AppSettings["assetContentPath"];
-
       MasterDataMarshallerStreamerClient streamerClient = null;
       MemoryStream ms = null;
       AssetFileStreamParameterMessage message = null;
