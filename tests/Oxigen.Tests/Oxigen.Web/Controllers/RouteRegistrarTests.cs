@@ -20,6 +20,8 @@ namespace Tests.Oxigen.Controllers
         public void CanVerifyRouteMaps()
         {
             "~/installer/XYZ".Route().ShouldMapTo<DownloadController>(x => x.Installer(null));
+            "~/log/1/2/3".Route().ShouldMapTo<LogsController>(x => x.Log("1", "2", "3"));
+
             //"~/".Route().ShouldMapTo<HomeController>(x => x.Index());
             
         }

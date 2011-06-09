@@ -2,12 +2,24 @@
 using System.IO;
 using System.Web.Mvc;
 using Oxigen.Core.Installer;
+using Oxigen.Core.Logger;
+using Oxigen.Core.RepositoryInterfaces;
+using SharpArch.Core;
+
 
 namespace Oxigen.Web.Controllers
 {
     [HandleError]
     public class DownloadController : Controller
     {
+        private ILogEntryRepository logEntryRepository;
+
+        public DownloadController(ILogEntryRepository logEntryRepository) {
+            Check.Require(logEntryRepository != null, "logEntryRepository may not be null");
+
+            this.logEntryRepository = logEntryRepository;
+        }
+
         public ActionResult Installer(InstallerSetup subscription)
         {
             // create Custom dir
@@ -41,6 +53,12 @@ namespace Oxigen.Web.Controllers
                 System.IO.File.Delete(installersPath + "Oxigen.msi");
             }
 
+            var logEntry = new LogEntry("Installer Download") {
+                UserRef = Session.SessionID,
+                Message = subscription.FolderName,
+                IpAddress = Request.ServerVariables["REMOTE_ADDR"]
+            };
+            logEntryRepository.SaveOrUpdate(logEntry);
             return File(filePath, "application/octet-stream", exeName);
         }
 
