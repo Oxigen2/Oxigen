@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
-using System.Xml;
 using Oxigen.Core.Flash;
 
 namespace Oxigen.Core.Syndication
@@ -12,6 +12,7 @@ namespace Oxigen.Core.Syndication
     {
         public Dictionary<string, Parameter> Parameters = new Dictionary<string, Parameter>();
         public string Guid { get; set; }
+
         public void Add(Parameter parameter)
         {
             Parameters.Add(parameter.Name, parameter);
@@ -24,8 +25,10 @@ namespace Oxigen.Core.Syndication
         {
             Name = name;
         }
+
         public string Name { get; set; }
         public abstract string GetValue();
+
         public virtual void PassTo(SWAFile template)
         {
             template.UpdateText(Name, GetValue());
@@ -43,14 +46,14 @@ namespace Oxigen.Core.Syndication
 
         public override string GetValue()
         {
-            return _text;   
+            return _text;
         }
     }
 
     public class DateParameter : Parameter
     {
-        private readonly string _text;
         private readonly string _format;
+        private readonly string _text;
 
         public DateParameter(string name, string text, string format) : base(name)
         {
@@ -58,16 +61,15 @@ namespace Oxigen.Core.Syndication
             _format = format;
         }
 
-        public override string GetValue()
-        {
-            return Date.ToString(_format);
-        }
-
         public DateTime Date
         {
             get { return DateTime.Parse(_text); }
         }
 
+        public override string GetValue()
+        {
+            return Date.ToString(_format);
+        }
     }
 
     public class ImageParameter : Parameter
@@ -79,22 +81,54 @@ namespace Oxigen.Core.Syndication
             _url = url;
         }
 
-        public override string GetValue() {
+        public override string GetValue()
+        {
             return _url;
         }
 
-        public override void PassTo(SWAFile template) {
+        public override void PassTo(SWAFile template)
+        {
             template.UpdateBitmap(Name, GetImage());
         }
 
         public Image GetImage()
         {
-            WebRequest req = WebRequest.Create(_url);
-            WebResponse response = req.GetResponse();
-            Stream stream = response.GetResponseStream();
-            Image img = Image.FromStream(stream);
-            stream.Close();
-            return img;
+            try
+            {
+                WebRequest webRequest = WebRequest.Create(_url);
+                webRequest.Headers.Add("Accept-Encoding", "gzip, deflate");
+                var webResponse = (HttpWebResponse) webRequest.GetResponse();
+
+                using (Stream stream = GetStreamForResponse(webResponse))
+                {
+                    Image img = Image.FromStream(stream);
+                    return img;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("failed to get image: " + _url + "/r/n", ex);
+            }
+        }
+
+        private static Stream GetStreamForResponse(HttpWebResponse webResponse)
+        {
+            Stream stream;
+            switch (webResponse.ContentEncoding.ToUpperInvariant())
+            {
+                case "GZIP":
+                    stream = new GZipStream(webResponse.GetResponseStream(), CompressionMode.Decompress);
+                    break;
+                case "DEFLATE":
+                    stream = new DeflateStream(webResponse.GetResponseStream(), CompressionMode.Decompress);
+                    break;
+
+                default:
+                    stream = webResponse.GetResponseStream();
+                    stream.ReadTimeout = 10000;
+                    break;
+            }
+            return stream;
         }
     }
 }

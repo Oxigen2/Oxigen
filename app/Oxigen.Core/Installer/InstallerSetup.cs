@@ -10,7 +10,7 @@ namespace Oxigen.Core.Installer
         private string _text = "";
         private string _extractorFileName = "";
         private string _folderBaseName = "";
-        private  string _urlKey = "download.oxigen.net";
+        private  string _urlKey = "";
 
         public string ExtractorFileName
         {
