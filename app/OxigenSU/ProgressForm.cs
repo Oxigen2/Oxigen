@@ -313,7 +313,6 @@ namespace OxigenSU
               path = systemTempDir + component.File;
 
             SaveStreamAndDispose(wrapper.ReturnStream, path);
-
             ReportProgress();
           }
           else
@@ -337,7 +336,7 @@ namespace OxigenSU
           }
         }
       }
-      catch
+      catch (Exception ex1)
       {
         if (Directory.Exists(tempDir))
         {
@@ -345,12 +344,12 @@ namespace OxigenSU
           {
             Directory.Delete(tempDir, true);
           }
-          catch
+          catch(Exception ex2)
           {
-            // ignore
+            _log.WriteEntry(ex2.ToString(), EventLogEntryType.Error);
           }
         }
-
+        _log.WriteEntry(ex1.ToString(), EventLogEntryType.Error);
         MessageBox.Show("Oxigen could not complete the software update. A new update will be attempted later.");
 
         _bError = true;

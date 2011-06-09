@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 using OxigenIIAdvertising.ContentExchanger.Properties;
-using OxigenIIAdvertising.AppData;
-using System.IO;
-using OxigenIIAdvertising.UserSettings;
+using ProxyClientBaseLib;
 
 namespace OxigenIIAdvertising.ContentExchanger
 {
@@ -31,10 +26,9 @@ namespace OxigenIIAdvertising.ContentExchanger
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
-      AddCdnSubdomain();
+      SSLValidator.OverrideValidation();
 
       System.Globalization.CultureInfo systemCultureInfo = System.Globalization.CultureInfo.CurrentCulture;
-
       System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("en-GB");
       System.Threading.Thread.CurrentThread.CurrentCulture = ci;
       System.Threading.Thread.CurrentThread.CurrentUICulture = ci; 
@@ -76,17 +70,6 @@ namespace OxigenIIAdvertising.ContentExchanger
           return;
         }
       }
-    }
-
-    private static void AddCdnSubdomain() {
-      Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-      config.AppSettings.Settings.Add("cdnSubdomain", "http://the-cdnsubdomain.com");
-
-      // Save the changes in App.config file.
-      config.Save(ConfigurationSaveMode.Modified);
-
-      // Force a reload of a changed section.
-      ConfigurationManager.RefreshSection("appSettings");
     }
   }
 }

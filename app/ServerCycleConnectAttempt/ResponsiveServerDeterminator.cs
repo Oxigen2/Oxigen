@@ -13,29 +13,6 @@ namespace OxigenIIAdvertising.ServerConnectAttempt
   public static class ResponsiveServerDeterminator
   {
     /// <summary>
-    /// Determines the first available WCF server for system-wide data, given method parameters
-    /// </summary>
-    /// <param name="serverType">Server type to ping</param>
-    /// <param name="maxNoServers">Maximum number of servers to attempt</param>
-    /// <param name="timeout">Ping timeout value</param>
-    /// <param name="primaryDomainName">Primary domain to try</param>
-    /// <param name="secondaryDomainName">Secondary domain if primary domain fails</param>
-    /// <param name="endpointSuffix">The service namd and endpoint address to ping</param>
-    /// <returns>A string with the URL of the first available server</returns>
-    /// <exception cref="NotSupportedException">The request scheme specified in requestUriString has not been registered.</exception>
-    /// <exception cref="System.Security.SecurityException">The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.</exception>
-    /// <exception cref="UriFormatException">The URI specified in requestUriString is not a valid URI.</exception>
-    public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string primaryDomainName, string secondaryDomainName, string endpointSuffix)
-    {
-      return GetResponsiveURI(serverType, maxNoServers, timeout, "", primaryDomainName, secondaryDomainName, endpointSuffix, null);
-    }
-
-    public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string letter, string primaryDomainName, string secondaryDomainName, string endpointSuffix) 
-    {
-        return GetResponsiveURI(serverType, maxNoServers, timeout, letter, primaryDomainName, secondaryDomainName, endpointSuffix, null); 
-    }
-
-    /// <summary>
     /// Determines the first available WCF server given method parameters
     /// </summary>
     /// <param name="serverType">Server type to ping</param>

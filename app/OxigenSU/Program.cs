@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Security.Principal;
 using System.IO;
 using System.Configuration;
+using OxigenSU.DuplicateLibraries;
 
 namespace OxigenSU
 {
@@ -41,12 +42,11 @@ namespace OxigenSU
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
+      SSLValidator.OverrideValidation();
+
       System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("en-GB");
       System.Threading.Thread.CurrentThread.CurrentCulture = ci;
       System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
-
-      // make dynamic updates to app.config as necessary
-      UpdateConfig();
 
       string appDataPath = System.Configuration.ConfigurationSettings.AppSettings["AppDataPath"];
 
@@ -89,6 +89,9 @@ namespace OxigenSU
       if (HasAdminRights() && System.IO.Directory.Exists(appDataPath)
         && System.IO.File.Exists(appDataPath + "\\SettingsData\\components.dat"))
       {
+        // update app.config with any new parameters
+        UpdateConfig();
+
         if (CanDeserialize(appDataPath + "\\SettingsData\\components.dat"))
         {
           Application.Run(new ProgressForm());

@@ -14,7 +14,7 @@ namespace Setup
     [STAThread]
     static void Main(string[] args)
     {
-      Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+      Application.ThreadException += Application_ThreadException;
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
@@ -38,6 +38,8 @@ namespace Setup
 
       if (File.Exists("Setup.ini"))
         ParseINI();
+
+      SSLValidator.OverrideValidation();
 
       if (args.Length > 0)
       {

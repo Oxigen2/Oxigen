@@ -122,6 +122,7 @@
     <Compile Include="DuplicateLibraries\ServerType.cs" />
     <Compile Include="DuplicateLibraries\Shuffler.cs" />
     <Compile Include="DuplicateLibraries\SimpleErrorWrapper.cs" />
+    <Compile Include="DuplicateLibraries\SSLValidator.cs" />
     <Compile Include="DuplicateLibraries\StreamErrorWrapper.cs" />
     <Compile Include="DuplicateLibraries\User.cs" />
     <Compile Include="DuplicateLibraries\StringErrorWrapper.cs" />

@@ -50,6 +50,10 @@ namespace OxigenSU
     /// <exception cref="UriFormatException">The URI specified in requestUriString is not a valid URI.</exception>
     public static string GetResponsiveURI(ServerType serverType, int maxNoServers, int timeout, string letter, string primaryDomainName, string secondaryDomainName, string endpointSuffix)
     {
+      // check both for existence of bDebug and value. Client machines may not have the key at all
+      if (serverType == ServerType.DownloadGetFile && System.Configuration.ConfigurationSettings.AppSettings["bDebug"] != null && System.Configuration.ConfigurationSettings.AppSettings["bDebug"] == "1")
+        return "https://staging-userfilemarshaller.oxigen.net/UserFileMarshaller.svc";
+
       string serverURIPrefix = "https://";
 
       switch (serverType)
