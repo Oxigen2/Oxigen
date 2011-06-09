@@ -362,7 +362,7 @@
 		<call target="makeMSI"/>
 		<exec program="${SignToolPath}" commandline="sign /f &quot;${CertificateLocation}&quot; /p 5513070 /t http://timestamp.verisign.com/scripts/timstamp.dll &quot;${InstallationPackageDir}Oxigen.msi&quot;" failonerror="false"/>
 		<!-- Cleanup -->
-		<delete dir="${InstallationPackageTempDir}" />	
+		<delete dir="${InstallationPackageTempDir}"/>	
 		<echo message="End of execution."/>
 	</target>	
 	<target name="makeMSI">
