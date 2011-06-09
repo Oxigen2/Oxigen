@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using OxigenIIAdvertising.FileChecksumCalculator;
 using System.IO;
 using OxigenIIAdvertising.XMLSerializer;
@@ -13,15 +11,12 @@ using OxigenIIAdvertising.UserDataMarshallerServiceClient;
 using ServiceErrorReporting;
 using OxigenIIAdvertising.PlaylistLogic;
 using OxigenIIAdvertising.AppData;
-using OxigenIIAdvertising.ContentExchanger.Properties;
 using OxigenIIAdvertising.UserSettings;
 using System.Configuration;
 using OxigenIIAdvertising.UserManagementServicesServiceClient;
 using OxigenIIAdvertising.EncryptionDecryption;
 using InterCommunicationStructures;
 using OxigenIIAdvertising.FileRights;
-using System.Windows.Forms;
-using System.Management;
 using System.Diagnostics;
 
 namespace OxigenIIAdvertising.ContentExchanger
@@ -54,8 +49,6 @@ namespace OxigenIIAdvertising.ContentExchanger
     private int _serverTimeout = -1;
     private int _daysToKeepAssetFiles = -1;
     private long _assetFolderSize = -1;
-    private int _majorVersionNumber = -1;
-    private int _minorVersionNumber = -1;
     private float _defaultDisplayDuration = -1F;
 
     private string _primaryDomainName = "";
@@ -758,7 +751,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         _appDataPath = ConfigurationSettings.AppSettings["AppDataPath"];
         _binariesPath = ConfigurationSettings.AppSettings["BinariesPath"];
 
-        _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebug.txt";
+        _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebugCE.txt";
         _logger = new Logger("Content Exchanger", _debugFilePath, LoggingMode.Debug);
 
         _generalDataPath = _appDataPath + "SettingsData\\ss_general_data.dat";
@@ -791,8 +784,6 @@ namespace OxigenIIAdvertising.ContentExchanger
         _userGUIDSuffix = user.GetUserGUIDSuffix();
         _assetFolderSize = user.AssetFolderSize;
         _defaultDisplayDuration = user.DefaultDisplayDuration;
-        _majorVersionNumber = user.SoftwareMajorVersionNumber;
-        _minorVersionNumber = user.SoftwareMinorVersionNumber;
         _userDataMarshallerStreamerClient = new UserDataMarshallerStreamerClient();
         _userManagementServicesStreamerClient = new UserManagementServicesClient();
       }
@@ -984,7 +975,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       try
       {
         return ResponsiveServerDeterminator.GetResponsiveURI(serverType, maxNoServers, _serverTimeout,
-          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix);
+          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix, _logger);
       }
       catch (Exception ex)
       {

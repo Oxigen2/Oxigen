@@ -133,7 +133,7 @@ namespace OxigenIIAdvertising.LogExchanger
 
       ChannelSubscriptions channelSubscriptions = GetChannelSubscriptions();
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " GetChannelSubscriptions returned.");
+      _logger.WriteMessage("GetChannelSubscriptions returned.");
 
       if (channelSubscriptions == null)
         return; // log exchanger cannot run without channel subscriptions
@@ -902,17 +902,12 @@ namespace OxigenIIAdvertising.LogExchanger
       return user;
     }
 
-    private string GetResponsiveServer(ServerType serverType, int maxNoServers, string endpointSuffix)
-    {
-      return GetResponsiveServer(serverType, maxNoServers, "", endpointSuffix);
-    }
-
     private string GetResponsiveServer(ServerType serverType, int maxNoServers, string letter, string endpointSuffix)
     {
       try
       {
         return ResponsiveServerDeterminator.GetResponsiveURI(serverType, maxNoServers, _serverTimeout, 
-          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix);
+          letter, _primaryDomainName, _secondaryDomainName, endpointSuffix, _logger);
       }
       catch (Exception ex)
       {

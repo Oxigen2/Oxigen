@@ -160,6 +160,7 @@
     <Compile Include="DuplicateLibrary\User.cs" />
     <Compile Include="SilentInstaller.cs" />
     <Compile Include="SilentMerger.cs" />
+    <Compile Include="SSLValidator.cs" />
     <Compile Include="SubscriptionsUpdatedForm.cs">
       <SubType>Form</SubType>
     </Compile>

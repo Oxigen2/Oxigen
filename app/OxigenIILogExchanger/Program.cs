@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
+using OxigenIIAdvertising.LoggerInfo;
 using OxigenIIAdvertising.UserSettings;
 using OxigenIIAdvertising.AppData;
+using ProxyClientBaseLib;
 
 namespace OxigenIIAdvertising.LogExchanger
 {
@@ -28,6 +31,8 @@ namespace OxigenIIAdvertising.LogExchanger
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
+      SSLValidator.OverrideValidation();
+
       System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("en-GB");
       System.Threading.Thread.CurrentThread.CurrentCulture = ci;
       System.Threading.Thread.CurrentThread.CurrentUICulture = ci; 
@@ -37,18 +42,20 @@ namespace OxigenIIAdvertising.LogExchanger
         GeneralData generalData = GetGeneralData();
         User user = GetUser();
 
+        Logger logger = new Logger("LogExchanger", ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebugLE.txt");
+
         if (generalData != null && user != null)
         {
           // simply try to access the network to provoke any firewall the target machine has, then exit application
           // connect to relay
-          OxigenIIAdvertising.ServerConnectAttempt.ResponsiveServerDeterminator.GetResponsiveURI
-            (OxigenIIAdvertising.ServerConnectAttempt.ServerType.RelayLogs,
+          ServerConnectAttempt.ResponsiveServerDeterminator.GetResponsiveURI
+            (ServerConnectAttempt.ServerType.RelayLogs,
             int.Parse(generalData.NoServers["relayLog"]),
             int.Parse(generalData.Properties["serverTimeout"]),
             user.GetMachineGUIDSuffix(),
             generalData.Properties["primaryDomainName"],
             generalData.Properties["secondaryDomainName"],
-            "UserDataMarshaller.svc");
+            "UserDataMarshaller.svc", logger);
         }
 
         Application.Exit();

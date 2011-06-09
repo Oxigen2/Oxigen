@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Diagnostics;
+using log4net;
 using ServiceErrorReporting;
 using System.IO;
 using InterCommunicationStructures;
@@ -10,18 +11,10 @@ namespace OxigenIIDownloadServers
   [ServiceBehavior(Namespace = "http://oxigen.net")]
   public class UserFileMarshaller : IUserFileMarshaller
   {
-    private EventLog _eventLog = null;
-
     private string _systemPassPhrase = System.Configuration.ConfigurationSettings.AppSettings["systemPassPhrase"];
     private string _changesetPath = System.Configuration.ConfigurationSettings.AppSettings["changeSetPath"];
-    private string _debugFilePath = System.Configuration.ConfigurationSettings.AppSettings["debugFilePath"];
 
-    public UserFileMarshaller()
-    {
-      _eventLog = new EventLog();
-      _eventLog.Log = String.Empty;
-      _eventLog.Source = "Oxigen User File Marshaller";
-    }
+    private static readonly ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     public StreamErrorWrapper GetComponent(ComponentParameterMessage message)
     {
@@ -51,7 +44,7 @@ namespace OxigenIIDownloadServers
 
       if (!File.Exists(changesetFullPath))
       {
-        _eventLog.WriteEntry("File does not exist: " + changesetFullPath, EventLogEntryType.Warning);
+        _logger.Warn("File does not exist: " + changesetFullPath);
 
         streamErrorWrapper.ErrorCode = "ERR:002";
         streamErrorWrapper.Message = "File not found";
@@ -76,7 +69,7 @@ namespace OxigenIIDownloadServers
       }
       catch (Exception ex)
       {
-        _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+        _logger.Error(ex.ToString());
 
         if (fs != null)
           fs.Dispose();
