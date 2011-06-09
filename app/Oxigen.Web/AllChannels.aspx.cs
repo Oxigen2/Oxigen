@@ -191,7 +191,7 @@ namespace OxigenIIPresentation
       Literal SiteMapListRight = (Literal)e.Item.FindControl("SiteMapListRight");
 
       ChannelLink.Text = channel.ChannelName;
-      ChannelLink.NavigateUrl = "~/ChannelDetails.aspx?channelID=" + channel.ChannelID;
+      ChannelLink.NavigateUrl = "~/ChannelDetails.aspx?a=v&channelID=" + channel.ChannelID;
 
       if (_channelCounter == 31)
         SiteMapListRight.Text = "</div><div class=\"SiteMapListRight\">";
@@ -212,7 +212,7 @@ namespace OxigenIIPresentation
       ChannelNumber.Text = _mostPopularCounter.ToString();
       ChannelName.Text = channel.ChannelName;
       ChannelName.ToolTip = channel.ChannelName;
-      ChannelName.NavigateUrl = "~/ChannelDetails.aspx?channelID=" + channel.ChannelID;
+      ChannelName.NavigateUrl = "~/ChannelDetails.aspx?a=v&channelID=" + channel.ChannelID;
 
       _mostPopularCounter++;
     }

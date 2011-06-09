@@ -76,7 +76,7 @@ namespace OxigenIIPresentation
       AddDate.Text = channel.AddDate.ToShortDateString();
       NoContent.Text = channel.NoContents.ToString();
       ShortDescription.Text = channel.ChannelDescription;
-      LongDescription.Text = channel.ChannelLongDescription == String.Empty ? "<p>No description available</p>" : "<p>" + Helper.FirstWords(channel.ChannelLongDescription, 30).Replace("\r\n", "</p><p>") + "...<a href=\"ChannelDetails.aspx?channelID=" + channel.ChannelID + "\">More</a></p>";
+      LongDescription.Text = channel.ChannelLongDescription == String.Empty ? "<p>No description available</p>" : "<p>" + Helper.FirstWords(channel.ChannelLongDescription, 30).Replace("\r\n", "</p><p>") + "...<a href=\"ChannelDetails.aspx?a=v&channelID=" + channel.ChannelID + "\">More</a></p>";
       Thumbnail.AlternateText = channel.ChannelName;
       Thumbnail.ImageUrl = System.Configuration.ConfigurationSettings.AppSettings["thumbnailChannelRelativePath"] + channel.ImagePath;
 
