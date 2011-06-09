@@ -10,9 +10,15 @@ namespace Oxigen.Core.Installer
         private string _text = "";
         private string _extractorFileName = "";
         private string _folderBaseName = "";
+        private  string _urlKey = "download.oxigen.net";
+
         public string ExtractorFileName
         {
             get { return _extractorFileName; }
+        }
+
+        public string UrlKey {
+            get { return _urlKey; }
         }
 
         public string FolderName
@@ -24,6 +30,10 @@ namespace Oxigen.Core.Installer
         {
             _text = _text + string.Format("{0},,{1},,{2},,{3}\r\n", channelId, channelGuid, channelName, weighting);
             _folderBaseName = _folderBaseName + string.Format("{0}-{1}", channelId, weighting);
+            
+            if (_urlKey != "") _urlKey = _urlKey + "+";
+            _urlKey = _urlKey + channelId + ((Channel.DefaultWeighting == weighting) ? "" : "." + weighting) + "-" + channelName.Replace(" ", "-");
+            
             if (_extractorFileName =="")
                 _extractorFileName = channelName.Replace(" ", "_").Replace("\\", "_").Replace("/", "_");
             else

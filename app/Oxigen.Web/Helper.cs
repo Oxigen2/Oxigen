@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Oxigen.Core.Installer;
 using OxigenIIAdvertising.SOAStructures;
 using System.Web.SessionState;
 using System.Diagnostics;
@@ -190,6 +191,13 @@ namespace OxigenIIPresentation
   }
     #endregion
 
+    public static class Url
+    {
+        public static string For(InstallerSetup installerSetup)
+        {
+            return "http://download.oxigen.net/installer/" + installerSetup.UrlKey;
+        }
+    }
 
 
   /// <summary>
