@@ -7,6 +7,7 @@ namespace Oxigen.Web.Controllers
     {
         public static void RegisterRoutesTo(RouteCollection routes)
         {
+            routes.Add(new MasterLegacyUrlRoute());
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
             routes.IgnoreRoute("get.ox");
