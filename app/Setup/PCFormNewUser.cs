@@ -45,5 +45,11 @@ namespace Setup
     {
       SetupHelper.ExitNoChanges();
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("5.9-PCFormNewUser");
+    }
   }
 }

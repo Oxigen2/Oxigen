@@ -34,6 +34,8 @@ namespace Setup
       if (!string.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["debugMode"]))
         AppDataSingleton.Instance.DebugMode = true;
 
+      ClientLogger logger = new ClientLogger();
+      
       SetupForm form;
 
       if (File.Exists("Setup.ini"))

@@ -54,7 +54,7 @@
       this.label2.Size = new System.Drawing.Size(499, 26);
       this.label2.TabIndex = 8;
       this.label2.Text = "An earlier version of Oxigen already exists on your computer. Setup needs to remo" +
-          "ve your current version before it proceeds with the install.";
+    "ve your current version before it proceeds with the install.";
       // 
       // btnNext
       // 
@@ -86,6 +86,7 @@
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
       this.Name = "OlderOxigenExistsForm";
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.pictureBox1, 0);
       this.Controls.SetChildIndex(this.label1, 0);
       this.Controls.SetChildIndex(this.label2, 0);

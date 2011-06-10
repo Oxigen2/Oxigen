@@ -71,5 +71,11 @@ namespace Setup
 
       SetupHelper.OpenForm<CredentialsForm>(this);
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("5.2-PCFormExistingUser");
+    }
   }
 }

@@ -79,7 +79,7 @@
       this.label3.TabIndex = 7;
       this.label3.Tag = "";
       this.label3.Text = "To install to different folders, either edit the paths below or clock Browse and " +
-          "select another folder.";
+    "select another folder.";
       // 
       // groupBox1
       // 
@@ -200,6 +200,7 @@
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.label3);
       this.Name = "InstallationPathsForm";
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.label3, 0);
       this.Controls.SetChildIndex(this.groupBox2, 0);
       this.Controls.SetChildIndex(this.groupBox1, 0);

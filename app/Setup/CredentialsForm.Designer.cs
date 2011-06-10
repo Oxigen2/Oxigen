@@ -151,6 +151,7 @@
       this.Controls.Add(this.btnCancel);
       this.Controls.Add(this.label4);
       this.Name = "CredentialsForm";
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.label4, 0);
       this.Controls.SetChildIndex(this.btnCancel, 0);
       this.Controls.SetChildIndex(this.label3, 0);

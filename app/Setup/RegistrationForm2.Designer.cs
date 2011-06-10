@@ -229,6 +229,7 @@
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label3);
       this.Name = "RegistrationForm2";
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.label3, 0);
       this.Controls.SetChildIndex(this.label2, 0);
       this.Controls.SetChildIndex(this.label5, 0);

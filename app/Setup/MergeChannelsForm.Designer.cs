@@ -118,6 +118,7 @@
       this.Controls.Add(this.btnBack);
       this.Controls.Add(this.btnCancel);
       this.Name = "MergeChannelsForm";
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.pictureBox1, 0);
       this.Controls.SetChildIndex(this.btnCancel, 0);
       this.Controls.SetChildIndex(this.btnBack, 0);

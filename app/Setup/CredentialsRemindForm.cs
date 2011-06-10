@@ -93,5 +93,11 @@ namespace Setup
         }
       }
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("5.10-CredentialsRemind");
+    }
   }
 }

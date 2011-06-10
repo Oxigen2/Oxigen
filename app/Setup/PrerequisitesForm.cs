@@ -29,6 +29,9 @@ namespace Setup
 
     private void PrerequisitesForm_Shown(object sender, EventArgs e)
     {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("3-Prerequisites");
+
       Application.DoEvents();
       Thread.Sleep(500);
 

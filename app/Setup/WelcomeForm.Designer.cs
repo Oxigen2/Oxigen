@@ -96,7 +96,7 @@
       this.label4.Size = new System.Drawing.Size(498, 26);
       this.label4.TabIndex = 3;
       this.label4.Text = "Please ensure you are connected to the internet as this is required for installat" +
-          "ion. It is recommended that you close all other programs before continuing.";
+    "ion. It is recommended that you close all other programs before continuing.";
       // 
       // WelcomeForm
       // 
@@ -109,6 +109,7 @@
       this.Controls.Add(this.label4);
       this.Controls.Add(this.btnCancel);
       this.Name = "WelcomeForm";
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.btnCancel, 0);
       this.Controls.SetChildIndex(this.label4, 0);
       this.Controls.SetChildIndex(this.label2, 0);

@@ -57,7 +57,7 @@
       this.lblInstructions.Size = new System.Drawing.Size(492, 26);
       this.lblInstructions.TabIndex = 7;
       this.lblInstructions.Text = "Oxigen already exists on your computer. You can either uninstall the existing ins" +
-          "tallation or add the new Streams you have subscribed to.";
+    "tallation or add the new Streams you have subscribed to.";
       // 
       // rbRepair
       // 

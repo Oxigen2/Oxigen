@@ -102,7 +102,7 @@
       this.label1.Size = new System.Drawing.Size(395, 13);
       this.label1.TabIndex = 6;
       this.label1.Text = "You need to agree to the Terms of Service in order to proceed with the installati" +
-          "on.";
+    "on.";
       // 
       // laBox
       // 
@@ -137,6 +137,7 @@
       this.Controls.Add(this.rbNotAgree);
       this.Name = "TermsAndConditionsForm";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Auto;
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.rbNotAgree, 0);
       this.Controls.SetChildIndex(this.rbAgree, 0);
       this.Controls.SetChildIndex(this.btnBack, 0);

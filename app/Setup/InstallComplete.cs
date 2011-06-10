@@ -60,6 +60,9 @@ namespace Setup
 
     private void InstallationComplete_Shown(object sender, EventArgs e)
     {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("9-InstallationComplete");
+
       ScreenSaver.SetScreenSaverActive(0);
 
       if (!AppDataSingleton.Instance.Repair)

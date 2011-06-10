@@ -24,5 +24,11 @@ namespace Setup
     {
       SetupHelper.OpenForm<TermsAndConditionsForm>(this);
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("1-Welcome");
+    }
   }
 }

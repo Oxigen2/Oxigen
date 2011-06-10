@@ -73,7 +73,7 @@
       this.label4.Size = new System.Drawing.Size(440, 13);
       this.label4.TabIndex = 8;
       this.label4.Text = "It is strongly recommended that you close all other programs before uninstalling " +
-          "this software.";
+    "this software.";
       // 
       // btnCancel
       // 

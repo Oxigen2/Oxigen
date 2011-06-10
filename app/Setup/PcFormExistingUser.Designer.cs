@@ -132,6 +132,7 @@
       this.Controls.Add(this.lblPCName);
       this.Name = "PcFormExistingUser";
       this.Load += new System.EventHandler(this.PCListForm_Load);
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.lblPCName, 0);
       this.Controls.SetChildIndex(this.label1, 0);
       this.Controls.SetChildIndex(this.btnNext, 0);

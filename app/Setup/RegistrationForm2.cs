@@ -66,5 +66,11 @@ namespace Setup
       if (((ComboBox)sender).SelectedIndex == 0)
         ((ComboBox)sender).SelectedItem = 1985;
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("5.6-Registration2");
+    }
   }
 }

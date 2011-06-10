@@ -109,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDataSingleton.cs" />
+    <Compile Include="AsyncHelper.cs" />
+    <Compile Include="ClientLogger.cs" />
     <Compile Include="CredentialsRemindForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +130,7 @@
     <Compile Include="ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IClientLogger.cs" />
     <Compile Include="MergeChannelsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,18 +175,6 @@
     </Compile>
     <Compile Include="UninstallOldOxigenWaitForm.Designer.cs">
       <DependentUpon>UninstallOldOxigenWaitForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UnknownProgressWaitForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UnknownProgressWaitForm.Designer.cs">
-      <DependentUpon>UnknownProgressWaitForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UnknownUserProgressWaitForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UnknownUserProgressWaitForm.Designer.cs">
-      <DependentUpon>UnknownUserProgressWaitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Web References\UserManagementServicesLive\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -384,9 +375,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UninstallPromptForm.resx">
       <DependentUpon>UninstallPromptForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnknownProgressWaitForm.resx">
-      <DependentUpon>UnknownProgressWaitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateExistingUserDetailsForm.resx">
       <DependentUpon>UpdateExistingUserDetailsForm.cs</DependentUpon>

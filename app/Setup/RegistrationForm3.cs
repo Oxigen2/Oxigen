@@ -65,5 +65,11 @@ namespace Setup
 
       SetupHelper.OpenForm<RegistrationForm4>(this);
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("5.7-Registration3");
+    }
   }
 }

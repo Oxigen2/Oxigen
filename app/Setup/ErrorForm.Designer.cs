@@ -52,7 +52,7 @@
       this.label2.Size = new System.Drawing.Size(374, 26);
       this.label2.TabIndex = 0;
       this.label2.Text = "It would be helpful if you could forward the details of the error to us so that w" +
-          "e can try to fix it.";
+    "e can try to fix it.";
       // 
       // btnNoSend
       // 

@@ -53,7 +53,7 @@
       this.label2.Size = new System.Drawing.Size(476, 26);
       this.label2.TabIndex = 9;
       this.label2.Text = "Your subscriptions have been updated. Please make sure that Oxigen Service is run" +
-          "ning in order to update your subscriptions with the latest content.";
+    "ning in order to update your subscriptions with the latest content.";
       // 
       // label1
       // 

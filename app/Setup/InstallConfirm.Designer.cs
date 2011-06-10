@@ -95,6 +95,7 @@
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
       this.Name = "InstallConfirm";
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.label1, 0);
       this.Controls.SetChildIndex(this.label2, 0);
       this.Controls.SetChildIndex(this.btnNext, 0);

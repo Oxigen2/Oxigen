@@ -42,6 +42,9 @@ namespace Setup
     {
       Application.DoEvents();
 
+      IClientLogger logger = new ClientLogger();
+      logger.Log("8-InstallationProgress");
+
       SetupHelper.ShowMessage(lblProgress, "Installing binaries...");
 
       progressBar.Value = 3;

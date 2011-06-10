@@ -144,6 +144,7 @@
       this.Controls.Add(this.label1);
       this.Name = "PCFormNewUser";
       this.Load += new System.EventHandler(this.PCFormNewUser_Load);
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.pictureBox1, 0);
       this.Controls.SetChildIndex(this.label1, 0);
       this.Controls.SetChildIndex(this.lblSubtitle, 0);

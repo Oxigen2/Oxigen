@@ -148,5 +148,11 @@ namespace Setup
       if (!string.IsNullOrEmpty(txtEmailAddress.Text.Trim()) && !string.IsNullOrEmpty(txtPassword.Text.Trim()))
         btnNext.Enabled = true;
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("5.1-Credentials");
+    }
   }
 }

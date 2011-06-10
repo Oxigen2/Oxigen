@@ -1,6 +1,6 @@
 ﻿namespace Setup
 {
-  partial class UnknownProgressWaitForm
+  abstract partial class OxigenLogoForm
   {
     /// <summary>
     /// Required designer variable.
@@ -26,46 +26,43 @@
     /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
-    protected void InitializeComponent()
+    private void InitializeComponent()
     {
-      this.lblProgress = new System.Windows.Forms.Label();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OxigenLogoForm));
+      this.pictureBox1 = new System.Windows.Forms.PictureBox();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.SuspendLayout();
       // 
-      // lblProgress
+      // pictureBox1
       // 
-      this.lblProgress.AutoSize = true;
-      this.lblProgress.Location = new System.Drawing.Point(156, 44);
-      this.lblProgress.MaximumSize = new System.Drawing.Size(400, 0);
-      this.lblProgress.Name = "lblProgress";
-      this.lblProgress.Size = new System.Drawing.Size(108, 13);
-      this.lblProgress.TabIndex = 0;
-      this.lblProgress.Text = "Checking your details";
-      this.lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
+      this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+      this.pictureBox1.Location = new System.Drawing.Point(-1, 0);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(526, 63);
+      this.pictureBox1.TabIndex = 1;
+      this.pictureBox1.TabStop = false;
       // 
-      // UnknownProgressWaitForm
+      // OxigenLogoForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(443, 113);
-      this.ControlBox = false;
-      this.Controls.Add(this.lblProgress);
+      this.ClientSize = new System.Drawing.Size(524, 350);
+      this.Controls.Add(this.pictureBox1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+      this.Icon = global::Setup.Properties.Resources.oxigen;
       this.MaximizeBox = false;
-      this.MinimizeBox = false;
-      this.Name = "UnknownProgressWaitForm";
-      this.ShowInTaskbar = false;
+      this.Name = "OxigenLogoForm";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Shown +=new System.EventHandler(Form_Shown);
       this.Text = "Oxigen Setup";
-      this.Load += new System.EventHandler(this.UnknownProgressWaitForm_Load);
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.ResumeLayout(false);
-      this.PerformLayout();
-
     }
 
     #endregion
 
-    protected System.Windows.Forms.Label lblProgress;
-
+    protected System.Windows.Forms.PictureBox pictureBox1;
   }
 }

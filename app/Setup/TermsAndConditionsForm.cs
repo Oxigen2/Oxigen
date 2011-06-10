@@ -73,5 +73,11 @@ namespace Setup
 
       SetupHelper.OpenForm<PrerequisitesForm>(this);
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("2-TermsAndConditions");
+    }
   }
 }

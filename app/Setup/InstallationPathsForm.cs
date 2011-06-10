@@ -130,5 +130,11 @@ namespace Setup
         btnNext.Enabled = true;
       }
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("6-InstallationPaths");
+    }
   }
 }

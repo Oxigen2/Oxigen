@@ -55,5 +55,11 @@ namespace Setup
 
       SetupHelper.OpenForm<PCFormNewUser>(this);     
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      IClientLogger logger = new ClientLogger();
+      logger.Log("5.8-Registration4");
+    }
   }
 }
