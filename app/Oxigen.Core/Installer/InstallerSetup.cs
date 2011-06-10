@@ -31,7 +31,7 @@ namespace Oxigen.Core.Installer
             _text = _text + string.Format("{0},,{1},,{2},,{3}\r\n", channelId, channelGuid, channelName, weighting);
             _folderBaseName = _folderBaseName + string.Format("{0}-{1}", channelId, weighting);
             
-            if (_urlKey != "") _urlKey = _urlKey + "+";
+            if (_urlKey != "") _urlKey = _urlKey + "|";
             _urlKey = _urlKey + channelId + ((Channel.DefaultWeighting == weighting) ? "" : "." + weighting) + "-" + channelName.Replace(" ", "-");
             
             if (_extractorFileName =="")

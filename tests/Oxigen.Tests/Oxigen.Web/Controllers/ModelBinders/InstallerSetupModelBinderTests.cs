@@ -41,7 +41,7 @@ namespace Tests.Oxigen.Web.Controllers.ModelBinders
             channelsManagementService.Expect(x => x.Get(11)).Return(new Channel() { CategoryID = 11, ChannelName = "Arsenal", ChannelGUID = "ArsenalGUID" });
             channelsManagementService.Expect(x => x.Get(22)).Return(new Channel() { CategoryID = 22, ChannelName = "Leeds", ChannelGUID = "LeedsGUID" });
             var dict = new ValueProviderDictionary(null) {   
-                     { "subscription", new ValueProviderResult(null,"11-Arsenal+22-Leeds",null) }
+                     { "subscription", new ValueProviderResult(null,"11-Arsenal|22-Leeds",null) }
                  };
             var bindingContext = new ModelBindingContext() { ValueProvider = dict };
             var binder = new InsallerSetupBinder(channelsManagementService);
@@ -58,7 +58,7 @@ namespace Tests.Oxigen.Web.Controllers.ModelBinders
             channelsManagementService.Expect(x => x.Get(11)).Return(new Channel() { CategoryID = 11, ChannelName = "Arsenal", ChannelGUID = "ArsenalGUID" });
             channelsManagementService.Expect(x => x.Get(22)).Return(new Channel() { CategoryID = 22, ChannelName = "Leeds", ChannelGUID = "LeedsGUID" });
             var dict = new ValueProviderDictionary(null) {   
-                     { "subscription", new ValueProviderResult(null,"11.30-Arsenal+22.40-Leeds",null) }
+                     { "subscription", new ValueProviderResult(null,"11.30-Arsenal|22.40-Leeds",null) }
                  };
             var bindingContext = new ModelBindingContext() { ValueProvider = dict };
             var binder = new InsallerSetupBinder(channelsManagementService);
@@ -82,5 +82,6 @@ namespace Tests.Oxigen.Web.Controllers.ModelBinders
 
             setupFile.GetSetupText().ShouldEqual("22,,LeedsGUID,,Leeds United,,10\r\n");
         }
+        
     }
 }
