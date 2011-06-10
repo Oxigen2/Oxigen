@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using OxigenIIAdvertising.FileChecksumCalculator;
 using System.IO;
 using OxigenIIAdvertising.XMLSerializer;
@@ -37,8 +38,8 @@ namespace OxigenIIAdvertising.ContentExchanger
     private string _assetPath = "";
     private string _channelDataPath = "";
     private string _userSettingsPath = "";
-    private string _binariesPath = "";
     private string _debugFilePath = "";
+    private string _cdnSubdomain = "";
 
     private string _password = "";
 
@@ -748,9 +749,10 @@ namespace OxigenIIAdvertising.ContentExchanger
     {
       try
       {
+        // hard-code the CDN subdomain as Content Exchanger is not allowed to make changes to app.config at runtime as it doesn't have the necessary permissions.
+        _cdnSubdomain = "http://assets.oxigen.net/";
         _appDataPath = ConfigurationSettings.AppSettings["AppDataPath"];
-        _binariesPath = ConfigurationSettings.AppSettings["BinariesPath"];
-
+        
         _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebugCE.txt";
         _logger = new Logger("Content Exchanger", _debugFilePath, LoggingMode.Debug);
 
@@ -869,18 +871,14 @@ namespace OxigenIIAdvertising.ContentExchanger
     /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.
     /// For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
     private void LoopAndGetAssetFiles<T>(HashSet<T> playlistAssets, AssetType assetType, string channelName,
-      ref bool bLowAssetSpace, ref bool bContentDownloaded, ref bool bCancelled) where T : PlaylistAsset
+          ref bool bLowAssetSpace, ref bool bContentDownloaded, ref bool bCancelled) where T : PlaylistAsset
     {
-      AssetFileParameterMessage assetFileParameterMessage = new AssetFileParameterMessage();
-      assetFileParameterMessage.AssetType = assetType;
-      assetFileParameterMessage.SystemPassPhrase = _systemPassPhrase;
-      assetFileParameterMessage.UserGUID = _userGUID;
-      assetFileParameterMessage.MachineGUID = _machineGUID;
-
       int noAssets = playlistAssets.Count;
 
       if (noAssets == 0)
         return;
+
+      string assetTypeFolder = assetType == AssetType.Advert ? "AdvertSlides" : "ContentSlides";
 
       float step = 100F / (float)noAssets;
       int counter = 1;
@@ -897,57 +895,33 @@ namespace OxigenIIAdvertising.ContentExchanger
 
         string assetDir = _assetPath + pa.GetAssetFilenameGUIDSuffix().ToUpper() + "\\";
         string assetFullPath = assetDir + pa.AssetFilename;
-        string serverURI = "";
+
+        // If file exists, move on to the next one. No need to check if file has changed on the server
+        // because that would be a new file under a different database ID.
+        if (File.Exists(assetFullPath))
+          continue;
 
         try
         {
-          string checksum = ChecksumCalculator.GetChecksum(assetFullPath);
+          if (!Directory.Exists(assetDir))
+            Directory.CreateDirectory(assetDir);
 
-          assetFileParameterMessage.Checksum = checksum;
-          assetFileParameterMessage.AssetFileName = pa.AssetFilename;
+          var client = new WebClient();
 
-          serverURI = GetResponsiveServer(ServerType.RelayChannelAssets, _maxNoRelayChannelAssetServers, pa.GetAssetFilenameGUIDSuffix(), "UserDataMarshaller.svc"); // first letter of asset name
+          byte[] buffer = client.DownloadData(_cdnSubdomain + "slide/" + pa.AssetFilename);
 
-          if (serverURI != "")
+          // check if saving of this slide will exceed allowed size in destination folder
+          long directorySize = GetDirectorySize(_assetPath);
+          if (buffer.Length + directorySize >= _assetFolderSize)
           {
-            _logger.WriteMessage("Attempting to connect to: " + serverURI);
-
-            _userDataMarshallerStreamerClient.Endpoint.Address = new EndpointAddress(serverURI + "/file");
-
-            StreamErrorWrapper sw = _userDataMarshallerStreamerClient.GetAssetFile(assetFileParameterMessage);
-
-            if (sw.ErrorStatus != ErrorStatus.Success)
-            {
-              _logger.WriteTimestampedMessage("Asset " + pa.AssetID + " not retrieved. Status: " + sw.ErrorStatus + " Message: " + sw.Message);
-              sw.ReturnStream.Dispose();
-            }
-
-            if (sw.ErrorStatus == ErrorStatus.Failure)
-              _logger.WriteError(sw.ErrorCode + " " + sw.Message);
-
-            if (sw.ErrorStatus == ErrorStatus.Success)
-            {
-              _logger.WriteTimestampedMessage("Retrieved data for asset " + pa.AssetID);
-
-              if (!Directory.Exists(assetDir))
-                Directory.CreateDirectory(assetDir);
-
-              if (assetType == AssetType.Advert)
-                bLowAssetSpace = SaveStreamAndDispose(sw.ReturnStream, assetFullPath, false, true);
-              else
-                bLowAssetSpace = SaveStreamAndDispose(sw.ReturnStream, assetFullPath, false, true, ref bContentDownloaded);
-
-              if (bLowAssetSpace)
-              {
-                _logger.WriteTimestampedMessage("Allocated disk space low to save asset " + pa.AssetID);
-                return;
-              }
-            }
+            _logger.WriteMessage("downloadedData.Length + directorySize = " + (buffer.Length + directorySize) + ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
+            return;
           }
-          else
-          {
-            _logger.WriteTimestampedMessage("No responsive server found for asset " + pa.AssetID);
-          }
+
+          File.WriteAllBytes(assetFullPath, buffer);
+
+          if (assetType == AssetType.Content)
+            bContentDownloaded = true;
         }
         catch (Exception ex)
         {
