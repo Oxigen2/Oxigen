@@ -23,7 +23,7 @@ namespace Oxigen.Web.Controllers.ModelBinders
             ValueProviderResult value = bindingContext.ValueProvider.GetValue("subscription");
 
             string serializedSubscription = value.AttemptedValue;
-            var subscriptions = serializedSubscription.Split('+');
+            var subscriptions = serializedSubscription.Split('|');
             var setupFile = new InstallerSetup();
             foreach (var subscription in subscriptions)
             {
