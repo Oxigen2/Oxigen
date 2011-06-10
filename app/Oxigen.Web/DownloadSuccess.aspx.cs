@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Oxigen.Core.Installer;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
 using System.Text;
@@ -95,66 +96,34 @@ namespace OxigenIIPresentation
 
     protected void DownloadButton_Command(object sender, CommandEventArgs e)
     {
-      int pcID = int.Parse((string)e.CommandArgument);      
-
-      // create Custom dir
-      string tempInstallersPath = System.Configuration.ConfigurationSettings.AppSettings["tempInstallersPath"];
-      string GUID = System.Guid.NewGuid().ToString();
-      string tempInstallersPathTemp = tempInstallersPath + GUID + "\\";
-
-      Directory.CreateDirectory(tempInstallersPathTemp);
-
-      // Create custom Setup.ini file
-      string installerSubscriptions = null;
-      string pcName = null;
-
-      GetInstallerSubscriptions(pcID, ref installerSubscriptions, ref pcName);
-
-      File.WriteAllText(tempInstallersPathTemp + "Setup.ini", installerSubscriptions);
-      File.Copy(tempInstallersPath + "Setup.exe", tempInstallersPathTemp + "Setup.exe");
-      File.Copy(tempInstallersPath + "Oxigen.msi", tempInstallersPathTemp + "Oxigen.msi");
-
-      string convertedName = Helper.CreateSelfExtractor(pcName, tempInstallersPathTemp);
-
-      Response.Redirect("DownloadInstaller.aspx?dir=" + GUID + "&convertedName=" + convertedName);
+        int pcID = int.Parse((string)e.CommandArgument);
+        var installerSetup = GetInstallerSubscriptions(pcID);   
+        Response.RedirectPermanent(Url.For(installerSetup), true);
     }
 
-    private void GetInstallerSubscriptions(int pcID, ref string subscriptions, ref string pcName)
-    {
-      StringBuilder sb = new StringBuilder();
-
-      foreach (RepeaterItem ri in PCs.Items)
+      private InstallerSetup GetInstallerSubscriptions(int pcID)
       {
-        HiddenField PCID = (HiddenField)ri.FindControl("PCID");
-        Label PcName = (Label)ri.FindControl("PcName");
-        Repeater Streams = (Repeater)ri.FindControl("Streams");
-
-        if (pcID == int.Parse(PCID.Value))
-        {
-          pcName = PcName.Text;
-
-          foreach (RepeaterItem ri2 in Streams.Items)
+          var installerSetup = new InstallerSetup();
+          foreach (RepeaterItem ri in PCs.Items)
           {
-            HiddenField StreamID = (HiddenField)ri2.FindControl("StreamID");
-            HiddenField StreamGUID = (HiddenField)ri2.FindControl("StreamGUID");
-            Label StreamName = (Label)ri2.FindControl("StreamName");
-            Label Weighting = (Label)ri2.FindControl("Weighting");
+              HiddenField PCID = (HiddenField) ri.FindControl("PCID");
+              Repeater Streams = (Repeater) ri.FindControl("Streams");
 
-            sb.Append(StreamID.Value);
-            sb.Append(",,");
-            sb.Append(StreamGUID.Value);
-            sb.Append(",,");
-            sb.Append(StreamName.Text);
-            sb.Append(",,");
-            sb.Append(Weighting.Text);
-            sb.AppendLine();
+              if (pcID == int.Parse(PCID.Value))
+              {
+                  foreach (RepeaterItem ri2 in Streams.Items)
+                  {
+                      HiddenField StreamID = (HiddenField) ri2.FindControl("StreamID");
+                      HiddenField StreamGUID = (HiddenField) ri2.FindControl("StreamGUID");
+                      Label StreamName = (Label) ri2.FindControl("StreamName");
+                      Label Weighting = (Label) ri2.FindControl("Weighting");
+                      installerSetup.Add(int.Parse(StreamID.Value), StreamGUID.Value, StreamName.Text, int.Parse(Weighting.Text));
+                  }
+
+                  break;
+              }
           }
-
-          break;
-        }
-      }
-
-      subscriptions = sb.ToString();
-    }   
+          return installerSetup;
+      }   
   }
 }

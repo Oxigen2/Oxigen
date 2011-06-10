@@ -1473,9 +1473,9 @@
     <Content Include="GeneralSettings\ss_general_data.dat" />
     <Content Include="packages.config" />
     <None Include="Oxigen.Web.wpp.targets" />
-    <None Include="Resources\LiveScreensaverIntro.pdf" />
-    <None Include="Resources\OxigenInstallationRequirements.pdf" />
-    <None Include="Resources\Sports_2009.pdf" />
+    <Content Include="Resources\LiveScreensaverIntro.pdf" />
+    <Content Include="Resources\OxigenInstallationRequirements.pdf" />
+    <Content Include="Resources\Sports_2009.pdf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oxigen.ApplicationServices\Oxigen.ApplicationServices.csproj">
@@ -1556,7 +1556,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1642</DevelopmentServerPort>
+          <DevelopmentServerPort>20756</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

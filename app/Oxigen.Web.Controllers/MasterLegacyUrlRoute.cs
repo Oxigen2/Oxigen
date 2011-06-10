@@ -99,7 +99,7 @@ namespace Oxigen.Web.Controllers
                 string mappedUrl;
                 if (_redirectMap.TryGetValue(request.Url.AbsolutePath, out mappedUrl))
                 {
-                    var redirectToUrl = "http://downloads.oxigen.net/installer/" + mappedUrl;
+                    var redirectToUrl = "http://download.oxigen.net/installer/" + mappedUrl;
                     response.StatusCode = 301;
                     response.Status = "301 Moved permanently";
                     response.RedirectPermanent(redirectToUrl, true);

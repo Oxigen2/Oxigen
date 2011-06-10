@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Oxigen.Core.Installer;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
 using System.IO;
@@ -65,40 +66,9 @@ namespace OxigenIIPresentation
 
     public void Download_Click(object sender, EventArgs e)
     {
-      // create Custom dir
-      string tempInstallersPath = System.Configuration.ConfigurationSettings.AppSettings["tempInstallersPath"];
-      string GUID = System.Guid.NewGuid().ToString();
-      string tempInstallersPathTemp = tempInstallersPath + GUID + "\\";
-
-      Directory.CreateDirectory(tempInstallersPathTemp);
-
-      // Create custom Setup.ini file
-      string installerSubscriptions = GetInstallerSubscriptions(_channel);
-
-      File.WriteAllText(tempInstallersPathTemp + "Setup.ini", installerSubscriptions);
-      File.Copy(tempInstallersPath + "Setup.exe", tempInstallersPathTemp + "Setup.exe");
-      File.Copy(tempInstallersPath + "Oxigen.msi", tempInstallersPathTemp + "Oxigen.msi");
-
-      string convertedName = Helper.CreateSelfExtractor(_channel.ChannelName, tempInstallersPathTemp);
-
-      Response.Redirect("DownloadInstaller.aspx?dir=" + GUID + "&convertedName=" + convertedName);
-    }
-
-    private string GetInstallerSubscriptions(Channel channel)
-    {
-      // Create custom Setup.ini file
-      StringBuilder sb = new StringBuilder();
-
-      sb.Append(channel.ChannelID);
-      sb.Append(",,");
-      sb.Append(channel.ChannelGUID);
-      sb.Append(",,");
-      sb.Append(channel.ChannelName);
-      sb.Append(",,");
-      sb.Append(10);
-      sb.AppendLine();
-
-      return sb.ToString();
+        var installerSetup = new InstallerSetup();
+        installerSetup.Add((int)_channel.ChannelID, _channel.ChannelGUID, _channel.ChannelName, 10);
+        Response.RedirectPermanent(Url.For(installerSetup), true);
     }
 
     public void ChannelSlides_ItemDataBound(object sender, RepeaterItemEventArgs e)

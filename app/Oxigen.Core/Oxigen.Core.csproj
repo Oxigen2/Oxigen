@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="Flash\SWAFile.cs" />
     <Compile Include="Installer\InstallerSetup.cs" />
+    <Compile Include="Logger\LogEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publisher.cs" />
     <Compile Include="QueryDtos\AssetContentDto.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="RepositoryInterfaces\IAssetContentRepository.cs" />
     <Compile Include="RepositoryInterfaces\IChannelRepository.cs" />
     <Compile Include="RepositoryInterfaces\IChannelsSlideRepository.cs" />
+    <Compile Include="RepositoryInterfaces\ILogEntryRepository.cs" />
     <Compile Include="RepositoryInterfaces\IPublisherRepository.cs" />
     <Compile Include="RepositoryInterfaces\ISlideFolderRepository.cs" />
     <Compile Include="RepositoryInterfaces\ISlideRepository.cs" />

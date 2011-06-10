@@ -2589,7 +2589,7 @@ function streamAjax(stream_id) {
         parent_box.find('#MetaAddedBy').html(stream_by)
         parent_box.find('#MetaContent').html(stream_content)
         parent_box.find('#MetaFollowers').html(stream_follow)
-        parent_box.find('#MetaLink').attr('href', 'ChannelDetails.aspx?channelID=' + stream_id)
+        parent_box.find('#MetaLink').attr('href', 'ChannelDetails.aspx?a=v&channelID=' + stream_id)
       }
     }
   })
