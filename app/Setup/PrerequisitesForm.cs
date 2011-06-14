@@ -48,6 +48,7 @@ namespace Setup
       {
         _bPrerequisitesMet = false;
         ramIndicator.Image = Resources.cross;
+        logger.Log("Missing_EnoughRam");
       }
 
       Application.DoEvents();
@@ -60,6 +61,7 @@ namespace Setup
         _bPrerequisitesMet = false;
         lnkNET.Text = "Download .NET Framework 3.5";
         dotNetIndicator.Image = Resources.cross;
+        logger.Log("Missing_NET35");
       }
 
       Application.DoEvents();
@@ -72,6 +74,7 @@ namespace Setup
         _bPrerequisitesMet = false;
         lnkFlash.Text = "Download Adobe Flash";
         flashIndicator.Image = Resources.cross;
+        logger.Log("Missing_Flash");
       }
 
       Application.DoEvents();
@@ -84,8 +87,9 @@ namespace Setup
         _bPrerequisitesMet = false;
         lnkQuickTime.Text = "Download Quicktime";
         quickTimeIndicator.Image = Resources.cross;
+        logger.Log("Missing_Quicktime");
       }
-
+      
       Application.DoEvents();
       Thread.Sleep(500);
 
@@ -96,6 +100,7 @@ namespace Setup
         _bPrerequisitesMet = false;
         lnkWMP.Text = "Download Windows Media Player";
         wmpIndicator.Image = Resources.cross;
+        logger.Log("Missing_WindowsMediaPlayer");
       }
 
       if (_bPrerequisitesMet)

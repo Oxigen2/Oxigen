@@ -12,7 +12,7 @@ namespace Setup
     static ClientLogger()
     {
       _userRef = System.Guid.NewGuid().ToString();
-      _loggingPartialUrl = "http://new.oxigen.net/log/setup/" + _userRef + "/";
+      _loggingPartialUrl = "http://new.oxigen.net/log/setup2/" + _userRef + "/";
     }
 
     private delegate WebResponse WebResponseGetter();
