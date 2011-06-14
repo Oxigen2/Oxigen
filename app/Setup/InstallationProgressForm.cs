@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using Setup.ClientLoggers;
 using Setup.UserManagementServicesLive;
 using System.Threading;
 
@@ -42,7 +43,7 @@ namespace Setup
     {
       Application.DoEvents();
 
-      IClientLogger logger = new ClientLogger();
+      ClientLogger logger = new PersistentClientLogger();
       logger.Log("8-InstallationProgress");
 
       SetupHelper.ShowMessage(lblProgress, "Installing binaries...");

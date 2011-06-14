@@ -19,5 +19,17 @@ namespace Setup
     {
       Application.Exit();
     }
+
+    private void Form_Shown(object sender, EventArgs e)
+    {
+      try
+      {
+        GenericRegistryAccess.DeleteRegistryKey(RegistryBranch.HKLM_LOCAL_MACHINE__SOFTWARE_OxigenRef);
+      }
+      catch
+      {
+        // suppress all errors
+      }
+    }
   }
 }

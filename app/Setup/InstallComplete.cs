@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Setup.ClientLoggers;
 
 namespace Setup
 {
@@ -60,7 +61,7 @@ namespace Setup
 
     private void InstallationComplete_Shown(object sender, EventArgs e)
     {
-      IClientLogger logger = new ClientLogger();
+      ClientLogger logger = new PersistentClientLogger();
       logger.Log("9-InstallationComplete");
 
       ScreenSaver.SetScreenSaverActive(0);
@@ -91,11 +92,20 @@ namespace Setup
         }
         catch
         {
-          // ignore
+          // suppress all errors
         }
 
         processLE.WaitForExit();
         processSU.WaitForExit();
+      }
+
+      try
+      {
+        GenericRegistryAccess.DeleteRegistryKey(RegistryBranch.HKLM_LOCAL_MACHINE__SOFTWARE_OxigenRef);
+      }
+      catch
+      {
+        // suppress all errors
       }
 
       ScreenSaver.SetScreenSaver("Oxigen");

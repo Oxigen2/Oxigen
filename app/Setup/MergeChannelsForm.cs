@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using Setup.ClientLoggers;
 using Setup.UserManagementServicesLive;
 
 namespace Setup
@@ -20,9 +21,8 @@ namespace Setup
       InitializeComponent();
 
       streams.CheckOnClick = true;
-
       string dataPath = (string)GenericRegistryAccess.GetRegistryValue("HKEY_LOCAL_MACHINE\\Software\\Oxigen", "DataSettingsPath") + "data\\";
-
+      
       // subscriptions either downloaded from server or existing on user's machine with existing Oxigen II.
       // (that is, subscriptions not in Setup.ini)
       Setup.DuplicateLibrary.ChannelSubscriptions nonInstallerAccompanyingSubscriptions = null;
@@ -229,7 +229,7 @@ namespace Setup
 
     private void Form_Shown(object sender, EventArgs e)
     {
-      IClientLogger logger = new ClientLogger();
+      ClientLogger logger = new PersistentClientLogger();
       logger.Log("5.4-MergeChannels");
     }
   }

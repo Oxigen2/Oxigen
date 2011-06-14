@@ -43,15 +43,7 @@ namespace Setup
     }
 
     private void btnNext_Click(object sender, EventArgs e)
-    {
-      if (!SetupHelper.HasAdminRights())
-      {
-        MessageBox.Show("You do not have the necessary access level to perform administration tasks on this PC. Installation cannot continue.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-        AppDataSingleton.Instance.ExitPromptSuppressed = true;
-        Application.Exit();
-        return;
-      }
-
+    {     
       AppDataSingleton.Instance.MergeStreamsInstallation = false;
       AppDataSingleton.Instance.Repair = false;
 

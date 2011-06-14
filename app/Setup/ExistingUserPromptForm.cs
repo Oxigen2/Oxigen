@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Setup.ClientLoggers;
 using Setup.UserManagementServicesLive;
 using System.Net;
 
@@ -58,7 +59,7 @@ namespace Setup
 
     private void Form_Shown(object sender, EventArgs e)
     {
-      IClientLogger logger = new ClientLogger();
+      ClientLogger logger = new PersistentClientLogger();
       logger.Log("4-ExistingUserPrompt");
     }
   }

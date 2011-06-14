@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Remoting.Messaging;
 
 namespace Setup
 {
@@ -16,12 +15,26 @@ namespace Setup
 
     static void DynamicInvokeShim(Delegate d, object[] args)
     {
-      d.DynamicInvoke(args);
+      try
+      {
+        d.DynamicInvoke(args);
+      }
+      catch
+      {
+        // suppress all errors
+      }
     }
 
     static void DynamicInvokeDone(IAsyncResult ar)
     {
-      dynamicInvokeShim.EndInvoke(ar);
+      try
+      {
+        dynamicInvokeShim.EndInvoke(ar);
+      }
+      catch
+      {
+        // suppress all errors
+      }
     }
   }
 }

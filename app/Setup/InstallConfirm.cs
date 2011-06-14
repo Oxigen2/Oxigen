@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+using Setup.ClientLoggers;
 
 namespace Setup
 {
@@ -32,7 +27,7 @@ namespace Setup
 
     private void Form_Shown(object sender, EventArgs e)
     {
-      IClientLogger logger = new ClientLogger();
+      ClientLogger logger = new PersistentClientLogger();
       logger.Log("7-InstallConfirm");
     }
   }

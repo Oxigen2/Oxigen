@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Setup.ClientLoggers;
 using Setup.Properties;
 using System.IO;
 using System.Security.Principal;
@@ -51,14 +52,6 @@ namespace Setup
 
     private void btnNext_Click(object sender, EventArgs e)
     {
-      if (!SetupHelper.HasAdminRights())
-      {
-        MessageBox.Show("You do not have the necessary access level to perform administration task on this PC. Installation cannot continue.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-        AppDataSingleton.Instance.ExitPromptSuppressed = true;
-        Application.Exit();
-        return;
-      }
-
       if (SetupHelper.OlderOxigenExists())
       {
         SetupHelper.OpenForm<OlderOxigenExistsForm>(this);
@@ -76,7 +69,7 @@ namespace Setup
 
     private void Form_Shown(object sender, EventArgs e)
     {
-      IClientLogger logger = new ClientLogger();
+      ClientLogger logger = new PersistentClientLogger();
       logger.Log("2-TermsAndConditions");
     }
   }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using Setup.ClientLoggers;
 
 namespace Setup
 {
@@ -34,8 +35,16 @@ namespace Setup
       if (!string.IsNullOrEmpty(System.Configuration.ConfigurationSettings.AppSettings["debugMode"]))
         AppDataSingleton.Instance.DebugMode = true;
 
-      ClientLogger logger = new ClientLogger();
-      
+      if (!SetupHelper.HasAdminRights())
+      {
+        ClientLogger logger = new NonPersistentClientLogger();
+        logger.Log("NonAdmin");
+        MessageBox.Show("You do not have the necessary access level to perform administration tasks on this PC. Installation cannot continue.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        AppDataSingleton.Instance.ExitPromptSuppressed = true;
+        Application.Exit();
+        return;
+      }
+
       SetupForm form;
 
       if (File.Exists("Setup.ini"))

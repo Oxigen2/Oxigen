@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Threading;
+using Setup.ClientLoggers;
 using Setup.UserManagementServicesLive;
 
 namespace Setup
@@ -137,8 +138,13 @@ namespace Setup
 
     private void Form_Shown(object sender, EventArgs e)
     {
-      IClientLogger logger = new ClientLogger();
+      ClientLogger logger = new PersistentClientLogger();
       logger.Log("5.5-Registration1");
+    }
+
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
+      SetupHelper.ExitNoChanges();
     }
   }
 }

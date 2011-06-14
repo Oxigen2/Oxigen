@@ -110,7 +110,9 @@
   <ItemGroup>
     <Compile Include="AppDataSingleton.cs" />
     <Compile Include="AsyncHelper.cs" />
-    <Compile Include="ClientLogger.cs" />
+    <Compile Include="ClientLoggers\ClientLogger.cs" />
+    <Compile Include="ClientLoggers\NonPersistentClientLogger.cs" />
+    <Compile Include="ClientLoggers\PersistentClientLogger.cs" />
     <Compile Include="CredentialsRemindForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,7 +132,6 @@
     <Compile Include="ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IClientLogger.cs" />
     <Compile Include="MergeChannelsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +164,7 @@
     <Compile Include="DuplicateLibrary\User.cs" />
     <Compile Include="SilentInstaller.cs" />
     <Compile Include="SilentMerger.cs" />
+    <Compile Include="RegistryBranch.cs" />
     <Compile Include="SSLValidator.cs" />
     <Compile Include="SubscriptionsUpdatedForm.cs">
       <SubType>Form</SubType>
@@ -566,6 +568,7 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using Setup.ClientLoggers;
 using Setup.Properties;
 using System.Threading;
-using System.Management;
-using Microsoft.Win32;
-using System.Diagnostics;
 
 namespace Setup
 {
@@ -29,7 +22,7 @@ namespace Setup
 
     private void PrerequisitesForm_Shown(object sender, EventArgs e)
     {
-      IClientLogger logger = new ClientLogger();
+      ClientLogger logger = new PersistentClientLogger();
       logger.Log("3-Prerequisites");
 
       Application.DoEvents();

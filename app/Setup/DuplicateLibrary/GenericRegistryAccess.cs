@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Win32;
 
 namespace Setup
@@ -15,20 +13,23 @@ namespace Setup
     /// <summary>
     /// Gets the registry key from a string
     /// </summary>
-    /// <param name="path">the registry key to retrieve as a string</param>
+    /// <param name="keyPath">the registry key to retrieve as a string</param>
     /// <returns>a Microsoft.Win32.Registrykey object</returns>
     /// <exception cref="ArgumentException">name is longer than the maximum length allowed.</exception>
     /// <exception cref="ArgumentNullException">name is null</exception>
     /// <exception cref="ObjectDisposedException">The Microsoft.Win32.RegistryKey is closed (closed keys cannot be accessed).</exception>
     /// <exception cref="System.Security.SecurityException">The user does not have the permissions required to read the registry key.</exception>
     /// <exception cref="NullReferenceException">Key not found</exception>
-    public static RegistryKey GetRegistryKey(string path)
+    public static RegistryKey GetRegistryKey(string keyPath)
     {
-      string[] registryKeys = path.Split('\\');
+      string[] registryKeys = keyPath.Split('\\');
 
       int noKeys = registryKeys.Length;
 
       RegistryKey registryKey = GetRoot(registryKeys[0]);
+
+      if (registryKey == null)
+        return null;
 
       for (int i = 1; i < noKeys; i++)
       {
@@ -36,6 +37,28 @@ namespace Setup
 
         if (registryKey == null)
           return null;
+      }
+
+      return registryKey;
+    }
+
+    internal static RegistryKey CreateRegistryKey(string keyPath)
+    {
+      string[] registryKeys = keyPath.Split('\\');
+
+      int noKeys = registryKeys.Length;
+
+      RegistryKey registryKey = GetRoot(registryKeys[0]);
+
+      if (registryKey == null)
+        return null;
+
+      for (int i = 1; i < noKeys; i++)
+      {
+        if (registryKey.OpenSubKey(registryKeys[i], false) != null)
+          registryKey = registryKey.OpenSubKey(registryKeys[i], true);
+        else
+          registryKey = registryKey.CreateSubKey(registryKeys[i], RegistryKeyPermissionCheck.ReadWriteSubTree);
       }
 
       return registryKey;
@@ -92,7 +115,7 @@ namespace Setup
     /// </summary>
     /// <param name="keyPath">Registry Key to delete</param>
     /// <exception cref="NullReferenceException"></exception>
-    /// <exception cref="IOException"></exception>
+    /// <exception cref="System.IO.IOException"></exception>
     /// <exception cref="System.Security.SecurityException"></exception>
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="System.ObjectDisposedException"></exception>
@@ -138,7 +161,7 @@ namespace Setup
     /// <param name="valueValue">Value of the value</param>
     /// <param name="kind">Kind of registry value</param>
     /// <exception cref="NullReferenceException"></exception>
-    /// <exception cref="IOException"></exception>
+    /// <exception cref="System.IO.IOException"></exception>
     /// <exception cref="System.Security.SecurityException"></exception>
     /// <exception cref="ArgumentException"></exception>
     public static void SetRegistryValue(string keyPath, string valueName, object valueValue, RegistryValueKind kind)
@@ -170,7 +193,7 @@ namespace Setup
         case "HKEY_USERS":
           return Registry.Users;
         default:
-          throw new ArgumentException("Root key not found: " + root);
+          return null;
       }
     }
 

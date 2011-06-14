@@ -73,6 +73,7 @@
       this.Controls.Add(this.label1);
       this.Name = "UninstallComplete";
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UninstallComplete_Closed);
+      this.Shown += new System.EventHandler(this.Form_Shown);
       this.Controls.SetChildIndex(this.pictureBox1, 0);
       this.Controls.SetChildIndex(this.label1, 0);
       this.Controls.SetChildIndex(this.label2, 0);
