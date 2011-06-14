@@ -44,7 +44,13 @@ namespace OxigenIIPresentation
         client.Dispose();
       }
 
-      ChannelName1.Text = _channel.ChannelName;
+      if (Request.QueryString["a"] == null)
+      {
+          var installerSetup = new InstallerSetup();
+          installerSetup.Add((int) _channel.ChannelID, _channel.ChannelGUID, _channel.ChannelName, 10);
+          Response.RedirectPermanent(Url.For(installerSetup), true);
+      }
+        ChannelName1.Text = _channel.ChannelName;
       ChannelName2.Text = _channel.ChannelName;
       ChannelName3.Text = _channel.ChannelName;
       PublisherName.Text = _channel.PublisherDisplayName;
