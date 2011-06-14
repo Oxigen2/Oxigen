@@ -16,31 +16,21 @@ namespace Tests.Oxigen.Core
   <script>
 <![CDATA[using System.Text.RegularExpressions;
         public class Script {
-        static string ImageExtraction(string input)
+        public static string ImageExtraction(string input)
         {
 
         int startIndex = input.IndexOf(@""src="");
-        int endIndex = input.IndexOf(@""/&gt"");
+        int endIndex = input.Length;
 
         string output = input.Substring(startIndex + 5, endIndex - startIndex - 7);
         return output;
         }
         
-        static string DescriptionExtraction(string input)
+        public static string Concat(string x, string y) 
         {
-
-        int startIndex = input.IndexOf(@""/&gt"");
-
-        string output = input.Substring(startIndex + 5);
-        int maxLength = 140;
-        if (output.Length > maxLength)
-        {
-        output = output.Substring(0, maxLength);
-        int index = output.LastIndexOf("" "");
-        output = output.Substring(0, index) + ""..."";
+            return x + y;
         }
-        return output;
-        }
+        
 }
         ]]>    </script>
 
@@ -55,8 +45,9 @@ namespace Tests.Oxigen.Core
       2011-05-17T13:56 
     </parameter>
     <parameter name=""MasterImage"" type=""image"">
-      <call-script name=""ScrapeImage"">
-        <wih-param name=""url"">http://www.mediaweek.co.uk/news/rss/1067882/IPC-Global-amplify-Ford-Fiestas-summer/</wih-param>
+      <call-script name=""Concat"">
+        <wih-param name=""url"">y</wih-param>
+        <wih-param name=""url2"">x</wih-param>
       </call-script>
     </parameter>
       
@@ -72,7 +63,7 @@ namespace Tests.Oxigen.Core
             item.Parameters["ClickThroughUrl"].GetValue().ShouldEqual("Click trough URL");
             item.Parameters["PublishedDate"].GetValue().ShouldEqual("17 May 2011 13:56");
             item.Parameters["MasterImage"].GetValue().ShouldEqual(
-                "http://cached.imagescaler.hbpl.co.uk/resize/scaleToFit/854/570/?sURL=http://offlinehbpl.hbpl.co.uk/news/OWM/B662E6EC-D287-2E41-A137FE30F1A23DD6.JPG");
+                "yx");
 
         }
     }

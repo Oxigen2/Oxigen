@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using CSScriptLibrary;
@@ -56,9 +57,16 @@ namespace Oxigen.Core.Syndication
                 var callScriptNode = parameterNode.SelectSingleNode(@"./call-script");
                 if (callScriptNode != null)
                 {
+                    var paramObjects = new List<object>();
+                    
+                    var paramList = callScriptNode.SelectNodes("./wih-param");
+                    foreach (XmlNode paramnode in paramList)
+                    {
+                        paramObjects.Add(paramnode.InnerText.Trim());
+                    }
                     string functionName = callScriptNode.Attributes["name"].Value;
-                    string functionParam = parameterNode.InnerText.Trim();
-                    parameterData = RunScript(_dom.SelectSingleNode(@"slidefeed/script").InnerText, functionName, functionParam);
+
+                    parameterData = RunScript(_dom.SelectSingleNode(@"slidefeed/script").InnerText, functionName, paramObjects.ToArray());
                     if (parameterData == null) return null;
                 }
                 else
@@ -111,7 +119,7 @@ namespace Oxigen.Core.Syndication
             return slideFeed;
         }
 
-        private string RunScript(string script, string functionName, string functionParam)
+        private string RunScript(string script, string functionName, params object[] functionParam)
         {
             CSScript.CacheEnabled = true;
             AsmHelper helper = new AsmHelper(CSScript.LoadCode(script, null, false));
