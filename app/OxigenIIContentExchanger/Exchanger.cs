@@ -878,10 +878,11 @@ namespace OxigenIIAdvertising.ContentExchanger
       if (noAssets == 0)
         return;
 
-      string assetTypeFolder = assetType == AssetType.Advert ? "AdvertSlides" : "ContentSlides";
-
       float step = 100F / (float)noAssets;
       int counter = 1;
+
+      // check if saving of this slide will exceed allowed size in destination folder
+      long directorySize = GetDirectorySize(_assetPath);
 
       foreach (PlaylistAsset pa in playlistAssets)
       {
@@ -906,25 +907,36 @@ namespace OxigenIIAdvertising.ContentExchanger
           if (!Directory.Exists(assetDir))
             Directory.CreateDirectory(assetDir);
 
-          var client = new WebClient();
-
-          byte[] buffer = client.DownloadData(_cdnSubdomain + "slide/" + pa.AssetFilename);
-
-          // check if saving of this slide will exceed allowed size in destination folder
-          long directorySize = GetDirectorySize(_assetPath);
-          if (buffer.Length + directorySize >= _assetFolderSize)
+          using (var client = new WebClient())
           {
-            _logger.WriteMessage("downloadedData.Length + directorySize = " + (buffer.Length + directorySize) + ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
+            client.DownloadFile(_cdnSubdomain + "slide/" + pa.AssetFilename, assetFullPath);
+          }
+
+          var fileLength = new FileInfo(assetFullPath).Length;
+          
+          if (fileLength == 0) File.Delete(assetFullPath);
+
+          directorySize += fileLength;
+
+          if (directorySize >= _assetFolderSize)
+          {
+            //TODO: delete the oldest files until the file total directory size is with limit
+            File.Delete(assetFullPath);
+            _logger.WriteMessage("downloadedData.Length + directorySize = " + (directorySize) +
+                                  ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
+            bLowAssetSpace = true;
             return;
           }
 
-          File.WriteAllBytes(assetFullPath, buffer);
-
           if (assetType == AssetType.Content)
             bContentDownloaded = true;
+          
         }
         catch (Exception ex)
         {
+          if (File.Exists(assetFullPath))
+            File.Delete(assetFullPath);
+
           _logger.WriteError(ex);
         }
 
@@ -933,7 +945,7 @@ namespace OxigenIIAdvertising.ContentExchanger
 
         counter++;
 
-        _logger.WriteMessage("Step: " + (((float)counter * step).ToString()));
+        _logger.WriteMessage("Step: " + (((float)counter * step)));
       }
 
       ReportProgress(100);
