@@ -207,33 +207,6 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully created a Stopwatch object.");
 
-      _webBrowserA = new WebBrowser();
-      _webBrowserB = new WebBrowser();
-
-      _logger.WriteTimestampedMessage("successfully created two web browser objects.");
-
-      _pictureBoxA = new PictureBox();
-      _pictureBoxB = new PictureBox();
-
-      _logger.WriteTimestampedMessage("successfully created two picture box objects.");
-
-      _flashPlayerA = new AxShockwaveFlash();
-      _flashPlayerB = new AxShockwaveFlash();
-
-      _logger.WriteTimestampedMessage("successfully created two flash player objects.");
-
-      _videoPlayerA = new AxWindowsMediaPlayer();
-      _videoPlayerB = new AxWindowsMediaPlayer();
-
-      _logger.WriteTimestampedMessage("successfully created two windows media player objects.");
-
-      _quickTimePlayerA = new AxQTControl();
-      _quickTimePlayerB = new AxQTControl();
-
-      _logger.WriteTimestampedMessage("successfully created two quicktime player objects.");
-
-      _noAssetsAnimatorPlayer = new NoAssetsAnimatorPlayer();
-
       _logger.WriteTimestampedMessage("successfully created one noassetsanimator player object.");
 
       _pictureBoxA.SizeMode = PictureBoxSizeMode.Zoom;

@@ -13,3 +13,4 @@ namespace OxigenIIAdvertising.ScreenSaver
         Control Control {get;}
     }
 }
+    
