@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
@@ -10,6 +6,8 @@ namespace OxigenIIAdvertising.ScreenSaver
     {
         void EnableSound(bool enableSound);
         void Play();
-        Control Control {get;}
+        void Stop();
+        void Load(string filePath);
+        Control Control { get; }
     }
 }
