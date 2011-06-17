@@ -1,14 +1,39 @@
-﻿using System.Windows.Forms;
+﻿using System.IO;
+using System.Windows.Forms;
+using OxigenIIAdvertising.AppData;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
     public interface IPlayer
     {
-        void EnableSound(bool enableSound);
-        void Play();
+        void Init();
+        void Play(bool primaryMonitor);
         void Stop();
-        void Load(string filePath);
+        void ReleaseAssetForDesktop();
+        void ReleaseAssetForTransition();
+        bool IsReadyToPlay { get; }
         Control Control { get; }
     }
+
+    public interface IFileLoader
+    {
+        void Load(string filepath);
+    }
+
+    public interface IStreamLoader
+    {
+        void Load(Stream stream);
+    }
+
+    public interface IURLLoader
+    {
+        void Load(string url);
+    }
+
+    public interface INoAssetsLoader
+    {
+        void Load(string message);
+    }
+    
 }
     

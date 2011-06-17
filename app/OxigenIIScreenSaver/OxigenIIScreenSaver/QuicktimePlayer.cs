@@ -1,22 +1,50 @@
 ﻿using System;
+using System.IO;
+using AxQTOControlLib;
+using OxigenIIAdvertising.LoggerInfo;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
-  public class QuicktimePlayer : IPlayer
+  public class QuicktimePlayer : IPlayer, IFileLoader
   {
-      public void EnableSound(bool enableSound)
+      private AxQTControl _control;
+      private LoggerInfo.Logger _logger;
+      private float _videoVolume;
+      private bool _bMuteVideo;
+
+      public QuicktimePlayer(Logger logger, bool bMuteVideo, float videoVolume)
       {
-          throw new NotImplementedException();
+          _control = new AxQTControl();
+          _logger = logger;
+          _videoVolume = videoVolume;
+          _bMuteVideo = bMuteVideo;
+
+          _control.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio;
       }
 
-      public void Play()
+      public void Play(bool primaryMonitor)
       {
-          throw new NotImplementedException();
+          if (!primaryMonitor) {
+              _control.Movie.AudioMute = true;
+              _logger.WriteTimestampedMessage("successfully muted quicktime.");
+          }
+          else {
+              _control.Movie.AudioVolume = (float)_videoVolume / 100F;
+
+              _logger.WriteTimestampedMessage("successfully set the the quicktime volume.");
+
+              _control.Movie.AudioMute = _bMuteVideo;
+
+              _logger.WriteTimestampedMessage("successfully set mute/no mute of quicktime sound.");
+          }
+
+          _control.Movie.Play(1);
       }
 
       public void Stop()
       {
-          throw new NotImplementedException();
+          if (_control.Movie != null)
+              _control.Movie.Stop();
       }
 
       public System.Windows.Forms.Control Control
@@ -27,7 +55,25 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       public void Load(string filePath)
       {
-          throw new NotImplementedException();
+          _control.URL = filePath;
+      }
+
+
+      public void ReleaseAssetForDesktop() {
+          string fileToDelete = _control.URL;
+          _control.URL = "";
+          _logger.WriteTimestampedMessage("successfully unloaded quicktime");
+
+          if (fileToDelete != "") File.Delete(fileToDelete);
+      }
+
+      public void ReleaseAssetForTransition()
+      {
+          ReleaseAssetForDesktop();
+      }
+
+      public bool IsReadyToPlay {
+          get { throw new NotImplementedException(); }
       }
   }
 }

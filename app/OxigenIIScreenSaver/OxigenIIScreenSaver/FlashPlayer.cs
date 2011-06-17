@@ -1,15 +1,60 @@
-﻿namespace OxigenIIAdvertising.ScreenSaver
+﻿using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using AxShockwaveFlashObjects;
+using OxigenIIAdvertising.AppData;
+using OxigenIIAdvertising.LoggerInfo;
+
+namespace OxigenIIAdvertising.ScreenSaver
 {
-  public class FlashPlayer : IPlayer
+  public class FlashPlayer : IPlayer, IFileLoader
   {
-      public void EnableSound(bool enableSound)
+      private bool _muteSound;
+      private uint _uintCurrentVol = 4294967295;
+      private AxShockwaveFlash _control;
+      private LoggerInfo.Logger _logger;
+
+      [DllImport("winmm.dll")]
+      private static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
+
+      [DllImport("winmm.dll")]
+      private static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
+
+      public FlashPlayer(bool muteSound, Logger logger)
       {
-          throw new System.NotImplementedException();
+          _muteSound = muteSound;
+          _logger = logger;
+          _control = new AxShockwaveFlash();
+
       }
 
-      public void Play()
+      public void Play(bool primaryMonitor)
       {
-          throw new System.NotImplementedException();
+          if (!primaryMonitor) {
+              // Set the same volume for both the left and the right channels
+              uint NewVolumeAllChannels = (((uint)0 & 0x0000ffff) | ((uint)0 << 16));
+
+              // Set the volume
+              waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
+          }
+          else {
+              if (_muteSound) {
+                  // Set the same volume for both the left and the right channels
+                  uint NewVolumeAllChannels = (((uint)0 & 0x0000ffff) | ((uint)0 << 16));
+
+                  // Set the volume
+                  waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
+              }
+              else {
+                  // Set the same volume for both the left and the right channels
+                  uint NewVolumeAllChannels = (((uint)_uintCurrentVol & 0x0000ffff) | ((uint)_uintCurrentVol << 16));
+
+             // Set the volume
+                  waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
+              }
+          }
+
+          _control.Play();
       }
 
       public void Stop()
@@ -17,15 +62,34 @@
           throw new System.NotImplementedException();
       }
 
+      public void ReleaseAssetForDesktop()
+      {
+          string fileToDelete = _control.Movie;
+          _control.Movie = "";
+          _logger.WriteTimestampedMessage("successfully unloaded previous flash");
+          if (fileToDelete != "") File.Delete(fileToDelete);
+      }
+
+      public void ReleaseAssetForTransition()
+      {
+          ReleaseAssetForDesktop();
+      }
+
+      public bool IsReadyToPlay
+      {
+          get { throw new NotImplementedException(); }
+      }
+
       public System.Windows.Forms.Control Control
       {
           get { throw new System.NotImplementedException(); }
       }
 
-
-      public void Load(string filePath)
+      public void Load(string filepath)
       {
-          throw new System.NotImplementedException();
+          _control.Movie = filepath;
+          _control.Stop();
+          _control.Rewind();
       }
   }
 }

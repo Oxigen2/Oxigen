@@ -34,15 +34,7 @@ namespace OxigenIIAdvertising.ScreenSaver
     const int PBT_APMRESUMESUSPEND = 0x0007;
     const int PBT_APMSTANDBY = 0x0005;
     const int PBT_APMRESUMESTANDBY = 0x0008;
-
-    [DllImport("winmm.dll")]
-    public static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
-
-    [DllImport("winmm.dll")]
-    public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
-
-    public uint uintCurrentVol = 0;
-
+      
     //start off originalLocation with an X and Y of int.MaxValue, because
     //it is impossible for the cursor to be at that position. That way, we
     //know if this variable has been set yet.
@@ -88,19 +80,8 @@ namespace OxigenIIAdvertising.ScreenSaver
     // used by both
     private volatile DisplayToggle _displayToggle;
     private volatile bool _bRunLoadThread = true;
-    private WebBrowser _webBrowserA = null;
-    private WebBrowser _webBrowserB = null;
-    private PictureBox _pictureBoxA = null;
-    private PictureBox _pictureBoxB = null;
     private ChannelAssetAssociation _ChannelAssetAssociationA = null;
     private ChannelAssetAssociation _ChannelAssetAssociationB = null;
-    private NoAssetsAnimatorPlayer _noAssetsAnimatorPlayer = null;
-    private AxShockwaveFlash _flashPlayerA;
-    private AxShockwaveFlash _flashPlayerB;
-    private AxWindowsMediaPlayer _videoPlayerA;
-    private AxWindowsMediaPlayer _videoPlayerB;
-    private AxQTControl _quickTimePlayerA;
-    private AxQTControl _quickTimePlayerB;
     private float _totalDisplayTime = 0;
     private float _totalAdvertDisplayTime = 0;
     private float _assetDisplayLength = 0;
@@ -115,8 +96,9 @@ namespace OxigenIIAdvertising.ScreenSaver
     
     private Thread _displayAssetThread = null;
     private Thread _loadAssetThread = null;
+      private Players _players;
 
-    /// <summary>
+      /// <summary>
     /// Sets the playlist object from which the Screensaver plays its slides.
     /// Places a lock on _lockingObject before Setting the playlist to make thread safe.
     /// </summary>
@@ -207,48 +189,18 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully created a Stopwatch object.");
 
-      _logger.WriteTimestampedMessage("successfully created one noassetsanimator player object.");
-
-      _pictureBoxA.SizeMode = PictureBoxSizeMode.Zoom;
-      _pictureBoxB.SizeMode = PictureBoxSizeMode.Zoom;
-
-      _logger.WriteTimestampedMessage("successfully set PictureBox.Sizemode.");
-
-      // suppress page script errors
-      _webBrowserA.ScriptErrorsSuppressed = true;
-      _webBrowserB.ScriptErrorsSuppressed = true;
-
-      _logger.WriteTimestampedMessage("successfully suppressed web browser errors.");
-
-      Controls.Add(_noAssetsAnimatorPlayer);
-      Controls.Add(_pictureBoxA);
-      Controls.Add(_pictureBoxB);
-      Controls.Add(_webBrowserA);
-      Controls.Add(_webBrowserB);
-      Controls.Add(_flashPlayerA);
-      Controls.Add(_flashPlayerB);
-      Controls.Add(_videoPlayerA);
-      Controls.Add(_videoPlayerB);
-      Controls.Add(_quickTimePlayerA);
-      Controls.Add(_quickTimePlayerB);
-
-      _logger.WriteTimestampedMessage("successfully added all the controls to Screensaver Form.");
+        _players = new Players();
 
       Control.CheckForIllegalCrossThreadCalls = false;
 
       // set z-index of all containers/players to the same value
-      Controls.SetChildIndex(_pictureBoxA, 2);
-      Controls.SetChildIndex(_pictureBoxB, 3);
-      Controls.SetChildIndex(_webBrowserA, 4);
-      Controls.SetChildIndex(_webBrowserB, 5);
-      Controls.SetChildIndex(_flashPlayerA, 6);
-      Controls.SetChildIndex(_flashPlayerB, 7);
-      Controls.SetChildIndex(_videoPlayerA, 8);
-      Controls.SetChildIndex(_videoPlayerB, 9);
-      Controls.SetChildIndex(_quickTimePlayerA, 10);
-      Controls.SetChildIndex(_quickTimePlayerB, 11);
-      Controls.SetChildIndex(_noAssetsAnimatorPlayer, 12);
-
+        int index = 2;
+        foreach(IPlayer player in _players.AllPlayers())
+        {
+            Controls.SetChildIndex(player.Control, index);
+            index++;
+        }
+        
       _logger.WriteTimestampedMessage("successfully set the z-indices of the players.");
 
       _faderForm = new FaderForm();
@@ -272,12 +224,6 @@ namespace OxigenIIAdvertising.ScreenSaver
       _displayToggle = DisplayToggle.A;
 
       _logger.WriteTimestampedMessage("successfully set the DisplayToggle to A.");
-
-      // At this point, CurrVol gets assigned the volume
-     // waveOutGetVolume(IntPtr.Zero, out uintCurrentVol);
-      uintCurrentVol = 4294967295;
-
-      _logger.WriteMessage("uintCurrentVol is " + uintCurrentVol);
     }
 
     private void DisplayAsset()
@@ -389,96 +335,7 @@ namespace OxigenIIAdvertising.ScreenSaver
       return assetTempPath;
     }
 
-    private void LoadWebsite(ChannelAssetAssociation ca, WebBrowser webBrowser)
-    {
-      webBrowser.Navigate(ca.PlaylistAsset.AssetWebSite);
 
-      _logger.WriteTimestampedMessage("successfully told web browser to load asset.");
-
-      while (webBrowser.ReadyState != WebBrowserReadyState.Complete) ;
-
-      _logger.WriteTimestampedMessage("successfully loaded website.");
-    }
-
-    private void LoadFlash(ChannelAssetAssociation ca, AxShockwaveFlash flashPlayer, string displayToggleString)
-    {
-      flashPlayer.Movie = DecryptToTemp(ca, displayToggleString);
-
-      _logger.WriteTimestampedMessage("successfully loaded flash video.");
-
-      flashPlayer.Stop();
-      flashPlayer.Rewind();
-
-      _logger.WriteTimestampedMessage("successfully stopped and rewound flash video.");
-    }
-
-    private void LoadVideoNonQT(ChannelAssetAssociation ca, AxWindowsMediaPlayer videoPlayer, string displayToggleString)
-    {
-      videoPlayer.URL = DecryptToTemp(ca, displayToggleString);
-
-      _logger.WriteTimestampedMessage("successfully loaded media player video.");
-
-      videoPlayer.Ctlcontrols.stop();
-
-      _logger.WriteTimestampedMessage("successfully stopped media player video.");
-    }
-
-    private void LoadVideoQT(ChannelAssetAssociation ca, AxQTControl quickTimePlayer, string displayToggleString)
-    {
-      quickTimePlayer.URL = DecryptToTemp(ca, displayToggleString);
-
-      _logger.WriteTimestampedMessage("successfully loaded quicktime video.");
-    }
-
-    private void LoadNoAssetsAsset(ChannelAssetAssociation channelAssetAssociation, NoAssetsAnimatorPlayer noAssetsAnimatorPlayer)
-    {
-      noAssetsAnimatorPlayer.Message = ((ContentPlaylistAsset)channelAssetAssociation.PlaylistAsset).Message;
-
-      _logger.WriteTimestampedMessage("successfully set the \"No Assets\" message.");
-    }
-
-    private void ClearImage(PictureBox pictureBox)
-    {
-      // promptly dispose of existing image
-      if (pictureBox.Image != null)
-      {
-        Image disposableImage = pictureBox.Image;
-        disposableImage.Dispose();
-        disposableImage = null;
-        pictureBox.Image = null;
-      }
-    }
-
-    private void LoadImage(ChannelAssetAssociation ca, PictureBox pictureBox)
-    {
-      ClearImage(pictureBox);
-
-      _logger.WriteTimestampedMessage("successfully cleared old image from picturebox.");
-
-      MemoryStream memoryStream = ca.PlaylistAsset.DecryptAssetFile(_assetPath + ca.PlaylistAsset.GetAssetFilenameGUIDSuffix() + "\\" + ca.PlaylistAsset.AssetFilename, "password");
-
-      _logger.WriteTimestampedMessage("successfully decrypted image to memory.");
-
-      // Stream must be kept open for the lifetime of the image
-      // use a temp image, then clone it, to make independent of the stream, then close the stream
-      Image tempImage = Image.FromStream(memoryStream);
-
-      _logger.WriteTimestampedMessage("successfully created temp image from memory data.");
-
-      pictureBox.Image = new Bitmap(tempImage);
-      _logger.WriteTimestampedMessage("successfully created an image from temp image and resized it to the screen.");
-      
-      tempImage.Dispose();
-      tempImage = null;
-
-      _logger.WriteTimestampedMessage("successfully disposed of temp image.");
-
-      memoryStream.Close();
-      memoryStream.Dispose();
-      memoryStream = null;
-
-      _logger.WriteTimestampedMessage("successfully disposed of temp decrypted data.");
-    }
 
     // Selects the next asset from the playlist, if temporal scheduling allows it and current date is within specified date bounds.
     // Decides if the next asset must be an advert or a content.
@@ -512,25 +369,21 @@ namespace OxigenIIAdvertising.ScreenSaver
       {
         _assetDisplayLength = _ChannelAssetAssociationA.PlaylistAsset.DisplayLength;
 
-        Transit(_ChannelAssetAssociationA, _ChannelAssetAssociationB, _pictureBoxA, _pictureBoxB, _webBrowserA, _webBrowserB, _flashPlayerA, _flashPlayerB, _videoPlayerA, _videoPlayerB, _quickTimePlayerA, _quickTimePlayerB);
+        Transit(_ChannelAssetAssociationA, _ChannelAssetAssociationB, _players.APlayers, _players.BPlayers);
       }
       else
       {
         _assetDisplayLength = _ChannelAssetAssociationB.PlaylistAsset.DisplayLength;
 
-        Transit(_ChannelAssetAssociationB, _ChannelAssetAssociationA, _pictureBoxB, _pictureBoxA, _webBrowserB, _webBrowserA, _flashPlayerB, _flashPlayerA, _videoPlayerB, _videoPlayerA, _quickTimePlayerB, _quickTimePlayerA);
+        Transit(_ChannelAssetAssociationB, _ChannelAssetAssociationA, _players.BPlayers, _players.APlayers);
       }
     }
 
     private void Transit(ChannelAssetAssociation channelAssetAssociationAssetToShow,
       ChannelAssetAssociation channelAssetAssociationAssetToHide,
-      PictureBox pictureBoxToShow, PictureBox pictureBoxToHide,
-      WebBrowser webBrowserToShow, WebBrowser webBrowserToHide,
-      AxShockwaveFlash flashPlayerToShow, AxShockwaveFlash flashPlayerToHide,
-      AxWindowsMediaPlayer videoPlayerToShow, AxWindowsMediaPlayer videoPlayerToHide,
-      AxQTControl quickTimePlayerToShow, AxQTControl quickTimePlayerToHide)
+      Dictionary<PlayerType, IPlayer> playersToShow,
+        Dictionary<PlayerType, IPlayer> playersToHide)
     {
-
       // transition to black between assets
       if (!_bFirstRun)
       {
@@ -554,152 +407,23 @@ namespace OxigenIIAdvertising.ScreenSaver
       }      
 
       // stop previous players
-      flashPlayerToHide.Stop();
-      videoPlayerToHide.Ctlcontrols.stop();
-      if (quickTimePlayerToHide.Movie != null)
-        quickTimePlayerToHide.Movie.Stop();
+      foreach (IPlayer player in playersToHide.Values)
+          player.Stop();
 
       if (!_bFadeToDesktop)
       {
-        switch (channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType)
-        {
-          case PlayerType.Image:
-            Controls.SetChildIndex(pictureBoxToShow, 0);
-            _logger.WriteTimestampedMessage("successfully flipped to image.");
-            break;
-          case PlayerType.WebSite:
-            Controls.SetChildIndex(webBrowserToShow, 0);
-            _logger.WriteTimestampedMessage("successfully flipped to website.");
-            break;
-          case PlayerType.NoAssetsAnimator:
-            Controls.SetChildIndex(_noAssetsAnimatorPlayer, 0);
-            _logger.WriteTimestampedMessage("successfully flipped to no assets animator.");
-            _noAssetsAnimatorPlayer.Play();
-            _logger.WriteTimestampedMessage("successfully played no assets animator.");
-            break;
-          case PlayerType.Flash:
+          IPlayer player = playersToShow[channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType];
 
-            if (!_bPrimaryMonitor)
-            {
-              // Set the same volume for both the left and the right channels
-              uint NewVolumeAllChannels = (((uint)0 & 0x0000ffff) | ((uint)0 << 16));
-
-              // Set the volume
-              waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
-            }
-            else
-            {
-              if (_bMuteFlash)
-              {
-                _logger.WriteMessage("flash is set to mute");
-
-                // Set the same volume for both the left and the right channels
-                uint NewVolumeAllChannels = (((uint)0 & 0x0000ffff) | ((uint)0 << 16));
-
-                _logger.WriteMessage("NewVolumeAllChannels = " + NewVolumeAllChannels);
-
-                // Set the volume
-                waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
-              }
-              else
-              {
-                _logger.WriteMessage("flash is not set to mute");
-
-                // Set the same volume for both the left and the right channels
-                uint NewVolumeAllChannels = (((uint)uintCurrentVol & 0x0000ffff) | ((uint)uintCurrentVol << 16));
-
-                _logger.WriteMessage("NewVolumeAllChannels = " + NewVolumeAllChannels);
-
-                // Set the volume
-                waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
-              }
-            }
-
-            Controls.SetChildIndex(flashPlayerToShow, 0);
-            _logger.WriteTimestampedMessage("successfully flipped to flash.");
-            flashPlayerToShow.Play();
-            _logger.WriteTimestampedMessage("successfully played flash.");
-            break;
-          case PlayerType.VideoNonQT:
-            Controls.SetChildIndex(videoPlayerToShow, 0);
-            _logger.WriteTimestampedMessage("successfully flipped to quicktime.");
-
-            if (!_bPrimaryMonitor)
-            {
-              videoPlayerToShow.settings.mute = true;
-              _logger.WriteTimestampedMessage("successfully muted windows media.");
-            }
-            else
-            {
-              videoPlayerToShow.settings.volume = _videoVolume;
-
-              _logger.WriteTimestampedMessage("successfully set windows media volume.");
-
-              videoPlayerToShow.settings.mute = _bMuteVideo;
-
-              _logger.WriteTimestampedMessage("successfully set mute/no mute of windows media sound.");
-            }
-
-            videoPlayerToShow.Ctlcontrols.play();
-
-            _logger.WriteTimestampedMessage("successfully played quicktime.");
-
-            if (!_bPrimaryMonitor)
-            {
-              // TODO: set aspect ratio correctly for non primary monitors
-              videoPlayerToShow.settings.mute = true;
-
-              _logger.WriteTimestampedMessage("successfully muted windows media.");
-            }
-            else
-            {
-              videoPlayerToShow.stretchToFit = true;
-
-              _logger.WriteTimestampedMessage("successfully stretched windows media clip to fit player.");
-            }
-
-            break;
-          case PlayerType.VideoQT:
-            Controls.SetChildIndex(quickTimePlayerToShow, 0);
-            _logger.WriteTimestampedMessage("successfully flipped to quicktime.");
-
-            if (!_bPrimaryMonitor)
-            {
-              quickTimePlayerToShow.Movie.AudioMute = true;
-              _logger.WriteTimestampedMessage("successfully muted quicktime.");
-            }
-            else
-            {
-              quickTimePlayerToShow.Movie.AudioVolume = (float)_videoVolume / 100F;
-
-              _logger.WriteTimestampedMessage("successfully set the the quicktime volume.");
-
-              quickTimePlayerToShow.Movie.AudioMute = _bMuteVideo;
-
-              _logger.WriteTimestampedMessage("successfully set mute/no mute of quicktime sound.");
-            }
-
-            quickTimePlayerToShow.Movie.Play(1);
-
-            _logger.WriteTimestampedMessage("successfully played quicktime.");
-
-            break;
-        }
+          Controls.SetChildIndex(player.Control, 0);
+          player.Play(_bPrimaryMonitor);
       }
 
       if (_bFadeToDesktop)
       {
-        videoPlayerToHide.Visible = false;
-        videoPlayerToShow.Visible = false;
-        quickTimePlayerToHide.Visible = false;
-        quickTimePlayerToShow.Visible = false;
-        flashPlayerToHide.Visible = false;
-        flashPlayerToShow.Visible = false;
-        pictureBoxToHide.Visible = false;
-        pictureBoxToShow.Visible = false;
-        webBrowserToShow.Visible = false;
-        webBrowserToHide.Visible = false;
-        _noAssetsAnimatorPlayer.Visible = false;
+          foreach (var player in _players.AllPlayers())
+          {
+              player.Control.Visible = false;
+          }
 
         _logger.WriteTimestampedMessage("successfully hid players.");
 
@@ -717,11 +441,10 @@ namespace OxigenIIAdvertising.ScreenSaver
       // release previously played streamed asset from player
       // and delete temp file
       if (channelAssetAssociationAssetToHide != null)
-        ReleaseDeleteDoneAsset(channelAssetAssociationAssetToHide, flashPlayerToHide, videoPlayerToHide,
-          quickTimePlayerToHide, pictureBoxToHide, webBrowserToHide);
+        ReleaseDeleteDoneAsset(channelAssetAssociationAssetToHide, playersToHide);
 
       if (_bFadeToDesktop)
-        ReleaseDeleteCurrentAsset(channelAssetAssociationAssetToShow, flashPlayerToShow, videoPlayerToShow, quickTimePlayerToShow);
+        ReleaseDeleteCurrentAsset(channelAssetAssociationAssetToShow, playersToShow);
 
       if (!_bFadeToDesktop)
       {
@@ -754,87 +477,26 @@ namespace OxigenIIAdvertising.ScreenSaver
     }
     
     private void ReleaseDeleteDoneAsset(ChannelAssetAssociation channelAssetAssociationAssetToHide,
-      AxShockwaveFlash flashPlayerToHide, AxWindowsMediaPlayer videoPlayerToHide, AxQTControl quickTimePlayerToHide,
-      PictureBox pictureBoxToHide, WebBrowser webBrowserToHide)
+      Dictionary<PlayerType, IPlayer> players)
     {
-      string fileToDelete = "";
+        var player = players[channelAssetAssociationAssetToHide.PlaylistAsset.PlayerType];
 
-      switch (channelAssetAssociationAssetToHide.PlaylistAsset.PlayerType)
-      {
-        case PlayerType.Flash:
-          fileToDelete = flashPlayerToHide.Movie;
-          flashPlayerToHide.Movie = "";
-          _logger.WriteTimestampedMessage("successfully unloaded previous flash");
-          break;
-
-        case PlayerType.VideoNonQT:
-          fileToDelete = videoPlayerToHide.URL;
-          videoPlayerToHide.URL = "";
-          _logger.WriteTimestampedMessage("successfully unloaded previous windows media");
-          break;
-
-        case PlayerType.VideoQT:
-          fileToDelete = quickTimePlayerToHide.URL;
-          quickTimePlayerToHide.URL = "";
-          _logger.WriteTimestampedMessage("successfully unloaded quicktime");
-          break;
-
-        case PlayerType.Image:
-          ClearImage(pictureBoxToHide);
-          _logger.WriteTimestampedMessage("successfully unloaded previous image");
-          break;
-
-        case PlayerType.WebSite:
-          webBrowserToHide.DocumentText = "<html><body style='background-color:Black'></body></html>";
-          _logger.WriteTimestampedMessage("successfully unloaded previous web site");
-          break;
-      }
-
-      if (fileToDelete != "")
-      {
-        try
-        {
-          File.Delete(fileToDelete);
-          _logger.WriteTimestampedMessage("successfully deleted previous asset.");
-        }
+        try {
+            player.ReleaseAssetForTransition(); 
+            _logger.WriteTimestampedMessage("successfully deleted previous asset.");
+        } //TODO: do we need this here??
         catch { }
-      }
     }
 
-    private void ReleaseDeleteCurrentAsset(ChannelAssetAssociation channelAssetAssociationAssetToShow, AxShockwaveFlash flashPlayerToShow, AxWindowsMediaPlayer videoPlayerToShow, AxQTControl quickTimePlayerToShow)
+    private void ReleaseDeleteCurrentAsset(ChannelAssetAssociation channelAssetAssociationAssetToShow, Dictionary<PlayerType, IPlayer> players)
     {
-      string fileToDelete = "";
+        var player = players[channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType];
 
-      switch (channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType)
-      {
-        case PlayerType.Flash:
-          fileToDelete = flashPlayerToShow.Movie;
-          flashPlayerToShow.Movie = "";
-          _logger.WriteTimestampedMessage("successfully unloaded current flash.");
-          break;
-
-        case PlayerType.VideoNonQT:
-          fileToDelete = videoPlayerToShow.URL;
-          videoPlayerToShow.URL = "";
-          _logger.WriteTimestampedMessage("successfully unloaded current windows media.");
-          break;
-
-        case PlayerType.VideoQT:
-          fileToDelete = quickTimePlayerToShow.URL;
-          quickTimePlayerToShow.URL = "";
-          _logger.WriteTimestampedMessage("successfully unloaded current quicktime.");
-          break;
-      }
-
-      if (fileToDelete != "")
-      {
-        try
-        {
-          File.Delete(fileToDelete);
-          _logger.WriteTimestampedMessage("successfully deleted current asset.");
-        }
+        try {
+            player.ReleaseAssetForDesktop();
+            _logger.WriteTimestampedMessage("successfully deleted previous asset.");
+        } //TODO: do we need this here??
         catch { }
-      }
     }
 
     // Decides which asset slot and player to select and load the next asset to
@@ -851,9 +513,9 @@ namespace OxigenIIAdvertising.ScreenSaver
             if (displayToggle != _displayToggle)
             {
               if (_displayToggle == DisplayToggle.A)
-                SelectAndLoadAsset(ref _ChannelAssetAssociationA, _pictureBoxA, _webBrowserA, _flashPlayerA, _videoPlayerA, _noAssetsAnimatorPlayer, _quickTimePlayerA, _displayToggle.ToString());
+                SelectAndLoadAsset(ref _ChannelAssetAssociationA, _players.APlayers, _displayToggle.ToString());
               else
-                SelectAndLoadAsset(ref _ChannelAssetAssociationB, _pictureBoxB, _webBrowserB, _flashPlayerB, _videoPlayerB, _noAssetsAnimatorPlayer, _quickTimePlayerB, _displayToggle.ToString());
+                  SelectAndLoadAsset(ref _ChannelAssetAssociationB, _players.BPlayers, _displayToggle.ToString());
 
               displayToggle = _displayToggle;
             }
@@ -868,9 +530,8 @@ namespace OxigenIIAdvertising.ScreenSaver
       }
     }
 
-    private void SelectAndLoadAsset(ref ChannelAssetAssociation channelAssetAssociation, PictureBox pictureBox,
-      WebBrowser webBrowser, AxShockwaveFlash flashPlayer, AxWindowsMediaPlayer videoPlayer,
-      NoAssetsAnimatorPlayer noAssetsAnimatorPlayer, AxQTControl quickTimePlayer,
+    private void SelectAndLoadAsset(ref ChannelAssetAssociation channelAssetAssociation,
+        Dictionary<PlayerType, IPlayer> players, 
       string displayToggleString)
     {
       channelAssetAssociation = SelectAsset();
@@ -883,27 +544,36 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully added asset's duration to play times.");
 
-      switch (playlistAsset.PlayerType)
-      {
-        case PlayerType.Image:
-          LoadImage(channelAssetAssociation, pictureBox);
-          break;
-        case PlayerType.WebSite:
-          LoadWebsite(channelAssetAssociation, webBrowser);
-          break;
-        case PlayerType.NoAssetsAnimator:
-          LoadNoAssetsAsset(channelAssetAssociation, noAssetsAnimatorPlayer);
-          break;
-        case PlayerType.Flash:
-          LoadFlash(channelAssetAssociation, flashPlayer, displayToggleString);
-          break;
-        case PlayerType.VideoNonQT:
-          LoadVideoNonQT(channelAssetAssociation, videoPlayer, displayToggleString);
-          break;
-        case PlayerType.VideoQT:
-          LoadVideoQT(channelAssetAssociation, quickTimePlayer, displayToggleString);
-          break;
-      }
+        IPlayer player = players[playlistAsset.PlayerType];
+
+        if (player is IStreamLoader)
+        {
+            IStreamLoader streamLoader = (IStreamLoader) player;
+            using (
+                MemoryStream stream =
+                    channelAssetAssociation.PlaylistAsset.DecryptAssetFile(
+                        _assetPath + channelAssetAssociation.PlaylistAsset.GetAssetFilenameGUIDSuffix() + "\\" +
+                        channelAssetAssociation.PlaylistAsset.AssetFilename, "password"))
+            {
+                streamLoader.Load(stream);
+            }
+        }
+        else if (player is IURLLoader)
+        {
+            IURLLoader urlLoader = (IURLLoader) player;
+            urlLoader.Load(channelAssetAssociation.PlaylistAsset.AssetWebSite);
+        }
+        else if (player is IFileLoader)
+        {
+            string decryptedFilePath = DecryptToTemp(channelAssetAssociation, displayToggleString);
+
+            IFileLoader fileLoader = (IFileLoader) player;
+            fileLoader.Load(decryptedFilePath);
+        }
+        else if (player is INoAssetsLoader)
+        {
+            ((INoAssetsLoader)player).Load(((ContentPlaylistAsset)channelAssetAssociation.PlaylistAsset).Message);
+        }
     }
 
     void ScreenSaver_HandleCreated(object sender, EventArgs e)
@@ -928,18 +598,10 @@ namespace OxigenIIAdvertising.ScreenSaver
       _logger.WriteTimestampedMessage("successfully set the size and position of the Screensaver to the monitor dimensions.");
 
       rect = new Rectangle(0, 0, this.Bounds.Width, this.Bounds.Height);
-      
-      _pictureBoxA.Bounds = rect;
-      _pictureBoxB.Bounds = rect;
-      _webBrowserA.Bounds = rect;
-      _webBrowserB.Bounds = rect;
-      _flashPlayerA.Bounds = rect;
-      _flashPlayerB.Bounds = rect;
-      _videoPlayerA.Bounds = rect;
-      _videoPlayerB.Bounds = rect;
-      _noAssetsAnimatorPlayer.Bounds = rect;
-      _quickTimePlayerA.Bounds = rect;
-      _quickTimePlayerB.Bounds = rect;
+        foreach (var player in _players.AllPlayers())
+        {
+            player.Control.Bounds = rect;
+        }
 
       _logger.WriteTimestampedMessage("successfully set the size and position of the players to the Screensaver dimensions.");
 
@@ -948,7 +610,7 @@ namespace OxigenIIAdvertising.ScreenSaver
       _logger.WriteTimestampedMessage("successfully set the size and position of the fader form to the Screensaver dimensions.");
       
       // wrap controls around clips, keeping aspect ratio
-      _quickTimePlayerA.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio;
+      _quickTimePlayerA
       _quickTimePlayerB.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio;
 
       _logger.WriteTimestampedMessage("successfully set the aspect ratio of the two quicktime players.");

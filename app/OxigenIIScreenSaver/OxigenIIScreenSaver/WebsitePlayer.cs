@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
+using OxigenIIAdvertising.AppData;
+using OxigenIIAdvertising.LoggerInfo;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
-    public class WebsitePlayer : IPlayer
+    public class WebsitePlayer : IPlayer, IURLLoader
     {
-        public void EnableSound(bool enableSound)
+        private WebBrowser _control;
+        private LoggerInfo.Logger _logger;
+
+        public WebsitePlayer(Logger logger)
         {
-            throw new NotImplementedException();
+            _control = new WebBrowser();
+            _control.ScriptErrorsSuppressed = true;
+            _logger = logger;
         }
 
-        public void Play()
+        public void Play(bool primaryMonitor)
         {
             throw new NotImplementedException();
         }
@@ -22,14 +30,30 @@ namespace OxigenIIAdvertising.ScreenSaver
             throw new NotImplementedException();
         }
 
-        public void Load(string filePath)
+        public void ReleaseAssetForDesktop()
         {
-            throw new NotImplementedException();
+            // not applicable
+        }
+
+        public bool IsReadyToPlay
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public void Load(string url)
+        {
+            _control.Navigate(url);
+            while (_control.ReadyState != WebBrowserReadyState.Complete) ;
         }
 
         public System.Windows.Forms.Control Control
         {
             get { throw new NotImplementedException(); }
+        }
+
+
+        public void ReleaseAssetForTransition() {
+            _control.DocumentText = "<html><body style='background-color:Black'></body></html>";
         }
     }
 }
