@@ -164,6 +164,7 @@
     <Compile Include="ImagePlayer.cs" />
     <Compile Include="IScreenSaver.cs" />
     <Compile Include="IPlayer.cs" />
+    <Compile Include="NoAssetsPlayer.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="PreviewScreenSaver.cs">
       <SubType>Form</SubType>
