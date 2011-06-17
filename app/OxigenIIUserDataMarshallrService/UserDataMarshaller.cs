@@ -234,6 +234,7 @@ namespace OxigenIIAdvertising.RelayServers
 
       if (!File.Exists(assetFullPath))
       {
+          _applicationLog.Warn(assetFullPath + " does not exist.");
         streamErrorWrapper.ErrorCode = "ERR:002";
         streamErrorWrapper.Message = "File not found";
         streamErrorWrapper.ErrorSeverity = ErrorSeverity.Retriable; // search for asset file later
@@ -302,6 +303,7 @@ namespace OxigenIIAdvertising.RelayServers
 
       if (!File.Exists(appDataFullPath))
       {
+          _applicationLog.Warn(appDataFullPath + " does not exist.");
         streamErrorWrapper.ErrorStatus = ErrorStatus.Failure;
         streamErrorWrapper.ErrorSeverity = ErrorSeverity.Retriable;
         streamErrorWrapper.ErrorCode = "ERR:002";

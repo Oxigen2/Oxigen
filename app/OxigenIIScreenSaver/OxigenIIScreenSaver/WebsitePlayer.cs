@@ -11,12 +11,13 @@ namespace OxigenIIAdvertising.ScreenSaver
     public class WebsitePlayer : IPlayer, IURLLoader
     {
         private WebBrowser _control;
-        private LoggerInfo.Logger _logger;
+        private Logger _logger;
 
         public WebsitePlayer(Logger logger)
         {
             _control = new WebBrowser();
             _control.ScriptErrorsSuppressed = true;
+            _control.ScrollBarsEnabled = false;
             _logger = logger;
         }
 
@@ -27,7 +28,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            // not applicable
         }
 
         public void ReleaseAssetForDesktop()
@@ -46,14 +47,24 @@ namespace OxigenIIAdvertising.ScreenSaver
             while (_control.ReadyState != WebBrowserReadyState.Complete) ;
         }
 
-        public System.Windows.Forms.Control Control
+        public Control Control
         {
-            get { throw new NotImplementedException(); }
+            get { return _control; }
         }
 
 
         public void ReleaseAssetForTransition() {
             _control.DocumentText = "<html><body style='background-color:Black'></body></html>";
+        }
+
+        public void Init()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

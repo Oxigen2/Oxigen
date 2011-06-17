@@ -59,7 +59,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       public void Stop()
       {
-          throw new System.NotImplementedException();
+          _control.Stop();
       }
 
       public void ReleaseAssetForDesktop()
@@ -82,7 +82,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       public System.Windows.Forms.Control Control
       {
-          get { throw new System.NotImplementedException(); }
+          get { return _control; }
       }
 
       public void Load(string filepath)
@@ -90,6 +90,16 @@ namespace OxigenIIAdvertising.ScreenSaver
           _control.Movie = filepath;
           _control.Stop();
           _control.Rewind();
+      }
+
+      public void Init()
+      {
+          throw new NotImplementedException();
+      }
+
+      public void Dispose()
+      {
+          throw new NotImplementedException();
       }
   }
 }

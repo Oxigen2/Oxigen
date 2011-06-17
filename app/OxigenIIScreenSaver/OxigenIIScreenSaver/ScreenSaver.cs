@@ -215,8 +215,6 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully set the start position of the fader form to manual.");
 
-      _logger.WriteTimestampedMessage("successfully hid the fader form from taskbar.");
-
       AddOwnedForm(_faderForm);
 
       _logger.WriteTimestampedMessage("successfully added the fader form as a form owned by the Screensaver Form.");
@@ -609,31 +607,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully set the size and position of the fader form to the Screensaver dimensions.");
       
-      // wrap controls around clips, keeping aspect ratio
-      _quickTimePlayerA
-      _quickTimePlayerB.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio;
-
-      _logger.WriteTimestampedMessage("successfully set the aspect ratio of the two quicktime players.");
-
       // TODO: maintain QuickTime aspect ratio for non primary monitors
-
-      // conceal scroll bars
-      _webBrowserA.ScrollBarsEnabled = false;
-      _webBrowserB.ScrollBarsEnabled = false;
-
-      _logger.WriteTimestampedMessage("successfully disabled the scroll bars of the web browsers.");
-
-      // conceal video player controls
-      _videoPlayerA.uiMode = "none";
-      _videoPlayerB.uiMode = "none";
-
-      _logger.WriteTimestampedMessage("successfully disabled the play controls of the windows media players.");
-
-      // conceal QuickTime player controls
-      _quickTimePlayerA.MovieControllerVisible = false;
-      _quickTimePlayerB.MovieControllerVisible = false;
-
-      _logger.WriteTimestampedMessage("successfully disabled the play controls of the quicktime players.");
 
       _loadAssetThread = new Thread(new ThreadStart(DecideSelectAndLoadAsset));
       CultureInfo ci = new CultureInfo("en-GB");

@@ -15,42 +15,46 @@ namespace OxigenIIAdvertising.ScreenSaver
       public WindowsMediaPlayer(bool muteSound, int videoVolume, Logger logger)
       {
           _control = new AxWindowsMediaPlayer();
-          _muteSound = muteSound;
+          _control.uiMode = "none";
           _logger = logger;
+          _muteSound = muteSound;
           _videoVolume = videoVolume;
       }
 
       public void Play(bool primaryMonitor)
       {
-          if (!primaryMonitor) {
+          if (!primaryMonitor)
+          {
               _control.settings.mute = true;
           }
-          else {
+          else
+          {
               _control.settings.volume = _videoVolume;
               _control.settings.mute = _muteSound;
           }
 
           _control.Ctlcontrols.play();
 
-          if (!primaryMonitor) {
+          if (!primaryMonitor)
+          {
               // TODO: set aspect ratio correctly for non primary monitors
               _control.settings.mute = true;
           }
-          else {
+          else
+          {
               _control.stretchToFit = true;
           }
       }
 
       public void Stop()
       {
-          throw new NotImplementedException();
+          _control.Ctlcontrols.stop();
       }
 
       public System.Windows.Forms.Control Control
       {
-          get { throw new NotImplementedException(); }
+          get { return _control; }
       }
-
 
       public void Load(string filePath)
       {
@@ -73,6 +77,16 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       public bool IsReadyToPlay {
           get { throw new NotImplementedException(); }
+      }
+
+      public void Init()
+      {
+          throw new NotImplementedException();
+      }
+
+      public void Dispose()
+      {
+          throw new NotImplementedException();
       }
   }
 }

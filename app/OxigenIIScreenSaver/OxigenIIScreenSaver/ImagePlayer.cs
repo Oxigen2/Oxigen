@@ -65,5 +65,15 @@ namespace OxigenIIAdvertising.ScreenSaver
         ((PictureBox)_control).Image = new Bitmap(tempImage);
         tempImage.Dispose();
       }
+
+      public void Init()
+      {
+          throw new NotImplementedException();
+      }
+
+      public void Dispose()
+      {
+          throw new NotImplementedException();
+      }
   }
 }

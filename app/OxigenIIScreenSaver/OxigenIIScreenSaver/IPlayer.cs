@@ -1,17 +1,17 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
-using OxigenIIAdvertising.AppData;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
-    public interface IPlayer
+    public interface IPlayer : IDisposable
     {
-        void Init();
+        void Init(); // TODO: implement in classes or remove
         void Play(bool primaryMonitor);
         void Stop();
         void ReleaseAssetForDesktop();
         void ReleaseAssetForTransition();
-        bool IsReadyToPlay { get; }
+        bool IsReadyToPlay { get; } // TODO: maybe remove
         Control Control { get; }
     }
 

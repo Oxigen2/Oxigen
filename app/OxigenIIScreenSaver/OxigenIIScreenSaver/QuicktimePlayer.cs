@@ -8,7 +8,7 @@ namespace OxigenIIAdvertising.ScreenSaver
   public class QuicktimePlayer : IPlayer, IFileLoader
   {
       private AxQTControl _control;
-      private LoggerInfo.Logger _logger;
+      private Logger _logger;
       private float _videoVolume;
       private bool _bMuteVideo;
 
@@ -20,6 +20,7 @@ namespace OxigenIIAdvertising.ScreenSaver
           _bMuteVideo = bMuteVideo;
 
           _control.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio;
+          _control.MovieControllerVisible = false;
       }
 
       public void Play(bool primaryMonitor)
@@ -49,7 +50,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       public System.Windows.Forms.Control Control
       {
-          get { throw new NotImplementedException(); }
+          get { return _control; }
       }
 
 
@@ -74,6 +75,16 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       public bool IsReadyToPlay {
           get { throw new NotImplementedException(); }
+      }
+
+      public void Init()
+      {
+          throw new NotImplementedException();
+      }
+
+      public void Dispose()
+      {
+          throw new NotImplementedException();
       }
   }
 }
