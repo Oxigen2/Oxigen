@@ -97,9 +97,8 @@ namespace OxigenIIAdvertising.ScreenSaver
           throw new NotImplementedException();
       }
 
-      public void Dispose()
-      {
-          throw new NotImplementedException();
+      public void Dispose() {
+          _control.Dispose();
       }
   }
 }

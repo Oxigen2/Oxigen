@@ -8,15 +8,12 @@ using OxigenIIAdvertising.AppData;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
-    public class Players
+    public class Players : IDisposable
     {
         public Players()
         {
             APlayers = new Dictionary<PlayerType, IPlayer>();
-            AddPlayers(APlayers);
             BPlayers = new Dictionary<PlayerType, IPlayer>();
-            AddPlayers(BPlayers);
-
         }
 
         public IEnumerable<IPlayer> AllPlayers()
@@ -34,19 +31,24 @@ namespace OxigenIIAdvertising.ScreenSaver
             yield break;
         }
 
-        private void AddPlayers(Dictionary<PlayerType, IPlayer> players)
+        public void Add(PlayerType playerType, IPlayer player)
         {
-            players.Add(PlayerType.Flash, new FlashPlayer());
-            players.Add(PlayerType.Image, new ImagePlayer());
-            players.Add(PlayerType.VideoQT, new QuicktimePlayer());
-            players.Add(PlayerType.VideoNonQT, new WindowsMediaPlayer());
-            players.Add(PlayerType.WebSite, new WebsitePlayer());
-            players.Add(PlayerType.NoAssetsAnimator, new NoAssetsPlayer());
-
+            APlayers.Add(playerType, player);
+            BPlayers.Add(playerType, player);
         }
+
+
+        
 
         public Dictionary<PlayerType, IPlayer> APlayers;
         public Dictionary<PlayerType, IPlayer> BPlayers;
+
+        public void Dispose() {
+            foreach (IPlayer player in AllPlayers())
+            {
+                player.Dispose();
+            }
+        }
     }
 
 }

@@ -54,9 +54,7 @@ namespace OxigenIIAdvertising.ScreenSaver
     private bool _bMuteFlash = false;
     private bool _bMuteVideo = false;
     private const int _fadeOutToBlack = 200;
-    private const int _fadeInToSlide = 200;
     private const int _fadeInToDesktop = 150;
-    private const int _fadeOutToDesktop = 50;
     private const int _fadeSleep = 100;
     private string _tempDecryptPath = null;
     private string _assetPath = null;
@@ -68,7 +66,6 @@ namespace OxigenIIAdvertising.ScreenSaver
     // used by worker thread
     private AssetScheduler _assetScheduler = null;
     private PlaylistAssetPicker _playlistAssetPicker = null;
-    private List<string> _assetDeleteList = null;
     private float _protectedContentTime = -1F;
     private float _advertDisplayThreshold = -1F;
     private float _displayMessageAssetDisplayLength = -1F;
@@ -157,7 +154,7 @@ namespace OxigenIIAdvertising.ScreenSaver
       _tempDecryptPath = tempDecryptPath;
       _assetPath = assetPath;
       _defaultDisplayLength = defaultDisplayLength;
-      _assetDeleteList = new List<string>();
+
 
       _bPrimaryMonitor = IsPrimaryMonitor();
 
@@ -190,6 +187,18 @@ namespace OxigenIIAdvertising.ScreenSaver
       _logger.WriteTimestampedMessage("successfully created a Stopwatch object.");
 
         _players = new Players();
+
+        _players.Add(PlayerType.Flash, new FlashPlayer(_bMuteFlash, _logger));
+        _players.Add(PlayerType.Image, new ImagePlayer());
+        _players.Add(PlayerType.VideoQT, new QuicktimePlayer(_logger, _bMuteVideo, _videoVolume));
+        _players.Add(PlayerType.VideoNonQT, new WindowsMediaPlayer(_bMuteVideo, _videoVolume, _logger));
+        _players.Add(PlayerType.WebSite, new WebsitePlayer(_logger));
+        _players.Add(PlayerType.NoAssetsAnimator, new NoAssetsPlayer());
+
+
+        foreach (IPlayer player in _players.AllPlayers()) {
+            Controls.Add(player.Control);
+        }
 
       Control.CheckForIllegalCrossThreadCalls = false;
 
@@ -355,7 +364,20 @@ namespace OxigenIIAdvertising.ScreenSaver
       }
 
       lock (_lockPlaylistObj)
-        return _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime, _protectedContentTime, _advertDisplayThreshold, _displayMessage, _appToRun);
+      {
+          var channelAssetAssociation = _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime,
+                                                                         _protectedContentTime, _advertDisplayThreshold,
+                                                                         _displayMessage, _appToRun);
+          if (!_players.Exists(channelAssetAssociation.PlaylistAsset.PlayerType))
+          {
+              string message;
+              string links;
+
+              channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, message, links));
+              
+          }
+          return channelAssetAssociation;
+      }
     }
 
     private void FlipAssetPlayer()

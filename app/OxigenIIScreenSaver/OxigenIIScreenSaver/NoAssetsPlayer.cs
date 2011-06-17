@@ -51,25 +51,9 @@ namespace OxigenIIAdvertising.ScreenSaver
             throw new NotImplementedException();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        public void Dispose(bool disposing)
-        {
-            if (_disposed) return;
-
-            if (disposing)
-            {
-
-            }
-        }
-
-        public ~NoAssetsPlayer()
-        {
-            Dispose(true);
+             _control.Dispose();
         }
     }
 }

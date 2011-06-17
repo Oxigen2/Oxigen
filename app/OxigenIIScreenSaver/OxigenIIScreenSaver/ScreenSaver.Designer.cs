@@ -26,52 +26,17 @@ namespace OxigenIIAdvertising.ScreenSaver
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
-    {
-      if (!_bDisposed)
-      {
-        if (disposing)
+    protected override void Dispose(bool disposing) {
+        if (disposing && (components != null))
         {
-          _faderForm.Dispose();
-
-          if (_pictureBoxA.Image != null)
-            _pictureBoxA.Image.Dispose();
-
-          if (_pictureBoxB.Image != null)
-            _pictureBoxB.Image.Dispose();
-
-          _pictureBoxA.Dispose();
-          _pictureBoxB.Dispose();
-          _webBrowserA.Dispose();
-          _webBrowserB.Dispose();
-          _flashPlayerA.Dispose();
-          _flashPlayerB.Dispose();
-          _videoPlayerA.Dispose();
-          _videoPlayerB.Dispose();
-          _quickTimePlayerA.Dispose();
-          _quickTimePlayerB.Dispose();
-
-          _noAssetsAnimatorPlayer.Dispose();
-
-          if (components != null)
             components.Dispose();
         }
-
-        _noAssetsAnimatorPlayer = null;
-        _webBrowserA = null;
-        _webBrowserB = null;
-        _pictureBoxA = null;
-        _pictureBoxB = null;
-        _videoPlayerA = null;
-        _videoPlayerB = null;
-        _quickTimePlayerA = null;
-        _quickTimePlayerB = null;
-
+        if (disposing && (_faderForm != null)) {
+            _faderForm.Dispose();
+        }
         base.Dispose(disposing);
-
-        _bDisposed = true;
-      }
     }
+    
 
     #region Windows Form Designer generated code
 
