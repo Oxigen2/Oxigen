@@ -370,11 +370,8 @@ namespace OxigenIIAdvertising.ScreenSaver
                                                                          _displayMessage, _appToRun);
           if (!_players.Exists(channelAssetAssociation.PlaylistAsset.PlayerType))
           {
-              string message;
-              string link;
-
-              channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, message, link));
-              
+              PlayerNotExistsResponse response = Players.PlayerNotExistResponses[channelAssetAssociation.PlaylistAsset.PlayerType];
+              channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, response.Message, response.Link));
           }
           return channelAssetAssociation;
       }
