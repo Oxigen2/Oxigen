@@ -26,14 +26,10 @@ namespace OxigenIIAdvertising.ScreenSaver
         public IEnumerable<IPlayer> AllPlayers()
         {
             foreach (IPlayer player in APlayers.Values)
-            {
                 yield return player;
-            }
 
             foreach (IPlayer player in BPlayers.Values)
-            {
                 yield return player;
-            }
 
             yield break;
         }
@@ -43,7 +39,12 @@ namespace OxigenIIAdvertising.ScreenSaver
             APlayers.Add(playerType, player);
             BPlayers.Add(playerType, player);
         }
-        
+
+        internal bool Exists(PlayerType playerType)
+        {
+          return APlayers.ContainsKey(playerType); // could be interrogating BPlayer instead; both dictionaries 
+        }
+
         public Dictionary<PlayerType, IPlayer> APlayers;
         public Dictionary<PlayerType, IPlayer> BPlayers;
 
@@ -56,8 +57,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         private static Dictionary<PlayerType, PlayerNotExistsResponse> GetPlayerNotExistsResponses()
         {
-            Dictionary<PlayerType, PlayerNotExistsResponse> playerNotExistResponses =
-                new Dictionary<PlayerType, PlayerNotExistsResponse>();
+            Dictionary<PlayerType, PlayerNotExistsResponse> playerNotExistResponses = new Dictionary<PlayerType, PlayerNotExistsResponse>();
 
             playerNotExistResponses.Add(PlayerType.Flash, new PlayerNotExistsResponse("You do not have ActiveX flash installed. Press space bar to go to the Flash download site.",
                                                                                                       "http://get.adobe.com/flashplayer"));

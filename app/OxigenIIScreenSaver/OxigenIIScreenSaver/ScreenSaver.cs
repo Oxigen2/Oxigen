@@ -188,13 +188,19 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         _players = new Players();
 
-        _players.Add(PlayerType.Flash, new FlashPlayer(_bMuteFlash, _logger));
+        if (_players.Exists(PlayerType.Flash))
+          _players.Add(PlayerType.Flash, new FlashPlayer(_bMuteFlash, _logger));
+
+        if (_players.Exists(PlayerType.VideoQT))
+          _players.Add(PlayerType.VideoQT, new QuicktimePlayer(_logger, _bMuteVideo, _videoVolume));
+
+        if (_players.Exists(PlayerType.VideoQT))
+          _players.Add(PlayerType.VideoNonQT, new WindowsMediaPlayer(_bMuteVideo, _videoVolume, _logger));
+
+      // these players always exist
         _players.Add(PlayerType.Image, new ImagePlayer());
-        _players.Add(PlayerType.VideoQT, new QuicktimePlayer(_logger, _bMuteVideo, _videoVolume));
-        _players.Add(PlayerType.VideoNonQT, new WindowsMediaPlayer(_bMuteVideo, _videoVolume, _logger));
         _players.Add(PlayerType.WebSite, new WebsitePlayer(_logger));
         _players.Add(PlayerType.NoAssetsAnimator, new NoAssetsPlayer());
-
 
         foreach (IPlayer player in _players.AllPlayers()) {
             Controls.Add(player.Control);
