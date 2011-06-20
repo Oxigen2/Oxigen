@@ -71,16 +71,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OxigenIIExceptions\Exceptions.csproj">
-      <Project>{0AA05276-8AB0-4F73-B5CC-5A8BC120FB18}</Project>
-      <Name>Exceptions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WindowsVersionDetection\WindowsVersionDetection.csproj">
-      <Project>{D072296F-E55A-4F46-8631-A3577C6E955D}</Project>
-      <Name>WindowsVersionDetection</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>

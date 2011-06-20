@@ -1,27 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using OxigenIIAdvertising.ScreenSaver.Properties;
 using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.XMLSerializer;
 using OxigenIIAdvertising.LoggerInfo;
-using OxigenIIAdvertising.AssetScheduling;
 using OxigenIIAdvertising.LogWriter;
 using OxigenIIAdvertising.FileRights;
 using System.IO;
-using System.Threading;
 using System.Diagnostics;
 using OxigenIIAdvertising.Singletons;
 using OxigenIIAdvertising.UserSettings;
-using System.Net;
-using System.Net.Sockets;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Configuration;
 using System.Management;
-using System.Globalization;
+using OxigenPlayers;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {

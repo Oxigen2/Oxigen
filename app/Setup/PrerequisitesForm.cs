@@ -77,9 +77,8 @@ namespace Setup
         quickTimeIndicator.Image = Resources.tick;
       else
       {
-        _bPrerequisitesMet = false;
         lnkQuickTime.Text = "Download Quicktime";
-        quickTimeIndicator.Image = Resources.cross;
+        quickTimeIndicator.Image = Resources.questionmark;
         logger.Log("Missing_Quicktime");
       }
       
@@ -90,9 +89,8 @@ namespace Setup
         wmpIndicator.Image = Resources.tick;
       else
       {
-        _bPrerequisitesMet = false;
         lnkWMP.Text = "Download Windows Media Player";
-        wmpIndicator.Image = Resources.cross;
+        wmpIndicator.Image = Resources.questionmark;
         logger.Log("Missing_WindowsMediaPlayer");
       }
 
