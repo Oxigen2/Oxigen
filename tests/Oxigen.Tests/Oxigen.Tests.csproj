@@ -142,6 +142,7 @@
     <Compile Include="Oxigen.Core\TemplateTests.cs" />
     <Compile Include="Oxigen.UserDataMarshaller\ClientDataLoggerTests.cs" />
     <Compile Include="Oxigen.Web.Assets\RouteRegistrarTests.cs" />
+    <Compile Include="Oxigen.Web.Assets\Test.cs" />
     <Compile Include="Oxigen.Web\Controllers\AssetContentsControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\ChannelsControllerTests.cs" />
     <Compile Include="Oxigen.Web\Controllers\ChannelsSlidesControllerTests.cs" />

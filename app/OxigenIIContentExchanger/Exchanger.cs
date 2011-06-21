@@ -883,72 +883,70 @@ namespace OxigenIIAdvertising.ContentExchanger
 
       // check if saving of this slide will exceed allowed size in destination folder
       long directorySize = GetDirectorySize(_assetPath);
-
-      foreach (PlaylistAsset pa in playlistAssets)
+      using (var client = new WebClient())
       {
-        if (_worker != null && _worker.CancellationPending)
-        {
-          bCancelled = true;
-          return;
-        }
-
-        ReportProgress("Stream " + channelName + ", Content " + counter + " of " + noAssets);
-
-        string assetDir = _assetPath + pa.GetAssetFilenameGUIDSuffix().ToUpper() + "\\";
-        string assetFullPath = assetDir + pa.AssetFilename;
-
-        // If file exists, move on to the next one. No need to check if file has changed on the server
-        // because that would be a new file under a different database ID.
-        if (File.Exists(assetFullPath))
-          continue;
-
-        try
-        {
-          if (!Directory.Exists(assetDir))
-            Directory.CreateDirectory(assetDir);
-
-          using (var client = new WebClient())
+          foreach (PlaylistAsset pa in playlistAssets)
           {
-            client.DownloadFile(_cdnSubdomain + "slide/" + pa.AssetFilename, assetFullPath);
+              if (_worker != null && _worker.CancellationPending)
+              {
+                  bCancelled = true;
+                  return;
+              }
+
+              ReportProgress("Stream " + channelName + ", Content " + counter + " of " + noAssets);
+
+              string assetDir = _assetPath + pa.GetAssetFilenameGUIDSuffix().ToUpper() + "\\";
+              string assetFullPath = assetDir + pa.AssetFilename;
+
+              // If file exists, move on to the next one. No need to check if file has changed on the server
+              // because that would be a new file under a different database ID.
+              if (File.Exists(assetFullPath))
+                  continue;
+
+              try
+              {
+                  if (!Directory.Exists(assetDir))
+                      Directory.CreateDirectory(assetDir);
+
+                  client.DownloadFile(_cdnSubdomain + "slide/" + pa.AssetFilename, assetFullPath);                  
+
+                  var fileLength = new FileInfo(assetFullPath).Length;
+
+                  if (fileLength == 0) File.Delete(assetFullPath);
+
+                  directorySize += fileLength;
+
+                  if (directorySize >= _assetFolderSize)
+                  {
+                      //TODO: delete the oldest files until the file total directory size is with limit
+                      File.Delete(assetFullPath);
+                      _logger.WriteMessage("downloadedData.Length + directorySize = " + (directorySize) +
+                                           ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
+                      bLowAssetSpace = true;
+                      return;
+                  }
+
+                  if (assetType == AssetType.Content)
+                      bContentDownloaded = true;
+
+              }
+              catch (Exception ex)
+              {
+                  if (File.Exists(assetFullPath))
+                      File.Delete(assetFullPath);
+
+                  _logger.WriteError(ex);
+              }
+
+              if (!string.IsNullOrEmpty(channelName))
+                  ReportProgress((float) counter*step);
+
+              counter++;
+
+              _logger.WriteMessage("Step: " + (((float) counter*step)));
           }
-
-          var fileLength = new FileInfo(assetFullPath).Length;
-          
-          if (fileLength == 0) File.Delete(assetFullPath);
-
-          directorySize += fileLength;
-
-          if (directorySize >= _assetFolderSize)
-          {
-            //TODO: delete the oldest files until the file total directory size is with limit
-            File.Delete(assetFullPath);
-            _logger.WriteMessage("downloadedData.Length + directorySize = " + (directorySize) +
-                                  ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
-            bLowAssetSpace = true;
-            return;
-          }
-
-          if (assetType == AssetType.Content)
-            bContentDownloaded = true;
-          
-        }
-        catch (Exception ex)
-        {
-          if (File.Exists(assetFullPath))
-            File.Delete(assetFullPath);
-
-          _logger.WriteError(ex);
-        }
-
-        if (!string.IsNullOrEmpty(channelName))
-          ReportProgress((float)counter * step);
-
-        counter++;
-
-        _logger.WriteMessage("Step: " + (((float)counter * step)));
       }
-
-      ReportProgress(100);
+        ReportProgress(100);
     }
 
     private string GetResponsiveServer(ServerType serverType, int maxNoServers, string endpointSuffix)
