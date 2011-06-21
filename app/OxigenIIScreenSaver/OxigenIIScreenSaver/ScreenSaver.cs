@@ -1,27 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Windows.Forms;
 using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.PlaylistLogic;
 using OxigenIIAdvertising.AssetScheduling;
-using OxigenIIAdvertising.Singletons;
 using OxigenIIAdvertising.ScreenSaver.Properties;
 using System.Threading;
 using System.IO;
-using System.Runtime.InteropServices;
-using OxigenIIAdvertising.NoAssetsAnimator;
-using OxigenIIAdvertising.UserSettings;
-using AxWMPLib;
-using AxShockwaveFlashObjects;
-using AxQTOControlLib;
 using OxigenIIAdvertising.OxigenIIStopwatch;
 using OxigenIIAdvertising.LoggerInfo;
 using System.Globalization;
+using OxigenPlayers;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
@@ -154,8 +145,7 @@ namespace OxigenIIAdvertising.ScreenSaver
       _tempDecryptPath = tempDecryptPath;
       _assetPath = assetPath;
       _defaultDisplayLength = defaultDisplayLength;
-
-
+        
       _bPrimaryMonitor = IsPrimaryMonitor();
 
       if (!_bErrorOnSetup)
@@ -186,19 +176,22 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully created a Stopwatch object.");
 
-        _players = new Players();
+      _players = new Players();
 
-        _players.Add(PlayerType.Flash, new FlashPlayer(_bMuteFlash, _logger));
-        _players.Add(PlayerType.Image, new ImagePlayer());
-        _players.Add(PlayerType.VideoQT, new QuicktimePlayer(_logger, _bMuteVideo, _videoVolume));
-        _players.Add(PlayerType.VideoNonQT, new WindowsMediaPlayer(_bMuteVideo, _videoVolume, _logger));
-        _players.Add(PlayerType.WebSite, new WebsitePlayer(_logger));
-        _players.Add(PlayerType.NoAssetsAnimator, new NoAssetsPlayer());
+      if (Players.QuickTimeRightVersionExists())
+          _players.Add(PlayerType.VideoQT, new OxigenQuicktimePlayer.QuicktimePlayer(_bMuteVideo, _videoVolume, _logger));
 
+      if (Players.WindowsMediaPlayerRightVersionExists())
+          _players.Add(PlayerType.VideoNonQT, new OxigenWindowsMediaPlayer.WindowsMediaPlayer(_bMuteVideo, _videoVolume, _logger));
 
-        foreach (IPlayer player in _players.AllPlayers()) {
-            Controls.Add(player.Control);
-        }
+      // these players always exist
+      _players.Add(PlayerType.Flash, new FlashPlayer(bMuteFlash, _logger));
+      _players.Add(PlayerType.Image, new ImagePlayer());
+      _players.Add(PlayerType.WebSite, new WebsitePlayer(_logger));
+      _players.Add(PlayerType.NoAssetsAnimator, new NoAssetsPlayer());
+
+      foreach (IPlayer player in _players.AllPlayers())
+          Controls.Add(player.Control);
 
       Control.CheckForIllegalCrossThreadCalls = false;
 
@@ -342,8 +335,6 @@ namespace OxigenIIAdvertising.ScreenSaver
       return assetTempPath;
     }
 
-
-
     // Selects the next asset from the playlist, if temporal scheduling allows it and current date is within specified date bounds.
     // Decides if the next asset must be an advert or a content.
     // If the next asset is an advert and there is no advert available at this time, it attempts to select a content.
@@ -354,12 +345,21 @@ namespace OxigenIIAdvertising.ScreenSaver
       {
         lock (_lockPlaylistObj)
         {
-          ChannelAssetAssociation caa = _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime, _protectedContentTime, _advertDisplayThreshold, Resources.NoAssets, "app://ContentExchanger");
+            ChannelAssetAssociation channelAssetAssociation = _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime, _protectedContentTime, _advertDisplayThreshold, Resources.NoAssets, "app://ContentExchanger");
 
-          if (caa.PlaylistAsset.DisplayLength == -1F)
-            caa.PlaylistAsset.DisplayLength = _defaultDisplayLength;
+            if (channelAssetAssociation.PlaylistAsset.DisplayLength == -1F)
+                channelAssetAssociation.PlaylistAsset.DisplayLength = _defaultDisplayLength;
 
-          return caa;
+          if (!_players.Exists(channelAssetAssociation.PlaylistAsset.PlayerType))
+          {
+              _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " does not exist.");
+              PlayerNotExistsResponse response = Players.PlayerNotExistResponses[channelAssetAssociation.PlaylistAsset.PlayerType];
+              channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, response.Message, response.Link));
+          }
+          else
+              _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " does not exist.");
+
+          return channelAssetAssociation;
         }
       }
 
@@ -368,14 +368,7 @@ namespace OxigenIIAdvertising.ScreenSaver
           var channelAssetAssociation = _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime,
                                                                          _protectedContentTime, _advertDisplayThreshold,
                                                                          _displayMessage, _appToRun);
-          if (!_players.Exists(channelAssetAssociation.PlaylistAsset.PlayerType))
-          {
-              string message;
-              string link;
 
-              channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, message, link));
-              
-          }
           return channelAssetAssociation;
       }
     }
@@ -441,9 +434,7 @@ namespace OxigenIIAdvertising.ScreenSaver
       if (_bFadeToDesktop)
       {
           foreach (var player in _players.AllPlayers())
-          {
               player.Control.Visible = false;
-          }
 
         _logger.WriteTimestampedMessage("successfully hid players.");
 
@@ -564,6 +555,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully added asset's duration to play times.");
 
+      _logger.WriteMessage("PlayerType: " + playlistAsset.PlayerType);
         IPlayer player = players[playlistAsset.PlayerType];
 
         if (player is IStreamLoader)
@@ -610,55 +602,56 @@ namespace OxigenIIAdvertising.ScreenSaver
 
     private void ScreenSaver_Load(object sender, EventArgs e)
     {
-      Rectangle rect = new Rectangle();
+        Rectangle rect = new Rectangle();
 
-      // set the form and control bounds on Load, with the updated form bounds
-      this.Bounds = Screen.AllScreens[_screenNo].Bounds;
+        // set the form and control bounds on Load, with the updated form bounds
+        this.Bounds = Screen.AllScreens[_screenNo].Bounds;
 
-      _logger.WriteTimestampedMessage("successfully set the size and position of the Screensaver to the monitor dimensions.");
+        _logger.WriteTimestampedMessage("successfully set the size and position of the Screensaver to the monitor dimensions.");
 
-      rect = new Rectangle(0, 0, this.Bounds.Width, this.Bounds.Height);
+        rect = new Rectangle(0, 0, this.Bounds.Width, this.Bounds.Height);
         foreach (var player in _players.AllPlayers())
-        {
             player.Control.Bounds = rect;
-        }
 
-      _logger.WriteTimestampedMessage("successfully set the size and position of the players to the Screensaver dimensions.");
+        _logger.WriteTimestampedMessage("successfully set the size and position of the players to the Screensaver dimensions.");
 
-      _faderForm.Bounds = this.Bounds;
+        _faderForm.Bounds = this.Bounds;
 
-      _logger.WriteTimestampedMessage("successfully set the size and position of the fader form to the Screensaver dimensions.");
-      
-      // TODO: maintain QuickTime aspect ratio for non primary monitors
+        _logger.WriteTimestampedMessage("successfully set the size and position of the fader form to the Screensaver dimensions.");
 
-      _loadAssetThread = new Thread(new ThreadStart(DecideSelectAndLoadAsset));
-      CultureInfo ci = new CultureInfo("en-GB");
-      _loadAssetThread.CurrentCulture = ci;
-      _loadAssetThread.CurrentUICulture = ci;
-      _loadAssetThread.Start();
+        foreach (IPlayer player in _players.AllPlayers())
+            player.SetupComplete();
 
-      _logger.WriteTimestampedMessage("successfully started the Load thread.");
+        // TODO: maintain QuickTime aspect ratio for non primary monitors
 
-      while (!_loadAssetThread.IsAlive) ;
+        _loadAssetThread = new Thread(new ThreadStart(DecideSelectAndLoadAsset));
+        CultureInfo ci = new CultureInfo("en-GB");
+        _loadAssetThread.CurrentCulture = ci;
+        _loadAssetThread.CurrentUICulture = ci;
+        _loadAssetThread.Start();
 
-      _logger.WriteTimestampedMessage("Load thread is now alive.");
+        _logger.WriteTimestampedMessage("successfully started the Load thread.");
 
-      Thread.Sleep(5);
+        while (!_loadAssetThread.IsAlive) ;
 
-      WinAPI.AnimateWindow(_faderForm.Handle, _fadeOutToBlack, WinAPI.AW_ACTIVATE | WinAPI.AW_BLEND);
+        _logger.WriteTimestampedMessage("Load thread is now alive.");
 
-      _logger.WriteTimestampedMessage("fader form faded from desktop to black.");
+        Thread.Sleep(5);
 
-      _ddFormFader.setTransparentLayeredWindow();
+        WinAPI.AnimateWindow(_faderForm.Handle, _fadeOutToBlack, WinAPI.AW_ACTIVATE | WinAPI.AW_BLEND);
 
-      _logger.WriteTimestampedMessage("fader form set to Layered Window to be used by the between-slides fader.");
-      
-      _displayAssetThread = new Thread(new ThreadStart(DisplayAsset));
-      _displayAssetThread.CurrentCulture = ci;
-      _displayAssetThread.CurrentUICulture = ci;
-      _displayAssetThread.Start();
+        _logger.WriteTimestampedMessage("fader form faded from desktop to black.");
 
-      _logger.WriteTimestampedMessage("successfully started the Display thread.");
+        _ddFormFader.setTransparentLayeredWindow();
+
+        _logger.WriteTimestampedMessage("fader form set to Layered Window to be used by the between-slides fader.");
+
+        _displayAssetThread = new Thread(new ThreadStart(DisplayAsset));
+        _displayAssetThread.CurrentCulture = ci;
+        _displayAssetThread.CurrentUICulture = ci;
+        _displayAssetThread.Start();
+
+        _logger.WriteTimestampedMessage("successfully started the Display thread.");
     }
 
     private bool IsPrimaryMonitor()
@@ -698,28 +691,28 @@ namespace OxigenIIAdvertising.ScreenSaver
     [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
     protected override void WndProc(ref Message m)
     {
-      if (m.Msg == WM_POWERBROADCAST)
-      {
-        int reason = m.WParam.ToInt32();
-
-        switch (reason)
+        if (m.Msg == WM_POWERBROADCAST)
         {
-          case PBT_APMSUSPEND:
-            _bLogImpressions = false;
-            break;
-          case PBT_APMSTANDBY:
-            _bLogImpressions = false;
-            break;
-          case PBT_APMRESUMESUSPEND:
-            _bLogImpressions = true;
-            break;
-          case PBT_APMRESUMESTANDBY:
-            _bLogImpressions = true;
-            break;
-        }
-      }
+            int reason = m.WParam.ToInt32();
 
-      base.WndProc(ref m);
+            switch (reason)
+            {
+                case PBT_APMSUSPEND:
+                    _bLogImpressions = false;
+                    break;
+                case PBT_APMSTANDBY:
+                    _bLogImpressions = false;
+                    break;
+                case PBT_APMRESUMESUSPEND:
+                    _bLogImpressions = true;
+                    break;
+                case PBT_APMRESUMESTANDBY:
+                    _bLogImpressions = true;
+                    break;
+            }
+        }
+
+        base.WndProc(ref m);
     }
   }
 }

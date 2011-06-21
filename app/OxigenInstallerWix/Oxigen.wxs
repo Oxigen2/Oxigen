@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:ui="http://schemas.microsoft.com/wix/UIExtension">
-  <Product Id="05AB04BD-B62E-4A98-9DA0-9650699CAF8E" Name="Oxigen" Language="1033" Version="1.0.0.0" Manufacturer="Oxigen" UpgradeCode="65D1DC03-4E1B-4D33-BF10-F49421240B50">
+  <?define versionNumber = "1.12.0.0" ?>
+  <Product Id="05AB04BD-B62E-4A98-9DA0-9650699CAF8E" Name="Oxigen" Language="1033" Version="$(var.versionNumber)" Manufacturer="Oxigen" UpgradeCode="65D1DC03-4E1B-4D33-BF10-F49421240B50">
     <Package InstallerVersion="200" Compressed="yes" Manufacturer="Oxigen" Platform="x86"/>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Component Id="C__4FDFBAF0735D43588C25514568160BE6" Guid="{5A6BACC6-FE86-271A-4809-C9811AE36DF9}">
@@ -61,7 +62,7 @@
           <File Id="_15A6157E17EE4142BE0DC704DD0166EA" Name="OxigenXmlSerializableSortableGenericList.dll" KeyPath="yes" ShortName="OXIGE~11.DLL" Assembly=".net" AssemblyManifest="_15A6157E17EE4142BE0DC704DD0166EA" AssemblyApplication="_15A6157E17EE4142BE0DC704DD0166EA" DiskId="1" Source="SourceDir\OxigenXmlSerializableSortableGenericList.dll" />
         </Component>
         <Component Id="Log4Net_bin" Guid="{CAD3F8DD-EE70-49d1-B961-26E7B9E3B256}">
-	  <File Id="File_Log4Net_bin" Name="OxigenLog4NetMin.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Log4Net_bin" AssemblyApplication="File_Log4Net_bin" DiskId="1" Source="SourceDir\OxigenLog4NetMin.dll" />
+          <File Id="File_Log4Net_bin" Name="OxigenLog4NetMin.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Log4Net_bin" AssemblyApplication="File_Log4Net_bin" DiskId="1" Source="SourceDir\OxigenLog4NetMin.dll" />
         </Component>
         <Component Id="C__1AAC54773F3146CEBA3690149648B13E" Guid="{726018A4-27D0-BF82-1A35-A9F8D06D0276}">
           <File Id="_1AAC54773F3146CEBA3690149648B13E" Name="OxigenUserDataMarshallerClient.dll" KeyPath="yes" ShortName="OXIGE~13.DLL" Assembly=".net" AssemblyManifest="_1AAC54773F3146CEBA3690149648B13E" AssemblyApplication="_1AAC54773F3146CEBA3690149648B13E" DiskId="1" Source="SourceDir\OxigenUserDataMarshallerClient.dll" />
@@ -73,8 +74,8 @@
           <File Id="_1EE5BF0563FF4145AEAF77B27A88057F" Name="OxigenAssets.dll" KeyPath="yes" ShortName="OXIGE~15.DLL" Assembly=".net" AssemblyManifest="_1EE5BF0563FF4145AEAF77B27A88057F" AssemblyApplication="_1EE5BF0563FF4145AEAF77B27A88057F" DiskId="1" Source="SourceDir\OxigenAssets.dll" />
         </Component>
         <Component Id="C__38DFC37AD0D142D49B3F6C56CF124127" Guid="{CC171996-0152-A236-7141-53283D4F6BC8}">
-	  <File Id="_38DFC37AD0D142D49B3F6C56CF124127" Name="OxigenSOAStructures.dll" KeyPath="yes" ShortName="OXIGE~24.DLL" Assembly=".net" AssemblyManifest="_38DFC37AD0D142D49B3F6C56CF124127" AssemblyApplication="_38DFC37AD0D142D49B3F6C56CF124127" DiskId="1" Source="SourceDir\OxigenSOAStructures.dll" />
-	</Component>
+          <File Id="_38DFC37AD0D142D49B3F6C56CF124127" Name="OxigenSOAStructures.dll" KeyPath="yes" ShortName="OXIGE~24.DLL" Assembly=".net" AssemblyManifest="_38DFC37AD0D142D49B3F6C56CF124127" AssemblyApplication="_38DFC37AD0D142D49B3F6C56CF124127" DiskId="1" Source="SourceDir\OxigenSOAStructures.dll" />
+        </Component>
         <Component Id="C__404336CCB9AB4A3FB89A97654CE855E9" Guid="{CAD56FA3-7CB1-E70B-33D8-D393399A4853}">
           <File Id="_404336CCB9AB4A3FB89A97654CE855E9" Name="OxigenInclusionExclusionRules.dll" KeyPath="yes" ShortName="OXIGE~25.DLL" Assembly=".net" AssemblyManifest="_404336CCB9AB4A3FB89A97654CE855E9" AssemblyApplication="_404336CCB9AB4A3FB89A97654CE855E9" DiskId="1" Source="SourceDir\OxigenInclusionExclusionRules.dll" />
         </Component>
@@ -191,8 +192,8 @@
         </Component>
       </Directory>
       <Directory Id="SystemFolder" ShortSourceName="SYSTEM~1" SourceName="System Folder">
-      	<Component Id="Log4Net_sys" Guid="{C9ABE50A-5EC2-4EEC-9350-12408078702A}">
-      	  <File Id="File_Log4Net_sys" Name="OxigenLog4NetMin.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Log4Net_sys" AssemblyApplication="File_Log4Net_sys" DiskId="1" Source="SourceDir\OxigenLog4NetMin.dll" />
+        <Component Id="Log4Net_sys" Guid="{C9ABE50A-5EC2-4EEC-9350-12408078702A}">
+          <File Id="File_Log4Net_sys" Name="OxigenLog4NetMin.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Log4Net_sys" AssemblyApplication="File_Log4Net_sys" DiskId="1" Source="SourceDir\OxigenLog4NetMin.dll" />
         </Component>
         <Component Id="C__06619B7607DC4FD7B58826DB5D07EBE1" Guid="{B298E4C8-FCB3-B06F-8CDB-111B7CA31BD8}">
           <File Id="_06619B7607DC4FD7B58826DB5D07EBE1" Name="AxInterop.WMPLib.dll" KeyPath="yes" ShortName="AXINTE~1.DLL" Assembly=".net" AssemblyManifest="_06619B7607DC4FD7B58826DB5D07EBE1" AssemblyApplication="_06619B7607DC4FD7B58826DB5D07EBE1" DiskId="1" Source="SourceDir\AxInterop.WMPLib.dll" />
@@ -296,62 +297,53 @@
         <Component Id="C__F753624539664990BD72B4EFBC9E5988" Guid="{A1D9D276-8F29-E696-3B57-321BD4100BB6}">
           <File Id="_F753624539664990BD72B4EFBC9E5988" Name="OxigenExceptions.dll" KeyPath="yes" ShortName="OXIGE~92.DLL" Assembly=".net" AssemblyManifest="_F753624539664990BD72B4EFBC9E5988" AssemblyApplication="_F753624539664990BD72B4EFBC9E5988" DiskId="1" Source="SourceDir\OxigenExceptions.dll" />
         </Component>
+        <!-- <Component Id="C__F795420A9AABE2DE9DB2EA0FC8245159" Guid="{BB662F7D-BA50-37EF-1B5E-1D19EDD1E5A8}">
+          <File Id="_F795420A9AABE2DE9DB2EA0FC8245159" Name="Flash10l.ocx" KeyPath="yes" ShortName="FLASH10L.OCX" DiskId="1" Source="SourceDir\Flash10l.ocx" />
+        </Component> -->
         <Component Id="C__FD1E35475CD443D7AC82D6E214ACBBC0" Guid="{802E9434-9603-2EFE-E58F-A4F2A34EE019}">
           <File Id="_FD1E35475CD443D7AC82D6E214ACBBC0" Name="Interop.SHDocVw.dll" KeyPath="yes" ShortName="INTERO~9.DLL" Assembly=".net" AssemblyManifest="_FD1E35475CD443D7AC82D6E214ACBBC0" AssemblyApplication="_FD1E35475CD443D7AC82D6E214ACBBC0" DiskId="1" Source="SourceDir\Interop.SHDocVw.dll" />
-        </Component>
-	<Component Id="Oxigen_Players" Guid="{7C1CCBDD-9039-4b79-A29B-7063D1C083EA}">
-	  <File Id="File_Oxigen_Players" Name="OxigenPlayers.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Oxigen_Players" AssemblyApplication="File_Oxigen_Players" DiskId="1" Source="SourceDir\OxigenPlayers.dll" />
-        </Component>
-	<Component Id="Oxigen_Quicktime_Player" Guid="{C139119F-357A-4155-9A11-1635832F5DB3}">
-	  <File Id="File_Oxigen_Quicktime_Player" Name="OxigenQuicktimePlayer.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Oxigen_Quicktime_Player" AssemblyApplication="File_Oxigen_Quicktime_Player" DiskId="1" Source="SourceDir\OxigenQuicktimePlayer.dll" />
-        </Component>
-	<Component Id="Oxigen_WindowsMedia_Player" Guid="{D9DF7479-C2BD-46d6-8734-DB7D9F4ECC71}">
-	  <File Id="File_Oxigen_WindowsMedia_Player" Name="OxigenWindowsMediaPlayer.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Oxigen_WindowsMedia_Player" AssemblyApplication="File_Oxigen_WindowsMedia_Player" DiskId="1" Source="SourceDir\OxigenWindowsMediaPlayer.dll" />
-        </Component>
-	<Component Id="Oxigen_RegistryAccess" Guid="{F0D106E6-2742-4cad-B3EC-62F2B7682159}">
-	  <File Id="File_Oxigen_RegistryAccess" Name="OxigenRegistryAccess.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="File_Oxigen_RegistryAccess" AssemblyApplication="File_Oxigen_RegistryAccess" DiskId="1" Source="SourceDir\OxigenRegistryAccess.dll" />
         </Component>
       </Directory>
       <Directory Id="DATAANDSETTINGS" Name="DataAndSettings" ShortName="DATAAN~1">
         <Component Id="C__B3EB148CD7AC493E92759DF7CC85889F" Guid="{08061880-3FE5-F714-6E42-2A143D2ACC95}" KeyPath="yes">
           <CreateFolder Directory="DATAANDSETTINGS">
-          	<Permission User="Everyone" GenericAll="yes"/>
+            <Permission User="Everyone" GenericAll="yes"/>
           </CreateFolder>
         </Component>
         <Directory Id="_5C2484F05CED4CF19D48E99D5C943E46" Name="data" ShortName="DATA">
           <Directory Id="_BFD11BFE3C994619B82AF9F687CDDE18" Name="Other" ShortName="OTHER">
             <Component Id="C__16B31EBFB6654537A19D85399D33539F" Guid="{09977AF3-EA67-5948-D44E-BFBE41EACDBA}" KeyPath="yes">
               <CreateFolder Directory="_BFD11BFE3C994619B82AF9F687CDDE18">
-		 <Permission User="Everyone" GenericAll="yes"/>
-	      </CreateFolder>
+                <Permission User="Everyone" GenericAll="yes"/>
+              </CreateFolder>
             </Component>
           </Directory>
           <Directory Id="_2C484A977F244EC2A72BCD5D4A292E22" Name="Assets" ShortName="ASSETS">
             <Component Id="C__44DBC588196A4D80B4336C33E58644B9" Guid="{D9C71775-97AD-96DF-DCEE-85A6DB7D633B}" KeyPath="yes">
               <CreateFolder Directory="_2C484A977F244EC2A72BCD5D4A292E22">
-              	<Permission User="Everyone" GenericAll="yes"/>
+                <Permission User="Everyone" GenericAll="yes"/>
               </CreateFolder>
             </Component>
           </Directory>
           <Directory Id="_E2FA3D17A67B4FC9ABB3531116CB52A6" Name="Temp" ShortName="TEMP">
             <Component Id="C__50886DCCAF04419799F10480CB16A388" Guid="{3DD01F50-3795-14AA-E356-79B3AC8F8C7C}" KeyPath="yes">
               <CreateFolder Directory="_E2FA3D17A67B4FC9ABB3531116CB52A6">
-		<Permission User="Everyone" GenericAll="yes"/>
-	      </CreateFolder>
+                <Permission User="Everyone" GenericAll="yes"/>
+              </CreateFolder>
             </Component>
           </Directory>
           <Directory Id="_CE31F5D458B5457BAD9AD3347B1E5BAC" Name="SettingsData" ShortName="SETTIN~1">
             <Component Id="C__6711D8C478F047449AFBDFCD951D4A48" Guid="{44E5612B-7426-64FD-2374-F39354F55E09}" KeyPath="yes">
               <CreateFolder Directory="_CE31F5D458B5457BAD9AD3347B1E5BAC">
-		<Permission User="Everyone" GenericAll="yes"/>
-	      </CreateFolder>
+                <Permission User="Everyone" GenericAll="yes"/>
+              </CreateFolder>
             </Component>
           </Directory>
           <Directory Id="_C020D3B1F55045F9BEAB7C9D3809FBFE" Name="ChannelData" ShortName="CHANNE~1">
             <Component Id="C__CCB767F47AD74627AEF150F5C368BDF4" Guid="{D2CCA5C9-7B96-6B53-D51B-DE02EA558BA6}" KeyPath="yes">
               <CreateFolder Directory="_C020D3B1F55045F9BEAB7C9D3809FBFE">
-		<Permission User="Everyone" GenericAll="yes"/>
-	      </CreateFolder>
+                <Permission User="Everyone" GenericAll="yes"/>
+              </CreateFolder>
             </Component>
           </Directory>
         </Directory>
@@ -368,7 +360,7 @@
       <ComponentRef Id="C__0B347E172D1747FA94D28C8B95248FF6" Primary="yes" />
       <ComponentRef Id="C__0F1BE6ED0B0644FB966E04CA07F73220" Primary="yes" />
       <ComponentRef Id="C__0F320C96856D43759D0EBA38589380D3" />
-      <ComponentRef Id="C__12D3E0120E014C2BA258395B4C90C3B7" Primary="yes" />     
+      <ComponentRef Id="C__12D3E0120E014C2BA258395B4C90C3B7" Primary="yes" />
       <ComponentRef Id="C__15A6157E17EE4142BE0DC704DD0166EA" Primary="yes" />
       <ComponentRef Id="C__17551DA8D550466198B31D4C3A1949BC" Primary="yes" />
       <ComponentRef Id="C__1806949BF94A4150BC958A2DAC191A9C" />
@@ -405,7 +397,7 @@
       <ComponentRef Id="C__7AEF6A9085794275B9527A694FBD71C6" Primary="yes" />
       <ComponentRef Id="C__7BDA16B247244C4D8713D73CAEA0EFEF" Primary="yes" />
       <ComponentRef Id="C__7EF3ACAC6C9A4567AC9B51883D18D89B" Primary="yes" />
-      <ComponentRef Id="C__7F0348A4391D4948977083A13AA54C1B" Primary="yes" />      
+      <ComponentRef Id="C__7F0348A4391D4948977083A13AA54C1B" Primary="yes" />
       <ComponentRef Id="C__8201E8B3310A4B25AF9FCBE1DC595F2D" Primary="yes" />
       <ComponentRef Id="C__86D2707D62074CE6A606D216D2CE6ADA" Primary="yes" />
       <ComponentRef Id="C__879AF09C3E2F4892BAC467A762F5276B" Primary="yes" />
@@ -441,6 +433,7 @@
       <ComponentRef Id="C__EFFF43CAEA964628913A46D37364411C" Primary="yes" />
       <ComponentRef Id="C__F74BCBA1DBEB47EA9565C754197DF44D" Primary="yes" />
       <ComponentRef Id="C__F753624539664990BD72B4EFBC9E5988" Primary="yes" />
+      <!-- <ComponentRef Id="C__F795420A9AABE2DE9DB2EA0FC8245159" /> -->
       <ComponentRef Id="C__F7A08614EE6C4CE48E65B4F7E1A37965" />
       <ComponentRef Id="C__F7B7954236D4419EA541DE0375D4363C" Primary="yes" />
       <ComponentRef Id="C__FD1E35475CD443D7AC82D6E214ACBBC0" Primary="yes" />
@@ -461,37 +454,42 @@
       <ComponentRef Id="C__E9BE198098924984BAA5C1C7B2EFD638" />
       <ComponentRef Id="C__FA80340217F84034A9AFBDFC413D46D7" />
       <ComponentRef Id="OxigenEventLogEntries"/>
-      <ComponentRef Id="Oxigen_Players"/>
-      <ComponentRef Id="Oxigen_Quicktime_Player"/>
-      <ComponentRef Id="Oxigen_WindowsMedia_Player"/>
-      <ComponentRef Id="Oxigen_RegistryAccess"/>
     </Feature>
     <Media Id="1" Cabinet="_64688BE271367127961EE39357744018" EmbedCab="yes" />
-            <Property Id="VSDFrameworkVersion" Value="3.5.30729" />
-            <Property Id="VSDAllowLaterFrameworkVersions" Value="False" />
-            <Property Id="ARPCONTACT" Value="Oxigen" />
-            <Property Id="ARPURLINFOABOUT" Value="http://www.oxigen.net" />
-            <Property Id="ALLUSERS" Value="2" />
-            <Property Id="NEWERPRODUCTFOUND" Secure="yes" />
-            <Property Id="AdminMaintenanceForm_Action" Value="Repair" />
-            <Property Id="MaintenanceForm_Action" Value="Repair" />
-            <Property Id="SFF_UpFldrBtn" Value="UpFldrBtn" />
-            <Property Id="SFF_NewFldrBtn" Value="NewFldrBtn" />
-            <Property Id="EulaForm_Property" Value="No" />
-            <Property Id="FolderForm_AllUsers" Value="ME" />
-            <Property Id="FolderForm_AllUsersVisible" Value="0" />
-            <Property Id="AdminWelcomeForm_NextArgs" Value="AdminFolderForm" />
-            <Property Id="AdminFolderForm_PrevArgs" Value="AdminWelcomeForm" />
-            <Property Id="AdminFolderForm_NextArgs" Value="AdminConfirmInstallForm" />
-            <Property Id="AdminConfirmInstallForm_PrevArgs" Value="AdminFolderForm" />
-            <Property Id="WelcomeForm_NextArgs" Value="EulaForm" />
-            <Property Id="EulaForm_PrevArgs" Value="WelcomeForm" />
-            <Property Id="EulaForm_NextArgs" Value="FolderForm" />
-            <Property Id="FolderForm_PrevArgs" Value="EulaForm" />
-            <Property Id="FolderForm_NextArgs" Value="ConfirmInstallForm" />
-        <Property Id="ConfirmInstallForm_PrevArgs" Value="FolderForm" />
+    <Property Id="VSDFrameworkVersion" Value="3.5.30729" />
+    <Property Id="VSDAllowLaterFrameworkVersions" Value="False" />
+    <Property Id="ARPCONTACT" Value="Oxigen" />
+    <Property Id="ARPURLINFOABOUT" Value="http://www.oxigen.net" />
+    <Property Id="ALLUSERS" Value="1" />
+    <Property Id="NEWERPRODUCTFOUND" Secure="yes" />
+    <Property Id="AdminMaintenanceForm_Action" Value="Repair" />
+    <Property Id="MaintenanceForm_Action" Value="Repair" />
+    <Property Id="SFF_UpFldrBtn" Value="UpFldrBtn" />
+    <Property Id="SFF_NewFldrBtn" Value="NewFldrBtn" />
+    <Property Id="EulaForm_Property" Value="No" />
+    <Property Id="FolderForm_AllUsers" Value="ME" />
+    <Property Id="FolderForm_AllUsersVisible" Value="0" />
+    <Property Id="AdminWelcomeForm_NextArgs" Value="AdminFolderForm" />
+    <Property Id="AdminFolderForm_PrevArgs" Value="AdminWelcomeForm" />
+    <Property Id="AdminFolderForm_NextArgs" Value="AdminConfirmInstallForm" />
+    <Property Id="AdminConfirmInstallForm_PrevArgs" Value="AdminFolderForm" />
+    <Property Id="WelcomeForm_NextArgs" Value="EulaForm" />
+    <Property Id="EulaForm_PrevArgs" Value="WelcomeForm" />
+    <Property Id="EulaForm_NextArgs" Value="FolderForm" />
+    <Property Id="FolderForm_PrevArgs" Value="EulaForm" />
+    <Property Id="FolderForm_NextArgs" Value="ConfirmInstallForm" />
+    <Property Id="ConfirmInstallForm_PrevArgs" Value="FolderForm" />
+    <Property Id="ARPNOMODIFY">1</Property>
+    <Property Id="ARPNOREPAIR">1</Property>
     <Upgrade Id="{65D1DC03-4E1B-4D33-BF10-F49421240B50}">
-                <UpgradeVersion Minimum="1.0.0" Property="NEWERPRODUCTFOUND" OnlyDetect="yes" IncludeMinimum="yes" />
-            </Upgrade>                      
+      <UpgradeVersion Minimum="1.0.0" IncludeMinimum="yes" Maximum="1.0.0" IncludeMaximum="yes" Property="PREVIOUSFOUND" OnlyDetect="no"  />
+    </Upgrade>
+    <CustomAction Id="AlreadyUpdated" Error="Oxigen has already been updated to $(var.versionNumber) or newer." />
+    <CustomAction Id="NoDowngrade" Error="A later version of [ProductName] is already installed." />
+    <InstallExecuteSequence>
+      <Custom Action="AlreadyUpdated" After="FindRelatedProducts">SELFFOUND</Custom>
+      <Custom Action="NoDowngrade" After="FindRelatedProducts">NEWERFOUND</Custom>
+      <RemoveExistingProducts Before="InstallInitialize" />
+    </InstallExecuteSequence>
   </Product>
 </Wix>

@@ -48,6 +48,26 @@
 			</fileset>
 		</copy>	
 		<copy todir="${InstallationPackageTempDir}" failonerror="true">
+			<fileset basedir="${BaseSolutionDir}OxigenPlayers\bin\Release\">
+				<include name="OxigenPlayers.dll" />
+			</fileset>
+		</copy>	
+		<copy todir="${InstallationPackageTempDir}" failonerror="true">
+			<fileset basedir="${BaseSolutionDir}OxigenQuicktimePlayer\bin\Release\">
+				<include name="OxigenQuicktimePlayer.dll" />
+			</fileset>
+		</copy>	
+		<copy todir="${InstallationPackageTempDir}" failonerror="true">
+			<fileset basedir="${BaseSolutionDir}OxigenWindowsMediaPlayer\bin\Release\">
+				<include name="OxigenWindowsMediaPlayer.dll" />
+			</fileset>
+		</copy>	
+		<copy todir="${InstallationPackageTempDir}" failonerror="true">
+			<fileset basedir="${BaseSolutionDir}RegistryAccess\bin\Release\">
+				<include name="OxigenRegistryAccess.dll" />
+			</fileset>
+		</copy>	
+		<copy todir="${InstallationPackageTempDir}" failonerror="true">
 			<fileset basedir="${BaseSolutionDir}DataAggregators\bin\Release\">
 				<include name="DataAggregators.dll" />
 			</fileset>

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.NoAssetsAnimator;
+using OxigenPlayers;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
@@ -18,19 +15,19 @@ namespace OxigenIIAdvertising.ScreenSaver
         }
 
         public void Play(bool primaryMonitor) {
-            throw new NotImplementedException();
+            _control.Play();
         }
 
         public void Stop() {
-            throw new NotImplementedException();
+            // does not apply
         }
 
         public void ReleaseAssetForDesktop() {
-            throw new NotImplementedException();
+            // does not apply
         }
 
         public void ReleaseAssetForTransition() {
-            throw new NotImplementedException();
+            // does not apply
         }
 
         public bool IsReadyToPlay {
@@ -38,7 +35,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         }
 
         public Control Control {
-            get { throw new NotImplementedException(); }
+            get { return _control; }
         }
 
         public void Load(string message)
@@ -54,6 +51,11 @@ namespace OxigenIIAdvertising.ScreenSaver
         public virtual void Dispose()
         {
              _control.Dispose();
+        }
+
+        public void SetupComplete()
+        {
+            // does not apply
         }
     }
 }

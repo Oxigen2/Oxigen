@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace OxigenIIAdvertising.ScreenSaver
+namespace OxigenPlayers
 {
     public interface IPlayer : IDisposable
     {
@@ -12,6 +12,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         void ReleaseAssetForDesktop();
         void ReleaseAssetForTransition();
         bool IsReadyToPlay { get; } // TODO: maybe remove
+        void SetupComplete();
         Control Control { get; }
     }
 

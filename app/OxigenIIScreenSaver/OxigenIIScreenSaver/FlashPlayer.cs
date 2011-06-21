@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using AxShockwaveFlashObjects;
 using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.LoggerInfo;
+using OxigenPlayers;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
@@ -25,7 +26,6 @@ namespace OxigenIIAdvertising.ScreenSaver
           _muteSound = muteSound;
           _logger = logger;
           _control = new AxShockwaveFlash();
-
       }
 
       public void Play(bool primaryMonitor)
@@ -99,6 +99,12 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       public void Dispose() {
           _control.Dispose();
+      }
+
+
+      public void SetupComplete()
+      {
+          // does not apply
       }
   }
 }

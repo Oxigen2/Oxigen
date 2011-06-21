@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using OxigenIIAdvertising.AppData;
+using OxigenPlayers;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
@@ -25,15 +26,12 @@ namespace OxigenIIAdvertising.ScreenSaver
       {
           // does not apply to images
       }
-
-
-
+      
       public Control Control
       {
           get { return _control; }
       }
-
-
+      
       public void ReleaseAssetForTransition()
       {
           // promptly dispose of existing image
@@ -77,6 +75,11 @@ namespace OxigenIIAdvertising.ScreenSaver
               _control.Image.Dispose();
 
           _control.Dispose();
+      }
+
+      public void SetupComplete()
+      {
+          // does not apply
       }
   }
 }

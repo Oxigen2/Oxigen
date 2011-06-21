@@ -52,6 +52,7 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -86,25 +87,23 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AxInterop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="AxInterop.QTOControlLib">
       <HintPath>..\..\ThirdPartyLibraries\Files\AxInterop.QTOControlLib.dll</HintPath>
     </Reference>
     <Reference Include="AxInterop.ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ThirdPartyLibraries\Files\AxInterop.ShockwaveFlashObjects.dll</HintPath>
     </Reference>
-    <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="AxInterop.WMPLib">
       <HintPath>..\..\ThirdPartyLibraries\Files\AxInterop.WMPLib.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Interop.QTOControlLib">
       <HintPath>..\..\ThirdPartyLibraries\Files\Interop.QTOControlLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Interop.QTOLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Interop.QTOLibrary">
       <HintPath>..\..\ThirdPartyLibraries\Files\Interop.QTOLibrary.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.SHDocVw, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -114,9 +113,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ThirdPartyLibraries\Files\Interop.ShockwaveFlashObjects.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Interop.WMPLib">
       <HintPath>..\..\ThirdPartyLibraries\Files\Interop.WMPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="OxigenCompiledRegexes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -163,16 +162,13 @@
     <Compile Include="FlashPlayer.cs" />
     <Compile Include="ImagePlayer.cs" />
     <Compile Include="IScreenSaver.cs" />
-    <Compile Include="IPlayer.cs" />
     <Compile Include="NoAssetsPlayer.cs" />
-    <Compile Include="Players.cs" />
     <Compile Include="PreviewScreenSaver.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PreviewScreenSaver.Designer.cs">
       <DependentUpon>PreviewScreenSaver.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuicktimePlayer.cs" />
     <Compile Include="ScreensaverGuardianClient.cs" />
     <Compile Include="Toggles.cs" />
     <Compile Include="ScreenSaver.cs">
@@ -184,7 +180,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebsitePlayer.cs" />
-    <Compile Include="WindowsMediaPlayer.cs" />
     <EmbeddedResource Include="FaderForm.resx">
       <DependentUpon>FaderForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -298,6 +293,18 @@
     <ProjectReference Include="..\..\OxigenIIXMLSerializer\XMLSerializer.csproj">
       <Project>{905FC382-9356-4BD1-9F66-0947A6F2FC57}</Project>
       <Name>XMLSerializer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenPlayers\OxigenPlayers.csproj">
+      <Project>{B7FA6474-5C87-48F6-9018-D487CC22EF8B}</Project>
+      <Name>OxigenPlayers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenQuicktimePlayer\OxigenQuicktimePlayer.csproj">
+      <Project>{5F46EC0D-5C1C-48C7-90AA-81B1381C1350}</Project>
+      <Name>OxigenQuicktimePlayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OxigenWindowsMediaPlayer\OxigenWindowsMediaPlayer.csproj">
+      <Project>{5637310E-536C-4E71-B60C-6045CA0DB951}</Project>
+      <Name>OxigenWindowsMediaPlayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PlaylistAssetPicker\PlaylistAssetPicker.csproj">
       <Project>{5E9CF6E7-B071-4B5E-A951-2D997F9ADFD1}</Project>

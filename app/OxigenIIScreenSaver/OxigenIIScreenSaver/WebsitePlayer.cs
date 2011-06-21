@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.LoggerInfo;
+using OxigenPlayers;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
@@ -17,7 +14,6 @@ namespace OxigenIIAdvertising.ScreenSaver
         {
             _control = new WebBrowser();
             _control.ScriptErrorsSuppressed = true;
-            _control.ScrollBarsEnabled = false;
             _logger = logger;
         }
 
@@ -65,6 +61,12 @@ namespace OxigenIIAdvertising.ScreenSaver
         public void Dispose()
         {
             _control.Dispose();
+        }
+
+
+        public void SetupComplete()
+        {
+            _control.ScrollBarsEnabled = false;
         }
     }
 }

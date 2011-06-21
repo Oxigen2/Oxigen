@@ -2,20 +2,20 @@
 using System.IO;
 using AxWMPLib;
 using OxigenIIAdvertising.LoggerInfo;
+using OxigenPlayers;
 
-namespace OxigenIIAdvertising.ScreenSaver
+namespace OxigenWindowsMediaPlayer
 {
   public class WindowsMediaPlayer : IPlayer, IFileLoader
   {
       private AxWindowsMediaPlayer _control;
       private bool _muteSound;
       private int _videoVolume;
-      private LoggerInfo.Logger _logger;
+      private Logger _logger;
 
       public WindowsMediaPlayer(bool muteSound, int videoVolume, Logger logger)
       {
           _control = new AxWindowsMediaPlayer();
-          _control.uiMode = "none";
           _logger = logger;
           _muteSound = muteSound;
           _videoVolume = videoVolume;
@@ -87,6 +87,12 @@ namespace OxigenIIAdvertising.ScreenSaver
       public void Dispose()
       {
           _control.Dispose();
+      }
+
+
+      public void SetupComplete()
+      {
+          _control.uiMode = "none";
       }
   }
 }

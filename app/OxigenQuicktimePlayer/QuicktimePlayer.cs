@@ -2,8 +2,9 @@
 using System.IO;
 using AxQTOControlLib;
 using OxigenIIAdvertising.LoggerInfo;
+using OxigenPlayers;
 
-namespace OxigenIIAdvertising.ScreenSaver
+namespace OxigenQuicktimePlayer
 {
   public class QuicktimePlayer : IPlayer, IFileLoader
   {
@@ -12,15 +13,12 @@ namespace OxigenIIAdvertising.ScreenSaver
       private float _videoVolume;
       private bool _bMuteVideo;
 
-      public QuicktimePlayer(Logger logger, bool bMuteVideo, float videoVolume)
+      public QuicktimePlayer(bool bMuteVideo, float videoVolume, Logger logger)
       {
           _control = new AxQTControl();
-          _logger = logger;
           _videoVolume = videoVolume;
           _bMuteVideo = bMuteVideo;
-
-          _control.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio;
-          _control.MovieControllerVisible = false;
+          _logger = logger;
       }
 
       public void Play(bool primaryMonitor)
@@ -84,6 +82,12 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       public virtual void Dispose() {
           _control.Dispose();
+      }
+
+      public void SetupComplete()
+      {
+          _control.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio;
+          _control.MovieControllerVisible = false;
       }
   }
 }
