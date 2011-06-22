@@ -117,7 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Oxigen allows you to register multiple computers to a single account (e.g. your home PC and your work PC). If you are an existing user, please login to your account; if you are a new user, please cerate an account.</value>
-  </data>
 </root>
