@@ -10,26 +10,33 @@ namespace Oxigen.Web.Assets
     public class FileCacheAttribute : ActionFilterAttribute
 
     {
-
+        //TODO: check file path does not contain ".."
         public override void OnActionExecuting(ActionExecutingContext filterContext)
-
         {
             HttpRequestBase request = filterContext.RequestContext.HttpContext.Request;
-
             HttpResponseBase response = filterContext.RequestContext.HttpContext.Response;
             var result = filterContext.Result as FilePathResult;
+            if (result == null)
+            {
+                base.OnActionExecuting(filterContext);
+                return;
+            }
 
+            if (!File.Exists(result.FileName))
+            {
+                response.Write(DateTime.Now);
+                response.StatusCode = 404;
+                response.StatusDescription = "Not Found";
+
+            }
             
-            if ((request.Headers["If-Modified-Since"] != null) && (result != null) && 
+            if ((request.Headers["If-Modified-Since"] != null) &&  
                  new FileInfo(result.FileName).LastWriteTimeUtc >  DateTime.Parse(request.Headers["If-Modified-Since"]))
 
             {
                 response.Write(DateTime.Now);
-
                 response.StatusCode = 304;
-
                 //response.Headers.Add("Content-Encoding", "gzip");
-
                 response.StatusDescription = "Not Modified";
             }
 

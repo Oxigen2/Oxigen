@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Cache;
 using OxigenIIAdvertising.FileChecksumCalculator;
 using System.IO;
 using OxigenIIAdvertising.XMLSerializer;
@@ -885,6 +886,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       long directorySize = GetDirectorySize(_assetPath);
       using (var client = new WebClient())
       {
+          client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.BypassCache);
           foreach (PlaylistAsset pa in playlistAssets)
           {
               if (_worker != null && _worker.CancellationPending)
