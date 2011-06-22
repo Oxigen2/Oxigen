@@ -2,9 +2,8 @@
 using System.IO;
 using AxWMPLib;
 using OxigenIIAdvertising.LoggerInfo;
-using OxigenPlayers;
 
-namespace OxigenWindowsMediaPlayer
+namespace OxigenIIAdvertising.ScreenSaver.Players
 {
   public class WindowsMediaPlayer : IPlayer, IFileLoader
   {

@@ -62,5 +62,10 @@ namespace Setup
       ClientLogger logger = new PersistentClientLogger();
       logger.Log("4-ExistingUserPrompt");
     }
+
+    private void label1_Click(object sender, EventArgs e)
+    {
+
+    }
   }
 }

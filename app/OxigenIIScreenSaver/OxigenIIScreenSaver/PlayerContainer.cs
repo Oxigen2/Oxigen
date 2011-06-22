@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Win32;
 using OxigenIIAdvertising.AppData;
-using RegistryAccess;
+using OxigenIIAdvertising.ScreenSaver.Players;
 
-namespace OxigenPlayers
+namespace OxigenIIAdvertising.ScreenSaver
 {
-    public class Players : IDisposable
+    public class PlayerContainer : IDisposable
     {
         private static readonly Dictionary<PlayerType, PlayerNotExistsResponse> _playerNotExistResponses = GetPlayerNotExistsResponses();
         
-        public Players()
+        public PlayerContainer()
         {
             APlayers = new Dictionary<PlayerType, IPlayer>();
             BPlayers = new Dictionary<PlayerType, IPlayer>();

@@ -2,9 +2,8 @@
 using System.IO;
 using AxQTOControlLib;
 using OxigenIIAdvertising.LoggerInfo;
-using OxigenPlayers;
 
-namespace OxigenQuicktimePlayer
+namespace OxigenIIAdvertising.ScreenSaver.Players
 {
   public class QuicktimePlayer : IPlayer, IFileLoader
   {
