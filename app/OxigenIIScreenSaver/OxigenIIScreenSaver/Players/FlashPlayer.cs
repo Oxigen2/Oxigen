@@ -2,11 +2,10 @@
 using System.IO;
 using System.Runtime.InteropServices;
 using AxShockwaveFlashObjects;
-using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.LoggerInfo;
-using OxigenPlayers;
 
-namespace OxigenIIAdvertising.ScreenSaver
+
+namespace OxigenIIAdvertising.ScreenSaver.Players
 {
   public class FlashPlayer : IPlayer, IFileLoader
   {
@@ -26,6 +25,11 @@ namespace OxigenIIAdvertising.ScreenSaver
           _muteSound = muteSound;
           _logger = logger;
           _control = new AxShockwaveFlash();
+      }
+
+      public IPlayer DeepCopy()
+      {
+          return new FlashPlayer(_muteSound, _logger);
       }
 
       public void Play(bool primaryMonitor)
@@ -102,7 +106,7 @@ namespace OxigenIIAdvertising.ScreenSaver
       }
 
 
-      public void SetupComplete()
+      public void CompleteSetup()
       {
           // does not apply
       }

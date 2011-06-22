@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows.Forms;
 using OxigenIIAdvertising.ScreenSaver.Properties;
 using OxigenIIAdvertising.AppData;
@@ -15,7 +14,6 @@ using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Configuration;
 using System.Management;
-using OxigenPlayers;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {

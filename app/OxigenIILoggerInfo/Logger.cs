@@ -44,15 +44,6 @@ namespace OxigenIIAdvertising.LoggerInfo
         }
 
         /// <summary>
-        /// Gets or sets screen number of the application the logger operates on.
-        /// For Screensaver application
-        /// </summary>
-        public int ScreenNo {
-            get { return screenNo; }
-            set { screenNo = value; }
-        }
-
-        /// <summary>
         /// Constructor for logger object. Writes error messages only and not debug information
         /// </summary>
         /// <param name="name">path of the debug file</param>
@@ -92,7 +83,8 @@ namespace OxigenIIAdvertising.LoggerInfo
             try {
                 lock (_lockObj)
                 {
-                    _log.Error("An error occurred at " + DateTime.Now.ToString() + ": " + exception.ToString());
+                    _log.Error("An error occurred.");
+                    _log.Error(exception.ToString());
                 }
             }
             catch {
@@ -109,7 +101,7 @@ namespace OxigenIIAdvertising.LoggerInfo
             try {
                 lock (_lockObj)
                 {
-                    _log.Error("An error occurred at " + DateTime.Now.ToString() + " at a relay server.");
+                    _log.Error("An error has occurred.");
                     _log.Error("Error Code: " + errorCode);
                     _log.Error("Error Message: " + errorMessage);
                 }
@@ -152,10 +144,11 @@ namespace OxigenIIAdvertising.LoggerInfo
 
         /// <summary>
         /// Writes a timestamped meessage to log file
+        /// OBSOLETE now that we have log4net
         /// </summary>
         /// <param name="message">the message to write</param>
         public void WriteTimestampedMessage(string message) {
-            WriteMessage(DateTime.Now.ToString() + " " + message);
+            WriteMessage(message);
         }
 
         /// <summary>
@@ -167,7 +160,6 @@ namespace OxigenIIAdvertising.LoggerInfo
             try {
                 lock (_lockObj)
                 {
-                    _log.Error("An error occurred at " + DateTime.Now.ToString() + " at a relay server.");
                     _log.Error("Error Code: " + errorMessage);
                     _log.Error("Exception Details: " + exception.ToString());
                 }
@@ -185,7 +177,7 @@ namespace OxigenIIAdvertising.LoggerInfo
             try {
                 lock (_lockObj)
                 {
-                    _log.Error("An error occurred at " + DateTime.Now.ToString() + " at a relay server.");
+                    _log.Error("An error occurred.");
                     _log.Error("Error Code: " + errorMessage);
                 }
             }

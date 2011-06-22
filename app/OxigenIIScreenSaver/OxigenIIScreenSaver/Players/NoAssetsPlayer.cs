@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using OxigenIIAdvertising.NoAssetsAnimator;
-using OxigenPlayers;
 
-namespace OxigenIIAdvertising.ScreenSaver
+namespace OxigenIIAdvertising.ScreenSaver.Players
 {
     public class NoAssetsPlayer : IPlayer, INoAssetsLoader
     {
@@ -12,6 +11,11 @@ namespace OxigenIIAdvertising.ScreenSaver
         public NoAssetsPlayer()
         {
             _control = new NoAssetsAnimatorPlayer();
+        }
+
+        public IPlayer DeepCopy()
+        {
+            return new NoAssetsPlayer();
         }
 
         public void Play(bool primaryMonitor) {
@@ -53,7 +57,7 @@ namespace OxigenIIAdvertising.ScreenSaver
              _control.Dispose();
         }
 
-        public void SetupComplete()
+        public void CompleteSetup()
         {
             // does not apply
         }

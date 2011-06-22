@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.PlaylistLogic;
 using OxigenIIAdvertising.AssetScheduling;
+using OxigenIIAdvertising.ScreenSaver.Players;
 using OxigenIIAdvertising.ScreenSaver.Properties;
 using System.Threading;
 using System.IO;
 using OxigenIIAdvertising.OxigenIIStopwatch;
 using OxigenIIAdvertising.LoggerInfo;
 using System.Globalization;
-using OxigenPlayers;
+using OxigenIIAdvertising.ScreenSaver.Players;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
@@ -84,7 +84,7 @@ namespace OxigenIIAdvertising.ScreenSaver
     
     private Thread _displayAssetThread = null;
     private Thread _loadAssetThread = null;
-      private Players _players;
+    private PlayerContainer _players;
 
       /// <summary>
     /// Sets the playlist object from which the Screensaver plays its slides.
@@ -176,13 +176,13 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully created a Stopwatch object.");
 
-      _players = new Players();
+      _players = new PlayerContainer();
 
-      if (Players.QuickTimeRightVersionExists())
-          _players.Add(PlayerType.VideoQT, new OxigenQuicktimePlayer.QuicktimePlayer(_bMuteVideo, _videoVolume, _logger));
+      if (PlayerContainer.QuickTimeRightVersionExists())
+          _players.Add(PlayerType.VideoQT, new QuicktimePlayer(_bMuteVideo, _videoVolume, _logger));
 
-      if (Players.WindowsMediaPlayerRightVersionExists())
-          _players.Add(PlayerType.VideoNonQT, new OxigenWindowsMediaPlayer.WindowsMediaPlayer(_bMuteVideo, _videoVolume, _logger));
+      if (PlayerContainer.WindowsMediaPlayerRightVersionExists())
+          _players.Add(PlayerType.VideoNonQT, new WindowsMediaPlayer(_bMuteVideo, _videoVolume, _logger));
 
       // these players always exist
       _players.Add(PlayerType.Flash, new FlashPlayer(bMuteFlash, _logger));
@@ -191,14 +191,15 @@ namespace OxigenIIAdvertising.ScreenSaver
       _players.Add(PlayerType.NoAssetsAnimator, new NoAssetsPlayer());
 
       foreach (IPlayer player in _players.AllPlayers())
-          Controls.Add(player.Control);
-
+         Controls.Add(player.Control);
+        
       Control.CheckForIllegalCrossThreadCalls = false;
 
       // set z-index of all containers/players to the same value
         int index = 2;
         foreach(IPlayer player in _players.AllPlayers())
         {
+            _logger.WriteMessage(player.GetType() + " index set to " + index);
             Controls.SetChildIndex(player.Control, index);
             index++;
         }
@@ -353,11 +354,11 @@ namespace OxigenIIAdvertising.ScreenSaver
           if (!_players.Exists(channelAssetAssociation.PlaylistAsset.PlayerType))
           {
               _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " does not exist.");
-              PlayerNotExistsResponse response = Players.PlayerNotExistResponses[channelAssetAssociation.PlaylistAsset.PlayerType];
+              PlayerNotExistsResponse response = PlayerContainer.PlayerNotExistResponses[channelAssetAssociation.PlaylistAsset.PlayerType];
               channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, response.Message, response.Link));
           }
           else
-              _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " does not exist.");
+              _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " exists.");
 
           return channelAssetAssociation;
         }
@@ -382,20 +383,20 @@ namespace OxigenIIAdvertising.ScreenSaver
       {
         _assetDisplayLength = _ChannelAssetAssociationA.PlaylistAsset.DisplayLength;
 
-        Transit(_ChannelAssetAssociationA, _ChannelAssetAssociationB, _players.APlayers, _players.BPlayers);
+        Transit(_ChannelAssetAssociationA, _ChannelAssetAssociationB, _players.APlayers, _players.BPlayers, "A");
       }
       else
       {
         _assetDisplayLength = _ChannelAssetAssociationB.PlaylistAsset.DisplayLength;
 
-        Transit(_ChannelAssetAssociationB, _ChannelAssetAssociationA, _players.BPlayers, _players.APlayers);
+        Transit(_ChannelAssetAssociationB, _ChannelAssetAssociationA, _players.BPlayers, _players.APlayers, "B");
       }
     }
 
     private void Transit(ChannelAssetAssociation channelAssetAssociationAssetToShow,
       ChannelAssetAssociation channelAssetAssociationAssetToHide,
       Dictionary<PlayerType, IPlayer> playersToShow,
-        Dictionary<PlayerType, IPlayer> playersToHide)
+        Dictionary<PlayerType, IPlayer> playersToHide, string displayToggleForDebug)
     {
       // transition to black between assets
       if (!_bFirstRun)
@@ -428,13 +429,14 @@ namespace OxigenIIAdvertising.ScreenSaver
           IPlayer player = playersToShow[channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType];
 
           Controls.SetChildIndex(player.Control, 0);
+          _logger.WriteMessage("Player " + channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType + ", channelAssetAssociationAssetToShow.PlaylistAsset " + channelAssetAssociationAssetToShow.PlaylistAsset.AssetID + ", toggle " + displayToggleForDebug + " index changed to 0.");
           player.Play(_bPrimaryMonitor);
       }
 
       if (_bFadeToDesktop)
       {
-          foreach (var player in _players.AllPlayers())
-              player.Control.Visible = false;
+        foreach (var player in _players.AllPlayers())
+            player.Control.Visible = false;
 
         _logger.WriteTimestampedMessage("successfully hid players.");
 
@@ -483,7 +485,7 @@ namespace OxigenIIAdvertising.ScreenSaver
           while ((DateTime.Now - startFadeTimeStamp).Milliseconds < 40) ;
         }
 
-        _logger.WriteTimestampedMessage("successfully faded from black to asset.");        
+        _logger.WriteTimestampedMessage("successfully faded from black to asset.");    
       }
     }
     
@@ -526,7 +528,7 @@ namespace OxigenIIAdvertising.ScreenSaver
               if (_displayToggle == DisplayToggle.A)
                 SelectAndLoadAsset(ref _ChannelAssetAssociationA, _players.APlayers, _displayToggle.ToString());
               else
-                  SelectAndLoadAsset(ref _ChannelAssetAssociationB, _players.BPlayers, _displayToggle.ToString());
+                SelectAndLoadAsset(ref _ChannelAssetAssociationB, _players.BPlayers, _displayToggle.ToString());
 
               displayToggle = _displayToggle;
             }
@@ -549,7 +551,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       PlaylistAsset playlistAsset = channelAssetAssociation.PlaylistAsset;
 
-      _logger.WriteTimestampedMessage("successfully selected asset: " + playlistAsset.AssetID + " from channel " + channelAssetAssociation.ChannelID);
+      _logger.WriteTimestampedMessage(displayToggleString + " successfully selected asset: " + playlistAsset.AssetID + " from channel " + channelAssetAssociation.ChannelID);
 
       AddPlayTimes(playlistAsset);
 
@@ -620,7 +622,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         _logger.WriteTimestampedMessage("successfully set the size and position of the fader form to the Screensaver dimensions.");
 
         foreach (IPlayer player in _players.AllPlayers())
-            player.SetupComplete();
+            player.CompleteSetup();
 
         // TODO: maintain QuickTime aspect ratio for non primary monitors
 

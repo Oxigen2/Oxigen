@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using OxigenIIAdvertising.LoggerInfo;
-using OxigenPlayers;
 
-namespace OxigenIIAdvertising.ScreenSaver
+namespace OxigenIIAdvertising.ScreenSaver.Players
 {
     public class WebsitePlayer : IPlayer, IURLLoader
     {
@@ -15,6 +14,11 @@ namespace OxigenIIAdvertising.ScreenSaver
             _control = new WebBrowser();
             _control.ScriptErrorsSuppressed = true;
             _logger = logger;
+        }
+
+        public IPlayer DeepCopy()
+        {
+            return new WebsitePlayer(_logger);
         }
 
         public void Play(bool primaryMonitor)
@@ -64,7 +68,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         }
 
 
-        public void SetupComplete()
+        public void CompleteSetup()
         {
             _control.ScrollBarsEnabled = false;
         }

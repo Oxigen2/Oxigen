@@ -2,10 +2,8 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using OxigenIIAdvertising.AppData;
-using OxigenPlayers;
 
-namespace OxigenIIAdvertising.ScreenSaver
+namespace OxigenIIAdvertising.ScreenSaver.Players
 {
   public class ImagePlayer : IPlayer, IStreamLoader
   {
@@ -15,6 +13,11 @@ namespace OxigenIIAdvertising.ScreenSaver
       {
           _control = new PictureBox();
           _control.SizeMode = PictureBoxSizeMode.Zoom;
+      }
+
+      public IPlayer DeepCopy()
+      {
+          return new ImagePlayer();
       }
 
       public void Play(bool primaryMonitor)
@@ -77,7 +80,7 @@ namespace OxigenIIAdvertising.ScreenSaver
           _control.Dispose();
       }
 
-      public void SetupComplete()
+      public void CompleteSetup()
       {
           // does not apply
       }

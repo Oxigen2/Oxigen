@@ -76,7 +76,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
 
       if (_bErrorOnSetup)
       {
-        _logger.WriteMessage(DateTime.Now.ToString() + " There was an error on initial setup; remaining Picker members will not be initialised.");
+        _logger.WriteMessage("There was an error on initial setup; remaining Picker members will not be initialised.");
         return;
       }
 
@@ -90,7 +90,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
       _randomNumbers = new byte[8];
       _bInsufficientMemoryForLargeFiles = bInsufficientMemoryForLargeFiles;
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " Picker members all initialised.");
+      _logger.WriteMessage("Picker members all initialised.");
     }
 
     public ChannelAssetAssociation SelectAsset(float totalDisplayTime, float totalAdvertDisplayTime, float protectedContentTime,
@@ -102,17 +102,17 @@ namespace OxigenIIAdvertising.PlaylistLogic
       {
         PlaylistAsset playlistAsset = new ContentPlaylistAsset(_displayMessageAssetDisplayLength, displayMessage, appToRun);
 
-        _logger.WriteError(DateTime.Now.ToString() + " There was an error on initial setup; \"No Assets\" asset selected.");
+        _logger.WriteError("There was an error on initial setup; \"No Assets\" asset selected.");
 
         return new ChannelAssetAssociation(0, playlistAsset);
       }
 
       // is the next asset content or advert?
-      _logger.WriteMessage(DateTime.Now.ToString() + " Deciding whether the next asset will be a content or an advert.");
+      _logger.WriteMessage("Deciding whether the next asset will be a content or an advert.");
 
       bool bIsNextAssetAdvert = IsNextAssetAdvert(totalDisplayTime, totalAdvertDisplayTime, protectedContentTime, advertDisplayThreshold);
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " will the next asset be an advert: " + bIsNextAssetAdvert);
+      _logger.WriteMessage("will the next asset be an advert: " + bIsNextAssetAdvert);
 
       if (bIsNextAssetAdvert)
         channelAssetAssociation = PickRandomAdvertPlaylistAsset();
@@ -121,12 +121,12 @@ namespace OxigenIIAdvertising.PlaylistLogic
 
       if (bIsNextAssetAdvert && channelAssetAssociation == null)
       {
-        _logger.WriteMessage(DateTime.Now.ToString() + " Next asset is an advert but an advert could not be selected at this time. Attempting to select a content.");
+        _logger.WriteMessage("Next asset is an advert but an advert could not be selected at this time. Attempting to select a content.");
 
         channelAssetAssociation = PickRandomContentPlaylistAsset();
 
         if (channelAssetAssociation != null)
-          _logger.WriteMessage(DateTime.Now.ToString() + " playlist asset " + channelAssetAssociation.PlaylistAsset.AssetID + " was selected.");
+          _logger.WriteMessage("playlist asset " + channelAssetAssociation.PlaylistAsset.AssetID + " was selected.");
       }
 
       // if no asset was found, create a "No assets" asset
@@ -134,7 +134,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
       {
         channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, displayMessage, "app://ContentExchanger"));
 
-        _logger.WriteMessage(DateTime.Now.ToString() + " no asset was found, \"No Assets\" asset selected.");
+        _logger.WriteMessage("no asset was found, \"No Assets\" asset selected.");
       }
 
       return channelAssetAssociation;
@@ -142,16 +142,16 @@ namespace OxigenIIAdvertising.PlaylistLogic
 
     private bool IsNextAssetAdvert(float totalDisplayTime, float totalAdvertDisplayTime, float protectedContentTime, float advertDisplayThreshold)
     {
-      _logger.WriteMessage(DateTime.Now.ToString() + " totalDisplayTime = " + totalDisplayTime + ", totalAdvertDisplayTime = " + totalAdvertDisplayTime + ", protectedContentTime = " + protectedContentTime + ", advertDisplayThreashold = " + advertDisplayThreshold);
+      _logger.WriteMessage("totalDisplayTime = " + totalDisplayTime + ", totalAdvertDisplayTime = " + totalAdvertDisplayTime + ", protectedContentTime = " + protectedContentTime + ", advertDisplayThreashold = " + advertDisplayThreshold);
 
       // screensaver has not played any assets yet, cannot apply equation so select a content
       if (totalDisplayTime <= protectedContentTime)
       {
-        _logger.WriteMessage(DateTime.Now.ToString() + " totalDisplayTime < protectedContentTime so the next asset will be a content.");
+        _logger.WriteMessage("totalDisplayTime < protectedContentTime so the next asset will be a content.");
         return false;
       }
       
-      _logger.WriteMessage(DateTime.Now.ToString() + " totalAdvertDisplayTime / totalDisplayTime = " + (float)totalAdvertDisplayTime / (float)totalDisplayTime);
+      _logger.WriteMessage("totalAdvertDisplayTime / totalDisplayTime = " + (float)totalAdvertDisplayTime / (float)totalDisplayTime);
 
       return ((float)totalAdvertDisplayTime / (float)totalDisplayTime) < advertDisplayThreshold;
     }
@@ -167,7 +167,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
       // this counts the number of buckets we have already tried and have not found any content in.
       int noConsumedChannelBuckets = _consumedChannelBuckets.Count;
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " Attempted Channel Buckets: " + noConsumedChannelBuckets);
+      _logger.WriteMessage("Attempted Channel Buckets: " + noConsumedChannelBuckets);
 
       // if user has not subscribed to any channels or if all channel buckets have been searched, return null
       // clear consumed buckets to search again on the next run
@@ -177,16 +177,16 @@ namespace OxigenIIAdvertising.PlaylistLogic
         _consumedContentPlaylistAssets.Clear();
 
         if (_noChannelBuckets > 0)
-          _logger.WriteMessage(DateTime.Now.ToString() + " All channel buckets searched. No content asset can be played at this time.");
+          _logger.WriteMessage("All channel buckets searched. No content asset can be played at this time.");
         else
-          _logger.WriteMessage(DateTime.Now.ToString() + " No channel buckets in playlist. No content asset can be played at this time.");
+          _logger.WriteMessage("No channel buckets in playlist. No content asset can be played at this time.");
 
         return null;
       }
 
       ChannelBucket cb = GetRandomChannelBucket(_playlist);
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " channel bucket selected successfully");
+      _logger.WriteMessage("channel bucket selected successfully");
 
       ChannelAssetAssociation caa = GetRandomContentPlaylistAsset(cb);
 
@@ -194,12 +194,12 @@ namespace OxigenIIAdvertising.PlaylistLogic
       {
         _consumedChannelBuckets.Add(cb);
 
-        _logger.WriteMessage(DateTime.Now.ToString() + " no content in this channel was selected. Channel bucket will not be attempted again in this run. Attempting another channel bucket.");
+        _logger.WriteMessage("no content in this channel was selected. Channel bucket will not be attempted again in this run. Attempting another channel bucket.");
 
         caa = PickRandomContentPlaylistAsset();
       }
       else
-        _logger.WriteMessage(DateTime.Now.ToString() + " content asset selected: " + caa.PlaylistAsset.AssetID + " in channel: " + caa.ChannelID);
+        _logger.WriteMessage("content asset selected: " + caa.PlaylistAsset.AssetID + " in channel: " + caa.ChannelID);
 
       // at this point the algorithm has succeeded or has processed all buckets and assets and found no content available
       // clear consumed
@@ -231,13 +231,13 @@ namespace OxigenIIAdvertising.PlaylistLogic
             && randomDouble < cb.HigherThresholdNormalised
             && randomDouble >= cb.LowerThresholdNormalised)
           {
-            _logger.WriteMessage(DateTime.Now.ToString() + " channel bucket with probability selected.");
+            _logger.WriteMessage("channel bucket with probability selected.");
             return cb;
           }
         }
       }
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " channel bucket with probability failed. Attempting to select a channel bucket randomly and without probability.");
+      _logger.WriteMessage("channel bucket with probability failed. Attempting to select a channel bucket randomly and without probability.");
 
       return GetRandomChannelBucketWithoutProbability(playlist);
     }
@@ -267,15 +267,15 @@ namespace OxigenIIAdvertising.PlaylistLogic
 
         if (contentPlaylistAsset == null)
         {
-          _logger.WriteMessage(DateTime.Now.ToString() + " no asset found in this channel bucket.");
+          _logger.WriteMessage("no asset found in this channel bucket.");
           return null;
         }
         else
-          _logger.WriteMessage(DateTime.Now.ToString() + " content asset: " + contentPlaylistAsset.AssetID + " selected randomly. Determining if it can be played at this time.");
+          _logger.WriteMessage("content asset: " + contentPlaylistAsset.AssetID + " selected randomly. Determining if it can be played at this time.");
 
         if (!_consumedContentPlaylistAssets.Contains(contentPlaylistAsset))
         {
-          _logger.WriteMessage(DateTime.Now.ToString() + " content asset has not been attempted on this run.");
+          _logger.WriteMessage("content asset has not been attempted on this run.");
 
           if (contentPlaylistAsset.StartDateTime <= DateTime.Now
             && contentPlaylistAsset.EndDateTime >= DateTime.Now
@@ -283,30 +283,30 @@ namespace OxigenIIAdvertising.PlaylistLogic
           {
             if (contentPlaylistAsset.ScheduleInfo.Length == 0)
             {
-              _logger.WriteMessage(DateTime.Now.ToString() + " content asset has no schedule info. Checking if it is available.");
+              _logger.WriteMessage("content asset has no schedule info. Checking if it is available.");
 
               if (contentPlaylistAsset.PlayerType == PlayerType.WebSite)
               {
-                _logger.WriteMessage(DateTime.Now.ToString() + " content asset is a website. Checking if it is available online.");
+                _logger.WriteMessage("content asset is a website. Checking if it is available online.");
 
                 if (AssetWebsiteExists(contentPlaylistAsset.AssetWebSite))
                 {
-                  _logger.WriteMessage(DateTime.Now.ToString() + " content asset " + contentPlaylistAsset.AssetWebSite + " is available online and will be selected.");
+                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite + " is available online and will be selected.");
                   return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
                 }
                 else
                 {
-                  _logger.WriteMessage(DateTime.Now.ToString() + " content asset " + contentPlaylistAsset.AssetWebSite + " is not available online. Disabling selection of web content for this run.");
+                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite + " is not available online. Disabling selection of web content for this run.");
                   _bIncludeContentWebAssets = false;
                 }
               }
               else if (contentPlaylistAsset.PlayerType != PlayerType.WebSite)
               {
-               _logger.WriteMessage(DateTime.Now.ToString() + " content asset is a non-website. Checking if it is available on disk.");
+               _logger.WriteMessage("content asset is a non-website. Checking if it is available on disk.");
 
                 if (AssetFileExists(contentPlaylistAsset.GetAssetFilenameGUIDSuffix(), contentPlaylistAsset.AssetFilename))
                 {
-                  _logger.WriteMessage(DateTime.Now.ToString() + " content asset " + contentPlaylistAsset.AssetFilename + " exists on disk.");
+                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename + " exists on disk.");
 
                   if (!_bInsufficientMemoryForLargeFiles || IsNonLargeFile(contentPlaylistAsset))
                   {
@@ -317,7 +317,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
                     _logger.WriteTimestampedMessage("There are physical memory restrictions and content asset " + contentPlaylistAsset.AssetFilename + " cannot be played");
                 }
                 else
-                  _logger.WriteMessage(DateTime.Now.ToString() + " content asset " + contentPlaylistAsset.AssetFilename + " does not exist on disk.");
+                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename + " does not exist on disk.");
               }
               else
                 return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
@@ -325,30 +325,30 @@ namespace OxigenIIAdvertising.PlaylistLogic
 
             if (_assetScheduler.IsAssetPlayable(contentPlaylistAsset.ScheduleInfo))
             {
-              _logger.WriteMessage(DateTime.Now.ToString() + " content asset has no schedule info. Checking if it is available.");
+              _logger.WriteMessage("content asset has no schedule info. Checking if it is available.");
 
               if (contentPlaylistAsset.PlayerType == PlayerType.WebSite)
               {
-                _logger.WriteMessage(DateTime.Now.ToString() + " content asset is a website. Checking if it is available online.");
+                _logger.WriteMessage("content asset is a website. Checking if it is available online.");
 
                 if (AssetWebsiteExists(contentPlaylistAsset.AssetWebSite))
                 {
-                  _logger.WriteMessage(DateTime.Now.ToString() + " content asset " + contentPlaylistAsset.AssetWebSite + " is available online and will be selected.");
+                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite + " is available online and will be selected.");
                   return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
                 }
                 else
                 {
-                  _logger.WriteMessage(DateTime.Now.ToString() + " content asset " + contentPlaylistAsset.AssetWebSite + " is not available online. Disabling selection of web content for this run.");
+                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite + " is not available online. Disabling selection of web content for this run.");
                   _bIncludeContentWebAssets = false;
                 }
               }
               else if (contentPlaylistAsset.PlayerType != PlayerType.WebSite)
               {
-                _logger.WriteMessage(DateTime.Now.ToString() + " content asset is a non-website. Checking if it is available on disk.");
+                _logger.WriteMessage("content asset is a non-website. Checking if it is available on disk.");
 
                 if (AssetFileExists(contentPlaylistAsset.GetAssetFilenameGUIDSuffix(), contentPlaylistAsset.AssetFilename))
                 {
-                  _logger.WriteMessage(DateTime.Now.ToString() + " content asset " + contentPlaylistAsset.AssetFilename + " exists on disk.");
+                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename + " exists on disk.");
 
                   if (!_bInsufficientMemoryForLargeFiles || IsNonLargeFile(contentPlaylistAsset))
                   {
@@ -359,7 +359,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
                     _logger.WriteTimestampedMessage("There are physical memory restrictions and content asset " + contentPlaylistAsset.AssetFilename + " cannot be played");
                 }
                 else
-                  _logger.WriteMessage(DateTime.Now.ToString() + " content asset " + contentPlaylistAsset.AssetFilename + " does not exist on disk.");
+                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename + " does not exist on disk.");
               }
               else
                 return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
@@ -384,14 +384,14 @@ namespace OxigenIIAdvertising.PlaylistLogic
     // filter non consumed content assets
     private IEnumerable<ContentPlaylistAsset> GetPlayableContentPlaylistAssetsExcludingConsumed(ChannelBucket cb)
     {
-      _logger.WriteMessage(DateTime.Now.ToString() + " shortlisting non attempted content assets that can be displayed and selecting one randomly.");
+      _logger.WriteMessage("shortlisting non attempted content assets that can be displayed and selecting one randomly.");
 
       // filter by whether content assets are consumed
       var channelBucketContentNonConsumedPlayable = from ContentPlaylistAsset contentPlaylistAsset in cb.ContentAssets
                                                         where !_consumedContentPlaylistAssets.Contains(contentPlaylistAsset)
                                                         select contentPlaylistAsset;
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " successfully selected the non attempted content.");
+      _logger.WriteMessage("successfully selected the non attempted content.");
 
       // further filter by date bounds
       var channelBucketContentDateNonConsumedPlayable = from ContentPlaylistAsset contentPlaylistAsset in channelBucketContentNonConsumedPlayable
@@ -399,26 +399,26 @@ namespace OxigenIIAdvertising.PlaylistLogic
                                                         && contentPlaylistAsset.EndDateTime >= DateTime.Now                                                        
                                                         select contentPlaylistAsset;
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " successfully selected the non attempted content whose start and end date/time surround today/now.");
+      _logger.WriteMessage("successfully selected the non attempted content whose start and end date/time surround today/now.");
 
       // further filter assets that passed date bound filtering by content assets with no scheduling information
       var channelBucketContentDateNonConsumedNoScheduleInfoPlayable = from ContentPlaylistAsset contentPlaylistAsset in channelBucketContentDateNonConsumedPlayable
                                                                       where contentPlaylistAsset.ScheduleInfo.Length == 0
                                                                       select contentPlaylistAsset;
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " successfully selected the non attempted content with no scheduling info.");
+      _logger.WriteMessage("successfully selected the non attempted content with no scheduling info.");
 
       // further filter assets that passed date bound filtering by content assets with scheduling information that permits them to be played at this time
       var channelBucketContentDateNonConsumedWithScheduleInfoPlayable = from ContentPlaylistAsset contentPlaylistAsset in channelBucketContentDateNonConsumedPlayable
                                                                         where _assetScheduler.IsAssetPlayable(contentPlaylistAsset.ScheduleInfo)
                                                                         select contentPlaylistAsset;
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " successfully selected the non attempted content with permitted scheduling info.");
+      _logger.WriteMessage("successfully selected the non attempted content with permitted scheduling info.");
 
       // union of assets passed scheduling information and assets with no scheduling information
       var playableContentAssets = channelBucketContentDateNonConsumedNoScheduleInfoPlayable.Union(channelBucketContentDateNonConsumedWithScheduleInfoPlayable);
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " successfully combined playable content with permitted scheduling info and without scheduling info.");
+      _logger.WriteMessage("successfully combined playable content with permitted scheduling info and without scheduling info.");
 
       // of those assets found, which ones are available and can be played due to memory restrictions if any
       var playableContentAssetsExisting = from ContentPlaylistAsset contentPlaylistAsset in playableContentAssets
@@ -427,7 +427,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
                                                   (!_bInsufficientMemoryForLargeFiles || IsNonLargeFile(contentPlaylistAsset)))
                                           select contentPlaylistAsset;
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " successfully selected content that is available locally or online.");
+      _logger.WriteMessage("successfully selected content that is available locally or online.");
 
       return playableContentAssetsExisting;
     }
@@ -438,7 +438,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
       // Unlike with the channel buckets, must check this inside the method as it is publicly accessible
       if (_noPlaylistAdverts == 0)
       {
-        _logger.WriteMessage(DateTime.Now.ToString() + " No Adverts exist on playlist. Returning null.");
+        _logger.WriteMessage("No Adverts exist on playlist. Returning null.");
         return null;
       }
 
@@ -452,7 +452,7 @@ namespace OxigenIIAdvertising.PlaylistLogic
 
         foreach (AdvertPlaylistAsset advertPlaylistAsset in _playlist.AdvertBucket.AdvertAssets)
         {
-          _logger.WriteMessage(DateTime.Now.ToString() + " Attempting to select advert: " + advertPlaylistAsset.AssetID);
+          _logger.WriteMessage("Attempting to select advert: " + advertPlaylistAsset.AssetID);
 
           if (randomDouble < advertPlaylistAsset.HigherThresholdNormalised
             && randomDouble >= advertPlaylistAsset.LowerThresholdNormalised
@@ -463,25 +463,25 @@ namespace OxigenIIAdvertising.PlaylistLogic
           {
             if (advertPlaylistAsset.PlayerType == PlayerType.WebSite)
             {
-              _logger.WriteMessage(DateTime.Now.ToString() + " Advert is a website. Checking if it is available online.");
+              _logger.WriteMessage("Advert is a website. Checking if it is available online.");
               if (AssetWebsiteExists(advertPlaylistAsset.AssetWebSite))
               {
-                _logger.WriteMessage(DateTime.Now.ToString() + " Advert " + advertPlaylistAsset.AssetWebSite + " is available online and will be selected.");
+                _logger.WriteMessage("Advert " + advertPlaylistAsset.AssetWebSite + " is available online and will be selected.");
                 return new ChannelAssetAssociation(0, advertPlaylistAsset);
               }
               else
               {
                 bIncludeAdvertWebAssets = false;
-                _logger.WriteMessage(DateTime.Now.ToString() + " Advert " + advertPlaylistAsset.AssetWebSite + " is not available online. Disabling selection of web adverts for this run.");
+                _logger.WriteMessage("Advert " + advertPlaylistAsset.AssetWebSite + " is not available online. Disabling selection of web adverts for this run.");
               }
             }
             else if (advertPlaylistAsset.PlayerType != PlayerType.WebSite)
             {
-              _logger.WriteMessage(DateTime.Now.ToString() + " Advert is a non-website. Checking if it is available on disk.");
+              _logger.WriteMessage("Advert is a non-website. Checking if it is available on disk.");
 
               if (AssetFileExists(advertPlaylistAsset.GetAssetFilenameGUIDSuffix(), advertPlaylistAsset.AssetFilename))
               {
-                _logger.WriteMessage(DateTime.Now.ToString() + " Advert " + advertPlaylistAsset.AssetFilename + " exists on disk. Checking if it can be picked due to physical memory restrictions.");
+                _logger.WriteMessage("Advert " + advertPlaylistAsset.AssetFilename + " exists on disk. Checking if it can be picked due to physical memory restrictions.");
 
                 if (!_bInsufficientMemoryForLargeFiles || IsNonLargeFile(advertPlaylistAsset))
                 {
@@ -489,17 +489,17 @@ namespace OxigenIIAdvertising.PlaylistLogic
                   return new ChannelAssetAssociation(0, advertPlaylistAsset);
                 }
                 else
-                  _logger.WriteMessage(DateTime.Now.ToString() + " Advert " + advertPlaylistAsset.AssetFilename + " cannot be played on this PC due to physical memory restrictions.");
+                  _logger.WriteMessage("Advert " + advertPlaylistAsset.AssetFilename + " cannot be played on this PC due to physical memory restrictions.");
               }
               else
-                _logger.WriteMessage(DateTime.Now.ToString() + " Advert " + advertPlaylistAsset.AssetFilename + " does not exist on disk.");
+                _logger.WriteMessage("Advert " + advertPlaylistAsset.AssetFilename + " does not exist on disk.");
             }
             else
               return new ChannelAssetAssociation(0, advertPlaylistAsset);
           }
           else
           {
-            _logger.WriteMessage(DateTime.Now.ToString() + " advert " + advertPlaylistAsset.AssetID + " does not fall within the scheduling or random criteria.\r\n" +
+            _logger.WriteMessage("advert " + advertPlaylistAsset.AssetID + " does not fall within the scheduling or random criteria.\r\n" +
               "Random double: " + randomDouble + "\r\n" +
               "advertPlaylistAsset.HigherThresholdNormalised: " + advertPlaylistAsset.HigherThresholdNormalised + "\r\n" +
               "advertPlaylistAsset.LowerThresholdNormalised: " + advertPlaylistAsset.LowerThresholdNormalised + "\r\n" +
@@ -538,10 +538,10 @@ namespace OxigenIIAdvertising.PlaylistLogic
 
       bool bFileIsDecryptable = bFileExists && EncryptionDecryption.EncryptionDecryptionHelper.TryIfFileDecryptable(filePath, _password);
 
-      _logger.WriteMessage(DateTime.Now.ToString() + " File " + assetFileName + " exists: " + bFileExists);
+      _logger.WriteMessage("File " + assetFileName + " exists: " + bFileExists);
 
       if (bFileExists)
-        _logger.WriteMessage(DateTime.Now.ToString() + " File " + assetFileName + " is decryptable: " + bFileIsDecryptable);
+        _logger.WriteMessage("File " + assetFileName + " is decryptable: " + bFileIsDecryptable);
 
       return (bFileExists && bFileIsDecryptable);
     }
