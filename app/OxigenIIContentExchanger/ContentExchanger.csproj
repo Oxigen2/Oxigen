@@ -204,10 +204,6 @@
       <Project>{940650B2-518E-49B2-B716-22B3737731D7}</Project>
       <Name>EncryptionDecryption</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FileChecksumCalculator\FileChecksumCalculator\FileChecksumCalculator.csproj">
-      <Project>{9336AE54-20DB-468F-93BA-837CDAB30221}</Project>
-      <Name>FileChecksumCalculator</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FileRightsChecker\FileRightsChecker.csproj">
       <Project>{698CC733-76C2-4425-921C-A2EE1609F986}</Project>
       <Name>FileRightsChecker</Name>
@@ -243,14 +239,6 @@
     <ProjectReference Include="..\OxigenIITaxonomySearch\TaxonomySearch.csproj">
       <Project>{9B313BBB-227B-492F-A1E8-0755C588BA21}</Project>
       <Name>TaxonomySearch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIIUserDataMarshallerClient\OxigenIIUserDataMarshallerClient.csproj">
-      <Project>{F24B8A98-35C3-4E46-B6CB-E7BC9373CD91}</Project>
-      <Name>OxigenIIUserDataMarshallerClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OxigenIIUserDataMarshallrContracts\OxigenIIUserDataMarshallrContracts.csproj">
-      <Project>{5CE5DD0D-7208-4ADD-B851-489CE91925E3}</Project>
-      <Name>OxigenIIUserDataMarshallrContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\OxigenIIUserMgmtServicesClient\OxigenIIUserMgmtServicesClient.csproj">
       <Project>{F9ADD13C-D7CE-4C42-8C0C-65D617C5DFAA}</Project>

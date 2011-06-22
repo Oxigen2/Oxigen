@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Net;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using OxigenIIAdvertising.UserDataMarshallerServiceClient;
 using InterCommunicationStructures;
 using ServiceErrorReporting;
 using System.IO;
@@ -53,110 +48,23 @@ namespace OxigenIIAdvertising.ContentExchanger
       System.Threading.Thread.CurrentThread.CurrentCulture = ci;
       System.Threading.Thread.CurrentThread.CurrentUICulture = ci; 
 
-      UserDataMarshallerStreamerClient client = null;
-      StreamErrorWrapper sw = null;
-
       try
       {
-        client = new UserDataMarshallerStreamerClient();
-
-        client.Endpoint.Address = new System.ServiceModel.EndpointAddress("https://relay-getconfig-1.oxigen.net/UserDataMarshaller.svc/file");
-
         backgroundWorker.ReportProgress(10);
 
-        AppDataFileParameterMessage appDataFileParameterMessage = new AppDataFileParameterMessage();
-        appDataFileParameterMessage.DataFileType = DataFileType.GeneralConfiguration;
-        appDataFileParameterMessage.SystemPassPhrase = "password";
-
-        sw = client.GetAppDataFiles(appDataFileParameterMessage);
-
-        backgroundWorker.ReportProgress(80);
-
-        if (sw.ErrorStatus != ErrorStatus.Success)
+        using (var webClient = new WebClient())
         {
-          MessageBox.Show(OxigenIIAdvertising.ContentExchanger.Properties.Resources.CannotDownloadGeneralDataSafeMode + sw.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-          sw.ReturnStream.Dispose();
-          _bError = true;
-          return;
+            webClient.DownloadFile("http://assets.oxigen.net/data/ss_general_data.dat", System.Configuration.ConfigurationSettings.AppSettings["AppDataPath"] + "\\SettingsData\\ss_general_data.dat");
         }
-        else
-          SaveStreamAndDispose(sw.ReturnStream, System.Configuration.ConfigurationSettings.AppSettings["AppDataPath"] + "\\SettingsData\\ss_general_data.dat");
       }
       catch
       {
         MessageBox.Show(OxigenIIAdvertising.ContentExchanger.Properties.Resources.SMGeneralError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        sw.ReturnStream.Dispose();
         _bError = true;
         return;
       }
     }
-
-    private void SaveStreamAndDispose(Stream stream, string filePath)
-    {
-      FileStream fileStream = null;
-      byte[] downloadedData = null;
-
-      try
-      {
-        downloadedData = StreamToByteArray(stream);
-      }
-      catch
-      {
-        MessageBox.Show(OxigenIIAdvertising.ContentExchanger.Properties.Resources.CannotConvertStreamToByteArray, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        _bError = true;
-        return;
-      }
-      finally
-      {
-        if (stream != null)
-          stream.Dispose();
-      }
-
-      backgroundWorker.ReportProgress(90);
-
-      try
-      {
-        File.WriteAllBytes(filePath, downloadedData);
-      }
-      catch
-      {
-        MessageBox.Show(OxigenIIAdvertising.ContentExchanger.Properties.Resources.CannotSaveStream, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        _bError = true;
-        return;
-      }
-      finally
-      {
-        if (fileStream != null)
-          fileStream.Dispose();
-      }
-
-      backgroundWorker.ReportProgress(100);
-    }
-
-    private byte[] StreamToByteArray(Stream stream)
-    {
-      MemoryStream ms = new MemoryStream();
-
-      byte[] buffer = new byte[1000];
-
-      int bytesRead = 0;
-
-      do
-      {
-        bytesRead = stream.Read(buffer, 0, buffer.Length);
-
-        ms.Write(buffer, 0, bytesRead);
-      }
-      while (bytesRead > 0);
-
-      byte[] downloadedDataBuffer = ms.ToArray();
-
-      ms.Close();
-      ms.Dispose();
-
-      return downloadedDataBuffer;
-    }
-
+  
     private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
     {
       progressBar.Value = e.ProgressPercentage;
