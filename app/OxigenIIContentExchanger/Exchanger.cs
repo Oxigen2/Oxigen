@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Cache;
 using System.IO;
 using System.Net.Cache;
 using OxigenIIAdvertising.XMLSerializer;
