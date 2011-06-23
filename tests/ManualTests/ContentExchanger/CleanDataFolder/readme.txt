@@ -1,0 +1,1 @@
+Cleans the data folder of all slides, channel data and replaces ss_general_data with an older one so it can be downloaded from the server too.
