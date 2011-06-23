@@ -19,7 +19,7 @@ namespace Tests.Oxigen.Web.Assets
             
            using (var client = new WebClient())
            {
-               client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.Revalidate);
+               client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.Default);
                //client.Headers.Add(HttpRequestHeader.IfModifiedSince, DateTime.UtcNow.ToString("r"));
                client.DownloadFile("http://new.oxigen.net/Images/Default/googlechrome.png?1", "test.swf");
                client.DownloadFile("http://assets.oxigen.net/slide/09C45970-1040-4658-ABBC-352E2932BA7D_X.swf", "test2.swf");
