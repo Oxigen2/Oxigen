@@ -20,6 +20,7 @@ namespace OxigenIIAdvertising.Services
   public class DAService : IDAService
   {
     private EventLog _eventLog = null;
+      private string _connectionStringName = null;
     private readonly ILog _logger = LogManager.GetLogger(typeof(DAService));
 
     public DAService()
@@ -29,6 +30,11 @@ namespace OxigenIIAdvertising.Services
       _eventLog.Source = "Oxigen Data Access Host";
       log4net.Config.XmlConfigurator.Configure();
     }
+
+      public DAService(string connectionStringName) : this()
+      {
+          _connectionStringName = connectionStringName;
+      }
 
     public PageChannelData GetChannelListByCategoryID(int userID, int categoryID, int startChannelNo, int endChannelNo, 
       OxigenIIAdvertising.SOAStructures.SortChannelsBy sortBy)
@@ -2472,14 +2478,14 @@ namespace OxigenIIAdvertising.Services
 
     public DemographicData GetUserDemographicData(string userGUID)
     {
-      DemographicData demographicData = null;
+      DemographicData demographicData = new DemographicData();
       SqlDataReader sqlDataReader = null;
 
       SqlDatabase sqlDatabase = null;
 
       try
       {
-        sqlDatabase = new SqlDatabase();
+        sqlDatabase = new SqlDatabase(_connectionStringName);
         sqlDatabase.Open();
 
         sqlDatabase.AddInputParameter("@UserGUID", userGUID);
@@ -2488,7 +2494,6 @@ namespace OxigenIIAdvertising.Services
 
         if (sqlDataReader.Read())
         {
-          demographicData = new DemographicData();
           demographicData.Gender = new string[] { sqlDataReader.GetString(sqlDataReader.GetOrdinal("Gender")) };
           demographicData.GeoDefinition = sqlDataReader.GetString(sqlDataReader.GetOrdinal("TaxonomyTree"));
           demographicData.MinAge = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Age"));
@@ -2521,7 +2526,7 @@ namespace OxigenIIAdvertising.Services
 
       try
       {
-        sqlDatabase = new SqlDatabase();
+        sqlDatabase = new SqlDatabase(_connectionStringName);
         sqlDatabase.Open();
 
         sqlDatabase.AddInputParameter("@PCGUID", machineGUID);
