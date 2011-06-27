@@ -134,12 +134,12 @@ namespace OxigenIIAdvertising.RelayServers
 
     private void TryLogLastClickToDB(string machineGuid)
     {
-      TryRunSQL(string.Format("update PCs Set LastImpressionDate = GetDate() where PCGUID = '{0}'", machineGuid));
+        TryRunSQL(string.Format("update PCs Set LastClickDate = GetDate() where PCGUID = '{0}'", machineGuid));
     }
 
     private void TryLogLastImpressionToDB(string machineGuid)
     {
-      TryRunSQL(string.Format("update PCs Set LastClickDate = GetDate() where PCGUID = '{0}'", machineGuid));
+      TryRunSQL(string.Format("update PCs Set LastImpressionDate = GetDate() where PCGUID = '{0}'", machineGuid));
     }
 
     private void TryRunSQL(string sql)
