@@ -431,6 +431,18 @@ namespace OxigenIIAdvertising.XMLSerializer
       return stream;
     }
 
+    public static byte[] SerializeClearToByteArray(object obj)
+    {
+        byte[] bytes;
+
+        using (MemoryStream ms = SerializeClear(obj))
+        {
+            bytes = ms.ToArray();
+        }
+
+        return bytes;
+    }
+
     /// <summary>
     /// Deserializes a clear text file to an underlying object
     /// </summary>
