@@ -13,13 +13,13 @@ namespace Oxigen.Web.Assets
     public ActionResult Slide(string filename)
     {
         string path = FileRepositoryHelper.GetAssetFullPath(filename);
-        return new FilePathResult(path, "bad/type");
+        return new FilePathResult(path, System.Net.Mime.MediaTypeNames.Application.Octet);
     }
 
       [FileCache(MaxAge = 1800)] //30 min
     public ActionResult Channel(string filename) {
         string path = FileRepositoryHelper.GetChannelDataFullPath(filename);
-        return new FilePathResult(path, "bad/type");
+        return new FilePathResult(path, System.Net.Mime.MediaTypeNames.Application.Octet);
     }
       [HttpGet, FileCache(MaxAge = 31536000)] //one year
     public ActionResult Advert(string filename)
@@ -29,7 +29,7 @@ namespace Oxigen.Web.Assets
       [FileCache(MaxAge = 10800)] //3 hours
     public ActionResult Data(string filename)
     {
-        return new FilePathResult(FileRepositoryHelper.GetDataFullPath(filename), "bad/type");
+        return new FilePathResult(FileRepositoryHelper.GetDataFullPath(filename), System.Net.Mime.MediaTypeNames.Application.Octet);
     }
 
   }
