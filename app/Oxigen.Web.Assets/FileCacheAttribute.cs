@@ -8,8 +8,11 @@ namespace Oxigen.Web.Assets
     [AttributeUsage(AttributeTargets.Class |
                     AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public class FileCacheAttribute : ActionFilterAttribute
-
     {
+        private int _maxAge = 1800;
+
+        public int MaxAge { get { return _maxAge; } set { _maxAge = value; } } 
+
         //TODO: check file path does not contain ".."
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -24,10 +27,10 @@ namespace Oxigen.Web.Assets
 
             if (!File.Exists(result.FileName))
             {
-                response.Write(DateTime.Now);
+                response.Write(result.FileName);
                 response.StatusCode = 404;
                 response.StatusDescription = "Not Found";
-
+                return;
             }
             
             if ((request.Headers["If-Modified-Since"] != null) &&  
@@ -52,15 +55,16 @@ namespace Oxigen.Web.Assets
         {
             response.AddFileDependency(fileName);
 
+            //Expensive to great eTags for large files and is not really necessary since we are using LastModified Date
             //response.Cache.SetETagFromFileDependencies();
 
             response.Cache.SetLastModifiedFromFileDependencies();
 
             response.Cache.SetCacheability(HttpCacheability.Public);
+            if (_maxAge > -1)
+                response.Cache.SetMaxAge(new TimeSpan(0, 0, _maxAge, 0));
 
-            //response.Cache.SetMaxAge(new TimeSpan(7, 0, 0, 0));
-
-            //response.Cache.SetSlidingExpiration(true);
+            response.Cache.SetSlidingExpiration(true);
         }
 
 
