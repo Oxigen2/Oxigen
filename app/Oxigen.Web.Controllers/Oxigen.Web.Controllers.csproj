@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilterAttributes\DynamicContentAttribute.cs" />
     <Compile Include="AssetContentsController.cs" />
     <Compile Include="ChannelsController.cs" />
     <Compile Include="ChannelsSlidesController.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="SlideFoldersController.cs" />
     <Compile Include="SlidesController.cs" />
     <Compile Include="RSSFeedsController.cs" />
+    <Compile Include="SubscriberInfoController.cs" />
     <Compile Include="TemplatesController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +91,26 @@
     <ProjectReference Include="..\Oxigen.ApplicationServices\Oxigen.ApplicationServices.csproj">
       <Project>{EA00777D-3D7A-4406-8BFB-E5A90CF0E8A9}</Project>
       <Name>Oxigen.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIChannelSubscriptions\ChannelSubscriptions.csproj">
+      <Project>{CF9C9E18-82B5-4870-9510-DFD781B7A7F0}</Project>
+      <Name>ChannelSubscriptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIDAContracts\OxigenIIDAContracts.csproj">
+      <Project>{DB4F6039-D5CB-456D-836E-B6307EFD7D4D}</Project>
+      <Name>OxigenIIDAContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIDAServices\OxigenIIDAServices.csproj">
+      <Project>{4D6199B0-9088-48EA-9C0A-6F5655216D7E}</Project>
+      <Name>OxigenIIDAServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIDemographicData\DemographicData.csproj">
+      <Project>{405D3C86-4D83-4FC9-8842-8D88C0398B99}</Project>
+      <Name>DemographicData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OxigenIIXMLSerializer\XMLSerializer.csproj">
+      <Project>{905FC382-9356-4BD1-9F66-0947A6F2FC57}</Project>
+      <Name>XMLSerializer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
