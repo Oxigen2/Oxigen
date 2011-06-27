@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using OxigenIIAdvertising.Exceptions;
 using System.Runtime.Serialization;
 
 namespace OxigenIIAdvertising.Demographic
