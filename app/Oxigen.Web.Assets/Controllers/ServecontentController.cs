@@ -9,11 +9,11 @@ namespace Oxigen.Web.Assets
   {
     private static readonly ILog _logger = LogManager.GetLogger("FileLogger");
 
-    [HttpGet, FileCache(MaxAge = 31536000)] //one year
+    [FileCache(MaxAge = 31536000)] //one year
     public ActionResult Slide(string filename)
     {
-      string path = FileRepositoryHelper.GetAssetFullPath(filename);
-      return new FilePathResult(path, "bad/type");
+        string path = FileRepositoryHelper.GetAssetFullPath(filename);
+        return new FilePathResult(path, "bad/type");
     }
 
       [FileCache(MaxAge = 1800)] //30 min

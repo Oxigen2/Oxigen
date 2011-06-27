@@ -26,11 +26,12 @@ namespace Oxigen.Web.Assets
             }
 
             if (!File.Exists(result.FileName))
-            {
-                response.Write(result.FileName);
+            {          
+                response.Write(DateTime.Now);
                 response.StatusCode = 404;
                 response.StatusDescription = "Not Found";
                 return;
+
             }
             
             if ((request.Headers["If-Modified-Since"] != null) &&  
