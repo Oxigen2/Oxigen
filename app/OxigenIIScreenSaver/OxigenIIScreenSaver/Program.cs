@@ -86,11 +86,12 @@ namespace OxigenIIAdvertising.ScreenSaver
       System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("en-GB");
       System.Threading.Thread.CurrentThread.CurrentCulture = ci;
       System.Threading.Thread.CurrentThread.CurrentUICulture = ci; 
-
+      
+      SetGlobalsFromConfFile();
       try
       {
         // set globals
-        SetGlobalsFromConfFile();
+        
 
         long ram = GetPhysicalRam();
 
@@ -160,9 +161,16 @@ namespace OxigenIIAdvertising.ScreenSaver
           Application.Run();
         }
       }
-      catch
+      catch (Exception ex)
       {
-        Application.Exit();
+          try
+          {
+              _logger.WriteError(ex);
+          }
+          catch
+          {
+          }
+          Application.Exit();
       }
     }
 

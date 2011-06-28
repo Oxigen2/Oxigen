@@ -79,7 +79,6 @@ namespace OxigenIIAdvertising.ScreenSaver
     private bool _bInsufficientMemoryForLargeFiles = false;
     private float _defaultDisplayLength = -1F;
 
-    private volatile object _lockPlaylistObj = null;
     private volatile object _lockingObject = new object();
     
     private Thread _displayAssetThread = null;
@@ -93,10 +92,7 @@ namespace OxigenIIAdvertising.ScreenSaver
     public void SetPlaylistAssetPickerPlaylist(Playlist playlist)
     {
       if (_playlistAssetPicker != null)
-      {
-        lock (_lockPlaylistObj)
-          _playlistAssetPicker.Playlist = playlist;
-      }
+        _playlistAssetPicker.Playlist = playlist;
     }
 
     /// <summary>
@@ -133,7 +129,6 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully created a LogSingletonAccessor object.");
 
-      _lockPlaylistObj = lockPlaylistObj;
       _advertDisplayThreshold = advertDisplayThreshold;
       _protectedContentTime = protectedContentTime;
       _displayMessageAssetDisplayLength = displayMessageAssetDisplayLength == -1F ? 15F : displayMessageAssetDisplayLength;
@@ -166,8 +161,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       _logger.WriteTimestampedMessage("successfully created an AssetScheduler object.");
 
-      lock (_lockPlaylistObj)
-        _playlistAssetPicker = new PlaylistAssetPicker(playlist, _assetScheduler, _displayMessageAssetDisplayLength, assetPath, "password",
+      _playlistAssetPicker = new PlaylistAssetPicker(playlist, _assetScheduler, _displayMessageAssetDisplayLength, assetPath, "password",
         _requestTimeout, _bErrorOnSetup, _screenNo, _logger, _bInsufficientMemoryForLargeFiles);
 
       _logger.WriteTimestampedMessage("successfully created a PlaylistAssetPicker object.");
@@ -229,51 +223,68 @@ namespace OxigenIIAdvertising.ScreenSaver
 
     private void DisplayAsset()
     {
-      while (true)
-      {
-        lock (_lockingObject)
+        try
         {
-          if (_stopwatch.ElapsedTotalMilliseconds > ((_assetDisplayLength * 1000) - 200) || _bFadeToDesktop)
-          {
-            if (_displayToggle == DisplayToggle.B && _ChannelAssetAssociationA != null)
-              _logger.WriteTimestampedMessage("Time to change " + _ChannelAssetAssociationA.PlaylistAsset.AssetFilename + " (Asset A)");
-
-            if (_displayToggle == DisplayToggle.A && _ChannelAssetAssociationB != null)
-              _logger.WriteTimestampedMessage("Time to change " + _ChannelAssetAssociationB.PlaylistAsset.AssetFilename + " (Asset B)");
-
-            // is this the first run of the pulse? If yes, there is nothing to log
-            if (_logSingletonAccessor.AssetImpressionStartDateTime.Year != 1)
+            while (true)
             {
-              // Add logs of the asset previously impressed (i.e. if a is to be impressed next,
-              // log previously impressed asset B, else log previously impressed A)
-              ChannelAssetAssociation channelAssetAssociation = _displayToggle == DisplayToggle.A ? _ChannelAssetAssociationB : _ChannelAssetAssociationA;
+                lock (_lockingObject)
+                {
+                    if (_stopwatch.ElapsedTotalMilliseconds > ((_assetDisplayLength*1000) - 200) || _bFadeToDesktop)
+                    {
+                        if (_displayToggle == DisplayToggle.B && _ChannelAssetAssociationA != null)
+                            _logger.WriteTimestampedMessage("Time to change " +
+                                                            _ChannelAssetAssociationA.PlaylistAsset.AssetFilename +
+                                                            " (Asset A)");
 
-              AddImpressionLog(channelAssetAssociation);
+                        if (_displayToggle == DisplayToggle.A && _ChannelAssetAssociationB != null)
+                            _logger.WriteTimestampedMessage("Time to change " +
+                                                            _ChannelAssetAssociationB.PlaylistAsset.AssetFilename +
+                                                            " (Asset B)");
 
-              _logger.WriteTimestampedMessage("successfully added impression log for " + channelAssetAssociation.PlaylistAsset.AssetID + " in channel: " + channelAssetAssociation.ChannelID);
+                        // is this the first run of the pulse? If yes, there is nothing to log
+                        if (_logSingletonAccessor.AssetImpressionStartDateTime.Year != 1)
+                        {
+                            // Add logs of the asset previously impressed (i.e. if a is to be impressed next,
+                            // log previously impressed asset B, else log previously impressed A)
+                            ChannelAssetAssociation channelAssetAssociation = _displayToggle == DisplayToggle.A
+                                                                                  ? _ChannelAssetAssociationB
+                                                                                  : _ChannelAssetAssociationA;
+
+                            AddImpressionLog(channelAssetAssociation);
+
+                            _logger.WriteTimestampedMessage("successfully added impression log for " +
+                                                            channelAssetAssociation.PlaylistAsset.AssetID +
+                                                            " in channel: " + channelAssetAssociation.ChannelID);
+                        }
+
+                        FlipAssetPlayer();
+
+                        _logger.WriteTimestampedMessage("successfully flipped asset player.");
+
+                        if (!_bFadeToDesktop)
+                        {
+                            _displayToggle = _displayToggle == DisplayToggle.A ? DisplayToggle.B : DisplayToggle.A;
+
+                            _logger.WriteTimestampedMessage("successfully flipped the display toggle to " +
+                                                            _displayToggle);
+
+                        }
+                        else
+                        {
+                            _logger.WriteTimestampedMessage("final run of the display asset thread.");
+                            return;
+                        }
+                    }
+                }
+
+                Thread.Sleep(100);
             }
-
-            FlipAssetPlayer();
-
-            _logger.WriteTimestampedMessage("successfully flipped asset player.");
-
-            if (!_bFadeToDesktop)
-            {
-              _displayToggle = _displayToggle == DisplayToggle.A ? DisplayToggle.B : DisplayToggle.A;
-
-              _logger.WriteTimestampedMessage("successfully flipped the display toggle to " + _displayToggle);
-
-            }
-            else
-            {
-              _logger.WriteTimestampedMessage("final run of the display asset thread.");
-              return;
-            }
-          }
         }
-
-        Thread.Sleep(100);
-      }
+        catch (Exception ex)
+        {
+            _logger.WriteError(ex);
+            throw;
+        }
     }
 
     private void AddPlayTimes(PlaylistAsset playlistAsset)
@@ -342,54 +353,55 @@ namespace OxigenIIAdvertising.ScreenSaver
     // If no asset was found, a "no assets" asset is created.
     private ChannelAssetAssociation SelectAsset()
     {
-      if (!_bErrorOnSetup)
-      {
-        lock (_lockPlaylistObj)
+        ChannelAssetAssociation channelAssetAssociation = null;
+
+        if (!_bErrorOnSetup)
         {
-            ChannelAssetAssociation channelAssetAssociation = _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime, _protectedContentTime, _advertDisplayThreshold, Resources.NoAssets, "app://ContentExchanger");
+            channelAssetAssociation = _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime, _protectedContentTime, _advertDisplayThreshold, Resources.NoAssets, "app://ContentExchanger");
 
             if (channelAssetAssociation.PlaylistAsset.DisplayLength == -1F)
                 channelAssetAssociation.PlaylistAsset.DisplayLength = _defaultDisplayLength;
 
-          if (!_players.Exists(channelAssetAssociation.PlaylistAsset.PlayerType))
-          {
-              _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " does not exist.");
-              PlayerNotExistsResponse response = PlayerContainer.PlayerNotExistResponses[channelAssetAssociation.PlaylistAsset.PlayerType];
-              channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, response.Message, response.Link));
-          }
-          else
-              _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " exists.");
+            if (!_players.Exists(channelAssetAssociation.PlaylistAsset.PlayerType))
+            {
+                _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " does not exist.");
+                PlayerNotExistsResponse response = PlayerContainer.PlayerNotExistResponses[channelAssetAssociation.PlaylistAsset.PlayerType];
+                channelAssetAssociation = new ChannelAssetAssociation(0, new ContentPlaylistAsset(_displayMessageAssetDisplayLength, response.Message, response.Link));
+            }
+            else
+                _logger.WriteMessage(channelAssetAssociation.PlaylistAsset.PlayerType + " exists.");
 
-          return channelAssetAssociation;
+            return channelAssetAssociation;
         }
-      }
 
-      lock (_lockPlaylistObj)
-      {
-          var channelAssetAssociation = _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime,
-                                                                         _protectedContentTime, _advertDisplayThreshold,
-                                                                         _displayMessage, _appToRun);
+        channelAssetAssociation = _playlistAssetPicker.SelectAsset(_totalDisplayTime, _totalAdvertDisplayTime,
+                                                                       _protectedContentTime, _advertDisplayThreshold,
+                                                                       _displayMessage, _appToRun);
 
-          return channelAssetAssociation;
-      }
+        return channelAssetAssociation;
     }
 
     private void FlipAssetPlayer()
     {
+        _logger.WriteMessage("FlipAssetPlayer 1 : primary monitor? " + _bPrimaryMonitor);
       // keep start date and time of the display for logging
       _logSingletonAccessor.AssetImpressionStartDateTime = DateTime.Now;
-
+      _logger.WriteMessage("FlipAssetPlayer 2 : primary monitor? " + _bPrimaryMonitor);
       if (_displayToggle == DisplayToggle.A)
       {
+          _logger.WriteMessage("FlipAssetPlayer 3A : primary monitor? " + _bPrimaryMonitor);
         _assetDisplayLength = _ChannelAssetAssociationA.PlaylistAsset.DisplayLength;
-
+        _logger.WriteMessage("FlipAssetPlayer 4A : primary monitor? " + _bPrimaryMonitor);
         Transit(_ChannelAssetAssociationA, _ChannelAssetAssociationB, _players.APlayers, _players.BPlayers, "A");
+        _logger.WriteMessage("FlipAssetPlayer 5A : primary monitor? " + _bPrimaryMonitor);
       }
       else
       {
+          _logger.WriteMessage("FlipAssetPlayer 3B : primary monitor? " + _bPrimaryMonitor);
         _assetDisplayLength = _ChannelAssetAssociationB.PlaylistAsset.DisplayLength;
-
+        _logger.WriteMessage("FlipAssetPlayer 4B : primary monitor? " + _bPrimaryMonitor);
         Transit(_ChannelAssetAssociationB, _ChannelAssetAssociationA, _players.BPlayers, _players.APlayers, "B");
+        _logger.WriteMessage("FlipAssetPlayer 5A : primary monitor? " + _bPrimaryMonitor);
       }
     }
 
@@ -498,7 +510,10 @@ namespace OxigenIIAdvertising.ScreenSaver
             player.ReleaseAssetForTransition(); 
             _logger.WriteTimestampedMessage("successfully deleted previous asset.");
         } //TODO: do we need this here??
-        catch { }
+        catch (Exception ex)
+        {
+            _logger.WriteError(ex);
+        }
     }
 
     private void ReleaseDeleteCurrentAsset(ChannelAssetAssociation channelAssetAssociationAssetToShow, Dictionary<PlayerType, IPlayer> players)
@@ -509,7 +524,10 @@ namespace OxigenIIAdvertising.ScreenSaver
             player.ReleaseAssetForDesktop();
             _logger.WriteTimestampedMessage("successfully deleted previous asset.");
         } //TODO: do we need this here??
-        catch { }
+        catch (Exception ex)
+        {
+            _logger.WriteError(ex);
+        }
     }
 
     // Decides which asset slot and player to select and load the next asset to
@@ -521,22 +539,32 @@ namespace OxigenIIAdvertising.ScreenSaver
       {
         lock (_lockingObject)
         {
-          try
-          {
-            if (displayToggle != _displayToggle)
+            int tries = 0;
+            while (tries < 3)
             {
-              if (_displayToggle == DisplayToggle.A)
-                SelectAndLoadAsset(ref _ChannelAssetAssociationA, _players.APlayers, _displayToggle.ToString());
-              else
-                SelectAndLoadAsset(ref _ChannelAssetAssociationB, _players.BPlayers, _displayToggle.ToString());
+                try
+                {
+                    if (displayToggle != _displayToggle)
+                    {
+                        if (_displayToggle == DisplayToggle.A)
+                            SelectAndLoadAsset(ref _ChannelAssetAssociationA, _players.APlayers,
+                                               _displayToggle.ToString());
+                        else
+                            SelectAndLoadAsset(ref _ChannelAssetAssociationB, _players.BPlayers,
+                                               _displayToggle.ToString());
 
-              displayToggle = _displayToggle;
+                        displayToggle = _displayToggle;
+                    }
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    _logger.WriteError(ex + " - Primary monitor : " + _bPrimaryMonitor);
+                    _logger.WriteError("Number of tries: " + tries + " - Primary monitor : " + _bPrimaryMonitor);
+                    tries++;
+                    Thread.Sleep(100);
+                }
             }
-          }
-          catch (Exception ex)
-          {
-            _logger.WriteError(ex);
-          }
         }
 
         Thread.Sleep(100);
@@ -648,9 +676,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         _logger.WriteTimestampedMessage("fader form set to Layered Window to be used by the between-slides fader.");
 
-        _displayAssetThread = new Thread(new ThreadStart(DisplayAsset));
-        _displayAssetThread.CurrentCulture = ci;
-        _displayAssetThread.CurrentUICulture = ci;
+        _displayAssetThread = new Thread(DisplayAsset) {CurrentCulture = ci, CurrentUICulture = ci};
         _displayAssetThread.Start();
 
         _logger.WriteTimestampedMessage("successfully started the Display thread.");
