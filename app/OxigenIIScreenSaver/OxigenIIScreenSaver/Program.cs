@@ -68,8 +68,10 @@ namespace OxigenIIAdvertising.ScreenSaver
     // time as user exits the screen saver manually
     private static bool _bTerminationStarted = false;
     private static object _terminationObj = new object();
+      private static bool _clickThroughPressed;
+      private static bool _launchApp;
 
-    /// <summary>
+      /// <summary>
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
@@ -113,7 +115,7 @@ namespace OxigenIIAdvertising.ScreenSaver
               Application.EnableVisualStyles();
               Application.SetCompatibleTextRenderingDefault(false);
               ShowScreenSaver();
-              Application.Run();
+                  return;
               break;
 
             case "/p":
@@ -148,8 +150,7 @@ namespace OxigenIIAdvertising.ScreenSaver
               Application.EnableVisualStyles();
               Application.SetCompatibleTextRenderingDefault(false);
               ShowScreenSaver();
-              Application.Run();
-              break;
+              return;
           }
         }
         else
@@ -159,7 +160,7 @@ namespace OxigenIIAdvertising.ScreenSaver
           Application.EnableVisualStyles();
           Application.SetCompatibleTextRenderingDefault(false);
           ShowScreenSaver();
-          Application.Run();
+          return;
         }
       }
       catch (Exception ex)
@@ -513,122 +514,9 @@ namespace OxigenIIAdvertising.ScreenSaver
     static void autoExecuteProgramTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
       // If screen saver runs on preview mode, don't execute the external application
-      if (_bPreviewMode)
-        return;
-
-      lock (_terminationObj)
-      {
-        // as long as _bTerminationStarted is only being accessed within a thread
-        // by a locked _terminationObj, it doesn't matter if we check it's value first and set its value
-        // second or sets its value first and check its value second
-        if (_bTerminationStarted)
-          return;
-
-        _bTerminationStarted = true;
-
-        // hide monitor forms
-        foreach (ScreenSaver screensaver in _screenSavers)
-          screensaver.HideForms();
-
-        // are all forms hidden on all monitors
-        bool bFormsShowing = true;
-
-        while (bFormsShowing)
-        {
-          foreach (ScreenSaver screensaver in _screenSavers)
-          {
-            bFormsShowing = screensaver.FormsShowing();
-
-            if (bFormsShowing)
-              break;
-          }
-        }
-
-        _logger.WriteTimestampedMessage("successfully hid forms.");
-
-        // Stop logging/background work here lest displaying and, more importantly, logging
-        // continue running when the screen savers are hidden.
-        foreach (ScreenSaver screensaver in _screenSavers)
-          screensaver.StopWork();
-
-        bool bScreensaverThreadsAlive = true;
-
-        while (bScreensaverThreadsAlive)
-        {
-          foreach (ScreenSaver screensaver in _screenSavers)
-          {
-            bScreensaverThreadsAlive = screensaver.IsScreensaverThreadAlive();
-
-            if (bScreensaverThreadsAlive)
-              break;
-          }
-        }
-
-        _logger.WriteTimestampedMessage("successfully stopped threads.");
-
-        WriteLogs(true);
-
-        // dispose of all forms, for each monitor
-        foreach (ScreenSaver screensaver in _screenSavers)
-        {
-          // in preview mode, the form is closed when user presses OK, Cancel or Preview,
-          // and raising the OnClose event again here would result in an infinite loop with TerminateApplication.
-          if (!_bPreviewMode)
-            screensaver.Close();
-
-          _logger.WriteTimestampedMessage("successfully closed forms.");
-
-          screensaver.DisposeForms();
-
-          _logger.WriteTimestampedMessage("successfully disposed all screen saver objects.");
-        }
-
-        // local cleanup
-        lock (_lockPlaylistObj)
-          _playlist = null;
-
-        if (_logTimer != null)
-        {
-          _logTimer.Stop();
-          _logTimer.Dispose();
-          _logTimer = null;
-
-          _logger.WriteTimestampedMessage("successfully disposed of log timer.");
-        }
-
-        if (_autoExecuteProgramTimer != null)
-        {
-          _autoExecuteProgramTimer.Stop();
-          _autoExecuteProgramTimer.Dispose();
-          _autoExecuteProgramTimer = null;
-
-          _logger.WriteTimestampedMessage("successfully disposed of auto-execute program timer.");
-        }
-
-        if (_playlistLoadTimer != null)
-        {
-          _playlistLoadTimer.Stop();
-          _playlistLoadTimer.Dispose();
-          _playlistLoadTimer = null;
-
-          _logger.WriteTimestampedMessage("successfully disposed of new playlist check timer.");
-        }
-
-        _logger.WriteTimestampedMessage("Exiting application.");
-
-        // start external process
-        try
-        {
-          System.Diagnostics.Process.Start(_user.ProgramToRun);
-        }
-        catch
-        {
-          _logger.WriteWarning("Could not start external process");
-        }
-
-        // exit application
-        Application.Exit();
-      }
+      if (_bPreviewMode) return;
+      _launchApp = true;
+      TerminateApplication(false);   
     }
 
     static void logTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -639,132 +527,39 @@ namespace OxigenIIAdvertising.ScreenSaver
     public static void TerminateApplication(bool bClickThroughPressed)
     {
         if (_bTerminationStarted) return;
-      lock (_terminationObj)
-      {
-        // as long as _bTerminationStarted is only being accessed within a thread
-        // by a locked _terminationObj, it doesn't matter if we check it's value first and set its value
-        // second or sets its value first and check its value second
-        if (_bTerminationStarted)
-          return;
+        lock (_terminationObj)
+        {
+            // as long as _bTerminationStarted is only being accessed within a thread
+            // by a locked _terminationObj, it doesn't matter if we check it's value first and set its value
+            // second or sets its value first and check its value second
+            if (_bTerminationStarted)
+                return;
 
-        _bTerminationStarted = true;
-
+            _bTerminationStarted = true;
+        }
+        
+        _clickThroughPressed = bClickThroughPressed;
         if (_bPreviewMode)
         {
-          PreviewScreenSaver pss = (PreviewScreenSaver)_screenSavers[0];
-          pss.Dispose();
+            PreviewScreenSaver pss = (PreviewScreenSaver) _screenSavers[0];
+            pss.Dispose();
 
-          Application.Exit();
-          return;
+            Application.Exit();
+            return;
         }
-
-        // hide monitor forms
+        CloseApplication();
+    }
+      public static void CloseApplication()
+      {
+      // hide monitor forms
         foreach (ScreenSaver screensaver in _screenSavers)
-          screensaver.HideForms();
-
-        // are all forms hidden on all monitors
-        bool bFormsShowing = true;
-
-        while (bFormsShowing)
-        {
-          foreach (ScreenSaver screensaver in _screenSavers)
-          {
-            bFormsShowing = screensaver.FormsShowing();
-
-            if (bFormsShowing)
-              break;
-          }
-
-          Thread.Sleep(100);
-        }
-
-        _logger.WriteTimestampedMessage("successfully hid forms.");
-
-        // Stop logging/background work here lest displaying and, more importantly, logging
-        // continue running when the screen savers are hidden.
-        foreach (ScreenSaver screensaver in _screenSavers)
-          screensaver.StopWork();
-
-        bool bScreensaverThreadsAlive = true;
-
-        while (bScreensaverThreadsAlive)
-        {
-          foreach (ScreenSaver screensaver in _screenSavers)
-          {
-            bScreensaverThreadsAlive = screensaver.IsScreensaverThreadAlive();
-
-            if (bScreensaverThreadsAlive)
-              break;
-          }
-
-            Thread.Sleep(100);
-        }
-
-        _logger.WriteTimestampedMessage("successfully stopped threads.");
+          screensaver.FadeToDesktop();
 
         // if spacebar was hit, pop up browser windows and write click logs
         #region bClickThroughPressed
-        if (bClickThroughPressed)
+        if (_clickThroughPressed)
         {
-          foreach (ScreenSaver screenSaver in _screenSavers)
-          {
-            string clickThroughURL = screenSaver.GetClickThroughURL();
-
-            _logger.WriteTimestampedMessage("clickthroughURL: " + clickThroughURL);
-
-            if (clickThroughURL.StartsWith("app://"))
-            {
-              switch (clickThroughURL)
-              {
-                case "app://ContentExchanger":
-                  System.Diagnostics.Process.Start(_contentExchangerPath);
-                  _logger.WriteTimestampedMessage("successfully started app in " + _contentExchangerPath);
-                  break;
-                case "app://ContentExchanger-s":
-                  System.Diagnostics.Process.Start(_contentExchangerPath, "/s");
-                  _logger.WriteTimestampedMessage("successfully started app in " + _contentExchangerPath + " in safe mode");
-                  break;
-                // TODO: when installer supports repair mode, add this case statement
-             /*   case "app://SoftwareInstaller":
-                  // TODO: execute software installer here
-                  break;*/
-              }
-            }
-
-            if (clickThroughURL.StartsWith("http://") || clickThroughURL.StartsWith("https://"))
-            {
-              // click log to memory
-              screenSaver.AddClickLog();
-
-              _logger.WriteTimestampedMessage("successfully added click log.");
-
-              // cross-desktop communication can't be made; communicate to the SSG to open browser
-              ScreensaverGuardianClient client = null;
-
-              try
-              {
-                System.ServiceModel.NetNamedPipeBinding binding = new System.ServiceModel.NetNamedPipeBinding();
-                binding.Name = "SSGBinding";
-                binding.TransferMode = System.ServiceModel.TransferMode.Buffered;
-                binding.ReceiveTimeout = TimeSpan.FromMinutes(1);
-                binding.SendTimeout = TimeSpan.FromMinutes(1);
-                client = new ScreensaverGuardianClient(binding, new System.ServiceModel.EndpointAddress("net.pipe://localhost/OxigenService"));
-
-                client.OpenBrowser(clickThroughURL);
-              }
-              catch (Exception ex)
-              {
-                _logger.WriteError(ex);
-              }
-              finally
-              {
-                if (client != null)
-                  client.Dispose();
-              }
-
-              _logger.WriteTimestampedMessage("web browser opening attempted.");
-            }
-          }
+          ClickThroughPressed();
         }
         #endregion
         WriteLogs(true);
@@ -804,12 +599,86 @@ namespace OxigenIIAdvertising.ScreenSaver
 
           _logger.WriteTimestampedMessage("successfully disposed of auto-execute program timer.");
         }
-
-        _logger.WriteTimestampedMessage("Exiting application.");
-        // exit application
+        if (_launchApp)
+        {
+            // start external process
+            try
+            {
+                Process.Start(_user.ProgramToRun);
+            }
+            catch
+            {
+                _logger.WriteWarning("Could not start external process");
+            }
+            _logger.WriteTimestampedMessage("Exiting application.");
+        }
+          // exit application
         Application.Exit();
       }
-    }
+
+      private static void ClickThroughPressed()
+      {
+          foreach (ScreenSaver screenSaver in _screenSavers)
+          {
+              string clickThroughURL = screenSaver.GetClickThroughURL();
+
+              _logger.WriteTimestampedMessage("clickthroughURL: " + clickThroughURL);
+
+              if (clickThroughURL.StartsWith("app://"))
+              {
+                  switch (clickThroughURL)
+                  {
+                      case "app://ContentExchanger":
+                          System.Diagnostics.Process.Start(_contentExchangerPath);
+                          _logger.WriteTimestampedMessage("successfully started app in " + _contentExchangerPath);
+                          break;
+                      case "app://ContentExchanger-s":
+                          System.Diagnostics.Process.Start(_contentExchangerPath, "/s");
+                          _logger.WriteTimestampedMessage("successfully started app in " + _contentExchangerPath + " in safe mode");
+                          break;
+                          // TODO: when installer supports repair mode, add this case statement
+                          /*   case "app://SoftwareInstaller":
+                  // TODO: execute software installer here
+                  break;*/
+                  }
+              }
+
+              if (clickThroughURL.StartsWith("http://") || clickThroughURL.StartsWith("https://"))
+              {
+                  // click log to memory
+                  screenSaver.AddClickLog();
+
+                  _logger.WriteTimestampedMessage("successfully added click log.");
+
+                  // cross-desktop communication can't be made; communicate to the SSG to open browser
+                  ScreensaverGuardianClient client = null;
+
+                  try
+                  {
+                      System.ServiceModel.NetNamedPipeBinding binding = new System.ServiceModel.NetNamedPipeBinding();
+                      binding.Name = "SSGBinding";
+                      binding.TransferMode = System.ServiceModel.TransferMode.Buffered;
+                      binding.ReceiveTimeout = TimeSpan.FromMinutes(1);
+                      binding.SendTimeout = TimeSpan.FromMinutes(1);
+                      client = new ScreensaverGuardianClient(binding, new System.ServiceModel.EndpointAddress("net.pipe://localhost/OxigenService"));
+
+                      client.OpenBrowser(clickThroughURL);
+                  }
+                  catch (Exception ex)
+                  {
+                      _logger.WriteError(ex);
+                  }
+                  finally
+                  {
+                      if (client != null)
+                          client.Dispose();
+                  }
+
+                  _logger.WriteTimestampedMessage("web browser opening attempted.");
+              }
+          }
+      }
+  
 
     private static void WriteLogs(bool bFinalWrite)
     {
@@ -943,6 +812,12 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       // capture events
       Application.AddMessageFilter(new ScreenSaverMessageFilter());
+        //while(!_bTerminationStarted)
+        //{
+            Application.Run();
+            //Thread.Sleep(100);
+        //}
+        //CloseApplication();
     }
 
     private static void GetUserSettingsForScreensaver(User user, ref bool bMuteFlash, 

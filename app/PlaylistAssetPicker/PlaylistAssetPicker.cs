@@ -256,130 +256,99 @@ namespace OxigenIIAdvertising.PlaylistLogic
     }
 
     // picks a random content asset from channel bucket
-    private ChannelAssetAssociation GetRandomContentPlaylistAsset(ChannelBucket cb)
-    {
-      // Randomly pick asset from full bucket list
-      // check whether selected asset can be played according to temporal scheduling
-      // if not pick again. This will be repeated 20 times.
-      for (int i = 0; i < 20; i++)
-      {
-        ContentPlaylistAsset contentPlaylistAsset = GetRandomElement<ContentPlaylistAsset>(cb.ContentAssets);
-
-        if (contentPlaylistAsset == null)
-        {
-          _logger.WriteMessage("no asset found in this channel bucket.");
-          return null;
-        }
-        else
-          _logger.WriteMessage("content asset: " + contentPlaylistAsset.AssetID + " selected randomly. Determining if it can be played at this time.");
-
-        if (!_consumedContentPlaylistAssets.Contains(contentPlaylistAsset))
-        {
-          _logger.WriteMessage("content asset has not been attempted on this run.");
-
-          if (contentPlaylistAsset.StartDateTime <= DateTime.Now
-            && contentPlaylistAsset.EndDateTime >= DateTime.Now
-            && (contentPlaylistAsset.PlayerType != PlayerType.WebSite || _bIncludeContentWebAssets && contentPlaylistAsset.PlayerType == PlayerType.WebSite))
+      private ChannelAssetAssociation GetRandomContentPlaylistAsset(ChannelBucket cb)
+      { 
+          // Randomly pick asset from full bucket list
+          // check whether selected asset can be played according to temporal scheduling
+          // if not pick again. This will be repeated 20 times.
+          for (int i = 0; i < 20; i++)
           {
-            if (contentPlaylistAsset.ScheduleInfo.Length == 0)
-            {
-              _logger.WriteMessage("content asset has no schedule info. Checking if it is available.");
+              ContentPlaylistAsset contentPlaylistAsset = GetRandomElement(cb.ContentAssets);
 
-              if (contentPlaylistAsset.PlayerType == PlayerType.WebSite)
+              if (contentPlaylistAsset == null)
               {
-                _logger.WriteMessage("content asset is a website. Checking if it is available online.");
+                  _logger.WriteMessage("no asset found in this channel bucket.");
+                  return null;
+              }
 
-                if (AssetWebsiteExists(contentPlaylistAsset.AssetWebSite))
+              _logger.WriteMessage("content asset: " + contentPlaylistAsset.AssetID +
+                                   " selected randomly. Determining if it can be played at this time.");
+
+              if (_consumedContentPlaylistAssets.Contains(contentPlaylistAsset)) continue;
+
+              _logger.WriteMessage("content asset has not been attempted on this run.");
+
+              if (!((contentPlaylistAsset.StartDateTime <= DateTime.Now
+                     && contentPlaylistAsset.EndDateTime >= DateTime.Now
+                     &&
+                     (contentPlaylistAsset.PlayerType != PlayerType.WebSite ||
+                      _bIncludeContentWebAssets && contentPlaylistAsset.PlayerType == PlayerType.WebSite))) ||
+                  (!_assetScheduler.IsAssetPlayable(contentPlaylistAsset.ScheduleInfo)))
+              {
+                  _consumedContentPlaylistAssets.Add(contentPlaylistAsset);
+                  continue; 
+              }
+                  
+
+              
+                _logger.WriteMessage("content asset has no schedule info. Checking if it is available.");
+
+                if (contentPlaylistAsset.PlayerType == PlayerType.WebSite)
                 {
-                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite + " is available online and will be selected.");
-                  return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
+                    _logger.WriteMessage("content asset is a website. Checking if it is available online.");
+
+                    if (AssetWebsiteExists(contentPlaylistAsset.AssetWebSite))
+                    {
+                        _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite +
+                                            " is available online and will be selected.");
+                        return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
+                    }
+
+                    _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite +
+                                        " is not available online. Disabling selection of web content for this run.");
+                    _bIncludeContentWebAssets = false;
+
                 }
                 else
                 {
-                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite + " is not available online. Disabling selection of web content for this run.");
-                  _bIncludeContentWebAssets = false;
+                    _logger.WriteMessage("content asset is a non-website. Checking if it is available on disk.");
+
+                    if (AssetFileExists(contentPlaylistAsset.GetAssetFilenameGUIDSuffix(),
+                                        contentPlaylistAsset.AssetFilename))
+                    {
+                        _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename +
+                                            " exists on disk.");
+
+                        if (!_bInsufficientMemoryForLargeFiles || IsNonLargeFile(contentPlaylistAsset))
+                        {
+                            _logger.WriteTimestampedMessage("Content asset " + contentPlaylistAsset.AssetFilename +
+                                                            " can be played.");
+                            return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
+                        }
+
+                        _logger.WriteTimestampedMessage(
+                            "There are physical memory restrictions and content asset " +
+                            contentPlaylistAsset.AssetFilename + " cannot be played");
+                    }
+                    else
+                        _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename +
+                                            " does not exist on disk.");
                 }
-              }
-              else if (contentPlaylistAsset.PlayerType != PlayerType.WebSite)
-              {
-               _logger.WriteMessage("content asset is a non-website. Checking if it is available on disk.");
+              
 
-                if (AssetFileExists(contentPlaylistAsset.GetAssetFilenameGUIDSuffix(), contentPlaylistAsset.AssetFilename))
-                {
-                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename + " exists on disk.");
-
-                  if (!_bInsufficientMemoryForLargeFiles || IsNonLargeFile(contentPlaylistAsset))
-                  {
-                    _logger.WriteTimestampedMessage("Content asset " + contentPlaylistAsset.AssetFilename + " can be played.");
-                    return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
-                  }
-                  else
-                    _logger.WriteTimestampedMessage("There are physical memory restrictions and content asset " + contentPlaylistAsset.AssetFilename + " cannot be played");
-                }
-                else
-                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename + " does not exist on disk.");
-              }
-              else
-                return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
-            }
-
-            if (_assetScheduler.IsAssetPlayable(contentPlaylistAsset.ScheduleInfo))
-            {
-              _logger.WriteMessage("content asset has no schedule info. Checking if it is available.");
-
-              if (contentPlaylistAsset.PlayerType == PlayerType.WebSite)
-              {
-                _logger.WriteMessage("content asset is a website. Checking if it is available online.");
-
-                if (AssetWebsiteExists(contentPlaylistAsset.AssetWebSite))
-                {
-                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite + " is available online and will be selected.");
-                  return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
-                }
-                else
-                {
-                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetWebSite + " is not available online. Disabling selection of web content for this run.");
-                  _bIncludeContentWebAssets = false;
-                }
-              }
-              else if (contentPlaylistAsset.PlayerType != PlayerType.WebSite)
-              {
-                _logger.WriteMessage("content asset is a non-website. Checking if it is available on disk.");
-
-                if (AssetFileExists(contentPlaylistAsset.GetAssetFilenameGUIDSuffix(), contentPlaylistAsset.AssetFilename))
-                {
-                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename + " exists on disk.");
-
-                  if (!_bInsufficientMemoryForLargeFiles || IsNonLargeFile(contentPlaylistAsset))
-                  {
-                    _logger.WriteTimestampedMessage("Content asset " + contentPlaylistAsset.AssetFilename + " can be played.");
-                    return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
-                  }
-                  else
-                    _logger.WriteTimestampedMessage("There are physical memory restrictions and content asset " + contentPlaylistAsset.AssetFilename + " cannot be played");
-                }
-                else
-                  _logger.WriteMessage("content asset " + contentPlaylistAsset.AssetFilename + " does not exist on disk.");
-              }
-              else
-                return new ChannelAssetAssociation(cb.ChannelID, contentPlaylistAsset);
-            }
+              _consumedContentPlaylistAssets.Add(contentPlaylistAsset);
           }
-        }
 
-        _consumedContentPlaylistAssets.Add(contentPlaylistAsset);
+          // if nothing found go through Channel Bucket's entire list (excluding the consumed ones), 
+          // checking what CAN be displayed and create a shortlist
+          // then randomly pick one from the shortlist.
+          ContentPlaylistAsset cpa = GetRandomElement(GetPlayableContentPlaylistAssetsExcludingConsumed(cb));
+
+          if (cpa == null)
+              return null;
+
+          return new ChannelAssetAssociation(cb.ChannelID, cpa);
       }
-                
-      // if nothing found go through Channel Bucket's entire list (excluding the consumed ones), 
-      // checking what CAN be displayed and create a shortlist
-      // then randomly pick one from the shortlist.
-      ContentPlaylistAsset cpa = GetRandomElement<ContentPlaylistAsset>(GetPlayableContentPlaylistAssetsExcludingConsumed(cb));
-
-      if (cpa == null)
-        return null;
-
-      return new ChannelAssetAssociation(cb.ChannelID, cpa);
-    }
 
     // filter non consumed content assets
     private IEnumerable<ContentPlaylistAsset> GetPlayableContentPlaylistAssetsExcludingConsumed(ChannelBucket cb)
@@ -536,14 +505,9 @@ namespace OxigenIIAdvertising.PlaylistLogic
 
       bool bFileExists = File.Exists(filePath);
 
-      bool bFileIsDecryptable = bFileExists && EncryptionDecryption.EncryptionDecryptionHelper.TryIfFileDecryptable(filePath, _password);
-
       _logger.WriteMessage("File " + assetFileName + " exists: " + bFileExists);
 
-      if (bFileExists)
-        _logger.WriteMessage("File " + assetFileName + " is decryptable: " + bFileIsDecryptable);
-
-      return (bFileExists && bFileIsDecryptable);
+      return (bFileExists);
     }
 
     private bool AssetWebsiteExists(string targetURL)
