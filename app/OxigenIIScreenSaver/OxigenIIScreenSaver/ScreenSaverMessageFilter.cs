@@ -17,27 +17,32 @@ namespace OxigenIIAdvertising.ScreenSaver
       // key press
       if (m.Msg == 0x0100)
       {
-        // was pressed key the space bar
-        if (m.WParam == new IntPtr(0x20))
-          Program.TerminateApplication(true);
-        else
-          Program.TerminateApplication(false);
+          // was pressed key the space bar
+          if (m.WParam == new IntPtr(0x20))
+          {
+              Program.TerminateApplication(true);
+              return true;
+          }
+          
+      }
+        //else
+        //  Program.TerminateApplication(false);
 
-        return true;
+        return false;
       }
 
       // mouse movement
-      if (m.Msg == 0x0200)
-      {
-        if (Math.Abs(Cursor.Position.X - _originalPosition.X) > 20 | Math.Abs(Cursor.Position.Y - _originalPosition.Y) > 20)
-        {
-          Program.TerminateApplication(false);
+      //if (m.Msg == 0x0200)
+      //{
+      //  if (Math.Abs(Cursor.Position.X - _originalPosition.X) > 20 | Math.Abs(Cursor.Position.Y - _originalPosition.Y) > 20)
+      //  {
+      //    Program.TerminateApplication(false);
 
-          return true;
-        }
-      }
+      //    return true;
+      //  }
+      //}
 
-      return false;
-    }
+      //return false;
+    //}
   }
 }

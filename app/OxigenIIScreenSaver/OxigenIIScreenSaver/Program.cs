@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using OxigenIIAdvertising.ScreenSaver.Properties;
 using OxigenIIAdvertising.AppData;
@@ -556,7 +557,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         {
           foreach (ScreenSaver screensaver in _screenSavers)
           {
-            bScreensaverThreadsAlive = screensaver.AreScreensaverThreadsAlive();
+            bScreensaverThreadsAlive = screensaver.IsScreensaverThreadAlive();
 
             if (bScreensaverThreadsAlive)
               break;
@@ -637,6 +638,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
     public static void TerminateApplication(bool bClickThroughPressed)
     {
+        if (_bTerminationStarted) return;
       lock (_terminationObj)
       {
         // as long as _bTerminationStarted is only being accessed within a thread
@@ -672,6 +674,8 @@ namespace OxigenIIAdvertising.ScreenSaver
             if (bFormsShowing)
               break;
           }
+
+          Thread.Sleep(100);
         }
 
         _logger.WriteTimestampedMessage("successfully hid forms.");
@@ -687,11 +691,13 @@ namespace OxigenIIAdvertising.ScreenSaver
         {
           foreach (ScreenSaver screensaver in _screenSavers)
           {
-            bScreensaverThreadsAlive = screensaver.AreScreensaverThreadsAlive();
+            bScreensaverThreadsAlive = screensaver.IsScreensaverThreadAlive();
 
             if (bScreensaverThreadsAlive)
               break;
           }
+
+            Thread.Sleep(100);
         }
 
         _logger.WriteTimestampedMessage("successfully stopped threads.");

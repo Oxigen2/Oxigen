@@ -46,24 +46,33 @@ namespace OxigenIIAdvertising.ScreenSaver
     /// </summary>
     private void InitializeComponent()
     {
-      this.SuspendLayout();
-      // 
-      // ScreenSaver
-      // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.Color.Black;
-      this.ClientSize = new System.Drawing.Size(860, 777);
-      this.ForeColor = System.Drawing.Color.White;
-      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-      this.Name = "ScreenSaver";
-      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ScreenSaver_Closed);
-      this.HandleCreated += new EventHandler(ScreenSaver_HandleCreated);
-      this.Load +=new EventHandler(ScreenSaver_Load);
-      this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.workerTimer = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // workerTimer
+            // 
+            this.workerTimer.Tick += new System.EventHandler(this.workerTimer_Tick);
+            // 
+            // ScreenSaver
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(860, 777);
+            this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "ScreenSaver";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ScreenSaver_Closed);
+            this.Load += new System.EventHandler(this.ScreenSaver_Load);
+            this.HandleCreated += new System.EventHandler(this.ScreenSaver_HandleCreated);
+            this.ResumeLayout(false);
+
     }
 
     #endregion
+
+    private System.Windows.Forms.Timer workerTimer;
 
   }
 }
