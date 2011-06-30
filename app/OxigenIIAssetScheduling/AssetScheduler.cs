@@ -36,6 +36,8 @@ namespace OxigenIIAdvertising.AssetScheduling
     /// <returns>true if the temporal criteria are met</returns>
     public bool IsAssetPlayable(string[] inputConditionsCollection)
     {
+      if (inputConditionsCollection.Length == 0)
+        return true;
       foreach (string inputCondition in inputConditionsCollection)
       {
         if (IsAssetPlayableIndividualLine(inputCondition))
