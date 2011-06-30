@@ -40,7 +40,6 @@ namespace Setup
         ClientLogger logger = new NonPersistentClientLogger();
         logger.Log("NonAdmin");
         MessageBox.Show("You do not have the necessary access level to perform administration tasks on this PC. Installation cannot continue.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-        AppDataSingleton.Instance.ExitPromptSuppressed = true;
         Application.Exit();
         return;
       }

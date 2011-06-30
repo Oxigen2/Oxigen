@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
@@ -1245,42 +1246,19 @@ namespace Setup
 
     internal static UserManagementServicesLive.SimpleErrorWrapper SendUninstallInfo(string userGUID, string machineGUID)
     {
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
       UserManagementServicesLive.SimpleErrorWrapper wrapper = null;
 
       try
       {
-        string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
-
-        if (string.IsNullOrEmpty(url))
-        {
-            AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Registering uninstall: Couldn't find a responsive URL.");
-            return SetupHelper.GetGenericErrorConnectingWrapper();
-        }
-          client = new Setup.UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-        client.Url = url;
-
-        wrapper = client.RegisterSoftwareUninstall(userGUID, machineGUID, "password");
+          using (var client = new UserDataManagementClient())
+          {
+              wrapper = client.RegisterSoftwareUninstall(userGUID, machineGUID, "password");
+          }
       }
       catch (System.Net.WebException ex)
       {
           AppDataSingleton.Instance.SetupLogger.WriteError(ex);
         return SetupHelper.GetGenericErrorConnectingWrapper();
-      }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
       }
 
       return wrapper;
@@ -1346,6 +1324,7 @@ namespace Setup
 
       return GenericRegistryAccess.GetRegistryKey(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Oxigen");
     }
+
   }
 
   internal enum RAMStatus

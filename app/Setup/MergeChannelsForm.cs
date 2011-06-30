@@ -183,47 +183,23 @@ namespace Setup
     {
       _bThreadStarted = true;
 
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
 
       lock (_lockObj)
       {
         try
         {
-          string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig",
-            "UserManagementServices.svc");
-
-          if (string.IsNullOrEmpty(url))
-          {
-              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Updating subscriptions: couldn't find a responsive URL.");
-            _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-            return;
-          }
-
-          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-          client.Url = url;
-
-          _wrapper = client.EditSubscriptions(_userGUID, _pcGUID, AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
+            using (var client = new UserDataManagementClient())
+            {
+                _wrapper = client.EditSubscriptions(_userGUID, _pcGUID,
+                                                    AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
+            }
         }
         catch (System.Net.WebException ex)
         {
             AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
         }
-        finally
-        {
-          if (client != null)
-          {
-            try
-            {
-              client.Dispose();
-            }
-            catch
-            {
-              client.Abort();
-            }
-          }
-        }
+        
       }
     }
 

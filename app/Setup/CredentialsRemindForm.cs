@@ -51,26 +51,15 @@ namespace Setup
 
     private void SendEmailReminder()
     {
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
 
       lock (_lockObj)
       {
         try
         {
-          string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
-
-          if (string.IsNullOrEmpty(url))
+          using (var client = new UserDataManagementClient())
           {
-              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Sending an e-mail reminder: Could not find a URL.");
-            _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-            return;
+              _wrapper = client.SendEmailReminder(AppDataSingleton.Instance.EmailAddress, "password");
           }
-
-          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-          client.Url = url;
-
-          _wrapper = client.SendEmailReminder(AppDataSingleton.Instance.EmailAddress, "password");
         }
         catch (System.Net.WebException ex)
         {
@@ -78,20 +67,7 @@ namespace Setup
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
           return;
         }
-        finally
-        {
-          if (client != null)
-          {
-            try
-            {
-              client.Dispose();
-            }
-            catch
-            {
-              client.Abort();
-            }
-          }
-        }
+        
       }
     }
 

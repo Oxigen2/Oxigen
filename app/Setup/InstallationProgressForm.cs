@@ -188,56 +188,45 @@ namespace Setup
 
       string macAddress = SetupHelper.GetMACAddress();
 
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
-
       lock (_lockObj)
       {
         try
         {
-          string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
-
-          AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 1");
-
-          if (string.IsNullOrEmpty(url))
-          {
-              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Registering details: couldn't get a responsive URL.");
-            _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-            return;
-          }
-
           AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 2");
 
-          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+             AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 3");
+            using (var client = new UserDataManagementClient())
+          {
 
-          AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 3");
+              AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 4");
 
-          client.Url = url;
+              _wrapper = client.RegisterNewUser(AppDataSingleton.Instance.EmailAddress,
+                AppDataSingleton.Instance.Password,
+                AppDataSingleton.Instance.FirstName,
+                AppDataSingleton.Instance.LastName,
+                AppDataSingleton.Instance.Gender,
+                AppDataSingleton.Instance.DOB,
+                true,
+                AppDataSingleton.Instance.TownCity,
+                AppDataSingleton.Instance.State,
+                AppDataSingleton.Instance.Country,
+                AppDataSingleton.Instance.OccupationSector,
+                AppDataSingleton.Instance.EmploymentLevel,
+                AppDataSingleton.Instance.AnnualHouseholdIncome,
+                AppDataSingleton.Instance.User.UserGUID,
+                AppDataSingleton.Instance.User.MachineGUID,
+                AppDataSingleton.Instance.User.SoftwareMajorVersionNumber,
+                true,
+                AppDataSingleton.Instance.User.SoftwareMinorVersionNumber,
+                true,
+                macAddress,
+                AppDataSingleton.Instance.NewPCName,
+                AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
+                "password");          
+            }
 
-          AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 4");
 
-          _wrapper = client.RegisterNewUser(AppDataSingleton.Instance.EmailAddress,
-            AppDataSingleton.Instance.Password,
-            AppDataSingleton.Instance.FirstName,
-            AppDataSingleton.Instance.LastName,
-            AppDataSingleton.Instance.Gender,
-            AppDataSingleton.Instance.DOB,
-            true,
-            AppDataSingleton.Instance.TownCity,
-            AppDataSingleton.Instance.State,
-            AppDataSingleton.Instance.Country,
-            AppDataSingleton.Instance.OccupationSector,
-            AppDataSingleton.Instance.EmploymentLevel,
-            AppDataSingleton.Instance.AnnualHouseholdIncome,
-            AppDataSingleton.Instance.User.UserGUID,
-            AppDataSingleton.Instance.User.MachineGUID,
-            AppDataSingleton.Instance.User.SoftwareMajorVersionNumber,
-            true,
-            AppDataSingleton.Instance.User.SoftwareMinorVersionNumber,
-            true,
-            macAddress,
-            AppDataSingleton.Instance.NewPCName,
-            AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
-            "password");
+
 
           AppDataSingleton.Instance.SetupLogger.WriteMessage("RegisterUserDetails 5");
         }
@@ -245,20 +234,6 @@ namespace Setup
         {
             AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-        }
-        finally
-        {
-          if (client != null)
-          {
-            try
-            {
-              client.Dispose();
-            }
-            catch
-            {
-              client.Abort();
-            }
-          }
         }
       }
     }
@@ -268,66 +243,41 @@ namespace Setup
     {
       _bThreadStarted = true;
 
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
-
       lock (_lockObj)
       {
         try
         {
-          string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
 
-          if (string.IsNullOrEmpty(url))
+          using (var client = new UserDataManagementClient())
           {
-              AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Updating details: couldn't find a responsive URL");
-            _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-            return;
+              _wrapper = client.UpdateUserAccount(AppDataSingleton.Instance.EmailAddress,
+                                                  AppDataSingleton.Instance.Password,
+                                                  AppDataSingleton.Instance.FirstName,
+                                                  AppDataSingleton.Instance.LastName,
+                                                  AppDataSingleton.Instance.Gender,
+                                                  AppDataSingleton.Instance.DOB,
+                                                  true,
+                                                  AppDataSingleton.Instance.TownCity,
+                                                  AppDataSingleton.Instance.State,
+                                                  AppDataSingleton.Instance.Country,
+                                                  AppDataSingleton.Instance.OccupationSector,
+                                                  AppDataSingleton.Instance.EmploymentLevel,
+                                                  AppDataSingleton.Instance.AnnualHouseholdIncome,
+                                                  AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
+                                                  AppDataSingleton.Instance.GeneralData.SoftwareMajorVersionNumber,
+                                                  true,
+                                                  AppDataSingleton.Instance.GeneralData.SoftwareMinorVersionNumber,
+                                                  true,
+                                                  AppDataSingleton.Instance.User.MachineGUID,
+                                                  AppDataSingleton.Instance.NewPCName,
+                                                  SetupHelper.GetMACAddress(),
+                                                  "password");
           }
-
-          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-          client.Url = url;
-
-          _wrapper = client.UpdateUserAccount(AppDataSingleton.Instance.EmailAddress,
-            AppDataSingleton.Instance.Password,
-            AppDataSingleton.Instance.FirstName,
-            AppDataSingleton.Instance.LastName,
-            AppDataSingleton.Instance.Gender,
-            AppDataSingleton.Instance.DOB,
-            true,
-            AppDataSingleton.Instance.TownCity,
-            AppDataSingleton.Instance.State,
-            AppDataSingleton.Instance.Country,
-            AppDataSingleton.Instance.OccupationSector,
-            AppDataSingleton.Instance.EmploymentLevel,
-            AppDataSingleton.Instance.AnnualHouseholdIncome,
-            AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
-            AppDataSingleton.Instance.GeneralData.SoftwareMajorVersionNumber,
-            true,
-            AppDataSingleton.Instance.GeneralData.SoftwareMinorVersionNumber,
-            true,
-            AppDataSingleton.Instance.User.MachineGUID,
-            AppDataSingleton.Instance.NewPCName,
-            SetupHelper.GetMACAddress(),
-            "password");
         }
         catch (System.Net.WebException ex)
         {
           AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-        }
-        finally
-        {
-          if (client != null)
-          {
-            try
-            {
-              client.Dispose();
-            }
-            catch
-            {
-              client.Abort();
-            }
-          }
         }
       }
     }    

@@ -215,28 +215,16 @@ namespace Setup
 
     private static string GetUserGUIDByUsername()
     {
-      // Check MAC Address and assign a machine GUID to AppDataSingleton
-      string macAddress = SetupHelper.GetMACAddress();
 
-      string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
-        int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
-        SetupHelper.GetRandomLetter().ToString(),
-        "UserManagementServices.svc");
-
-      if (string.IsNullOrEmpty(UMSUri))
-        return null;
-
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
       
       StringErrorWrapper wrapper = null;
 
       try
       {
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-        client.Url = UMSUri;
-
-        wrapper = client.GetUserGUIDByUsername(AppDataSingleton.Instance.Username, "password");
+          using (var client = new UserDataManagementClient())
+          {
+              wrapper = client.GetUserGUIDByUsername(AppDataSingleton.Instance.Username, "password");
+          }
       }
       catch (System.Net.WebException)
       {
@@ -244,21 +232,7 @@ namespace Setup
 
         return null;
       }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
-      }
-
+      
       if (wrapper.ErrorStatus != ErrorStatus1.Success) {
         AppDataSingleton.Instance.SetupLogger.WriteMessage(wrapper.Message);
         return null;
@@ -269,61 +243,29 @@ namespace Setup
 
     private static bool SendDetails()
     {
-      // Check MAC Address and assign a machine GUID to AppDataSingleton
-      string macAddress = SetupHelper.GetMACAddress();
-      
-      string UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
-      int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
-      AppDataSingleton.Instance.User.GetUserGUIDSuffix(),
-      "UserManagementServices.svc");
-
-      if (string.IsNullOrEmpty(UMSUri)) 
-      {
-        AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details not found");
-        return false;
-      }
-
-      AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("URI to connect to send details: " + UMSUri);
-
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
-      
       SimpleErrorWrapper wrapper = null;
         
       try
       {
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-        client.Url = UMSUri;
-
-        wrapper = client.SyncWithServerNoPersonalDetails(AppDataSingleton.Instance.User.UserGUID,
-          AppDataSingleton.Instance.User.MachineGUID,
-          AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
-          AppDataSingleton.Instance.User.SoftwareMajorVersionNumber,
-          true,
-          AppDataSingleton.Instance.User.SoftwareMinorVersionNumber,
-          true,
-          Environment.MachineName,
-          macAddress,          
-          "password");
+          using (var client = new UserDataManagementClient())
+          {
+              wrapper = client.SyncWithServerNoPersonalDetails(AppDataSingleton.Instance.User.UserGUID,
+                                                               AppDataSingleton.Instance.User.MachineGUID,
+                                                               AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
+                                                               AppDataSingleton.Instance.User.SoftwareMajorVersionNumber,
+                                                               true,
+                                                               AppDataSingleton.Instance.User.SoftwareMinorVersionNumber,
+                                                               true,
+                                                               Environment.MachineName,
+                                                               null,
+                                                               "password");
+          }
       }
       catch (System.Net.WebException ex)
       {
          AppDataSingleton.Instance.SetupLogger.WriteError(ex);
 
         return false;
-      }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
       }
 
       if (wrapper.ErrorStatus != ErrorStatus1.Success) 

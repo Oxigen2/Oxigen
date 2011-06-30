@@ -89,7 +89,6 @@ namespace Setup
 
     private void CheckUserDetails()
     {
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
       string userGUID = null;
       
       lock (_lockObj)
@@ -105,14 +104,16 @@ namespace Setup
             return;
           }
 
-          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+            using (var client = new UserDataManagementClient())
+            {
+               client.Url = url;
 
-          client.Url = url;
+              _wrapper = client.GetUserExistsByUserCredentials(txtEmailAddress.Text,
+                txtPassword.Text,
+                "password",
+                out userGUID);               
+            }
 
-          _wrapper = client.GetUserExistsByUserCredentials(txtEmailAddress.Text,
-            txtPassword.Text,
-            "password",
-            out userGUID);
         }
         catch (System.Net.WebException ex)
         {
@@ -121,20 +122,7 @@ namespace Setup
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
           return;
         }
-        finally
-        {
-          if (client != null)
-          {
-            try
-            {
-              client.Dispose();
-            }
-            catch
-            {
-              client.Abort();
-            }
-          }
-        }
+
 
         if (_wrapper.ErrorStatus == Setup.UserManagementServicesLive.ErrorStatus1.Success)
           AppDataSingleton.Instance.User.UserGUID = userGUID;

@@ -178,6 +178,7 @@
     <Compile Include="UninstallOldOxigenWaitForm.Designer.cs">
       <DependentUpon>UninstallOldOxigenWaitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserDataManagementServicesClientFix.cs" />
     <Compile Include="Web References\UserManagementServicesLive\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

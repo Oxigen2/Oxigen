@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+
 
 namespace Setup
 {
@@ -30,37 +26,25 @@ namespace Setup
       foreach (Form openForm in openForms)
         openForm.Hide();
 
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
 
       try
       {
         string macAddress = SetupHelper.GetMACAddress();
 
-        client = new Setup.UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+        using (var client = new UserDataManagementClient())
+        {
+            client.Url = "https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc";
 
-        client.Url = "https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc";
+            client.SendErrorReport(macAddress, _exception);
+        }
 
-        client.SendErrorReport(macAddress, _exception);
+
       }
       catch
       {
         // ignore       
       }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
-      }
-
+      
       Application.Exit();
     }
   }

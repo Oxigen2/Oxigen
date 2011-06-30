@@ -126,46 +126,24 @@ namespace Setup
 
     private SimpleErrorWrapper UpdateDetailsWithExistingData()
     {
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
       UserManagementServicesLive.UserInfo userInfo = null;
       SimpleErrorWrapper wrapper = null;
 
       try
       {
-        string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
-
-        if (string.IsNullOrEmpty(url))
-        {
-            AppDataSingleton.Instance.SetupLogger.WriteTimestampedMessage("Updating with existing data: Could not find a responsive URL");
-            return SetupHelper.GetGenericErrorConnectingWrapper();
-        }
-          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-        client.Url = url;
-        wrapper = client.GetExistingUserDetails(AppDataSingleton.Instance.User.UserGUID,
-          AppDataSingleton.Instance.Password,
-          "password", out userInfo);
+          using (var client = new UserDataManagementClient())
+          {
+              wrapper = client.GetExistingUserDetails(AppDataSingleton.Instance.User.UserGUID,
+                                                      AppDataSingleton.Instance.Password,
+                                                      "password", out userInfo);
+          }
       }
       catch (System.Net.WebException ex)
       {
         AppDataSingleton.Instance.SetupLogger.WriteError(ex);
         return SetupHelper.GetGenericErrorConnectingWrapper();
       }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
-      }
-
+   
       if (wrapper.ErrorStatus == ErrorStatus1.Failure)
         return wrapper;
 

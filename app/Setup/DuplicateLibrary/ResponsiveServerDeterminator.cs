@@ -135,7 +135,10 @@ namespace Setup
      
       try
       {
-        response = (HttpWebResponse)request.GetResponse();
+          if (request.Proxy != null)
+              request.Proxy.Credentials = CredentialCache.DefaultCredentials;
+
+          response = (HttpWebResponse)request.GetResponse();
       }
       catch (Exception ex)
       {

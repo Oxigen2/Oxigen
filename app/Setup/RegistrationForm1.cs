@@ -71,46 +71,24 @@ namespace Setup
 
     private void CheckEmailExists()
     {
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
+
 
       lock (_lockObj)
       {
         try
         {
-          string url = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig, "masterConfig", "UserManagementServices.svc");
 
-          if (string.IsNullOrEmpty(url))
-          {
-              AppDataSingleton.Instance.SetupLogger.WriteError("Checking if e-mail address exists: Couldn't get a responsive URL");
-            _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
-            return;
-          }
-
-          client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-
-          client.Url = url;
-
-          _wrapper = client.CheckEmailAddressExists(_emailAddress, "password");
+            using (var client = new UserDataManagementClient())
+            {
+                _wrapper = client.CheckEmailAddressExists(_emailAddress, "password");
+            }
         }
         catch (System.Net.WebException ex)
         {
             AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
         }
-        finally
-        {
-          if (client != null)
-          {
-            try
-            {
-              client.Dispose();
-            }
-            catch
-            {
-              client.Abort();
-            }
-          }
-        }
+        
       }
     }
 

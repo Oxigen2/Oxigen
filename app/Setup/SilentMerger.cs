@@ -55,127 +55,57 @@ namespace Setup
 
     private static void DeleteStreams()
     {
-      string UMSUri = null;
       string machineGUID = SetupHelper.GetFromRegistry("pcGUID");
-
-      if (!GetResponsiveURI(ref UMSUri))
-        return;
-
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
 
       try
       {
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
+          using (var client = new UserDataManagementClient())
+          {
 
-        client.Url = UMSUri;
-
-        client.RemoveStreamsFromSilentMergeByMachineGUID(machineGUID,
-          AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
+              client.RemoveStreamsFromSilentMergeByMachineGUID(machineGUID,
+                                                               AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
+                                                               "password");
+          }
       }
       catch (System.Net.WebException)
       {
-      }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
       }
     }
 
     private static void ReplaceStreams()
     {
-      string UMSUri = null;
       string machineGUID = SetupHelper.GetFromRegistry("pcGUID");
-
-      if (!GetResponsiveURI(ref UMSUri))
-        return;
-
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
 
       try
       {
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-        client.Url = UMSUri;
-
-        client.ReplaceStreamsFromSilentMergeByMachineGUID(machineGUID,
-          AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
+          using (var client = new UserDataManagementClient())
+          {
+              client.ReplaceStreamsFromSilentMergeByMachineGUID(machineGUID,
+                                                                AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
+                                                                "password");
+          }
       }
       catch (System.Net.WebException)
       {
-      }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
       }
     }
 
     private static void AddStreams()
     {
-      string UMSUri = null;
       string machineGUID = SetupHelper.GetFromRegistry("pcGUID");
-
-      if (!GetResponsiveURI(ref UMSUri))
-        return;
-
-      UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer client = null;
-
+      
       try
       {
-        client = new UserManagementServicesLive.BasicHttpBinding_IUserManagementServicesNonStreamer();
-        client.Url = UMSUri;
-
-        client.AddStreamsFromSilentMergeByMachineGUID(machineGUID,
-          AppDataSingleton.Instance.ChannelSubscriptionsToUpload, "password");
+          using (var client = new UserDataManagementClient())
+          {
+              client.AddStreamsFromSilentMergeByMachineGUID(machineGUID,
+                                                            AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
+                                                            "password");
+          }
       }
       catch (System.Net.WebException)
       {
       }
-      finally
-      {
-        if (client != null)
-        {
-          try
-          {
-            client.Dispose();
-          }
-          catch
-          {
-            client.Abort();
-          }
-        }
-      }
-    }
-
-    private static bool GetResponsiveURI(ref string UMSUri)
-    {
-      UMSUri = SetupHelper.GetResponsiveServer(ServerType.MasterGetConfig,
-          int.Parse(AppDataSingleton.Instance.GeneralData.NoServers["masterConfig"]),
-          SetupHelper.GetRandomLetter().ToString(),
-          "UserManagementServices.svc");
-
-      if (string.IsNullOrEmpty(UMSUri))
-        return false;
-
-      return true;
     }
   }
 }
