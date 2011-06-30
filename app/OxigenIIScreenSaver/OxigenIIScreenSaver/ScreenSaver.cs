@@ -465,6 +465,10 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         private void SelectAndLoadAsset(object state)
         {
+            CultureInfo ci = new CultureInfo("en-GB");
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
+
             _previousSlide.Creating();
             //_count++;
             //if (_count > 2) Thread.Sleep(10000);
@@ -628,6 +632,7 @@ namespace OxigenIIAdvertising.ScreenSaver
                         case SlideState.NewContentRequired:
                             var callBack = new WaitCallback(SelectAndLoadAsset);
                             ThreadPool.QueueUserWorkItem(callBack);
+                            
                             break;
                         case SlideState.ReadyForDisplay:
                             if (HasCurrentSlideFinishedPlaying())
