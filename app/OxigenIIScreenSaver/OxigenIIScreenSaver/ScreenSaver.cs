@@ -50,7 +50,6 @@ namespace OxigenIIAdvertising.ScreenSaver
         private string _assetPath = null;
 
         private volatile bool _runScreenSaver = true;
-        private volatile bool _bFirstRun = true;
 
         // used by worker thread
         private AssetScheduler _assetScheduler = null;
@@ -192,26 +191,12 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             _currentSlide = new Slide(_players.APlayers);
             _previousSlide = new Slide(_players.BPlayers);
-
-            _logger.WriteTimestampedMessage("successfully set the z-indices of the players.");
-
             _faderForm = new FaderForm();
-
-            _logger.WriteTimestampedMessage("successfully created a fader form.");
-
             _ddFormFader = new DDFormFader(_faderForm.Handle);
-
-            _logger.WriteTimestampedMessage("successfully created the object to fade the fader form.");
-
             _faderForm.StartPosition = FormStartPosition.Manual;
-
-            _logger.WriteTimestampedMessage("successfully set the start position of the fader form to manual.");
-
             AddOwnedForm(_faderForm);
 
             _logger.WriteTimestampedMessage("successfully added the fader form as a form owned by the Screensaver Form.");
-
-
         }
 
 
@@ -221,27 +206,20 @@ namespace OxigenIIAdvertising.ScreenSaver
             return _stopwatch.ElapsedTotalMilliseconds > ((_assetDisplayLength * 1000) - 200);
         }
 
-        private void LogImpressionForPrevious()
-        {
-            if (_previousSlide.ChannelAssetAssociation != null)
-            {
-                ChannelAssetAssociation channelAssetAssociation = _previousSlide.ChannelAssetAssociation;
-                AddImpressionLog(channelAssetAssociation);
-                _logger.WriteTimestampedMessage("successfully added impression log for " +
-                                                channelAssetAssociation.PlaylistAsset.AssetID +
-                                                " in channel: " + channelAssetAssociation.ChannelID);
-            }
-        }
+
 
         public void FadeToDesktop()
         {
             _runScreenSaver = false;
 
             FadeToBlack();
-            AddImpressionLog(_currentSlide.ChannelAssetAssociation);
 
             if (_currentSlide.ChannelAssetAssociation != null)
+            {
+                AddImpressionLog(_currentSlide.ChannelAssetAssociation);
                 _currentSlide.Players[_currentSlide.ChannelAssetAssociation.PlaylistAsset.PlayerType].Stop();
+            }
+                
             foreach (IPlayer player in _players.AllPlayers())
             {
                 player.Control.Visible = false;
@@ -367,20 +345,12 @@ namespace OxigenIIAdvertising.ScreenSaver
           Dictionary<PlayerType, IPlayer> playersToShow,
             Dictionary<PlayerType, IPlayer> playersToHide)
         {
-            // transition to black between assets
-            if (!_bFirstRun)
+            if (channelAssetAssociationAssetToHide != null)
             {
                 FadeToBlack();
-            }
-            else
-            {
-                _bFirstRun = false;
-                _logger.WriteTimestampedMessage("first run of the flipping function.");
-            }
-            LogImpressionForPrevious();
-            if (channelAssetAssociationAssetToHide != null)
                 playersToHide[channelAssetAssociationAssetToHide.PlaylistAsset.PlayerType].Stop();
-          
+                AddImpressionLog(channelAssetAssociationAssetToHide);
+            }
             IPlayer player = playersToShow[channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType];
 
             Controls.SetChildIndex(player.Control, 0);
@@ -407,6 +377,11 @@ namespace OxigenIIAdvertising.ScreenSaver
             _stopwatch.Reset();
             _stopwatch.Start();
             
+            FadeToTransparantcy();
+        }
+
+        private void FadeToTransparantcy()
+        {
             for (int i = 204; i >= 0; i -= 51)
             {
                 _ddFormFader.updateOpacity((byte)i, false);
@@ -414,7 +389,6 @@ namespace OxigenIIAdvertising.ScreenSaver
             }
 
             _logger.WriteTimestampedMessage("successfully faded from black to asset.");
-
         }
 
         private void FadeToBlack()
