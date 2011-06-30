@@ -13,7 +13,6 @@ namespace OxigenIIAdvertising.ScreenSaver
   public class LogSingletonAccessor
   {
     private DateTime _assetImpressionStartDateTime = new DateTime();
-    private object _lockObject = new object();
 
     /// <summary>
     /// The start date and time of the playlist asset as set at the ScreenSaver objects
