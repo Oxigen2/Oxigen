@@ -221,14 +221,11 @@ namespace OxigenIIAdvertising.ScreenSaver
             return _stopwatch.ElapsedTotalMilliseconds > ((_assetDisplayLength * 1000) - 200);
         }
 
-        private void LogImpressionForCurrent()
+        private void LogImpressionForPrevious()
         {
-            // is this the first run of the pulse? If yes, there is nothing to log
-            if (_currentSlide.ChannelAssetAssociation != null)
+            if (_previousSlide.ChannelAssetAssociation != null)
             {
-                // Add logs of the asset previously impressed (i.e. if a is to be impressed next,
-                // log previously impressed asset B, else log previously impressed A)
-                ChannelAssetAssociation channelAssetAssociation = _currentSlide.ChannelAssetAssociation;
+                ChannelAssetAssociation channelAssetAssociation = _previousSlide.ChannelAssetAssociation;
                 AddImpressionLog(channelAssetAssociation);
                 _logger.WriteTimestampedMessage("successfully added impression log for " +
                                                 channelAssetAssociation.PlaylistAsset.AssetID +
@@ -378,7 +375,7 @@ namespace OxigenIIAdvertising.ScreenSaver
                 _bFirstRun = false;
                 _logger.WriteTimestampedMessage("first run of the flipping function.");
             }
-
+            LogImpressionForPrevious();
             if (channelAssetAssociationAssetToHide != null)
                 playersToHide[channelAssetAssociationAssetToHide.PlaylistAsset.PlayerType].Stop();
           
@@ -388,6 +385,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             _logger.WriteMessage("Player " + channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType + ", channelAssetAssociationAssetToShow.PlaylistAsset " + channelAssetAssociationAssetToShow.PlaylistAsset.AssetID + " index changed to 0.");
             player.Play(_bPrimaryMonitor);
             
+
             // Some players need to be refreshed so their display changes immediately
             player.Control.Refresh();
 
@@ -633,8 +631,7 @@ namespace OxigenIIAdvertising.ScreenSaver
                             break;
                         case SlideState.ReadyForDisplay:
                             if (HasCurrentSlideFinishedPlaying())
-                            {
-                                LogImpressionForCurrent();
+                            {                               
                                 FlipAssetPlayer();
                             }
                             break;
