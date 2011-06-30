@@ -239,9 +239,11 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             FadeToBlack();
             AddImpressionLog(_currentSlide.ChannelAssetAssociation);
+
+            if (_currentSlide.ChannelAssetAssociation != null)
+                _currentSlide.Players[_currentSlide.ChannelAssetAssociation.PlaylistAsset.PlayerType].Stop();
             foreach (IPlayer player in _players.AllPlayers())
             {
-                player.Stop();
                 player.Control.Visible = false;
             }
 
@@ -466,7 +468,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         private void SelectAndLoadAsset(object state)
         {
             //_count++;
-            //if (_count > 2) Thread.Sleep(10000);
+            
             try
             {
                 CultureInfo ci = new CultureInfo("en-GB");
@@ -474,6 +476,12 @@ namespace OxigenIIAdvertising.ScreenSaver
                 Thread.CurrentThread.CurrentUICulture = ci;
 
                 ChannelAssetAssociation channelAssetAssociation = SelectAsset();
+                //if (_count > 1) Thread.Sleep(5000);
+                if (!_runScreenSaver)
+                {
+                    _previousSlide.NewContentRequired();
+                    return;
+                }
                 _logger.WriteTimestampedMessage("successfully selected asset: " +
                                                 channelAssetAssociation.PlaylistAsset.AssetID + " from channel " +
                                                 channelAssetAssociation.ChannelID);
@@ -510,7 +518,13 @@ namespace OxigenIIAdvertising.ScreenSaver
                             _assetPath + channelAssetAssociation.PlaylistAsset.GetAssetFilenameGUIDSuffix() + "\\" +
                             channelAssetAssociation.PlaylistAsset.AssetFilename, "password"))
                 {
+                    //if (_count > 1) Thread.Sleep(5000);
                     _logger.WriteMessage("Loading");
+                    if (!_runScreenSaver)
+                    {
+                        _previousSlide.NewContentRequired();
+                        return;
+                    }
                     streamLoader.Load(stream);
                 }
             }
@@ -525,6 +539,12 @@ namespace OxigenIIAdvertising.ScreenSaver
                 string decryptedFilePath = DecryptToTemp(channelAssetAssociation);
                 _logger.WriteMessage("Decrypting Finished");
                 IFileLoader fileLoader = (IFileLoader)player;
+                //if (_count > 1) Thread.Sleep(5000);
+                if (!_runScreenSaver)
+                {
+                    _previousSlide.NewContentRequired();
+                    return;
+                }
                 fileLoader.Load(decryptedFilePath);
                 _logger.WriteMessage("Finished loading");
             }
