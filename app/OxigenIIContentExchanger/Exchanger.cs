@@ -3,19 +3,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Cache;
 using System.IO;
-using System.Net.Cache;
 using OxigenIIAdvertising.XMLSerializer;
-using System.ServiceModel;
-using OxigenIIAdvertising.ServerConnectAttempt;
 using OxigenIIAdvertising.Exceptions;
 using OxigenIIAdvertising.LoggerInfo;
-using ServiceErrorReporting;
 using OxigenIIAdvertising.PlaylistLogic;
 using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.UserSettings;
 using System.Configuration;
-using OxigenIIAdvertising.UserManagementServicesServiceClient;
-using OxigenIIAdvertising.EncryptionDecryption;
 using InterCommunicationStructures;
 using OxigenIIAdvertising.FileRights;
 using System.Diagnostics;
@@ -25,7 +19,6 @@ namespace OxigenIIAdvertising.ContentExchanger
     public class Exchanger
     {
         private string _userGUID = "";
-        private string _userGUIDSuffix = "";
         private string _machineGUID = "";
         private string _systemPassPhrase = "";
 
@@ -40,25 +33,19 @@ namespace OxigenIIAdvertising.ContentExchanger
         private string _userSettingsPath = "";
         private string _debugFilePath = "";
         private string _cdnSubdomain = "";
-
+        private string _mDataSubdomain = "";
         private string _password = "";
 
-        private int _maxNoRelayChannelDataServers = -1;
-        private int _maxNoMasterConfigServers = -1;
-        private int _serverTimeout = -1;
         private int _daysToKeepAssetFiles = -1;
         private long _assetFolderSize = -1;
         private float _defaultDisplayDuration = -1F;
-
-        private string _primaryDomainName = "";
-        private string _secondaryDomainName = "";
-
-        private WebClient _webClient;
 
         Logger _logger = null;
 
         private bool _bGlobalsSet = false;
         private System.ComponentModel.BackgroundWorker _worker = null;
+        private bool _verboseMode = false;
+
 
         [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true, CharSet = System.Runtime.InteropServices.CharSet.Auto)]
         static extern bool GetDiskFreeSpaceEx(string lpDirectoryName,
@@ -69,6 +56,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         public Exchanger(System.ComponentModel.BackgroundWorker worker)
         {
             _worker = worker;
+            _verboseMode = true;
             _bGlobalsSet = SetGlobals();
         }
 
@@ -142,120 +130,121 @@ namespace OxigenIIAdvertising.ContentExchanger
                 // update config files
                 bool bCancelled = false;
 
-                UpdateConfigFiles(ref bCancelled);
-
-                if (bCancelled)
+                using (WebClient client = new WebClient())
                 {
-                    _webClient.Dispose();
-                    status.ExitWithError = false;
+                    if (client.Proxy != null)
+                        client.Proxy.Credentials = CredentialCache.DefaultCredentials;
 
-                    log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
-                    log.SaveLog();
+                    UpdateConfigFiles(client, ref bCancelled);
 
-                    return status;
-                }
+                    if (bCancelled)
+                    {
+                        status.ExitWithError = false;
 
-                // raed the downloaded channel subscriptions
-                ChannelSubscriptions channelSubscriptions = GetChannelSubscriptions();
+                        log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
+                        log.SaveLog();
 
-                if (channelSubscriptions == null)
-                {
-                    _webClient.Dispose();
-                    _logger.WriteTimestampedMessage("No channel subscripitions found. Exiting Content Exchanger");
+                        return status;
+                    }
 
-                    ReportProgress(100, 100);
-                    status.ExitWithError = false;
-                    status.ContentDownloaded = false;
+                    // raed the downloaded channel subscriptions
+                    ChannelSubscriptions channelSubscriptions = GetChannelSubscriptions();
 
-                    log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
-                    log.SaveLog();
+                    if (channelSubscriptions == null)
+                    {
+                        _logger.WriteTimestampedMessage("No channel subscripitions found. Exiting Content Exchanger");
 
-                    return status;
-                }
+                        ReportProgress(100, 100);
+                        status.ExitWithError = false;
+                        status.ContentDownloaded = false;
 
-                channelSubscriptions = FilterChannelSubscriptionsByLock(channelSubscriptions);
+                        log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
+                        log.SaveLog();
 
-                // get the channel data files
-                GetChannelDataFiles(channelSubscriptions, ref bCancelled);
+                        return status;
+                    }
 
-                if (bCancelled)
-                {
-                    _webClient.Dispose();
-                    status.ExitWithError = false;
+                    channelSubscriptions = FilterChannelSubscriptionsByLock(channelSubscriptions);
 
-                    log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
-                    log.SaveLog();
+                    // get the channel data files
+                    GetChannelDataFiles(channelSubscriptions, ref bCancelled, client);
 
-                    return status;
-                }
+                    if (bCancelled)
+                    {
+                        status.ExitWithError = false;
 
-                // Generate Playlist      
-                Playlist playlist = null;
+                        log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
+                        log.SaveLog();
 
-                ReportProgress(0, 20, "Creating the local playlist");
+                        return status;
+                    }
 
-                try
-                {
-                    playlist = PlaylistMaker.CreatePlaylist(_channelDataPath,
-                                                            _advertDataPath,
-                                                            _demographicDataPath,
-                                                            _playlistPath,
-                                                            _password,
-                                                            _defaultDisplayDuration,
-                                                            channelSubscriptions,
-                                                            _logger);
-                }
-                catch (Exception ex)
-                {
-                    _webClient.Dispose();
-                    _logger.WriteError(ex);
-                    _logger.WriteTimestampedMessage("Exiting Content Exchanger");
-                    ReportProgress(100, 100);
-                    status.ExitWithError = true;
-                    status.ContentDownloaded = false;
+                    // Generate Playlist      
+                    Playlist playlist = null;
 
-                    log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
-                    log.SaveLog();
+                    ReportProgress(0, 20, "Creating the local playlist");
 
-                    return status;
-                }
+                    try
+                    {
+                        playlist = PlaylistMaker.CreatePlaylist(_channelDataPath,
+                                                                _advertDataPath,
+                                                                _demographicDataPath,
+                                                                _playlistPath,
+                                                                _password,
+                                                                _defaultDisplayDuration,
+                                                                channelSubscriptions,
+                                                                _logger);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.WriteError(ex);
+                        _logger.WriteTimestampedMessage("Exiting Content Exchanger");
+                        ReportProgress(100, 100);
+                        status.ExitWithError = true;
+                        status.ContentDownloaded = false;
 
-                ReportProgress(100, 30);
+                        log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
+                        log.SaveLog();
 
-                // clean up unused files
-                CleanUpUnusedFiles(channelSubscriptions, playlist);
+                        return status;
+                    }
 
-                if (_worker != null && _worker.CancellationPending)
-                {
-                    _webClient.Dispose();
-                    status.ExitWithError = false;
+                    ReportProgress(100, 30);
 
-                    log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
-                    log.SaveLog();
+                    // clean up unused files
+                    CleanUpUnusedFiles(channelSubscriptions, playlist);
 
-                    return status;
-                }
+                    if (_worker != null && _worker.CancellationPending)
+                    {
+                        status.ExitWithError = false;
 
-                bool bLowAssetSpace = false;
+                        log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
+                        log.SaveLog();
 
-                // Get content and advert files
-                bool bAssetFilesSuccessful = GetAssetFiles(playlist, ref bLowAssetSpace, ref bContentDownloaded, ref bCancelled);
+                        return status;
+                    }
 
-                if (bCancelled)
-                {
-                    _webClient.Dispose();
+                    bool bLowAssetSpace = false;
+
+                    // Get content and advert files
+                    bool bAssetFilesSuccessful = GetAssetFiles(playlist, ref bLowAssetSpace, ref bContentDownloaded,
+                                                               ref bCancelled, client);
+
+                    if (bCancelled)
+                    {
+                        status.ContentDownloaded = bContentDownloaded;
+                        status.ExitWithError = false;
+
+                        log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
+                        log.SaveLog();
+
+                        return status;
+                    }
+
                     status.ContentDownloaded = bContentDownloaded;
-                    status.ExitWithError = false;
-
-                    log = new CELog(DateTime.Now, status.ContentDownloaded, status.ExitWithError);
-                    log.SaveLog();
-
-                    return status;
+                    status.ExitWithError = !bAssetFilesSuccessful;
+                    status.LowAssetSpace = bLowAssetSpace;
                 }
-
-                status.ContentDownloaded = bContentDownloaded;
-                status.ExitWithError = !bAssetFilesSuccessful;
-                status.LowAssetSpace = bLowAssetSpace;
             }
             catch (Exception ex)
             {
@@ -281,42 +270,6 @@ namespace OxigenIIAdvertising.ContentExchanger
                 return true;
 
             return false;
-        }
-
-        private static string[][] GetSubscriptions(string subscriptionSource)
-        {
-            string setupString = File.ReadAllText(subscriptionSource);
-
-            if (string.IsNullOrEmpty(setupString))
-                return null;
-
-            string[] setupParameters = setupString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-            int length = setupParameters.Length;
-
-            // no subscriptions for this PC
-            if (length == 0)
-                return null;
-
-            string[][] subscriptions = new string[length][];
-
-            for (int i = 0; i < length; i++)
-            {
-                string[] subscriptionProperties = setupParameters[i].Split(new string[] { ",," }, StringSplitOptions.RemoveEmptyEntries);
-
-                subscriptions[i] = subscriptionProperties;
-            }
-
-            return subscriptions;
-        }
-
-        private void SaveMachineGUID(string machineGUID)
-        {
-            User user = (User)Serializer.Deserialize(typeof(User), _userSettingsPath, _password);
-
-            user.MachineGUID = machineGUID;
-
-            Serializer.Serialize(user, _userSettingsPath, _password);
         }
 
         private ChannelSubscriptions FilterChannelSubscriptionsByLock(ChannelSubscriptions channelSubscriptions)
@@ -532,84 +485,36 @@ namespace OxigenIIAdvertising.ContentExchanger
             _worker.ReportProgress(0, new ProcessStatus(taskValue, overallValue, taskMessage));
         }
 
-        private void UpdateConfigFiles(ref bool bCancelled)
+        private void UpdateConfigFiles(WebClient client, ref bool bCancelled)
         {
             ReportProgress(1, 0, "Updating configuration files...");
 
-            try
-            {
-                _logger.WriteTimestampedMessage("Updating general data file");
-                UpdateDataFile(DataFileType.GeneralConfiguration);
-                _logger.WriteTimestampedMessage("General data file updated");
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-            }
+            RequestCacheLevel cacheLevel = _verboseMode ? RequestCacheLevel.Revalidate : RequestCacheLevel.Default;
 
-            ReportProgress(25, 2);
+            IRemoteContentSaver[] savers = new IRemoteContentSaver[4];
+            savers[0] = new RemoteFileSaver(_worker, client, _cdnSubdomain + "data/ss_general_data.dat",_generalDataPath, cacheLevel);
+            savers[1] = new RemoteFileSaver(_worker, client, _cdnSubdomain + "data/ss_adcond_data.dat", _advertDataPath, cacheLevel);
+            savers[2] = new RemoteDynamicContentSaver(_worker, client, _mDataSubdomain + "subscriberinfo/demographicdata/" + _userGUID,
+                                           _demographicDataPath, _password, cacheLevel);
+            savers[3] = new RemoteDynamicContentSaver(_worker, client, _mDataSubdomain + "subscriberinfo/subscriptions/" + _machineGUID,
+                                           _userChannelSubscriptionsPath, _password, cacheLevel);
 
-            if (_worker != null && _worker.CancellationPending)
-            {
-                bCancelled = true;
-                return;
-            }
+            int localStep = 25;
+            int overallStep = 2;
 
-            try
+            foreach (IRemoteContentSaver saver in savers)
             {
-                _logger.WriteTimestampedMessage("Updating advert list");
-                UpdateDataFile(DataFileType.AdvertConditions);
-                _logger.WriteTimestampedMessage("Advert list updated");
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-            }
+                saver.SaveFromRemote();
+                ReportProgress(localStep, overallStep);
 
-            ReportProgress(50, 5);
+                if (saver.CancelRequested)
+                {
+                    bCancelled = true;
+                    return;
+                }
 
-            if (_worker != null && _worker.CancellationPending)
-            {
-                bCancelled = true;
-                return;
-            }
-
-            try
-            {
-                _logger.WriteTimestampedMessage("Updating demographic data");
-                UpdateDataFile(DataFileType.DemographicData);
-                _logger.WriteTimestampedMessage("Demographic data updated");
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-            }
-
-            ReportProgress(75, 8);
-
-            if (_worker != null && _worker.CancellationPending)
-            {
-                bCancelled = true;
-                return;
-            }
-
-            try
-            {
-                _logger.WriteTimestampedMessage("Updating channel subscriptions");
-                UpdateDataFile(DataFileType.ChannelSubscriptions);
-                _logger.WriteTimestampedMessage("Channel subscriptions updated");
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-            }
-
-            ReportProgress(100, 10);
-
-            if (_worker != null && _worker.CancellationPending)
-            {
-                bCancelled = true;
-                return;
+                localStep += 25;
+                overallStep += 3;
             }
         }
 
@@ -637,7 +542,7 @@ namespace OxigenIIAdvertising.ContentExchanger
             return channelSubscriptions;
         }
 
-        private void GetChannelDataFiles(ChannelSubscriptions channelSubscriptions, ref bool bCancelled)
+        private void GetChannelDataFiles(ChannelSubscriptions channelSubscriptions, ref bool bCancelled, WebClient client)
         {
             ReportProgress(0, 10, "Updating your subscriptions' playlist");
             _logger.WriteTimestampedMessage("Getting channel data files");
@@ -646,7 +551,9 @@ namespace OxigenIIAdvertising.ContentExchanger
             float step = 100F / (float)noSubscriptions;
             float count = 0;
 
-            _webClient.CachePolicy = new RequestCachePolicy(RequestCacheLevel.Revalidate);
+            RequestCacheLevel cacheLevel = _verboseMode ? RequestCacheLevel.Revalidate : RequestCacheLevel.Default;
+
+            client.CachePolicy = new RequestCachePolicy(cacheLevel);
 
             // get channel data for each channel subscription
             foreach (ChannelSubscription channelSubscription in channelSubscriptions.SubscriptionSet)
@@ -666,7 +573,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                 {
                     _logger.WriteTimestampedMessage("Attempting to get Channel " + channelSubscription.ChannelID);
 
-                    _webClient.DownloadFile(_cdnSubdomain + "channel/" + channelSubscription.ChannelID + "_channel.dat", channelFileFullPath);
+                    client.DownloadFile(_cdnSubdomain + "channel/" + channelSubscription.ChannelID + "_channel.dat", channelFileFullPath);
                 }
                 catch (Exception ex)
                 {
@@ -687,6 +594,7 @@ namespace OxigenIIAdvertising.ContentExchanger
             {
                 // hard-code the CDN subdomain as Content Exchanger is not allowed to make changes to app.config at runtime as it doesn't have the necessary permissions.
                 _cdnSubdomain = "http://assets.oxigen.net/";
+                _mDataSubdomain = "http://mdata.oxigen.net/";
                 _appDataPath = ConfigurationSettings.AppSettings["AppDataPath"];
 
                 _debugFilePath = ConfigurationSettings.AppSettings["AppDataPath"] + "SettingsData\\OxigenDebugCE.txt";
@@ -703,24 +611,17 @@ namespace OxigenIIAdvertising.ContentExchanger
                 _userChannelSubscriptionsPath = _appDataPath + "SettingsData\\ss_channel_subscription_data.dat";
                 _assetPath = _appDataPath + "Assets\\";
                 _channelDataPath = _appDataPath + "ChannelData\\";
-
+                
                 GeneralData generalData = (GeneralData)Serializer.Deserialize(typeof(GeneralData), _generalDataPath, _password);
 
-                _maxNoRelayChannelDataServers = int.Parse(generalData.NoServers["relayChannelData"]);
-                _maxNoMasterConfigServers = int.Parse(generalData.NoServers["masterConfig"]);
-                _serverTimeout = int.Parse(generalData.Properties["serverTimeout"]);
-                _primaryDomainName = generalData.Properties["primaryDomainName"];
-                _secondaryDomainName = generalData.Properties["secondaryDomainName"];
                 _daysToKeepAssetFiles = int.Parse(generalData.Properties["daysToKeepAssetFiles"]);
 
                 User user = (User)Serializer.Deserialize(typeof(User), _userSettingsPath, _password);
 
                 _userGUID = user.UserGUID;
                 _machineGUID = user.MachineGUID;
-                _userGUIDSuffix = user.GetUserGUIDSuffix();
                 _assetFolderSize = user.AssetFolderSize;
                 _defaultDisplayDuration = user.DefaultDisplayDuration;
-                _webClient = new WebClient();
             }
             catch (Exception ex)
             {
@@ -738,15 +639,15 @@ namespace OxigenIIAdvertising.ContentExchanger
         /// </summary>
         /// <param name="playlist">Playlist objects with required asset objects</param>
         /// <returns>true if file retrieval is successful, false otherwise</returns>
-        private bool GetAssetFiles(Playlist playlist, ref bool bLowAssetSpace, ref bool bContentDownloaded, ref bool bCancelled)
+        private bool GetAssetFiles(Playlist playlist, ref bool bLowAssetSpace, ref bool bContentDownloaded, ref bool bCancelled, WebClient client)
         {
             try
             {
                 ReportProgress(0, 50, "Preparing to retrieve content...");
 
                 // Get Advert assets
-                LoopAndGetAssetFiles<AdvertPlaylistAsset>(playlist.AdvertBucket.AdvertAssets, AssetType.Advert, null,
-                  ref bLowAssetSpace, ref bContentDownloaded, ref bCancelled);
+                LoopAndGetAssetFiles<AdvertPlaylistAsset>(playlist.AdvertBucket.AdvertAssets, AssetType.Advert, null, 
+                    ref bLowAssetSpace, ref bContentDownloaded, ref bCancelled, client);
 
                 if (bCancelled)
                     return true;
@@ -766,7 +667,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                     _logger.WriteTimestampedMessage("Attempting to get assets for channel " + cb.ChannelID);
 
                     LoopAndGetAssetFiles<ContentPlaylistAsset>(cb.ContentAssets, AssetType.Content, cb.ChannelName,
-                      ref bLowAssetSpace, ref bContentDownloaded, ref bCancelled);
+                      ref bLowAssetSpace, ref bContentDownloaded, ref bCancelled, client);
 
                     if (bCancelled)
                         return true;
@@ -804,7 +705,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.
         /// For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
         private void LoopAndGetAssetFiles<T>(HashSet<T> playlistAssets, AssetType assetType, string channelName,
-              ref bool bLowAssetSpace, ref bool bContentDownloaded, ref bool bCancelled) where T : PlaylistAsset
+              ref bool bLowAssetSpace, ref bool bContentDownloaded, ref bool bCancelled, WebClient client) where T : PlaylistAsset
         {
             int noAssets = playlistAssets.Count;
 
@@ -817,7 +718,7 @@ namespace OxigenIIAdvertising.ContentExchanger
             // check if saving of this slide will exceed allowed size in destination folder
             long directorySize = GetDirectorySize(_assetPath);
 
-            _webClient.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+            client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.BypassCache);
 
             foreach (PlaylistAsset pa in playlistAssets)
             {
@@ -842,7 +743,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                     if (!Directory.Exists(assetDir))
                         Directory.CreateDirectory(assetDir);
 
-                    _webClient.DownloadFile(_cdnSubdomain + "slide/" + pa.AssetFilename, assetFullPath);
+                    client.DownloadFile(_cdnSubdomain + "slide/" + pa.AssetFilename, assetFullPath);
 
                     var fileLength = new FileInfo(assetFullPath).Length;
 
@@ -883,176 +784,6 @@ namespace OxigenIIAdvertising.ContentExchanger
             ReportProgress(100);
         }
 
-        private string GetResponsiveServer(ServerType serverType, int maxNoServers, string letter, string endpointSuffix)
-        {
-            try
-            {
-                return ResponsiveServerDeterminator.GetResponsiveURI(serverType, maxNoServers, _serverTimeout,
-                  letter, _primaryDomainName, _secondaryDomainName, endpointSuffix, _logger);
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-
-                return "";
-            }
-        }
-
-        /// Updates local copies of data files if different from the relay server's
-        private void UpdateDataFile(DataFileType dataFileType)
-        {
-            string filePath = "";
-            _webClient.CachePolicy = new RequestCachePolicy(RequestCacheLevel.Revalidate);
-
-            // get the appropriate file to apply the checksum
-            switch (dataFileType)
-            {
-                case DataFileType.DemographicData:
-                    filePath = _demographicDataPath;
-                    break;
-                case DataFileType.ChannelSubscriptions:
-                    filePath = _userChannelSubscriptionsPath;
-                    break;
-            }
-
-            switch (dataFileType)
-            {
-                case DataFileType.GeneralConfiguration:
-                    _webClient.DownloadFile(_cdnSubdomain + "data/ss_general_data.dat", _generalDataPath);
-                    break;
-                case DataFileType.AdvertConditions:
-                    _webClient.DownloadFile(_cdnSubdomain + "data/ss_adcond_data.dat", _advertDataPath);
-                    break;
-                case DataFileType.DemographicData:
-                case DataFileType.ChannelSubscriptions:
-                    StreamErrorWrapper sw;
-                    AppDataFileParameterMessage appDataFileParameterMessage = new AppDataFileParameterMessage();
-
-                    appDataFileParameterMessage.ChannelID = -1;
-                    appDataFileParameterMessage.Checksum = string.Empty;
-                    appDataFileParameterMessage.DataFileType = dataFileType;
-                    appDataFileParameterMessage.SystemPassPhrase = _systemPassPhrase;
-                    appDataFileParameterMessage.UserGUID = _userGUID;
-                    appDataFileParameterMessage.MachineGUID = _machineGUID;
-
-                    string serverURI = GetResponsiveServer(ServerType.MasterGetConfig, _maxNoMasterConfigServers, _userGUIDSuffix, "UserManagementServices.svc");
-
-                    if (serverURI == "")
-                    {
-                        _logger.WriteTimestampedMessage("No responsive server found to get ss_demo_data.dat/ss_channel_subscription_data.dat");
-                        return;
-                    }
-
-                    using (var userManagementServicesStreamerClient = new UserManagementServicesClient())
-                    {
-                        userManagementServicesStreamerClient.Endpoint.Address = new EndpointAddress("https://master-getconfig-a-1.oxigen.net/UserManagementServices.svc/file");
-                        sw = userManagementServicesStreamerClient.GetAppDataFiles(appDataFileParameterMessage);
-                        if (sw.ErrorStatus != ErrorStatus.Success)
-                        {
-                            _logger.WriteTimestampedMessage("File for " + dataFileType + " not retrieved.");
-                            sw.ReturnStream.Dispose();
-                        }
-
-                        if (sw.ErrorStatus == ErrorStatus.Failure)
-                        {
-                            _logger.WriteError(sw.Message);
-
-                            return;
-                        }
-
-                        if (sw.ErrorStatus == ErrorStatus.Success)
-                        {
-                            _logger.WriteTimestampedMessage("Saving file for " + dataFileType);
-
-                            SaveStreamAndDispose(sw.ReturnStream, filePath, true, false);
-                        }
-                    }
-                    break;
-            }
-        }
-
-        private bool SaveStreamAndDispose(Stream stream, string filePath, bool bEncryptNeeded,
-          bool bCheckDirectorySize)
-        {
-            bool bContentDownloaded = false;
-            return SaveStreamAndDispose(stream, filePath, bEncryptNeeded, bCheckDirectorySize, ref bContentDownloaded);
-        }
-
-        /// <summary>
-        /// Saves a stream to a file
-        /// </summary>
-        /// <param name="stream">the stream to save</param>
-        /// <param name="filePath">path of file to save</param>
-        /// <param name="bEncryptNeeded">true to encrypt file before saving it if it's not already encrypted</param>
-        /// <param name="bCheckDirectorySize">true to check if there is enough space to save the file</param>
-        /// <returns>true if file to be saved will make the asset directory have low disk space,
-        /// false if not, regardless whether the file save has succeeded</returns>
-        /// <exception cref="FileNotFoundException">The file cannot be found, such as when mode is FileMode.Truncate or FileMode.Open,
-        /// and the file specified by path does not exist. The file must already exist in these modes.</exception>
-        /// <exception cref="IOException">An I/O error occurs or the stream has been closed.</exception>
-        /// <exception cref="DirectoryNotFoundException">The specified path is invalid</exception>
-        /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.
-        /// For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
-        private bool SaveStreamAndDispose(Stream stream, string filePath, bool bEncryptNeeded,
-          bool bCheckDirectorySize,
-          ref bool bContentDownloaded)
-        {
-            FileStream fileStream = null;
-            byte[] downloadedData = null;
-
-            try
-            {
-                downloadedData = StreamToByteArray(stream);
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-
-                return false; // continue on with the next file in the caller method
-            }
-            finally
-            {
-                if (stream != null)
-                    stream.Dispose();
-            }
-
-            // is space to be occupied between the allowed asset folder size 
-            // and the allowed asset folder size?
-            if (bCheckDirectorySize)
-            {
-                long directorySize = GetDirectorySize(_assetPath);
-
-                if (downloadedData.Length + directorySize >= _assetFolderSize)
-                {
-                    _logger.WriteMessage("downloadedData.Length + directorySize = " + (downloadedData.Length + directorySize) + ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
-                    return true;
-                }
-            }
-
-            try
-            {
-                if (bEncryptNeeded)
-                    EncryptByteArrayAndSave(downloadedData, filePath);
-                else
-                    File.WriteAllBytes(filePath, downloadedData);
-
-                // the boolean is set here but only the overload that is used by content assets will make use of it
-                // outside of this method
-                bContentDownloaded = true;
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-            }
-            finally
-            {
-                if (fileStream != null)
-                    fileStream.Dispose();
-            }
-
-            return false;
-        }
-
         public long GetDirectorySize(string path)
         {
             string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
@@ -1067,37 +798,6 @@ namespace OxigenIIAdvertising.ContentExchanger
             }
 
             return size;
-        }
-
-        private void EncryptByteArrayAndSave(byte[] buffer, string outputPath)
-        {
-            byte[] encryptedData = Cryptography.Encrypt(buffer, _password);
-
-            File.WriteAllBytes(outputPath, encryptedData);
-        }
-
-        private byte[] StreamToByteArray(Stream stream)
-        {
-            MemoryStream ms = new MemoryStream();
-
-            byte[] buffer = new byte[1000];
-
-            int bytesRead = 0;
-
-            do
-            {
-                bytesRead = stream.Read(buffer, 0, buffer.Length);
-
-                ms.Write(buffer, 0, bytesRead);
-            }
-            while (bytesRead > 0);
-
-            byte[] downloadedDataBuffer = ms.ToArray();
-
-            ms.Close();
-            ms.Dispose();
-
-            return downloadedDataBuffer;
         }
     }
 }
