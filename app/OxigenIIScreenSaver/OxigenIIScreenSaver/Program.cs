@@ -547,21 +547,39 @@ namespace OxigenIIAdvertising.ScreenSaver
             Application.Exit();
             return;
         }
-        CloseApplication();
-    }
-      public static void CloseApplication()
-      {
-      // hide monitor forms
+
         foreach (ScreenSaver screensaver in _screenSavers)
           screensaver.FadeToDesktop();
 
+        bool atleastOneThreadsRunning = true;
+        while (atleastOneThreadsRunning)
+        {
+            atleastOneThreadsRunning = false;
+            foreach (ScreenSaver screensaver in _screenSavers)
+            {
+                if (screensaver.SelectAndLoadThreadRunning)
+                {
+                    atleastOneThreadsRunning = true;
+                    break;
+                }
+            }
+            if (atleastOneThreadsRunning)
+            {
+                Application.DoEvents();
+            }
+        }
+
+
+        foreach (ScreenSaver screensaver in _screenSavers)
+            screensaver.ReleaseForms();
+
         // if spacebar was hit, pop up browser windows and write click logs
-        #region bClickThroughPressed
+
         if (_clickThroughPressed)
         {
           ClickThroughPressed();
         }
-        #endregion
+
         WriteLogs(true);
 
         // dispose of all forms, for each monitor
@@ -569,7 +587,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         {
           // in preview mode, the form is closed when user presses OK, Cancel or Preview,
           // and raising the OnClose event again here would result in an infinite loop with TerminateApplication.
-          if (!_bPreviewMode)
+
             screensaver.Close();
 
           _logger.WriteTimestampedMessage("successfully closed forms.");
@@ -799,7 +817,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         ScreenSaver screenSaver = new ScreenSaver(i, new Playlist(_playlist), _advertDisplayThreshold, 
           _protectedContentTime, _displayMessageAssetDisplayLength, _requestTimeout, bMuteFlash, bMuteVideo,
           flashVolume, videoVolume, _bErrorOnStartup, _displayMessage, _appToRun, 
-          _tempDecryptPath, _assetPath, _bInsufficientMemoryForLargeFiles, _lockPlaylistObj, 
+          _tempDecryptPath, _assetPath, _bInsufficientMemoryForLargeFiles, 
           defaultDisplayDuration, _logger);
         _logger.WriteTimestampedMessage("Successfully created Screensaver in monitor " + i);
         
@@ -812,12 +830,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
       // capture events
       Application.AddMessageFilter(new ScreenSaverMessageFilter());
-        //while(!_bTerminationStarted)
-        //{
-            Application.Run();
-            //Thread.Sleep(100);
-        //}
-        //CloseApplication();
+      Application.Run();
     }
 
     private static void GetUserSettingsForScreensaver(User user, ref bool bMuteFlash, 

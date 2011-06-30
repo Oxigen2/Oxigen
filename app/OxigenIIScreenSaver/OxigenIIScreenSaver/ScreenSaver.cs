@@ -50,8 +50,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         private string _tempDecryptPath = null;
         private string _assetPath = null;
 
-        private volatile bool _bFadeToDesktop = false;
-        private volatile bool _bAllFormsShowing = true;
+        private volatile bool _runScreenSaver = true;
         private volatile bool _bFirstRun = true;
 
         // used by worker thread
@@ -67,7 +66,6 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         // used by both
         private volatile DisplayToggle _displayToggle;
-        private volatile bool _screensaverThreadRunning = true;
         private ChannelAssetAssociation _ChannelAssetAssociationA = null;
         private ChannelAssetAssociation _ChannelAssetAssociationB = null;
         private float _totalDisplayTime = 0;
@@ -79,11 +77,10 @@ namespace OxigenIIAdvertising.ScreenSaver
         private bool _bInsufficientMemoryForLargeFiles = false;
         private float _defaultDisplayLength = -1F;
 
-        private Thread _screensaverThread = null;
         private PlayerContainer _players;
         private bool _toggle;
-        private bool _fadedToDesktop = false;
-        private bool _selectAndLoadRunning;
+        private volatile bool _selectAndLoadRunning;
+        private int _count = 0;
 
         /// <summary>
         /// Sets the playlist object from which the Screensaver plays its slides.
@@ -106,8 +103,7 @@ namespace OxigenIIAdvertising.ScreenSaver
           float protectedContentTime, float displayMessageAssetDisplayLength, int requestTimeout,
           bool bMuteFlash, bool bMuteVideo, int flashVolume, int videoVolume,
           bool bErrorOnSetup, string displayMessage, string appToRun,
-          string tempDecryptPath, string assetPath, bool bInsufficientMemoryForLargeFiles,
-          object lockPlaylistObj, float defaultDisplayLength, Logger logger)
+          string tempDecryptPath, string assetPath, bool bInsufficientMemoryForLargeFiles, float defaultDisplayLength, Logger logger)
         {
             _logger = logger;
 
@@ -271,7 +267,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         public void FadeToDesktop()
         {
             FadeToBlack();
-            LogPreviousImpression();
+            AddImpressionLog(_currentChannelAssetAssociationOnDisplay);
             foreach (IPlayer player in _players.AllPlayers())
             {
                 player.Stop();
@@ -288,8 +284,11 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             _logger.WriteTimestampedMessage("successfully faded from black to desktop.");
 
-            _bAllFormsShowing = false;
+            _runScreenSaver = false;
+        }
 
+        public void ReleaseForms()
+        {
             if (_ChannelAssetAssociationA != null) SafelyReleaseAssetForDesktop(_players.APlayers[_ChannelAssetAssociationA.PlaylistAsset.PlayerType]);
             if (_ChannelAssetAssociationB != null) SafelyReleaseAssetForDesktop(_players.BPlayers[_ChannelAssetAssociationB.PlaylistAsset.PlayerType]);
         }
@@ -326,16 +325,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             _logSingletonAccessor.AddClickLog(_currentChannelAssetAssociationOnDisplay);
         }
 
-        /// <summary>
-        /// Stops load/display/log work and adds an impression log for the last asset impressed,
-        /// since it won't have run its full circle.
-        /// </summary>
-        internal void StopWork()
-        {
-            _screensaverThreadRunning = false;
 
-            AddImpressionLog(_currentChannelAssetAssociationOnDisplay);
-        }
 
         private string DecryptToTemp(ChannelAssetAssociation ca)
         {
@@ -503,32 +493,23 @@ namespace OxigenIIAdvertising.ScreenSaver
             }
         }
 
-        // Decides which asset slot and player to select and load the next asset to
-        private void ProcessAssets()
+        public bool SelectAndLoadThreadRunning
         {
-            if (_toggle)
-            {
-                _selectAndLoadRunning = true;
-                var callBack = new WaitCallback(SelectAndLoadAsset);
-                ThreadPool.QueueUserWorkItem(callBack);
-                while(_selectAndLoadRunning)
-                {
-                    Application.DoEvents();
-                }
-                
-            }
-
-            DisplayAsset();
+            get { return _selectAndLoadRunning; }
         }
+
 
         private void SelectAndLoadAsset(object state)
         {
+            //_count++;
+            //if (_count > 2) Thread.Sleep(10000);
             int tries = 0;
             while (tries < 3)
             {
                 try
                 {
                     var channelAssetAssociation = SelectAsset();
+                    _logger.WriteTimestampedMessage("successfully selected asset: " + channelAssetAssociation.PlaylistAsset.AssetID + " from channel " + channelAssetAssociation.ChannelID);
 
                     if (_displayToggle == DisplayToggle.A)
                     {
@@ -541,6 +522,7 @@ namespace OxigenIIAdvertising.ScreenSaver
                         _ChannelAssetAssociationB = channelAssetAssociation;
                     }
                         
+
                     _toggle = false;
                     break;
                 }
@@ -560,11 +542,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             PlaylistAsset playlistAsset = channelAssetAssociation.PlaylistAsset;
 
-            _logger.WriteTimestampedMessage("successfully selected asset: " + playlistAsset.AssetID + " from channel " + channelAssetAssociation.ChannelID);
-
             AddPlayTimes(playlistAsset);
-
-            _logger.WriteTimestampedMessage("successfully added asset's duration to play times.");
 
             _logger.WriteMessage("PlayerType: " + playlistAsset.PlayerType);
 
@@ -605,14 +583,10 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         void ScreenSaver_HandleCreated(object sender, EventArgs e)
         {
+            _logger.WriteTimestampedMessage("ScreenSaver_HandleCreated");
             // set the form and control bounds on Load, with the updated form bounds
             this.Bounds = Screen.AllScreens[_screenNo].Bounds;
-
-            _logger.WriteTimestampedMessage("successfully set the size and position of the Screensaver.");
-
             _faderForm.Bounds = this.Bounds;
-
-            _logger.WriteTimestampedMessage("successfully set the size and position of the fader form.");
         }
 
         private void ScreenSaver_Load(object sender, EventArgs e)
@@ -655,25 +629,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             return Screen.AllScreens[_screenNo].Primary;
         }
 
-        private void ScreenSaver_Closed(object sender, FormClosedEventArgs e)
-        {
-            // no implementation
-        }
 
-        public void HideForms()
-        {
-            _bFadeToDesktop = true;
-        }
-
-        public bool FormsShowing()
-        {
-            return _bAllFormsShowing;
-        }
-
-        public bool IsScreensaverThreadAlive()
-        {
-            return _screensaverThread.IsAlive;
-        }
 
         /// <summary>
         /// This override traps suspension and stand-by messages and sets a boolean value accordingly.
@@ -711,10 +667,19 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         private void workerTimer_Tick(object sender, EventArgs e)
         {
-            workerTimer.Enabled = false;
-            ProcessAssets();
-            workerTimer.Enabled = true;
-
+            if (_runScreenSaver && !_selectAndLoadRunning)
+            {
+                if (_toggle)
+                {
+                    _selectAndLoadRunning = true;
+                    var callBack = new WaitCallback(SelectAndLoadAsset);
+                    ThreadPool.QueueUserWorkItem(callBack);
+                }
+                else
+                {
+                    DisplayAsset();
+                }
+            }             
         }
     }
 

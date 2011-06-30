@@ -63,7 +63,6 @@ namespace OxigenIIAdvertising.ScreenSaver
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ScreenSaver";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ScreenSaver_Closed);
             this.Load += new System.EventHandler(this.ScreenSaver_Load);
             this.HandleCreated += new System.EventHandler(this.ScreenSaver_HandleCreated);
             this.ResumeLayout(false);
