@@ -39,7 +39,6 @@ namespace OxigenIIAdvertising.ScreenSaver
         // used by UI thread and display thread
         private Stopwatch _stopwatch = null;
         private LogSingletonAccessor _logSingletonAccessor = null;
-        private volatile ChannelAssetAssociation _currentChannelAssetAssociationOnDisplay = null;
         private int _flashVolume = 1;
         private int _videoVolume = 50;
         private bool _bMuteFlash = false;
@@ -242,7 +241,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             _runScreenSaver = false;
 
             FadeToBlack();
-            AddImpressionLog(_currentChannelAssetAssociationOnDisplay);
+            AddImpressionLog(_currentSlide.ChannelAssetAssociation);
             foreach (IPlayer player in _players.AllPlayers())
             {
                 player.Stop();
@@ -287,7 +286,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         /// <returns>a string with the URL to launch</returns>
         internal string GetClickThroughURL()
         {
-            return _currentChannelAssetAssociationOnDisplay.PlaylistAsset.ClickDestination;
+            return _currentSlide.ChannelAssetAssociation.PlaylistAsset.ClickDestination;
         }
 
         /// <summary>
@@ -295,10 +294,8 @@ namespace OxigenIIAdvertising.ScreenSaver
         /// </summary>
         internal void AddClickLog()
         {
-            _logSingletonAccessor.AddClickLog(_currentChannelAssetAssociationOnDisplay);
+            _logSingletonAccessor.AddClickLog(_currentSlide.ChannelAssetAssociation);
         }
-
-
 
         private string DecryptToTemp(ChannelAssetAssociation ca)
         {
@@ -362,8 +359,6 @@ namespace OxigenIIAdvertising.ScreenSaver
             _previousSlide.NewContentRequired();
             _currentSlide.Displaying();
 
-            _logSingletonAccessor.AssetImpressionStartDateTime = DateTime.Now;
-            _assetDisplayLength = _currentSlide.ChannelAssetAssociation.PlaylistAsset.DisplayLength;
             Transit(_currentSlide.ChannelAssetAssociation, _previousSlide.ChannelAssetAssociation, _currentSlide.Players, _previousSlide.Players);
             _logger.WriteTimestampedMessage("successfully flipped asset player.");
         }
@@ -384,18 +379,15 @@ namespace OxigenIIAdvertising.ScreenSaver
                 _logger.WriteTimestampedMessage("first run of the flipping function.");
             }
 
-            // stop previous players
-            foreach (IPlayer playerb in playersToHide.Values)
-            {
-                playerb.Stop();
-            }
-
+            if (channelAssetAssociationAssetToHide != null)
+                playersToHide[channelAssetAssociationAssetToHide.PlaylistAsset.PlayerType].Stop();
+          
             IPlayer player = playersToShow[channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType];
 
             Controls.SetChildIndex(player.Control, 0);
             _logger.WriteMessage("Player " + channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType + ", channelAssetAssociationAssetToShow.PlaylistAsset " + channelAssetAssociationAssetToShow.PlaylistAsset.AssetID + " index changed to 0.");
             player.Play(_bPrimaryMonitor);
-
+            
             // Some players need to be refreshed so their display changes immediately
             player.Control.Refresh();
 
@@ -404,18 +396,17 @@ namespace OxigenIIAdvertising.ScreenSaver
             if (channelAssetAssociationAssetToHide != null)
                 SafelyReleaseAssetForTransition(channelAssetAssociationAssetToHide, playersToHide);
 
-            _currentChannelAssetAssociationOnDisplay = channelAssetAssociationAssetToShow;
-
             _logger.WriteTimestampedMessage("successfully kept reference to asset that was just flipped on.");
+
+            Thread.Sleep(_fadeSleep);
+
+            _logSingletonAccessor.AssetImpressionStartDateTime = DateTime.Now;
+            _assetDisplayLength = _currentSlide.ChannelAssetAssociation.PlaylistAsset.DisplayLength;
 
             // restart stopwatch after revealing appropriate control
             _stopwatch.Reset();
             _stopwatch.Start();
             
-            Thread.Sleep(_fadeSleep);
-
-            //_faderForm.Show();
-
             for (int i = 204; i >= 0; i -= 51)
             {
                 _ddFormFader.updateOpacity((byte)i, false);
@@ -488,7 +479,7 @@ namespace OxigenIIAdvertising.ScreenSaver
                                                 channelAssetAssociation.ChannelID);
 
                 _previousSlide.ChannelAssetAssociation = channelAssetAssociation;
-                LoadAsset(channelAssetAssociation,_previousSlide.Players[channelAssetAssociation.PlaylistAsset.PlayerType]);
+                LoadAsset(channelAssetAssociation, _previousSlide.Players[channelAssetAssociation.PlaylistAsset.PlayerType]);
                 _previousSlide.ReadyForDisplay();
             }
             catch (Exception ex)
@@ -496,7 +487,7 @@ namespace OxigenIIAdvertising.ScreenSaver
                 _logger.WriteError(ex + " - Primary monitor : " + _bPrimaryMonitor);
                 _previousSlide.NewContentRequired();
             }
-   
+
         }
 
         private void LoadAsset(ChannelAssetAssociation channelAssetAssociation, IPlayer player)
@@ -653,7 +644,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             catch (Exception ex)
             {
                 _logger.WriteError(ex);
- 
+
             }
             //workerTimer.Enabled = true;
         }
