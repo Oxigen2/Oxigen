@@ -51,7 +51,7 @@ namespace OxigenIIAdvertising.ContentExchanger
       {
         System.Globalization.CultureInfo englishCultureInfo = new System.Globalization.CultureInfo("en-GB");
 
-        System.Threading.Thread.CurrentThread.CurrentCulture = _systemCultureInfo;
+        Thread.CurrentThread.CurrentCulture = _systemCultureInfo;
         txtLastRunDate.Text = log.LastRun.ToString();
         txtLastRunStatus.Text = log.LastStatus;
 
@@ -59,7 +59,7 @@ namespace OxigenIIAdvertising.ContentExchanger
         if (log.LastDownloadedContent.Year != 1)
           txtContentLastDownloaded.Text = log.LastDownloadedContent.ToString();
 
-        System.Threading.Thread.CurrentThread.CurrentCulture = englishCultureInfo;
+        Thread.CurrentThread.CurrentCulture = englishCultureInfo;
       }
 
       Application.DoEvents();

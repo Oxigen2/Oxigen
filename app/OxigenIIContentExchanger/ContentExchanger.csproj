@@ -142,6 +142,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="RegistryAccess.cs" />
+    <Compile Include="RemoteFileSaver.cs" />
     <Compile Include="SafeModeForm.cs">
       <SubType>Form</SubType>
     </Compile>
