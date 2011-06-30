@@ -465,16 +465,14 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         private void SelectAndLoadAsset(object state)
         {
-            CultureInfo ci = new CultureInfo("en-GB");
-            Thread.CurrentThread.CurrentCulture = ci;
-            Thread.CurrentThread.CurrentUICulture = ci;
-
-            _previousSlide.Creating();
             //_count++;
             //if (_count > 2) Thread.Sleep(10000);
-
             try
             {
+                CultureInfo ci = new CultureInfo("en-GB");
+                Thread.CurrentThread.CurrentCulture = ci;
+                Thread.CurrentThread.CurrentUICulture = ci;
+
                 ChannelAssetAssociation channelAssetAssociation = SelectAsset();
                 _logger.WriteTimestampedMessage("successfully selected asset: " +
                                                 channelAssetAssociation.PlaylistAsset.AssetID + " from channel " +
@@ -487,7 +485,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             catch (Exception ex)
             {
                 _logger.WriteError(ex + " - Primary monitor : " + _bPrimaryMonitor);
-                _previousSlide.NewContentRequired();
+                _previousSlide.NewContentRequired(); 
             }
 
         }
@@ -630,6 +628,7 @@ namespace OxigenIIAdvertising.ScreenSaver
                     switch (_previousSlide.State)
                     {
                         case SlideState.NewContentRequired:
+                            _previousSlide.Creating();
                             var callBack = new WaitCallback(SelectAndLoadAsset);
                             ThreadPool.QueueUserWorkItem(callBack);
                             

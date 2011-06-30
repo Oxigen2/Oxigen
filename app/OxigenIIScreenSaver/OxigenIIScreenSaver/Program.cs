@@ -67,7 +67,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         // Termination events: either user instigated or auto termination instigated
         // Mutually exclude the two events from running at the same time, if auto executes roughly at the same
         // time as user exits the screen saver manually
-        private static bool _bTerminationStarted = false;
+        private static volatile bool _bTerminationStarted = false;
         private static object _terminationObj = new object();
         private static bool _clickThroughPressed;
         private static bool _launchApp;

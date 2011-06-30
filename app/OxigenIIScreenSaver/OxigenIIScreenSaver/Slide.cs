@@ -10,7 +10,7 @@ namespace OxigenIIAdvertising.ScreenSaver
     internal class Slide
     {
         private readonly Dictionary<PlayerType, IPlayer> _players;
-        private SlideState _slideState = SlideState.NewContentRequired;
+        private volatile SlideState _slideState = SlideState.NewContentRequired;
 
         public Slide(Dictionary<PlayerType, IPlayer> players)
         {
