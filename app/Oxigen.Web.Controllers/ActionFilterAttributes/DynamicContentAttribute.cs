@@ -8,52 +8,41 @@ namespace Oxigen.Web.Controllers.ActionFilterAttributes
     public class DynamicContentAttribute : ActionFilterAttribute
     {
         private int _maxAgeInSeconds;
-        private string _eTag;
         public int MaxAgeInSeconds
         {
             get { return _maxAgeInSeconds; }
             set { _maxAgeInSeconds = value; }
         }
 
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnResultExecuting(ResultExecutingContext ctx)
         {
-            HttpRequestBase request = filterContext.RequestContext.HttpContext.Request;
-            HttpResponseBase response = filterContext.RequestContext.HttpContext.Response;
+            HttpRequestBase request = ctx.RequestContext.HttpContext.Request;
+            HttpResponseBase response = ctx.RequestContext.HttpContext.Response;
 
-            if (filterContext.Result == null || !(filterContext.Result is FileContentResult))
+            if (ctx.Result == null || !(ctx.Result is FileContentResult))
             {
-                base.OnActionExecuting(filterContext);
+                base.OnResultExecuting(ctx);
                 return;
             }
 
-            var result = filterContext.Result as FileContentResult;
+            var result = ctx.Result as FileContentResult;
 
-            _eTag = Convert.ToBase64String(new System.Security.Cryptography.MD5CryptoServiceProvider().ComputeHash(result.FileContents));
+            var eTag = Convert.ToBase64String(new System.Security.Cryptography.MD5CryptoServiceProvider().ComputeHash(result.FileContents));
 
-            if (request.Headers["If-None-Match"] != null && request.Headers["If-None-Match"] == _eTag)
-            {
-                response.Write(DateTime.Now);
-                response.StatusCode = 304;
-                response.StatusDescription = "Not Modified";
-            }
-            else
-                base.OnActionExecuting(filterContext);
-        }
-
-        public override void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-            if (filterContext.Result != null && filterContext.Result is FileContentResult)
-                SetCaching(filterContext.HttpContext.Response);
-
-            base.OnActionExecuted(filterContext);
-        }
-
-        private void SetCaching(HttpResponseBase response)
-        {
             response.ClearHeaders();
             response.Cache.SetSlidingExpiration(true);
             response.Cache.SetCacheability(HttpCacheability.Public);
+            response.Cache.SetETag(eTag);
             response.Cache.SetMaxAge(TimeSpan.FromSeconds(_maxAgeInSeconds));
+
+            if (request.Headers["If-None-Match"] != null && request.Headers["If-None-Match"] == eTag)
+            {
+                response.StatusCode = 304;
+                response.StatusDescription = "Not Modified";
+                ctx.Cancel = true;
+            }
+            else
+                base.OnResultExecuting(ctx);
         }
     }
 }
