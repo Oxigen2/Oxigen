@@ -175,6 +175,7 @@
       <DependentUpon>PreviewScreenSaver.cs</DependentUpon>
     </Compile>
     <Compile Include="ScreensaverGuardianClient.cs" />
+    <Compile Include="Slide.cs" />
     <Compile Include="Toggles.cs" />
     <Compile Include="ScreenSaver.cs">
       <SubType>Form</SubType>

@@ -569,7 +569,6 @@ namespace OxigenIIAdvertising.ScreenSaver
             }
         }
 
-
         foreach (ScreenSaver screensaver in _screenSavers)
             screensaver.ReleaseForms();
 

@@ -65,9 +65,6 @@ namespace OxigenIIAdvertising.ScreenSaver
         private string _displayMessage = null;
 
         // used by both
-        private volatile DisplayToggle _displayToggle;
-        private ChannelAssetAssociation _ChannelAssetAssociationA = null;
-        private ChannelAssetAssociation _ChannelAssetAssociationB = null;
         private float _totalDisplayTime = 0;
         private float _totalAdvertDisplayTime = 0;
         private float _assetDisplayLength = 0;
@@ -78,9 +75,9 @@ namespace OxigenIIAdvertising.ScreenSaver
         private float _defaultDisplayLength = -1F;
 
         private PlayerContainer _players;
-        private bool _toggle;
-        private volatile bool _selectAndLoadRunning;
         private int _count = 0;
+        private Slide _currentSlide;
+        private Slide _previousSlide;
 
         /// <summary>
         /// Sets the playlist object from which the Screensaver plays its slides.
@@ -194,6 +191,9 @@ namespace OxigenIIAdvertising.ScreenSaver
                 index++;
             }
 
+            _currentSlide = new Slide(_players.APlayers);
+            _previousSlide = new Slide(_players.BPlayers);
+
             _logger.WriteTimestampedMessage("successfully set the z-indices of the players.");
 
             _faderForm = new FaderForm();
@@ -212,52 +212,25 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             _logger.WriteTimestampedMessage("successfully added the fader form as a form owned by the Screensaver Form.");
 
-            _displayToggle = DisplayToggle.A;
-            _toggle = true;
 
-            _logger.WriteTimestampedMessage("successfully set the DisplayToggle to A.");
         }
 
-        private void DisplayAsset()
+
+
+        private bool HasCurrentSlideFinishedPlaying()
         {
-            try
-            {
-                if (_stopwatch.ElapsedTotalMilliseconds > ((_assetDisplayLength * 1000) - 200))
-                {   
-                    LogPreviousImpression();
-                    FlipAssetPlayer();
-
-                    _displayToggle = _displayToggle == DisplayToggle.A ? DisplayToggle.B : DisplayToggle.A;
-                    _toggle = true;
-
-                    _logger.WriteTimestampedMessage("successfully flipped the display toggle to " +
-                                                    _displayToggle);
-
-                    _logger.WriteTimestampedMessage("successfully flipped asset player.");
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-                throw;
-            }
+            return _stopwatch.ElapsedTotalMilliseconds > ((_assetDisplayLength * 1000) - 200);
         }
 
-        private void LogPreviousImpression()
+        private void LogImpressionForCurrent()
         {
             // is this the first run of the pulse? If yes, there is nothing to log
-            if (_logSingletonAccessor.AssetImpressionStartDateTime.Year != 1)
+            if (_currentSlide.ChannelAssetAssociation != null)
             {
                 // Add logs of the asset previously impressed (i.e. if a is to be impressed next,
                 // log previously impressed asset B, else log previously impressed A)
-                ChannelAssetAssociation channelAssetAssociation = _displayToggle == DisplayToggle.A
-                                                                      ? _ChannelAssetAssociationB
-                                                                      : _ChannelAssetAssociationA;
-
+                ChannelAssetAssociation channelAssetAssociation = _currentSlide.ChannelAssetAssociation;
                 AddImpressionLog(channelAssetAssociation);
-
                 _logger.WriteTimestampedMessage("successfully added impression log for " +
                                                 channelAssetAssociation.PlaylistAsset.AssetID +
                                                 " in channel: " + channelAssetAssociation.ChannelID);
@@ -266,6 +239,8 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         public void FadeToDesktop()
         {
+            _runScreenSaver = false;
+
             FadeToBlack();
             AddImpressionLog(_currentChannelAssetAssociationOnDisplay);
             foreach (IPlayer player in _players.AllPlayers())
@@ -283,14 +258,12 @@ namespace OxigenIIAdvertising.ScreenSaver
             this.Activate();
 
             _logger.WriteTimestampedMessage("successfully faded from black to desktop.");
-
-            _runScreenSaver = false;
         }
 
         public void ReleaseForms()
         {
-            if (_ChannelAssetAssociationA != null) SafelyReleaseAssetForDesktop(_players.APlayers[_ChannelAssetAssociationA.PlaylistAsset.PlayerType]);
-            if (_ChannelAssetAssociationB != null) SafelyReleaseAssetForDesktop(_players.BPlayers[_ChannelAssetAssociationB.PlaylistAsset.PlayerType]);
+            SafelyReleaseAssetForDesktop(_previousSlide);
+            SafelyReleaseAssetForDesktop(_currentSlide);
         }
 
         private void AddPlayTimes(PlaylistAsset playlistAsset)
@@ -381,17 +354,18 @@ namespace OxigenIIAdvertising.ScreenSaver
         {
             _logger.WriteMessage("FlipAssetPlayer 1 : primary monitor? " + _bPrimaryMonitor);
             // keep start date and time of the display for logging
+
+            var tempSlide = _currentSlide;
+            _currentSlide = _previousSlide;
+            _previousSlide = tempSlide;
+
+            _previousSlide.NewContentRequired();
+            _currentSlide.Displaying();
+
             _logSingletonAccessor.AssetImpressionStartDateTime = DateTime.Now;
-            if (_displayToggle == DisplayToggle.A)
-            {
-                _assetDisplayLength = _ChannelAssetAssociationA.PlaylistAsset.DisplayLength;
-                Transit(_ChannelAssetAssociationA, _ChannelAssetAssociationB, _players.APlayers, _players.BPlayers);
-            }
-            else
-            {
-                _assetDisplayLength = _ChannelAssetAssociationB.PlaylistAsset.DisplayLength;
-                Transit(_ChannelAssetAssociationB, _ChannelAssetAssociationA, _players.BPlayers, _players.APlayers);
-            }
+            _assetDisplayLength = _currentSlide.ChannelAssetAssociation.PlaylistAsset.DisplayLength;
+            Transit(_currentSlide.ChannelAssetAssociation, _previousSlide.ChannelAssetAssociation, _currentSlide.Players, _previousSlide.Players);
+            _logger.WriteTimestampedMessage("successfully flipped asset player.");
         }
 
         private void Transit(ChannelAssetAssociation channelAssetAssociationAssetToShow,
@@ -479,12 +453,13 @@ namespace OxigenIIAdvertising.ScreenSaver
             }
         }
 
-        private void SafelyReleaseAssetForDesktop(IPlayer player)
+        private void SafelyReleaseAssetForDesktop(Slide slide)
         {
 
             try
             {
-                player.ReleaseAssetForDesktop();
+                if (slide.ChannelAssetAssociation != null)
+                    slide.Players[slide.ChannelAssetAssociation.PlaylistAsset.PlayerType].ReleaseAssetForDesktop();
                 _logger.WriteTimestampedMessage("successfully deleted previous asset.");
             } //TODO: do we need this here??
             catch (Exception ex)
@@ -495,46 +470,33 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         public bool SelectAndLoadThreadRunning
         {
-            get { return _selectAndLoadRunning; }
+            get { return _previousSlide.State == SlideState.Creating; }
         }
 
 
         private void SelectAndLoadAsset(object state)
         {
+            _previousSlide.Creating();
             //_count++;
             //if (_count > 2) Thread.Sleep(10000);
-            int tries = 0;
-            while (tries < 3)
+
+            try
             {
-                try
-                {
-                    var channelAssetAssociation = SelectAsset();
-                    _logger.WriteTimestampedMessage("successfully selected asset: " + channelAssetAssociation.PlaylistAsset.AssetID + " from channel " + channelAssetAssociation.ChannelID);
+                ChannelAssetAssociation channelAssetAssociation = SelectAsset();
+                _logger.WriteTimestampedMessage("successfully selected asset: " +
+                                                channelAssetAssociation.PlaylistAsset.AssetID + " from channel " +
+                                                channelAssetAssociation.ChannelID);
 
-                    if (_displayToggle == DisplayToggle.A)
-                    {
-                        LoadAsset(channelAssetAssociation, _players.APlayers[channelAssetAssociation.PlaylistAsset.PlayerType]);
-                        _ChannelAssetAssociationA = channelAssetAssociation;
-                    }
-                    else
-                    {
-                        LoadAsset(channelAssetAssociation, _players.BPlayers[channelAssetAssociation.PlaylistAsset.PlayerType]);
-                        _ChannelAssetAssociationB = channelAssetAssociation;
-                    }
-                        
-
-                    _toggle = false;
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    _logger.WriteError(ex + " - Primary monitor : " + _bPrimaryMonitor);
-                    _logger.WriteError("Number of tries: " + tries + " - Primary monitor : " + _bPrimaryMonitor);
-                    tries++;
-                    Thread.Sleep(100);
-                }
+                _previousSlide.ChannelAssetAssociation = channelAssetAssociation;
+                LoadAsset(channelAssetAssociation,_previousSlide.Players[channelAssetAssociation.PlaylistAsset.PlayerType]);
+                _previousSlide.ReadyForDisplay();
             }
-            _selectAndLoadRunning = false;
+            catch (Exception ex)
+            {
+                _logger.WriteError(ex + " - Primary monitor : " + _bPrimaryMonitor);
+                _previousSlide.NewContentRequired();
+            }
+   
         }
 
         private void LoadAsset(ChannelAssetAssociation channelAssetAssociation, IPlayer player)
@@ -665,27 +627,36 @@ namespace OxigenIIAdvertising.ScreenSaver
             base.WndProc(ref m);
         }
 
-        private void workerTimer_Tick(object sender, EventArgs e)
+        private void WorkerTimerTick(object sender, EventArgs e)
         {
-            if (_runScreenSaver && !_selectAndLoadRunning)
+            //workerTimer.Enabled = false;
+            try
             {
-                if (_toggle)
+                if (_runScreenSaver && _previousSlide.State != SlideState.Creating)
                 {
-                    _selectAndLoadRunning = true;
-                    var callBack = new WaitCallback(SelectAndLoadAsset);
-                    ThreadPool.QueueUserWorkItem(callBack);
+                    switch (_previousSlide.State)
+                    {
+                        case SlideState.NewContentRequired:
+                            var callBack = new WaitCallback(SelectAndLoadAsset);
+                            ThreadPool.QueueUserWorkItem(callBack);
+                            break;
+                        case SlideState.ReadyForDisplay:
+                            if (HasCurrentSlideFinishedPlaying())
+                            {
+                                LogImpressionForCurrent();
+                                FlipAssetPlayer();
+                            }
+                            break;
+                    }
                 }
-                else
-                {
-                    DisplayAsset();
-                }
-            }             
+            }
+            catch (Exception ex)
+            {
+                _logger.WriteError(ex);
+ 
+            }
+            //workerTimer.Enabled = true;
         }
     }
 
-    public class Display
-    {
-        public ChannelAssetAssociation ChannelAssetAssociation { get; set; }
-        public Dictionary<PlayerType, IPlayer> PlayerSet { get; set; } 
-    }
 }

@@ -52,7 +52,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             // 
             // workerTimer
             // 
-            this.workerTimer.Tick += new System.EventHandler(this.workerTimer_Tick);
+            this.workerTimer.Tick += new System.EventHandler(this.WorkerTimerTick);
             // 
             // ScreenSaver
             // 
