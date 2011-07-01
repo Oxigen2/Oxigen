@@ -525,7 +525,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             else if (player is IFileLoader)
             {
                 _logger.WriteMessage("Decrypting");
-                if (_count > 1) Thread.Sleep(15000);
+               // if (_count > 1) Thread.Sleep(15000);
                 string decryptedFilePath = DecryptToTemp(channelAssetAssociation);
                 _logger.WriteMessage("Decrypting Finished");
                 IFileLoader fileLoader = (IFileLoader)player;
