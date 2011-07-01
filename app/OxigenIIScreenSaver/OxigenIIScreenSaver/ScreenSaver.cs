@@ -152,8 +152,8 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             _logger.WriteTimestampedMessage("successfully created an AssetScheduler object.");
 
-            _playlistAssetPicker = new PlaylistAssetPicker(playlist, _assetScheduler, _displayMessageAssetDisplayLength, assetPath, "password",
-              _requestTimeout, _bErrorOnSetup, _screenNo, _logger, _bInsufficientMemoryForLargeFiles);
+            _playlistAssetPicker = new PlaylistAssetPicker(playlist, _assetScheduler, _displayMessageAssetDisplayLength, assetPath, 
+              _requestTimeout, _bErrorOnSetup, _logger, _bInsufficientMemoryForLargeFiles);
 
             _logger.WriteTimestampedMessage("successfully created a PlaylistAssetPicker object.");
 
@@ -357,7 +357,6 @@ namespace OxigenIIAdvertising.ScreenSaver
             _logger.WriteMessage("Player " + channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType + ", channelAssetAssociationAssetToShow.PlaylistAsset " + channelAssetAssociationAssetToShow.PlaylistAsset.AssetID + " index changed to 0.");
             player.Play(_bPrimaryMonitor);
             
-
             // Some players need to be refreshed so their display changes immediately
             player.Control.Refresh();
 
@@ -376,8 +375,10 @@ namespace OxigenIIAdvertising.ScreenSaver
             // restart stopwatch after revealing appropriate control
             _stopwatch.Reset();
             _stopwatch.Start();
-            
+
+            _logger.WriteTimestampedMessage("Fading to transparency");
             FadeToTransparantcy();
+            _logger.WriteTimestampedMessage("Faded to transparency");
         }
 
         private void FadeToTransparantcy()

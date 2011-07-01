@@ -23,7 +23,6 @@ namespace OxigenIIAdvertising.PlaylistLogic
     private int _noChannelBuckets = -1;
     private int _noPlaylistAdverts = -1;
     private string _assetFilePath = "";
-    private string _password = "";
     private float _displayMessageAssetDisplayLength = -1;
     private byte[] _randomNumbers = null;
     private int _requestTimeout = -1;
@@ -51,17 +50,14 @@ namespace OxigenIIAdvertising.PlaylistLogic
     /// <param name="assetScheduler">AssetScheduler object to determine if an asset has temporal availability</param>
     /// <param name="displayMessageAssetDisplayLength">Display length of the "no assets" asset</param>
     /// <param name="assetFilePath">Directory path of the playlist assets</param>
-    /// <param name="password">password to use when checking for decryption</param>
     /// <param name="requestTimeout">The number of seconds to wait before the request for testing net/website availability times out</param>
     /// <param name="bErrorOnSetup">If an error occurred on setup, an asset won't be attempted</param>
     public PlaylistAssetPicker(Playlist playlist, 
       AssetScheduler assetScheduler, 
       float displayMessageAssetDisplayLength, 
       string assetFilePath, 
-      string password, 
       int requestTimeout,
       bool bErrorOnSetup,
-      int screenNo,
       Logger logger,
       bool bInsufficientMemoryForLargeFiles)
     {
@@ -85,7 +81,6 @@ namespace OxigenIIAdvertising.PlaylistLogic
       _noChannelBuckets = playlist.ChannelBuckets.Count;
       _noPlaylistAdverts = playlist.AdvertBucket.AdvertAssets.Count;
       _assetFilePath = assetFilePath;
-      _password = password;
       _requestTimeout = requestTimeout;
       _randomNumbers = new byte[8];
       _bInsufficientMemoryForLargeFiles = bInsufficientMemoryForLargeFiles;
