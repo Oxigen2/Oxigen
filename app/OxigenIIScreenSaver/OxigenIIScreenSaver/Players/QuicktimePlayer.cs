@@ -41,7 +41,11 @@ namespace OxigenIIAdvertising.ScreenSaver.Players
               _logger.WriteTimestampedMessage("successfully set mute/no mute of quicktime sound.");
           }
 
+          _logger.WriteTimestampedMessage("Starting to play Quicktime");
+
           _control.Movie.Play(1);
+
+          _logger.WriteTimestampedMessage("Started Quicktime");
       }
 
       public void Stop()
