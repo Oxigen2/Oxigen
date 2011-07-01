@@ -4,7 +4,7 @@ namespace Setup.ClientLoggers
 {
   public abstract class ClientLogger
   {
-    protected readonly string _loggingPartialUrl = "http://new.oxigen.net/log/setup5/";
+    protected readonly string _loggingPartialUrl = "http://new.oxigen.net/log/setup6/";
     protected string _userRef = null;
 
     protected delegate WebResponse WebResponseGetter();
