@@ -852,25 +852,6 @@ namespace OxigenIIAdvertising.ScreenSaver
             _logger.WriteTimestampedMessage("successfully started a preview screensaver.");
         }
 
-        private static bool TryGrantAccessToTemp()
-        {
-            string dir = _tempDecryptPath;
-
-            try
-            {
-                FileSecurity fss = File.GetAccessControl(dir);
-                fss.RemoveAccessRule(new FileSystemAccessRule(WindowsIdentity.GetCurrent().Name, FileSystemRights.FullControl, AccessControlType.Deny));
-                File.SetAccessControl(dir, fss);
-            }
-            catch (Exception ex)
-            {
-                _logger.WriteError(ex);
-                return false;
-            }
-
-            return true;
-        }
-
         private static long GetPhysicalRam()
         {
             try

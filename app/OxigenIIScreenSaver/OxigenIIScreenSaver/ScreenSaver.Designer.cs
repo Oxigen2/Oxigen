@@ -31,7 +31,8 @@ namespace OxigenIIAdvertising.ScreenSaver
         {
             components.Dispose();
         }
-        if (disposing && (_faderForm != null)) {
+        if (disposing && (_faderForm != null))
+        {
             _faderForm.Dispose();
         }
         base.Dispose(disposing);
