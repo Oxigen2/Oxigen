@@ -441,7 +441,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         private void SelectAndLoadAsset(object state)
         {
-            //_count++;
+            _count++;
             
             try
             {
@@ -510,12 +510,13 @@ namespace OxigenIIAdvertising.ScreenSaver
             else if (player is IFileLoader)
             {
                 _logger.WriteMessage("Decrypting");
+                if (_count > 1) Thread.Sleep(15000);
                 string decryptedFilePath = DecryptToTemp(channelAssetAssociation);
                 _logger.WriteMessage("Decrypting Finished");
                 IFileLoader fileLoader = (IFileLoader)player;
-                //if (_count > 1) Thread.Sleep(5000);
                 if (!_runScreenSaver)
                 {
+                    File.Delete(decryptedFilePath);
                     _previousSlide.NewContentRequired();
                     return;
                 }
