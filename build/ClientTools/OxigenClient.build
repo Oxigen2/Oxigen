@@ -18,6 +18,10 @@
 		<echo message="Building OxigenIIAdvertising.sln..." />
 		<msbuild project="${SolutionPath}">
 			<property name="Configuration" value="Release" />			
+			<arg value="/t:Clean" />
+		</msbuild>
+		<msbuild project="${SolutionPath}">
+			<property name="Configuration" value="Release" />			
 			<arg value="/t:Rebuild" />
 		</msbuild>
 		<echo message="Encrypting string data in client-side binaries..." />
