@@ -12,7 +12,6 @@ using System.IO;
 using OxigenIIAdvertising.OxigenIIStopwatch;
 using OxigenIIAdvertising.LoggerInfo;
 using System.Globalization;
-using OxigenIIAdvertising.ScreenSaver.Players;
 
 namespace OxigenIIAdvertising.ScreenSaver
 {
@@ -26,15 +25,10 @@ namespace OxigenIIAdvertising.ScreenSaver
         const int PBT_APMSTANDBY = 0x0005;
         const int PBT_APMRESUMESTANDBY = 0x0008;
 
-        //start off originalLocation with an X and Y of int.MaxValue, because
-        //it is impossible for the cursor to be at that position. That way, we
-        //know if this variable has been set yet.
-        private Point _originalLocation = new Point(int.MaxValue, int.MaxValue);
-
         private int _screenNo;
         private bool _bPrimaryMonitor = false;
 
-        private LoggerInfo.Logger _logger = null;
+        private Logger _logger = null;
 
         // used by UI thread and display thread
         private Stopwatch _stopwatch = null;
@@ -67,8 +61,8 @@ namespace OxigenIIAdvertising.ScreenSaver
         private float _totalAdvertDisplayTime = 0;
         private float _assetDisplayLength = 0;
         private bool _bLogImpressions = true;
-        private FaderForm _faderForm = null;
-        private DDFormFader _ddFormFader = null;
+    //    private FaderForm _faderForm = null;
+    //    private DDFormFader _ddFormFader = null;
         private bool _bInsufficientMemoryForLargeFiles = false;
         private float _defaultDisplayLength = -1F;
 
@@ -191,23 +185,19 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             _currentSlide = new Slide(_players.APlayers);
             _previousSlide = new Slide(_players.BPlayers);
-            _faderForm = new FaderForm();
-            _ddFormFader = new DDFormFader(_faderForm.Handle);
-            _faderForm.StartPosition = FormStartPosition.Manual;
-            AddOwnedForm(_faderForm);
+      //      _faderForm = new FaderForm();
+       //     _ddFormFader = new DDFormFader(_faderForm.Handle);
+      //      _faderForm.StartPosition = FormStartPosition.Manual;
+      //      AddOwnedForm(_faderForm);
 
             _logger.WriteTimestampedMessage("successfully added the fader form as a form owned by the Screensaver Form.");
         }
-
-
 
         private bool HasCurrentSlideFinishedPlaying()
         {
             return _stopwatch.ElapsedTotalMilliseconds > ((_assetDisplayLength * 1000) - 200);
         }
-
-
-
+        
         public void FadeToDesktop()
         {
             _runScreenSaver = false;
@@ -227,10 +217,10 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             _logger.WriteTimestampedMessage("successfully hid players.");
 
-            _ddFormFader.clearTransparentLayeredWindow();
+          //  _ddFormFader.clearTransparentLayeredWindow();
 
             WinAPI.AnimateWindow(this.Handle, 1, WinAPI.AW_HIDE | WinAPI.AW_BLEND);
-            WinAPI.AnimateWindow(_faderForm.Handle, _fadeInToDesktop, WinAPI.AW_HIDE | WinAPI.AW_BLEND);
+        //    WinAPI.AnimateWindow(_faderForm.Handle, _fadeInToDesktop, WinAPI.AW_HIDE | WinAPI.AW_BLEND);
             this.Activate();
 
             _logger.WriteTimestampedMessage("successfully faded from black to desktop.");
@@ -354,11 +344,15 @@ namespace OxigenIIAdvertising.ScreenSaver
             IPlayer player = playersToShow[channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType];
 
             Controls.SetChildIndex(player.Control, 0);
+            player.Control.Refresh(); // TODO: maybe remove
+            Application.DoEvents(); // TODO: maybe remove
             _logger.WriteMessage("Player " + channelAssetAssociationAssetToShow.PlaylistAsset.PlayerType + ", channelAssetAssociationAssetToShow.PlaylistAsset " + channelAssetAssociationAssetToShow.PlaylistAsset.AssetID + " index changed to 0.");
             player.Play(_bPrimaryMonitor);
-            
+            Application.DoEvents(); // TODO: maybe remove
             // Some players need to be refreshed so their display changes immediately
             player.Control.Refresh();
+            
+            Application.DoEvents(); // TODO: maybe remove
 
             // release previously played streamed asset from player
             // and delete temp file
@@ -377,7 +371,10 @@ namespace OxigenIIAdvertising.ScreenSaver
             _stopwatch.Start();
 
             _logger.WriteTimestampedMessage("Fading to transparency");
+
+            Application.DoEvents(); // TODO: maybe remove
             FadeToTransparantcy();
+            Application.DoEvents(); // TODO: maybe remove
             _logger.WriteTimestampedMessage("Faded to transparency");
         }
 
@@ -385,7 +382,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         {
             for (int i = 204; i >= 0; i -= 51)
             {
-                _ddFormFader.updateOpacity((byte)i, false);
+          //      _ddFormFader.updateOpacity((byte)i, false);
                 Thread.Sleep(40);
             }
 
@@ -396,7 +393,7 @@ namespace OxigenIIAdvertising.ScreenSaver
         {
             for (int i = 51; i <= 255; i += 51)
             {
-                _ddFormFader.updateOpacity((byte)i, false);
+           //     _ddFormFader.updateOpacity((byte)i, false);
                 Thread.Sleep(40);
             }
 
@@ -528,6 +525,9 @@ namespace OxigenIIAdvertising.ScreenSaver
             {
                 ((INoAssetsLoader)player).Load(((ContentPlaylistAsset)channelAssetAssociation.PlaylistAsset).Message);
             }
+
+            player.Control.Refresh(); // TODO: maybe remove
+            Application.DoEvents(); // TODO: maybe remove
         }
 
         void ScreenSaver_HandleCreated(object sender, EventArgs e)
@@ -535,7 +535,7 @@ namespace OxigenIIAdvertising.ScreenSaver
             _logger.WriteTimestampedMessage("ScreenSaver_HandleCreated");
             // set the form and control bounds on Load, with the updated form bounds
             this.Bounds = Screen.AllScreens[_screenNo].Bounds;
-            _faderForm.Bounds = this.Bounds;
+        //    _faderForm.Bounds = this.Bounds;
         }
 
         private void ScreenSaver_Load(object sender, EventArgs e)
@@ -553,7 +553,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
             _logger.WriteTimestampedMessage("successfully set the size and position of the players to the Screensaver dimensions.");
 
-            _faderForm.Bounds = this.Bounds;
+         //   _faderForm.Bounds = this.Bounds;
 
             _logger.WriteTimestampedMessage("successfully set the size and position of the fader form to the Screensaver dimensions.");
 
@@ -563,11 +563,11 @@ namespace OxigenIIAdvertising.ScreenSaver
             // TODO: maintain QuickTime aspect ratio for non primary monitors
 
             _logger.WriteTimestampedMessage("fader form set to Layered Window to be used by the between-slides fader.");
-            WinAPI.AnimateWindow(_faderForm.Handle, _fadeOutToBlack, WinAPI.AW_ACTIVATE | WinAPI.AW_BLEND);
+       //     WinAPI.AnimateWindow(_faderForm.Handle, _fadeOutToBlack, WinAPI.AW_ACTIVATE | WinAPI.AW_BLEND);
             _logger.WriteTimestampedMessage("fader form faded from desktop to black.");
-            _ddFormFader.setTransparentLayeredWindow();
+      //      _ddFormFader.setTransparentLayeredWindow();
 
-            _faderForm.Show();
+       //     _faderForm.Show();
             workerTimer.Interval = 100;
             workerTimer.Start();
             _logger.WriteTimestampedMessage("successfully started the Display thread.");
@@ -616,7 +616,7 @@ namespace OxigenIIAdvertising.ScreenSaver
 
         private void WorkerTimerTick(object sender, EventArgs e)
         {
-            //workerTimer.Enabled = false;
+            workerTimer.Enabled = false; // TODO: comment out
             try
             {
                 if (_runScreenSaver && _previousSlide.State != SlideState.Creating)
@@ -643,7 +643,7 @@ namespace OxigenIIAdvertising.ScreenSaver
                 _logger.WriteError(ex);
 
             }
-            //workerTimer.Enabled = true;
+            workerTimer.Enabled = true; // TODO: comment out
         }
     }
 
