@@ -736,7 +736,12 @@ namespace OxigenIIAdvertising.ContentExchanger
                 // If file exists, move on to the next one. No need to check if file has changed on the server
                 // because that would be a new file under a different database ID.
                 if (File.Exists(assetFullPath))
+                {
+                    _logger.WriteTimestampedMessage("File " + assetFullPath + " exists. Continuing to next file.");
                     continue;
+                }
+
+                _logger.WriteTimestampedMessage("File " + assetFullPath + " does not exist.");
 
                 try
                 {
