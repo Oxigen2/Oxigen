@@ -115,6 +115,7 @@
     <Compile Include="Oxigen.ApplicationServices\AssetContentManagementServiceTests.cs" />
     <Compile Include="Oxigen.ApplicationServices\ChannelManagementServiceTests.cs" />
     <Compile Include="Oxigen.ApplicationServices\ChannelsSlideManagementServiceTests.cs" />
+    <Compile Include="Oxigen.DurationDetectors\MovieDurationTests.cs" />
     <Compile Include="Oxigen.ApplicationServices\PublisherManagementServiceTests.cs" />
     <Compile Include="Oxigen.ApplicationServices\SlideFolderManagementServiceTests.cs" />
     <Compile Include="Oxigen.ApplicationServices\SlideManagementServiceTests.cs" />
@@ -172,6 +173,10 @@
       <Project>{EA00777D-3D7A-4406-8BFB-E5A90CF0E8A9}</Project>
       <Name>Oxigen.ApplicationServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\app\Oxigen.DurationDetectors\Oxigen.DurationDetectors.csproj">
+      <Project>{45BE8C1E-CFED-47F4-9210-FCC1CAE9E48E}</Project>
+      <Name>Oxigen.DurationDetectors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\app\Oxigen.Web.Assets\Oxigen.Web.Assets.csproj">
       <Project>{69ED477B-2DB0-4664-A92E-F2E490A6BF17}</Project>
       <Name>Oxigen.Web.Assets</Name>
@@ -194,6 +199,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FileSystemResources\Madrid_20110505_Hotshot.mov" />
+    <Content Include="FileSystemResources\MonteCarloSundayHotshot.mov" />
+    <Content Include="FileSystemResources\sample.mov" />
     <Content Include="Hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
