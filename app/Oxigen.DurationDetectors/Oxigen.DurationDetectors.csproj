@@ -44,10 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DurationDetectorFactory.cs" />
+    <Compile Include="FileDurationDetectorFactory.cs" />
     <Compile Include="IFileDurationDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuicktimeFileDurationDetector.cs" />
+    <Compile Include="UserDefinedDurationDetector.cs" />
     <Compile Include="WindowsMediaFormatsFileDetector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

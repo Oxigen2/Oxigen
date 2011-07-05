@@ -2,7 +2,7 @@
 
 namespace Oxigen.DurationDetectors
 {
-    public class DurationDetectorFactory
+    public class FileDurationDetectorFactory
     {
         public IFileDurationDetector CreateDurationDetector(string extension)
         {
@@ -16,7 +16,7 @@ namespace Oxigen.DurationDetectors
                 case ".mov":
                     return new QuicktimeFileDurationDetector();
                 default:
-                    throw new ArgumentException("Extension " + extension + " is not valid.");
+                    return new UserDefinedDurationDetector();
             }
         }
     }
