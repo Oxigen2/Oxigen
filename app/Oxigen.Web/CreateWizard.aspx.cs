@@ -11,6 +11,7 @@ using Microsoft.Practices.ServiceLocation;
 using Oxigen.ApplicationServices;
 using Oxigen.ApplicationServices.Flash;
 using Oxigen.Core;
+using Oxigen.DurationDetectors;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
 using AssetContent = OxigenIIAdvertising.SOAStructures.AssetContent;
@@ -34,6 +35,7 @@ namespace OxigenIIPresentation
     private int _maxDisplayDuration = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["maxDisplayDuration"]);
     private int _serverTimeout = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["serverTimeout"]);
     private IList<Template> _templates;
+      private FileDurationDetectorFactory _fileDurationDetectorFactory = new FileDurationDetectorFactory();
 
     protected IList<Template> Templates
     {
@@ -127,7 +129,7 @@ namespace OxigenIIPresentation
         ImageUploader1.ShowDescriptions = false;
         ImageUploader1.MaxTotalFileSize = (int)((user.TotalAvailableBytes - user.UsedBytes) * 1.1F);
         ImageUploader1.Action = "CreateWizard.aspx";
-
+          
         _templates = producer.AssignedTemplates;
 
         //foreach (Template template in templates)
@@ -189,7 +191,7 @@ namespace OxigenIIPresentation
       displayDuration = bUseDisplayDurationOvr ? displayDuration : null;
 
       DateTime? userGivenDate = null;
-      float fDisplayDuration = -1F;
+      float fDisplayDuration;
 
       if (bUseDateOvr)
         Helper.NullableDateTryParse(date, out userGivenDate);

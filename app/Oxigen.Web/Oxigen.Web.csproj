@@ -1490,6 +1490,10 @@
       <Project>{63E9AECE-3385-44F0-BDF9-4C01DD3C0647}</Project>
       <Name>Oxigen.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Oxigen.DurationDetectors\Oxigen.DurationDetectors.csproj">
+      <Project>{45BE8C1E-CFED-47F4-9210-FCC1CAE9E48E}</Project>
+      <Name>Oxigen.DurationDetectors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Oxigen.LoggerInfoServer\Oxigen.LoggerInfoServer.csproj">
       <Project>{EDE68CDF-DBBF-4AD5-8FCA-2A4260524B81}</Project>
       <Name>Oxigen.LoggerInfoServer</Name>
