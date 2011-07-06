@@ -42,7 +42,7 @@ namespace OxigenIIPresentation
             get { return _templates; }
         }
 
-        private string _inviteToOverrideValues = Resource.InviteToOverrideValues;
+        private string _inviteToOverrideFieldText = Resource.InviteToOverrideValues;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,12 +56,12 @@ namespace OxigenIIPresentation
                 ScheduleRepeater.DataSource = new string[] { "", "", "", "", "", "", "", "", "", "" };
                 ScheduleRepeater.DataBind();
 
-                UploadTitle.Text = _inviteToOverrideValues;
-                UploadCreator.Text = _inviteToOverrideValues;
-                UploadDate.Text = _inviteToOverrideValues;
-                UploadDescription.Text = _inviteToOverrideValues;
-                UploadDisplayDuration.Text = _inviteToOverrideValues;
-                UploadURL.Text = _inviteToOverrideValues;
+                UploadTitle.Text = _inviteToOverrideFieldText;
+                UploadCreator.Text = _inviteToOverrideFieldText;
+                UploadDate.Text = _inviteToOverrideFieldText;
+                UploadDescription.Text = _inviteToOverrideFieldText;
+                UploadDisplayDuration.Text = _inviteToOverrideFieldText;
+                UploadURL.Text = _inviteToOverrideFieldText;
 
                 SetDefaultToTextBox(UploadTitle);
                 SetDefaultToTextBox(UploadCreator);
@@ -168,36 +168,16 @@ namespace OxigenIIPresentation
 
             int fileCount = Int32.Parse(Request.Form["FileCount"]);
 
-            string title = Request.Form["TitleOvr"].Trim();
-            string creator = Request.Form["CreatorOvr"].Trim();
-            string description = Request.Form["DescriptionOvr"].Trim();
-            string date = Request.Form["DateOvr"].Trim();
-            string url = Request.Form["URLOvr"].Trim();
-            string displayDuration = Request.Form["DisplayDurationOvr"].Trim();
+            UploadForm uploadForm = new UploadForm(_inviteToOverrideFieldText)
+                                    {
+                                        Title = Request.Form["TitleOvr"].Trim(),
+                                        Creator = Request.Form["CreatorOvr"].Trim(),
+                                        Description = Request.Form["DescriptionOvr"].Trim(),
+                                        Url = Request.Form["URLOvr"].Trim()
+                                    };
 
-            bool bUseTitleOvr = !string.IsNullOrEmpty(title) && title != _inviteToOverrideValues;
-            bool bUseCreatorOvr = !string.IsNullOrEmpty(creator) && creator != _inviteToOverrideValues;
-            bool bUseDescriptionOvr = !string.IsNullOrEmpty(description) && description != _inviteToOverrideValues;
-            bool bUseDateOvr = !string.IsNullOrEmpty(date) && date != _inviteToOverrideValues;
-            bool bUseURLOvr = !string.IsNullOrEmpty(url) && url != _inviteToOverrideValues;
-            bool bUseDisplayDurationOvr = !string.IsNullOrEmpty(displayDuration) && displayDuration != _inviteToOverrideValues;
-
-            title = bUseTitleOvr ? title : null;
-            creator = bUseCreatorOvr ? creator : null;
-            description = bUseDescriptionOvr ? description : null;
-            date = bUseDateOvr ? date : null;
-            url = bUseURLOvr ? url : null;
-            displayDuration = bUseDisplayDurationOvr ? displayDuration : null;
-
-            DateTime? userGivenDate = null;
-            float fDisplayDuration;
-
-            if (bUseDateOvr)
-                Helper.NullableDateTryParse(date, out userGivenDate);
-
-            // TODO: pending future development to accept videos, always try to parse user's given display duration
-            if (!float.TryParse(displayDuration, out fDisplayDuration) || fDisplayDuration < _minDisplayDuration || fDisplayDuration > _maxDisplayDuration)
-                fDisplayDuration = -1F;
+            uploadForm.SetDateIfProvided(Request.Form["DateOvr"].Trim());
+            uploadForm.SetDisplayDuration(Request.Form["DisplayDurationOvr"].Trim(), _minDisplayDuration, _maxDisplayDuration);
 
             //Iterate through uploaded data and save the original file and thumbnail
             for (int i = 1; i <= fileCount; i++)
@@ -205,12 +185,18 @@ namespace OxigenIIPresentation
                 string newFilename;
                 string newFilenameWithoutExtension;
                 string newFolder;
+                string title;
+                DateTime? createdDateTime;
+                float mediaDisplayDuration;
+
                 PreviewType previewType;
 
-                if (!bUseDateOvr)
-                    userGivenDate = ToDotNetFormat(Request.Params["SourceFileCreatedDateTime_" + i]);
+                if (!uploadForm.UserHasProvidedDate)
+                    createdDateTime = ToDotNetFormat(Request.Params["SourceFileCreatedDateTime_" + i]);
+                else
+                    createdDateTime = uploadForm.Date;
 
-                int contentLength = -1;
+                int contentLength;
 
                 //Get source file and save it to disk.
                 HttpPostedFile sourceFile = Request.Files["SourceFile_" + i];
@@ -220,8 +206,10 @@ namespace OxigenIIPresentation
                 bool bIsImage = GetIsFileImage(extension);
                 bool bIsVideo = GetIsFileVideo(extension);
 
-                if (!bUseTitleOvr)
+                if (!uploadForm.UserHasProvidedTitle)
                     title = Path.GetFileNameWithoutExtension(fileName);
+                else
+                    title = uploadForm.Title;
 
                 FilenameMakerLib.FilenameFromGUID.MakeFilenameAndFolder(fileName, out newFilename,
                   out newFilenameWithoutExtension, out newFolder);
@@ -252,6 +240,11 @@ namespace OxigenIIPresentation
                     File.Copy(thumbnailAssetContentPath + "flash-swf.jpg", thumbnailFullPath);
                 }
 
+                if (uploadForm.UserHasProvidedDisplayDuration)
+                    mediaDisplayDuration = uploadForm.DisplayDuration;
+                else
+                    mediaDisplayDuration = GetDisplayDuration(extension);
+
                 // get resized file and save
                 HttpPostedFile thumbnail2File = Request.Files["Thumbnail2_" + i];
 
@@ -280,11 +273,11 @@ namespace OxigenIIPresentation
                   newFolder + "\\" + newFilenameWithoutExtension + ".jpg",
                   newFolder,
                   newFilenameWithoutExtension + ".jpg",
-                  description,
-                  creator,
-                  userGivenDate,
-                  url,
-                  fDisplayDuration,
+                  uploadForm.Description,
+                  uploadForm.Creator,
+                  createdDateTime,
+                  uploadForm.Url,
+                  mediaDisplayDuration,
                   contentLength,
                   previewType));
             }
@@ -304,6 +297,12 @@ namespace OxigenIIPresentation
             }
 
             Session.Add("DurationsAmended", bDurationsAmended);
+        }
+
+        private float GetDisplayDuration(string path)
+        {
+            IFileDurationDetector durationDetector = _fileDurationDetectorFactory.CreateDurationDetector(Path.GetExtension(path));
+            return (float)durationDetector.GetDurationInSeconds(path);
         }
 
         private PreviewType GetPreviewType(bool bIsImage, bool bIsVideo)
@@ -355,8 +354,8 @@ namespace OxigenIIPresentation
 
         private void SetDefaultToTextBox(TextBox textBox)
         {
-            textBox.Attributes.Add("onfocus", "clearField(this, '" + _inviteToOverrideValues + "')");
-            textBox.Attributes.Add("onblur", "fillField(this, '" + _inviteToOverrideValues + "')");
+            textBox.Attributes.Add("onfocus", "clearField(this, '" + _inviteToOverrideFieldText + "')");
+            textBox.Attributes.Add("onblur", "fillField(this, '" + _inviteToOverrideFieldText + "')");
         }
     }
 }
