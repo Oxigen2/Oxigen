@@ -36,6 +36,7 @@ namespace OxigenIIPresentation
         private int _serverTimeout = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["serverTimeout"]);
         private IList<Template> _templates;
         private FileDurationDetectorFactory _fileDurationDetectorFactory = new FileDurationDetectorFactory();
+        private UploadedFileFactory _uploadedFileFactory = new UploadedFileFactory();
 
         protected IList<Template> Templates
         {
@@ -155,9 +156,6 @@ namespace OxigenIIPresentation
 
         private void UploadAndSaveToDB(out long totalUploadSize)
         {
-            string rawContentPath = System.Configuration.ConfigurationSettings.AppSettings["assetContentPath"];
-            string thumbnailAssetContentPath = System.Configuration.ConfigurationSettings.AppSettings["thumbnailAssetContentPath"];
-
             int userID;
             totalUploadSize = 0;
 
@@ -182,108 +180,40 @@ namespace OxigenIIPresentation
             //Iterate through uploaded data and save the original file and thumbnail
             for (int i = 1; i <= fileCount; i++)
             {
-                string newFilename;
-                string newFilenameWithoutExtension;
-                string newFolder;
-                string title;
-                DateTime? createdDateTime;
-                float mediaDisplayDuration;
+                HttpPostedFile postedFile = Request.Files["SourceFile_" + i];
+                UploadedFile uploadedFile = _uploadedFileFactory.CreateUploadedFile(uploadForm, _fileDurationDetectorFactory, Path.GetExtension(postedFile.FileName).ToLower());
+                
+                uploadedFile.PostedFile = postedFile;
+                uploadedFile.SetDateIfUserHasNotProvidedOne(Request.Params["SourceFileCreatedDateTime_" + i]);
+                
+                uploadedFile.Thumbnail1 = Request.Files["Thumbnail1_" + i];
+                uploadedFile.Thumbnail2 = Request.Files["Thumbnail2_" + i];
+                
+                uploadedFile.SaveThumbnail();
+                uploadedFile.SaveContent();
+                uploadedFile.SetDisplayDuration();
 
-                PreviewType previewType;
+                totalUploadSize += uploadedFile.ContentLength;
 
-                if (!uploadForm.UserHasProvidedDate)
-                    createdDateTime = ToDotNetFormat(Request.Params["SourceFileCreatedDateTime_" + i]);
-                else
-                    createdDateTime = uploadForm.Date;
-
-                int contentLength;
-
-                //Get source file and save it to disk.
-                HttpPostedFile sourceFile = Request.Files["SourceFile_" + i];
-                string fileName = Path.GetFileName(sourceFile.FileName);
-                string extension = Path.GetExtension(sourceFile.FileName).ToLower();
-
-                bool bIsImage = GetIsFileImage(extension);
-                bool bIsVideo = GetIsFileVideo(extension);
-
-                if (!uploadForm.UserHasProvidedTitle)
-                    title = Path.GetFileNameWithoutExtension(fileName);
-                else
-                    title = uploadForm.Title;
-
-                FilenameMakerLib.FilenameFromGUID.MakeFilenameAndFolder(fileName, out newFilename,
-                  out newFilenameWithoutExtension, out newFolder);
-
-                string pathWithoutFilename = rawContentPath + newFolder;
-
-                if (!Directory.Exists(pathWithoutFilename))
-                    Directory.CreateDirectory(pathWithoutFilename);
-
-                //Get first thumbnail  and save it to disk.
-                HttpPostedFile thumbnail1File = Request.Files["Thumbnail1_" + i];
-
-                string thumbnailFullPhysicalPathWithoutFilename = thumbnailAssetContentPath + newFolder;
-
-                if (!Directory.Exists(thumbnailFullPhysicalPathWithoutFilename))
-                    Directory.CreateDirectory(thumbnailFullPhysicalPathWithoutFilename);
-
-                string thumbnailFullPath = thumbnailFullPhysicalPathWithoutFilename + "\\" + newFilenameWithoutExtension + ".jpg";
-
-                if (bIsImage)
-                    thumbnail1File.SaveAs(thumbnailFullPath);
-                else if (bIsVideo)
-                    CopyDefaultThumbnailForType(extension, thumbnailAssetContentPath, thumbnailFullPath);
-                else
-                {
-                    //var swa = new SWAFile(sourceFile.InputStream);
-                    //swa.GetLastFrameImageAsThumbnail().Save(thumbnailFullPath);
-                    File.Copy(thumbnailAssetContentPath + "flash-swf.jpg", thumbnailFullPath);
-                }
-
-                if (uploadForm.UserHasProvidedDisplayDuration)
-                    mediaDisplayDuration = uploadForm.DisplayDuration;
-                else
-                    mediaDisplayDuration = GetDisplayDuration(extension);
-
-                // get resized file and save
-                HttpPostedFile thumbnail2File = Request.Files["Thumbnail2_" + i];
-
-                if (bIsImage)
-                {
-                    thumbnail2File.SaveAs(pathWithoutFilename + "\\" + newFilename);
-
-                    contentLength = thumbnail2File.ContentLength;
-                }
-                else
-                {
-                    sourceFile.SaveAs(pathWithoutFilename + "\\" + newFilename);
-
-                    contentLength = sourceFile.ContentLength;
-                }
-
-                totalUploadSize += contentLength;
-
-                previewType = GetPreviewType(bIsImage, bIsVideo);
-
-                assetContents.Add(new AssetContent(title,
-                  newFolder + "\\" + newFilename,
-                  newFilenameWithoutExtension,
-                  extension,
-                  newFolder + "/" + newFilenameWithoutExtension + ".jpg",
-                  newFolder + "\\" + newFilenameWithoutExtension + ".jpg",
-                  newFolder,
-                  newFilenameWithoutExtension + ".jpg",
+                assetContents.Add(new AssetContent(uploadedFile.Title,
+                  uploadedFile.Folder + "\\" + uploadedFile.GuidFilenameWithExtension,
+                  uploadedFile.GuidFilenameWithoutExtension,
+                  uploadedFile.Extension,
+                  uploadedFile.Folder + "/" + uploadedFile.GuidFilenameWithoutExtension + ".jpg",
+                  uploadedFile.Folder + "\\" + uploadedFile.GuidFilenameWithoutExtension + ".jpg",
+                  uploadedFile.Folder,
+                  uploadedFile.GuidFilenameWithoutExtension + ".jpg",
                   uploadForm.Description,
                   uploadForm.Creator,
-                  createdDateTime,
+                  uploadedFile.Date,
                   uploadForm.Url,
-                  mediaDisplayDuration,
-                  contentLength,
-                  previewType));
+                  uploadedFile.DisplayDuration,
+                  uploadedFile.ContentLength,
+                  uploadedFile.PreviewType));
             }
 
             BLClient client = null;
-            bool bDurationsAmended = false;
+            bool bDurationsAmended;
 
             try
             {
@@ -299,60 +229,7 @@ namespace OxigenIIPresentation
             Session.Add("DurationsAmended", bDurationsAmended);
         }
 
-        private float GetDisplayDuration(string path)
-        {
-            IFileDurationDetector durationDetector = _fileDurationDetectorFactory.CreateDurationDetector(Path.GetExtension(path));
-            return (float)durationDetector.GetDurationInSeconds(path);
-        }
-
-        private PreviewType GetPreviewType(bool bIsImage, bool bIsVideo)
-        {
-            if (bIsVideo)
-                return PreviewType.Video;
-
-            if (bIsImage)
-                return PreviewType.Image;
-
-            return PreviewType.Flash;
-        }
-
-        private void CopyDefaultThumbnailForType(string extension, string thumbnailAssetContentPath, string thumbnailFullPath)
-        {
-            string path = thumbnailAssetContentPath + "video-icon-" + extension.Remove(0, 1) + ".jpg";
-
-            // TODO: method will be obsolete if we find a way to get thumbs from MOV and MP4.
-            if (extension == ".avi" || extension == ".mpeg" || extension == ".mpg" || extension == ".wmv")
-                return;
-
-            if (File.Exists(path))
-            {
-                File.Copy(path, thumbnailFullPath);
-                return;
-            }
-
-            File.Copy(path + "video-icon-default.jpg", thumbnailFullPath);
-        }
-
-        private bool GetIsFileImage(string extension)
-        {
-            return (extension == ".jpg" || extension == ".jpeg" || extension == ".gif" || extension == ".bmp" ||
-                extension == ".png" || extension == ".tiff" || extension == ".tif");
-        }
-
-        private bool GetIsFileVideo(string extension)
-        {
-            return (extension == ".avi" || extension == ".mov" || extension == ".mpeg" ||
-               extension == ".mpg" || extension == ".wmv" || extension == ".mp4");
-        }
-
-        private DateTime? ToDotNetFormat(string date)
-        {
-            string[] dateComponents = date.Split(new char[] { ':', ' ' });
-
-            return new DateTime(int.Parse(dateComponents[0]), int.Parse(dateComponents[1]), int.Parse(dateComponents[2]));
-        }
-
-        private void SetDefaultToTextBox(TextBox textBox)
+       private void SetDefaultToTextBox(TextBox textBox)
         {
             textBox.Attributes.Add("onfocus", "clearField(this, '" + _inviteToOverrideFieldText + "')");
             textBox.Attributes.Add("onblur", "fillField(this, '" + _inviteToOverrideFieldText + "')");
