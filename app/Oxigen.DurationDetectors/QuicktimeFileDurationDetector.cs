@@ -64,7 +64,7 @@ namespace Oxigen.DurationDetectors
             int timeScale = BitConverter.ToInt32(timeScaleBytes, 0);
             int durationBasedOnTimeScale = BitConverter.ToInt32(durationBasedOnTimeScaleBytes, 0);
 
-            return (double)durationBasedOnTimeScale / timeScale;
+            return Math.Round((double)durationBasedOnTimeScale / timeScale, 2);
         }
 
         private bool MvhdAtomHeaderNamePassed()

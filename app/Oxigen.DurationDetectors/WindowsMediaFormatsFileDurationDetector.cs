@@ -1,12 +1,13 @@
-﻿using WMPLib;
+﻿using System;
+using WMPLib;
 
 namespace Oxigen.DurationDetectors
 {
-    public class WindowsMediaFormatsFileDetector : IFileDurationDetector
+    public class WindowsMediaFormatsFileDurationDetector : IFileDurationDetector
     {
         private WindowsMediaPlayerClass _wmp;
  
-        public WindowsMediaFormatsFileDetector()
+        public WindowsMediaFormatsFileDurationDetector()
         {
             _wmp = new WindowsMediaPlayerClass();
         }
@@ -15,7 +16,7 @@ namespace Oxigen.DurationDetectors
         {
             IWMPMedia mediaInfo = _wmp.newMedia(path);
             
-            return mediaInfo.duration;
+            return Math.Round(mediaInfo.duration, 2);
         }
     }
 }
