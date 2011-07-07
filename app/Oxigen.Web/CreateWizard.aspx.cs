@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml;
 using Aurigma.ImageUploader;
 using Microsoft.Practices.ServiceLocation;
 using Oxigen.ApplicationServices;
-using Oxigen.ApplicationServices.Flash;
 using Oxigen.Core;
 using Oxigen.DurationDetectors;
 using OxigenIIAdvertising.BLClients;
 using OxigenIIAdvertising.SOAStructures;
+using log4net;
 using AssetContent = OxigenIIAdvertising.SOAStructures.AssetContent;
 
 namespace OxigenIIPresentation
@@ -34,9 +31,12 @@ namespace OxigenIIPresentation
         private int _minDisplayDuration = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["minDisplayDuration"]);
         private int _maxDisplayDuration = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["maxDisplayDuration"]);
         private int _serverTimeout = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["serverTimeout"]);
+        private string _rawContentPath = System.Configuration.ConfigurationSettings.AppSettings["assetContentPath"];
+        private string _thumbnailAssetContentPath = System.Configuration.ConfigurationSettings.AppSettings["thumbnailAssetContentPath"];
         private IList<Template> _templates;
         private FileDurationDetectorFactory _fileDurationDetectorFactory = new FileDurationDetectorFactory();
         private UploadedFileFactory _uploadedFileFactory = new UploadedFileFactory();
+        private ILog _logger = LogManager.GetLogger("Logger1");
 
         protected IList<Template> Templates
         {
@@ -149,8 +149,7 @@ namespace OxigenIIPresentation
             }
             catch (Exception ex)
             {
-                // TODO: handle
-                throw ex;
+                _logger.Error(ex.ToString());
             }
         }
 
@@ -182,12 +181,15 @@ namespace OxigenIIPresentation
             {
                 HttpPostedFile postedFile = Request.Files["SourceFile_" + i];
                 UploadedFile uploadedFile = _uploadedFileFactory.CreateUploadedFile(uploadForm, _fileDurationDetectorFactory, Path.GetExtension(postedFile.FileName).ToLower());
-                
-                uploadedFile.PostedFile = postedFile;
+
+                uploadedFile.RawContentPath = _rawContentPath;
+                uploadedFile.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
+                uploadedFile.UploadedStream = postedFile.InputStream;
+                uploadedFile.OriginalFileName = postedFile.FileName;
                 uploadedFile.SetDateIfUserHasNotProvidedOne(Request.Params["SourceFileCreatedDateTime_" + i]);
                 
-                uploadedFile.Thumbnail1 = Request.Files["Thumbnail1_" + i];
-                uploadedFile.Thumbnail2 = Request.Files["Thumbnail2_" + i];
+                uploadedFile.Thumbnail1Stream = Request.Files["Thumbnail1_" + i].InputStream;
+                uploadedFile.Thumbnail2Stream = Request.Files["Thumbnail2_" + i].InputStream;
                 
                 uploadedFile.SaveThumbnail();
                 uploadedFile.SaveContent();

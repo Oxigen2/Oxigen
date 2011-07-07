@@ -619,6 +619,8 @@
     <Compile Include="CreateSuccess.aspx.designer.cs">
       <DependentUpon>CreateSuccess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UploadedFile.cs" />
+    <Compile Include="UploadForm.cs" />
     <Compile Include="Error413.aspx.cs">
       <DependentUpon>Error413.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -17,27 +17,23 @@ namespace OxigenIIPresentation
         private string _title;
         private DateTime? _date;
         private float _displayDuration;
-        protected HttpPostedFile _postedFile;
-        protected HttpPostedFile _thumbnail1;
-        protected HttpPostedFile _thumbnail2;
-        private string _rawContentPath = System.Configuration.ConfigurationSettings.AppSettings["assetContentPath"];
-        protected string _thumbnailAssetContentPath = System.Configuration.ConfigurationSettings.AppSettings["thumbnailAssetContentPath"];
+        protected string _rawContentPath;
+        protected string _thumbnailAssetContentPath;
+        protected Stream _uploadedStream;
+        protected Stream _thumbnail1Stream;
+        protected Stream _thumbnail2Stream;
         protected string _thumbnailFullPath;
         protected string _pathWithoutFilename;
         protected string _destinationFullPath;
         private string _thumbnailFullPhysicalPathWithoutFilename;
-        private FileDurationDetectorFactory _fileDurationDetectorFactory;
+        private readonly FileDurationDetectorFactory _fileDurationDetectorFactory;
         private string _guidFilenameWithExtension;
+        protected int _contentLength;
 
         public UploadedFile(UploadForm uploadForm, FileDurationDetectorFactory fileDurationDetectorFactory)
         {
             _uploadForm = uploadForm;
             _fileDurationDetectorFactory = fileDurationDetectorFactory;
-        }
-
-        public string OriginalFilename
-        {
-            get { return _originalFilename; }
         }
 
         public string FilenameWithoutExtension
@@ -75,20 +71,25 @@ namespace OxigenIIPresentation
             get { return _extension; }
         }
 
-        public HttpPostedFile PostedFile
+        public Stream UploadedStream
         {
-            get { return _postedFile; }
-            set
+            set { _uploadedStream = value; }
+        }
+
+        public string OriginalFileName
+        {
+            set 
             {
-                _postedFile = value;
-                _originalFilename = Path.GetFileName(value.FileName);
+                _originalFilename = Path.GetFileName(value);
                 _filenameWithoutExtension = Path.GetFileNameWithoutExtension(_originalFilename);
-                _extension = Path.GetExtension(value.FileName).ToLower();
+                _extension = Path.GetExtension(value).ToLower();
                 _title = GetFilenameOrUserDefinedTitle(_filenameWithoutExtension);
                 FilenameMakerLib.FilenameFromGUID.MakeFilenameAndFolder(_originalFilename, out _guidFilenameWithoutExtension, out _folder);
                 _pathWithoutFilename = _rawContentPath + _folder;
                 _guidFilenameWithExtension = _guidFilenameWithoutExtension + _extension;
                 _destinationFullPath = _pathWithoutFilename + "\\" + _guidFilenameWithoutExtension + _extension;
+                _thumbnailFullPhysicalPathWithoutFilename = _thumbnailAssetContentPath + _folder;
+                _thumbnailFullPath = _thumbnailFullPhysicalPathWithoutFilename + "\\" + _guidFilenameWithoutExtension + ".jpg";
             }
         }
 
@@ -103,12 +104,12 @@ namespace OxigenIIPresentation
         public void SetDateIfUserHasNotProvidedOne(string stringDate)
         {
             if (_uploadForm.UserHasProvidedDate)
-                _date = GetDateFromUploadedFile(stringDate);
-            else
                 _date = _uploadForm.Date;
+            else
+                _date = ConvertDateFromUploadedFormat(stringDate);
         }
 
-        private DateTime? GetDateFromUploadedFile(string date)
+        private DateTime? ConvertDateFromUploadedFormat(string date)
         {
             string[] dateComponents = date.Split(new char[] { ':', ' ' });
 
@@ -120,20 +121,14 @@ namespace OxigenIIPresentation
             get { return _pathWithoutFilename; }
         }
 
-        public HttpPostedFile Thumbnail1
+        public Stream Thumbnail1Stream
         {
-            get { return _thumbnail1; }
-            set
-            {
-                _thumbnail1 = value;
-                _thumbnailFullPhysicalPathWithoutFilename = _thumbnailAssetContentPath + _folder;
-                _thumbnailFullPath = _thumbnailFullPhysicalPathWithoutFilename + "\\" + _guidFilenameWithoutExtension + ".jpg";
-            }
+            set { _thumbnail1Stream = value; }
         }
 
-        public HttpPostedFile Thumbnail2
+        public Stream Thumbnail2Stream
         {
-            set { _thumbnail2 = value; }
+            set { _thumbnail2Stream = value; }
         }
 
         protected void CreateThumbnailFolderIfNotExists()
@@ -150,12 +145,8 @@ namespace OxigenIIPresentation
 
         public void SetDisplayDuration()
         {
-            if (File.Exists(_destinationFullPath))
-            {
-                throw new FileNotFoundException("File " + _pathWithoutFilename + "\\" + _destinationFullPath +
-                                                " does not exist. Please save this " + GetType() +
-                                                " before setting the display duration.");
-            }
+            if (!File.Exists(_destinationFullPath))
+                throw new FileNotFoundException("File " + _destinationFullPath + " does not exist.");
 
             if (_uploadForm.UserHasProvidedDisplayDuration)
                 _displayDuration = _uploadForm.DisplayDuration;
@@ -169,12 +160,35 @@ namespace OxigenIIPresentation
         public virtual void SaveContent()
         {
             CreateContentFolderIfNotExists();
-            _postedFile.SaveAs(_destinationFullPath);
+            _contentLength = (int)_uploadedStream.Length;
+            SaveStream(_uploadedStream, _destinationFullPath);
+        }
+
+        protected void SaveStream(Stream inputStream, string destinationFullPath)
+        {
+            using (var reader = new BinaryReader(inputStream))
+            {
+                const int bufferSize = 1024;
+                byte[] buffer = new byte[bufferSize];
+                const int offset = 0;
+
+                using (var writingStream = new FileStream(destinationFullPath, System.IO.FileMode.OpenOrCreate))
+                {
+                    int count;
+                    while ((count = reader.Read(buffer, offset, buffer.Length)) > 0)
+                    {
+                        writingStream.Write(buffer, offset, count);
+                    }
+                    writingStream.Flush();
+                    writingStream.Close();
+                }
+                reader.Close();
+            }
         }
 
         public virtual int ContentLength
         {
-            get { return _postedFile.ContentLength; }
+            get { return _contentLength; }
         }
 
         public abstract void SaveThumbnail();
@@ -194,6 +208,16 @@ namespace OxigenIIPresentation
             set {
                 _guidFilenameWithExtension = value;
             }
+        }
+
+        public string RawContentPath
+        {
+            set { _rawContentPath = value; }
+        }
+
+        public string ThumbnailAssetContentPath
+        {
+            set { _thumbnailAssetContentPath = value; }
         }
     }
 
@@ -263,18 +287,19 @@ namespace OxigenIIPresentation
         public override void SaveThumbnail()
         {
             CreateThumbnailFolderIfNotExists();
-            _thumbnail1.SaveAs(_thumbnailFullPath);
+            SaveStream(_thumbnail1Stream, _thumbnailFullPath);
         }
 
         public override void SaveContent()
         {
             CreateContentFolderIfNotExists();
-            _thumbnail2.SaveAs(_destinationFullPath);
+            _contentLength = (int)_thumbnail2Stream.Length;
+            SaveStream(_thumbnail2Stream, _destinationFullPath);
         }
 
         public override int ContentLength
         {
-            get { return _thumbnail2.ContentLength; }
+            get { return _contentLength; }
         }
 
         public override PreviewType PreviewType

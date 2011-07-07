@@ -16,18 +16,10 @@ namespace FilenameMakerLib
     /// an underscore and the first letter of an existing filename.
     /// </summary>
     /// <param name="originalFilename">the original filename</param>
-    /// <param name="newFilename">the new filename in the format of GUID_&lt;first letter&gt; and the original filename's extension</param>
     /// <param name="newFilenameWithoutExtension">the new filename in the format of GUID_&lt;first letter&gt; without an extension</param>
     /// <param name="firstLetter">the first letter of the original filename</param>
-    public static void MakeFilenameAndFolder(string originalFilename, out string newFilename, 
-      out string newFilenameWithoutExtension, out string firstLetter)
+    public static void MakeFilenameAndFolder(string originalFilename, out string newFilenameWithoutExtension, out string firstLetter)
     {
-      if (originalFilename == String.Empty)
-      {
-        newFilename = String.Empty;
-        firstLetter = String.Empty;
-      }
-
       firstLetter = originalFilename.Substring(0, 1);
 
       int firstletterInt;
@@ -35,11 +27,7 @@ namespace FilenameMakerLib
       if (int.TryParse(firstLetter, out firstletterInt))
         firstLetter = GetRandomLetter().ToString();
 
-      string fileExtension = System.IO.Path.GetExtension(originalFilename);
-
-      newFilenameWithoutExtension = System.Guid.NewGuid().ToString() + "_" + firstLetter.ToUpper();
-
-      newFilename = newFilenameWithoutExtension + fileExtension;
+      newFilenameWithoutExtension = Guid.NewGuid().ToString() + "_" + firstLetter.ToUpper();
     }
 
     /// <summary>
