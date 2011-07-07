@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3FF1EC2D-710C-450D-B36C-4BCD64FBC91B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Oxigen.Tests32</RootNamespace>
+    <AssemblyName>Oxigen.Tests32</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TestFiles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestFiles.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadFormTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UploadSaveFilesTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\app\Oxigen.DurationDetectors\Oxigen.DurationDetectors.csproj">
+      <Project>{45BE8C1E-CFED-47F4-9210-FCC1CAE9E48E}</Project>
+      <Name>Oxigen.DurationDetectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\app\Oxigen.Web\Oxigen.Web.csproj">
+      <Project>{EF2E77E6-6434-4467-B199-6038BA279460}</Project>
+      <Name>Oxigen.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\app\SOAStructures\SOAStructures.csproj">
+      <Project>{328E0FFB-73DD-4F8B-8DD4-58214B741F2D}</Project>
+      <Name>SOAStructures</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestFiles.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TestFiles.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fixtures_20110927.swf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sample.wmv" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sampleWMV.wmv" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sampleMOV.mov" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sampleSWF.swf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sampleGIF.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sampleJPG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SamplePNG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\GenericThumbnails\flash-swf.jpg" />
+    <Content Include="Resources\GenericThumbnails\video-icon-avi.jpg" />
+    <Content Include="Resources\GenericThumbnails\video-icon-default.jpg" />
+    <Content Include="Resources\GenericThumbnails\video-icon-mov.jpg" />
+    <Content Include="Resources\GenericThumbnails\video-icon-mp4.jpg" />
+    <Content Include="Resources\GenericThumbnails\video-icon-mpeg.jpg" />
+    <Content Include="Resources\GenericThumbnails\video-icon-mpg.jpg" />
+    <Content Include="Resources\GenericThumbnails\video-icon-wmv.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -7,7 +7,7 @@ namespace Tests.Oxigen.Web
     [TestFixture, Category("IntegrationTest")]
     public class MovieDurationTests
     {
-        private double TIME_THRESHOLD_SECONDS = 0.5;
+        private double TIME_THRESHOLD_SECONDS = 1;
 
         [Test]
         public void CanGetCorrectQuicktimeDuration1()
@@ -15,10 +15,10 @@ namespace Tests.Oxigen.Web
             // Arrange
             QuicktimeFileDurationDetector qtDetector = new QuicktimeFileDurationDetector();
             double actualDuration;
-            double expectedDuration = 85.5;
+            double expectedDuration = 85.5d;
 
             // Act
-            actualDuration = qtDetector.GetDurationInSeconds(@"../../FileSystemResources/sample.mov");
+            actualDuration = qtDetector.GetDurationInSeconds(@"C:\Oxigen2\Oxigen\tests\Oxigen.Tests\FileSystemResources\MovieDurationTests\MOV\sample.mov");
 
             // Assert
             AssertWithThreshold(expectedDuration, actualDuration, TIME_THRESHOLD_SECONDS);
@@ -30,10 +30,10 @@ namespace Tests.Oxigen.Web
             // Arrange
             QuicktimeFileDurationDetector qtDetector = new QuicktimeFileDurationDetector();
             double actualDuration;
-            double expectedDuration = 45.07;
+            double expectedDuration = 45.07d;
 
             // Act
-            actualDuration = qtDetector.GetDurationInSeconds(@"../../FileSystemResources/MonteCarloSundayHotshot.mov");
+            actualDuration = qtDetector.GetDurationInSeconds(@"C:\Oxigen2\Oxigen\tests\Oxigen.Tests\FileSystemResources\MovieDurationTests\MOV\MonteCarloSundayHotshot.mov");
 
             // Assert
             AssertWithThreshold(expectedDuration, actualDuration, TIME_THRESHOLD_SECONDS);
@@ -45,10 +45,26 @@ namespace Tests.Oxigen.Web
             // Arrange
             QuicktimeFileDurationDetector qtDetector = new QuicktimeFileDurationDetector();
             double actualDuration;
-            double expectedDuration = 38;
+            double expectedDuration = 38d;
 
             // Act
-            actualDuration = qtDetector.GetDurationInSeconds(@"../../FileSystemResources/Madrid_20110505_Hotshot.mov");
+            actualDuration = qtDetector.GetDurationInSeconds(@"C:\Oxigen2\Oxigen\tests\Oxigen.Tests\FileSystemResources\MovieDurationTests\MOV\Madrid_20110505_Hotshot.mov");
+
+            // Assert
+            AssertWithThreshold(expectedDuration, actualDuration, TIME_THRESHOLD_SECONDS);
+        }
+
+        [Test]
+        public void CanGetCorrectWMPDuration1()
+        {
+            // Arrange
+            WindowsMediaFormatsFileDurationDetector wmvDetector = new WindowsMediaFormatsFileDurationDetector();
+
+            double actualDuration;
+            double expectedDuration = 150.7d;
+
+            // Act
+            actualDuration = wmvDetector.GetDurationInSeconds(@"C:\Oxigen2\Oxigen\tests\Oxigen.Tests\FileSystemResources\MovieDurationTests\WMV\sample1.wmv");
 
             // Assert
             AssertWithThreshold(expectedDuration, actualDuration, TIME_THRESHOLD_SECONDS);
@@ -57,9 +73,9 @@ namespace Tests.Oxigen.Web
         private void AssertWithThreshold(double expectedDuration, double actualDuration, double timeThreshold)
         {
             if (Math.Abs(expectedDuration - actualDuration) <= timeThreshold)
-                Assert.Pass("Difference between actual and expected values is within the threshold of " + timeThreshold);
+                Assert.Pass("Deviation between actual and expected values is within the threshold of " + timeThreshold+ " seconds. Expected value was " + expectedDuration + ", actual is " + actualDuration);
 
-            Assert.Fail("Difference between actual and expected values is outside the threshold of " + timeThreshold);
+            Assert.Fail("Deviation between between actual and expected values is outside the threshold of " + timeThreshold + " seconds. Expected value was " + expectedDuration + ", actual is " + actualDuration);
         }
     }
 }

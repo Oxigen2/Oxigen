@@ -199,9 +199,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FileSystemResources\Madrid_20110505_Hotshot.mov" />
-    <Content Include="FileSystemResources\MonteCarloSundayHotshot.mov" />
-    <Content Include="FileSystemResources\sample.mov" />
+    <Content Include="FileSystemResources\MovieDurationTests\MOV\Madrid_20110505_Hotshot.mov" />
+    <Content Include="FileSystemResources\MovieDurationTests\MOV\MonteCarloSundayHotshot.mov" />
+    <Content Include="FileSystemResources\MovieDurationTests\MOV\sample.mov" />
+    <Content Include="FileSystemResources\MovieDurationTests\WMV\sample1.wmv" />
     <Content Include="Hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
