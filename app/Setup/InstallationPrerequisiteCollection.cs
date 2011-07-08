@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using Setup.ClientLoggers;
 
 namespace Setup
 {
@@ -56,6 +57,15 @@ namespace Setup
                     prerequisite.SetAmberQuestionMark();
                 else
                     prerequisite.SetRedCross();
+            }
+        }
+
+        public void LogNotMetPrerequisites(ClientLogger logger)
+        {
+            foreach (InstallationPrerequisite prerequisite in _prerequisites)
+            {
+                if (prerequisite.PrerequisiteStatus == PrerequisiteStatus.DoesNotExist)
+                    logger.Log(prerequisite.LogMessage);
             }
         }
     }

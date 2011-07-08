@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using Setup.ClientLoggers;
-using Setup.Properties;
-using System.Threading;
 
 namespace Setup
 {
     public partial class PrerequisitesForm : SetupForm
     {
-        private bool _bAllMandatoryPrerequisitesMet = true;
-        private bool _bRecommendedSoftwareExists = true;
-
         public PrerequisitesForm()
         {
             InitializeComponent();
@@ -46,6 +40,7 @@ namespace Setup
                 return;
             }
 
+            prerequisites.LogNotMetPrerequisites(logger);
             prerequisites.SetVisualIndicators();
 
             if (prerequisites.CanContinueWithInstallation)
