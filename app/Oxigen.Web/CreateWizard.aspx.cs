@@ -74,7 +74,7 @@ namespace OxigenIIPresentation
                 ImageUploader1.LicenseKey = System.Configuration.ConfigurationSettings.AppSettings["imageUploaderLicense"];
                 ImageUploader1.FileMask = System.Configuration.ConfigurationSettings.AppSettings["imageUploaderFileMask"];
 
-                OxigenIIAdvertising.SOAStructures.User user = (User)Session["User"];
+                User user = (User)Session["User"];
 
                 if (user == null)
                     return;
