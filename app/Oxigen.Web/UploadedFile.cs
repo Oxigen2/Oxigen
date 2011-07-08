@@ -36,11 +36,6 @@ namespace OxigenIIPresentation
             _fileDurationDetectorFactory = fileDurationDetectorFactory;
         }
 
-        public string FilenameWithoutExtension
-        {
-            get { return _filenameWithoutExtension; }
-        }
-
         public string Folder
         {
             get { return _folder; }
@@ -116,11 +111,6 @@ namespace OxigenIIPresentation
             return new DateTime(int.Parse(dateComponents[0]), int.Parse(dateComponents[1]), int.Parse(dateComponents[2]));
         }
 
-        public string PathWithoutFilename
-        {
-            get { return _pathWithoutFilename; }
-        }
-
         public Stream Thumbnail1Stream
         {
             set { _thumbnail1Stream = value; }
@@ -130,6 +120,35 @@ namespace OxigenIIPresentation
         {
             set { _thumbnail2Stream = value; }
         }
+
+        public virtual int ContentLength
+        {
+            get { return _contentLength; }
+        }
+        
+        public string GuidFilenameWithExtension
+        {
+            get
+            {
+                return _guidFilenameWithExtension;
+            }
+            set
+            {
+                _guidFilenameWithExtension = value;
+            }
+        }
+
+        public string RawContentPath
+        {
+            set { _rawContentPath = value; }
+        }
+
+        public string ThumbnailAssetContentPath
+        {
+            set { _thumbnailAssetContentPath = value; }
+        }
+
+        public abstract PreviewType PreviewType { get; }
 
         protected void CreateThumbnailFolderIfNotExists()
         {
@@ -186,39 +205,8 @@ namespace OxigenIIPresentation
             }
         }
 
-        public virtual int ContentLength
-        {
-            get { return _contentLength; }
-        }
-
         public abstract void SaveThumbnail();
-        public abstract PreviewType PreviewType { get; }
 
-        public string DestinationFullPath
-        {
-            get { return _destinationFullPath; }
-            set { _destinationFullPath = value; }
-        }
-
-        public string GuidFilenameWithExtension
-        {
-            get {
-                return _guidFilenameWithExtension;
-            }
-            set {
-                _guidFilenameWithExtension = value;
-            }
-        }
-
-        public string RawContentPath
-        {
-            set { _rawContentPath = value; }
-        }
-
-        public string ThumbnailAssetContentPath
-        {
-            set { _thumbnailAssetContentPath = value; }
-        }
     }
 
     public class UploadedFlashFile : UploadedFile
