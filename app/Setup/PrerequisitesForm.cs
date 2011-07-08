@@ -120,7 +120,7 @@ namespace Setup
                 return;
             }
 
-            SetupHelper.OpenForm<TermsAndConditionsForm>(this);
+            SetupHelper.OpenForm<WelcomeForm>(this);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
