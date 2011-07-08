@@ -16,7 +16,7 @@ namespace Setup
 
     private void btnCancel_Click(object sender, EventArgs e)
     {
-      SetupHelper.ExitNoChanges();
+      SetupHelper.ExitConfirmNoChanges();
     }
   }
 }

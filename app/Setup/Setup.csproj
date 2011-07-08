@@ -132,6 +132,8 @@
     <Compile Include="ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstallationPrerequisite.cs" />
+    <Compile Include="InstallationPrerequisiteCollection.cs" />
     <Compile Include="MergeChannelsForm.cs">
       <SubType>Form</SubType>
     </Compile>

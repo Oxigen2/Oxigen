@@ -53,7 +53,7 @@ namespace Setup
     
     private void btnCancel_Click(object sender, EventArgs e)
     {
-      SetupHelper.ExitNoChanges();
+      SetupHelper.ExitConfirmNoChanges();
     }
 
     private void btnBack_Click(object sender, EventArgs e)

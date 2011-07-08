@@ -44,7 +44,7 @@ namespace Setup
 
     private void btnCancel_Click(object sender, EventArgs e)
     {
-      SetupHelper.ExitNoChanges();
+      SetupHelper.ExitConfirmNoChanges();
     }
 
     private void Form_Shown(object sender, EventArgs e)

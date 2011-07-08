@@ -51,8 +51,9 @@ namespace Setup
     private string _username;
     private bool _bDebugMode = false;
     private Logger _setupLogger = new Logger("Oxigen Installer", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\OxigenInstallLog.txt", LoggingMode.Release);
+    private bool _prerequisitesFullyMet;
 
-    public string Username
+      public string Username
     {
       get { return _username; }
       set { _username = value; }
@@ -659,5 +660,11 @@ namespace Setup
         return _instance;
       }
     }
+
+      public bool PrerequisitesFullyMet
+      {
+          get { return _prerequisitesFullyMet; }
+          set { _prerequisitesFullyMet = value; }
+      }
   } 
 }

@@ -204,7 +204,7 @@
             // btnNext
             // 
             this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(437, 315);
+            this.btnNext.Location = new System.Drawing.Point(422, 315);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 0;
@@ -214,7 +214,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(356, 315);
+            this.btnBack.Location = new System.Drawing.Point(341, 315);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 1;
@@ -224,7 +224,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 315);
+            this.btnCancel.Location = new System.Drawing.Point(260, 315);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -254,9 +254,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(524, 350);
             this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
@@ -274,7 +274,7 @@
             this.Controls.Add(this.quickTimeIndicator);
             this.Controls.Add(this.dotNetIndicator);
             this.Name = "PrerequisitesForm";
-            this.Shown += new System.EventHandler(this.PrerequisitesForm_Shown);
+            this.Load += new System.EventHandler(this.PrerequisitesForm_Load);
             this.Controls.SetChildIndex(this.dotNetIndicator, 0);
             this.Controls.SetChildIndex(this.quickTimeIndicator, 0);
             this.Controls.SetChildIndex(this.ramIndicator, 0);
@@ -291,9 +291,9 @@
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label6, 0);
-            this.Controls.SetChildIndex(this.lblStatus, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnBack, 0);
+            this.Controls.SetChildIndex(this.lblStatus, 0);
             this.Controls.SetChildIndex(this.btnNext, 0);
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

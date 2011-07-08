@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using Setup.ClientLoggers;
 
 namespace Setup
@@ -12,7 +13,8 @@ namespace Setup
 
     private void btnReject_Click(object sender, EventArgs e)
     {
-      SetupHelper.ExitNoChanges();
+        AppDataSingleton.Instance.ExitPromptSuppressed = true;
+        Application.Exit();
     }
 
     private void btnAccept_Click(object sender, EventArgs e)

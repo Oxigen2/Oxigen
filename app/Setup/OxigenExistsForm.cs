@@ -39,7 +39,7 @@ namespace Setup
 
     private void btnCancel_Click(object sender, EventArgs e)
     {
-      SetupHelper.ExitNoChanges();
+      SetupHelper.ExitConfirmNoChanges();
     }
 
     private void btnNext_Click(object sender, EventArgs e)

@@ -23,7 +23,7 @@ namespace Setup
     /// <summary>
     /// Notifies the user and exits the installer application when no changes have been made to the target system.
     /// </summary>
-    internal static void ExitNoChanges()
+    internal static void ExitConfirmNoChanges()
     {
       if (AppDataSingleton.Instance.OneFormClosed)
         return;
@@ -1109,7 +1109,7 @@ namespace Setup
 
     internal static bool PrerequisitesMet()
     {
-      return (IsRamSufficient() != RAMStatus.CannotInstall) && DotNet35Exists() && FlashActiveXExists()
+      return (IsRamSufficient() != RAMStatus.BelowMandatory) && DotNet35Exists() && FlashActiveXExists()
         && QuickTimeRightVersionExists() && WindowsMediaPlayerRightVersionExists(); 
     }    
 
@@ -1118,12 +1118,12 @@ namespace Setup
       long physicalRAM = GetPhysicalRam();
 
       if (physicalRAM >= 1033741824)
-        return RAMStatus.Good;
+        return RAMStatus.EqualOrAboveRecommended;
 
       if (physicalRAM >= 496870912)
-        return RAMStatus.Marginal;
+        return RAMStatus.BetweenMandatoryAndRecommended;
 
-      return RAMStatus.CannotInstall;
+      return RAMStatus.BelowMandatory;
     }
 
     internal static bool DotNet35Exists()
@@ -1329,9 +1329,9 @@ namespace Setup
 
   internal enum RAMStatus
   {
-    Good,
-    Marginal,
-    CannotInstall
+    EqualOrAboveRecommended,
+    BetweenMandatoryAndRecommended,
+    BelowMandatory
   }
 
   public struct MonthForDD
