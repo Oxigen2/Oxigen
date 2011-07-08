@@ -77,15 +77,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Fixtures_20110927.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sample.wmv" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sampleWMV.wmv" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\sampleMOV.mov" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +100,7 @@
     <Content Include="Resources\GenericThumbnails\video-icon-mpeg.jpg" />
     <Content Include="Resources\GenericThumbnails\video-icon-mpg.jpg" />
     <Content Include="Resources\GenericThumbnails\video-icon-wmv.jpg" />
+    <None Include="Resources\sampleWMV.wmv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
