@@ -1,12 +1,15 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Setup
 {
-  public partial class OxigenForm : Form
-  {
-    public OxigenForm()
+    public partial class OxigenForm : Form
     {
-      InitializeComponent();
+        public OxigenForm()
+        {
+            InitializeComponent();
+
+            pictureBox1.Image = SetupHelper.GetBanner();
+        }
     }
-  }
 }

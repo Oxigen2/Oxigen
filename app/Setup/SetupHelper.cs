@@ -1325,6 +1325,17 @@ namespace Setup
       return GenericRegistryAccess.GetRegistryKey(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Oxigen");
     }
 
+
+    internal static System.Drawing.Image GetBanner()
+    {
+        if (!File.Exists("logo.png"))
+        {
+            ComponentResourceManager resources = new ComponentResourceManager(typeof (OxigenForm));
+            return ((System.Drawing.Image) (resources.GetObject("pictureBox1.Image")));
+        }
+
+        return System.Drawing.Image.FromFile("logo.png");
+    }
   }
 
   internal enum RAMStatus
