@@ -52,6 +52,21 @@ namespace Oxigen.Tests32
             Assert.IsNull(form.Description);
             Assert.IsNull(form.Creator);
             Assert.IsNull(form.Url);
+        }
+
+        [Test]
+        public void StringInputNullUserDataBoolsShouldBeFalse()
+        {
+            // Arrange
+            UploadForm form = new UploadForm(_inviteToOverrideAutoValues);
+
+            // Act
+            form.Title = "";
+            form.Description = "";
+            form.Creator = "";
+            form.Url = "";
+
+            // Assert
             Assert.IsFalse(form.UserHasProvidedDate);
             Assert.IsFalse(form.UserHasProvidedDisplayDuration);
             Assert.IsFalse(form.UserHasProvidedTitle);
@@ -69,6 +84,20 @@ namespace Oxigen.Tests32
             // Assert
             Assert.IsNull(form.Date);
             Assert.AreEqual(form.DisplayDuration, -1);
+            Assert.IsFalse(form.UserHasProvidedDate);
+            Assert.IsFalse(form.UserHasProvidedDisplayDuration);
+        }
+
+        [Test]
+        public void NonStringInputNullNonStringUserDataBoolsShouldBeFalse()
+        {
+            // Arrange
+            UploadForm form = new UploadForm(_inviteToOverrideAutoValues);
+
+            // Act
+            form.SetDateIfProvided("");
+            form.SetDisplayDuration("", 10, 20);
+            // Assert
             Assert.IsFalse(form.UserHasProvidedDate);
             Assert.IsFalse(form.UserHasProvidedDisplayDuration);
         }

@@ -96,9 +96,11 @@ namespace Oxigen.Tests32
                 TestFiles.sampleJPG.Save(ms, ImageFormat.Jpeg);
 
                 UploadedFile file = new UploadedImageFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_JPG.jpg";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -123,15 +125,17 @@ namespace Oxigen.Tests32
             form.SetDisplayDuration("100", 5, 200);
             form.SetDateIfProvided("2011-12-20");
 
-            // Act
+            
             using (var ms = new MemoryStream())
             {
                 TestFiles.sampleJPG.Save(ms, ImageFormat.Jpeg);
 
                 UploadedFile file = new UploadedImageFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_JPG.jpg";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -151,14 +155,15 @@ namespace Oxigen.Tests32
         {
             // Arrange
             var form = new UploadForm(_inviteToOverrideAutoValues);
-
-            // Act
+            
             using (var ms = new MemoryStream(TestFiles.sampleMOV))
             {
                 UploadedFile file = new UploadedVideoFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_MOV.mov";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -181,14 +186,15 @@ namespace Oxigen.Tests32
             var form = new UploadForm(_inviteToOverrideAutoValues);
             form.SetDisplayDuration("100", 5, 200);
             form.SetDateIfProvided("2011-12-20");
-
-            // Act
+            
             using (var ms = new MemoryStream(TestFiles.sampleMOV))
             {
                 UploadedFile file = new UploadedVideoFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_MOV.mov";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -212,16 +218,17 @@ namespace Oxigen.Tests32
 
             form.SetDisplayDuration("100", 5, 200);
             form.SetDateIfProvided("2011-12-20");
-
-            // Act
+            
             using (var ms = new MemoryStream())
             {
                 TestFiles.SamplePNG.Save(ms, ImageFormat.Png);
 
                 UploadedFile file = new UploadedImageFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_PNG.png";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -241,14 +248,15 @@ namespace Oxigen.Tests32
         {
             // Arrange
             var form = new UploadForm(_inviteToOverrideAutoValues);
-
-            // Act
+            
             using (var ms = new MemoryStream(TestFiles.sampleSWF))
             {
                 UploadedFile file = new UploadedFlashFile(form, _durationDetectorFactory);
                 file.RawContentPath = _rawContentPath;
                 file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_SWF.swf";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -276,9 +284,11 @@ namespace Oxigen.Tests32
             using (var ms = new MemoryStream(TestFiles.sampleSWF))
             {
                 UploadedFile file = new UploadedFlashFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_SWF.swf";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -304,9 +314,11 @@ namespace Oxigen.Tests32
             using (var ms = new MemoryStream(TestFiles.sampleWMV))
             {
                 UploadedFile file = new UploadedVideoFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_WMV.wmv";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -334,9 +346,11 @@ namespace Oxigen.Tests32
             using (var ms = new MemoryStream(TestFiles.sampleWMV))
             {
                 UploadedFile file = new UploadedVideoFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_WMV.wmv";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -365,9 +379,11 @@ namespace Oxigen.Tests32
             using (var ms = new MemoryStream(TestFiles.sampleWMV))
             {
                 UploadedFile file = new UploadedVideoFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_WMV.wmv";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
@@ -396,9 +412,11 @@ namespace Oxigen.Tests32
             using (var ms = new MemoryStream(TestFiles.sampleWMV))
             {
                 UploadedFile file = new UploadedVideoFile(form, _durationDetectorFactory);
-                file.RawContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Assets\";
-                file.ThumbnailAssetContentPath = @"C:\Oxigen2\Oxigen\tests\TestRepository\Thumbnails\";
+                file.RawContentPath = _rawContentPath;
+                file.ThumbnailAssetContentPath = _thumbnailAssetContentPath;
                 file.UploadedStream = ms;
+
+                // Act
                 file.OriginalFileName = "Sample_WMV.wmv";
                 file.SetDateIfUserHasNotProvidedOne("2011 7 8");
 
