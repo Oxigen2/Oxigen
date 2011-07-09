@@ -8,6 +8,12 @@ namespace Setup
         private readonly Collection<InstallationPrerequisite> _prerequisites = new Collection<InstallationPrerequisite>();
         private bool _prerequisitesFullyMet = true;
         private bool _canContinueWithInstallation = true;
+        private IInstallationPrerequisiteProvider _installationPrerequisiteProvider;
+
+        public InstallationPrerequisiteCollection(IInstallationPrerequisiteProvider installationPrerequisiteProvider)
+        {
+            _installationPrerequisiteProvider = installationPrerequisiteProvider;
+        }
 
         public bool PrerequisitesFullyMet
         {
@@ -28,7 +34,7 @@ namespace Setup
         {
             foreach (InstallationPrerequisite prerequisite in _prerequisites)
             {
-                PrerequisiteStatus status = prerequisite.GetPrerequisiteStatus();
+                PrerequisiteStatus status = prerequisite.GetPrerequisiteStatus(_installationPrerequisiteProvider);
 
                 if (status == PrerequisiteStatus.Exists)
                     continue;

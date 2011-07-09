@@ -20,7 +20,7 @@ namespace Oxigen.Tests32
             form.Description = "Description";
             form.Creator = "Creator";
             form.Url = "url";
-            form.SetDateIfProvided("11-01-2011");
+            form.SetDateIfNotEmpty("11-01-2011");
             form.SetDisplayDuration("12.5", 11, 13);
 
             // Assert
@@ -73,18 +73,30 @@ namespace Oxigen.Tests32
         }
 
         [Test]
-        public void NonStringPropertiesShouldBeNull()
+        public void DateShouldBeNull()
         {
             // Arrange
             UploadForm form = new UploadForm(_inviteToOverrideAutoValues);
 
             // Act
-            form.SetDateIfProvided("");
-            form.SetDisplayDuration("", 10, 20);
+            form.SetDateIfNotEmpty("");
+
             // Assert
             Assert.IsNull(form.Date);
-            Assert.AreEqual(form.DisplayDuration, -1);
             Assert.IsFalse(form.UserHasProvidedDate);
+        }
+
+        [Test]
+        public void DisplayDurationShouldBeUserDefined()
+        {
+            // Arrange
+            UploadForm form = new UploadForm(_inviteToOverrideAutoValues);
+
+            // Act
+            form.SetDisplayDuration("", 10, 20);
+
+            // Assert
+            Assert.AreEqual(form.DisplayDuration, -1);
             Assert.IsFalse(form.UserHasProvidedDisplayDuration);
         }
 
@@ -95,8 +107,9 @@ namespace Oxigen.Tests32
             UploadForm form = new UploadForm(_inviteToOverrideAutoValues);
 
             // Act
-            form.SetDateIfProvided("");
+            form.SetDateIfNotEmpty("");
             form.SetDisplayDuration("", 10, 20);
+
             // Assert
             Assert.IsFalse(form.UserHasProvidedDate);
             Assert.IsFalse(form.UserHasProvidedDisplayDuration);

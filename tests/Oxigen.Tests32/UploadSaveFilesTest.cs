@@ -123,7 +123,7 @@ namespace Oxigen.Tests32
             var form = new UploadForm(_inviteToOverrideAutoValues);
 
             form.SetDisplayDuration("100", 5, 200);
-            form.SetDateIfProvided("2011-12-20");
+            form.SetDateIfNotEmpty("2011-12-20");
 
             
             using (var ms = new MemoryStream())
@@ -185,7 +185,7 @@ namespace Oxigen.Tests32
             // Arrange
             var form = new UploadForm(_inviteToOverrideAutoValues);
             form.SetDisplayDuration("100", 5, 200);
-            form.SetDateIfProvided("2011-12-20");
+            form.SetDateIfNotEmpty("2011-12-20");
             
             using (var ms = new MemoryStream(TestFiles.sampleMOV))
             {
@@ -217,7 +217,7 @@ namespace Oxigen.Tests32
             var form = new UploadForm(_inviteToOverrideAutoValues);
 
             form.SetDisplayDuration("100", 5, 200);
-            form.SetDateIfProvided("2011-12-20");
+            form.SetDateIfNotEmpty("2011-12-20");
             
             using (var ms = new MemoryStream())
             {
@@ -278,7 +278,7 @@ namespace Oxigen.Tests32
             // Arrange
             var form = new UploadForm(_inviteToOverrideAutoValues);
             form.SetDisplayDuration("100", 5, 200);
-            form.SetDateIfProvided("2011-12-20");
+            form.SetDateIfNotEmpty("2011-12-20");
 
             // Act
             using (var ms = new MemoryStream(TestFiles.sampleSWF))
@@ -340,7 +340,7 @@ namespace Oxigen.Tests32
             // Arrange
             var form = new UploadForm(_inviteToOverrideAutoValues);
             form.SetDisplayDuration("100", 5, 200);
-            form.SetDateIfProvided("2011-12-20");
+            form.SetDateIfNotEmpty("2011-12-20");
 
             // Act
             using (var ms = new MemoryStream(TestFiles.sampleWMV))
@@ -373,7 +373,7 @@ namespace Oxigen.Tests32
             var form = new UploadForm(_inviteToOverrideAutoValues);
             form.Title = "The Title";
             form.SetDisplayDuration("100", 5, 200);
-            form.SetDateIfProvided("2011-12-20");
+            form.SetDateIfNotEmpty("2011-12-20");
 
             // Act
             using (var ms = new MemoryStream(TestFiles.sampleWMV))
@@ -405,7 +405,7 @@ namespace Oxigen.Tests32
             // Arrange
             var form = new UploadForm(_inviteToOverrideAutoValues);
             form.Title = "";
-            form.SetDateIfProvided("");
+            form.SetDateIfNotEmpty("");
             form.SetDisplayDuration("", 1, 10);
 
             // Act

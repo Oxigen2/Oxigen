@@ -1327,7 +1327,7 @@ namespace Setup
 
   }
 
-  internal enum RAMStatus
+  public enum RAMStatus
   {
     EqualOrAboveRecommended,
     BetweenMandatoryAndRecommended,

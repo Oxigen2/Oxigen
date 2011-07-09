@@ -62,7 +62,7 @@ namespace Setup
             _pictureBox.Image = Resources.cross;
         }
 
-        public abstract PrerequisiteStatus GetPrerequisiteStatus();
+        public abstract PrerequisiteStatus GetPrerequisiteStatus(IInstallationPrerequisiteProvider installationPrerequisiteProvider);
     }
 
     public class WMPPrerequisite : InstallationPrerequisite
@@ -75,13 +75,9 @@ namespace Setup
             _logMessage = "Missing_WindowsMediaPlayer";
         }
 
-        public override PrerequisiteStatus GetPrerequisiteStatus()
+        public override PrerequisiteStatus GetPrerequisiteStatus(IInstallationPrerequisiteProvider installationPrerequisiteProvider)
         {
-            if (SetupHelper.WindowsMediaPlayerRightVersionExists())
-                _prerequisiteStatus = PrerequisiteStatus.Exists;
-            else
-                _prerequisiteStatus = PrerequisiteStatus.DoesNotExist;
-
+            _prerequisiteStatus = installationPrerequisiteProvider.WMPPrerequisiteStatus;
             return _prerequisiteStatus;
         }
     }
@@ -96,13 +92,9 @@ namespace Setup
             _logMessage = "Missing_NET35";
         }
 
-        public override PrerequisiteStatus GetPrerequisiteStatus()
+        public override PrerequisiteStatus GetPrerequisiteStatus(IInstallationPrerequisiteProvider installationPrerequisiteProvider)
         {
-            if (SetupHelper.DotNet35Exists())
-                _prerequisiteStatus = PrerequisiteStatus.Exists;
-            else
-                _prerequisiteStatus = PrerequisiteStatus.DoesNotExist;
-
+            _prerequisiteStatus = installationPrerequisiteProvider.DotNet35PrerequisiteStatus;
             return _prerequisiteStatus;
         }
     }
@@ -117,13 +109,9 @@ namespace Setup
             _logMessage = "Missing_Quicktime";
         }
 
-        public override PrerequisiteStatus GetPrerequisiteStatus()
+        public override PrerequisiteStatus GetPrerequisiteStatus(IInstallationPrerequisiteProvider installationPrerequisiteProvider)
         {
-            if (SetupHelper.QuickTimeRightVersionExists())
-                _prerequisiteStatus = PrerequisiteStatus.Exists;
-            else
-                _prerequisiteStatus = PrerequisiteStatus.DoesNotExist;
-
+            _prerequisiteStatus = installationPrerequisiteProvider.QTPrerequisiteStatus;
             return _prerequisiteStatus;
         }
     }
@@ -137,17 +125,9 @@ namespace Setup
             _logMessage = "Missing_EnoughRam";
         }
 
-        public override PrerequisiteStatus GetPrerequisiteStatus()
+        public override PrerequisiteStatus GetPrerequisiteStatus(IInstallationPrerequisiteProvider installationPrerequisiteProvider)
         {
-            RAMStatus status = SetupHelper.IsRamSufficient();
-
-            if (status == RAMStatus.EqualOrAboveRecommended)
-                _prerequisiteStatus = PrerequisiteStatus.Exists;
-            else if (status == RAMStatus.BetweenMandatoryAndRecommended)
-                _prerequisiteStatus = PrerequisiteStatus.BetweenMandatoryAndRecommended;
-            else
-                _prerequisiteStatus = PrerequisiteStatus.DoesNotExist;
-
+            _prerequisiteStatus =  installationPrerequisiteProvider.RamPrerequisiteStatus;
             return _prerequisiteStatus;
         }
     }
@@ -162,13 +142,9 @@ namespace Setup
             _logMessage = "Missing_Flash";
         }
 
-        public override PrerequisiteStatus GetPrerequisiteStatus()
+        public override PrerequisiteStatus GetPrerequisiteStatus(IInstallationPrerequisiteProvider installationPrerequisiteProvider)
         {
-            if (SetupHelper.FlashActiveXExists())
-                _prerequisiteStatus = PrerequisiteStatus.Exists;
-            else
-                _prerequisiteStatus = PrerequisiteStatus.DoesNotExist;
-
+            _prerequisiteStatus = installationPrerequisiteProvider.FlashActiveXPrerequisiteStatus;
             return _prerequisiteStatus;
         }
     }
