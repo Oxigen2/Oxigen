@@ -74,7 +74,7 @@ namespace Setup
     private void Form_Shown(object sender, EventArgs e)
     {
       ClientLogger logger = new PersistentClientLogger();
-      logger.Log("5.10-CredentialsRemind");
+      logger.Log("4.1-CredentialsRemind");
     }
   }
 }

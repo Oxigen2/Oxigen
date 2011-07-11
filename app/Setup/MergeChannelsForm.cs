@@ -195,12 +195,6 @@ namespace Setup
       }
     }
 
-    private void Form_Shown(object sender, EventArgs e)
-    {
-      ClientLogger logger = new PersistentClientLogger();
-      logger.Log("5.4-MergeChannels");
-    }
-
     private void MergeChannelsForm_Load(object sender, EventArgs e)
     {
 

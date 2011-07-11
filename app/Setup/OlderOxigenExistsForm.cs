@@ -29,7 +29,7 @@ namespace Setup
     private void Form_Shown(object sender, EventArgs e)
     {
       ClientLogger logger = new PersistentClientLogger();
-      logger.Log("2.1-OlderOxigenExists");
+      logger.Log("1.1-OlderOxigenExists");
     }
   }
 }

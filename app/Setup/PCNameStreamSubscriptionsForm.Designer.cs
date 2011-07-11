@@ -91,6 +91,7 @@
             this.btnCancel.TabIndex = 36;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnBack
             // 
@@ -100,6 +101,7 @@
             this.btnBack.TabIndex = 35;
             this.btnBack.Text = "< Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnNext
             // 
@@ -125,8 +127,8 @@
             this.Controls.Add(this.txtPCName);
             this.Controls.Add(this.lblPCName);
             this.Name = "PCNameStreamSubscriptionsForm";
-            this.Text = "PCNameStreamSubscriptionsForm";
             this.Load += new System.EventHandler(this.PCNameStreamSubscriptionsForm_Load);
+            this.Shown += new System.EventHandler(this.Form_Shown);
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.lblPCName, 0);
             this.Controls.SetChildIndex(this.txtPCName, 0);

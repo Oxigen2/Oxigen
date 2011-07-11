@@ -109,7 +109,7 @@
       </tr>
       <tr>
         <td>Adobe Flash Player v10 or above</td>
-        <td><a href="http://www.adobe.com/support/flashplayer/downloads.html" target="_blank">www.adobe.com</a></td>
+        <td><a href="http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player_ax.exe" target="_blank">www.adobe.com</a></td>
       </tr>
       <tr>
         <td>Apple QuickTime v7 or above</td>
@@ -255,7 +255,7 @@
     <h3 id="TroubleChanges">I've updated my stream subscriptions on the Oxigen website; why are the changes not reflected on my PC? <a href="#">- Back to top</a></h3>
     <p>Any change you make to your stream subscriptions will be reflected on your PC only after the Oxigen Content Exchanger has run.  This happens automatically every 60 minutes or alternatively, you can run the Content Exchanger manually by right clicking the Oxigen icon in your systray (bottom right of screen) and selecting Update Content.</p>
     <h3 id="TroubleFlashInstaller">I think I have Flash installed, but the Oxigen Installer is not recognising it. What is the problem? <a href="#">- Back to top</a></h3>
-    <p>You actually need the AX version of Flash Player installed.  To get this, use Internet Explorer (32-bit if you're on a 64-bit machine), go to <a href="http://www.adobe.com">www.adobe.com</a> and download/install Flash Player from there.</p>
+    <p>You actually need the AX version of Flash Player installed. To get this, go to <a href="http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player_ax.exe">http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player_ax.exe</a> which will prompt you to save the full installer package.</p>
     <h3 id="TroubleSound">I have disabled sound in my screensaver but the screensaver still plays sound.<a href="#">- Back to top</a></h3>
     <p>We are aware of this bug (which affects Flash content) and are working on a fix for it.  As soon as we have a solution, we will push out a software update with the fix.  In the meantime, if you mute your sound at system level, it will mute the screensaver.</p>
     <h3 id="TroubleVirus">My virus scanner says there's a virus/malware in Oxigen.<a href="#">- Back to top</a></h3>

@@ -56,7 +56,10 @@ namespace Setup
             foreach (InstallationPrerequisite prerequisite in _prerequisites)
             {
                 if (prerequisite.PrerequisiteStatus == PrerequisiteStatus.Exists)
+                {
                     prerequisite.SetGreenCheck();
+                    prerequisite.HideDownloadLink();
+                }
                 else if (prerequisite.PrerequisiteStatus == PrerequisiteStatus.BetweenMandatoryAndRecommended)
                     prerequisite.SetAmberQuestionMark();
                 else if (prerequisite.PrerequisiteStatus == PrerequisiteStatus.DoesNotExist && !prerequisite.IsMandatory)

@@ -62,6 +62,12 @@ namespace Setup
             _pictureBox.Image = Resources.cross;
         }
 
+        public void HideDownloadLink()
+        {
+            if (_linkLabel != null)
+            _linkLabel.Visible = false;
+        }
+
         public abstract PrerequisiteStatus GetPrerequisiteStatus(IInstallationPrerequisiteProvider installationPrerequisiteProvider);
     }
 

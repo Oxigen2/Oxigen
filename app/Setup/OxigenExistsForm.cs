@@ -18,10 +18,15 @@ namespace Setup
       if (!File.Exists("Setup.ini"))
       {
         rbAddNewStreams.Visible = false;
-        lblInstructions.Text = "You uninstall the existing installation.";
+        lblInstructions.Text = "You can uninstall the existing installation.";
       }
       else
-        lblInstructions.Text = "Oxigen already exists on your computer. You can uninstall the existing installation or add the new Streams you have downloaded.";
+      {
+          lblInstructions.Text =
+              "Oxigen already exists on your computer. You can uninstall the existing installation or add the new Streams you have downloaded.";
+
+          rbAddNewStreams.Checked = true;
+      }
     }
 
     public OxigenExistsForm(string param)
@@ -34,7 +39,12 @@ namespace Setup
         lblInstructions.Text = "You can uninstall the existing installation.";
       }
       else
-        lblInstructions.Text = "Oxigen already exists on your computer. You can uninstall the existing installation or add the new Streams you have downloaded.";
+      {
+          lblInstructions.Text =
+              "Oxigen already exists on your computer. You can uninstall the existing installation or add the new Streams you have downloaded.";
+
+          rbAddNewStreams.Checked = true;
+      }
     }
 
     private void btnCancel_Click(object sender, EventArgs e)
@@ -73,7 +83,7 @@ namespace Setup
       btnNext.Enabled = true;
     }
 
-    private void radioButton1_CheckedChanged(object sender, EventArgs e)
+    private void rbAddNewStreams_CheckedChanged(object sender, EventArgs e)
     {
       btnNext.Enabled = true;
     }

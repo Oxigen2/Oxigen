@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using Setup.ClientLoggers;
 
 namespace Setup
 {
@@ -12,30 +13,18 @@ namespace Setup
             InitializeComponent();
 
             streams.CheckOnClick = true;
-            string dataPath = (string)GenericRegistryAccess.GetRegistryValue("HKEY_LOCAL_MACHINE\\Software\\Oxigen", "DataSettingsPath") + "data\\";
 
-            // subscriptions either downloaded from server or existing on user's machine with existing Oxigen II.
-            // (that is, subscriptions not in Setup.ini)
+            if (!File.Exists("Setup.ini")) return;
+
             Setup.DuplicateLibrary.ChannelSubscriptions nonInstallerAccompanyingSubscriptions = null;
 
-            List<Setup.DuplicateLibrary.ChannelSubscription> channelSubscriptions = new List<Setup.DuplicateLibrary.ChannelSubscription>();
+            List<Setup.DuplicateLibrary.ChannelSubscription> channelSubscriptions =
+                new List<Setup.DuplicateLibrary.ChannelSubscription>();
 
-            foreach (Setup.DuplicateLibrary.ChannelSubscription subscription in AppDataSingleton.Instance.FileDetectedChannelSubscriptionsLocal.SubscriptionSet)
+            foreach (
+                Setup.DuplicateLibrary.ChannelSubscription subscription in
+                    AppDataSingleton.Instance.FileDetectedChannelSubscriptionsLocal.SubscriptionSet)
                 channelSubscriptions.Add(subscription);
-
-            // merge Subscriptions from existing user's ss_channel_subscription_data 
-            // with those from Setup.ini with subscription. For existing users only.
-            if (AppDataSingleton.Instance.MergeStreamsInstallation)
-            {
-                if (nonInstallerAccompanyingSubscriptions != null && nonInstallerAccompanyingSubscriptions.SubscriptionSet != null)
-                {
-                    foreach (Setup.DuplicateLibrary.ChannelSubscription subscription in nonInstallerAccompanyingSubscriptions.SubscriptionSet)
-                    {
-                        if (!Contains(channelSubscriptions, subscription))
-                            channelSubscriptions.Add(subscription);
-                    }
-                }
-            }
 
             foreach (Setup.DuplicateLibrary.ChannelSubscription cs in channelSubscriptions)
                 streams.Items.Add(cs, true);
@@ -64,25 +53,31 @@ namespace Setup
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (streams.CheckedItems.Count == 0)
+            if (File.Exists("Setup.ini") && streams.CheckedItems.Count == 0)
             {
                 MessageBox.Show("Please select at least one stream", "Message", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 return;
             }
 
             // store selected subscriptions
-            List<Setup.DuplicateLibrary.ChannelSubscription> selectedSubscriptions = new List<Setup.DuplicateLibrary.ChannelSubscription>();
+            if (File.Exists("Setup.ini"))
+            {
+                List<Setup.DuplicateLibrary.ChannelSubscription> selectedSubscriptions =
+                    new List<Setup.DuplicateLibrary.ChannelSubscription>();
 
-            foreach (object obj in streams.CheckedItems)
-                selectedSubscriptions.Add((Setup.DuplicateLibrary.ChannelSubscription)obj);
+                foreach (object obj in streams.CheckedItems)
+                    selectedSubscriptions.Add((Setup.DuplicateLibrary.ChannelSubscription) obj);
 
-            UserManagementServicesLive.ChannelSubscriptions subscriptionsToUpload = new Setup.UserManagementServicesLive.ChannelSubscriptions();
-            UserManagementServicesLive.ChannelSubscription[] subscriptionArray = SetupHelper.GetChannelSubscriptionsNetFromLocal(selectedSubscriptions.ToArray());
+                UserManagementServicesLive.ChannelSubscriptions subscriptionsToUpload =
+                    new Setup.UserManagementServicesLive.ChannelSubscriptions();
+                UserManagementServicesLive.ChannelSubscription[] subscriptionArray =
+                    SetupHelper.GetChannelSubscriptionsNetFromLocal(selectedSubscriptions.ToArray());
 
-            subscriptionsToUpload.SubscriptionSet = subscriptionArray;
+                subscriptionsToUpload.SubscriptionSet = subscriptionArray;
 
-            AppDataSingleton.Instance.ChannelSubscriptionsToUpload = subscriptionsToUpload;
-
+                AppDataSingleton.Instance.ChannelSubscriptionsToUpload = subscriptionsToUpload;
+            }
+            
             string pcName = txtPCName.Text.Trim();
 
             if (string.IsNullOrEmpty(pcName))
@@ -95,6 +90,22 @@ namespace Setup
             AppDataSingleton.Instance.User.MachineGUID = Guid.NewGuid().ToString().ToUpper() + "_" + SetupHelper.GetRandomLetter();
 
             SetupHelper.OpenForm<InstallationPathsForm>(this);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            SetupHelper.OpenForm<UserDetailsForm>(this);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            SetupHelper.ExitConfirmNoChanges();
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            ClientLogger logger = new PersistentClientLogger();
+            logger.Log("6-PCNamePCSubscriptions");
         }
     }
 }

@@ -80,9 +80,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(20, 209);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.Size = new System.Drawing.Size(174, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Adobe® Flash® Player";
+            this.label3.Text = "Adobe® Flash® Player (AX version)";
             // 
             // label4
             // 
@@ -147,7 +147,7 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(13, 291);
+            this.lblStatus.Location = new System.Drawing.Point(12, 312);
             this.lblStatus.MaximumSize = new System.Drawing.Size(520, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
@@ -204,7 +204,7 @@
             // btnNext
             // 
             this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(422, 315);
+            this.btnNext.Location = new System.Drawing.Point(423, 349);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 0;
@@ -214,7 +214,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(341, 315);
+            this.btnBack.Location = new System.Drawing.Point(342, 349);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 1;
@@ -224,7 +224,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(260, 315);
+            this.btnCancel.Location = new System.Drawing.Point(261, 349);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -252,12 +252,12 @@
             // PrerequisitesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(524, 350);
+            this.ClientSize = new System.Drawing.Size(524, 384);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -290,9 +290,9 @@
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnBack, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.lblStatus, 0);
             this.Controls.SetChildIndex(this.btnNext, 0);
             this.Controls.SetChildIndex(this.pictureBox1, 0);

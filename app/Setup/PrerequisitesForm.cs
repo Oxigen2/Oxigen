@@ -20,9 +20,23 @@ namespace Setup
         private void PrerequisitesForm_Load(object sender, EventArgs e)
         {
             ClientLogger logger = new PersistentClientLogger();
-            logger.Log("3-Prerequisites");
+            logger.Log("2-Prerequisites");
 
-            IInstallationPrerequisiteProvider installationPrerequisiteProvider = new RealInstallationPrerequisiteProvider();
+            IInstallationPrerequisiteProvider installationPrerequisiteProvider;
+            
+            if (!AppDataSingleton.Instance.DebugMode)
+                installationPrerequisiteProvider = new RealInstallationPrerequisiteProvider();
+            else
+            {
+                installationPrerequisiteProvider = new MockInstallationPrerequisiteProvider()
+                                                   {
+                                                       DotNet35PrerequisiteStatus = PrerequisiteStatus.Exists,
+                                                       FlashActiveXPrerequisiteStatus = PrerequisiteStatus.Exists,
+                                                       QTPrerequisiteStatus = PrerequisiteStatus.DoesNotExist,
+                                                       RamPrerequisiteStatus = PrerequisiteStatus.Exists,
+                                                       WMPPrerequisiteStatus = PrerequisiteStatus.DoesNotExist
+                                                   };
+            }
             InstallationPrerequisiteCollection prerequisites = new InstallationPrerequisiteCollection(installationPrerequisiteProvider);
 
             prerequisites.Add(new DotNet35Prerequisite(lnkNET, dotNetIndicator));
@@ -46,12 +60,12 @@ namespace Setup
 
             if (prerequisites.CanContinueWithInstallation)
             {
-                lblStatus.Text = "It is recommended that you install some optional components before you continue.";
+                lblStatus.Text = "To enjoy Oxigen to the maximum, it is recommended that you install the optional components above.";
                 btnNext.Enabled = true;
             }
             else
             {
-                lblStatus.Text = "Your computer does not meet all of the specified requirements to run Oxigen. Installation will now abort.";
+                lblStatus.Text = "Please follow the links above to install the required software.";
             }
         }
 
@@ -85,7 +99,7 @@ namespace Setup
 
         private void linkFlash_Clicked(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://get.adobe.com/flashplayer/");
+            System.Diagnostics.Process.Start("http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player_ax.exe");
 
             Application.Exit();
         }

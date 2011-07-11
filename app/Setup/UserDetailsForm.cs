@@ -199,7 +199,7 @@ namespace Setup
     private void Form_Shown(object sender, EventArgs e)
     {
       ClientLogger logger = new PersistentClientLogger();
-      logger.Log("5.3-UpdateExistingUserDetails");
+      logger.Log("5-UserDetails");
     }
   }
 }
