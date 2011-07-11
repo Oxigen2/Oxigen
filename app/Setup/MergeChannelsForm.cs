@@ -73,14 +73,8 @@ namespace Setup
 
     private void btnBack_Click(object sender, EventArgs e)
     {
-      if (AppDataSingleton.Instance.MergeStreamsInstallation)
-      {
         SetupHelper.OpenForm<OxigenExistsForm>(this);
         return;
-      }
-
-      SetupHelper.OpenForm<PcFormExistingUser>(this);
-      return;
     }
 
     private void btnCancel_Click(object sender, EventArgs e)
@@ -164,7 +158,7 @@ namespace Setup
 
       if (!AppDataSingleton.Instance.MergeStreamsInstallation && AppDataSingleton.Instance.ExistingUser)
       {
-        SetupHelper.OpenForm<UpdateExistingUserDetailsForm>(this);
+        SetupHelper.OpenForm<UserDetailsForm>(this);
 
         return;
       }
@@ -183,7 +177,6 @@ namespace Setup
     {
       _bThreadStarted = true;
 
-
       lock (_lockObj)
       {
         try
@@ -199,7 +192,6 @@ namespace Setup
             AppDataSingleton.Instance.SetupLogger.WriteError(ex);
           _wrapper = SetupHelper.GetGenericErrorConnectingWrapper();
         }
-        
       }
     }
 
@@ -207,6 +199,11 @@ namespace Setup
     {
       ClientLogger logger = new PersistentClientLogger();
       logger.Log("5.4-MergeChannels");
+    }
+
+    private void MergeChannelsForm_Load(object sender, EventArgs e)
+    {
+
     }
   }
 }

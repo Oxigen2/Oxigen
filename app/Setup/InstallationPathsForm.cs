@@ -87,7 +87,7 @@ namespace Setup
       long freeSpace = di.AvailableFreeSpace;
       AppDataSingleton.Instance.User.AssetFolderSize = freeSpace - 41943040L;
 
-      SetupHelper.OpenForm<InstallConfirm>(this);
+      SetupHelper.OpenForm<InstallationProgressForm>(this);
     }
 
     private void btnCancel_Click(object sender, EventArgs e)
@@ -97,10 +97,12 @@ namespace Setup
 
     private void btnBack_Click(object sender, EventArgs e)
     {
-      if (AppDataSingleton.Instance.ExistingUser)
-        SetupHelper.OpenForm<UpdateExistingUserDetailsForm>(this);
+        if (AppDataSingleton.Instance.ChannelSubscriptionsToUpload != null && 
+            AppDataSingleton.Instance.ChannelSubscriptionsToUpload.SubscriptionSet != null && 
+            AppDataSingleton.Instance.ChannelSubscriptionsToUpload.SubscriptionSet.Length > 0)
+        SetupHelper.OpenForm<PCNameStreamSubscriptionsForm>(this);
       else
-        SetupHelper.OpenForm<RegistrationForm4>(this);
+        SetupHelper.OpenForm<UserDetailsForm>(this);
     }
 
     private void btnBrowseBinaries_Click(object sender, EventArgs e)

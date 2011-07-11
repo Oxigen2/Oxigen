@@ -147,13 +147,13 @@
       <DependentUpon>OlderOxigenExistsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Oxigen1Uninstaller.cs" />
-    <Compile Include="PCFormNewUser.cs">
+    <Compile Include="DuplicateLibrary\SerializableDictionary.cs" />
+    <Compile Include="PCNameStreamSubscriptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PCFormNewUser.Designer.cs">
-      <DependentUpon>PCFormNewUser.cs</DependentUpon>
+    <Compile Include="PCNameStreamSubscriptionsForm.Designer.cs">
+      <DependentUpon>PCNameStreamSubscriptionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DuplicateLibrary\SerializableDictionary.cs" />
     <Compile Include="RemoteServiceException.cs" />
     <Compile Include="RepairConfirm.cs">
       <SubType>Form</SubType>
@@ -187,12 +187,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="WindowsController.cs" />
-    <Compile Include="CredentialsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CredentialsForm.Designer.cs">
-      <DependentUpon>CredentialsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="DuplicateLibrary\Cryptography.cs" />
     <Compile Include="ExistingUserPromptForm.cs">
       <SubType>Form</SubType>
@@ -213,12 +207,6 @@
     <Compile Include="OxigenForm.Designer.cs">
       <DependentUpon>OxigenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PcFormExistingUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PcFormExistingUser.Designer.cs">
-      <DependentUpon>PcFormExistingUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="DuplicateLibrary\Serializer.cs" />
     <Compile Include="SetupHelper.cs" />
     <Compile Include="InstallationPathsForm.cs">
@@ -233,12 +221,6 @@
     <Compile Include="InstallComplete.Designer.cs">
       <DependentUpon>InstallComplete.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstallConfirm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InstallConfirm.Designer.cs">
-      <DependentUpon>InstallConfirm.cs</DependentUpon>
-    </Compile>
     <Compile Include="OxigenExistsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,30 +233,6 @@
     <Compile Include="PrerequisitesForm.Designer.cs">
       <DependentUpon>PrerequisitesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistrationForm1.Designer.cs">
-      <DependentUpon>RegistrationForm1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RegistrationForm2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistrationForm2.Designer.cs">
-      <DependentUpon>RegistrationForm2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RegistrationForm3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistrationForm3.Designer.cs">
-      <DependentUpon>RegistrationForm3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RegistrationForm4.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistrationForm4.Designer.cs">
-      <DependentUpon>RegistrationForm4.cs</DependentUpon>
-    </Compile>
     <Compile Include="SetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,10 +241,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CredentialsForm.resx">
-      <DependentUpon>CredentialsForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="CredentialsRemindForm.resx">
       <DependentUpon>CredentialsRemindForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,10 +261,6 @@
       <DependentUpon>InstallComplete.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstallConfirm.resx">
-      <DependentUpon>InstallConfirm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="MergeChannelsForm.resx">
       <DependentUpon>MergeChannelsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,30 +274,11 @@
     <EmbeddedResource Include="OxigenForm.resx">
       <DependentUpon>OxigenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PCFormNewUser.resx">
-      <DependentUpon>PCFormNewUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PcFormExistingUser.resx">
-      <DependentUpon>PcFormExistingUser.cs</DependentUpon>
+    <EmbeddedResource Include="PCNameStreamSubscriptionsForm.resx">
+      <DependentUpon>PCNameStreamSubscriptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrerequisitesForm.resx">
       <DependentUpon>PrerequisitesForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationForm1.resx">
-      <DependentUpon>RegistrationForm1.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationForm2.resx">
-      <DependentUpon>RegistrationForm2.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationForm3.resx">
-      <DependentUpon>RegistrationForm3.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationForm4.resx">
-      <DependentUpon>RegistrationForm4.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RepairConfirm.resx">
@@ -377,8 +308,8 @@
     <EmbeddedResource Include="UninstallPromptForm.resx">
       <DependentUpon>UninstallPromptForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateExistingUserDetailsForm.resx">
-      <DependentUpon>UpdateExistingUserDetailsForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserDetailsForm.resx">
+      <DependentUpon>UserDetailsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WelcomeForm.resx">
@@ -421,11 +352,11 @@
     <Compile Include="UninstallPromptForm.Designer.cs">
       <DependentUpon>UninstallPromptForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateExistingUserDetailsForm.cs">
+    <Compile Include="UserDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateExistingUserDetailsForm.Designer.cs">
-      <DependentUpon>UpdateExistingUserDetailsForm.cs</DependentUpon>
+    <Compile Include="UserDetailsForm.Designer.cs">
+      <DependentUpon>UserDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WelcomeForm.cs">
       <SubType>Form</SubType>

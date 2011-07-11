@@ -10,11 +10,11 @@ namespace Setup
     private static volatile AppDataSingleton _instance;
     private static object _lockObject = new Object();
 
-    private bool _bSilentMode = false;
-    private bool _bOneFormClosed = false;
-    private bool _bExistingUserDetailsRetrieved = false;
-    private bool _bExistingUser = false;
-    private bool _bUserInfoExists = false;
+    private bool _bSilentMode;
+    private bool _bOneFormClosed;
+    private bool _bExistingUserDetailsRetrieved;
+    private bool _bExistingUser;
+    private bool _bUserInfoExists;
     private string _emailAddress;
     private string _password;
     private string _firstName;
@@ -37,7 +37,7 @@ namespace Setup
     private User _user;
     private GeneralData _generalData;
     private bool _bRepair = false;
-    private string _newPCName;
+    private string _pcName;
     private bool _bExitPromptSuppressed = false;
     private int _pcID = -1;
     private bool _bNewPC = false;
@@ -195,17 +195,17 @@ namespace Setup
       }
     }
 
-    public string NewPCName
+    public string PCName
     {
       get
       {
         lock (_lockObject)
-          return _newPCName;
+          return _pcName;
       }
       set
       {
         lock (_lockObject)
-          _newPCName = value;
+          _pcName = value;
       }
     }
 

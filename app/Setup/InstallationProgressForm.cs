@@ -220,7 +220,7 @@ namespace Setup
                 AppDataSingleton.Instance.User.SoftwareMinorVersionNumber,
                 true,
                 macAddress,
-                AppDataSingleton.Instance.NewPCName,
+                AppDataSingleton.Instance.PCName,
                 AppDataSingleton.Instance.ChannelSubscriptionsToUpload,
                 "password");          
             }
@@ -269,7 +269,7 @@ namespace Setup
                                                   AppDataSingleton.Instance.GeneralData.SoftwareMinorVersionNumber,
                                                   true,
                                                   AppDataSingleton.Instance.User.MachineGUID,
-                                                  AppDataSingleton.Instance.NewPCName,
+                                                  AppDataSingleton.Instance.PCName,
                                                   SetupHelper.GetMACAddress(),
                                                   "password");
           }
