@@ -40,6 +40,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InstallationPrerequisitesTest.cs" />
+    <Compile Include="MockInstallationPrerequisiteProvider.cs" />
     <Compile Include="TestFiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,6 +67,10 @@
     <ProjectReference Include="..\..\app\Oxigen.Web\Oxigen.Web.csproj">
       <Project>{EF2E77E6-6434-4467-B199-6038BA279460}</Project>
       <Name>Oxigen.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\app\Setup\Setup.csproj">
+      <Project>{F6B31F5C-0C5E-4493-9597-3D8ED7CC998C}</Project>
+      <Name>Setup</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\app\SOAStructures\SOAStructures.csproj">
       <Project>{328E0FFB-73DD-4F8B-8DD4-58214B741F2D}</Project>

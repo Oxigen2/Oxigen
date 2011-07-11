@@ -173,7 +173,7 @@ namespace OxigenIIPresentation
                                         Url = Request.Form["URLOvr"].Trim()
                                     };
 
-            uploadForm.SetDateIfProvided(Request.Form["DateOvr"].Trim());
+            uploadForm.SetDateIfNotEmpty(Request.Form["DateOvr"].Trim());
             uploadForm.SetDisplayDuration(Request.Form["DisplayDurationOvr"].Trim(), _minDisplayDuration, _maxDisplayDuration);
 
             //Iterate through uploaded data and save the original file and thumbnail

@@ -54,7 +54,7 @@ namespace OxigenIIPresentation
             get { return _date; }
         }
 
-        public void SetDateIfProvided(string date)
+        public void SetDateIfNotEmpty(string date)
         {
             if (!UserHasProvidedTextFieldValue(date))
                  _date = null;

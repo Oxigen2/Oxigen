@@ -22,7 +22,8 @@ namespace Setup
             ClientLogger logger = new PersistentClientLogger();
             logger.Log("3-Prerequisites");
 
-            InstallationPrerequisiteCollection prerequisites = new InstallationPrerequisiteCollection();
+            IInstallationPrerequisiteProvider installationPrerequisiteProvider = new RealInstallationPrerequisiteProvider();
+            InstallationPrerequisiteCollection prerequisites = new InstallationPrerequisiteCollection(installationPrerequisiteProvider);
 
             prerequisites.Add(new DotNet35Prerequisite(lnkNET, dotNetIndicator));
             prerequisites.Add(new FlashActiveXPerequisite(lnkFlash, flashIndicator));

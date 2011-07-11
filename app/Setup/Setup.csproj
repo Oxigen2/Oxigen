@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="InstallationPrerequisite.cs" />
     <Compile Include="InstallationPrerequisiteCollection.cs" />
+    <Compile Include="InstallationPrerequisiteProviders.cs" />
     <Compile Include="MergeChannelsForm.cs">
       <SubType>Form</SubType>
     </Compile>
