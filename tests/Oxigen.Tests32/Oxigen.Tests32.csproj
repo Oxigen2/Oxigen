@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentExchangerTempToPermFileMoverTests.cs" />
     <Compile Include="InstallationPrerequisitesTest.cs" />
+    <Compile Include="IOExceptionTempToPermFileMover.cs" />
     <Compile Include="TestFiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,6 +68,10 @@
     <ProjectReference Include="..\..\app\Oxigen.Web\Oxigen.Web.csproj">
       <Project>{EF2E77E6-6434-4467-B199-6038BA279460}</Project>
       <Name>Oxigen.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\app\OxigenIIContentExchanger\ContentExchanger.csproj">
+      <Project>{BC84B1F8-B3E8-48B5-93B5-EA1871CBF4C3}</Project>
+      <Name>ContentExchanger</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\app\Setup\Setup.csproj">
       <Project>{F6B31F5C-0C5E-4493-9597-3D8ED7CC998C}</Project>

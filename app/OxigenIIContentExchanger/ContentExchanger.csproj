@@ -116,6 +116,7 @@
     <Compile Include="CELog.cs" />
     <Compile Include="Exchanger.cs" />
     <Compile Include="ExchangeStatus.cs" />
+    <Compile Include="ITempToPermFileMover.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

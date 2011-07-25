@@ -36,7 +36,6 @@ namespace OxigenIIAdvertising.ContentExchanger
         private string _mDataSubdomain = "";
         private string _password = "";
 
-        private int _daysToKeepAssetFiles = -1;
         private long _assetFolderSize = -1;
         private float _defaultDisplayDuration = -1F;
 
@@ -361,8 +360,10 @@ namespace OxigenIIAdvertising.ContentExchanger
         /// <returns>A HashSet with the paths of the files that will be kept.</returns>
         public HashSet<string> GetAssetsToKeep(Playlist playlist)
         {
-            DateTime dateTimeStamp = DateTime.Now;
-            TimeSpan daysToKeepAssetFilesTimeSpan = TimeSpan.FromDays(_daysToKeepAssetFiles);
+            GeneralData generalData = (GeneralData)Serializer.Deserialize(typeof(GeneralData), _generalDataPath, _password);
+            int daysToKeepAssetFiles = int.Parse(generalData.Properties["daysToKeepAssetFiles"]);
+
+            TimeSpan daysToKeepAssetFilesTimeSpan = TimeSpan.FromDays(daysToKeepAssetFiles);
 
             HashSet<string> playlistAssetsToKeep = new HashSet<string>();
 
@@ -373,7 +374,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                 {
                     if (!playlistAssetsToKeep.Contains(pa.AssetFilename)) // a content asset may be contained in more than one channel bucket so don't enter it twice into the HashSet
                     {
-                        _logger.WriteTimestampedMessage("Content will be kept: " + _assetPath + pa.GetAssetFilenameGUIDSuffix() + "\\" + pa.AssetFilename);
+                        //_logger.WriteTimestampedMessage("Content will be kept: " + _assetPath + pa.GetAssetFilenameGUIDSuffix() + "\\" + pa.AssetFilename);
                         playlistAssetsToKeep.Add(_assetPath + pa.GetAssetFilenameGUIDSuffix() + "\\" + pa.AssetFilename);
                     }
                 }
@@ -381,12 +382,13 @@ namespace OxigenIIAdvertising.ContentExchanger
 
             foreach (AdvertPlaylistAsset advertPlaylistAsset in playlist.AdvertBucket.AdvertAssets)
             {
-                _logger.WriteTimestampedMessage("Advert will be kept: " + _assetPath + advertPlaylistAsset.GetAssetFilenameGUIDSuffix() + "\\" + advertPlaylistAsset.AssetFilename);
+                //_logger.WriteTimestampedMessage("Advert will be kept: " + _assetPath + advertPlaylistAsset.GetAssetFilenameGUIDSuffix() + "\\" + advertPlaylistAsset.AssetFilename);
                 playlistAssetsToKeep.Add(_assetPath + advertPlaylistAsset.GetAssetFilenameGUIDSuffix() + "\\" + advertPlaylistAsset.AssetFilename);
             }
 
             // from the existing files on disk keep those whose creation date is less or equal than x days ago.
             string[] filesOnDisk = Directory.GetFiles(_assetPath);
+            DateTime dateTimeStamp = DateTime.Now;
 
             foreach (string file in filesOnDisk)
             {
@@ -410,7 +412,7 @@ namespace OxigenIIAdvertising.ContentExchanger
 
             if (allChannelDataFilenames.Length == 0)
             {
-                _logger.WriteTimestampedMessage("No channel data files.");
+                //_logger.WriteTimestampedMessage("No channel data files.");
                 return;
             }
 
@@ -492,12 +494,12 @@ namespace OxigenIIAdvertising.ContentExchanger
             RequestCacheLevel cacheLevel = _verboseMode ? RequestCacheLevel.Revalidate : RequestCacheLevel.Default;
 
             IRemoteContentSaver[] savers = new IRemoteContentSaver[4];
-            savers[0] = new RemoteFileSaver(_worker, client, _cdnSubdomain + "data/ss_general_data.dat",_generalDataPath, cacheLevel);
-            savers[1] = new RemoteFileSaver(_worker, client, _cdnSubdomain + "data/ss_adcond_data.dat", _advertDataPath, cacheLevel);
+            savers[0] = new RemoteFileSaver(_worker, client, _cdnSubdomain + "data/ss_general_data.dat", _generalDataPath, cacheLevel, new TempToPermFileMover());
+            savers[1] = new RemoteFileSaver(_worker, client, _cdnSubdomain + "data/ss_adcond_data.dat", _advertDataPath, cacheLevel, new TempToPermFileMover());
             savers[2] = new RemoteDynamicContentSaver(_worker, client, _mDataSubdomain + "subscriberinfo/demographicdata/" + _userGUID,
-                                           _demographicDataPath, _password, cacheLevel);
+                                           _demographicDataPath, _password, cacheLevel, new TempToPermFileMover());
             savers[3] = new RemoteDynamicContentSaver(_worker, client, _mDataSubdomain + "subscriberinfo/subscriptions/" + _machineGUID,
-                                           _userChannelSubscriptionsPath, _password, cacheLevel);
+                                           _userChannelSubscriptionsPath, _password, cacheLevel, new TempToPermFileMover());
 
             int localStep = 25;
             int overallStep = 2;
@@ -611,11 +613,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                 _userChannelSubscriptionsPath = _appDataPath + "SettingsData\\ss_channel_subscription_data.dat";
                 _assetPath = _appDataPath + "Assets\\";
                 _channelDataPath = _appDataPath + "ChannelData\\";
-                
-                GeneralData generalData = (GeneralData)Serializer.Deserialize(typeof(GeneralData), _generalDataPath, _password);
-
-                _daysToKeepAssetFiles = int.Parse(generalData.Properties["daysToKeepAssetFiles"]);
-
+               
                 User user = (User)Serializer.Deserialize(typeof(User), _userSettingsPath, _password);
 
                 _userGUID = user.UserGUID;
@@ -752,7 +750,11 @@ namespace OxigenIIAdvertising.ContentExchanger
 
                     var fileLength = new FileInfo(assetFullPath).Length;
 
-                    if (fileLength == 0) File.Delete(assetFullPath);
+                    if (fileLength == 0)
+                    {
+                        _logger.WriteMessage("Length of " + assetFullPath + " is zero.");
+                        File.Delete(assetFullPath);
+                    }
 
                     directorySize += fileLength;
 
@@ -762,6 +764,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                         File.Delete(assetFullPath);
                         _logger.WriteMessage("downloadedData.Length + directorySize = " + (directorySize) +
                                              ", assetFolderSize - 104857600 = " + (_assetFolderSize - 104857600));
+                        _logger.WriteMessage("Deleted " + assetFullPath);
                         bLowAssetSpace = true;
                         return;
                     }
@@ -773,8 +776,10 @@ namespace OxigenIIAdvertising.ContentExchanger
                 catch (Exception ex)
                 {
                     if (File.Exists(assetFullPath))
+                    {
+                        _logger.WriteMessage("Deleting " + assetFullPath + " due to download error.");
                         File.Delete(assetFullPath);
-
+                    }
                     _logger.WriteError(ex);
                 }
 

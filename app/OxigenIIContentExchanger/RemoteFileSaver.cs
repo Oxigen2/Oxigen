@@ -15,19 +15,21 @@ namespace OxigenIIAdvertising.ContentExchanger
 
     public class RemoteFileSaver : IRemoteContentSaver
     {
+        private readonly ITempToPermFileMover _mover;
         private readonly BackgroundWorker _worker;
         private readonly WebClient _client;
         private readonly string _url;
         private readonly string _localPath;
         private readonly RequestCacheLevel _cacheLevel;
 
-        public RemoteFileSaver(BackgroundWorker worker, WebClient client, string url, string localPath, RequestCacheLevel cacheLevel)
+        public RemoteFileSaver(BackgroundWorker worker, WebClient client, string url, string localPath, RequestCacheLevel cacheLevel, ITempToPermFileMover mover)
         {
             _worker = worker;
             _client = client;
             _url = url;
             _localPath = localPath;
             _cacheLevel = cacheLevel;
+            _mover = mover;
         }
 
         public bool CancelRequested
@@ -38,7 +40,8 @@ namespace OxigenIIAdvertising.ContentExchanger
         public void SaveFromRemote()
         {
             _client.CachePolicy = new RequestCachePolicy(_cacheLevel);
-            _client.DownloadFile(_url, _localPath);
+            _client.DownloadFile(_url, _localPath + _mover.TempFileSuffix);
+            _mover.TryMoveFromTempToPerm(_localPath + _mover.TempFileSuffix);
         }
     }
 
@@ -50,8 +53,9 @@ namespace OxigenIIAdvertising.ContentExchanger
         private readonly string _localPath;
         protected readonly string _encryptionPassword;
         private readonly RequestCacheLevel _cacheLevel;
+        private readonly ITempToPermFileMover _mover;
 
-        public RemoteDynamicContentSaver(BackgroundWorker worker, WebClient client, string url, string localPath, string encryptionPassword, RequestCacheLevel cacheLevel)
+        public RemoteDynamicContentSaver(BackgroundWorker worker, WebClient client, string url, string localPath, string encryptionPassword, RequestCacheLevel cacheLevel, ITempToPermFileMover mover)
         {
             _worker = worker;
             _client = client;
@@ -59,6 +63,7 @@ namespace OxigenIIAdvertising.ContentExchanger
             _localPath = localPath;
             _encryptionPassword = encryptionPassword;
             _cacheLevel = cacheLevel;
+            _mover = mover;
         }
 
         public bool CancelRequested
@@ -70,7 +75,8 @@ namespace OxigenIIAdvertising.ContentExchanger
         {
             _client.CachePolicy = new RequestCachePolicy(_cacheLevel);
             byte[] downloadedBytes = _client.DownloadData(_url);
-            EncryptByteArrayAndSave(downloadedBytes, _localPath);
+            EncryptByteArrayAndSave(downloadedBytes, _localPath + _mover.TempFileSuffix);
+            _mover.TryMoveFromTempToPerm(_localPath + _mover.TempFileSuffix);
         }
 
         private void EncryptByteArrayAndSave(byte[] buffer, string outputPath)
