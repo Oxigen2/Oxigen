@@ -360,11 +360,6 @@ namespace OxigenIIAdvertising.ContentExchanger
         /// <returns>A HashSet with the paths of the files that will be kept.</returns>
         public HashSet<string> GetAssetsToKeep(Playlist playlist)
         {
-            GeneralData generalData = (GeneralData)Serializer.Deserialize(typeof(GeneralData), _generalDataPath, _password);
-            int daysToKeepAssetFiles = int.Parse(generalData.Properties["daysToKeepAssetFiles"]);
-
-            TimeSpan daysToKeepAssetFilesTimeSpan = TimeSpan.FromDays(daysToKeepAssetFiles);
-
             HashSet<string> playlistAssetsToKeep = new HashSet<string>();
 
             // get playlist files. These files will be kept
@@ -389,6 +384,10 @@ namespace OxigenIIAdvertising.ContentExchanger
             // from the existing files on disk keep those whose creation date is less or equal than x days ago.
             string[] filesOnDisk = Directory.GetFiles(_assetPath);
             DateTime dateTimeStamp = DateTime.Now;
+            GeneralData generalData = (GeneralData)Serializer.Deserialize(typeof(GeneralData), _generalDataPath, _password);
+            int daysToKeepAssetFiles = int.Parse(generalData.Properties["daysToKeepAssetFiles"]);
+
+            TimeSpan daysToKeepAssetFilesTimeSpan = TimeSpan.FromDays(daysToKeepAssetFiles);
 
             foreach (string file in filesOnDisk)
             {
