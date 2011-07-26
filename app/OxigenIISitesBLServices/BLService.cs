@@ -723,6 +723,8 @@ namespace OxigenIIAdvertising.Services
             goto case ".wmv";
           case ".avi":
             goto case ".wmv";
+          case ".mp4":
+            goto case ".wmv";
           case ".wmv":
             CheckDurationBoundaries(ref bDurationsAmended, content, displayDurationVideoMin, displayDurationVideoMax);
             break;

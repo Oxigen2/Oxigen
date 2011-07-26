@@ -375,7 +375,6 @@ namespace Oxigen.Tests32
             form.SetDisplayDuration("100", 5, 200);
             form.SetDateIfNotEmpty("2011-12-20");
 
-            // Act
             using (var ms = new MemoryStream(TestFiles.sampleWMV))
             {
                 UploadedFile file = new UploadedVideoFile(form, _durationDetectorFactory);

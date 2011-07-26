@@ -13,6 +13,8 @@ namespace Oxigen.DurationDetectors
                 case ".wmv":
                     return new WindowsMediaFormatsFileDurationDetector();
                     break;
+                case ".mp4":
+                    goto case ".mov";
                 case ".mov":
                     return new QuicktimeFileDurationDetector();
                 default:

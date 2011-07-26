@@ -11,7 +11,7 @@ namespace Oxigen.DurationDetectors
         private int _numBytesRead;
         private byte[] _bytes;
         private bool _mvhdAtomHeaderNamePassed;
-        
+
         public double GetDurationInSeconds(string path)
         {
             byte[] timeScaleBytes = new byte[4];
@@ -24,7 +24,7 @@ namespace Oxigen.DurationDetectors
             {
                 int fileStreamLength = (int)fs.Length;
                 _bytes = new byte[fileStreamLength];
-                
+
                 while (_numBytesRead < fileStreamLength)
                 {
                     int n = fs.Read(_bytes, _numBytesRead, 1);
@@ -61,10 +61,19 @@ namespace Oxigen.DurationDetectors
                 Array.Reverse(durationBasedOnTimeScaleBytes);
             }
 
+            CleanUp();
+
             int timeScale = BitConverter.ToInt32(timeScaleBytes, 0);
             int durationBasedOnTimeScale = BitConverter.ToInt32(durationBasedOnTimeScaleBytes, 0);
 
             return Math.Round((double)durationBasedOnTimeScale / timeScale, 2);
+        }
+
+        private void CleanUp()
+        {
+            _numBytesRead = 0;
+            _bytes = null;
+            _mvhdAtomHeaderNamePassed = false;
         }
 
         private bool MvhdAtomHeaderNamePassed()
