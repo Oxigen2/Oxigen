@@ -2548,7 +2548,7 @@ namespace OxigenIIAdvertising.Services
       }
       catch (Exception ex)
       {
-        Console.WriteLine(ex.ToString());
+        _logger.Error(ex.ToString());
         throw new DataAccessException("Error: Getting Channel Subscriptions", ex);
       }
       finally
@@ -5143,6 +5143,34 @@ namespace OxigenIIAdvertising.Services
 
         ts.Complete();
       }
+    }
+
+    public void SetHeartBeat(string machineGUID)
+    {
+        SqlDatabase sqlDatabase = null;
+
+        using (TransactionScope ts = new TransactionScope())
+        {
+            try
+            {
+                sqlDatabase = new SqlDatabase();
+                sqlDatabase.Open();
+
+                sqlDatabase.AddInputParameter("@MachineGUID", machineGUID);
+                sqlDatabase.ExecuteNonQuery("dp_addHeartbeat");
+            }
+            catch (Exception ex)
+            {
+                _eventLog.WriteEntry(ex.ToString(), EventLogEntryType.Error);
+                throw ex;
+            }
+            finally
+            {
+                sqlDatabase.Dispose();
+            }
+
+            ts.Complete();
+        }
     }
   }
 }

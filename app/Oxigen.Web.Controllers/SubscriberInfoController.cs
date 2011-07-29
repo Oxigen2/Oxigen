@@ -6,12 +6,14 @@ using OxigenIIAdvertising.AppData;
 using OxigenIIAdvertising.Demographic;
 using OxigenIIAdvertising.Services;
 using OxigenIIAdvertising.XMLSerializer;
+using log4net;
 
 namespace Oxigen.Web.Controllers
 {
     [HandleError]
     public class SubscriberInfoController : Controller
     {
+        private ILog _logger = LogManager.GetLogger("Logger1");
         [DynamicContent(MaxAgeInSeconds = 10800)] // 3 hours
         public ActionResult Subscriptions(string id)
         {
@@ -38,6 +40,21 @@ namespace Oxigen.Web.Controllers
             var fileContentResult = new FileContentResult(demographicDataInBytes, System.Net.Mime.MediaTypeNames.Application.Octet);
             fileContentResult.FileDownloadName = "ss_demo_data.dat";
             return fileContentResult;
+        }
+
+        [HttpPost]
+        public ActionResult Heartbeat(string id)
+        {
+            try
+            {
+                (new DAService("Oxigen")).SetHeartBeat(id);
+            }
+            catch(Exception ex)
+            {
+                _logger.Error(ex.ToString());
+                throw;
+            }
+            return new EmptyResult();
         }
     }
 }

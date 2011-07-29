@@ -36,7 +36,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\tools\lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -48,7 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmptyRequestMakerTests.cs" />
+    <Compile Include="FailedInternetConnectionAttemptRegistryAccessorTests.cs" />
     <Compile Include="ContentExchangerTempToPermFileMoverTests.cs" />
+    <Compile Include="FailedInternetConnectionAttemptRegistryAccessorIntegrationTests.cs" />
     <Compile Include="InstallationPrerequisitesTest.cs" />
     <Compile Include="IOExceptionTempToPermFileMover.cs" />
     <Compile Include="TestFiles.Designer.cs">

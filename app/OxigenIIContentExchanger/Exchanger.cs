@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Cache;
 using System.IO;
+using System.Windows.Forms;
 using OxigenIIAdvertising.XMLSerializer;
 using OxigenIIAdvertising.Exceptions;
 using OxigenIIAdvertising.LoggerInfo;
@@ -18,6 +19,8 @@ namespace OxigenIIAdvertising.ContentExchanger
 {
     public class Exchanger
     {
+        private const int MAX_NO_FAILED_INTERNET_CONNECTION_ATTEMPTS = 24;
+
         private string _userGUID = "";
         private string _machineGUID = "";
         private string _systemPassPhrase = "";
@@ -57,6 +60,11 @@ namespace OxigenIIAdvertising.ContentExchanger
             _worker = worker;
             _verboseMode = true;
             _bGlobalsSet = SetGlobals();
+        }
+
+        private bool RunsInTheBackground
+        {
+            get { return _worker == null; }
         }
 
         public Exchanger()
@@ -126,6 +134,31 @@ namespace OxigenIIAdvertising.ContentExchanger
 
             try
             {
+                FailedInternetConnectionAttemptFileAccessor failedAttemptAccessor = new FailedInternetConnectionAttemptFileAccessor();
+
+                try
+                {
+                    SendHeartbeat(_machineGUID);
+                    failedAttemptAccessor.ResetFailedAttempts();
+                }
+                catch (WebException ex)
+                {
+                    failedAttemptAccessor.RecordFailedAttempt();
+                }
+
+                if (RunsInTheBackground)
+                {
+                    if (failedAttemptAccessor.GetFailedAttempts() >= MAX_NO_FAILED_INTERNET_CONNECTION_ATTEMPTS)
+                    {
+                        MessageBox.Show("Oxigen is having trouble communicating via the Internet. Please see the FAQs to ensure your PC is correctly configured.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        failedAttemptAccessor.ResetFailedAttempts();
+                        status.ExitWithError = true;
+                        status.ContentDownloaded = false;
+                        return status;
+                    }
+                }
+
                 // update config files
                 bool bCancelled = false;
 
@@ -133,7 +166,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                 {
                     if (client.Proxy != null)
                         client.Proxy.Credentials = CredentialCache.DefaultCredentials;
-
+                   
                     UpdateConfigFiles(client, ref bCancelled);
 
                     if (bCancelled)
@@ -259,6 +292,21 @@ namespace OxigenIIAdvertising.ContentExchanger
             log.SaveLog();
 
             return status;
+        }
+
+        private void SendHeartbeat(string machineGuid)
+        {
+            EmptyRequestMaker maker = new EmptyRequestMaker();
+
+            try
+            {
+                maker.MakeRequest(_mDataSubdomain + "subscriberinfo/heartbeat/" + machineGuid, HttpMethod.POST);
+            }
+            catch (WebException ex)
+            {
+                _logger.WriteError(ex);
+                throw;
+            }
         }
 
         internal static bool IsProcessRunning(string processName)
@@ -612,7 +660,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                 _userChannelSubscriptionsPath = _appDataPath + "SettingsData\\ss_channel_subscription_data.dat";
                 _assetPath = _appDataPath + "Assets\\";
                 _channelDataPath = _appDataPath + "ChannelData\\";
-               
+
                 User user = (User)Serializer.Deserialize(typeof(User), _userSettingsPath, _password);
 
                 _userGUID = user.UserGUID;
@@ -643,7 +691,7 @@ namespace OxigenIIAdvertising.ContentExchanger
                 ReportProgress(0, 50, "Preparing to retrieve content...");
 
                 // Get Advert assets
-                LoopAndGetAssetFiles<AdvertPlaylistAsset>(playlist.AdvertBucket.AdvertAssets, AssetType.Advert, null, 
+                LoopAndGetAssetFiles<AdvertPlaylistAsset>(playlist.AdvertBucket.AdvertAssets, AssetType.Advert, null,
                     ref bLowAssetSpace, ref bContentDownloaded, ref bCancelled, client);
 
                 if (bCancelled)

@@ -164,6 +164,7 @@
     <Content Include="Migrations\017_ImprovedHandlingOfNonExistingSubscriberInfo.sql" />
     <Content Include="Migrations\018_GetPCSubscriptionsGetsOnlyActivePCs.sql" />
     <Content Include="Migrations\019_AddSlide_With_MP4_Support.sql" />
+    <Content Include="Migrations\020_HeartBeatStoredProcedure.sql" />
     <EmbeddedResource Include="Migrations\011_RSSFeedAddLastErrorDate.sql" />
     <Content Include="Migrations\012_LogicalDelete.sql" />
     <Content Include="Migrations\013_ActivityReports.sql" />
