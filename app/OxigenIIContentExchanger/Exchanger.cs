@@ -135,28 +135,30 @@ namespace OxigenIIAdvertising.ContentExchanger
             try
             {
                 FailedInternetConnectionAttemptFileAccessor failedAttemptAccessor = new FailedInternetConnectionAttemptFileAccessor();
-
+                
                 try
                 {
                     SendHeartbeat(_machineGUID);
                     failedAttemptAccessor.ResetFailedAttempts();
-                }
-                catch (WebException ex)
+ }
+                catch (WebException)
                 {
                     failedAttemptAccessor.RecordFailedAttempt();
-                }
 
-                if (RunsInTheBackground)
-                {
-                    if (failedAttemptAccessor.GetFailedAttempts() >= MAX_NO_FAILED_INTERNET_CONNECTION_ATTEMPTS)
+                    if (RunsInTheBackground)
                     {
-                        MessageBox.Show("Oxigen is having trouble communicating via the Internet. Please see the FAQs to ensure your PC is correctly configured.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        if (failedAttemptAccessor.GetFailedAttempts() >= MAX_NO_FAILED_INTERNET_CONNECTION_ATTEMPTS)
+                        {
+                            MessageBox.Show("Oxigen is having trouble communicating via the Internet. Please see the FAQs to ensure your PC is correctly configured.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                        failedAttemptAccessor.ResetFailedAttempts();
-                        status.ExitWithError = true;
-                        status.ContentDownloaded = false;
-                        return status;
+                            failedAttemptAccessor.ResetFailedAttempts();
+                            status.ExitWithError = true;
+                            status.ContentDownloaded = false;
+                            return status;
+                        }
                     }
+
+                    throw;
                 }
 
                 // update config files
